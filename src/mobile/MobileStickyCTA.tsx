@@ -107,8 +107,8 @@ export default function MobileStickyCTA() {
 
   const onGetQuote = (e: React.MouseEvent) => {
     e.preventDefault();
-    // Scroll to the top of the page where the hero is
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    // Trigger modal opening
+    window.dispatchEvent(new CustomEvent('openHeroModal'));
   };
 
   const callHref = callAttrs.current.href;
