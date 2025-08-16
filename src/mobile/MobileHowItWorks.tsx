@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { MessageSquare, Search, CheckCircle } from 'lucide-react';
-import styles from './MobileHowItWorksPolish.module.css';
+import styles from './MobileHowItWorks.module.css';
 
 const steps = [
   {

@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Shield, Star, Zap, Users } from 'lucide-react';
-import styles from './MobileTrustPolish.module.css';
+import styles from './MobileTrust.module.css';
 
 const trustFeatures = [
   {

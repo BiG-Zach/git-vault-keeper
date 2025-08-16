@@ -1,0 +1,54 @@
+/* Mobile carriers grid polish */
+@media (max-width: 768px) {
+  .carriersSection {
+    padding: 20px 14px;
+    background: hsl(215 20% 98%);
+  }
+
+  .carriersHeading {
+    font-size: 14px;
+    color: hsl(215 15% 45%);
+    margin: 0 0 16px 0;
+    text-align: center;
+    font-weight: 500;
+  }
+
+  .carriersGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px 12px;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  .carrierLogo {
+    width: 100%;
+    height: 42px;
+    object-fit: contain;
+    object-position: center;
+    filter: brightness(0.9) contrast(1.1);
+    transition: all 0.2s ease;
+  }
+
+  .carrierLogo:hover {
+    filter: brightness(1) contrast(1);
+    transform: scale(1.05);
+  }
+
+  .carrierItem {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    border-radius: 8px;
+    padding: 12px 8px;
+    box-shadow: 0 1px 3px hsl(215 15% 15% / 0.08);
+    min-height: 64px;
+    transition: all 0.2s ease;
+  }
+
+  .carrierItem:active {
+    transform: scale(0.98);
+    box-shadow: 0 1px 2px hsl(215 15% 15% / 0.12);
+  }
+}

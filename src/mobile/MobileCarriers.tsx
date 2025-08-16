@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './MobileCarriersPolish.module.css';
+import styles from './MobileCarriers.module.css';
 
 const logos = [
   { src: "/logos/carriers/aetna.webp", alt: "Aetna" },
