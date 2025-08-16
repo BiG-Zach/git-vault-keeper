@@ -1,0 +1,8 @@
+@media (max-width: 767.98px) {
+  .mobileRoot { padding: 16px 14px; }
+  .mobileStack { display: grid; gap: 12px; }
+  .mobileHeroImage { width: 100%; height: auto; object-fit: cover; border-radius: 12px; }
+  .mobileTighten { margin-top: -4px; }
+  .mobileHeadline { font-size: 28px; line-height: 1.2; }
+  .mobileSubheadline { font-size: 16px; opacity: 0.9; }
+}
