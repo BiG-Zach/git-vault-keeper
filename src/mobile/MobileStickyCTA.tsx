@@ -1,5 +1,5 @@
 import React from "react";
-import { COMPANY } from "../config/company";
+import styles from './MobileStickyPolish.module.css';
 
 type CallAttrs = {
   href: string;
@@ -9,11 +9,11 @@ type CallAttrs = {
 /**
  * MobileStickyCTA
  * - Shows only on mobile (<768px) and only when the observed sentinel/form is < 25% visible.
- * - Observes: #mobileQuoteForm OR [data-hero-sentinel]
+ * - Observes: [data-hero-sentinel]
  * - Fail-closed: if neither target exists, component renders null (no sticky shown).
  * - Buttons:
- *    - Get Quote: smooth-scroll to #mobileQuoteForm
- *    - Call Now: mirrors header tel + data-* attributes exactly if present; otherwise falls back to COMPANY.phoneHref
+ *    - Get Quote: smooth-scroll to hero
+ *    - Call Now: mirrors header tel + data-* attributes exactly if present
  * - Sets <html data-sticky-cta-visible="true|false"> based on visibility
  */
 export default function MobileStickyCTA() {
@@ -23,16 +23,14 @@ export default function MobileStickyCTA() {
     if (typeof window === "undefined") return false;
     return window.innerWidth < 768;
   });
-  const callAttrs = React.useRef<CallAttrs>({ href: COMPANY.phoneHref ?? "tel:", data: {} });
+  const callAttrs = React.useRef<CallAttrs>({ href: "tel:+16893256570", data: {} });
 
   // Clone header call link attributes at runtime
   React.useEffect(() => {
     if (typeof document === "undefined") return;
 
-    // Priority: #header-call, then any header a[href^="tel:"], else fallback to COMPANY.phoneHref
-    const headerCall =
-      (document.querySelector("#header-call") as HTMLAnchorElement | null) ||
-      (document.querySelector("header a[href^='tel:']") as HTMLAnchorElement | null);
+    // Priority: any header a[href^="tel:"], else fallback to default
+    const headerCall = document.querySelector("header a[href^='tel:']") as HTMLAnchorElement | null;
 
     if (headerCall) {
       const data: Record<string, string> = {};
@@ -41,42 +39,38 @@ export default function MobileStickyCTA() {
         if (attr.name.startsWith("data-")) data[attr.name] = attr.value;
       }
       callAttrs.current = {
-        href: headerCall.getAttribute("href") ?? COMPANY.phoneHref ?? "tel:",
+        href: headerCall.getAttribute("href") ?? "tel:+16893256570",
         data,
       };
     } else {
-      callAttrs.current = { href: COMPANY.phoneHref ?? "tel:", data: {} };
+      callAttrs.current = { href: "tel:+16893256570", data: {} };
     }
+    setReady(true);
   }, []);
 
-  // Observe sentinel/form to decide visibility
+  // Observe sentinel to decide visibility
   React.useEffect(() => {
-    if (typeof window === "undefined" || typeof document === "undefined") return;
+    if (!ready || typeof window === "undefined" || typeof document === "undefined") return;
 
     const updateIsMobile = () => setIsMobile(window.innerWidth < 768);
     updateIsMobile();
     window.addEventListener("resize", updateIsMobile);
 
-    const formEl = document.getElementById("mobileQuoteForm");
     const sentinelEl = document.querySelector("[data-hero-sentinel]") as HTMLElement | null;
-    const target: Element | null = formEl || sentinelEl;
 
-    if (!target) {
-      // Fail-closed: neither target exists, do not show sticky
-      setReady(false);
+    if (!sentinelEl) {
+      // Fail-closed: no sentinel exists, do not show sticky
       setVisible(false);
       document.documentElement.dataset.stickyCtaVisible = "false";
       window.removeEventListener("resize", updateIsMobile);
       return;
     }
 
-    setReady(true);
-
     // IntersectionObserver: show when < 25% visible (i.e., hero has left viewport)
     const observer = new IntersectionObserver(
       (entries) => {
         for (const entry of entries) {
-          if (entry.target !== target) continue;
+          if (entry.target !== sentinelEl) continue;
           const ratio = entry.intersectionRatio;
           const shouldShow = isMobile && ratio < 0.25;
           setVisible(shouldShow);
@@ -96,7 +90,7 @@ export default function MobileStickyCTA() {
       { threshold: [0, 0.25, 1] }
     );
 
-    observer.observe(target);
+    observer.observe(sentinelEl);
 
     return () => {
       observer.disconnect();
@@ -106,64 +100,46 @@ export default function MobileStickyCTA() {
       const headerMobileCTA = document.getElementById("headerMobileCTA");
       if (headerMobileCTA) headerMobileCTA.removeAttribute("data-hidden-by-sticky");
     };
-  }, [isMobile]);
+  }, [ready, isMobile]);
 
   // If not mobile or no targets to observe, do not render the sticky
   if (!ready || !isMobile) return null;
 
   const onGetQuote = (e: React.MouseEvent) => {
     e.preventDefault();
-    const target = document.getElementById("mobileQuoteForm");
-    if (target) {
-      target.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
-    }
+    // Scroll to the top of the page where the hero is
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   const callHref = callAttrs.current.href;
   const callData = callAttrs.current.data;
 
   return (
-    <div
-      className={[
-        "fixed inset-x-0 bottom-0 z-50 md:hidden",
-        "transition-transform duration-300 ease-out will-change-transform",
-        visible ? "translate-y-0" : "translate-y-full",
-      ].join(" ")}
-      aria-hidden={!visible}
-    >
-      {/* Bar */}
-      <div className="bg-white/95 supports-[backdrop-filter]:bg-white/80 backdrop-blur border-t border-slate-200 shadow-lg">
-        <div className="px-4 py-3 flex items-center justify-center gap-3">
-          {/* Call Now */}
-          <a
-            href={callHref}
-            {...callData}
-            className="flex-1 inline-flex items-center justify-center rounded-lg font-semibold text-base min-h-[44px] px-4 py-3 text-white bg-slate-800 hover:bg-slate-900 active:scale-[0.98] transition-transform"
-            aria-label="Call now"
-          >
-            <svg className="w-5 h-5 mr-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.95.69l1.5 4.48a1 1 0 01-.5 1.2l-2.26 1.13a11.04 11.04 0 005.52 5.52l1.13-2.26a1 1 0 011.2-.5l4.48 1.5a1 1 0 01.69.95V19a2 2 0 01-2 2h-1C9.72 21 3 14.28 3 6V5z" />
-            </svg>
-            Call Now
-          </a>
-
-          {/* Get Quote */}
-          <button
-            type="button"
-            onClick={onGetQuote}
-            className="flex-1 inline-flex items-center justify-center rounded-lg font-semibold text-base min-h-[44px] px-4 py-3 text-white bg-emerald-600 hover:bg-emerald-700 active:scale-[0.98] transition-transform"
-            aria-label="Get quote"
-            data-gtm="sticky-quote"
-          >
-            <svg className="w-5 h-5 mr-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-            </svg>
-            Get Quote
-          </button>
-        </div>
-
-        {/* Safe area for devices with home indicators */}
-        <div className="h-safe-area-inset-bottom bg-white/95 supports-[backdrop-filter]:bg-white/80" />
+    <div className={`${styles.stickyContainer} ${visible ? styles.stickyVisible : ''}`}>
+      <div className={styles.stickyContent}>
+        <a
+          href={callHref}
+          {...callData}
+          className={styles.stickyCallButton}
+          aria-label="Call now"
+        >
+          <svg className={styles.stickyIcon} fill="currentColor" viewBox="0 0 20 20">
+            <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+          </svg>
+          Call Now
+        </a>
+        <button
+          type="button"
+          onClick={onGetQuote}
+          className={styles.stickyQuoteButton}
+          aria-label="Get quote"
+          data-gtm="sticky-quote"
+        >
+          <svg className={styles.stickyIcon} fill="currentColor" viewBox="0 0 20 20">
+            <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.293l-3-3a1 1 0 00-1.414 1.414L10.586 9H7a1 1 0 100 2h3.586l-1.293 1.293a1 1 0 101.414 1.414l3-3a1 1 0 000-1.414z" clipRule="evenodd" />
+          </svg>
+          Get Quote
+        </button>
       </div>
     </div>
   );

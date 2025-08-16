@@ -1,8 +1,22 @@
+import React, { Suspense } from 'react';
+import { Outlet } from 'react-router-dom';
+import Header from './components/Header';
+import Footer from './components/Footer';
+import PageProgressBar from './components/chrome/PageProgressBar';
+
 export default function App() {
   return (
-    <div style={{ padding: 24 }}>
-      <h1>Site wiring OK</h1>
-      <p>If you can see this, the preview is fixed. Do NOT regress desktop/backends.</p>
-    </div>
+    <>
+      <PageProgressBar />
+      <Header />
+      <Suspense fallback={
+        <div className="min-h-screen flex items-center justify-center">
+          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-brand-jade-500"></div>
+        </div>
+      }>
+        <Outlet />
+      </Suspense>
+      <Footer />
+    </>
   );
 }
