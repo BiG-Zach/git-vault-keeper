@@ -2,7 +2,7 @@
 @media (max-width: 767.98px) {
   .hero {
     position: relative;
-    padding: 20px 16px 0;
+    padding: 20px 16px calc(env(safe-area-inset-bottom, 0px) + 90px);
     overflow: hidden;
     min-height: 84vh;
     background: url("/images/hero/mobile-hero.webp") center 38% / cover no-repeat;
@@ -66,6 +66,7 @@
     bottom: 8vh;
     max-width: 340px;
     width: 88%;
+    z-index: 2;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
