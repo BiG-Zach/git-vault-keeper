@@ -21,16 +21,16 @@ export default function MobileHero() {
             Clear. Fast. Year-round guidance from licensed agents.
           </p>
         </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className={s.formWrap}
-        >
-          <HeroForm />
-        </motion.div>
       </div>
+
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.2 }}
+        className={s.formWrap}
+      >
+        <HeroForm />
+      </motion.div>
 
       {/* Sentinel for sticky CTA visibility detection */}
       <div data-hero-sentinel className={s.heroSentinel} />
