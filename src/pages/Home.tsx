@@ -6,6 +6,10 @@ import USAvailability from "../components/marketing/USAvailability";
 import StickyCTA from "../components/global/StickyCTA";
 import { BRAND } from "../lib/brand";
 import MobileHome from "../mobile";
+import MobileTrust from "../mobile/MobileTrust";
+import MobileCarriers from "../mobile/MobileCarriers";
+import MobileHowItWorks from "../mobile/MobileHowItWorks";
+import MobileTestimonials from "../mobile/MobileTestimonials";
 
 const logos = [
   { src: "/logos/carriers/aetna.webp", alt: "Aetna health insurance carrier" },
@@ -90,6 +94,10 @@ export default function Home() {
 
       <div className="block md:hidden">
         <MobileHome />
+        <MobileTrust />
+        <MobileCarriers />
+        <MobileHowItWorks />
+        <MobileTestimonials />
       </div>
     </>
   );

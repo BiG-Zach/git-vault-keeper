@@ -2,6 +2,7 @@
 .howSection {
   padding: 48px 16px;
   background: white;
+  border-top: 3px solid #00ff00; /* DEBUG: Green border */
 }
 
 .howContainer {
