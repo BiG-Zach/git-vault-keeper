@@ -1,0 +1,75 @@
+/* Mobile trust section with 4 feature cards */
+@media (max-width: 767.98px) {
+  .trustSection {
+    padding: 48px 16px;
+    background: hsl(210 40% 98%);
+  }
+
+  .trustContainer {
+    max-width: 640px;
+    margin: 0 auto;
+  }
+
+  .trustHeading {
+    font-size: 28px;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    font-weight: 800;
+    color: hsl(215 25% 15%);
+    text-align: center;
+    margin: 0 0 32px 0;
+  }
+
+  .trustGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  .trustCard {
+    background: white;
+    border-radius: 16px;
+    padding: 24px 16px;
+    text-align: center;
+    box-shadow: 0 2px 8px hsl(215 15% 15% / 0.08);
+    border: 1px solid hsl(215 20% 94%);
+    transition: all 0.2s ease;
+  }
+
+  .trustCard:active {
+    transform: scale(0.98);
+    box-shadow: 0 1px 4px hsl(215 15% 15% / 0.12);
+  }
+
+  .trustIcon {
+    width: 48px;
+    height: 48px;
+    margin: 0 auto 16px;
+    background: hsl(158 64% 52% / 0.1);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .trustIconSvg {
+    width: 24px;
+    height: 24px;
+    color: hsl(158 64% 52%);
+  }
+
+  .trustTitle {
+    font-size: 16px;
+    font-weight: 700;
+    color: hsl(215 25% 15%);
+    margin: 0 0 8px 0;
+    line-height: 1.3;
+  }
+
+  .trustDescription {
+    font-size: 14px;
+    line-height: 1.4;
+    color: hsl(215 15% 45%);
+    margin: 0;
+  }
+}
