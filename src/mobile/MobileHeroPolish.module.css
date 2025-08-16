@@ -1,0 +1,95 @@
+/* Mobile hero polish - luxury mobile-first design */
+@media (max-width: 767.98px) {
+  .heroContainer {
+    min-height: calc(100vh - var(--header-h, 56px));
+    padding: 16px 14px calc(24px + env(safe-area-inset-bottom));
+    background: linear-gradient(180deg, #fafbff 0%, #ffffff 100%);
+  }
+
+  .heroContent {
+    max-width: 640px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .heroHeadline {
+    font-size: clamp(28px, 7vw, 36px);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    font-weight: 800;
+    color: hsl(215 25% 15%);
+    margin: 0 0 12px 0;
+  }
+
+  .heroSubheadline {
+    font-size: 17px;
+    line-height: 1.45;
+    color: hsl(215 15% 40%);
+    margin: 0 0 20px 0;
+    font-weight: 400;
+  }
+
+  .heroCTAs {
+    display: grid;
+    gap: 12px;
+    margin: 0 0 32px 0;
+  }
+
+  .heroPrimaryCTA {
+    background: hsl(158 64% 52%);
+    color: white;
+    padding: 16px 24px;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 12px hsl(158 64% 52% / 0.25);
+    min-height: 52px;
+  }
+
+  .heroPrimaryCTA:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 8px hsl(158 64% 52% / 0.3);
+  }
+
+  .heroSecondaryCTA {
+    background: transparent;
+    color: hsl(215 25% 25%);
+    padding: 16px 24px;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 16px;
+    border: 2px solid hsl(215 15% 85%);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    min-height: 52px;
+  }
+
+  .heroSecondaryCTA:active {
+    transform: translateY(1px);
+    background: hsl(215 20% 96%);
+  }
+
+  .heroTrust {
+    display: grid;
+    gap: 8px;
+    font-size: 14px;
+    color: hsl(215 15% 50%);
+    line-height: 1.4;
+  }
+
+  .heroTrustItem {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+  }
+
+  .heroIcon {
+    width: 16px;
+    height: 16px;
+    color: hsl(158 64% 52%);
+  }
+}
