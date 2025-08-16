@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "vite build",
     "build:dev": "vite build --mode development",  
-    "preview": "vite preview --8080",
+    "preview": "vite preview --port 8080",
     "tunnel": "node scripts/tunnel.js",
     "live": "cross-env NGROK_DOMAIN=bradfordinformedguidance.ngrok-free.app concurrently -k -n VITE,NGROK -c auto \"npm:dev\" \"npm:tunnel\"",
     "dev:vercel": "vercel dev"
