@@ -1,0 +1,74 @@
+/* Mobile-only homepage polish */
+@media (max-width: 768px) {
+  .mobileRoot {
+    min-height: 100vh;
+    background: linear-gradient(180deg, hsl(210 40% 98%) 0%, hsl(0 0% 100%) 100%);
+  }
+
+  .heroSection {
+    padding: calc(env(safe-area-inset-top) + 16px) 16px 24px;
+    min-height: calc(100vh - var(--header-h, 56px));
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .heroHeadline {
+    font-size: clamp(28px, 6vw, 36px);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    font-weight: 800;
+    color: hsl(215 25% 15%);
+    margin: 0 0 12px 0;
+  }
+
+  .heroSubheadline {
+    font-size: 17px;
+    line-height: 1.5;
+    color: hsl(215 15% 40%);
+    margin: 0 0 24px 0;
+    font-weight: 400;
+  }
+
+  .heroCTA {
+    background: hsl(158 64% 52%);
+    color: white;
+    padding: 16px 32px;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 17px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 12px hsl(158 64% 52% / 0.25);
+    min-height: 52px;
+    margin: 0 auto 32px;
+    max-width: 280px;
+    width: 100%;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .heroCTA:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 8px hsl(158 64% 52% / 0.3);
+  }
+
+  .heroTrust {
+    font-size: 14px;
+    color: hsl(215 15% 50%);
+    line-height: 1.5;
+  }
+
+  /* Scroll indicator for sticky CTA */
+  .heroSentinel {
+    position: absolute;
+    bottom: 0;
+    height: 1px;
+    width: 100%;
+    pointer-events: none;
+  }
+}

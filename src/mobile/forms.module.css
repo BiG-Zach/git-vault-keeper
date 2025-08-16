@@ -1,0 +1,135 @@
+/* Mobile form polish */
+@media (max-width: 768px) {
+  .mobileForm {
+    padding: 16px;
+  }
+
+  .mobileFormGrid {
+    display: grid;
+    gap: 16px;
+  }
+
+  .mobileFieldGroup {
+    display: grid;
+    gap: 8px;
+  }
+
+  .mobileLabel {
+    font-size: 15px;
+    font-weight: 500;
+    color: hsl(215 25% 25%);
+    margin: 0;
+  }
+
+  .mobileInput,
+  .mobileSelect,
+  .mobileTextarea {
+    /* iOS zoom prevention */
+    font-size: 16px;
+    line-height: 1.4;
+    padding: 14px 16px;
+    border: 2px solid hsl(215 15% 85%);
+    border-radius: 8px;
+    background: white;
+    color: hsl(215 25% 15%);
+    transition: all 0.2s ease;
+    /* Tap target compliance */
+    min-height: 48px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .mobileInput:focus,
+  .mobileSelect:focus,
+  .mobileTextarea:focus {
+    outline: none;
+    border-color: hsl(158 64% 52%);
+    box-shadow: 0 0 0 3px hsl(158 64% 52% / 0.1);
+  }
+
+  .mobileInput::placeholder,
+  .mobileTextarea::placeholder {
+    color: hsl(215 15% 55%);
+  }
+
+  /* Validation states */
+  .mobileInputError {
+    border-color: hsl(0 84% 60%);
+  }
+
+  .mobileInputError:focus {
+    border-color: hsl(0 84% 60%);
+    box-shadow: 0 0 0 3px hsl(0 84% 60% / 0.1);
+  }
+
+  .mobileErrorMessage {
+    font-size: 14px;
+    color: hsl(0 84% 60%);
+    margin: 4px 0 0 0;
+    line-height: 1.4;
+  }
+
+  .mobileSuccessMessage {
+    font-size: 14px;
+    color: hsl(158 64% 45%);
+    margin: 4px 0 0 0;
+    line-height: 1.4;
+  }
+
+  /* Submit button */
+  .mobileSubmitButton {
+    background: hsl(158 64% 52%);
+    color: white;
+    padding: 16px 24px;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    min-height: 52px;
+    width: 100%;
+    box-shadow: 0 4px 12px hsl(158 64% 52% / 0.25);
+    /* Prevent double-submit */
+    user-select: none;
+  }
+
+  .mobileSubmitButton:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 8px hsl(158 64% 52% / 0.3);
+  }
+
+  .mobileSubmitButton:disabled {
+    background: hsl(215 15% 75%);
+    color: hsl(215 15% 55%);
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: none;
+  }
+
+  /* Loading state */
+  .mobileSubmitButton.loading {
+    background: hsl(215 15% 75%);
+    cursor: not-allowed;
+    position: relative;
+  }
+
+  .mobileSubmitButton.loading::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 20px;
+    height: 20px;
+    border: 2px solid transparent;
+    border-top: 2px solid white;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+
+  @keyframes spin {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
+  }
+}

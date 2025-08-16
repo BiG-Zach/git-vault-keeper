@@ -1,0 +1,64 @@
+/* Mobile carrier logo grid */
+@media (max-width: 768px) {
+  .carriersSection {
+    padding: 24px 16px;
+    background: hsl(215 20% 98%);
+  }
+
+  .carriersHeading {
+    font-size: 14px;
+    color: hsl(215 15% 45%);
+    margin: 0 0 16px 0;
+    text-align: center;
+    font-weight: 500;
+    letter-spacing: 0.025em;
+  }
+
+  .carriersGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px 12px;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  .carrierItem {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    border-radius: 8px;
+    padding: 12px 8px;
+    box-shadow: 0 1px 3px hsl(215 15% 15% / 0.08);
+    min-height: 64px;
+    transition: all 0.2s ease;
+    /* Prevent layout shift */
+    aspect-ratio: 3 / 2;
+  }
+
+  .carrierItem:active {
+    transform: scale(0.98);
+    box-shadow: 0 1px 2px hsl(215 15% 15% / 0.12);
+  }
+
+  .carrierLogo {
+    width: 100%;
+    height: 42px;
+    object-fit: contain;
+    object-position: center;
+    filter: brightness(0.9) contrast(1.1);
+    transition: all 0.2s ease;
+    /* Prevent layout shift */
+    display: block;
+  }
+
+  .carrierLogo:hover {
+    filter: brightness(1) contrast(1);
+  }
+
+  /* Loading state to prevent CLS */
+  .carrierLogo[src=""] {
+    background: hsl(215 15% 95%);
+    border-radius: 4px;
+  }
+}
