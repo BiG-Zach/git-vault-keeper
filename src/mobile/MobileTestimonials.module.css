@@ -1,133 +1,131 @@
 /* Mobile testimonials carousel */
-@media (max-width: 768px) {
-  .testimonialsSection {
-    padding: 48px 16px;
-    background: hsl(210 40% 98%);
-  }
+.testimonialsSection {
+  padding: 48px 16px;
+  background: hsl(210 40% 98%);
+}
 
-  .testimonialsContainer {
-    max-width: 640px;
-    margin: 0 auto;
-  }
+.testimonialsContainer {
+  max-width: 640px;
+  margin: 0 auto;
+}
 
-  .testimonialsHeading {
-    font-size: 28px;
-    line-height: 1.2;
-    letter-spacing: -0.01em;
-    font-weight: 800;
-    color: hsl(215 25% 15%);
-    text-align: center;
-    margin: 0 0 32px 0;
-  }
+.testimonialsHeading {
+  font-size: 28px;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  font-weight: 800;
+  color: hsl(215 25% 15%);
+  text-align: center;
+  margin: 0 0 32px 0;
+}
 
-  .testimonialsCarousel {
-    position: relative;
-    overflow: hidden;
-  }
+.testimonialsCarousel {
+  position: relative;
+  overflow: hidden;
+}
 
-  .testimonialCard {
-    background: white;
-    border-radius: 20px;
-    padding: 32px 24px;
-    box-shadow: 0 4px 16px hsl(215 15% 15% / 0.08);
-    border: 1px solid hsl(215 20% 94%);
-    text-align: center;
-    margin-bottom: 24px;
-  }
+.testimonialCard {
+  background: white;
+  border-radius: 20px;
+  padding: 32px 24px;
+  box-shadow: 0 4px 16px hsl(215 15% 15% / 0.08);
+  border: 1px solid hsl(215 20% 94%);
+  text-align: center;
+  margin-bottom: 24px;
+}
 
-  .testimonialRating {
-    display: flex;
-    justify-content: center;
-    gap: 4px;
-    margin-bottom: 20px;
-  }
+.testimonialRating {
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+  margin-bottom: 20px;
+}
 
-  .testimonialStar {
-    width: 20px;
-    height: 20px;
-    color: hsl(45 90% 55%);
-  }
+.testimonialStar {
+  width: 20px;
+  height: 20px;
+  color: hsl(45 90% 55%);
+}
 
-  .testimonialText {
-    font-size: 18px;
-    line-height: 1.5;
-    color: hsl(215 15% 25%);
-    margin: 0 0 24px 0;
-    font-style: italic;
-  }
+.testimonialText {
+  font-size: 18px;
+  line-height: 1.5;
+  color: hsl(215 15% 25%);
+  margin: 0 0 24px 0;
+  font-style: italic;
+}
 
-  .testimonialAuthor {
-    border-top: 1px solid hsl(215 20% 90%);
-    padding-top: 20px;
-  }
+.testimonialAuthor {
+  border-top: 1px solid hsl(215 20% 90%);
+  padding-top: 20px;
+}
 
-  .testimonialAuthorName {
-    font-size: 16px;
-    font-weight: 700;
-    color: hsl(215 25% 15%);
-    margin-bottom: 4px;
-  }
+.testimonialAuthorName {
+  font-size: 16px;
+  font-weight: 700;
+  color: hsl(215 25% 15%);
+  margin-bottom: 4px;
+}
 
-  .testimonialAuthorLocation {
-    font-size: 14px;
-    color: hsl(215 15% 45%);
-    margin-bottom: 8px;
-  }
+.testimonialAuthorLocation {
+  font-size: 14px;
+  color: hsl(215 15% 45%);
+  margin-bottom: 8px;
+}
 
-  .testimonialVerified {
-    font-size: 12px;
-    color: hsl(158 64% 52%);
-    font-weight: 600;
-  }
+.testimonialVerified {
+  font-size: 12px;
+  color: hsl(158 64% 52%);
+  font-weight: 600;
+}
 
-  .testimonialsControls {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
-  }
+.testimonialsControls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
 
-  .testimonialButton {
-    width: 44px;
-    height: 44px;
-    background: white;
-    border: 2px solid hsl(215 20% 90%);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: all 0.2s ease;
-  }
+.testimonialButton {
+  width: 44px;
+  height: 44px;
+  background: white;
+  border: 2px solid hsl(215 20% 90%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
 
-  .testimonialButton:active {
-    transform: scale(0.95);
-    background: hsl(215 20% 96%);
-  }
+.testimonialButton:active {
+  transform: scale(0.95);
+  background: hsl(215 20% 96%);
+}
 
-  .testimonialButtonIcon {
-    width: 20px;
-    height: 20px;
-    color: hsl(215 25% 25%);
-  }
+.testimonialButtonIcon {
+  width: 20px;
+  height: 20px;
+  color: hsl(215 25% 25%);
+}
 
-  .testimonialDots {
-    display: flex;
-    gap: 8px;
-  }
+.testimonialDots {
+  display: flex;
+  gap: 8px;
+}
 
-  .testimonialDot {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    border: none;
-    background: hsl(215 20% 85%);
-    cursor: pointer;
-    transition: all 0.2s ease;
-  }
+.testimonialDot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: none;
+  background: hsl(215 20% 85%);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
 
-  .testimonialDotActive {
-    background: hsl(158 64% 52%);
-    transform: scale(1.2);
-  }
+.testimonialDotActive {
+  background: hsl(158 64% 52%);
+  transform: scale(1.2);
 }
