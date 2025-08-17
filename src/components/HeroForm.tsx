@@ -172,7 +172,7 @@ export default function HeroForm() {
         >
           Call Now — (689) 325-6570
         </a>
-        <div className="text-xs text-gray-500 mt-3 text-center">⚡ First options in 45–90 minutes • Mon–Sun 8AM–8PM EST</div>
+        <div className="text-xs text-gray-500 mt-3 text-center">⚡ First options in 30-45 minutes • Mon–Sun 8AM–8PM EST</div>
       </form>
     </div>
   );
