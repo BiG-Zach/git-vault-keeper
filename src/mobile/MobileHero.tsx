@@ -56,11 +56,11 @@ export default function MobileHero() {
     return () => document.removeEventListener('keydown', handleEscape);
   }, [showModal]);
 
-  // Rotate alternating facts every 11 seconds for readability
+  // Rotate alternating facts every 10 seconds (8s scroll + 2s pause)
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentFactIndex((prev) => (prev + 1) % alternatingFacts.length);
-    }, 11000);
+    }, 10000);
     return () => clearInterval(interval);
   }, [alternatingFacts.length]);
 
@@ -84,25 +84,22 @@ export default function MobileHero() {
           </motion.div>
         </div>
 
-        {/* Horizontal sliding urgency facts carousel */}
+        {/* Horizontal scrolling ticker carousel */}
         <div className={s.urgencyCarousel}>
           <div className={s.carouselContainer}>
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={currentFactIndex}
-                initial={{ x: "100%", opacity: 0 }}
-                animate={{ x: 0, opacity: 1 }}
-                exit={{ x: "-100%", opacity: 0 }}
-                transition={{ 
-                  duration: 1.2, 
-                  ease: "easeInOut",
-                  opacity: { duration: 0.8 }
-                }}
-                className={s.carouselText}
-              >
-                {alternatingFacts[currentFactIndex]}
-              </motion.div>
-            </AnimatePresence>
+            <motion.div
+              key={currentFactIndex}
+              initial={{ x: "100%" }}
+              animate={{ x: "-100%" }}
+              transition={{ 
+                duration: 8, 
+                ease: "linear",
+                delay: 0
+              }}
+              className={s.carouselText}
+            >
+              {alternatingFacts[currentFactIndex]}
+            </motion.div>
           </div>
         </div>
 

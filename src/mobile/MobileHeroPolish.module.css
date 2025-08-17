@@ -216,7 +216,7 @@
     }
   }
 
-  /* Luxury horizontal sliding urgency facts carousel */
+  /* Premium horizontal scrolling ticker carousel */
   .urgencyCarousel {
     position: absolute;
     bottom: 0;
@@ -256,6 +256,9 @@
     padding: 0 16px;
     white-space: nowrap;
     position: absolute;
-    width: 100%;
+    width: max-content;
+    min-width: 100%;
+    top: 50%;
+    transform: translateY(-50%);
   }
 }
