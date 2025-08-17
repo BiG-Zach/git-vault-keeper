@@ -31,7 +31,7 @@ export default function MobileCarriers() {
           viewport={{ once: true }}
         >
           <h2 className={styles.carriersHeading}>
-            Premium Carrier Network Access
+            Nationwide Providers
           </h2>
           <p className={styles.carriersSubtitle}>
             Partnered with America's top-rated health and life insurance carriers.
