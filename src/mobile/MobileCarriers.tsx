@@ -34,7 +34,7 @@ export default function MobileCarriers() {
             Nationwide Providers
           </h2>
           <p className={styles.carriersSubtitle}>
-            Partnered with America's top-rated health and life insurance carriers.
+            Connected to America's most trusted health and life insurance carriers for comprehensive coverage that goes where you go.
           </p>
           <div className={styles.trustCounter}>
             <Users size={16} />
