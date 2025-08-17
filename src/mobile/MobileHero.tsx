@@ -7,15 +7,23 @@ export default function MobileHero() {
   const [showModal, setShowModal] = useState(false);
   const [currentFactIndex, setCurrentFactIndex] = useState(0);
   
-  const urgencyFacts = [
-    "ER visit: $2,200 uninsured",
-    "Broken arm surgery: $16,000 uninsured",
-    "Appendectomy: $52,000 uninsured", 
-    "Childbirth: $30,000 uninsured",
-    "Heart attack: $38,500 uninsured",
-    "Cancer treatment: $10,000+ yearly",
-    "Insulin vial: $300+ uninsured",
-    "62% uninsured carry medical debt"
+  const alternatingFacts = [
+    "The average ER visit costs over $2,200 without insurance.",
+    "A family kept their home because life insurance paid off the mortgage.",
+    "A broken arm can lead to a $16,000 surgery bill if you're uninsured.",
+    "Parents secured their children's college education through life insurance benefits.",
+    "An appendectomy without coverage can leave you with a $52,000 hospital bill.",
+    "A cancer survivor received a $50,000 critical illness payout that covered expenses during recovery.",
+    "Childbirth without insurance often runs $30,000 or more.",
+    "A self-employed professional saved over $8,000 a year with tax-deductible premiums.",
+    "A heart attack can rack up $38,500 in medical costs for the uninsured.",
+    "A mother avoided bankruptcy when health insurance covered her $85,000 surgery.",
+    "Cancer treatment can drain $10,000+ out-of-pocket every year.",
+    "A widow received life insurance benefits within 60 days of approval, easing financial stress.",
+    "A single vial of insulin can cost $300 or more without coverage.",
+    "A family business stayed afloat thanks to life insurance replacing lost income.",
+    "62% of uninsured adults are already struggling with medical debt.",
+    "An emergency surgery was fully covered, saving a family from financial devastation."
   ];
 
   // Global modal state for sticky CTA
@@ -48,13 +56,13 @@ export default function MobileHero() {
     return () => document.removeEventListener('keydown', handleEscape);
   }, [showModal]);
 
-  // Rotate urgency facts every 8 seconds for luxury pacing
+  // Rotate alternating facts every 11 seconds for readability
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentFactIndex((prev) => (prev + 1) % urgencyFacts.length);
-    }, 8000);
+      setCurrentFactIndex((prev) => (prev + 1) % alternatingFacts.length);
+    }, 11000);
     return () => clearInterval(interval);
-  }, [urgencyFacts.length]);
+  }, [alternatingFacts.length]);
 
   return (
     <>
@@ -92,7 +100,7 @@ export default function MobileHero() {
                 }}
                 className={s.carouselText}
               >
-                {urgencyFacts[currentFactIndex]}
+                {alternatingFacts[currentFactIndex]}
               </motion.div>
             </AnimatePresence>
           </div>
