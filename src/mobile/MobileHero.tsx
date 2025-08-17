@@ -5,6 +5,18 @@ import s from "./MobileHeroPolish.module.css";
 
 export default function MobileHero() {
   const [showModal, setShowModal] = useState(false);
+  const [currentFactIndex, setCurrentFactIndex] = useState(0);
+  
+  const urgencyFacts = [
+    "Emergency room visit: $2,200 without insurance",
+    "Broken arm surgery: $16,000 uninsured",
+    "Appendectomy bill: $52,000 uninsured", 
+    "Childbirth without insurance: $30,000",
+    "Heart attack treatment: $38,500 uninsured",
+    "Cancer treatment: $10,000+ yearly out-of-pocket",
+    "Single insulin vial: $300+ without insurance",
+    "62% of uninsured adults carry medical debt"
+  ];
 
   // Global modal state for sticky CTA
   useEffect(() => {
@@ -36,6 +48,14 @@ export default function MobileHero() {
     return () => document.removeEventListener('keydown', handleEscape);
   }, [showModal]);
 
+  // Rotate urgency facts every 5 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentFactIndex((prev) => (prev + 1) % urgencyFacts.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, [urgencyFacts.length]);
+
   return (
     <>
       <section className={s.hero} aria-label="Mobile hero">
@@ -56,7 +76,26 @@ export default function MobileHero() {
           </motion.div>
         </div>
 
-
+        {/* Animated urgency facts overlay */}
+        <motion.div
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8, delay: 0.5 }}
+          className={s.urgencyOverlay}
+        >
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={currentFactIndex}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.4 }}
+              className={s.urgencyText}
+            >
+              {urgencyFacts[currentFactIndex]}
+            </motion.div>
+          </AnimatePresence>
+        </motion.div>
 
         {/* Sentinel for sticky CTA visibility detection */}
         <div data-hero-sentinel className={s.heroSentinel} />
