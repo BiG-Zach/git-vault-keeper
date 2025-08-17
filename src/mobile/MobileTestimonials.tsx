@@ -72,7 +72,7 @@ export default function MobileTestimonials() {
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
         >
-          What Our Clients Say
+          Real Results From Real Families
         </motion.h2>
 
         <div className={styles.testimonialsCarousel}>
