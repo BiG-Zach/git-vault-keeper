@@ -76,7 +76,7 @@ export default function MobileHero() {
             className={s.heroText}
           >
             <h1 className={s.heroHeadline}>
-              Secure Your <span style={{color: '#059669', fontWeight: 700, fontSize: '1.1em'}}>TOMORROW</span>, Starting Today
+              Secure Your <span style={{color: '#06A66B', fontWeight: 700, fontSize: '1.1em', textShadow: '0 1px 2px rgba(0,0,0,0.3)'}}>TOMORROW</span>, Starting Today
             </h1>
             <p className={s.heroSubheadline}>
               Instant quotes, next-day protection, ongoing expert guidance — so your family's future is never left to chance.
