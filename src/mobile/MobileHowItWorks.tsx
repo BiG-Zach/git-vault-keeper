@@ -65,25 +65,6 @@ export default function MobileHowItWorks() {
           ))}
         </div>
 
-        <motion.div 
-          className={styles.processTimeline}
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.6, delay: 0.8 }}
-          viewport={{ once: true }}
-        >
-          <h3 className={styles.timelineTitle}>Speed Advantage</h3>
-          <div className={styles.timelineComparison}>
-            <div className={`${styles.timelineItem} ${styles.timelineCompetitor}`}>
-              <div className={styles.timelineLabel}>Other Agents</div>
-              <div className={styles.timelineTime}>2-3 weeks</div>
-            </div>
-            <div className={`${styles.timelineItem} ${styles.timelineBradford}`}>
-              <div className={styles.timelineLabel}>Bradford</div>
-              <div className={styles.timelineTime}>Same day</div>
-            </div>
-          </div>
-        </motion.div>
       </div>
     </section>
   );
