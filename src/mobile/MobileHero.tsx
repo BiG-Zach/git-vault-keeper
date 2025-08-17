@@ -8,14 +8,14 @@ export default function MobileHero() {
   const [currentFactIndex, setCurrentFactIndex] = useState(0);
   
   const urgencyFacts = [
-    "Emergency room visit: $2,200 without insurance",
+    "ER visit: $2,200 uninsured",
     "Broken arm surgery: $16,000 uninsured",
-    "Appendectomy bill: $52,000 uninsured", 
-    "Childbirth without insurance: $30,000",
-    "Heart attack treatment: $38,500 uninsured",
-    "Cancer treatment: $10,000+ yearly out-of-pocket",
-    "Single insulin vial: $300+ without insurance",
-    "62% of uninsured adults carry medical debt"
+    "Appendectomy: $52,000 uninsured", 
+    "Childbirth: $30,000 uninsured",
+    "Heart attack: $38,500 uninsured",
+    "Cancer treatment: $10,000+ yearly",
+    "Insulin vial: $300+ uninsured",
+    "62% uninsured carry medical debt"
   ];
 
   // Global modal state for sticky CTA
@@ -76,26 +76,23 @@ export default function MobileHero() {
           </motion.div>
         </div>
 
-        {/* Animated urgency facts overlay */}
-        <motion.div
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, delay: 0.5 }}
-          className={s.urgencyOverlay}
-        >
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={currentFactIndex}
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.4 }}
-              className={s.urgencyText}
-            >
-              {urgencyFacts[currentFactIndex]}
-            </motion.div>
-          </AnimatePresence>
-        </motion.div>
+        {/* Horizontal sliding urgency facts carousel */}
+        <div className={s.urgencyCarousel}>
+          <div className={s.carouselContainer}>
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={currentFactIndex}
+                initial={{ x: "100%", opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                exit={{ x: "-100%", opacity: 0 }}
+                transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
+                className={s.carouselText}
+              >
+                {urgencyFacts[currentFactIndex]}
+              </motion.div>
+            </AnimatePresence>
+          </div>
+        </div>
 
         {/* Sentinel for sticky CTA visibility detection */}
         <div data-hero-sentinel className={s.heroSentinel} />
