@@ -12,7 +12,7 @@ const steps = [
   },
   {
     title: 'Compare options',
-    description: 'We research and compare plans from top carriers to find your best matches',
+    description: 'I personally review dozens of carrier options and present only the 2-3 plans perfect for your situation—no overwhelming choices or hidden surprises',
     advantage: 'Access to exclusive A+ carriers'
   },
   {
