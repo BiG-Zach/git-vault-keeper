@@ -37,8 +37,12 @@ export default function MobileHowItWorks() {
             How It Works
           </h2>
           <div className={styles.competitiveAdvantage}>
-            <Clock size={16} style={{ marginRight: '6px', display: 'inline' }} />
-            Most agents: 2-3 weeks • Bradford: Same day decisions
+            <span className={styles.clockEmoji}>⏰</span>
+            <span className={styles.agentLabel}>Most agents:</span>
+            <span className={styles.slowTime}>2-3 weeks</span>
+            <span className={styles.separator}>•</span>
+            <span className={styles.bradfordLabel}>Bradford:</span>
+            <span className={styles.fastTime}>Same day decisions</span>
           </div>
         </motion.div>
         
