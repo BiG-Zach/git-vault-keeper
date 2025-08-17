@@ -48,11 +48,11 @@ export default function MobileHero() {
     return () => document.removeEventListener('keydown', handleEscape);
   }, [showModal]);
 
-  // Rotate urgency facts every 5 seconds
+  // Rotate urgency facts every 8 seconds for luxury pacing
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentFactIndex((prev) => (prev + 1) % urgencyFacts.length);
-    }, 5000);
+    }, 8000);
     return () => clearInterval(interval);
   }, [urgencyFacts.length]);
 
@@ -85,7 +85,11 @@ export default function MobileHero() {
                 initial={{ x: "100%", opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 exit={{ x: "-100%", opacity: 0 }}
-                transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
+                transition={{ 
+                  duration: 1.2, 
+                  ease: "easeInOut",
+                  opacity: { duration: 0.8 }
+                }}
                 className={s.carouselText}
               >
                 {urgencyFacts[currentFactIndex]}
