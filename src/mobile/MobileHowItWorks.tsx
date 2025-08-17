@@ -17,7 +17,7 @@ const steps = [
   },
   {
     title: 'Get covered',
-    description: 'Enroll in your chosen plan with ongoing support and expert guidance',
+    description: 'I handle all enrollment paperwork and remain your personal advocate for any questions, claims, or life changes that come up',
     advantage: 'Next-day protection possible'
   }
 ];
