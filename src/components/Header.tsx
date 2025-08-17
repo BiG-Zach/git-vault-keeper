@@ -4,7 +4,7 @@ import headerMobile from './Header.mobile.module.css';
 
 export default function Header() {
   return (
-    <header className={`sticky top-0 z-40 bg-white/80 supports-[backdrop-filter]:bg-white/60 backdrop-blur border-b border-slate-200 ${styles.header} ${headerMobile.mobileHeader}`}>
+    <header className={`desktop-header sticky top-0 z-40 bg-white/80 supports-[backdrop-filter]:bg-white/60 backdrop-blur border-b border-slate-200 ${styles.header} ${headerMobile.mobileHeader}`}>
       <div className="container-default flex h-16 items-center justify-between">
         <a
           href="/"

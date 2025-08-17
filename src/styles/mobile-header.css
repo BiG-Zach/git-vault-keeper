@@ -1,12 +1,64 @@
-/* Mobile-only rules to deduplicate CTAs without affecting desktop (≤767px) */
+/* Premium Mobile Header - Mobile Only */
 @media (max-width: 767px) {
-  /* Hide header CTA while sticky CTA is visible */
-  [data-sticky-cta-visible="true"] #headerMobileCTA {
+  .mobile-header {
+    height: 70px;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    padding-top: env(safe-area-inset-top, 0px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  }
+
+  .mobile-header-container {
+    height: 70px;
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+  }
+
+  .mobile-header-content {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .mobile-branding {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    text-align: center;
+  }
+
+  .mobile-logo {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.95);
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    letter-spacing: -0.01em;
+  }
+
+  .mobile-trust {
+    font-size: 0.75rem;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.85);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+  }
+
+  /* Hide desktop header on mobile */
+  .desktop-header {
     display: none !important;
   }
 
-  /* Optional: reserve space so sticky doesn't cover content */
-  html[data-sticky-cta-visible="true"] body {
-    padding-bottom: calc(72px + env(safe-area-inset-bottom));
+  /* Add top padding to body to account for fixed header */
+  body {
+    padding-top: calc(70px + env(safe-area-inset-top, 0px));
+  }
+}
+
+/* Ensure mobile header is hidden on desktop */
+@media (min-width: 768px) {
+  .mobile-header {
+    display: none !important;
   }
 }

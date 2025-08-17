@@ -1,13 +1,16 @@
 import React, { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 import Header from './components/Header';
+import MobileHeader from './components/MobileHeader';
 import Footer from './components/Footer';
 import PageProgressBar from './components/chrome/PageProgressBar';
+import './styles/mobile-header.css';
 
 export default function App() {
   return (
     <>
       <PageProgressBar />
+      <MobileHeader />
       <Header />
       <Suspense fallback={
         <div className="min-h-screen flex items-center justify-center">
