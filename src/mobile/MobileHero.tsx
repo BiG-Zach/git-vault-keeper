@@ -56,10 +56,6 @@ export default function MobileHero() {
           </motion.div>
         </div>
 
-        {/* Premium trust chip */}
-        <div className={s.trustChip}>
-          Licensed Independent Agent • NPN: 18181266
-        </div>
 
         {/* Industry dominance stat overlay */}
         <div className={s.statOverlay}>
