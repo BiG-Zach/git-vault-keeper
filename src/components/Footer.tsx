@@ -31,10 +31,6 @@ export default function Footer() {
             <div className="space-y-2">
               <div className="flex items-center gap-2 text-sm text-slate-300">
                 <span className="inline-block w-2 h-2 bg-emerald-500 rounded-full"></span>
-                Licensed Independent Agent (NPN: {COMPANY.npn})
-              </div>
-              <div className="flex items-center gap-2 text-sm text-slate-300">
-                <span className="inline-block w-2 h-2 bg-emerald-500 rounded-full"></span>
                 Exclusive A+ Carrier Partnerships
               </div>
               <div className="flex items-center gap-2 text-sm text-slate-300">
