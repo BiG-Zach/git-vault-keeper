@@ -6,18 +6,18 @@ import styles from './MobileFooterPolish.module.css';
 const trustBadges = [
   {
     icon: Shield,
-    title: 'Licensed Insurance Agent',
-    description: 'FL, MI, NC'
+    title: 'Licensed Independent Agent',
+    description: 'NPN: 18181266'
   },
   {
     icon: Award,
-    title: 'BBB Accredited',
-    description: 'A+ Rating'
+    title: 'Exclusive A+ Carrier Partnerships',
+    description: 'Nationwide Provider Networks'
   },
   {
     icon: FileCheck,
-    title: 'NPN: 18181266',
-    description: 'Verified Agent'
+    title: 'Same-Day Decisions',
+    description: 'Next-Day Protection'
   }
 ];
 
@@ -76,11 +76,11 @@ export default function MobileFooter() {
           <div className={styles.footerCompany}>
             Bradford Informed Guidance
           </div>
+          <div className={styles.footerTagline}>
+            Your health, your choice, your peace of mind.
+          </div>
           <div className={styles.footerYear}>
             © {new Date().getFullYear()} All rights reserved
-          </div>
-          <div className={styles.footerDisclaimer}>
-            Licensed insurance agency specializing in health and life coverage guidance.
           </div>
         </div>
       </div>

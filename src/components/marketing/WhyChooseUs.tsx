@@ -18,40 +18,28 @@ type Item = {
 
 const items: Item[] = [
   {
-    title: "Nationwide PPO Access",
-    body: "Care anywhere with top provider networks.",
-    icon: <NetworkIcon aria-hidden={true} className="h-6 w-6" />,
-    aria: "Nationwide PPO Access",
-  },
-  {
-    title: "Year-Round Enrollment",
-    body: "Apply anytime, start coverage in days.",
-    icon: <ClockIcon aria-hidden={true} className="h-6 w-6" />,
-    aria: "Year-Round Enrollment",
-  },
-  {
-    title: "Top-Rated Carriers",
-    body: "A-rated insurers for reliable peace of mind.",
+    title: "Your Licensed Insurance Expert",
+    body: "Exclusive A+ carrier partnerships.",
     icon: <ShieldStarIcon aria-hidden={true} className="h-6 w-6" />,
-    aria: "Top-Rated Carriers",
+    aria: "Your Licensed Insurance Expert",
   },
   {
-    title: "Personalized Guidance",
-    body: "Licensed advisors guide your enrollment journey.",
+    title: "Exclusive PPO Access",
+    body: "Nationwide provider freedom. Your doctors, better benefits.",
+    icon: <NetworkIcon aria-hidden={true} className="h-6 w-6" />,
+    aria: "Exclusive PPO Access",
+  },
+  {
+    title: "Fast Decisions",
+    body: "Same-day underwriting decisions. No waiting, no uncertainty.",
+    icon: <ClockIcon aria-hidden={true} className="h-6 w-6" />,
+    aria: "Fast Decisions",
+  },
+  {
+    title: "Personal Guidance",
+    body: "End-to-end support. From quote to claim, I've got you covered.",
     icon: <HandHeartIcon aria-hidden={true} className="h-6 w-6" />,
-    aria: "Personalized Guidance",
-  },
-  {
-    title: "Budget-Friendly Options",
-    body: "Quality plans tailored to your budget.",
-    icon: <WalletCheckIcon aria-hidden={true} className="h-6 w-6" />,
-    aria: "Budget-Friendly Options",
-  },
-  {
-    title: "Fast, Simple Enrollment",
-    body: "Smooth process from consultation to activation.",
-    icon: <SparkleCheckIcon aria-hidden={true} className="h-6 w-6" />,
-    aria: "Fast and Simple Enrollment",
+    aria: "Personal Guidance",
   },
 ];
 

@@ -6,23 +6,23 @@ import styles from './MobileTrust.module.css';
 const trustFeatures = [
   {
     icon: Shield,
-    title: 'Licensed & BBB Accredited',
-    description: 'Licensed agents in FL, MI, NC with BBB A+ rating'
+    title: 'Your Licensed Insurance Expert',
+    description: 'Exclusive A+ carrier partnerships.'
   },
   {
     icon: Star,
-    title: 'Nationwide PPO Access',
-    description: 'Access to top carrier networks and provider networks'
+    title: 'Exclusive PPO Access',
+    description: 'Nationwide provider freedom. Your doctors, better benefits.'
   },
   {
     icon: Zap,
     title: 'Fast Decisions',
-    description: 'Get your first options within 45-90 minutes'
+    description: 'Same-day underwriting decisions. No waiting, no uncertainty.'
   },
   {
     icon: Users,
     title: 'Personal Guidance',
-    description: 'Real agents who understand your unique needs'
+    description: 'End-to-end support. From quote to claim, I\'ve got you covered.'
   }
 ];
 

@@ -24,22 +24,26 @@ export default function Footer() {
               Bradford Informed Guidance
             </h3>
             <p className="text-slate-300 text-sm leading-relaxed mb-4">
-              Smarter health and life insurance solutions for self-employed, families, and early retirees.
+              Your health, your choice, your peace of mind.
             </p>
             
             {/* Social Proof Badges */}
             <div className="space-y-2">
               <div className="flex items-center gap-2 text-sm text-slate-300">
                 <span className="inline-block w-2 h-2 bg-emerald-500 rounded-full"></span>
-                Licensed Insurance Agent
+                Licensed Independent Agent (NPN: {COMPANY.npn})
               </div>
               <div className="flex items-center gap-2 text-sm text-slate-300">
                 <span className="inline-block w-2 h-2 bg-emerald-500 rounded-full"></span>
-                BBB Accredited Business
+                Exclusive A+ Carrier Partnerships
               </div>
               <div className="flex items-center gap-2 text-sm text-slate-300">
                 <span className="inline-block w-2 h-2 bg-emerald-500 rounded-full"></span>
-                {COMPANY.npnLabel}: {COMPANY.npn}
+                Nationwide Provider Networks
+              </div>
+              <div className="flex items-center gap-2 text-sm text-slate-300">
+                <span className="inline-block w-2 h-2 bg-emerald-500 rounded-full"></span>
+                Same-Day Decisions, Next-Day Protection
               </div>
             </div>
           </motion.div>

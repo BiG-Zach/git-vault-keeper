@@ -48,10 +48,10 @@ export default function MobileHero() {
             className={s.heroText}
           >
             <h1 className={s.heroHeadline}>
-              Premium Health & Life Coverage
+              Secure Your Tomorrow, Starting Today
             </h1>
             <p className={s.heroSubheadline}>
-              Clear. Fast. Year-round guidance from licensed agents.
+              Instant quotes, next-day protection, ongoing expert guidance — so your family's future is never left to chance.
             </p>
           </motion.div>
         </div>

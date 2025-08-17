@@ -11,11 +11,10 @@ export default function Hero() {
     <div className="relative z-[60] mx-auto max-w-3xl">
       <div className="rounded-2xl bg-black/65 backdrop-blur-md ring-1 ring-white/15 shadow-[0_10px_40px_rgba(0,0,0,.55)] px-6 py-6 md:px-8 md:py-8">
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight leading-tight text-white [text-shadow:_0_0_3px_rgba(0,0,0,0.9),0_0_8px_rgba(0,0,0,0.7),0_0_12px_rgba(0,0,0,0.6),0_1px_0px_rgba(255,255,255,0.2)]">
-          Smarter Health & Life <br className="hidden md:block" /> Insurance
+          Secure Your Tomorrow, <br className="hidden md:block" /> Starting Today
         </h1>
         <p className="mt-3 text-lg md:text-xl leading-relaxed text-white [text-shadow:_0_0_2px_rgba(0,0,0,0.85),0_0_6px_rgba(0,0,0,0.7)]">
-          Clear, affordable options for self-employed, families, and early retirees.
-          Licensed in FL, MI, and NC — expanding nationwide.
+          Instant quotes, next-day protection, ongoing expert guidance — so your family's future is never left to chance.
         </p>
         <div className="mt-5 flex flex-wrap gap-3">
           <a href="/contact" data-gtm="hero-cta-schedule" className="inline-flex items-center justify-center rounded-xl bg-emerald-600 px-5 py-3 text-white font-medium shadow-lg shadow-emerald-900/25 hover:bg-emerald-500 active:scale-[.99] transition">
