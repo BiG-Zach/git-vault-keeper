@@ -7,7 +7,7 @@ import './tokens.module.css';
 const steps = [
   {
     title: 'Share your needs',
-    description: 'Tell me about your health situation and budget—I\'ll cut through the insurance maze and find plans that actually make sense for your life',
+    description: 'I personally review dozens of carrier options and present only the 2-3 plans perfect for your situation—no overwhelming choices or hidden surprises',
     advantage: 'Same-day consultation available'
   },
   {
