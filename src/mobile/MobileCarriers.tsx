@@ -38,7 +38,7 @@ export default function MobileCarriers() {
           </p>
           <div className={styles.trustCounter}>
             <Users size={16} />
-            Trusted by 2,847+ Florida families
+            Access to 1.8M+ providers through top-rated networks
           </div>
         </motion.div>
         
