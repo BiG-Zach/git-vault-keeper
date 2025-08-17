@@ -4,28 +4,14 @@ import headerMobile from './Header.mobile.module.css';
 
 export default function Header() {
   return (
-    <header className={`sticky top-0 z-40 supports-[backdrop-filter]:backdrop-blur-[12px] border-b border-white/15 ${styles.header} ${headerMobile.mobileHeader}`}
-      style={{
-        background: 'rgba(255,255,255,0.1)',
-        backdropFilter: 'blur(12px)',
-        WebkitBackdropFilter: 'blur(12px)'
-      }}
-    >
-      <div className="container-default flex h-20 items-center justify-between">
-        <div className="flex flex-col">
-          <a
-            href="/"
-            className={`font-bold text-xl tracking-tight text-slate-900 whitespace-nowrap overflow-hidden text-ellipsis max-w-[60%] md:max-w-none rounded-md focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#005ea2] ${headerMobile.mobileLogo}`}
-          >
-            Bradford Insurance Solutions
-          </a>
-          <div className="text-xs text-slate-600 font-medium">
-            Licensed Independent Agent • Your Trusted Insurance Partner
-          </div>
-          <div className="text-xs text-slate-500 font-normal">
-            NPN: 18181266
-          </div>
-        </div>
+    <header className={`sticky top-0 z-40 bg-white/80 supports-[backdrop-filter]:bg-white/60 backdrop-blur border-b border-slate-200 ${styles.header} ${headerMobile.mobileHeader}`}>
+      <div className="container-default flex h-16 items-center justify-between">
+        <a
+          href="/"
+          className={`font-extrabold text-xl tracking-tight text-slate-900 whitespace-nowrap overflow-hidden text-ellipsis max-w-[60%] md:max-w-none rounded-md focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#005ea2] ${headerMobile.mobileLogo}`}
+        >
+          Bradford Informed Guidance
+        </a>
         {/* Desktop nav */}
         <nav className={`hidden md:flex items-center gap-6 text-sm ${styles.nav} ${headerMobile.mobileNav}`}>
           <Link to="/about" className={`hover:text-[#0078c8] transition-colors ${styles.navItem}`}>About</Link>
