@@ -56,11 +56,11 @@ export default function MobileHero() {
     return () => document.removeEventListener('keydown', handleEscape);
   }, [showModal]);
 
-  // Rotate alternating facts every 10 seconds (8s scroll + 2s pause)
+  // Rotate alternating facts every 17 seconds (14s scroll + 3s pause)
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentFactIndex((prev) => (prev + 1) % alternatingFacts.length);
-    }, 10000);
+    }, 17000);
     return () => clearInterval(interval);
   }, [alternatingFacts.length]);
 
@@ -92,7 +92,7 @@ export default function MobileHero() {
               initial={{ x: "100%" }}
               animate={{ x: "-100%" }}
               transition={{ 
-                duration: 8, 
+                duration: 14, 
                 ease: "linear",
                 delay: 0
               }}
