@@ -37,7 +37,7 @@ export default function MobileCarriers() {
             Connected to America's most trusted health and life insurance carriers for comprehensive coverage that goes where you go.
           </p>
           <div className={styles.trustCounter}>
-            <Users size={16} />
+            ✅
             Access to 1.8M+ providers through top-rated networks
           </div>
         </motion.div>
