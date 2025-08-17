@@ -37,7 +37,7 @@ export default function MobileTrust() {
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
         >
-          Why Choose Bradford Informed Guidance
+          Why Choose Us
         </motion.h2>
         
         <div className={styles.trustGrid}>
