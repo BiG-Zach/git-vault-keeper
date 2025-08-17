@@ -17,25 +17,25 @@
   }
 
   .howHeading {
-    font-family: var(--font-primary);
-    font-weight: var(--font-weight-semibold);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-weight: 600;
     font-size: clamp(26px, 5vw, 30px);
-    letter-spacing: var(--letter-spacing-tight);
+    letter-spacing: -0.025em;
     color: #1f2937;
     margin: 0 0 12px 0;
   }
 
   .competitiveAdvantage {
-    background: var(--glass-bg);
+    background: rgba(255,255,255,0.14);
     backdrop-filter: blur(12px);
-    border: 1px solid var(--glass-bd);
+    border: 1px solid rgba(255,255,255,0.22);
     border-radius: 16px;
     padding: 12px 16px;
     margin: 0 auto 16px;
     max-width: fit-content;
     font-size: 14px;
-    font-weight: var(--font-weight-medium);
-    color: var(--color-success);
+    font-weight: 500;
+    color: #10b981;
   }
 
   .luxuryHowSteps {
@@ -50,7 +50,7 @@
     top: 40px;
     bottom: 40px;
     width: 2px;
-    background: linear-gradient(180deg, var(--color-primary) 0%, var(--color-success) 100%);
+    background: linear-gradient(180deg, #2563eb 0%, #10b981 100%);
     opacity: 0.3;
   }
 
@@ -70,14 +70,14 @@
     width: 64px;
     height: 64px;
     border-radius: 50%;
-    background: var(--btn-primary-bg);
-    color: var(--color-text-primary);
+    background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+    color: #ffffff;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-weight: var(--font-weight-semibold);
+    font-weight: 600;
     font-size: 18px;
-    box-shadow: var(--btn-shadow);
+    box-shadow: 0 4px 12px rgba(37,99,235,0.3);
     border: 2px solid rgba(255,255,255,0.2);
     position: relative;
     z-index: 2;
@@ -89,15 +89,15 @@
   }
 
   .stepTitle {
-    font-family: var(--font-primary);
-    font-weight: var(--font-weight-semibold);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-weight: 600;
     font-size: 18px;
     color: #1f2937;
     margin: 0 0 8px 0;
   }
 
   .stepDescription {
-    font-family: var(--font-primary);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     font-size: 15px;
     line-height: 1.5;
     color: #6b7280;
@@ -110,24 +110,24 @@
     border-radius: 8px;
     padding: 8px 12px;
     font-size: 13px;
-    font-weight: var(--font-weight-medium);
-    color: var(--color-success);
+    font-weight: 500;
+    color: #10b981;
     display: inline-block;
   }
 
   .processTimeline {
     margin-top: 32px;
-    background: var(--glass-bg-strong);
-    backdrop-filter: blur(var(--glass-blur));
-    border: 1px solid var(--glass-bd);
-    border-radius: var(--glass-radius);
+    background: rgba(255,255,255,0.20);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255,255,255,0.22);
+    border-radius: 20px;
     padding: 20px;
-    box-shadow: var(--shadow-lg);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.12);
   }
 
   .timelineTitle {
-    font-family: var(--font-primary);
-    font-weight: var(--font-weight-semibold);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-weight: 600;
     font-size: 16px;
     color: #1f2937;
     margin: 0 0 12px 0;
@@ -156,27 +156,27 @@
   .timelineBradford {
     background: rgba(16,185,129,0.1);
     border-color: rgba(16,185,129,0.2);
-    color: var(--color-success);
+    color: #10b981;
   }
 
   .timelineLabel {
     font-size: 12px;
-    font-weight: var(--font-weight-medium);
+    font-weight: 500;
     text-transform: uppercase;
-    letter-spacing: var(--letter-spacing-wide);
+    letter-spacing: 0.05em;
     margin-bottom: 4px;
   }
 
   .timelineTime {
     font-size: 18px;
-    font-weight: var(--font-weight-semibold);
+    font-weight: 600;
   }
 
   /* Staggered entrance animations */
   .luxuryHowStep {
     opacity: 0;
     transform: translateX(-30px);
-    animation: slideInStep var(--duration-lg) var(--ease-premium) forwards;
+    animation: slideInStep 500ms cubic-bezier(.4,0,.2,1) forwards;
   }
 
   .luxuryHowStep:nth-child(1) { animation-delay: 200ms; }
