@@ -20,8 +20,8 @@
     max-width: 640px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: 1fr;
-    gap: 10px;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
   }
 
   .stickyCallButton {
@@ -47,13 +47,43 @@
     background: hsl(215 25% 15%);
   }
 
+  .stickyConsultationButton {
+    background: hsl(215 25% 20%);
+    color: white;
+    padding: 14px 16px;
+    border-radius: 14px;
+    font-weight: 600;
+    font-size: 15px;
+    border: 1px solid rgba(255,255,255,0.1);
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(.4,0,.2,1);
+    min-height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    text-decoration: none;
+    box-shadow: 0 4px 12px rgba(51,65,85,0.3);
+  }
+
+  .stickyConsultationButton:hover,
+  .stickyConsultationButton:focus {
+    transform: translateY(-1px);
+    background: hsl(215 25% 15%);
+    box-shadow: 0 6px 16px rgba(51,65,85,0.4);
+  }
+
+  .stickyConsultationButton:active {
+    transform: scale(0.98);
+  }
+
   .stickyQuoteButton {
     background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
     color: white;
-    padding: 16px 24px;
+    padding: 14px 16px;
     border-radius: 14px;
     font-weight: 600;
-    font-size: 16px;
+    font-size: 15px;
     letter-spacing: 0.025em;
     border: 1px solid rgba(255,255,255,0.2);
     cursor: pointer;
@@ -62,7 +92,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
+    gap: 8px;
     box-shadow: 0 6px 16px rgba(37,99,235,0.3), 0 0 20px rgba(37,99,235,0.15);
     backdrop-filter: blur(8px);
     position: relative;
@@ -83,13 +113,13 @@
   }
 
   .stickyQuoteButton:hover {
-    transform: translateY(-2px);
+    transform: translateY(-1px);
     box-shadow: 0 8px 20px rgba(37,99,235,0.4), 0 0 30px rgba(37,99,235,0.2);
     background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%);
   }
 
   .stickyQuoteButton:active {
-    transform: translateY(-1px) scale(0.99);
+    transform: scale(0.98);
   }
 
   .stickyIcon {
