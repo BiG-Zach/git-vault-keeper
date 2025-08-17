@@ -6,7 +6,7 @@ import './tokens.module.css';
 
 const steps = [
   {
-    title: 'Tell us your needs',
+    title: 'Share your needs',
     description: 'Share your health needs, budget, and coverage preferences with our licensed agents',
     advantage: 'Same-day consultation available'
   },
