@@ -1,5 +1,8 @@
 import React from 'react';
-import styles from './MobileCarriers.module.css';
+import { motion } from 'framer-motion';
+import { CheckCircle, Users } from 'lucide-react';
+import styles from './MobileCarriersLuxury.module.css';
+import './tokens.module.css';
 
 const logos = [
   { src: "/logos/carriers/aetna.webp", alt: "Aetna" },
@@ -18,23 +21,48 @@ const logos = [
 
 export default function MobileCarriers() {
   return (
-    <section className={styles.carriersSection} aria-label="Insurance carriers we work with">
-      <h2 className={styles.carriersHeading}>
-        Carriers & PPO networks we work with
-      </h2>
-      <div className={styles.carriersGrid}>
-        {logos.slice(0, 12).map((logo, index) => (
-          <div key={index} className={styles.carrierItem}>
-            <img
-              src={logo.src}
-              alt={logo.alt}
-              className={styles.carrierLogo}
-              loading="lazy"
-              width="120"
-              height="42"
-            />
+    <section className={styles.luxuryCarriersSection} aria-label="Premium carrier network access">
+      <div className={styles.carriersContainer}>
+        <motion.div 
+          className={styles.sectionHeader}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+        >
+          <h2 className={styles.carriersHeading}>
+            Premium Carrier Network Access
+          </h2>
+          <p className={styles.carriersSubtitle}>
+            Partnered with America's top-rated health and life insurance carriers.
+          </p>
+          <div className={styles.trustCounter}>
+            <Users size={16} />
+            Trusted by 2,847+ Florida families
           </div>
-        ))}
+        </motion.div>
+        
+        <div className={styles.luxuryCarriersGrid}>
+          {logos.slice(0, 12).map((logo, index) => (
+            <motion.div 
+              key={index} 
+              className={styles.luxuryCarrierCard}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              viewport={{ once: true }}
+            >
+              <img
+                src={logo.src}
+                alt={logo.alt}
+                className={styles.luxuryCarrierLogo}
+                loading="lazy"
+                width="120"
+                height="42"
+              />
+            </motion.div>
+          ))}
+        </div>
       </div>
     </section>
   );

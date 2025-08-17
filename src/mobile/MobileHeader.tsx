@@ -1,7 +1,10 @@
 import * as React from 'react';
+import styles from './MobileHeaderLuxury.module.css';
+import '../mobile/tokens.module.css';
 
 export default function MobileHeader() {
   const ref = React.useRef<HTMLElement | null>(null);
+  const [scrolled, setScrolled] = React.useState(false);
 
   React.useEffect(() => {
     if (typeof window === 'undefined') return;
@@ -15,11 +18,19 @@ export default function MobileHeader() {
       root.style.setProperty('--header-h', `${h}px`);
     };
 
+    const handleScroll = () => {
+      if (!isMobile()) return;
+      setScrolled(window.scrollY > 10);
+    };
+
     setVar();
+    handleScroll();
     window.addEventListener('resize', setVar);
+    window.addEventListener('scroll', handleScroll, { passive: true });
 
     return () => {
       window.removeEventListener('resize', setVar);
+      window.removeEventListener('scroll', handleScroll);
       root.style.removeProperty('--header-h');
     };
   }, []);
@@ -27,27 +38,28 @@ export default function MobileHeader() {
   return (
     <header
       ref={ref}
-      className="sticky top-0 z-40 md:hidden bg-white/80 supports-[backdrop-filter]:bg-white/60 backdrop-blur border-b border-slate-200"
-      style={{ paddingTop: 'env(safe-area-inset-top)' }}
+      className={`${styles.luxuryHeader} ${scrolled ? styles.scrolled : ''} md:hidden`}
       aria-label="Mobile site header"
     >
-      <div className="container-default flex h-16 items-center justify-between">
+      <div className={styles.headerContent}>
         <a
           href="/"
-          className="font-extrabold text-lg tracking-tight text-slate-900 whitespace-nowrap overflow-hidden text-ellipsis max-w-[60%] rounded-md focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#005ea2]"
+          className={styles.brandName}
         >
           Bradford Informed Guidance
         </a>
         <a
           id="headerMobileCTA"
           href="https://calendly.com/bradfordinformedguidance"
-          className="inline-flex items-center justify-center rounded-2xl font-semibold transition duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#005ea2] active:scale-[0.98] px-4 py-3 text-base bg-[#005ea2] text-white shadow-sm min-h-[44px] min-w-[44px]"
-          aria-label="Schedule"
+          className={styles.scheduleButton}
+          aria-label="Schedule consultation"
+          target="_blank"
+          rel="noopener noreferrer"
         >
           Schedule
         </a>
       </div>
-      <div className="h-1 bg-[#1DD3B0]" />
+      <div className={styles.accentStripe} />
     </header>
   );
 }

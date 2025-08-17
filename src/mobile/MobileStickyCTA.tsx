@@ -7,13 +7,13 @@ type CallAttrs = {
 };
 
 /**
- * MobileStickyCTA
+ * MobileStickyCTA - Ultra-luxury dual CTA strategy
  * - Shows only on mobile (<768px) and only when the observed sentinel/form is < 25% visible.
  * - Observes: [data-hero-sentinel]
  * - Fail-closed: if neither target exists, component renders null (no sticky shown).
- * - Buttons:
- *    - Get Quote: smooth-scroll to hero
- *    - Call Now: mirrors header tel + data-* attributes exactly if present
+ * - Strategic CTA positioning:
+ *    - Get Quote: Opens premium modal for immediate intent prospects
+ *    - NO CALL NOW: Replaced with floating consultation button to avoid decision paralysis
  * - Sets <html data-sticky-cta-visible="true|false"> based on visibility
  */
 export default function MobileStickyCTA() {
@@ -117,28 +117,17 @@ export default function MobileStickyCTA() {
   return (
     <div className={`${styles.stickyContainer} ${visible ? styles.stickyVisible : ''}`}>
       <div className={styles.stickyContent}>
-        <a
-          href={callHref}
-          {...callData}
-          className={styles.stickyCallButton}
-          aria-label="Call now"
-        >
-          <svg className={styles.stickyIcon} fill="currentColor" viewBox="0 0 20 20">
-            <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
-          </svg>
-          Call Now
-        </a>
         <button
           type="button"
           onClick={onGetQuote}
           className={styles.stickyQuoteButton}
-          aria-label="Get quote"
-          data-gtm="sticky-quote"
+          aria-label="Get instant quote - same-day decisions"
+          data-gtm="sticky-quote-premium"
         >
           <svg className={styles.stickyIcon} fill="currentColor" viewBox="0 0 20 20">
             <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.293l-3-3a1 1 0 00-1.414 1.414L10.586 9H7a1 1 0 100 2h3.586l-1.293 1.293a1 1 0 101.414 1.414l3-3a1 1 0 000-1.414z" clipRule="evenodd" />
           </svg>
-          Get Quote
+          Get Instant Quote
         </button>
       </div>
     </div>

@@ -1,0 +1,57 @@
+/* Ultra-luxury mobile design tokens - Mobile-only competitive domination */
+@media (max-width: 768px) {
+  :root {
+    /* Glass Effects - Premium Glassmorphism */
+    --glass-bg: rgba(255,255,255,0.14);
+    --glass-bg-strong: rgba(255,255,255,0.20);
+    --glass-blur: 20px; 
+    --glass-sat: 1.8;
+    --glass-bd: rgba(255,255,255,0.22);
+    --glass-radius: 20px;
+    
+    /* Premium Shadows */
+    --shadow-lg: 0 12px 40px rgba(0,0,0,0.12);
+    --shadow-xl: 0 20px 50px rgba(0,0,0,0.15);
+    --shadow-glow: 0 0 20px rgba(37,99,235,0.15);
+    
+    /* Typography Excellence */
+    --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-weight-light: 300;
+    --font-weight-medium: 500;
+    --font-weight-semibold: 600;
+    --letter-spacing-tight: -0.025em;
+    --letter-spacing-wide: 0.05em;
+    --text-shadow-premium: 0 2px 8px rgba(0,0,0,0.3), 0 1px 3px rgba(0,0,0,0.15);
+    --text-shadow-subtle: 0 1px 4px rgba(0,0,0,0.25);
+    
+    /* Premium Color Palette */
+    --color-primary: #2563eb;
+    --color-primary-hover: #1d4ed8;
+    --color-text-primary: #ffffff;
+    --color-text-secondary: rgba(255,255,255,0.9);
+    --color-accent-gold: #f59e0b;
+    --color-success: #10b981;
+    --color-premium: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    
+    /* Premium Button System */
+    --btn-primary-bg: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-hover) 100%);
+    --btn-shadow: 0 4px 12px rgba(37,99,235,0.3);
+    --btn-shadow-hover: 0 8px 20px rgba(37,99,235,0.4);
+    
+    /* Premium Animation System */
+    --ease-premium: cubic-bezier(.4,0,.2,1);
+    --ease-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    --duration-sm: 220ms; 
+    --duration-md: 360ms; 
+    --duration-lg: 500ms;
+    --ring: 0 0 0 3px rgba(16,185,129,.35);
+  }
+
+  /* Accessibility first */
+  @media (prefers-reduced-motion: reduce) { 
+    * { 
+      animation: none !important; 
+      transition: none !important; 
+    } 
+  }
+}

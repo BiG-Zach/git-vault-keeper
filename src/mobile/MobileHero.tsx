@@ -56,6 +56,17 @@ export default function MobileHero() {
           </motion.div>
         </div>
 
+        {/* Premium trust chip */}
+        <div className={s.trustChip}>
+          Licensed Independent Agent • NPN: 18181266
+        </div>
+
+        {/* Industry dominance stat overlay */}
+        <div className={s.statOverlay}>
+          <div className={s.statNumber}>87%</div>
+          <div className={s.statText}>of families overpay without expert guidance</div>
+        </div>
+
         {/* Sentinel for sticky CTA visibility detection */}
         <div data-hero-sentinel className={s.heroSentinel} />
       </section>

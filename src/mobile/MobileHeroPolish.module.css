@@ -144,4 +144,75 @@
     width: 100%;
     pointer-events: none;
   }
+
+  /* Premium trust chip - top right */
+  .trustChip {
+    position: absolute;
+    top: 20px;
+    right: 16px;
+    background: var(--glass-bg-strong);
+    backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-sat));
+    border: 1px solid var(--glass-bd);
+    border-radius: 16px;
+    padding: 8px 12px;
+    font-size: 12px;
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text-primary);
+    text-shadow: var(--text-shadow-subtle);
+    box-shadow: var(--shadow-lg);
+    animation: slideInFromTop 0.8s var(--ease-premium) 1s both;
+  }
+
+  /* Industry dominance stat - bottom left */
+  .statOverlay {
+    position: absolute;
+    bottom: 80px;
+    left: 16px;
+    background: var(--glass-bg-strong);
+    backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-sat));
+    border: 1px solid var(--glass-bd);
+    border-radius: var(--glass-radius);
+    padding: 16px;
+    max-width: 280px;
+    box-shadow: var(--shadow-xl);
+    animation: slideInFromBottom 0.8s var(--ease-premium) 1.2s both;
+  }
+
+  .statNumber {
+    font-size: 24px;
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-primary);
+    text-shadow: var(--text-shadow-premium);
+    margin: 0;
+  }
+
+  .statText {
+    font-size: 13px;
+    color: var(--color-text-secondary);
+    text-shadow: var(--text-shadow-subtle);
+    margin: 4px 0 0 0;
+    line-height: 1.3;
+  }
+
+  @keyframes slideInFromTop {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes slideInFromBottom {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 }

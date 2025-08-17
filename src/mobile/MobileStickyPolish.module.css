@@ -20,7 +20,7 @@
     max-width: 640px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     gap: 10px;
   }
 
@@ -48,26 +48,48 @@
   }
 
   .stickyQuoteButton {
-    background: hsl(158 64% 52%);
+    background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
     color: white;
-    padding: 14px 20px;
-    border-radius: 12px;
+    padding: 16px 24px;
+    border-radius: 14px;
     font-weight: 600;
-    font-size: 15px;
-    border: none;
+    font-size: 16px;
+    letter-spacing: 0.025em;
+    border: 1px solid rgba(255,255,255,0.2);
     cursor: pointer;
-    transition: all 0.2s ease;
-    min-height: 48px;
+    transition: all 0.3s cubic-bezier(.4,0,.2,1);
+    min-height: 52px;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 8px;
-    box-shadow: 0 4px 12px hsl(158 64% 52% / 0.25);
+    gap: 10px;
+    box-shadow: 0 6px 16px rgba(37,99,235,0.3), 0 0 20px rgba(37,99,235,0.15);
+    backdrop-filter: blur(8px);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .stickyQuoteButton::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .stickyQuoteButton:hover::before {
+    opacity: 1;
+  }
+
+  .stickyQuoteButton:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(37,99,235,0.4), 0 0 30px rgba(37,99,235,0.2);
+    background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%);
   }
 
   .stickyQuoteButton:active {
-    transform: scale(0.98);
-    background: hsl(158 64% 48%);
+    transform: translateY(-1px) scale(0.99);
   }
 
   .stickyIcon {

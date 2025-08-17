@@ -1,0 +1,142 @@
+/* Ultra-luxury carriers section - Professional trust building */
+@media (max-width: 768px) {
+  .luxuryCarriersSection {
+    padding: 48px 16px;
+    background: linear-gradient(180deg, #fafafa 0%, #ffffff 100%);
+    position: relative;
+  }
+
+  .carriersContainer {
+    max-width: 640px;
+    margin: 0 auto;
+  }
+
+  .sectionHeader {
+    text-align: center;
+    margin-bottom: 32px;
+  }
+
+  .carriersHeading {
+    font-family: var(--font-primary);
+    font-weight: var(--font-weight-semibold);
+    font-size: clamp(24px, 5vw, 28px);
+    letter-spacing: var(--letter-spacing-tight);
+    color: #1f2937;
+    margin: 0 0 8px 0;
+  }
+
+  .carriersSubtitle {
+    font-family: var(--font-primary);
+    font-size: 16px;
+    color: #6b7280;
+    margin: 0 0 16px 0;
+    line-height: 1.5;
+  }
+
+  .trustCounter {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid var(--glass-bd);
+    border-radius: 16px;
+    padding: 6px 12px;
+    font-size: 14px;
+    font-weight: var(--font-weight-medium);
+    color: var(--color-success);
+  }
+
+  .luxuryCarriersGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 16px;
+    margin-top: 24px;
+  }
+
+  .luxuryCarrierCard {
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px) saturate(1.2);
+    -webkit-backdrop-filter: blur(12px) saturate(1.2);
+    border: 1px solid var(--glass-bd);
+    border-radius: var(--glass-radius);
+    padding: 20px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 80px;
+    box-shadow: var(--shadow-lg);
+    transition: all var(--duration-md) var(--ease-premium);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .luxuryCarrierCard::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
+    opacity: 0;
+    transition: opacity var(--duration-md) var(--ease-premium);
+  }
+
+  .luxuryCarrierCard:hover::before {
+    opacity: 1;
+  }
+
+  .luxuryCarrierCard:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-xl), var(--shadow-glow);
+    border-color: rgba(255,255,255,0.3);
+  }
+
+  .luxuryCarrierLogo {
+    max-width: 100%;
+    max-height: 48px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+    transition: filter var(--duration-md) var(--ease-premium);
+  }
+
+  .luxuryCarrierCard:hover .luxuryCarrierLogo {
+    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.15)) brightness(1.05);
+  }
+
+  /* Staggered entrance animation */
+  .luxuryCarrierCard {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: slideInCard var(--duration-lg) var(--ease-premium) forwards;
+  }
+
+  .luxuryCarrierCard:nth-child(1) { animation-delay: 0ms; }
+  .luxuryCarrierCard:nth-child(2) { animation-delay: 100ms; }
+  .luxuryCarrierCard:nth-child(3) { animation-delay: 200ms; }
+  .luxuryCarrierCard:nth-child(4) { animation-delay: 300ms; }
+  .luxuryCarrierCard:nth-child(5) { animation-delay: 400ms; }
+  .luxuryCarrierCard:nth-child(6) { animation-delay: 500ms; }
+  .luxuryCarrierCard:nth-child(7) { animation-delay: 600ms; }
+  .luxuryCarrierCard:nth-child(8) { animation-delay: 700ms; }
+  .luxuryCarrierCard:nth-child(9) { animation-delay: 800ms; }
+  .luxuryCarrierCard:nth-child(10) { animation-delay: 900ms; }
+  .luxuryCarrierCard:nth-child(11) { animation-delay: 1000ms; }
+  .luxuryCarrierCard:nth-child(12) { animation-delay: 1100ms; }
+
+  @keyframes slideInCard {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Respect reduced motion preferences */
+  @media (prefers-reduced-motion: reduce) {
+    .luxuryCarrierCard {
+      animation: none;
+      opacity: 1;
+      transform: none;
+    }
+  }
+}
