@@ -2,7 +2,7 @@
 @media (max-width: 767.98px) {
   .hero {
     position: relative;
-    padding: 20px 16px calc(env(safe-area-inset-bottom, 0px) + 40px);
+    padding: 20px 16px calc(env(safe-area-inset-bottom, 0px) + 90px);
     overflow: hidden;
     min-height: 85vh;
     background: url("/images/hero/mobile-hero.webp") center 38% / cover no-repeat;
@@ -219,7 +219,7 @@
   /* Premium horizontal scrolling ticker carousel */
   .urgencyCarousel {
     position: absolute;
-    bottom: 80px;
+    bottom: 0;
     left: 0;
     right: 0;
     height: 60px;
