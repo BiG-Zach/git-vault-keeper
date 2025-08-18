@@ -37,17 +37,6 @@ export default function Hero() {
         {/* Background image */}
         <img src={HERO_SRC} alt="" className="absolute inset-0 z-0 h-full w-full object-cover" loading="eager" fetchPriority="high" />
 
-        {/* Overlays (high z-index to guarantee on top of image) */}
-        <div className="pointer-events-none absolute inset-0 z-[30]">
-          {/* left/right vignettes */}
-          <div className="absolute inset-0 bg-[radial-gradient(120%_60%_at_0%_50%,rgba(0,0,0,.30),transparent_60%),radial-gradient(120%_60%_at_100%_50%,rgba(0,0,0,.30),transparent_60%)]" />
-          {/* bottom fade */}
-          <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/60 via-black/35 to-transparent" />
-          {/* top fade */}
-          <div className="absolute inset-x-0 top-0 h-1/3 bg-gradient-to-b from-black/25 to-transparent" />
-          {/* center focus vignette */}
-          <div className="absolute inset-0 bg-[radial-gradient(closest-side_at_50%_58%,rgba(0,0,0,.40),rgba(0,0,0,.25)_35%,transparent_70%)]" />
-        </div>
 
         {/* Content (highest) */}
         <div className="absolute inset-0 z-[50] grid place-items-center px-4 md:px-6">
