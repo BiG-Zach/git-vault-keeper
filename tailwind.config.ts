@@ -5,6 +5,10 @@ const config: Config = {
   content: ["./index.html","./src/**/*.{ts,tsx}"],
   theme: {
     extend: {
+      fontFamily: {
+        'luxury-serif': ['"Playfair Display"', 'serif'],
+        'luxury-sans': ['Inter', 'system-ui', 'sans-serif'],
+      },
       colors: {
         ink: { 900: "#0a1420", onGlass: "#07111b" },
         surface: { base: "#f7f9fb", glass: "rgba(255,255,255,0.18)", glassLine: "rgba(255,255,255,0.32)" },
@@ -26,6 +30,9 @@ const config: Config = {
       boxShadow: {
         glass: "0 1px 0 0 rgba(255,255,255,0.26) inset, 0 10px 36px rgba(25,137,238,0.18)",
         xlsoft: "0 25px 50px -12px rgba(0,0,0,0.25)",
+        luxury: "0 25px 50px -12px rgba(0, 0, 0, 0.25)",
+        premium: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
+        glow: "0 0 20px rgba(34, 197, 94, 0.3)",
       },
       backdropBlur: { xs: "2px" },
       keyframes: {

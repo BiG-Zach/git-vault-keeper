@@ -11,6 +11,15 @@ import MobileCarriers from "../mobile/MobileCarriers";
 import MobileHowItWorks from "../mobile/MobileHowItWorks";
 import MobileTestimonials from "../mobile/MobileTestimonials";
 
+// Luxury Desktop Components
+import LuxuryHero from "../components/luxury/LuxuryHero";
+import PremiumCarriers from "../components/luxury/PremiumCarriers";
+import EnhancedMap from "../components/luxury/EnhancedMap";
+import TestimonialsCarousel from "../components/luxury/TestimonialsCarousel";
+import RiskReversalSection from "../components/luxury/RiskReversalSection";
+import AuthoritySection from "../components/luxury/AuthoritySection";
+import SocialProofTicker from "../components/luxury/SocialProofTicker";
+
 const logos = [
   { src: "/logos/carriers/aetna.webp", alt: "Aetna health insurance carrier" },
   { src: "/logos/carriers/cigna.webp", alt: "Cigna health insurance carrier" },
@@ -29,7 +38,30 @@ const logos = [
 export default function Home() {
   return (
     <>
-      <div className="hidden md:block">
+      {/* Desktop Luxury Experience (1024px+) */}
+      <div className="hidden lg:block">
+        <main className="relative">
+          <LuxuryHero />
+          
+          <PremiumCarriers />
+          
+          <EnhancedMap />
+          
+          <TestimonialsCarousel />
+          
+          <AuthoritySection />
+          
+          <RiskReversalSection />
+
+          <StickyCTA/>
+          
+          {/* Social Proof Ticker */}
+          <SocialProofTicker />
+        </main>
+      </div>
+
+      {/* Tablet Experience (768px-1023px) - Enhanced but simpler */}
+      <div className="hidden md:block lg:hidden">
         <main className="relative">
           <section
             className="relative w-full min-h-[82vh] md:min-h-[84vh] overflow-hidden hero-bg-force pt-[calc(var(--header-h,56px)+env(safe-area-inset-top))]"
