@@ -79,7 +79,7 @@ const SocialProofTicker = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentProof((prev) => (prev + 1) % proofItems.length);
-    }, 4000);
+    }, 8000); // Slowed down from 4000ms to 8000ms for better readability
 
     return () => clearInterval(interval);
   }, [proofItems.length]);

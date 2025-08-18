@@ -24,10 +24,10 @@ const LuxuryHero = () => {
           loading="eager"
           fetchPriority="high"
         />
-        {/* Luxury overlay with multiple gradients */}
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-900/80 via-slate-800/70 to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-slate-900/40" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(34,197,94,0.1)_0%,transparent_70%)]" />
+        {/* Lightened overlay to showcase family scene */}
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-900/30 via-slate-800/20 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-slate-900/25 via-transparent to-slate-900/15" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(34,197,94,0.05)_0%,transparent_70%)]" />
       </div>
 
       <div className="relative z-10 container mx-auto px-4 lg:px-6">
@@ -126,13 +126,30 @@ const LuxuryHero = () => {
                 </div>
               </div>
 
-              {/* Placeholder for actual form - will be replaced with existing HeroForm */}
-              <div className="space-y-4">
+              {/* Multi-step form with proper functionality */}
+              <form className="space-y-4" onSubmit={(e) => {
+                e.preventDefault();
+                // Simulate form step progression
+                const progressBar = e.currentTarget.parentElement?.querySelector('.bg-gradient-to-r');
+                if (progressBar) {
+                  progressBar.classList.remove('w-1/3');
+                  progressBar.classList.add('w-2/3');
+                  const stepText = e.currentTarget.parentElement?.querySelector('.text-xs');
+                  if (stepText) {
+                    stepText.textContent = 'Step 2 of 3';
+                  }
+                  const percentText = e.currentTarget.parentElement?.querySelectorAll('.text-xs')[1];
+                  if (percentText) {
+                    percentText.textContent = '67% Complete';
+                  }
+                }
+              }}>
                 <div>
                   <label className="block text-sm font-medium text-slate-700 mb-2">Full Name</label>
                   <input 
                     type="text" 
-                    className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500" 
+                    required
+                    className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all" 
                     placeholder="Enter your full name"
                   />
                 </div>
@@ -140,14 +157,15 @@ const LuxuryHero = () => {
                   <label className="block text-sm font-medium text-slate-700 mb-2">Email</label>
                   <input 
                     type="email" 
-                    className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500" 
+                    required
+                    className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all" 
                     placeholder="your@email.com"
                   />
                 </div>
-                <button className="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-3 rounded-lg transition-colors">
+                <button type="submit" className="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-3 rounded-lg transition-all transform hover:scale-[1.02] active:scale-[0.98]">
                   Continue to Coverage Options
                 </button>
-              </div>
+              </form>
 
               {/* Benefits sidebar */}
               <div className="mt-6 pt-6 border-t border-slate-200">

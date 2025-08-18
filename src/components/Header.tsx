@@ -4,25 +4,31 @@ import headerMobile from './Header.mobile.module.css';
 
 export default function Header() {
   return (
-    <header className={`desktop-header sticky top-0 z-40 bg-white/80 supports-[backdrop-filter]:bg-white/60 backdrop-blur border-b border-slate-200 ${styles.header} ${headerMobile.mobileHeader}`}>
-      <div className="container-default flex h-16 items-center justify-between">
-        <a
-          href="/"
-          className={`font-extrabold text-xl tracking-tight text-slate-900 whitespace-nowrap overflow-hidden text-ellipsis max-w-[60%] md:max-w-none rounded-md focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#005ea2] ${headerMobile.mobileLogo}`}
-        >
-          Bradford Informed Guidance
-        </a>
+    <header className={`desktop-header sticky top-0 z-40 bg-white/95 supports-[backdrop-filter]:bg-white/90 backdrop-blur-xl border-b border-slate-200/50 shadow-lg lg:shadow-xl ${styles.header} ${headerMobile.mobileHeader}`}>
+      <div className="container-default flex h-16 lg:h-20 items-center justify-between">
+        <div className="flex items-center gap-4">
+          <a
+            href="/"
+            className={`font-luxury-serif lg:text-2xl font-bold text-xl tracking-tight text-slate-900 whitespace-nowrap overflow-hidden text-ellipsis max-w-[60%] md:max-w-none rounded-md focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#005ea2] hover:text-emerald-600 transition-colors ${headerMobile.mobileLogo}`}
+          >
+            Bradford Informed Guidance
+          </a>
+          <div className="hidden lg:flex items-center gap-2 px-3 py-1 bg-emerald-50 rounded-full border border-emerald-200">
+            <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse" />
+            <span className="text-xs font-medium text-emerald-700">Licensed & Bonded</span>
+          </div>
+        </div>
         {/* Desktop nav */}
-        <nav className={`hidden md:flex items-center gap-6 text-sm ${styles.nav} ${headerMobile.mobileNav}`}>
-          <Link to="/about" className={`hover:text-[#0078c8] transition-colors ${styles.navItem}`}>About</Link>
-          <Link to="/carriers" className={`hover:text-[#0078c8] transition-colors ${styles.navItem}`}>Carriers</Link>
-          <Link to="/how-it-works" className={`hover:text-[#0078c8] transition-colors ${styles.navItem}`}>How it works</Link>
-          <Link to="/contact" className={`hover:text-[#0078c8] transition-colors ${styles.navItem}`}>Contact</Link>
+        <nav className={`hidden md:flex items-center gap-8 text-sm ${styles.nav} ${headerMobile.mobileNav}`}>
+          <Link to="/about" className={`font-medium hover:text-emerald-600 transition-all duration-300 relative after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-0.5 after:bottom-0 after:left-0 after:bg-emerald-600 after:origin-bottom-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-bottom-left ${styles.navItem}`}>About</Link>
+          <Link to="/carriers" className={`font-medium hover:text-emerald-600 transition-all duration-300 relative after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-0.5 after:bottom-0 after:left-0 after:bg-emerald-600 after:origin-bottom-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-bottom-left ${styles.navItem}`}>Carriers</Link>
+          <Link to="/how-it-works" className={`font-medium hover:text-emerald-600 transition-all duration-300 relative after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-0.5 after:bottom-0 after:left-0 after:bg-emerald-600 after:origin-bottom-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-bottom-left ${styles.navItem}`}>How it works</Link>
+          <Link to="/contact" className={`font-medium hover:text-emerald-600 transition-all duration-300 relative after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-0.5 after:bottom-0 after:left-0 after:bg-emerald-600 after:origin-bottom-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-bottom-left ${styles.navItem}`}>Contact</Link>
           <a
             href="https://calendly.com/bradfordinformedguidance"
-            className={`inline-flex items-center justify-center rounded-2xl font-semibold transition-transform duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#005ea2] active:scale-[0.98] px-5 py-2.5 text-sm bg-[#005ea2] text-white hover:bg-[#0078c8] active:bg-[#065f9a] shadow-sm hover:shadow-md ${styles.navItem}`}
+            className={`inline-flex items-center justify-center rounded-xl font-semibold transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-emerald-500 active:scale-[0.98] px-6 py-3 text-sm bg-gradient-to-r from-emerald-600 to-emerald-700 text-white hover:from-emerald-700 hover:to-emerald-800 shadow-lg hover:shadow-xl transform hover:scale-105 ${styles.navItem}`}
           >
-            Schedule
+            Schedule Consultation
           </a>
         </nav>
         {/* Mobile CTA only (keeps header compact) */}
@@ -35,8 +41,8 @@ export default function Header() {
           Schedule
         </a>
       </div>
-      {/* Thin brand bar accent */}
-      <div className="h-1 bg-[#1DD3B0]" />
+      {/* Premium brand bar accent */}
+      <div className="h-1 bg-gradient-to-r from-emerald-500 via-emerald-600 to-emerald-500" />
     </header>
   );
 }
