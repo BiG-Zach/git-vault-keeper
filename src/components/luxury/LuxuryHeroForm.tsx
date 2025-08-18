@@ -131,9 +131,7 @@ const LuxuryHeroForm = () => {
     setIsSubmitting(true);
 
     try {
-      const location = deriveLocationFromZip(formData.zipCode);
-      
-      // Compile all ages for notes
+      // Compile all ages for comprehensive notes
       let agesNote = `Primary: ${formData.yourAge}`;
       if (formData.coverageType === 'couple' || formData.coverageType === 'family') {
         agesNote += `, Spouse: ${formData.spouseAge}`;
@@ -142,62 +140,37 @@ const LuxuryHeroForm = () => {
         agesNote += `, Children: ${formData.childAges.filter(age => age).join(', ')}`;
       }
 
+      // Compile comprehensive notes with all form data
       const notes = `Coverage: ${formData.coverageType}, Ages: ${agesNote}, Current Insurance: ${formData.currentInsurance}, Contact Method: ${formData.contactMethod}, Best Time: ${formData.bestTime}`;
+      
+      // Generate unique vendor reference ID
+      const vendorRefId = crypto.randomUUID ? crypto.randomUUID() : 'ref_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
 
-      if (formData.contactMethod === 'text') {
-        // Route to VENDOR 1 (existing /api/lead endpoint)
-        const textVendorPayload = {
-          zipCode: formData.zipCode,
-          ages: agesNote,
-          email: formData.email,
-          phone: formData.phone,
-          firstName: formData.firstName,
-          lastName: formData.lastName,
-          consentChecked: true,
-          consentText: "I consent to receive text messages and communications.",
-          landingUrl: window.location.href,
-          utm: {}
-        };
+      // ORIGINAL WORKING RINGY INTEGRATION
+      const ringyPayload = {
+        sid: "iSn1i8zzvctb9s5s59twszulgbvajgnf",
+        authToken: "m0birq3b6wmrn2k4f40plwxtngspqabr",
+        phone_number: formData.phone,
+        first_name: formData.firstName,
+        last_name: formData.lastName,
+        email: formData.email,
+        zip_code: formData.zipCode,
+        lead_source: "Website Form",
+        notes: notes,
+        vendor_reference_id: vendorRefId,
+        proof_of_sms_opt_in_link: window.location.href
+      };
 
-        const response = await fetch('/api/lead', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(textVendorPayload)
-        });
+      const response = await fetch('https://app.ringy.com/api/public/leads/new-lead', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(ringyPayload)
+      });
 
-        if (!response.ok) {
-          throw new Error('Failed to submit to text vendor');
-        }
-        
-      } else {
-        // Route to VENDOR 2 (Ringy CRM)
-        const ringyPayload = {
-          sid: "iSaynato1vqs8mydydrula3rlw5varda",
-          authToken: "2v8wz98saqx2nvl7ckuoe2vz0k75s6eh",
-          phone_number: formData.phone,
-          first_name: formData.firstName,
-          last_name: formData.lastName,
-          email: formData.email,
-          city: location.city,
-          state: location.state,
-          zip_code: formData.zipCode,
-          birthday: calculateBirthYear(formData.yourAge),
-          notes: notes
-        };
-
-        const response = await fetch('https://app.ringy.com/api/public/leads/new-lead', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(ringyPayload)
-        });
-
-        if (!response.ok) {
-          throw new Error('Failed to submit to Ringy CRM');
-        }
+      if (!response.ok) {
+        throw new Error('Failed to submit to Ringy CRM');
       }
 
       // Success - show confirmation
