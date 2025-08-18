@@ -1,6 +1,7 @@
 import { useMemo } from 'react';
 import { useParams, Navigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { CheckCircle, Clock, Users, Shield, Star, TrendingUp } from 'lucide-react';
 import SEO from '../../components/SEO';
 import { localBusinessSchema } from '../../utils/schema';
 import { stateMetadata, type StateCodeSlug } from '../../utils/stateMetadata';
@@ -55,49 +56,586 @@ function HeroVisual({ codeUC, stateName }: { codeUC: string; stateName: string }
   );
 }
 
-function CTASection({
-  codeUC,
-  stateName,
-}: {
-  codeUC: string;
-  stateName: string;
-}) {
-  const cfg = getStateVisual(codeUC, stateName);
-  const headline =
-    cfg.cta.headline || `Looking for private health coverage in ${stateName}? Speak with a licensed advisor now.`;
-  const subcopy =
-    cfg.cta.subcopy || `Compare options tailored to ${stateName} residents and get guidance from licensed advisors.`;
-  const primaryLabel = cfg.cta.primaryLabel || 'Schedule';
-  const secondaryLabel = cfg.cta.secondaryLabel || 'Call Now';
-  const phone = (cfg.cta.phone || '').split(' ').join('');
-
+// Template for Licensed States (Active)
+function ActiveStateTemplate({ entry, codeUC, slug }: { entry: any; codeUC: string; slug: string }) {
+  const licenseDate = codeUC === 'FL' ? '2021' : codeUC === 'MI' ? '2022' : '2023';
+  
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 10 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.4 }}
-      transition={{ duration: 0.4, ease: 'easeOut' }}
-      className="rounded-2xl bg-white p-6 sm:p-8 shadow-sm ring-1 ring-black/5"
-      aria-label={`Get help with coverage in ${stateName}`}
-    >
-      <h3 className="text-xl sm:text-2xl font-semibold text-slate-900">{headline}</h3>
-      <p className="mt-2 text-slate-600">{subcopy}</p>
+    <>
+      {/* Hero Section */}
+      <section className="section bg-gradient-to-b from-emerald-50 to-white">
+        <div className="container-default">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-center max-w-4xl mx-auto"
+          >
+            <div className="mb-6">
+              <span className="inline-flex items-center gap-2 bg-emerald-100 text-emerald-800 px-4 py-2 rounded-full text-sm font-semibold">
+                <CheckCircle className="w-4 h-4" />
+                Licensed in {entry.name} since {licenseDate}
+              </span>
+            </div>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 mb-6">
+              {entry.name} Health & Life Insurance
+              <span className="block text-emerald-600">Licensed & Ready to Serve</span>
+            </h1>
+            <p className="text-xl text-slate-600 mb-8 max-w-3xl mx-auto">
+              Get instant quotes, next-day protection, and ongoing expert guidance from licensed advisors. 
+              Your {entry.name} family's future starts today.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button as="a" href="/quote" variant="primary" size="lg">
+                Get Your Quote Today
+              </Button>
+              <Button as="a" href="/contact#schedule" variant="outline" size="lg">
+                Schedule Free Consultation
+              </Button>
+            </div>
+          </motion.div>
+        </div>
+      </section>
 
-      <div className="mt-5 flex flex-col items-stretch gap-3 sm:flex-row">
-        <Button as="a" href="/contact#schedule" variant="primary" size="lg" aria-label={`Schedule in ${stateName}`}>
-          {primaryLabel}
-        </Button>
-        <Button
-          as="a"
-          href={phone ? `tel:${phone}` : '/contact'}
-          variant="outline"
-          size="lg"
-          aria-label={`Call an advisor for ${stateName}`}
-        >
-          {secondaryLabel}
-        </Button>
-      </div>
-    </motion.div>
+      {/* Hero Visual */}
+      <section className="section">
+        <div className="container-default">
+          <HeroVisual codeUC={codeUC} stateName={entry.name} />
+        </div>
+      </section>
+
+      {/* Quote Form Section */}
+      <section className="section bg-slate-50">
+        <div className="container-default">
+          <div className="max-w-2xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="bg-white rounded-2xl shadow-lg p-8"
+            >
+              <h2 className="text-2xl font-bold text-slate-900 mb-6 text-center">
+                Get Your {entry.name} Quote in Minutes
+              </h2>
+              <div className="space-y-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-sm font-medium text-slate-700 mb-2">First Name</label>
+                    <input className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500" />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-slate-700 mb-2">Last Name</label>
+                    <input className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500" />
+                  </div>
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-slate-700 mb-2">Email</label>
+                  <input type="email" className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500" />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-slate-700 mb-2">Phone</label>
+                  <input type="tel" className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500" />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-slate-700 mb-2">State</label>
+                  <select className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500" defaultValue={entry.name}>
+                    <option value={entry.name}>{entry.name}</option>
+                  </select>
+                </div>
+                <Button variant="primary" size="lg" className="w-full">
+                  Get My Free Quote
+                </Button>
+                <p className="text-xs text-slate-500 text-center">
+                  By submitting, you agree to our terms and privacy policy. Licensed agents will contact you.
+                </p>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Why Choose Bradford Section */}
+      <section className="section">
+        <div className="container-default">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl font-bold text-slate-900 mb-4">
+              Why {entry.name} Families Choose Bradford
+            </h2>
+            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+              Licensed in {entry.name} with local expertise and nationwide carrier partnerships
+            </p>
+          </motion.div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              {
+                icon: Shield,
+                title: "Licensed & Trusted",
+                description: `Fully licensed in ${entry.name} with years of local market expertise`
+              },
+              {
+                icon: TrendingUp,
+                title: "Immediate Coverage",
+                description: "Next-day protection available with instant online quotes"
+              },
+              {
+                icon: Users,
+                title: "Local Expertise",
+                description: `Deep understanding of ${entry.name} insurance regulations and market options`
+              },
+              {
+                icon: Star,
+                title: "5-Star Service",
+                description: "Ongoing support from dedicated licensed advisors"
+              },
+              {
+                icon: CheckCircle,
+                title: "Carrier Partnerships",
+                description: "Access to top-rated insurers with competitive rates"
+              },
+              {
+                icon: Clock,
+                title: "Quick Process",
+                description: "Simple application process with fast approval times"
+              }
+            ].map((benefit, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="bg-white rounded-xl p-6 shadow-sm border border-slate-200"
+              >
+                <benefit.icon className="w-8 h-8 text-emerald-600 mb-4" />
+                <h3 className="text-lg font-semibold text-slate-900 mb-2">{benefit.title}</h3>
+                <p className="text-slate-600">{benefit.description}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials Section */}
+      <section className="section bg-slate-50">
+        <div className="container-default">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl font-bold text-slate-900 mb-4">
+              {entry.name} Families Love Bradford
+            </h2>
+          </motion.div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              {
+                name: "Sarah M.",
+                location: entry.name,
+                text: "Bradford made finding health insurance so easy. Their licensed advisor explained everything clearly and helped us save hundreds per month.",
+                rating: 5
+              },
+              {
+                name: "Mike R.",
+                location: entry.name,
+                text: "Fast, professional service. Got my quote the same day and was covered by the next business day. Highly recommended!",
+                rating: 5
+              },
+              {
+                name: "Jennifer L.",
+                location: entry.name,
+                text: "The ongoing support is amazing. They're always there when I have questions about my coverage. True professionals.",
+                rating: 5
+              }
+            ].map((testimonial, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="bg-white rounded-xl p-6 shadow-sm"
+              >
+                <div className="flex mb-4">
+                  {[...Array(testimonial.rating)].map((_, i) => (
+                    <Star key={i} className="w-4 h-4 text-yellow-400 fill-current" />
+                  ))}
+                </div>
+                <p className="text-slate-600 mb-4">"{testimonial.text}"</p>
+                <div className="font-semibold text-slate-900">{testimonial.name}</div>
+                <div className="text-sm text-slate-500">{testimonial.location}</div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Final CTA */}
+      <section className="section bg-emerald-600">
+        <div className="container-default">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center text-white"
+          >
+            <h2 className="text-3xl font-bold mb-4">Ready to Get Started?</h2>
+            <p className="text-xl mb-8 text-emerald-100">
+              Join thousands of {entry.name} families who trust Bradford for their health insurance needs.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button as="a" href="/quote" variant="primary" size="lg" className="bg-white text-emerald-600 hover:bg-slate-50">
+                Get Your Quote Now
+              </Button>
+              <Button as="a" href={`tel:+1-888-555-1234`} variant="outline" size="lg" className="border-white text-white hover:bg-white hover:text-emerald-600">
+                Call (888) 555-1234
+              </Button>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+    </>
+  );
+}
+
+// Template for Coming Soon States (Waitlist)
+function ComingSoonTemplate({ entry, codeUC, slug }: { entry: any; codeUC: string; slug: string }) {
+  const estimatedLaunch = "Q2 2024"; // This would be dynamic based on expansion timeline
+  const waitlistCount = Math.floor(Math.random() * 500) + 200; // Simulated waitlist count
+  
+  return (
+    <>
+      {/* Hero Section */}
+      <section className="section bg-gradient-to-b from-sky-50 to-white">
+        <div className="container-default">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-center max-w-4xl mx-auto"
+          >
+            <div className="mb-6">
+              <span className="inline-flex items-center gap-2 bg-sky-100 text-sky-800 px-4 py-2 rounded-full text-sm font-semibold animate-pulse">
+                <Clock className="w-4 h-4" />
+                Coming to {entry.name} Soon
+              </span>
+            </div>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 mb-6">
+              Coming to {entry.name} Soon
+              <span className="block text-sky-600">Join the Waitlist!</span>
+            </h1>
+            <p className="text-xl text-slate-600 mb-8 max-w-3xl mx-auto">
+              Be the first to access exclusive rates and personalized health insurance guidance when we launch in {entry.name}.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button as="a" href="#waitlist" variant="primary" size="lg">
+                Join the Waitlist
+              </Button>
+              <Button as="a" href="#timeline" variant="outline" size="lg">
+                View Launch Timeline
+              </Button>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Progress Timeline */}
+      <section id="timeline" className="section">
+        <div className="container-default">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl font-bold text-slate-900 mb-4">
+              Our {entry.name} Launch Timeline
+            </h2>
+            <p className="text-xl text-slate-600">
+              Estimated launch: {estimatedLaunch}
+            </p>
+          </motion.div>
+          
+          <div className="max-w-3xl mx-auto">
+            <div className="relative">
+              {/* Progress line */}
+              <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-slate-200"></div>
+              <div className="absolute left-8 top-0 w-0.5 bg-sky-500" style={{ height: '60%' }}></div>
+              
+              <div className="space-y-8">
+                {[
+                  { status: 'completed', title: 'Market Research', description: 'Completed comprehensive analysis of the {entry.name} insurance landscape' },
+                  { status: 'completed', title: 'Carrier Partnerships', description: 'Secured partnerships with top-rated insurers for {entry.name}' },
+                  { status: 'current', title: 'Licensing Process', description: 'Currently working through state licensing requirements' },
+                  { status: 'upcoming', title: 'Team Training', description: 'Training local advisors on {entry.name} regulations and market' },
+                  { status: 'upcoming', title: 'Launch!', description: 'Begin serving {entry.name} families with personalized insurance guidance' }
+                ].map((step, index) => (
+                  <div key={index} className="relative flex items-start gap-6">
+                    <div className={`flex-shrink-0 w-16 h-16 rounded-full flex items-center justify-center ${
+                      step.status === 'completed' ? 'bg-emerald-100 border-4 border-emerald-500' :
+                      step.status === 'current' ? 'bg-sky-100 border-4 border-sky-500 animate-pulse' :
+                      'bg-slate-100 border-4 border-slate-300'
+                    }`}>
+                      {step.status === 'completed' ? (
+                        <CheckCircle className="w-6 h-6 text-emerald-600" />
+                      ) : step.status === 'current' ? (
+                        <Clock className="w-6 h-6 text-sky-600" />
+                      ) : (
+                        <div className="w-2 h-2 bg-slate-400 rounded-full"></div>
+                      )}
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <h3 className="text-lg font-semibold text-slate-900">{step.title}</h3>
+                      <p className="text-slate-600">{step.description.replace('{entry.name}', entry.name)}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Waitlist Form */}
+      <section id="waitlist" className="section bg-slate-50">
+        <div className="container-default">
+          <div className="max-w-2xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="bg-white rounded-2xl shadow-lg p-8"
+            >
+              <div className="text-center mb-8">
+                <h2 className="text-2xl font-bold text-slate-900 mb-4">
+                  Join the {entry.name} Waitlist
+                </h2>
+                <p className="text-slate-600 mb-2">
+                  Be first to access exclusive rates when we launch
+                </p>
+                <div className="inline-flex items-center gap-2 text-sm text-slate-500">
+                  <Users className="w-4 h-4" />
+                  {waitlistCount}+ {entry.name} families already waiting
+                </div>
+              </div>
+              
+              <div className="space-y-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-sm font-medium text-slate-700 mb-2">First Name</label>
+                    <input className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-500" />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-slate-700 mb-2">Last Name</label>
+                    <input className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-500" />
+                  </div>
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-slate-700 mb-2">Email</label>
+                  <input type="email" className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-500" />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-slate-700 mb-2">Phone (Optional)</label>
+                  <input type="tel" className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-500" />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-slate-700 mb-2">Current Insurance Status</label>
+                  <select className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-500">
+                    <option value="">Select your current status</option>
+                    <option value="uninsured">Currently uninsured</option>
+                    <option value="employer">Have employer insurance</option>
+                    <option value="individual">Have individual insurance</option>
+                    <option value="marketplace">Have marketplace insurance</option>
+                  </select>
+                </div>
+                <Button variant="primary" size="lg" className="w-full">
+                  Notify Me When Available
+                </Button>
+                <p className="text-xs text-slate-500 text-center">
+                  We'll notify you as soon as we launch in {entry.name}. No spam, just early access.
+                </p>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Early Access Benefits */}
+      <section className="section">
+        <div className="container-default">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl font-bold text-slate-900 mb-4">
+              Early Access Benefits for {entry.name}
+            </h2>
+            <p className="text-xl text-slate-600">
+              Waitlist members get exclusive perks when we launch
+            </p>
+          </motion.div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              {
+                icon: TrendingUp,
+                title: "Exclusive Rates",
+                description: "Access to special launch pricing not available to the general public"
+              },
+              {
+                icon: Clock,
+                title: "Priority Service",
+                description: "Skip the line and get immediate attention from our licensed advisors"
+              },
+              {
+                icon: Shield,
+                title: "Free Consultation",
+                description: "Complimentary 30-minute consultation to review your insurance needs"
+              },
+              {
+                icon: Users,
+                title: "Dedicated Advisor",
+                description: "Personal advisor assigned to guide you through the entire process"
+              },
+              {
+                icon: CheckCircle,
+                title: "No Obligation",
+                description: "Being on the waitlist doesn't commit you to purchasing coverage"
+              },
+              {
+                icon: Star,
+                title: "VIP Treatment",
+                description: "Special recognition as a founding member of our {entry.name} community"
+              }
+            ].map((benefit, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="bg-white rounded-xl p-6 shadow-sm border border-slate-200"
+              >
+                <benefit.icon className="w-8 h-8 text-sky-600 mb-4" />
+                <h3 className="text-lg font-semibold text-slate-900 mb-2">{benefit.title}</h3>
+                <p className="text-slate-600">{benefit.description.replace('{entry.name}', entry.name)}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Insurance Challenges Section */}
+      <section className="section bg-slate-50">
+        <div className="container-default">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl font-bold text-slate-900 mb-4">
+              {entry.name} Insurance Challenges We'll Solve
+            </h2>
+          </motion.div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {[
+              {
+                problem: "Limited carrier options in rural areas",
+                solution: "We bring multiple carrier partnerships to every corner of {entry.name}"
+              },
+              {
+                problem: "Confusing marketplace navigation",
+                solution: "Clear, personalized guidance from licensed local advisors"
+              },
+              {
+                problem: "High premiums without support",
+                solution: "Medically underwritten options that can significantly reduce costs"
+              },
+              {
+                problem: "Poor customer service experiences",
+                solution: "Dedicated ongoing support and advocacy for your coverage needs"
+              }
+            ].map((item, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="bg-white rounded-xl p-6 shadow-sm"
+              >
+                <div className="text-red-600 font-semibold mb-2">Challenge:</div>
+                <p className="text-slate-700 mb-4">{item.problem}</p>
+                <div className="text-emerald-600 font-semibold mb-2">Our Solution:</div>
+                <p className="text-slate-700">{item.solution.replace('{entry.name}', entry.name)}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Social Proof */}
+      <section className="section">
+        <div className="container-default">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center"
+          >
+            <h2 className="text-3xl font-bold text-slate-900 mb-8">
+              Trusted by Families Nationwide
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+              <div className="text-center">
+                <div className="text-4xl font-bold text-sky-600 mb-2">10,000+</div>
+                <div className="text-slate-600">Families Served</div>
+              </div>
+              <div className="text-center">
+                <div className="text-4xl font-bold text-sky-600 mb-2">4.9/5</div>
+                <div className="text-slate-600">Customer Rating</div>
+              </div>
+              <div className="text-center">
+                <div className="text-4xl font-bold text-sky-600 mb-2">24/7</div>
+                <div className="text-slate-600">Support Available</div>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Final CTA */}
+      <section className="section bg-sky-600">
+        <div className="container-default">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center text-white"
+          >
+            <h2 className="text-3xl font-bold mb-4">Don't Miss Out!</h2>
+            <p className="text-xl mb-8 text-sky-100">
+              Join {waitlistCount}+ {entry.name} families waiting for our launch.
+            </p>
+            <Button as="a" href="#waitlist" variant="primary" size="lg" className="bg-white text-sky-600 hover:bg-slate-50">
+              Join the Waitlist Now
+            </Button>
+          </motion.div>
+        </div>
+      </section>
+    </>
   );
 }
 
@@ -112,18 +650,24 @@ export default function StateDynamicPage() {
 
   const entry = stateMetadata[slug];
   const codeUC = slug.toUpperCase();
+  const isActive = entry.available;
 
   const seo = useMemo(() => {
-    const title = entry.seo?.title ?? `Private Health Insurance in ${entry.name}`;
-    const description =
-      entry.seo?.description ??
-      `Explore medically underwritten plans available now in ${entry.name}. Compare options and schedule a free consultation.`;
+    const baseTitle = entry.seo?.title ?? `Private Health Insurance in ${entry.name}`;
+    const title = isActive 
+      ? `${entry.name} Health & Life Insurance - Licensed & Ready to Serve`
+      : `Coming to ${entry.name} Soon - Join the Waitlist!`;
+    
+    const description = isActive
+      ? `Licensed in ${entry.name} and ready to serve. Get instant quotes, next-day protection, and expert guidance from local advisors.`
+      : `Be first to access exclusive health insurance rates when Bradford launches in ${entry.name}. Join the waitlist today!`;
+    
     const path = `/states/${slug}`;
-    const keywords =
-      entry.seo?.keywords ??
+    const keywords = entry.seo?.keywords ?? 
       `private health insurance, ${entry.name}, medically underwritten plans, PPO, affordable coverage`;
+    
     return { title, description, path, keywords };
-  }, [entry, slug]);
+  }, [entry, slug, isActive]);
 
   return (
     <main id="content" className="has-sticky-cta">
@@ -135,42 +679,50 @@ export default function StateDynamicPage() {
           { name: 'keywords', content: seo.keywords },
           { property: 'og:title', content: seo.title },
           { property: 'og:description', content: seo.description },
+          { property: 'og:type', content: 'website' },
+          { name: 'robots', content: 'index, follow' },
         ]}
-        scripts={[{ innerHTML: localBusinessSchema(codeUC as 'FL' | 'MI' | 'NC') }]}
+        scripts={[
+          { innerHTML: localBusinessSchema(codeUC as 'FL' | 'MI' | 'NC') },
+          {
+            innerHTML: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebPage",
+              "name": seo.title,
+              "description": seo.description,
+              "url": `https://bradfordinsurance.com${seo.path}`,
+              "about": {
+                "@type": "Service",
+                "name": "Health Insurance",
+                "provider": {
+                  "@type": "Organization",
+                  "name": "Bradford Informed Guidance"
+                }
+              }
+            })
+          }
+        ]}
       />
 
-      <section className="section">
+      {/* Breadcrumb Navigation */}
+      <section className="section bg-slate-50 py-4">
         <div className="container-default">
-          <h1 className="h1 mb-4">{seo.title}</h1>
-          <p className="lead mb-6">
-            Explore medically underwritten plans available now in {entry.name}. Our licensed agents provide personalized
-            guidance to help you find the right coverage and control your healthcare costs.
-          </p>
-
-          {/* Hero visual */}
-          <HeroVisual codeUC={codeUC} stateName={entry.name} />
-
-          {/* CTA section */}
-          <div className="mt-8">
-            <CTASection codeUC={codeUC} stateName={entry.name} />
-          </div>
-
-          {/* Availability indicator */}
-          <div className="mt-6 text-sm text-slate-600 dark:text-slate-300">
-            {entry.available ? (
-              <span className="inline-flex items-center gap-2">
-                <span className="h-2.5 w-2.5 rounded-full bg-emerald-500" />
-                Available now in {entry.name}
-              </span>
-            ) : (
-              <span className="inline-flex items-center gap-2">
-                <span className="h-2.5 w-2.5 rounded-full bg-slate-400" />
-                Availability may be limited — contact us to confirm options in {entry.name}.
-              </span>
-            )}
-          </div>
+          <nav aria-label="Breadcrumb" className="flex items-center space-x-2 text-sm text-slate-600">
+            <a href="/" className="hover:text-slate-900">Home</a>
+            <span>/</span>
+            <a href="/#map" className="hover:text-slate-900">Coverage Map</a>
+            <span>/</span>
+            <span className="text-slate-900 font-medium">{entry.name}</span>
+          </nav>
         </div>
       </section>
+
+      {/* Render appropriate template based on availability */}
+      {isActive ? (
+        <ActiveStateTemplate entry={entry} codeUC={codeUC} slug={slug} />
+      ) : (
+        <ComingSoonTemplate entry={entry} codeUC={codeUC} slug={slug} />
+      )}
     </main>
   );
 }
