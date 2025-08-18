@@ -181,6 +181,113 @@ export default function AboutPage() {
                   </div>
                 </div>
               </div>
+              <div className="mt-6 pt-6 border-t border-muted-foreground/20">
+                <p className="text-center text-muted-foreground">
+                  Proud partner of Best Insurance Group, bringing national resources to every client conversation.
+                </p>
+              </div>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* PARTNERSHIP SECTION */}
+      <section id="big-partnership" role="region" aria-labelledby="big-partnership-title" className="py-16 md:py-24 bg-muted/30">
+        <div className="container mx-auto px-4 max-w-6xl">
+          <Reveal>
+            <div className="bg-background/80 backdrop-blur-sm p-8 md:p-12 rounded-2xl border border-white/10 shadow-xl">
+              <div className="text-center mb-8">
+                <h2 id="big-partnership-title" className="text-3xl md:text-4xl font-bold mb-4">
+                  Proudly Partnered with Best Insurance Group
+                </h2>
+                <p className="text-xl text-muted-foreground">
+                  5 years of trusted collaboration serving families nationwide.
+                </p>
+              </div>
+              
+              {/* Logo + Badge Row */}
+              <div className="flex flex-col md:flex-row items-center justify-center gap-6 mb-8">
+                <div className="flex items-center gap-4">
+                  <div className="w-16 h-16 bg-primary/10 rounded-xl flex items-center justify-center">
+                    <span className="text-primary font-bold text-lg">BiG</span>
+                  </div>
+                  <div>
+                    <div className="font-semibold text-lg">Best Insurance Group</div>
+                    <div className="text-sm text-muted-foreground">Industry Leader</div>
+                  </div>
+                </div>
+                <div className="px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-semibold border border-primary/20">
+                  5-Year Partnership
+                </div>
+              </div>
+              
+              {/* Benefits List */}
+              <div className="grid md:grid-cols-2 gap-4 mb-8">
+                <div className="flex items-start gap-3">
+                  <CheckCircle className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
+                  <span>Access to exclusive carrier networks</span>
+                </div>
+                <div className="flex items-start gap-3">
+                  <CheckCircle className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
+                  <span>Backed by an established industry leader</span>
+                </div>
+                <div className="flex items-start gap-3">
+                  <CheckCircle className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
+                  <span>Shared commitment to: Affordable • Personal • Transparent • Simple</span>
+                </div>
+                <div className="flex items-start gap-3">
+                  <CheckCircle className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
+                  <span>Enhanced buying power for better client rates</span>
+                </div>
+              </div>
+              
+              {/* Positioning Statements */}
+              <div className="bg-muted/50 p-6 rounded-xl mb-6">
+                <div className="space-y-3 text-center">
+                  <p className="text-muted-foreground">
+                    Bradford Informed Guidance reflects Best Insurance Group's commitment to personalized service.
+                  </p>
+                  <p className="text-muted-foreground">
+                    Combining local expertise with national group strength.
+                  </p>
+                  <p className="text-muted-foreground font-semibold">
+                    Your local agent with enterprise-level resources.
+                  </p>
+                </div>
+              </div>
+              
+              {/* Timeline */}
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+                <div className="text-center p-3 bg-muted/30 rounded-lg">
+                  <div className="font-semibold text-primary">2019</div>
+                  <div className="text-xs text-muted-foreground">Partnership begins</div>
+                </div>
+                <div className="text-center p-3 bg-muted/30 rounded-lg">
+                  <div className="font-semibold text-primary">2021</div>
+                  <div className="text-xs text-muted-foreground">Expanded carrier access</div>
+                </div>
+                <div className="text-center p-3 bg-muted/30 rounded-lg">
+                  <div className="font-semibold text-primary">2023</div>
+                  <div className="text-xs text-muted-foreground">Multi-state milestones</div>
+                </div>
+                <div className="text-center p-3 bg-muted/30 rounded-lg">
+                  <div className="font-semibold text-primary">2025</div>
+                  <div className="text-xs text-muted-foreground">5-year mark</div>
+                </div>
+              </div>
+              
+              {/* Verification Link */}
+              <div className="text-center">
+                <a 
+                  href="https://bestinsurancegroup.net" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  aria-label="Open Best Insurance Group website"
+                  className="inline-flex items-center gap-2 text-primary hover:text-primary/80 font-semibold transition-colors"
+                >
+                  Verify partnership at bestinsurancegroup.net →
+                </a>
+              </div>
             </div>
           </Reveal>
         </div>
