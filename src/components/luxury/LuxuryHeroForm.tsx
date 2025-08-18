@@ -145,15 +145,37 @@ const LuxuryHeroForm = () => {
       const notes = `Coverage: ${formData.coverageType}, Ages: ${agesNote}, Current Insurance: ${formData.currentInsurance}, Contact Method: ${formData.contactMethod}, Best Time: ${formData.bestTime}`;
 
       if (formData.contactMethod === 'text') {
-        // Route to VENDOR 1 (auto-text vendor)
-        console.log('Routing to auto-text vendor:', formData);
-        // Add your auto-text vendor integration here
+        // Route to VENDOR 1 (existing /api/lead endpoint)
+        const textVendorPayload = {
+          zipCode: formData.zipCode,
+          ages: agesNote,
+          email: formData.email,
+          phone: formData.phone,
+          firstName: formData.firstName,
+          lastName: formData.lastName,
+          consentChecked: true,
+          consentText: "I consent to receive text messages and communications.",
+          landingUrl: window.location.href,
+          utm: {}
+        };
+
+        const response = await fetch('/api/lead', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(textVendorPayload)
+        });
+
+        if (!response.ok) {
+          throw new Error('Failed to submit to text vendor');
+        }
         
       } else {
         // Route to VENDOR 2 (Ringy CRM)
         const ringyPayload = {
-          sid: "1Saynato1vqs8mydru1a3r1w5vardA",
-          authToken: "2v8nz58saqx2nv17ckuoe2v20k75s6eh",
+          sid: "iSaynato1vqs8mydydrula3rlw5varda",
+          authToken: "2v8wz98saqx2nvl7ckuoe2vz0k75s6eh",
           phone_number: formData.phone,
           first_name: formData.firstName,
           last_name: formData.lastName,
@@ -168,8 +190,7 @@ const LuxuryHeroForm = () => {
         const response = await fetch('https://app.ringy.com/api/public/leads/new-lead', {
           method: 'POST',
           headers: {
-            'Content-Type': 'application/json',
-            'Authorization': 'Bearer 2v8nz58saqx2nv17ckuoe2v20k75s6eh'
+            'Content-Type': 'application/json'
           },
           body: JSON.stringify(ringyPayload)
         });
