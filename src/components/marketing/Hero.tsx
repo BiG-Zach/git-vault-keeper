@@ -10,10 +10,10 @@ export default function Hero() {
   const Content = (
     <div className="relative z-[60] mx-auto max-w-3xl">
       <div className="rounded-2xl px-6 py-6 md:px-8 md:py-8">
-        <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight leading-tight text-white [text-shadow:_0_0_3px_rgba(0,0,0,0.9),0_0_8px_rgba(0,0,0,0.7),0_0_12px_rgba(0,0,0,0.6),0_1px_0px_rgba(255,255,255,0.2)]">
+        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight text-white" style={{ textShadow: '2px 2px 8px rgba(0,0,0,0.8), 0 0 16px rgba(0,0,0,0.6)' }}>
           Secure Your Tomorrow, <br className="hidden md:block" /> Starting Today
         </h1>
-        <p className="mt-3 text-lg md:text-xl leading-relaxed text-white [text-shadow:_0_0_2px_rgba(0,0,0,0.85),0_0_6px_rgba(0,0,0,0.7)]">
+        <p className="mt-3 text-lg md:text-xl leading-relaxed text-white font-medium" style={{ textShadow: '2px 2px 6px rgba(0,0,0,0.8), 0 0 12px rgba(0,0,0,0.5)' }}>
           Instant quotes, next-day protection, ongoing expert guidance — so your family's future is never left to chance.
         </p>
         <div className="mt-5 flex flex-wrap gap-3">
@@ -30,12 +30,16 @@ export default function Hero() {
 
   return (
     <Section as="header" className="relative isolate overflow-clip px-0 py-0">
-      {/* DEBUG CHIP — proves we're in the right file; remove later */}
-      <div className="absolute left-3 top-3 z-[70] rounded-full bg-black/60 px-3 py-1 text-xs text-white">HERO ACTIVE</div>
-
-      <div className="relative h-[62vh] min-h-[460px] w-full">
-        {/* Background image */}
-        <img src={HERO_SRC} alt="" className="absolute inset-0 z-0 h-full w-full object-cover" loading="eager" fetchPriority="high" />
+      <div className="relative h-[62vh] min-h-[460px] w-full bg-transparent">
+        {/* Background image - Full brightness, no filters */}
+        <img 
+          src={HERO_SRC} 
+          alt="" 
+          className="absolute inset-0 z-0 h-full w-full object-cover object-center" 
+          style={{ filter: 'none', opacity: 1 }}
+          loading="eager" 
+          fetchPriority="high" 
+        />
 
 
         {/* Content (highest) */}
