@@ -9,7 +9,7 @@ export default function Hero() {
 
   const Content = (
     <div className="relative z-[60] mx-auto max-w-3xl">
-      <div className="rounded-2xl bg-black/65 backdrop-blur-md ring-1 ring-white/15 shadow-[0_10px_40px_rgba(0,0,0,.55)] px-6 py-6 md:px-8 md:py-8">
+      <div className="rounded-2xl px-6 py-6 md:px-8 md:py-8">
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight leading-tight text-white [text-shadow:_0_0_3px_rgba(0,0,0,0.9),0_0_8px_rgba(0,0,0,0.7),0_0_12px_rgba(0,0,0,0.6),0_1px_0px_rgba(255,255,255,0.2)]">
           Secure Your Tomorrow, <br className="hidden md:block" /> Starting Today
         </h1>
