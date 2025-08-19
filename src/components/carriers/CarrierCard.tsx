@@ -23,18 +23,22 @@ export default function CarrierCard({ carrier }: CarrierCardProps) {
       
       <div className="relative z-10">
         {/* Logo and Rating Row */}
-        <div className="flex items-start justify-between mb-6">
+        <div className="flex items-start justify-between mb-8">
           <div className="flex-1">
             <img 
               src={carrier.logoSrc} 
               alt={`${carrier.name} logo`}
-              className="h-14 w-auto object-contain filter brightness-100 contrast-110 transition-all duration-300 group-hover:brightness-110"
+              className="h-16 w-auto object-contain filter brightness-100 contrast-110 transition-all duration-300 group-hover:brightness-110"
               loading="lazy"
             />
           </div>
           {carrier.rating && (
             <div className="ml-4">
-              <div className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-brand-success-500/15 to-brand-success-600/15 px-4 py-2 text-xs font-semibold text-brand-success-500 border border-brand-success-500/30 backdrop-blur-sm">
+              <div className={`inline-flex items-center gap-2 rounded-full px-4 py-2 text-xs font-semibold border backdrop-blur-sm ${
+                carrier.rating.includes('A+') || carrier.rating.includes('A (') 
+                  ? 'bg-gradient-to-r from-green-500/15 to-green-600/15 text-green-600 border-green-500/30' 
+                  : 'bg-gradient-to-r from-blue-500/15 to-blue-600/15 text-blue-600 border-blue-500/30'
+              }`}>
                 <Shield className="h-3 w-3" />
                 {carrier.rating}
               </div>
@@ -43,18 +47,23 @@ export default function CarrierCard({ carrier }: CarrierCardProps) {
         </div>
 
         {/* Carrier Name */}
-        <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-brand-sky-600 transition-colors duration-300">{carrier.name}</h3>
+        <h3 className="text-2xl font-bold text-gray-900 mb-4 group-hover:text-brand-sky-600 transition-colors duration-300">{carrier.name}</h3>
         
         {/* Description */}
-        <p className="text-sm text-gray-700 mb-6 leading-relaxed font-medium">{carrier.description}</p>
+        <p className="text-base text-gray-700 mb-8 leading-relaxed font-medium">{carrier.description}</p>
 
         {/* Specialties */}
         <div className="flex flex-wrap gap-2">
           {carrier.specialties.map((specialty, index) => (
             <span 
               key={index}
-              className="inline-flex items-center rounded-lg bg-gradient-to-r from-brand-sky-500/15 to-brand-sky-600/15 px-3 py-1.5 text-xs font-semibold text-brand-sky-600 border border-brand-sky-500/30 backdrop-blur-sm transition-all duration-300 hover:from-brand-sky-500/25 hover:to-brand-sky-600/25 hover:scale-105"
+              className={`inline-flex items-center rounded-lg px-3 py-2 text-sm font-semibold border backdrop-blur-sm transition-all duration-300 hover:scale-105 ${
+                specialty === 'Next-day approval' 
+                  ? 'bg-gradient-to-r from-orange-500/15 to-orange-600/15 text-orange-600 border-orange-500/30 animate-pulse' 
+                  : 'bg-gradient-to-r from-brand-sky-500/15 to-brand-sky-600/15 text-brand-sky-600 border-brand-sky-500/30'
+              }`}
             >
+              {specialty === 'Next-day approval' && '⚡ '}
               {specialty}
             </span>
           ))}

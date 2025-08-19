@@ -5,6 +5,7 @@ export type Network = {
   name: string;
   logoSrc: string;
   description: string;
+  rating?: string;
   highlights: string[];
   lookupUrl: string;
 };
@@ -22,31 +23,34 @@ export default function NetworkCard({ network }: NetworkCardProps) {
       
       {/* Header */}
       <div className="relative z-10 p-6 space-y-4">
-        {/* Logo and Badge Row */}
+        {/* Logo and Rating Row */}
         <div className="flex items-start justify-between">
           <div className="flex-1">
             <img 
               src={network.logoSrc} 
               alt={`${network.name} logo`}
-              className="h-14 w-auto object-contain filter brightness-100 contrast-110 transition-all duration-300 group-hover:brightness-110"
+              className="h-16 w-auto object-contain filter brightness-100 contrast-110 transition-all duration-300 group-hover:brightness-110"
               loading="lazy"
             />
           </div>
-          <div className="ml-4">
-            <span className="inline-flex items-center rounded-full bg-gradient-to-r from-brand-jade-500/15 to-brand-jade-600/15 px-4 py-2 text-xs font-semibold text-brand-jade-500 border border-brand-jade-500/30 backdrop-blur-sm">
-              PPO Network
-            </span>
-          </div>
+          {network.rating && (
+            <div className="ml-4">
+              <div className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-brand-success-500/15 to-brand-success-600/15 px-4 py-2 text-xs font-semibold text-brand-success-500 border border-brand-success-500/30 backdrop-blur-sm">
+                <CheckCircle2 className="h-3 w-3" />
+                {network.rating}
+              </div>
+            </div>
+          )}
         </div>
 
         {/* Network Name */}
-        <h3 className="text-xl font-bold text-gray-900 group-hover:text-brand-jade-600 transition-colors duration-300">{network.name}</h3>
+        <h3 className="text-2xl font-bold text-gray-900 group-hover:text-brand-jade-600 transition-colors duration-300">{network.name}</h3>
       </div>
 
       {/* Content */}
       <div className="relative z-10 flex-1 px-6 space-y-4">
         {/* Description */}
-        <p className="text-sm text-gray-700 leading-relaxed font-medium">{network.description}</p>
+        <p className="text-base text-gray-700 leading-relaxed font-medium">{network.description}</p>
 
         {/* Highlights */}
         <div className="space-y-3">
@@ -63,7 +67,7 @@ export default function NetworkCard({ network }: NetworkCardProps) {
       <div className="relative z-10 p-6 pt-4 mt-auto">
         <Button
           asChild
-          className="w-full bg-brand-jade-500 text-white hover:bg-brand-jade-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-jade-500 focus-visible:ring-offset-2 disabled:opacity-60 disabled:pointer-events-none bg-[#12bfae] hover:bg-[#0ea99d]"
+          className="w-full h-12 bg-brand-jade-500 text-white hover:bg-brand-jade-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-jade-500 focus-visible:ring-offset-2 disabled:opacity-60 disabled:pointer-events-none bg-[#10B981] hover:bg-[#059669] font-bold text-base rounded-lg transition-all duration-300 hover:scale-[1.02] animate-pulse hover:animate-none shadow-lg hover:shadow-xl"
         >
           <a
             href={network.lookupUrl}
@@ -73,8 +77,8 @@ export default function NetworkCard({ network }: NetworkCardProps) {
             data-gtm="network_lookup_click"
             data-network={network.name}
           >
-            <ExternalLink className="h-4 w-4 mr-2" />
-            Find Your Doctor
+            <ExternalLink className="h-5 w-5 mr-2" />
+            Find Your Doctor →
           </a>
         </Button>
       </div>

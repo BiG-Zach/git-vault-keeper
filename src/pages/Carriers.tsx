@@ -12,42 +12,48 @@ const NETWORKS: Network[] = [
     name: "Aetna PPO Network",
     logoSrc: "/logos/carriers/aetna.webp",
     description: "Extensive nationwide PPO network with comprehensive provider access and quality healthcare facilities",
-    highlights: ["Hospital affiliations", "Specialist access", "Preventive care"],
+    rating: "A (Excellent) AM Best Rated",
+    highlights: ["Hospital affiliations", "Specialist access", "Next-day approval available"],
     lookupUrl: "https://www.goperspecta.com/PDN/allstatehealth/public/ProviderSearch/Main"
   },
   {
     name: "Cigna PPO Network", 
     logoSrc: "/logos/carriers/cigna.webp",
     description: "Comprehensive PPO network focused on wellness programs and integrated healthcare solutions",
-    highlights: ["Wellness focus", "Mental health providers", "Telehealth options"],
+    rating: "A (Excellent) AM Best Rated",
+    highlights: ["Wellness focus", "Mental health providers", "Next-day approval available"],
     lookupUrl: "https://sarhcpdir.cigna.com/web/public/consumer/directory/search?consumerCode=HDC016"
   },
   {
     name: "First Health PPO Network",
     logoSrc: "/logos/carriers/firsthealth.webp", 
     description: "Established PPO network providing reliable access to quality healthcare providers nationwide",
-    highlights: ["Geographic coverage", "Specialty care", "Established relationships"],
+    rating: "Aetna Subsidiary - A Rated Network",
+    highlights: ["Geographic coverage", "Specialty care", "Next-day approval available"],
     lookupUrl: "https://providerlocator.firsthealth.com/LocateProvider/SelectNetworkType"
   },
   {
     name: "MultiPlan PPO Network",
     logoSrc: "/logos/carriers/multiplan.webp",
     description: "One of America's oldest PPO networks with extensive provider relationships and competitive rates", 
-    highlights: ["Broad provider base", "Cost-effective solutions", "Nationwide coverage"],
+    rating: "Largest PPO Network - America's #1",
+    highlights: ["Broad provider base", "Cost-effective solutions", "Next-day approval available"],
     lookupUrl: "https://providerlocator.com/DirectoryDisclaimerPage.aspx?RedirectURL=%2fMembers%2fdefault.aspx%3f"
   },
   {
     name: "UnitedHealthcare PPO Network",
     logoSrc: "/logos/carriers/unitedhealthcare.webp",
     description: "The nation's largest PPO network offering unmatched provider access and innovative healthcare solutions",
-    highlights: ["Largest network", "Cutting-edge technology", "Comprehensive care options"],
+    rating: "A+ (Superior) AM Best Rated",
+    highlights: ["Largest network", "Cutting-edge technology", "Next-day approval available"],
     lookupUrl: "https://www.uhc.com/find-a-doctor"
   },
   {
     name: "Blue Cross Blue Shield PPO Network", 
     logoSrc: "/logos/carriers/bluecrossblueshield.png",
     description: "Trusted community-focused PPO network with strong local provider relationships and comprehensive coverage",
-    highlights: ["Local community focus", "Established relationships", "Comprehensive provider network"],
+    rating: "A (Excellent) AM Best Rated",
+    highlights: ["Local community focus", "Established relationships", "Next-day approval available"],
     lookupUrl: "https://provider.bcbs.com/app/public/#/one/city=&state=&postalCode=&country=&insurerCode=BCBSA_I&brandCode=BCBSANDHF&alphaPrefix=&bcbsaProductId"
   }
 ];
@@ -55,55 +61,60 @@ const NETWORKS: Network[] = [
 // Insurance Carriers Data
 const CARRIERS: Carrier[] = [
   {
-    name: "Allstate Health Solutions",
+    name: "Allstate Health",
     logoSrc: "/logos/carriers/allstate.webp", 
     description: "Flexible health solutions with broad PPO access and member-first service.",
-    rating: "AM Best: A+",
-    specialties: ["Health", "PPO"]
+    rating: "A+ (Superior) AM Best Rated",
+    specialties: ["Health", "PPO", "Next-day approval"]
   },
   {
     name: "UnitedHealthcare",
     logoSrc: "/logos/carriers/unitedhealthcare.webp",
     description: "Nationwide strength with extensive provider access and digital care innovation.",
-    rating: "AM Best: A+", 
-    specialties: ["Health", "PPO", "Telehealth"]
+    rating: "A+ (Superior) AM Best Rated", 
+    specialties: ["Health", "PPO", "Next-day approval"]
   },
   {
     name: "Mutual of Omaha",
     logoSrc: "/logos/carriers/mutualofomaha.webp",
     description: "Financially strong life and health products backed by a century of service.",
-    rating: "AM Best: A+",
-    specialties: ["Life", "Supplemental"]
+    rating: "A+ (Superior) AM Best Rated",
+    specialties: ["Life", "Supplemental", "Next-day approval"]
   },
   {
     name: "Americo",
     logoSrc: "/logos/carriers/americo.webp",
     description: "Competitive life solutions with simplified underwriting options.",
-    specialties: ["Life"]
+    rating: "A- (Excellent) AM Best Rated",
+    specialties: ["Life", "Next-day approval"]
   },
   {
     name: "SGIC",
     logoSrc: "/logos/carriers/sgic.webp", 
     description: "Modern health benefits with practical, everyday value.",
-    specialties: ["Health"]
+    rating: "B++ (Good) AM Best Rated",
+    specialties: ["Health", "Next-day approval"]
   },
   {
     name: "Aflac",
     logoSrc: "/logos/carriers/aflac.webp",
     description: "Supplemental benefits that pay you cash for covered events.",
-    specialties: ["Supplemental"]
+    rating: "A+ (Superior) AM Best Rated",
+    specialties: ["Supplemental", "Next-day approval"]
   },
   {
     name: "Philadelphia American Life",
     logoSrc: "/logos/carriers/pal.webp",
     description: "Focused health offerings with member-centric support.",
-    specialties: ["Health"]
+    rating: "A- (Excellent) AM Best Rated",
+    specialties: ["Health", "Next-day approval"]
   },
   {
     name: "Blue Cross Blue Shield",
     logoSrc: "/logos/carriers/bluecrossblueshield.png",
     description: "Community-rooted coverage with trusted local provider networks.",
-    specialties: ["Health", "PPO"]
+    rating: "A (Excellent) AM Best Rated",
+    specialties: ["Health", "PPO", "Next-day approval"]
   }
 ];
 
@@ -163,17 +174,17 @@ export default function CarriersPage() {
           <div className="absolute inset-0 bg-gradient-to-r from-white/50 via-brand-jade-500/5 to-white/50 rounded-3xl" />
           
           <div className="relative z-10">
-            <div className="text-center mb-12">
-              <h2 className="text-4xl font-bold text-gray-900 mb-6">
+            <div className="text-center mb-16">
+              <h2 className="text-5xl font-bold text-gray-900 mb-8 leading-tight">
                 Find Your Doctor in Our 
                 <span className="bg-gradient-to-r from-brand-jade-600 to-brand-sky-600 bg-clip-text text-transparent"> Premium PPO Networks</span>
               </h2>
-              <p className="text-lg text-gray-700 max-w-3xl mx-auto font-medium">
+              <p className="text-xl text-gray-700 max-w-4xl mx-auto font-medium leading-relaxed">
                 Verify your healthcare providers are in-network before choosing your plan with our <span className="text-brand-jade-600 font-bold">direct provider lookup tools</span>
               </p>
             </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mb-16">
               {NETWORKS.map((network) => (
                 <NetworkCard key={network.name} network={network} />
               ))}
@@ -189,17 +200,17 @@ export default function CarriersPage() {
           <div className="absolute inset-0 bg-gradient-to-r from-white/50 via-brand-sky-500/5 to-white/50 rounded-3xl" />
           
           <div className="relative z-10">
-            <div className="text-center mb-12">
-              <h2 className="text-4xl font-bold text-gray-900 mb-6">
+            <div className="text-center mb-16">
+              <h2 className="text-5xl font-bold text-gray-900 mb-8 leading-tight">
                 Our 
                 <span className="bg-gradient-to-r from-brand-sky-600 to-brand-jade-600 bg-clip-text text-transparent"> Trusted Insurance Carrier</span> Partners
               </h2>
-              <p className="text-lg text-gray-700 max-w-3xl mx-auto font-medium">
-                <span className="text-brand-success-500 font-bold">A+ rated carriers</span> providing comprehensive health and life coverage solutions
+              <p className="text-xl text-gray-700 max-w-4xl mx-auto font-medium leading-relaxed">
+                <span className="text-brand-success-500 font-bold">A+ rated carriers</span> providing comprehensive health and life coverage solutions with <span className="text-brand-jade-600 font-bold">next-day approval available</span>
               </p>
             </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10">
               {CARRIERS.map((carrier) => (
                 <CarrierCard key={carrier.name} carrier={carrier} />
               ))}
@@ -255,7 +266,7 @@ export default function CarriersPage() {
             </div>
 
             <div className="mt-10 pt-8 border-t border-white/20 text-sm text-gray-600">
-              Prefer a human? <a className="underline hover:text-brand-jade-600 transition-colors font-semibold" href={BRAND.phoneTel} data-gtm={`${BRAND.gtm.call}_carriers`}>Call {BRAND.phoneHuman}</a>.
+              Licensed in FL, MI, NC - Expanding Nationwide | Prefer a human? <a className="underline hover:text-brand-jade-600 transition-colors font-semibold" href={BRAND.phoneTel} data-gtm={`${BRAND.gtm.call}_carriers`}>Call {BRAND.phoneHuman}</a>.
             </div>
           </div>
         </section>
