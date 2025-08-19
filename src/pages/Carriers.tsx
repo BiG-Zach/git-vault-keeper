@@ -1,4 +1,5 @@
 import { Calendar, FileText } from 'lucide-react';
+import { Button } from '../components/ui/button';
 import NetworkCard, { type Network } from "../components/carriers/NetworkCard";
 import CarrierCard, { type Carrier } from "../components/carriers/CarrierCard";
 import NetworkFAQ from "../components/carriers/FAQ";
@@ -195,31 +196,36 @@ export default function CarriersPage() {
             </p>
             
             <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-              <a
-                href={BRAND.phoneTel}
-                className="group relative inline-flex items-center gap-3 rounded-xl bg-gradient-to-r from-brand-jade-500 to-brand-jade-600 px-10 py-5 text-lg font-bold text-white hover:from-brand-jade-600 hover:to-brand-jade-500 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-brand-jade-500/50 focus:ring-offset-2 shadow-xl hover:shadow-2xl hover:scale-105 transform-gpu"
-                data-gtm="carriers_footer_cta"
-                data-action="schedule"
+              <Button
+                asChild
+                size="lg"
+                className="bg-brand-jade-500 text-white hover:bg-brand-jade-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-jade-500 focus-visible:ring-offset-2 disabled:opacity-60 disabled:pointer-events-none bg-[#12bfae] hover:bg-[#0ea99d] px-10 py-5 text-lg"
               >
-                {/* Button glow effect */}
-                <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-brand-jade-400 to-brand-jade-500 opacity-0 group-hover:opacity-75 transition-opacity duration-300 blur-md" />
-                
-                <Calendar className="h-6 w-6 relative z-10" />
-                <span className="relative z-10">Schedule Consultation</span>
-                
-                {/* Shine effect */}
-                <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-transparent via-white/30 to-transparent opacity-0 group-hover:opacity-100 transform -skew-x-12 group-hover:translate-x-full transition-all duration-700" />
-              </a>
+                <a
+                  href={BRAND.phoneTel}
+                  data-gtm="carriers_footer_cta"
+                  data-action="schedule"
+                >
+                  <Calendar className="h-6 w-6 mr-2" />
+                  Schedule Consultation
+                </a>
+              </Button>
               
-              <a
-                href="/quote"
-                className="group relative inline-flex items-center gap-3 rounded-xl border-2 border-brand-sky-500/50 bg-white/20 backdrop-blur-sm px-10 py-5 text-lg font-bold text-brand-sky-600 hover:bg-brand-sky-500/20 hover:border-brand-sky-500 transition-all duration-300 shadow-xl hover:shadow-2xl hover:scale-105"
-                data-gtm="carriers_footer_cta" 
-                data-action="quote"
+              <Button
+                asChild
+                variant="outline"
+                size="lg"
+                className="border-2 border-brand-sky-500/50 bg-white/20 backdrop-blur-sm text-brand-sky-600 hover:bg-brand-sky-500/20 hover:border-brand-sky-500 px-10 py-5 text-lg"
               >
-                <FileText className="h-6 w-6" />
-                Get Quote
-              </a>
+                <a
+                  href="/quote"
+                  data-gtm="carriers_footer_cta" 
+                  data-action="quote"
+                >
+                  <FileText className="h-6 w-6 mr-2" />
+                  Get Quote
+                </a>
+              </Button>
             </div>
 
             <div className="mt-10 pt-8 border-t border-white/20 text-sm text-gray-600">
