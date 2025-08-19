@@ -149,20 +149,29 @@ export default function CarriersPage() {
         </picture>
 
         
-        {/* Hero Content - Positioned left to give shield breathing room */}
-        <div className="relative z-10 text-left md:text-center px-4 max-w-6xl mx-auto md:ml-auto md:mr-[20%]">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight" style={{ textShadow: '0 2px 4px rgba(0,0,0,0.1)', WebkitTextStroke: '1px rgba(0,0,0,0.3)' }}>
-            Our Trusted Insurance Partners & 
-            <span className="block bg-gradient-to-r from-brand-jade-600 to-brand-sky-600 bg-clip-text text-transparent" style={{ WebkitTextStroke: '1px rgba(0,0,0,0.3)' }}>
-              Provider Networks
-            </span>
-          </h1>
-          <p className="text-xl md:text-2xl text-gray-800 max-w-4xl md:mx-auto font-medium leading-relaxed mb-8" style={{ textShadow: '0 2px 4px rgba(0,0,0,0.1)' }}>
-            Access to top-rated carriers and <span className="text-brand-jade-600 font-bold">6 extensive PPO networks</span> nationwide
-          </p>
-          
-          {/* Premium accent line */}
-          <div className="w-24 h-1 bg-gradient-to-r from-brand-jade-300 to-brand-sky-300 rounded-full md:mx-auto" />
+        {/* Hero Content - Left positioned for maximum conversion impact */}
+        <div className="relative z-10 text-left px-4 max-w-6xl mx-auto">
+          <div className="w-3/5 ml-10">
+            {/* Main Headline */}
+            <h1 className="text-[42px] font-bold text-white leading-[1.2] mb-4" style={{ textShadow: '0 2px 4px rgba(0,0,0,0.3)' }}>
+              Trusted Insurance Partners & Provider Networks
+            </h1>
+            
+            {/* Subheadline */}
+            <h2 className="text-[24px] font-semibold text-white opacity-95 mt-4 mb-5">
+              Access Top-Rated Carriers Nationwide
+            </h2>
+            
+            {/* Value Proposition */}
+            <p className="text-[18px] text-white opacity-90 mt-5 mb-3">
+              6 extensive PPO networks • Next-day approval • Licensed & bonded
+            </p>
+            
+            {/* Trust Indicator */}
+            <p className="text-[16px] font-medium text-white opacity-85 mt-3">
+              Serving FL, MI, NC - Expanding Nationwide
+            </p>
+          </div>
         </div>
       </header>
 
