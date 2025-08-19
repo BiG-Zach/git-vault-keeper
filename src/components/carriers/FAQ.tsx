@@ -4,16 +4,24 @@ import { BRAND } from '../../lib/brand';
 export default function NetworkFAQ() {
   const faqs = [
     {
-      question: "What is a PPO network?",
-      answer: "A PPO (Preferred Provider Organization) network is a group of healthcare providers who agree to provide services at discounted rates to plan members."
+      question: "What is a PPO network and how does it work?",
+      answer: "A PPO (Preferred Provider Organization) network is a group of healthcare providers who agree to provide services at discounted rates to plan members. You can visit any provider in-network without referrals and receive maximum benefits. Our PPO networks serve Florida, Michigan, and North Carolina with extensive provider options."
+    },
+    {
+      question: "Which PPO network is best in Florida, Michigan, or North Carolina?",
+      answer: "The best network depends on your specific needs and preferred doctors. UnitedHealthcare offers the largest network with 1.3+ million providers, while Aetna provides excellent comprehensive coverage. Our licensed brokers help you compare options based on your location in FL, MI, or NC and healthcare needs."
     },
     {
       question: "How do I check if my doctor is in-network?",
-      answer: "Use the 'Find Your Doctor' links above to search each network's provider directory with your doctor's name and location."
+      answer: "Use our provider lookup tools above for each network, or contact us for personalized assistance. We verify coverage before you enroll to ensure your preferred providers are included. Each network offers comprehensive coverage across Florida, Michigan, and North Carolina."
     },
     {
-      question: "What if my provider isn't listed?",
-      answer: "Contact us to verify provider status and explore alternative network options that may include your preferred healthcare providers."
+      question: "Can I get next-day approval for PPO insurance?",
+      answer: "Yes, we offer next-day approval for qualified applicants through our trusted carrier relationships. Our streamlined process and strong partnerships with A+ rated carriers enable fast coverage decisions for health and life insurance plans in FL, MI, and NC."
+    },
+    {
+      question: "What states is Bradford Informed Guidance licensed in?",
+      answer: "We are currently licensed and bonded in Florida, Michigan, and North Carolina, with plans to expand nationwide. Our expertise in these markets ensures you receive knowledgeable, compliant service with 20+ years combined experience in insurance brokerage."
     }
   ];
 
@@ -21,7 +29,7 @@ export default function NetworkFAQ() {
     <div className="mt-8 rounded-2xl border border-surface-glassLine/20 bg-surface-glass backdrop-blur-sm p-6">
       <div className="flex items-center gap-2 mb-4">
         <HelpCircle className="h-5 w-5 text-brand-jade-500" />
-        <h3 className="text-lg font-semibold text-ink-900">Common Network Questions</h3>
+        <h3 className="text-lg font-semibold text-ink-900">Frequently Asked Questions About PPO Insurance Networks</h3>
       </div>
       
       <div className="space-y-4">
