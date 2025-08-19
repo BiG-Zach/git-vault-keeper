@@ -152,7 +152,7 @@ export default function CarriersPage() {
       />
 
       {/* Hero Section */}
-      <header className="relative h-[70vh] min-h-[500px] flex items-center justify-center overflow-hidden">
+      <header className="relative h-screen max-h-[800px] min-h-[600px] flex items-center justify-center overflow-hidden">
         {/* Responsive Hero Image */}
         <picture>
           <source 
@@ -173,7 +173,7 @@ export default function CarriersPage() {
           <img 
             src="/images/hero/carriers-hero-desktop.webp" 
             alt="Insurance professionals and healthcare providers working together" 
-            className="absolute inset-0 w-full h-full object-contain object-center"
+            className="absolute inset-0 w-full h-full object-cover object-center"
             loading="eager"
           />
         </picture>
