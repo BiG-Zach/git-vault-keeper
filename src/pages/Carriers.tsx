@@ -137,8 +137,6 @@ export default function CarriersPage() {
           />
         </picture>
 
-        {/* Light white gradient overlay for professional appearance */}
-        <div className="absolute inset-0" style={{ background: 'linear-gradient(180deg, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0.1) 100%)' }} />
         
         {/* Hero Content - Positioned left to give shield breathing room */}
         <div className="relative z-10 text-left md:text-center px-4 max-w-6xl mx-auto md:ml-auto md:mr-[20%]">
