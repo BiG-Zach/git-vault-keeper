@@ -55,24 +55,18 @@ export default function NetworkCard({ network }: NetworkCardProps) {
           ))}
         </div>
 
-        {/* CTA Button - ENHANCED VISIBILITY */}
+        {/* CTA Button - SIMPLIFIED FOR VISIBILITY */}
         <a
           href={network.lookupUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="group/btn relative inline-flex items-center gap-3 w-full justify-center rounded-xl bg-gradient-to-r from-brand-jade-500 to-brand-jade-600 px-6 py-4 text-sm font-bold text-white hover:from-brand-jade-600 hover:to-brand-jade-500 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-brand-jade-500/50 focus:ring-offset-2 shadow-xl hover:shadow-2xl hover:scale-105 transform-gpu"
+          className="inline-flex items-center gap-3 w-full justify-center rounded-xl bg-brand-jade-500 px-6 py-4 text-sm font-bold text-white hover:bg-brand-jade-600 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-brand-jade-500/30 shadow-lg hover:shadow-xl hover:scale-105"
           aria-label={`Find your doctor on ${network.name} provider portal — opens in a new tab`}
           data-gtm="network_lookup_click"
           data-network={network.name}
         >
-          {/* Button glow effect */}
-          <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-brand-jade-400 to-brand-jade-500 opacity-0 group-hover/btn:opacity-75 transition-opacity duration-300 blur-md" />
-          
-          <ExternalLink className="h-5 w-5 relative z-10" />
-          <span className="relative z-10">Find Your Doctor</span>
-          
-          {/* Shine effect */}
-          <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-transparent via-white/20 to-transparent opacity-0 group-hover/btn:opacity-100 transform -skew-x-12 group-hover/btn:translate-x-full transition-all duration-700" />
+          <ExternalLink className="h-5 w-5" />
+          <span>Find Your Doctor</span>
         </a>
       </div>
 
