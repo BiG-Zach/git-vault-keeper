@@ -1,5 +1,5 @@
 import React from 'react';
-import bg from '../assets/backgrounds/shield-carriers.webp';
+import bg from '../assets/backgrounds/shield-carriers-clean.webp';
 
 const OurCarriers = () => {
   return (

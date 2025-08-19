@@ -34,7 +34,7 @@ export default function CarrierCard({ carrier }: CarrierCardProps) {
           </div>
           {carrier.rating && (
             <div className="ml-4">
-              <div className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-brand-success-500/15 to-brand-success-600/15 px-4 py-2 text-xs font-semibold text-brand-success-500 border border-brand-success-500/30 backdrop-blur-sm shadow-glow/30">
+              <div className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-brand-success-500/15 to-brand-success-600/15 px-4 py-2 text-xs font-semibold text-brand-success-500 border border-brand-success-500/30 backdrop-blur-sm">
                 <Shield className="h-3 w-3" />
                 {carrier.rating}
               </div>
