@@ -137,19 +137,19 @@ export default function CarriersPage() {
           />
         </picture>
 
-        {/* Dark overlay for text readability */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/60" />
+        {/* Light white gradient overlay for professional appearance */}
+        <div className="absolute inset-0" style={{ background: 'linear-gradient(180deg, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0.1) 100%)' }} />
         
         {/* Hero Content */}
         <div className="relative z-10 text-center px-4 max-w-6xl mx-auto">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight" style={{ textShadow: '0 2px 4px rgba(0,0,0,0.1)' }}>
             Our Trusted Insurance Partners & 
-            <span className="block bg-gradient-to-r from-brand-jade-300 to-brand-sky-300 bg-clip-text text-transparent">
+            <span className="block bg-gradient-to-r from-brand-jade-600 to-brand-sky-600 bg-clip-text text-transparent">
               Provider Networks
             </span>
           </h1>
-          <p className="text-xl md:text-2xl text-white/90 max-w-4xl mx-auto font-medium leading-relaxed mb-8">
-            Access to top-rated carriers and <span className="text-brand-jade-300 font-bold">6 extensive PPO networks</span> nationwide
+          <p className="text-xl md:text-2xl text-gray-800 max-w-4xl mx-auto font-medium leading-relaxed mb-8" style={{ textShadow: '0 2px 4px rgba(0,0,0,0.1)' }}>
+            Access to top-rated carriers and <span className="text-brand-jade-600 font-bold">6 extensive PPO networks</span> nationwide
           </p>
           
           {/* Premium accent line */}
