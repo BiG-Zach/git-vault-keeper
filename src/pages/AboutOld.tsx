@@ -3,16 +3,12 @@ import TestimonialReel from "../components/social/TestimonialReel";
 import { Shield, Award, Users, TrendingUp, Phone, Mail, Calendar, Star, CheckCircle } from "lucide-react";
 import Reveal from "../components/Reveal";
 import CalendlyInline from "../components/CalendlyInline";
-import AboutHero from "../components/about/AboutHero";
 
 export default function AboutPage() {
   return (
     <main className="min-h-screen">
-      {/* ENHANCED HERO SECTION WITH PROFESSIONAL BACKGROUND */}
-      <AboutHero />
-
-      {/* PERSONAL INTRODUCTION WITH PORTRAIT */}
-      <section className="py-16 md:py-24 bg-gradient-to-b from-primary/5 to-background">
+      {/* HERO SECTION - AUTHORITY ESTABLISHMENT */}
+      <section className="relative py-16 md:py-24 bg-gradient-to-b from-primary/5 to-background">
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-[1fr_1.2fr] gap-12 items-center max-w-6xl mx-auto">
             <Reveal>
@@ -349,18 +345,24 @@ export default function AboutPage() {
           </div>
           
           <Reveal delay={0.4}>
-            <div className="grid md:grid-cols-3 gap-8 p-8 bg-background rounded-2xl border shadow-sm">
-              <div className="text-center">
-                <div className="text-3xl md:text-4xl font-bold text-primary mb-2">$2,500+</div>
-                <div className="text-muted-foreground">Average Annual Savings</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl md:text-4xl font-bold text-primary mb-2">98%</div>
-                <div className="text-muted-foreground">Client Satisfaction</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl md:text-4xl font-bold text-primary mb-2">24hrs</div>
-                <div className="text-muted-foreground">Average Response Time</div>
+            <div className="text-center bg-background p-8 rounded-2xl border">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <div>
+                  <div className="text-3xl font-bold text-primary">$2,500</div>
+                  <div className="text-sm text-muted-foreground">Average Family Savings</div>
+                </div>
+                <div>
+                  <div className="text-3xl font-bold text-primary">98%</div>
+                  <div className="text-sm text-muted-foreground">Client Satisfaction</div>
+                </div>
+                <div>
+                  <div className="text-3xl font-bold text-primary">24hr</div>
+                  <div className="text-sm text-muted-foreground">Average Response Time</div>
+                </div>
+                <div>
+                  <div className="text-3xl font-bold text-primary">500+</div>
+                  <div className="text-sm text-muted-foreground">Families Protected</div>
+                </div>
               </div>
             </div>
           </Reveal>
@@ -368,46 +370,52 @@ export default function AboutPage() {
       </section>
 
       {/* PERSONAL CONNECTION */}
-      <section className="py-16 md:py-24 bg-muted/30">
+      <section className="py-16 md:py-24">
         <div className="container mx-auto px-4 max-w-4xl">
           <Reveal>
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">Why Families Choose Bradford</h2>
-              <p className="text-xl text-muted-foreground">Personal service with professional expertise</p>
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">Beyond Insurance</h2>
+              <p className="text-xl text-muted-foreground">Getting to know the person behind the expertise</p>
             </div>
           </Reveal>
           
-          <Reveal delay={0.2}>
-            <div className="grid md:grid-cols-2 gap-8">
-              <div className="p-6 bg-background rounded-2xl border shadow-sm">
-                <h3 className="text-xl font-semibold mb-4 text-primary">Deep Community Roots</h3>
-                <p className="text-muted-foreground">
-                  Born and raised in the communities I serve. I understand the unique challenges families face in Florida, Michigan, and North Carolina because I live them too.
-                </p>
+          <div className="grid md:grid-cols-2 gap-8">
+            <Reveal delay={0.1}>
+              <div className="space-y-6">
+                <div>
+                  <h3 className="text-xl font-semibold mb-3">Community Roots</h3>
+                  <p className="text-muted-foreground">
+                    Born and raised in the Southeast, I understand the unique insurance challenges families face in our communities. From hurricane seasons in Florida to winter storms in Michigan, I help families prepare for what life throws their way.
+                  </p>
+                </div>
+                
+                <div>
+                  <h3 className="text-xl font-semibold mb-3">Family First</h3>
+                  <p className="text-muted-foreground">
+                    As a devoted family man, I know firsthand how important it is to protect the people you love. Every recommendation I make is filtered through the lens of "What would I want for my own family?"
+                  </p>
+                </div>
               </div>
-              
-              <div className="p-6 bg-background rounded-2xl border shadow-sm">
-                <h3 className="text-xl font-semibold mb-4 text-primary">Family-First Approach</h3>
-                <p className="text-muted-foreground">
-                  Every recommendation I make, I consider: "Would I recommend this to my own family?" Your protection is personal to me.
-                </p>
+            </Reveal>
+            
+            <Reveal delay={0.2}>
+              <div className="space-y-6">
+                <div>
+                  <h3 className="text-xl font-semibold mb-3">Local Commitment</h3>
+                  <p className="text-muted-foreground">
+                    I'm not just licensed in Florida, Michigan, and North Carolina—I'm invested in these communities. When you work with me, you're getting someone who understands your local healthcare networks, regulations, and specific regional needs.
+                  </p>
+                </div>
+                
+                <div>
+                  <h3 className="text-xl font-semibold mb-3">Always Available</h3>
+                  <p className="text-muted-foreground">
+                    Insurance questions don't stick to business hours. Whether it's a claim question at 8 PM or urgent coverage need on the weekend, I'm here for my clients. {BRAND.hours}
+                  </p>
+                </div>
               </div>
-              
-              <div className="p-6 bg-background rounded-2xl border shadow-sm">
-                <h3 className="text-xl font-semibold mb-4 text-primary">Local Commitment</h3>
-                <p className="text-muted-foreground">
-                  While insurance companies come and go, I'm here for the long haul. Your agent today, your advocate for years to come.
-                </p>
-              </div>
-              
-              <div className="p-6 bg-background rounded-2xl border shadow-sm">
-                <h3 className="text-xl font-semibold mb-4 text-primary">Always Available</h3>
-                <p className="text-muted-foreground">
-                  Real person, real phone number, real responses. When you call, you get me—not a call center or voicemail system.
-                </p>
-              </div>
-            </div>
-          </Reveal>
+            </Reveal>
+          </div>
         </div>
       </section>
 
@@ -415,41 +423,42 @@ export default function AboutPage() {
       <section className="py-16 md:py-24 bg-primary text-primary-foreground">
         <div className="container mx-auto px-4 max-w-4xl text-center">
           <Reveal>
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">
-              Ready to Secure Your Family's Future?
-            </h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Ready to Protect Your Family?</h2>
             <p className="text-xl mb-8 opacity-90">
-              Let's start with a conversation. No pressure, no sales pitch—just honest guidance you can trust.
+              Get expert guidance, honest answers, and peace of mind—all with no obligation.
             </p>
-            
-            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-              <a 
-                href={BRAND.phoneTel}
-                className="inline-flex items-center gap-2 bg-white text-primary px-8 py-4 rounded-xl font-semibold hover:bg-white/90 transition-colors"
-              >
-                <Phone className="w-5 h-5" />
-                Call {BRAND.phoneHuman}
-              </a>
-              <a 
-                href={`mailto:${BRAND.email}`}
-                className="inline-flex items-center gap-2 border border-white text-white px-8 py-4 rounded-xl font-semibold hover:bg-white/10 transition-colors"
-              >
-                <Mail className="w-5 h-5" />
-                Email Bradford
-              </a>
-              <a 
-                href="/lead"
-                className="inline-flex items-center gap-2 border border-white text-white px-8 py-4 rounded-xl font-semibold hover:bg-white/10 transition-colors"
-              >
-                <Calendar className="w-5 h-5" />
-                Schedule Consultation
-              </a>
+          </Reveal>
+          
+          <Reveal delay={0.2}>
+            <div className="grid md:grid-cols-3 gap-6 mb-8">
+              <div className="bg-primary-foreground/10 p-6 rounded-xl">
+                <Phone className="w-8 h-8 mx-auto mb-3" />
+                <h3 className="font-semibold mb-2">Call Now</h3>
+                <p className="text-sm opacity-90 mb-3">Speak directly with Bradford</p>
+                <a href={BRAND.phoneTel} className="font-bold hover:underline">{BRAND.phoneHuman}</a>
+              </div>
+              
+              <div className="bg-primary-foreground/10 p-6 rounded-xl">
+                <Mail className="w-8 h-8 mx-auto mb-3" />
+                <h3 className="font-semibold mb-2">Email Expert</h3>
+                <p className="text-sm opacity-90 mb-3">Get detailed answers</p>
+                <a href={`mailto:${BRAND.email}`} className="font-bold hover:underline">{BRAND.email}</a>
+              </div>
+              
+              <div className="bg-primary-foreground/10 p-6 rounded-xl">
+                <Calendar className="w-8 h-8 mx-auto mb-3" />
+                <h3 className="font-semibold mb-2">Schedule Consultation</h3>
+                <p className="text-sm opacity-90 mb-3">Pick your perfect time</p>
+                <button className="font-bold hover:underline">Book Online</button>
+              </div>
             </div>
-            
-            <div className="bg-white/10 p-6 rounded-xl">
-              <p className="text-lg font-semibold mb-2">100% Risk-Free Consultation Guarantee</p>
+          </Reveal>
+          
+          <Reveal delay={0.3}>
+            <div className="bg-primary-foreground/10 p-6 rounded-2xl">
+              <h3 className="text-xl font-bold mb-2">Risk-Free Guarantee</h3>
               <p className="opacity-90">
-                No cost, no obligation, no pressure. Just expert guidance to help you make the best decision for your family.
+                No pressure, no obligation—just expert guidance. If I can't save you money or improve your coverage, our consultation costs you nothing but time.
               </p>
             </div>
           </Reveal>
@@ -457,8 +466,10 @@ export default function AboutPage() {
       </section>
 
       {/* TESTIMONIAL REEL */}
-      <section className="py-16">
-        <TestimonialReel />
+      <section className="py-12">
+        <div className="container mx-auto px-4">
+          <TestimonialReel />
+        </div>
       </section>
     </main>
   );

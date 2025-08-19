@@ -5,15 +5,15 @@ import BrandGrade from "../media/BrandGrade";
 import { useParallax } from "../../lib/useParallax";
 import { useScrollProgress } from "../../lib/useScrollProgress";
 
-const HAS_MULTI = false; // set to true when you add @1x/@2x webp/jpg
-const SINGLE_FALLBACK = "/about/bridge-hero.jpg"; // drop one image here for now
-const LQIP = "/about/bridge-hero.lqip.jpg"; // optional tiny blur
+const HAS_MULTI = true; // set to true when you add @1x/@2x webp/jpg
+const SINGLE_FALLBACK = "/images/hero/about-hero-desktop.webp"; // drop one image here for now
+const LQIP = ""; // optional tiny blur
 
 // multi-source names (only used if HAS_MULTI === true)
-const JPG1X = "/about/bridge-hero@1x.jpg";
-const JPG2X = "/about/bridge-hero@2x.jpg";
-const WEBP1X = "/about/bridge-hero@1x.webp";
-const WEBP2X = "/about/bridge-hero@2x.webp";
+const JPG1X = "/images/hero/about-hero-desktop.webp";
+const JPG2X = "/images/hero/about-hero-retina.webp";
+const WEBP1X = "/images/hero/about-hero-mobile.webp";
+const WEBP2X = "/images/hero/about-hero-retina.webp";
 
 export default function AboutHero() {
   const prefersReducedMotion = useReducedMotion();
