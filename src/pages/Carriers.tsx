@@ -111,80 +111,120 @@ export default function CarriersPage() {
     <>
       <main className="container mx-auto px-4 py-10 md:py-12">
         {/* Hero Section */}
-        <header className="mb-12 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold text-ink-900 mb-4">
-            Our Trusted Insurance Partners & Provider Networks
-          </h1>
-          <p className="text-lg text-ink-900/70 max-w-3xl mx-auto">
-            Access to top-rated carriers and 6 extensive PPO networks nationwide
-          </p>
+        <header className="mb-16 text-center relative">
+          {/* Background gradient */}
+          <div className="absolute inset-0 bg-gradient-to-br from-brand-jade-500/5 via-brand-sky-500/5 to-brand-jade-500/5 rounded-3xl blur-3xl" />
+          
+          <div className="relative z-10">
+            <h1 className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-gray-900 via-brand-jade-600 to-brand-sky-600 bg-clip-text text-transparent mb-6 leading-tight">
+              Our Trusted Insurance Partners & Provider Networks
+            </h1>
+            <p className="text-xl text-gray-700 max-w-4xl mx-auto font-medium leading-relaxed">
+              Access to top-rated carriers and <span className="text-brand-jade-600 font-bold">6 extensive PPO networks</span> nationwide
+            </p>
+            
+            {/* Premium accent line */}
+            <div className="mt-8 mx-auto w-24 h-1 bg-gradient-to-r from-brand-jade-500 to-brand-sky-500 rounded-full" />
+          </div>
         </header>
 
         {/* PPO Networks Section */}
-        <section className="mb-16">
-          <div className="text-center mb-8">
-            <h2 className="text-3xl font-bold text-ink-900 mb-4">Find Your Doctor in Our PPO Networks</h2>
-            <p className="text-lg text-ink-900/70 max-w-2xl mx-auto">
-              Verify your healthcare providers are in-network before choosing your plan
-            </p>
-          </div>
+        <section className="mb-20 relative">
+          {/* Section background */}
+          <div className="absolute inset-0 bg-gradient-to-r from-white/50 via-brand-jade-500/5 to-white/50 rounded-3xl" />
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-            {NETWORKS.map((network) => (
-              <NetworkCard key={network.name} network={network} />
-            ))}
-          </div>
+          <div className="relative z-10">
+            <div className="text-center mb-12">
+              <h2 className="text-4xl font-bold text-gray-900 mb-6">
+                Find Your Doctor in Our 
+                <span className="bg-gradient-to-r from-brand-jade-600 to-brand-sky-600 bg-clip-text text-transparent"> Premium PPO Networks</span>
+              </h2>
+              <p className="text-lg text-gray-700 max-w-3xl mx-auto font-medium">
+                Verify your healthcare providers are in-network before choosing your plan with our <span className="text-brand-jade-600 font-bold">direct provider lookup tools</span>
+              </p>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+              {NETWORKS.map((network) => (
+                <NetworkCard key={network.name} network={network} />
+              ))}
+            </div>
 
-          <NetworkFAQ />
+            <NetworkFAQ />
+          </div>
         </section>
 
         {/* Insurance Carriers Section */}
-        <section className="mb-16">
-          <div className="text-center mb-8">
-            <h2 className="text-3xl font-bold text-ink-900 mb-4">Our Trusted Insurance Carrier Partners</h2>
-            <p className="text-lg text-ink-900/70 max-w-2xl mx-auto">
-              A+ rated carriers providing comprehensive health and life coverage solutions
-            </p>
-          </div>
+        <section className="mb-20 relative">
+          {/* Section background */}
+          <div className="absolute inset-0 bg-gradient-to-r from-white/50 via-brand-sky-500/5 to-white/50 rounded-3xl" />
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            {CARRIERS.map((carrier) => (
-              <CarrierCard key={carrier.name} carrier={carrier} />
-            ))}
+          <div className="relative z-10">
+            <div className="text-center mb-12">
+              <h2 className="text-4xl font-bold text-gray-900 mb-6">
+                Our 
+                <span className="bg-gradient-to-r from-brand-sky-600 to-brand-jade-600 bg-clip-text text-transparent"> Trusted Insurance Carrier</span> Partners
+              </h2>
+              <p className="text-lg text-gray-700 max-w-3xl mx-auto font-medium">
+                <span className="text-brand-success-500 font-bold">A+ rated carriers</span> providing comprehensive health and life coverage solutions
+              </p>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+              {CARRIERS.map((carrier) => (
+                <CarrierCard key={carrier.name} carrier={carrier} />
+              ))}
+            </div>
           </div>
         </section>
 
         {/* Footer CTA Section */}
-        <section className="rounded-2xl border border-surface-glassLine/20 bg-surface-glass backdrop-blur-sm p-8 text-center">
-          <h2 className="text-2xl font-bold text-ink-900 mb-4">Ready to Find Your Perfect Coverage?</h2>
-          <p className="text-ink-900/70 mb-6 max-w-2xl mx-auto">
-            Let Bradford guide you through our network of trusted carriers and help you find the right coverage for your family.
-          </p>
+        <section className="relative overflow-hidden rounded-3xl border border-white/20 bg-gradient-to-br from-white/10 via-white/5 to-white/10 backdrop-blur-md p-12 text-center shadow-luxury">
+          {/* Premium background effects */}
+          <div className="absolute inset-0 bg-gradient-to-br from-brand-jade-500/10 via-brand-sky-500/5 to-brand-jade-500/10" />
+          <div className="absolute -top-24 -right-24 w-96 h-96 bg-gradient-to-br from-brand-jade-500/20 to-brand-sky-500/20 rounded-full blur-3xl" />
+          <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-gradient-to-br from-brand-sky-500/20 to-brand-jade-500/20 rounded-full blur-3xl" />
           
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <a
-              href={BRAND.phoneTel}
-              className="inline-flex items-center gap-2 rounded-xl bg-brand-jade-500 px-8 py-4 text-base font-medium text-white hover:bg-brand-jade-600 transition-colors focus:outline-none focus:ring-2 focus:ring-brand-jade-500 focus:ring-offset-2"
-              data-gtm="carriers_footer_cta"
-              data-action="schedule"
-            >
-              <Calendar className="h-5 w-5" />
-              Schedule Consultation
-            </a>
+          <div className="relative z-10">
+            <h2 className="text-3xl font-bold text-gray-900 mb-6">
+              Ready to Find Your 
+              <span className="bg-gradient-to-r from-brand-jade-600 to-brand-sky-600 bg-clip-text text-transparent"> Perfect Coverage?</span>
+            </h2>
+            <p className="text-gray-700 mb-10 max-w-3xl mx-auto text-lg font-medium leading-relaxed">
+              Let Bradford guide you through our network of trusted carriers and help you find the right coverage for your family with <span className="text-brand-jade-600 font-bold">personalized expert guidance</span>.
+            </p>
             
-            <a
-              href="/quote"
-              className="inline-flex items-center gap-2 rounded-xl border border-brand-sky-500/30 bg-brand-sky-500/10 px-8 py-4 text-base font-medium text-brand-sky-600 hover:bg-brand-sky-500/20 transition-colors"
-              data-gtm="carriers_footer_cta" 
-              data-action="quote"
-            >
-              <FileText className="h-5 w-5" />
-              Get Quote
-            </a>
-          </div>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+              <a
+                href={BRAND.phoneTel}
+                className="group relative inline-flex items-center gap-3 rounded-xl bg-gradient-to-r from-brand-jade-500 to-brand-jade-600 px-10 py-5 text-lg font-bold text-white hover:from-brand-jade-600 hover:to-brand-jade-500 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-brand-jade-500/50 focus:ring-offset-2 shadow-xl hover:shadow-2xl hover:scale-105 transform-gpu"
+                data-gtm="carriers_footer_cta"
+                data-action="schedule"
+              >
+                {/* Button glow effect */}
+                <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-brand-jade-400 to-brand-jade-500 opacity-0 group-hover:opacity-75 transition-opacity duration-300 blur-md" />
+                
+                <Calendar className="h-6 w-6 relative z-10" />
+                <span className="relative z-10">Schedule Consultation</span>
+                
+                {/* Shine effect */}
+                <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-transparent via-white/30 to-transparent opacity-0 group-hover:opacity-100 transform -skew-x-12 group-hover:translate-x-full transition-all duration-700" />
+              </a>
+              
+              <a
+                href="/quote"
+                className="group relative inline-flex items-center gap-3 rounded-xl border-2 border-brand-sky-500/50 bg-white/20 backdrop-blur-sm px-10 py-5 text-lg font-bold text-brand-sky-600 hover:bg-brand-sky-500/20 hover:border-brand-sky-500 transition-all duration-300 shadow-xl hover:shadow-2xl hover:scale-105"
+                data-gtm="carriers_footer_cta" 
+                data-action="quote"
+              >
+                <FileText className="h-6 w-6" />
+                Get Quote
+              </a>
+            </div>
 
-          <div className="mt-8 pt-6 border-t border-surface-glassLine/20 text-sm text-ink-900/60">
-            Prefer a human? <a className="underline hover:text-ink-900" href={BRAND.phoneTel} data-gtm={`${BRAND.gtm.call}_carriers`}>Call {BRAND.phoneHuman}</a>.
+            <div className="mt-10 pt-8 border-t border-white/20 text-sm text-gray-600">
+              Prefer a human? <a className="underline hover:text-brand-jade-600 transition-colors font-semibold" href={BRAND.phoneTel} data-gtm={`${BRAND.gtm.call}_carriers`}>Call {BRAND.phoneHuman}</a>.
+            </div>
           </div>
         </section>
       </main>
