@@ -110,24 +110,54 @@ const CARRIERS: Carrier[] = [
 export default function CarriersPage() {
   return (
     <>
-      <main className="container mx-auto px-4 py-10 md:py-12">
-        {/* Hero Section */}
-        <header className="mb-16 text-center relative">
-          {/* Background gradient */}
-          <div className="absolute inset-0 bg-gradient-to-br from-brand-jade-500/5 via-brand-sky-500/5 to-brand-jade-500/5 rounded-3xl blur-3xl" />
+      {/* Hero Section */}
+      <header className="relative h-[70vh] min-h-[500px] flex items-center justify-center overflow-hidden">
+        {/* Responsive Hero Image */}
+        <picture>
+          <source 
+            media="(min-width: 1920px)" 
+            srcSet="/images/hero/carriers-hero-retina.webp" 
+            type="image/webp" 
+          />
+          <source 
+            media="(min-width: 768px)" 
+            srcSet="/images/hero/carriers-hero-desktop.webp" 
+            type="image/webp" 
+          />
+          <source 
+            media="(max-width: 767px)" 
+            srcSet="/images/hero/carriers-hero-mobile.webp" 
+            type="image/webp" 
+          />
+          <img 
+            src="/images/hero/carriers-hero-desktop.webp" 
+            alt="Insurance professionals and healthcare providers working together" 
+            className="absolute inset-0 w-full h-full object-cover"
+            loading="eager"
+          />
+        </picture>
+
+        {/* Dark overlay for text readability */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/60" />
+        
+        {/* Hero Content */}
+        <div className="relative z-10 text-center px-4 max-w-6xl mx-auto">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+            Our Trusted Insurance Partners & 
+            <span className="block bg-gradient-to-r from-brand-jade-300 to-brand-sky-300 bg-clip-text text-transparent">
+              Provider Networks
+            </span>
+          </h1>
+          <p className="text-xl md:text-2xl text-white/90 max-w-4xl mx-auto font-medium leading-relaxed mb-8">
+            Access to top-rated carriers and <span className="text-brand-jade-300 font-bold">6 extensive PPO networks</span> nationwide
+          </p>
           
-          <div className="relative z-10">
-            <h1 className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-gray-900 via-brand-jade-600 to-brand-sky-600 bg-clip-text text-transparent mb-6 leading-tight">
-              Our Trusted Insurance Partners & Provider Networks
-            </h1>
-            <p className="text-xl text-gray-700 max-w-4xl mx-auto font-medium leading-relaxed">
-              Access to top-rated carriers and <span className="text-brand-jade-600 font-bold">6 extensive PPO networks</span> nationwide
-            </p>
-            
-            {/* Premium accent line */}
-            <div className="mt-8 mx-auto w-24 h-1 bg-gradient-to-r from-brand-jade-500 to-brand-sky-500 rounded-full" />
-          </div>
-        </header>
+          {/* Premium accent line */}
+          <div className="mx-auto w-24 h-1 bg-gradient-to-r from-brand-jade-300 to-brand-sky-300 rounded-full" />
+        </div>
+      </header>
+
+      <main className="container mx-auto px-4 py-10 md:py-12">
 
         {/* PPO Networks Section */}
         <section className="mb-20 relative">
