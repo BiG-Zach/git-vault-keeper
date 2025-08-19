@@ -210,11 +210,9 @@ export default function CarriersPage() {
         </section>
 
         {/* Footer CTA Section */}
-        <section className="relative overflow-hidden rounded-3xl border border-white/20 bg-gradient-to-br from-white/10 via-white/5 to-white/10 backdrop-blur-md p-12 text-center shadow-luxury">
-          {/* Premium background effects */}
-          <div className="absolute inset-0 bg-gradient-to-br from-brand-jade-500/10 via-brand-sky-500/5 to-brand-jade-500/10" />
-          <div className="absolute -top-24 -right-24 w-96 h-96 bg-gradient-to-br from-brand-jade-500/20 to-brand-sky-500/20 rounded-full blur-3xl" />
-          <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-gradient-to-br from-brand-sky-500/20 to-brand-jade-500/20 rounded-full blur-3xl" />
+        <section className="relative overflow-hidden rounded-3xl border border-white/20 bg-gradient-to-br from-white/10 via-white/5 to-white/10 backdrop-blur-md p-12 text-center shadow-premium">
+          {/* Clean background */}
+          <div className="absolute inset-0 bg-gradient-to-br from-brand-jade-500/5 via-brand-sky-500/3 to-brand-jade-500/5" />
           
           <div className="relative z-10">
             <h2 className="text-3xl font-bold text-gray-900 mb-6">
