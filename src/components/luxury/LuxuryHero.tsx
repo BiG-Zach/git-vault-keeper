@@ -28,7 +28,7 @@ const LuxuryHero = () => {
         {/* Lightened overlay to showcase family scene */}
         <div className="absolute inset-0 bg-gradient-to-br from-slate-900/30 via-slate-800/20 to-transparent" />
         <div className="absolute inset-0 bg-gradient-to-t from-slate-900/25 via-transparent to-slate-900/15" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(34,197,94,0.05)_0%,transparent_70%)]" />
+        
       </div>
 
       <div className="relative z-10 container mx-auto px-4 lg:px-6">
