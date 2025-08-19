@@ -210,9 +210,9 @@ export default function CarriersPage() {
         </section>
 
         {/* Footer CTA Section */}
-        <section className="relative overflow-hidden rounded-3xl border border-white/20 bg-gradient-to-br from-white/10 via-white/5 to-white/10 backdrop-blur-md p-12 text-center shadow-premium">
-          {/* Clean background */}
-          <div className="absolute inset-0 bg-gradient-to-br from-brand-jade-500/5 via-brand-sky-500/3 to-brand-jade-500/5" />
+        <section className="relative rounded-3xl border border-gray-200 bg-white p-12 text-center shadow-sm">
+          {/* Clean solid background */}
+          <div className="absolute inset-0 bg-gray-50" />
           
           <div className="relative z-10">
             <h2 className="text-3xl font-bold text-gray-900 mb-6">
@@ -243,7 +243,7 @@ export default function CarriersPage() {
                 asChild
                 variant="outline"
                 size="lg"
-                className="border-2 border-brand-sky-500/50 bg-white/20 backdrop-blur-sm text-brand-sky-600 hover:bg-brand-sky-500/20 hover:border-brand-sky-500 px-10 py-5 text-lg"
+                className="border-2 border-brand-sky-500 bg-white text-brand-sky-600 hover:bg-brand-sky-50 hover:border-brand-sky-600 px-10 py-5 text-lg"
               >
                 <a
                   href="/quote"
