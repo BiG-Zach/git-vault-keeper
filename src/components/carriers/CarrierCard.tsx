@@ -1,40 +1,62 @@
-import * as React from "react";
-import styles from '../../mobile/Carriers.module.css';
-import cardMobile from './CarrierCard.mobile.module.css';
+import { Shield } from 'lucide-react';
 
-type Props = {
+export type Carrier = {
   name: string;
-  logo: string;      // /logos/... path from /public
-  tagline?: string;
+  logoSrc: string;
+  description: string;
+  rating?: string;
+  specialties: string[];
 };
 
-export default function CarrierCard({ name, logo, tagline }: Props) {
+interface CarrierCardProps {
+  carrier: Carrier;
+}
+
+export default function CarrierCard({ carrier }: CarrierCardProps) {
   return (
-    <div className={`group rounded-2xl ring-1 ring-slate-200/70 bg-white p-4 md:p-5 hover:shadow-lg/20 transition ${cardMobile.mobileCard}`}>
-      <div className="flex items-center gap-3">
-        {/* Mobile-only CLS-safe fixed ratio box */}
-        <div className={`relative h-10 aspect-[3/1] shrink-0 md:hidden ${styles.badge}`}>
-          <img
-            src={logo}
-            alt={`${name} logo`}
-            loading="lazy"
-            decoding="async"
-            className={`absolute inset-0 h-full w-full object-contain pointer-events-none select-none ${cardMobile.mobileLogo}`}
-          />
+    <div className="group relative overflow-hidden rounded-2xl border border-surface-glassLine/20 bg-surface-glass backdrop-blur-sm p-6 transition-all duration-300 hover:shadow-luxury hover:border-brand-sky-500/30">
+      <div className="relative z-10">
+        {/* Logo and Rating Row */}
+        <div className="flex items-start justify-between mb-4">
+          <div className="flex-1">
+            <img 
+              src={carrier.logoSrc} 
+              alt={`${carrier.name} logo`}
+              className="h-12 w-auto object-contain"
+              loading="lazy"
+            />
+          </div>
+          {carrier.rating && (
+            <div className="ml-4">
+              <div className="inline-flex items-center gap-1 rounded-full bg-brand-success-500/10 px-3 py-1 text-xs font-medium text-brand-success-500 border border-brand-success-500/20">
+                <Shield className="h-3 w-3" />
+                {carrier.rating}
+              </div>
+            </div>
+          )}
         </div>
-        {/* Desktop-only original behavior (unchanged) */}
-        <img
-          src={logo}
-          alt={`${name} logo`}
-          className={`hidden md:block h-10 w-auto object-contain pointer-events-none select-none ${cardMobile.mobileLogo}`}
-          loading="lazy"
-          decoding="async"
-        />
-        <div>
-          <div className="font-medium text-slate-800">{name}</div>
-          {tagline && <div className={`text-sm text-slate-500 ${cardMobile.mobileTagline}`}>{tagline}</div>}
+
+        {/* Carrier Name */}
+        <h3 className="text-lg font-semibold text-ink-900 mb-2">{carrier.name}</h3>
+        
+        {/* Description */}
+        <p className="text-sm text-ink-900/70 mb-4 leading-relaxed">{carrier.description}</p>
+
+        {/* Specialties */}
+        <div className="flex flex-wrap gap-2">
+          {carrier.specialties.map((specialty, index) => (
+            <span 
+              key={index}
+              className="inline-flex items-center rounded-lg bg-brand-sky-500/10 px-2.5 py-1 text-xs font-medium text-brand-sky-600 border border-brand-sky-500/20"
+            >
+              {specialty}
+            </span>
+          ))}
         </div>
       </div>
+
+      {/* Subtle gradient overlay on hover */}
+      <div className="absolute inset-0 bg-gradient-to-br from-brand-sky-500/5 to-brand-jade-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
     </div>
   );
 }
