@@ -25,9 +25,6 @@ const LuxuryHero = () => {
           loading="eager"
           fetchPriority="high"
         />
-        {/* Lightened overlay to showcase family scene */}
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-900/30 via-slate-800/20 to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-t from-slate-900/25 via-transparent to-slate-900/15" />
         
       </div>
 
