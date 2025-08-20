@@ -27,14 +27,6 @@ export default function OurProcessHero() {
       <p className="text-xl md:text-2xl text-white/95 leading-relaxed drop-shadow-[0_3px_14px_rgba(0,0,0,.5)] mb-8 max-w-3xl mx-auto">
         Getting the right insurance shouldn't be complicated. As your licensed broker serving Florida, Michigan, and North Carolina, I use my proven 4-step process to make it simple, fast, and stress-free.
       </p>
-      <div className="flex justify-center">
-        <a
-          href="tel:(689) 325-6570"
-          className="inline-flex items-center justify-center px-8 py-4 bg-white/20 backdrop-blur-sm text-white font-semibold rounded-2xl border border-white/30 hover:bg-white/30 transition-all duration-300"
-        >
-          Call (689) 325-6570
-        </a>
-      </div>
     </div>
   );
 
