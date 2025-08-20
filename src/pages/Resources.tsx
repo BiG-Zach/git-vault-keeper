@@ -1,5 +1,9 @@
 import SEO from '../components/SEO';
 import ResourcesHero from '../components/headers/ResourcesHero';
+import PremiumCalculators from '../components/tools/PremiumCalculators';
+import AskZachWidget from '../components/chat/AskZachWidget';
+import ExclusiveContentVault from '../components/content/ExclusiveContentVault';
+import TrustSignals from '../components/trust/TrustSignals';
 
 export default function Resources() {
   return (
@@ -201,6 +205,15 @@ export default function Resources() {
         </div>
       </section>
 
+      {/* Premium Calculators */}
+      <PremiumCalculators />
+
+      {/* Trust Signals & Testimonials */}
+      <TrustSignals />
+
+      {/* Exclusive Content Vault */}
+      <ExclusiveContentVault />
+
       {/* CTA Section */}
       <section className="section bg-brand-jade-500 text-white">
         <div className="container-default text-center">
@@ -219,6 +232,9 @@ export default function Resources() {
           </a>
         </div>
       </section>
+
+      {/* Ask Zach Chat Widget */}
+      <AskZachWidget />
     </main>
   );
 }
