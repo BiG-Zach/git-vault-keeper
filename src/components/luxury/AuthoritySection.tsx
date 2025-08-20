@@ -207,38 +207,6 @@ const AuthoritySection = () => {
           </motion.div>
         </div>
 
-        {/* Bottom CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: prefersReducedMotion ? 0 : 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
-          className="text-center mt-16"
-        >
-          <div className="bg-white rounded-2xl p-8 lg:p-12 shadow-luxury border border-slate-200 max-w-3xl mx-auto">
-            <h3 className="text-2xl lg:text-3xl font-bold text-slate-900 mb-4 font-luxury-serif">
-              Experience the Bradford Difference
-            </h3>
-            <p className="text-slate-600 mb-8 leading-relaxed">
-              When you work with Bradford, you're not just getting insurance – you're getting a trusted partner with proven expertise and an unwavering commitment to your family's protection.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a
-                href="/lead"
-                className="inline-flex items-center justify-center px-8 py-4 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold rounded-xl transition-all duration-300 transform hover:scale-105"
-                data-gtm={`${BRAND.gtm.quote}_authority`}
-              >
-                Schedule Expert Consultation
-              </a>
-              <a
-                href="/about"
-                className="inline-flex items-center justify-center px-8 py-4 border-2 border-emerald-600 text-emerald-600 hover:bg-emerald-600 hover:text-white font-semibold rounded-xl transition-all duration-300"
-              >
-                Learn More About Us
-              </a>
-            </div>
-          </div>
-        </motion.div>
       </div>
     </section>
   );
