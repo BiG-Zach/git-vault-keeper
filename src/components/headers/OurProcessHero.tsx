@@ -5,14 +5,14 @@ import Section from "../layout/Section";
 import { useParallax } from "../../lib/useParallax";
 
 const HAS_MULTI = true;
-const SINGLE_FALLBACK = "/images/hero/our-process-hero-desktop (1).webp";
+const SINGLE_FALLBACK = "/images/hero/our-process-hero-desktop.webp";
 const LQIP = "";
 
 // multi-source names
-const JPG1X = "/images/hero/our-process-hero-desktop (1).webp";
-const JPG2X = "/images/hero/our-process-hero-retina (1).webp";
-const WEBP1X = "/images/hero/our-process-hero-mobile (1).webp";
-const WEBP2X = "/images/hero/our-process-hero-retina (1).webp";
+const JPG1X = "/images/hero/our-process-hero-desktop.webp";
+const JPG2X = "/images/hero/our-process-hero-retina.webp";
+const WEBP1X = "/images/hero/our-process-hero-mobile.webp";
+const WEBP2X = "/images/hero/our-process-hero-retina.webp";
 
 export default function OurProcessHero() {
   const prefersReducedMotion = useReducedMotion();
