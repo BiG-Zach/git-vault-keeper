@@ -5,15 +5,15 @@ import { TypeAnimation } from 'react-type-animation';
 import Section from "../layout/Section";
 import { useParallax } from "../../lib/useParallax";
 
-const HAS_MULTI = true;
-const SINGLE_FALLBACK = "/images/hero/resources-hero-desktop.webp";
+const HAS_MULTI = false;
+const SINGLE_FALLBACK = "/lovable-uploads/beb601b4-92fe-4cc6-bb10-d5f7e986c925.png";
 const LQIP = "";
 
-// multi-source names
-const JPG1X = "/images/hero/resources-hero-desktop.webp";
-const JPG2X = "/images/hero/resources-hero-retina.webp";
-const WEBP1X = "/images/hero/resources-hero-desktop.webp";
-const WEBP2X = "/images/hero/resources-hero-retina.webp";
+// multi-source names (not used since HAS_MULTI is false)
+const JPG1X = "/lovable-uploads/beb601b4-92fe-4cc6-bb10-d5f7e986c925.png";
+const JPG2X = "/lovable-uploads/beb601b4-92fe-4cc6-bb10-d5f7e986c925.png";
+const WEBP1X = "/lovable-uploads/beb601b4-92fe-4cc6-bb10-d5f7e986c925.png";
+const WEBP2X = "/lovable-uploads/beb601b4-92fe-4cc6-bb10-d5f7e986c925.png";
 
 export default function ResourcesHero() {
   const prefersReducedMotion = useReducedMotion();
