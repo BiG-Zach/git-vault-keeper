@@ -1,4 +1,5 @@
 import SEO from '../components/SEO';
+import ResourcesHero from '../components/headers/ResourcesHero';
 
 export default function Resources() {
   return (
@@ -9,29 +10,7 @@ export default function Resources() {
         path="/resources"
       />
       
-      {/* Hero Section */}
-      <section className="relative min-h-[60vh] flex items-center justify-center bg-gradient-to-br from-blue-900 to-blue-600 text-white overflow-hidden">
-        <div className="container-default relative z-10 text-center">
-          <h1 className="font-luxury-serif text-4xl md:text-6xl font-light mb-6">
-            Your Complete Insurance
-            <br />
-            <span className="font-medium">Knowledge Center</span>
-          </h1>
-          <p className="text-xl md:text-2xl text-blue-100 mb-8 max-w-3xl mx-auto">
-            Expert insights, comprehensive guides, and tools to help you make informed insurance decisions
-          </p>
-          
-          {/* Author Credibility Box */}
-          <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 inline-block border border-white/20">
-            <p className="text-blue-100 text-sm uppercase tracking-wider mb-2">Insights From</p>
-            <p className="text-white font-medium text-lg">Zach Bradford</p>
-            <p className="text-blue-100 text-sm">Licensed FL Broker W347851 | 8+ Years Experience</p>
-          </div>
-        </div>
-        
-        {/* Background Pattern */}
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.1),transparent_50%)]"></div>
-      </section>
+      <ResourcesHero />
 
       {/* Resource Categories */}
       <section className="section bg-slate-50">
