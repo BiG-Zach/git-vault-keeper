@@ -12,7 +12,7 @@ const LQIP = "";
 // multi-source names
 const JPG1X = "/images/hero/resources-hero-desktop.webp";
 const JPG2X = "/images/hero/resources-hero-retina.webp";
-const WEBP1X = "/images/hero/resources-hero-mobile.webp";
+const WEBP1X = "/images/hero/resources-hero-desktop.webp";
 const WEBP2X = "/images/hero/resources-hero-retina.webp";
 
 export default function ResourcesHero() {
