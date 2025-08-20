@@ -9,6 +9,7 @@ const Contact = lazy(() => import('../pages/Contact'));
 const Quote = lazy(() => import('../pages/quote/Quote'));
 const Carriers = lazy(() => import('../pages/Carriers'));
 const HowItWorks = lazy(() => import('../pages/HowItWorks'));
+const Resources = lazy(() => import('../pages/Resources'));
 const HowItWorksRedirect = () => { window.location.replace('/our-process'); return null; };
 // Dynamic state page
 const StateDynamic = lazy(() => import('../pages/states/[code]'));
@@ -29,6 +30,7 @@ export const routes = [
       { path: 'quote', element: <Quote /> },
       { path: 'carriers', element: <Carriers /> },
       { path: 'our-process', element: <HowItWorks /> },
+      { path: 'resources', element: <Resources /> },
       { path: 'how-it-works', element: <HowItWorksRedirect /> },
       // Dynamic state route: /states/:code (expects 2-letter code like 'fl')
       { path: 'states/:code', element: <StateDynamic /> },
