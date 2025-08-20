@@ -5,15 +5,9 @@ import { TypeAnimation } from 'react-type-animation';
 import Section from "../layout/Section";
 import { useParallax } from "../../lib/useParallax";
 
-const HAS_MULTI = true;
-const SINGLE_FALLBACK = "/images/hero/resources-hero-desktop.webp";
+const HAS_MULTI = false;
+const SINGLE_FALLBACK = "/lovable-uploads/f5b6b0de-192c-40c8-8fb2-35eaa4905195.png";
 const LQIP = "";
-
-// multi-source names
-const JPG1X = "/images/hero/resources-hero-desktop.webp";
-const JPG2X = "/images/hero/resources-hero-retina.webp";
-const WEBP1X = "/images/hero/resources-hero-desktop.webp";
-const WEBP2X = "/images/hero/resources-hero-retina.webp";
 
 export default function ResourcesHero() {
   const prefersReducedMotion = useReducedMotion();
@@ -83,22 +77,7 @@ export default function ResourcesHero() {
           className="absolute inset-0 z-0 will-change-transform"
           style={{ transform: prefersReducedMotion ? undefined : `translate3d(0, ${y}px, 0)` }}
         >
-          {!imgError && HAS_MULTI ? (
-            <picture>
-              <source type="image/webp" srcSet={`${WEBP1X} 1920w, ${WEBP2X} 3840w`} sizes="100vw" media="(min-width: 768px)" />
-              <source type="image/webp" srcSet="/images/hero/resources-hero-mobile.webp 640w" sizes="100vw" media="(max-width: 767px)" />
-              <source type="image/jpeg" srcSet={`${JPG1X} 1920w, ${JPG2X} 3840w`} sizes="100vw" />
-              <img
-                src={JPG1X}
-                alt="Executive library office with sophisticated bookshelves representing complete insurance knowledge center"
-                className="block h-full w-full object-cover"
-                loading="eager"
-                fetchPriority="high"
-                onError={() => setImgError(true)}
-                style={LQIP ? { backgroundImage: `url(${LQIP})`, backgroundSize: "cover", backgroundPosition: "50% 50%" } : undefined}
-              />
-            </picture>
-          ) : SINGLE_FALLBACK && !imgError ? (
+          {SINGLE_FALLBACK && !imgError ? (
             <img
               src={SINGLE_FALLBACK}
               alt="Executive library office with sophisticated bookshelves representing complete insurance knowledge center"
