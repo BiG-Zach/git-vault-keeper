@@ -1,6 +1,7 @@
 import * as React from "react";
 import { motion, useReducedMotion } from "framer-motion";
-import { Calendar } from "lucide-react";
+import { Calendar, Search, Users, Shield } from "lucide-react";
+import { TypeAnimation } from 'react-type-animation';
 import Section from "../layout/Section";
 import { useParallax } from "../../lib/useParallax";
 
@@ -20,12 +21,53 @@ export default function ResourcesHero() {
   const [imgError, setImgError] = React.useState(false);
 
   const Content = (
-    <div className="mx-auto max-w-4xl px-4 md:px-0 text-center">
-      <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight text-white drop-shadow-[0_6px_24px_rgba(0,0,0,.65)] mb-6">
-        Your Complete Insurance
-        <br />
-        <span className="font-light">Knowledge Center</span>
+    <div className="mx-auto max-w-5xl px-4 md:px-0 text-center relative">
+      {/* Premium Badge Overlay */}
+      <div className="absolute -top-8 right-4 md:right-8 bg-gradient-to-r from-emerald-500 to-emerald-600 text-white px-4 py-2 rounded-full text-sm font-medium shadow-lg flex items-center gap-2">
+        <Shield className="w-4 h-4" />
+        Licensed FL Broker W347851
+      </div>
+
+      {/* Live Visitor Counter */}
+      <div className="mb-6 inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 text-white/90 text-sm">
+        <Users className="w-4 h-4 text-emerald-400" />
+        <span>Join 12,847+ smart families who trust our guidance</span>
+      </div>
+
+      <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight text-white drop-shadow-[0_6px_24px_rgba(0,0,0,.65)] mb-6 min-h-[120px] md:min-h-[140px]">
+        <TypeAnimation
+          sequence={[
+            'Your Complete Insurance',
+            1000,
+            'Your Complete Insurance\nKnowledge Center',
+            2000,
+            'Your Complete Insurance\nKnowledge Center',
+            1000,
+          ]}
+          wrapper="span"
+          speed={50}
+          style={{ fontSize: 'inherit', display: 'inline-block', whiteSpace: 'pre-line' }}
+          repeat={Infinity}
+        />
       </h1>
+      
+      {/* Floating Search Bar */}
+      <div className="relative max-w-2xl mx-auto mb-8">
+        <div className="relative bg-white/95 backdrop-blur-sm rounded-2xl p-2 shadow-xl border border-white/20">
+          <div className="flex items-center">
+            <Search className="w-5 h-5 text-slate-400 ml-4" />
+            <input
+              type="text"
+              placeholder="Search insurance guides, calculators, state guides..."
+              className="flex-1 px-4 py-3 bg-transparent text-slate-700 placeholder-slate-500 outline-none"
+            />
+            <button className="bg-gradient-to-r from-emerald-500 to-emerald-600 text-white px-6 py-3 rounded-xl font-medium hover:shadow-lg transition-all duration-300">
+              Search
+            </button>
+          </div>
+        </div>
+      </div>
+
       <p className="text-xl md:text-2xl text-white/95 leading-relaxed drop-shadow-[0_3px_14px_rgba(0,0,0,.5)] mb-8 max-w-3xl mx-auto">
         Expert insights, comprehensive guides, and tools to help you make informed insurance decisions
       </p>
@@ -34,7 +76,7 @@ export default function ResourcesHero() {
       <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 inline-block border border-white/20 mb-8">
         <p className="text-white/80 text-sm uppercase tracking-wider mb-2">Insights From</p>
         <p className="text-white font-medium text-lg">Zach Bradford</p>
-        <p className="text-white/80 text-sm">Licensed FL Broker W347851 | 8+ Years Experience</p>
+        <p className="text-white/80 text-sm">8+ Years Experience | Over $50M in Coverage Placed</p>
       </div>
 
       <div className="flex flex-col sm:flex-row gap-4 justify-center">
