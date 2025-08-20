@@ -75,12 +75,7 @@ export default function AboutHero() {
           )}
         </div>
 
-        {/* Scroll-reactive BrandGrade */}
-        <BrandGrade className="absolute inset-0 z-10 pointer-events-none" strength={strength} variant="emeraldSky" />
-        <div className="pointer-events-none absolute inset-0 z-20">
-          <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/60 via-black/35 to-transparent" />
-          <div className="absolute inset-0 bg-[radial-gradient(120%_60%_at_0%_50%,rgba(0,0,0,.28),transparent_60%),radial-gradient(120%_60%_at_100%_50%,rgba(0,0,0,.28),transparent_60%)]" />
-        </div>
+        {/* Removed overlays and effects to show clean hero image */}
 
         {/* Content */}
         <div className="absolute inset-0 z-30 grid place-items-end">
