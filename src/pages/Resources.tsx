@@ -20,37 +20,10 @@ export default function Resources() {
       <section className="section bg-slate-50">
         <div className="container-default">
           <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 bg-gradient-to-r from-emerald-500 to-emerald-600 text-white px-4 py-2 rounded-full text-sm font-medium mb-6">
-              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-              </svg>
-              Premium Content Library
-            </div>
-            <h2 className="h2 mb-6 bg-gradient-to-r from-slate-800 to-slate-600 bg-clip-text text-transparent">
-              Curated Insurance Intelligence Hub
-            </h2>
-            <p className="text-xl text-slate-600 mb-4 max-w-3xl mx-auto leading-relaxed">
-              Access Florida's most comprehensive collection of expert-authored insurance guides, 
-              market analysis, and professional tools—all backed by 8+ years of licensed broker expertise
+            <h2 className="h2 mb-4">Browse by Category</h2>
+            <p className="lead text-slate-600">
+              Explore our comprehensive library of insurance guides and resources
             </p>
-            <div className="flex flex-wrap justify-center gap-6 text-sm text-slate-500">
-              <div className="flex items-center gap-2">
-                <div className="w-2 h-2 bg-emerald-500 rounded-full"></div>
-                <span>50+ Expert Guides</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
-                <span>Interactive Calculators</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
-                <span>Market Insights</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <div className="w-2 h-2 bg-amber-500 rounded-full"></div>
-                <span>Licensed Professional Content</span>
-              </div>
-            </div>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
