@@ -5,15 +5,15 @@ import { TypeAnimation } from 'react-type-animation';
 import Section from "../layout/Section";
 import { useParallax } from "../../lib/useParallax";
 
-const HAS_MULTI = false;
-const SINGLE_FALLBACK = "/lovable-uploads/beb601b4-92fe-4cc6-bb10-d5f7e986c925.png";
+const HAS_MULTI = true;
+const SINGLE_FALLBACK = "/images/hero/resources-hero-desktop.webp";
 const LQIP = "";
 
-// multi-source names (not used since HAS_MULTI is false)
-const JPG1X = "/lovable-uploads/beb601b4-92fe-4cc6-bb10-d5f7e986c925.png";
-const JPG2X = "/lovable-uploads/beb601b4-92fe-4cc6-bb10-d5f7e986c925.png";
-const WEBP1X = "/lovable-uploads/beb601b4-92fe-4cc6-bb10-d5f7e986c925.png";
-const WEBP2X = "/lovable-uploads/beb601b4-92fe-4cc6-bb10-d5f7e986c925.png";
+// multi-source names
+const JPG1X = "/images/hero/resources-hero-desktop.webp";
+const JPG2X = "/images/hero/resources-hero-retina.webp";
+const WEBP1X = "/images/hero/resources-hero-desktop.webp";
+const WEBP2X = "/images/hero/resources-hero-retina.webp";
 
 export default function ResourcesHero() {
   const prefersReducedMotion = useReducedMotion();
@@ -28,70 +28,46 @@ export default function ResourcesHero() {
         Licensed FL Broker W347851
       </div>
 
-      {/* Live Visitor Counter */}
-      <div className="mb-6 inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 text-white/90 text-sm">
-        <Users className="w-4 h-4 text-emerald-400" />
-        <span>Join 12,847+ smart families who trust our guidance</span>
+      {/* Trust Badge */}
+      <div className="mb-6 inline-flex items-center gap-2 bg-white/15 backdrop-blur-sm rounded-full px-5 py-2 text-white text-sm border border-white/20">
+        <span className="text-yellow-300">⭐</span>
+        <span>Trusted by 1,000+ Florida families since 2016</span>
       </div>
 
-      <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight text-white drop-shadow-[0_6px_24px_rgba(0,0,0,.65)] mb-6 min-h-[120px] md:min-h-[140px]">
-        <TypeAnimation
-          sequence={[
-            'Your Complete Insurance',
-            1000,
-            'Your Complete Insurance\nKnowledge Center',
-            2000,
-            'Your Complete Insurance\nKnowledge Center',
-            1000,
-          ]}
-          wrapper="span"
-          speed={50}
-          style={{ fontSize: 'inherit', display: 'inline-block', whiteSpace: 'pre-line' }}
-          repeat={Infinity}
-        />
+      <h1 className="text-3xl md:text-5xl font-bold tracking-tight leading-tight text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)] mb-4 font-luxury-sans">
+        Your Complete Insurance Knowledge Center
       </h1>
       
-      {/* Floating Search Bar */}
-      <div className="relative max-w-2xl mx-auto mb-8">
-        <div className="relative bg-white/95 backdrop-blur-sm rounded-2xl p-2 shadow-xl border border-white/20">
-          <div className="flex items-center">
-            <Search className="w-5 h-5 text-slate-400 ml-4" />
+      <p className="text-lg md:text-xl text-white/95 leading-relaxed mb-8 max-w-3xl mx-auto font-luxury-sans">
+        Expert guidance from Zach Bradford, Licensed FL Broker W347851 | 8+ Years Experience
+      </p>
+      
+      {/* Executive Search Bar */}
+      <div className="relative max-w-md mx-auto mb-8">
+        <div className="relative bg-white/10 backdrop-blur-sm rounded-xl border border-white/20 h-14">
+          <div className="flex items-center h-full">
+            <Search className="w-5 h-5 text-white/60 ml-5" />
             <input
               type="text"
-              placeholder="Search insurance guides, calculators, state guides..."
-              className="flex-1 px-4 py-3 bg-transparent text-slate-700 placeholder-slate-500 outline-none"
+              placeholder="Search insurance topics..."
+              className="flex-1 px-4 py-3 bg-transparent text-white placeholder-white/60 outline-none font-luxury-sans"
             />
-            <button className="bg-gradient-to-r from-emerald-500 to-emerald-600 text-white px-6 py-3 rounded-xl font-medium hover:shadow-lg transition-all duration-300">
-              Search
-            </button>
           </div>
         </div>
       </div>
-
-      <p className="text-xl md:text-2xl text-white/95 leading-relaxed drop-shadow-[0_3px_14px_rgba(0,0,0,.5)] mb-8 max-w-3xl mx-auto">
-        Expert insights, comprehensive guides, and tools to help you make informed insurance decisions
-      </p>
-      
-      {/* Author Credibility Box */}
-      <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 inline-block border border-white/20 mb-8">
-        <p className="text-white/80 text-sm uppercase tracking-wider mb-2">Insights From</p>
-        <p className="text-white font-medium text-lg">Zach Bradford</p>
-        <p className="text-white/80 text-sm">8+ Years Experience | Over $50M in Coverage Placed</p>
-      </div>
-
       <div className="flex flex-col sm:flex-row gap-4 justify-center">
         <a
           href="https://calendly.com/bradfordinformedguidance"
-          className="inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-emerald-600 to-emerald-700 text-white font-semibold rounded-2xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
+          className="inline-flex items-center justify-center px-7 py-3.5 bg-white text-blue-900 font-semibold rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 font-luxury-sans"
           target="_blank"
           rel="noopener noreferrer"
         >
-          <Calendar className="w-6 h-6 mr-2" />
+          <Calendar className="w-5 h-5 mr-2" />
           Schedule Free Consultation
         </a>
         <a
           href="tel:(689) 325-6570"
-          className="inline-flex items-center justify-center px-8 py-4 bg-white/20 backdrop-blur-sm text-white font-semibold rounded-2xl border border-white/30 hover:bg-white/30 transition-all duration-300"
+          className="inline-flex items-center justify-center px-7 py-3.5 bg-gradient-to-r from-blue-600 to-blue-700 text-white font-semibold rounded-lg shadow-lg transition-all duration-300 font-luxury-sans"
         >
           Call (689) 325-6570
         </a>
@@ -109,11 +85,12 @@ export default function ResourcesHero() {
         >
           {!imgError && HAS_MULTI ? (
             <picture>
-              <source type="image/webp" srcSet={`${WEBP1X} 1600w, ${WEBP2X} 2400w`} sizes="100vw" />
-              <source type="image/jpeg" srcSet={`${JPG1X} 1600w, ${JPG2X} 2400w`} sizes="100vw" />
+              <source type="image/webp" srcSet={`${WEBP1X} 1920w, ${WEBP2X} 3840w`} sizes="100vw" media="(min-width: 768px)" />
+              <source type="image/webp" srcSet="/images/hero/resources-hero-mobile.webp 640w" sizes="100vw" media="(max-width: 767px)" />
+              <source type="image/jpeg" srcSet={`${JPG1X} 1920w, ${JPG2X} 3840w`} sizes="100vw" />
               <img
                 src={JPG1X}
-                alt=""
+                alt="Executive library office with sophisticated bookshelves representing complete insurance knowledge center"
                 className="block h-full w-full object-cover"
                 loading="eager"
                 fetchPriority="high"
@@ -124,7 +101,7 @@ export default function ResourcesHero() {
           ) : SINGLE_FALLBACK && !imgError ? (
             <img
               src={SINGLE_FALLBACK}
-              alt=""
+              alt="Executive library office with sophisticated bookshelves representing complete insurance knowledge center"
               className="block h-full w-full object-cover"
               loading="eager"
               fetchPriority="high"
@@ -132,8 +109,11 @@ export default function ResourcesHero() {
               style={LQIP ? { backgroundImage: `url(${LQIP})`, backgroundSize: "cover", backgroundPosition: "50% 50%" } : undefined}
             />
           ) : (
-            <div className="h-full w-full bg-gradient-to-br from-blue-900 to-blue-600" />
+            <div className="h-full w-full bg-gradient-to-br from-slate-900 to-slate-700" />
           )}
+          
+          {/* Luxury Executive Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-r from-blue-900/70 via-blue-800/60 to-blue-900/70" />
         </div>
 
         {/* Content */}
