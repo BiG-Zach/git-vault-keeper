@@ -201,56 +201,22 @@ export default function Resources() {
         path="/resources"
       />
       
-      {/* Hero Section */}
-      <section className="relative py-20 bg-gradient-to-br from-blue-900 via-blue-800 to-blue-700 overflow-hidden">
-        <div className="absolute inset-0 bg-black/20"></div>
-        <div className="container-default relative z-10">
-          <div className="max-w-4xl mx-auto text-center text-white">
-            <div className="inline-flex items-center bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2 mb-6">
-              <Star className="w-4 h-4 text-yellow-400 mr-2" />
-              <span className="text-sm font-medium">Trusted by 1,000+ Florida families since 2016</span>
-            </div>
-            
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
-              Your Complete Insurance
-              <span className="block text-blue-200">Knowledge Center</span>
-            </h1>
-            
-            <p className="text-xl md:text-2xl text-blue-100 mb-8 leading-relaxed">
-              Expert guidance from Zach Bradford, Licensed FL Broker W347851 | 8+ Years Experience
-            </p>
-            
-            {/* Search Bar */}
-            <div className="max-w-2xl mx-auto mb-8">
-              <div className="relative">
-                <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-slate-400 w-5 h-5" />
-                <input
-                  type="text"
-                  placeholder="Search insurance topics..."
-                  value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
-                  className="w-full pl-12 pr-4 py-4 rounded-xl border border-white/20 bg-white/10 backdrop-blur-sm text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-blue-300 focus:border-transparent"
-                />
-              </div>
-            </div>
-            
-            {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a
-                href="https://calendly.com/bradfordinformedguidance"
-                className="inline-flex items-center px-8 py-4 bg-white text-blue-900 font-semibold rounded-xl hover:bg-blue-50 transition-colors"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <User className="w-5 h-5 mr-2" />
-                Schedule Free Consultation
-              </a>
-              <a
-                href="tel:+16893256570"
-                className="inline-flex items-center px-8 py-4 bg-blue-600 text-white font-semibold rounded-xl hover:bg-blue-500 transition-colors"
-              >
-                Call (689) 325-6570
-              </a>
+      {/* Hero Section with Proper Images */}
+      <ResourcesHero />
+
+      {/* Search Section */}
+      <section className="py-8 bg-white border-b border-slate-200">
+        <div className="container-default">
+          <div className="max-w-2xl mx-auto">
+            <div className="relative">
+              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-slate-400 w-5 h-5" />
+              <input
+                type="text"
+                placeholder="Search insurance topics..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="w-full pl-12 pr-4 py-4 rounded-xl border border-slate-200 bg-white text-slate-900 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent shadow-sm"
+              />
             </div>
           </div>
         </div>
