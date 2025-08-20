@@ -1,4 +1,5 @@
 import SEO from "../components/SEO";
+import ContactHero from "../components/headers/ContactHero";
 import { Phone, Calendar, Mail, MapPin, Shield, Clock, CheckCircle, AlertTriangle } from "lucide-react";
 import { useState } from "react";
 import { localBusinessSchema, serviceSchema, breadcrumbSchema } from "../utils/schema";
@@ -82,18 +83,9 @@ export default function ContactPage() {
         ]}
       />
 
+      <ContactHero />
+
       <main className="min-h-screen bg-gradient-to-br from-slate-50 to-emerald-50">
-        {/* Hero Section */}
-        <section className="relative py-16 md:py-24">
-          <div className="container mx-auto px-4 max-w-4xl text-center">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 mb-6 leading-tight">
-              Get In Touch - Your Licensed Insurance Broker Ready to Help
-            </h1>
-            <p className="text-xl md:text-2xl text-slate-700 mb-8 leading-relaxed max-w-3xl mx-auto">
-              Questions about health or life insurance? I'm Zach Bradford, your licensed broker, and I'm here to help personally. Multiple ways to connect with me directly - no call centers, no middlemen.
-            </p>
-          </div>
-        </section>
 
         {/* Contact Methods */}
         <section className="py-16">

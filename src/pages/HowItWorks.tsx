@@ -1,4 +1,5 @@
 import SEO from "../components/SEO";
+import OurProcessHero from "../components/headers/OurProcessHero";
 import { Calendar, BarChart3, Handshake, CheckCircle, Shield, Award, Clock, Users } from "lucide-react";
 import { localBusinessSchema, serviceSchema, breadcrumbSchema } from "../utils/schema";
 
@@ -163,35 +164,9 @@ export default function HowItWorksPage() {
         ]}
       />
 
+      <OurProcessHero />
+
       <main className="min-h-screen bg-gradient-to-br from-slate-50 to-emerald-50">
-        {/* Hero Section */}
-        <section className="relative py-16 md:py-24">
-          <div className="container mx-auto px-4 max-w-4xl text-center">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 mb-6 leading-tight">
-              My Simple 4-Step Process to Get You Perfect Insurance Coverage
-            </h1>
-            <p className="text-xl md:text-2xl text-slate-700 mb-8 leading-relaxed max-w-3xl mx-auto">
-              Getting the right insurance shouldn't be complicated. As your licensed broker serving Florida, Michigan, and North Carolina, I use my proven 4-step process to make it simple, fast, and stress-free.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a
-                href="https://calendly.com/bradfordinformedguidance"
-                className="inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-emerald-600 to-emerald-700 text-white font-semibold rounded-2xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Calendar className="w-6 h-6 mr-2" />
-                Schedule Free Consultation
-              </a>
-              <a
-                href="tel:(689) 325-6570"
-                className="inline-flex items-center justify-center px-8 py-4 bg-white text-emerald-700 font-semibold rounded-2xl border-2 border-emerald-200 hover:border-emerald-300 shadow-lg hover:shadow-xl transition-all duration-300"
-              >
-                Call (689) 325-6570
-              </a>
-            </div>
-          </div>
-        </section>
 
         {/* Process Steps */}
         <section className="py-16">
