@@ -306,7 +306,7 @@ export default function CarriersPage() {
         </section>
       </main>
 
-      <StickyBottomCTA />
+      
     </>
   );
 }
