@@ -19,6 +19,10 @@ const ThankYou = lazy(() => import('../pages/ThankYou'));
 const PrivacyPolicy = lazy(() => import('../pages/PrivacyPolicy'));
 const Terms = lazy(() => import('../pages/Terms'));
 
+// Blog posts
+const TermVsWholeLifeInsurance2024 = lazy(() => import('../pages/blog/TermVsWholeLifeInsurance2024'));
+const FloridaHealthInsuranceGuide2024 = lazy(() => import('../pages/blog/FloridaHealthInsuranceGuide2024'));
+
 export const routes = [
   {
     path: '/',
@@ -39,6 +43,9 @@ export const routes = [
       { path: 'thank-you', element: <ThankYou /> },
       { path: 'privacy-policy', element: <PrivacyPolicy /> },
       { path: 'terms', element: <Terms /> },
+      // Blog routes
+      { path: 'blog/term-vs-whole-life-insurance-2024', element: <TermVsWholeLifeInsurance2024 /> },
+      { path: 'blog/florida-health-insurance-guide-2024', element: <FloridaHealthInsuranceGuide2024 /> },
     ],
   },
 ];
