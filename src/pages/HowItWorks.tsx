@@ -1,54 +1,294 @@
-import { BRAND } from "../lib/brand";
-import EstimatorWidget from "../components/tools/EstimatorWidget";
+import SEO from "../components/SEO";
+import { Calendar, BarChart3, Handshake, CheckCircle, Shield, Award, Clock, Users } from "lucide-react";
+import { localBusinessSchema, serviceSchema, breadcrumbSchema } from "../utils/schema";
 
-function Step({n,title,desc,time}:{n:number;title:string;desc:string;time:string}) {
+interface StepProps {
+  number: number;
+  icon: React.ReactNode;
+  title: string;
+  content: string;
+  bulletPoints: string[];
+}
+
+function ProcessStep({ number, icon, title, content, bulletPoints }: StepProps) {
   return (
-    <div className="p-4 rounded-2xl border bg-white/80">
-      <div className="text-xs uppercase tracking-wide text-ink-1/60">Step {n}</div>
-      <h3 className="mt-1 font-semibold">{title}</h3>
-      <p className="text-sm text-ink-1/70 mt-1">{desc}</p>
-      <div className="mt-2 inline-flex items-center gap-2 text-xs px-2 py-1 rounded-full bg-slate-100">
-        <span>⏱</span><span>{time}</span>
+    <div className="bg-white rounded-2xl border border-slate-200 shadow-lg p-8 hover:shadow-xl transition-shadow duration-300">
+      <div className="flex items-center gap-4 mb-6">
+        <div className="flex-shrink-0 w-16 h-16 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-2xl flex items-center justify-center text-white shadow-lg">
+          {icon}
+        </div>
+        <div>
+          <div className="text-sm font-medium text-emerald-600 uppercase tracking-wide">Step {number}</div>
+          <h3 className="text-xl font-bold text-slate-900 mt-1">{title}</h3>
+        </div>
       </div>
+      
+      <p className="text-slate-700 mb-6 leading-relaxed">{content}</p>
+      
+      <ul className="space-y-3">
+        {bulletPoints.map((point, index) => (
+          <li key={index} className="flex items-start gap-3">
+            <CheckCircle className="w-5 h-5 text-emerald-500 mt-0.5 flex-shrink-0" />
+            <span className="text-slate-700">{point}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+function TrustPoint({ children }: { children: string }) {
+  return (
+    <div className="flex items-center gap-3 p-4 bg-white rounded-xl border border-slate-200">
+      <Shield className="w-6 h-6 text-emerald-500 flex-shrink-0" />
+      <span className="text-slate-700 font-medium">{children}</span>
+    </div>
+  );
+}
+
+function FAQItem({ question, answer }: { question: string; answer: string }) {
+  return (
+    <div className="bg-white rounded-xl border border-slate-200 p-6">
+      <h4 className="font-semibold text-slate-900 mb-3">{question}</h4>
+      <p className="text-slate-700 leading-relaxed">{answer}</p>
     </div>
   );
 }
 
 export default function HowItWorksPage() {
+  const steps: StepProps[] = [
+    {
+      number: 1,
+      icon: <Calendar className="w-8 h-8" />,
+      title: "Schedule Your Free Personal Consultation with Me",
+      content: "I start with a no-obligation consultation to understand your unique needs, budget, and coverage goals.",
+      bulletPoints: [
+        "Duration: 15-30 minutes with me personally",
+        "No cost, no obligation",
+        "Licensed broker in FL, MI, NC",
+        "Evening and weekend appointments available"
+      ]
+    },
+    {
+      number: 2,
+      icon: <BarChart3 className="w-8 h-8" />,
+      title: "I Compare All Your Options Personally",
+      content: "Using my relationships with top-rated carriers (Aetna, Cigna, UnitedHealthcare, Blue Cross Blue Shield), I create your personalized comparison showing costs, benefits, and network coverage.",
+      bulletPoints: [
+        "I access 6+ major networks for you",
+        "My personal side-by-side analysis",
+        "Transparent pricing comparisons",
+        "I verify your doctors are covered"
+      ]
+    },
+    {
+      number: 3,
+      icon: <Handshake className="w-8 h-8" />,
+      title: "Get My Professional Recommendations",
+      content: "As your licensed broker, I explain each option in plain English, helping you understand exactly what you're getting. No insurance jargon, no pressure - just my honest professional guidance.",
+      bulletPoints: [
+        "Licensed & bonded broker since 2016",
+        "8+ years experience in insurance",
+        "My plain English explanations",
+        "My unbiased recommendations"
+      ]
+    },
+    {
+      number: 4,
+      icon: <CheckCircle className="w-8 h-8" />,
+      title: "I Handle Quick & Easy Enrollment",
+      content: "Once you choose your plan, I handle all the paperwork and enrollment details personally. I get most approvals within 24 hours, with coverage starting as soon as next day.",
+      bulletPoints: [
+        "I get next-day approval when possible",
+        "I handle all your paperwork",
+        "My direct carrier relationships work for you",
+        "I provide ongoing personal support"
+      ]
+    }
+  ];
+
+  const trustPoints = [
+    "I'm personally licensed & bonded in all markets I serve",
+    "I only work with top-rated carriers",
+    "I provide ongoing personal support",
+    "Local expertise with national carrier access",
+    "Next-day approval available for qualified applicants"
+  ];
+
+  const faqs = [
+    {
+      question: "How long does your process take?",
+      answer: "Most clients get their perfect plan within 48 hours, with coverage starting next day when needed"
+    },
+    {
+      question: "Can you help if I already have insurance?",
+      answer: "Absolutely - I can review your current coverage and find better options during open enrollment or qualifying life events"
+    },
+    {
+      question: "Will you be available if I need help later?",
+      answer: "Yes - I provide ongoing personal support for all my clients throughout their coverage"
+    }
+  ];
+
   return (
-    <main className="container mx-auto px-4 py-10 md:py-12">
-      <header className="mb-6">
-        <h1 className="text-3xl md:text-4xl font-bold">How it works</h1>
-        <p className="text-ink-1/70 mt-2">Clarity → Confidence → Action. Real guidance, zero fluff.</p>
-      </header>
+    <>
+      <SEO
+        title="How I Help You Get Insurance Coverage FL MI NC | Licensed Broker Zach Bradford"
+        description="Licensed insurance broker Zach Bradford's proven 4-step process for Florida, Michigan & North Carolina residents. Free consultation, next-day approval available."
+        path="/our-process"
+        scripts={[
+          { innerHTML: localBusinessSchema('FL', {
+            streetAddress: '4200 W Cypress St',
+            addressLocality: 'Tampa',
+            addressRegion: 'FL',
+            postalCode: '33607'
+          }, '(689) 325-6570') },
+          { innerHTML: serviceSchema(['Health Insurance', 'Life Insurance', 'Insurance Consultation']) },
+          { innerHTML: breadcrumbSchema([
+            { name: 'Home', item: 'https://www.bradfordinformedguidance.com/' },
+            { name: 'Our Process', item: 'https://www.bradfordinformedguidance.com/our-process' }
+          ]) },
+          { innerHTML: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'FAQPage',
+            mainEntity: faqs.map(faq => ({
+              '@type': 'Question',
+              name: faq.question,
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: faq.answer
+              }
+            }))
+          }) }
+        ]}
+      />
 
-      <section className="grid md:grid-cols-3 gap-4">
-        <Step n={1} title="Rapid pre-check" desc="Tell us your basics, doctors, and priorities." time="5–10 minutes"/>
-        <Step n={2} title="Best-fit options" desc="We compare PPO networks and total cost—then shortlist." time="45–90 minutes same day"/>
-        <Step n={3} title="Enroll with a human" desc="We finalize together so nothing is missed." time="15–20 minutes"/>
-      </section>
+      <main className="min-h-screen bg-gradient-to-br from-slate-50 to-emerald-50">
+        {/* Hero Section */}
+        <section className="relative py-16 md:py-24">
+          <div className="container mx-auto px-4 max-w-4xl text-center">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 mb-6 leading-tight">
+              My Simple 4-Step Process to Get You Perfect Insurance Coverage
+            </h1>
+            <p className="text-xl md:text-2xl text-slate-700 mb-8 leading-relaxed max-w-3xl mx-auto">
+              Getting the right insurance shouldn't be complicated. As your licensed broker serving Florida, Michigan, and North Carolina, I use my proven 4-step process to make it simple, fast, and stress-free.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <a
+                href="https://calendly.com/bradfordinformedguidance"
+                className="inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-emerald-600 to-emerald-700 text-white font-semibold rounded-2xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Calendar className="w-6 h-6 mr-2" />
+                Schedule Free Consultation
+              </a>
+              <a
+                href="tel:(689) 325-6570"
+                className="inline-flex items-center justify-center px-8 py-4 bg-white text-emerald-700 font-semibold rounded-2xl border-2 border-emerald-200 hover:border-emerald-300 shadow-lg hover:shadow-xl transition-all duration-300"
+              >
+                Call (689) 325-6570
+              </a>
+            </div>
+          </div>
+        </section>
 
-      <section className="mt-8">
-        <h2 className="text-xl font-semibold mb-3">Quick fit check</h2>
-        <EstimatorWidget/>
-      </section>
+        {/* Process Steps */}
+        <section className="py-16">
+          <div className="container mx-auto px-4 max-w-6xl">
+            <div className="grid gap-8 md:gap-12">
+              {steps.map((step, index) => (
+                <ProcessStep key={index} {...step} />
+              ))}
+            </div>
+          </div>
+        </section>
 
-      <section className="mt-8 p-4 rounded-2xl border bg-white/80">
-        <h3 className="font-semibold">Eligibility & expectations</h3>
-        <ul className="mt-2 text-sm list-disc pl-5 space-y-1">
-          <li>Medically underwritten • Available year-round.</li>
-          <li>We try to keep your current doctors where possible.</li>
-          <li>If a PPO isn't a fit, we'll offer alternatives with clear pros/cons.</li>
-        </ul>
-        <details className="mt-2">
-          <summary className="text-sm font-medium">What if I have conditions?</summary>
-          <p className="text-sm text-ink-1/70 mt-1">We'll assess options honestly. If underwriting is tough, we pivot—no pressure.</p>
-        </details>
-        <div className="mt-4 flex gap-3">
-          <a href="/lead" className="btn-primary" data-gtm={`${BRAND.gtm.quote}_how`}>Start pre-check</a>
-          <a href={BRAND.phoneTel} className="btn-secondary" data-gtm={`${BRAND.gtm.call}_how`}>Call now</a>
-        </div>
-      </section>
-    </main>
+        {/* Trust Section */}
+        <section className="py-16 bg-gradient-to-r from-emerald-600 to-emerald-700">
+          <div className="container mx-auto px-4 max-w-6xl">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+                Why Florida, Michigan & North Carolina Families Choose Me as Their Broker
+              </h2>
+            </div>
+            
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {trustPoints.map((point, index) => (
+                <TrustPoint key={index}>{point}</TrustPoint>
+              ))}
+            </div>
+
+            <div className="text-center mt-12">
+              <div className="inline-flex items-center gap-8 bg-white/10 backdrop-blur-sm rounded-2xl p-6">
+                <div className="text-center">
+                  <div className="flex items-center justify-center mb-2">
+                    <Award className="w-8 h-8 text-emerald-200" />
+                  </div>
+                  <div className="text-2xl font-bold text-white">Licensed</div>
+                  <div className="text-emerald-200">& Bonded</div>
+                </div>
+                <div className="text-center">
+                  <div className="flex items-center justify-center mb-2">
+                    <Clock className="w-8 h-8 text-emerald-200" />
+                  </div>
+                  <div className="text-2xl font-bold text-white">8+ Years</div>
+                  <div className="text-emerald-200">Experience</div>
+                </div>
+                <div className="text-center">
+                  <div className="flex items-center justify-center mb-2">
+                    <Users className="w-8 h-8 text-emerald-200" />
+                  </div>
+                  <div className="text-2xl font-bold text-white">6+ Networks</div>
+                  <div className="text-emerald-200">Access</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* FAQ Section */}
+        <section className="py-16">
+          <div className="container mx-auto px-4 max-w-4xl">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6">
+                Common Questions About Working with Me
+              </h2>
+            </div>
+            
+            <div className="space-y-6">
+              {faqs.map((faq, index) => (
+                <FAQItem key={index} question={faq.question} answer={faq.answer} />
+              ))}
+            </div>
+
+            <div className="text-center mt-12">
+              <div className="bg-gradient-to-r from-emerald-600 to-emerald-700 rounded-2xl p-8 text-white">
+                <h3 className="text-2xl font-bold mb-4">Ready to Get Started?</h3>
+                <p className="text-emerald-100 mb-6 text-lg">
+                  Most clients get their perfect plan within 48 hours. Let's find yours.
+                </p>
+                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                  <a
+                    href="https://calendly.com/bradfordinformedguidance"
+                    className="inline-flex items-center justify-center px-8 py-4 bg-white text-emerald-700 font-semibold rounded-xl hover:bg-emerald-50 transition-colors duration-300"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Schedule Free Consultation
+                  </a>
+                  <a
+                    href="tel:(689) 325-6570"
+                    className="inline-flex items-center justify-center px-8 py-4 bg-emerald-500 text-white font-semibold rounded-xl hover:bg-emerald-400 transition-colors duration-300"
+                  >
+                    Call Now: (689) 325-6570
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </>
   );
 }
