@@ -67,56 +67,56 @@ const CARRIERS: Carrier[] = [
     logoSrc: "/logos/carriers/allstate.webp", 
     description: "Flexible health solutions with broad PPO access and member-first service.",
     rating: "A+ (Superior) AM Best Rated",
-    specialties: ["Health", "PPO", "Next-day approval"]
+    specialties: ["Health", "PPO", "Fast issue"]
   },
   {
     name: "UnitedHealthcare",
     logoSrc: "/logos/carriers/unitedhealthcare.webp",
     description: "Nationwide strength with extensive provider access and digital care innovation.",
     rating: "A+ (Superior) AM Best Rated", 
-    specialties: ["Health", "PPO", "Next-day approval"]
+    specialties: ["Health", "PPO", "Largest network"]
   },
   {
     name: "Mutual of Omaha",
     logoSrc: "/logos/carriers/mutualofomaha.webp",
     description: "Financially strong life and health products backed by a century of service.",
     rating: "A+ (Superior) AM Best Rated",
-    specialties: ["Life", "Supplemental", "Next-day approval"]
+    specialties: ["Life", "Supplemental", "Living benefits"]
   },
   {
     name: "Americo",
     logoSrc: "/logos/carriers/americo.webp",
     description: "Competitive life solutions with simplified underwriting options.",
     rating: "A- (Excellent) AM Best Rated",
-    specialties: ["Life", "Next-day approval"]
+    specialties: ["Life", "Annuities"]
   },
   {
     name: "SGIC",
     logoSrc: "/logos/carriers/sgic.webp", 
     description: "Modern health benefits with practical, everyday value.",
     rating: "B++ (Good) AM Best Rated",
-    specialties: ["Health", "Next-day approval"]
+    specialties: ["Health", "Regional focus"]
   },
   {
     name: "Aflac",
     logoSrc: "/logos/carriers/aflac.webp",
     description: "Supplemental benefits that pay you cash for covered events.",
     rating: "A+ (Superior) AM Best Rated",
-    specialties: ["Supplemental", "Next-day approval"]
+    specialties: ["Supplemental", "Cash payouts"]
   },
   {
     name: "Philadelphia American Life",
     logoSrc: "/logos/carriers/pal.webp",
     description: "Focused health offerings with member-centric support.",
     rating: "A- (Excellent) AM Best Rated",
-    specialties: ["Health", "Next-day approval"]
+    specialties: ["Health", "Cost-effective"]
   },
   {
     name: "Blue Cross Blue Shield",
     logoSrc: "/logos/carriers/bluecrossblueshield.png",
     description: "Community-rooted coverage with trusted local provider networks.",
     rating: "A (Excellent) AM Best Rated",
-    specialties: ["Health", "PPO", "Next-day approval"]
+    specialties: ["Health", "PPO", "Nationwide coverage"]
   }
 ];
 
@@ -214,12 +214,11 @@ export default function CarriersPage() {
           
           <div className="relative z-10">
             <div className="text-center mb-16">
-              <h2 className="text-5xl font-bold text-gray-900 mb-8 leading-tight">
-                Find Your Doctor in Our 
-                <span className="bg-gradient-to-r from-brand-jade-600 to-brand-sky-600 bg-clip-text text-transparent"> Premium PPO Networks in FL, MI, NC</span>
+              <h2 className="text-4xl md:text-5xl font-bold mb-6 text-slate-900">
+                Find Your Doctor in Our Premium PPO Networks
               </h2>
-              <p className="text-xl text-gray-700 max-w-4xl mx-auto font-medium leading-relaxed">
-                Verify your healthcare providers are in-network before choosing your plan with our <span className="text-brand-jade-600 font-bold">direct provider lookup tools</span>. Serving Florida, Michigan, and North Carolina with comprehensive PPO network access.
+              <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
+                Access over 1.3 million healthcare providers nationwide through our trusted PPO network partnerships in Florida, Michigan, and North Carolina.
               </p>
             </div>
             
@@ -240,12 +239,11 @@ export default function CarriersPage() {
           
           <div className="relative z-10">
             <div className="text-center mb-16">
-              <h2 className="text-5xl font-bold text-gray-900 mb-8 leading-tight">
-                Our 
-                <span className="bg-gradient-to-r from-brand-sky-600 to-brand-jade-600 bg-clip-text text-transparent"> A+ Rated Insurance Carriers</span> for FL, MI, NC
+              <h2 className="text-4xl md:text-5xl font-bold mb-6 text-slate-900">
+                Our Trusted Insurance Carriers
               </h2>
-              <p className="text-xl text-gray-700 max-w-4xl mx-auto font-medium leading-relaxed">
-                <span className="text-brand-success-500 font-bold">A+ rated carriers only</span> providing comprehensive health and life coverage solutions across Florida, Michigan, and North Carolina with <span className="text-brand-jade-600 font-bold">next-day approval available</span>
+              <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
+                We partner with A+ rated insurance carriers to provide you with comprehensive coverage options and competitive rates across health, life, and supplemental insurance.
               </p>
             </div>
             
@@ -263,12 +261,9 @@ export default function CarriersPage() {
           <div className="absolute inset-0 bg-gray-50" />
           
           <div className="relative z-10">
-            <h2 className="text-3xl font-bold text-gray-900 mb-6">
-              Ready to Find Your 
-              <span className="bg-gradient-to-r from-brand-jade-600 to-brand-sky-600 bg-clip-text text-transparent"> Perfect Coverage?</span>
-            </h2>
-            <p className="text-gray-700 mb-10 max-w-3xl mx-auto text-lg font-medium leading-relaxed">
-              Let Bradford guide you through our network of trusted carriers and help you find the right coverage for your family with <span className="text-brand-jade-600 font-bold">personalized expert guidance</span>.
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-slate-900">Ready to Find Your Perfect Coverage?</h2>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto mb-8">
+              Our licensed brokers are standing by to help you compare options and find the right insurance plan for your needs. Get personalized recommendations from carriers serving Florida, Michigan, and North Carolina.
             </p>
             
             <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
@@ -304,9 +299,9 @@ export default function CarriersPage() {
               </Button>
             </div>
 
-            <div className="mt-10 pt-8 border-t border-white/20 text-sm text-gray-600">
-              Licensed in FL, MI, NC - Expanding Nationwide | Prefer a human? <a className="underline hover:text-brand-jade-600 transition-colors font-semibold" href={BRAND.phoneTel} data-gtm={`${BRAND.gtm.call}_carriers`}>Call {BRAND.phoneHuman}</a>.
-            </div>
+            <p className="text-sm text-slate-500 mt-8">
+              Licensed and bonded in FL, MI, and NC. Plans to expand nationwide coming soon.
+            </p>
           </div>
         </section>
       </main>

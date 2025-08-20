@@ -14,12 +14,12 @@ interface CarrierCardProps {
 
 export default function CarrierCard({ carrier }: CarrierCardProps) {
   return (
-    <div className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md p-6 transition-all duration-500 hover:shadow-luxury hover:border-brand-sky-500/30 hover:bg-white/8 hover:scale-[1.02] hover:-translate-y-1">
+    <div className="group relative overflow-hidden rounded-2xl border border-slate-200 bg-white/90 backdrop-blur-md p-6 transition-all duration-500 hover:shadow-xl hover:border-slate-300 hover:bg-white hover:scale-[1.02] hover:-translate-y-1">
       {/* Premium glass background with gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+      <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
       
       {/* Premium glow effect */}
-      <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-brand-sky-500/20 to-brand-jade-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl" />
+      <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-slate-100/50 to-slate-50/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl" />
       
       <div className="relative z-10">
         {/* Logo and Rating Row */}
@@ -47,26 +47,28 @@ export default function CarrierCard({ carrier }: CarrierCardProps) {
         </div>
 
         {/* Carrier Name */}
-        <h3 className="text-2xl font-bold text-gray-900 mb-4 group-hover:text-brand-sky-600 transition-colors duration-300">{carrier.name}</h3>
+        <h3 className="text-2xl font-bold text-slate-900 mb-4 group-hover:text-slate-700 transition-colors duration-300">{carrier.name}</h3>
         
         {/* Description */}
-        <p className="text-base text-gray-700 mb-8 leading-relaxed font-medium">{carrier.description}</p>
+        <p className="text-base text-slate-700 mb-8 leading-relaxed font-medium">{carrier.description}</p>
 
         {/* Specialties */}
         <div className="flex flex-wrap gap-2">
-          {carrier.specialties.map((specialty, index) => (
-            <span 
-              key={index}
-              className={`inline-flex items-center rounded-lg px-3 py-2 text-sm font-semibold border backdrop-blur-sm transition-all duration-300 hover:scale-105 ${
-                specialty === 'Next-day approval' 
-                  ? 'bg-gradient-to-r from-orange-500/15 to-orange-600/15 text-orange-600 border-orange-500/30 animate-pulse' 
-                  : 'bg-gradient-to-r from-brand-sky-500/15 to-brand-sky-600/15 text-brand-sky-600 border-brand-sky-500/30'
-              }`}
-            >
-              {specialty === 'Next-day approval' && '⚡ '}
-              {specialty}
-            </span>
-          ))}
+          {carrier.specialties.map((specialty, index) => {
+            const isServiceType = ['Health', 'PPO', 'Life', 'Supplemental'].includes(specialty);
+            return (
+              <span 
+                key={index}
+                className={`inline-flex items-center rounded-lg px-3 py-2 text-sm font-semibold border backdrop-blur-sm transition-all duration-300 hover:scale-105 ${
+                  isServiceType
+                    ? 'bg-slate-100 text-slate-700 border-slate-300' 
+                    : 'bg-slate-50 text-slate-600 border-slate-200'
+                }`}
+              >
+                {specialty}
+              </span>
+            );
+          })}
         </div>
       </div>
 
