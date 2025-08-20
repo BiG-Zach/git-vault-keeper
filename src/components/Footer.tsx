@@ -59,8 +59,8 @@ export default function Footer() {
               <Link to="/carriers" className="block text-slate-300 hover:text-white transition-colors duration-200 text-sm">
                 Carriers
               </Link>
-              <Link to="/how-it-works" className="block text-slate-300 hover:text-white transition-colors duration-200 text-sm">
-                How it Works
+              <Link to="/our-process" className="block text-slate-300 hover:text-white transition-colors duration-200 text-sm">
+                Our Process
               </Link>
               <Link to="/contact" className="block text-slate-300 hover:text-white transition-colors duration-200 text-sm">
                 Contact
