@@ -89,20 +89,6 @@ const LuxuryHero = () => {
               Medically underwritten options with PPO networks. Expert guidance from licensed professionals who understand your unique needs.
             </motion.p>
 
-            <motion.div
-              initial={{ opacity: 0, y: prefersReducedMotion ? 0 : 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
-              className="flex flex-col sm:flex-row gap-4 mb-8"
-            >
-              <a
-                href={BRAND.phoneTel}
-                className="inline-flex items-center justify-center px-8 py-4 bg-white/10 hover:bg-white/20 text-white font-semibold rounded-xl border border-white/30 backdrop-blur-md transition-all duration-300"
-                data-gtm={`${BRAND.gtm.call}_luxury_hero`}
-              >
-                {BRAND.phoneHuman}
-              </a>
-            </motion.div>
 
             {/* Trust indicators */}
             <motion.div
