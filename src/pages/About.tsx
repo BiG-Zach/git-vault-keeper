@@ -596,49 +596,124 @@ export default function AboutPage() {
 
 
 
-      {/* WHY FAMILIES CHOOSE BRADFORD */}
-      <section className="py-20 bg-surface-base">
-        <div className="container mx-auto px-5 max-w-5xl">
+      {/* WHY FAMILIES CHOOSE BRADFORD - LUXURY WORLD CLASS */}
+      <section className="relative py-24 md:py-32 overflow-hidden bg-[hsl(220,26%,14%)]">
+        {/* Premium Dark Background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-[hsl(220,26%,14%)] via-[hsl(220,20%,10%)] to-[hsl(220,26%,14%)]"></div>
+        
+        {/* Ambient Light Effects */}
+        <div className="absolute inset-0">
+          <div className="absolute top-20 left-1/4 w-96 h-96 bg-[hsl(157,72%,43%)]/15 rounded-full blur-3xl opacity-60"></div>
+          <div className="absolute bottom-20 right-1/4 w-80 h-80 bg-[hsl(224,100%,32%)]/15 rounded-full blur-3xl opacity-40"></div>
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-gradient-to-r from-[hsl(157,72%,43%)]/5 via-transparent to-[hsl(224,100%,32%)]/5 rounded-full blur-3xl"></div>
+        </div>
+        
+        {/* Geometric Accents */}
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute top-0 right-0 w-96 h-96 border border-white/10 rotate-12 translate-x-48 -translate-y-48"></div>
+          <div className="absolute bottom-0 left-0 w-80 h-80 border border-white/5 rotate-45 -translate-x-40 translate-y-40"></div>
+        </div>
+        
+        <div className="relative container mx-auto px-6 max-w-6xl z-10">
           <Reveal>
-            <div className="text-center mb-12">
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent leading-tight">
-                Why Families Choose Bradford
+            {/* Luxury Header */}
+            <div className="text-center mb-16">
+              <div className="inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-[hsl(157,72%,43%)]/20 to-[hsl(224,100%,32%)]/20 rounded-full border border-white/20 mb-8 backdrop-blur-sm">
+                <div className="w-2 h-2 bg-[hsl(157,72%,43%)] rounded-full animate-pulse"></div>
+                <span className="text-sm font-semibold text-white/90">Client Experience</span>
+              </div>
+              
+              <h2 className="font-luxury-serif text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+                <span className="bg-gradient-to-r from-[hsl(157,72%,43%)] via-[hsl(157,72%,53%)] to-[hsl(224,100%,32%)] bg-clip-text text-transparent">
+                  Why Families Choose
+                </span>
+                <br />
+                <span className="text-white font-luxury-serif">Bradford</span>
               </h2>
-              <p className="text-xl md:text-2xl font-medium text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-                Personal service with professional expertise
+              <p className="text-xl md:text-2xl text-white/80 max-w-3xl mx-auto leading-relaxed font-light">
+                Personal service with <span className="text-white font-medium">professional expertise</span>
               </p>
             </div>
           </Reveal>
           
           <Reveal delay={0.2}>
+            {/* Premium Cards Grid */}
             <div className="grid md:grid-cols-2 gap-8">
-              <div className="p-8 bg-white rounded-lg border border-surface-glassLine" style={{ boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)' }}>
-                <h3 className="text-[1.25rem] font-[600] mb-4 text-brand-jade-500">Deep Community Roots</h3>
-                <p className="text-[1rem] text-slate-700 leading-[1.7]">
-                  Born and raised in the communities I serve. I understand the unique challenges families face in Florida, Michigan, and North Carolina because I live them too.
-                </p>
-              </div>
+              <Magnetic strength={8}>
+                <div className="group p-10 bg-white/5 backdrop-blur-xl rounded-3xl border border-white/10 hover:bg-white/10 hover:border-white/15 transition-all duration-500 shadow-[0_25px_50px_-12px_rgba(0,0,0,0.25)] relative overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-[hsl(157,72%,43%)]/5 rounded-3xl opacity-60"></div>
+                  <div className="relative z-10">
+                    <div className="flex items-start gap-6">
+                      <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[hsl(157,72%,43%)] to-[hsl(157,72%,38%)] flex items-center justify-center shadow-lg shrink-0">
+                        <Users className="w-7 h-7 text-white" />
+                      </div>
+                      <div className="flex-1">
+                        <h3 className="text-xl font-bold text-[hsl(157,72%,53%)] mb-4 group-hover:text-white transition-colors duration-300">Deep Community Roots</h3>
+                        <p className="text-white/80 leading-relaxed">
+                          Born and raised in the communities I serve. I understand the unique challenges families face in Florida, Michigan, and North Carolina because I live them too.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </Magnetic>
               
-              <div className="p-8 bg-white rounded-lg border border-surface-glassLine" style={{ boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)' }}>
-                <h3 className="text-[1.25rem] font-[600] mb-4 text-brand-sky-500">Family-First Approach</h3>
-                <p className="text-[1rem] text-slate-700 leading-[1.7]">
-                  Every recommendation I make, I consider: "Would I recommend this to my own family?" Your protection is personal to me.
-                </p>
-              </div>
+              <Magnetic strength={8}>
+                <div className="group p-10 bg-white/5 backdrop-blur-xl rounded-3xl border border-white/10 hover:bg-white/10 hover:border-white/15 transition-all duration-500 shadow-[0_25px_50px_-12px_rgba(0,0,0,0.25)] relative overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-[hsl(224,100%,32%)]/5 rounded-3xl opacity-60"></div>
+                  <div className="relative z-10">
+                    <div className="flex items-start gap-6">
+                      <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[hsl(224,100%,32%)] to-[hsl(215,88%,39%)] flex items-center justify-center shadow-lg shrink-0">
+                        <Shield className="w-7 h-7 text-white" />
+                      </div>
+                      <div className="flex-1">
+                        <h3 className="text-xl font-bold text-[hsl(224,100%,50%)] mb-4 group-hover:text-white transition-colors duration-300">Family-First Approach</h3>
+                        <p className="text-white/80 leading-relaxed">
+                          Every recommendation I make, I consider: "Would I recommend this to my own family?" Your protection is personal to me.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </Magnetic>
               
-              <div className="p-8 bg-white rounded-lg border border-surface-glassLine" style={{ boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)' }}>
-                <h3 className="text-[1.25rem] font-[600] mb-4 text-brand-jade-500">Local Commitment</h3>
-                <p className="text-[1rem] text-slate-700 leading-[1.7]">
-                  While insurance companies come and go, I'm here for the long haul. Your agent today, your advocate for years to come.
-                </p>
-              </div>
+              <Magnetic strength={8}>
+                <div className="group p-10 bg-white/5 backdrop-blur-xl rounded-3xl border border-white/10 hover:bg-white/10 hover:border-white/15 transition-all duration-500 shadow-[0_25px_50px_-12px_rgba(0,0,0,0.25)] relative overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-[hsl(157,72%,43%)]/5 rounded-3xl opacity-60"></div>
+                  <div className="relative z-10">
+                    <div className="flex items-start gap-6">
+                      <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[hsl(157,72%,43%)] to-[hsl(224,100%,32%)] flex items-center justify-center shadow-lg shrink-0">
+                        <Award className="w-7 h-7 text-white" />
+                      </div>
+                      <div className="flex-1">
+                        <h3 className="text-xl font-bold text-[hsl(157,72%,53%)] mb-4 group-hover:text-white transition-colors duration-300">Local Commitment</h3>
+                        <p className="text-white/80 leading-relaxed">
+                          While insurance companies come and go, I'm here for the long haul. Your agent today, your advocate for years to come.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </Magnetic>
               
-              <div className="p-8 bg-white rounded-lg border border-surface-glassLine" style={{ boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)' }}>
-                <h3 className="text-[1.25rem] font-[600] mb-4 text-brand-sky-500">Always Available</h3>
-                <p className="text-[1rem] text-slate-700 leading-[1.7]">
-                  Real person, real phone number, real responses. When you call, you get me—not a call center or voicemail system.
-                </p>
-              </div>
+              <Magnetic strength={8}>
+                <div className="group p-10 bg-white/5 backdrop-blur-xl rounded-3xl border border-white/10 hover:bg-white/10 hover:border-white/15 transition-all duration-500 shadow-[0_25px_50px_-12px_rgba(0,0,0,0.25)] relative overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-[hsl(224,100%,32%)]/5 rounded-3xl opacity-60"></div>
+                  <div className="relative z-10">
+                    <div className="flex items-start gap-6">
+                      <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[hsl(224,100%,32%)] to-[hsl(157,72%,43%)] flex items-center justify-center shadow-lg shrink-0">
+                        <Phone className="w-7 h-7 text-white" />
+                      </div>
+                      <div className="flex-1">
+                        <h3 className="text-xl font-bold text-[hsl(224,100%,50%)] mb-4 group-hover:text-white transition-colors duration-300">Always Available</h3>
+                        <p className="text-white/80 leading-relaxed">
+                          Real person, real phone number, real responses. When you call, you get me—not a call center or voicemail system.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </Magnetic>
             </div>
           </Reveal>
         </div>
