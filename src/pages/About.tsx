@@ -86,33 +86,85 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* PERSONAL STORY SECTION - LUXURY UPGRADE */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-5 max-w-5xl">
+      {/* PERSONAL STORY SECTION - LUXURY WORLD CLASS */}
+      <section className="relative py-24 md:py-32 overflow-hidden bg-[hsl(220,26%,14%)]">
+        {/* Premium Dark Background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-[hsl(220,26%,14%)] via-[hsl(220,20%,10%)] to-[hsl(220,26%,14%)]"></div>
+        
+        {/* Ambient Light Effects */}
+        <div className="absolute inset-0">
+          <div className="absolute top-20 left-1/4 w-96 h-96 bg-[hsl(157,72%,43%)]/12 rounded-full blur-3xl opacity-50"></div>
+          <div className="absolute bottom-20 right-1/4 w-80 h-80 bg-[hsl(224,100%,32%)]/12 rounded-full blur-3xl opacity-40"></div>
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-gradient-to-r from-[hsl(157,72%,43%)]/5 via-transparent to-[hsl(224,100%,32%)]/5 rounded-full blur-3xl"></div>
+        </div>
+        
+        {/* Geometric Accents */}
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute top-0 right-0 w-80 h-80 border border-white/10 rotate-12 translate-x-40 -translate-y-40"></div>
+          <div className="absolute bottom-0 left-0 w-64 h-64 border border-white/5 rotate-45 -translate-x-32 translate-y-32"></div>
+        </div>
+        
+        <div className="relative container mx-auto px-6 max-w-5xl z-10">
           <Reveal>
-            <div className="text-center mb-12">
-              <h2 className="text-[2.25rem] md:text-[2.25rem] font-[700] mb-4 text-ink-900">Why I Became Your Insurance Guide</h2>
-              <p className="text-[1.25rem] font-[400] text-slate-600">From confused consumer to trusted expert</p>
+            <div className="text-center mb-16">
+              <div className="inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-[hsl(157,72%,43%)]/20 to-[hsl(224,100%,32%)]/20 rounded-full border border-white/20 mb-8 backdrop-blur-sm">
+                <div className="w-2 h-2 bg-[hsl(157,72%,43%)] rounded-full animate-pulse"></div>
+                <span className="text-sm font-semibold text-white/90">Personal Journey</span>
+              </div>
+              
+              <h2 className="font-luxury-serif text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+                <span className="bg-gradient-to-r from-[hsl(157,72%,43%)] via-[hsl(157,72%,53%)] to-[hsl(224,100%,32%)] bg-clip-text text-transparent">
+                  Why I Became Your<br />Insurance Guide
+                </span>
+              </h2>
+              <p className="text-xl font-luxury-sans text-white/80 leading-relaxed max-w-2xl mx-auto">
+                From confused consumer to trusted expert
+              </p>
             </div>
           </Reveal>
           
           <Reveal delay={0.2}>
-            <div className="max-w-none text-center">
-              <p className="text-[1.125rem] leading-[1.7] mb-6 text-slate-700">
-                Like most people, I once thought insurance was just another monthly bill—confusing, expensive, and something to avoid thinking about. That changed when a friend's family faced a medical crisis without adequate coverage.
-              </p>
-              <p className="text-[1.125rem] leading-[1.7] mb-6 text-slate-700">
-                Watching them struggle with mountains of debt that proper insurance could have prevented was my wake-up call. I realized that insurance isn't about policies and premiums—it's about protecting the people and dreams that matter most.
-              </p>
-              <p className="text-[1.125rem] leading-[1.7] mb-8 text-slate-700">
-                That experience led me to become the insurance advocate I wish every family had: someone who explains options clearly, does the math honestly, and always puts your family's needs first. Because your peace of mind is worth more than any commission.
-              </p>
-              
-              <div className="bg-gradient-to-r from-brand-jade-500/10 to-brand-sky-500/10 p-8 rounded-lg border border-brand-jade-500/20">
-                <h3 className="text-[1.75rem] font-[700] mb-4 text-brand-jade-500">My Family Protection Philosophy</h3>
-                <p className="text-[1.125rem] italic text-slate-700">
-                  "Every family deserves to sleep soundly knowing they're protected. My job is to make that protection affordable, understandable, and absolutely reliable."
+            <div className="max-w-4xl mx-auto text-center space-y-8">
+              <div className="space-y-6">
+                <p className="text-lg md:text-xl leading-relaxed text-white/90 font-luxury-sans">
+                  Like most people, I once thought insurance was just another monthly bill—confusing, expensive, and something to avoid thinking about. That changed when a friend's family faced a medical crisis without adequate coverage.
                 </p>
+                <p className="text-lg md:text-xl leading-relaxed text-white/90 font-luxury-sans">
+                  Watching them struggle with mountains of debt that proper insurance could have prevented was my wake-up call. I realized that insurance isn't about policies and premiums—it's about protecting the people and dreams that matter most.
+                </p>
+                <p className="text-lg md:text-xl leading-relaxed text-white/90 font-luxury-sans">
+                  That experience led me to become the insurance advocate I wish every family had: someone who explains options clearly, does the math honestly, and always puts your family's needs first. Because your peace of mind is worth more than any commission.
+                </p>
+              </div>
+              
+              {/* Luxury Philosophy Card */}
+              <div className="group relative mt-12">
+                {/* Glass morphism background */}
+                <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-white/5 to-transparent rounded-2xl backdrop-blur-xl border border-white/20"></div>
+                
+                {/* Premium glow effect */}
+                <div className="absolute inset-0 bg-gradient-to-r from-[hsl(157,72%,43%)]/20 via-transparent to-[hsl(224,100%,32%)]/20 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl"></div>
+                
+                {/* Card content */}
+                <div className="relative p-8 md:p-12 rounded-2xl">
+                  <div className="flex items-center justify-center mb-6">
+                    <div className="w-16 h-1 bg-gradient-to-r from-[hsl(157,72%,43%)] to-[hsl(224,100%,32%)] rounded-full"></div>
+                  </div>
+                  
+                  <h3 className="font-luxury-serif text-2xl md:text-3xl font-bold mb-6 bg-gradient-to-r from-[hsl(157,72%,43%)] to-[hsl(224,100%,32%)] bg-clip-text text-transparent">
+                    My Family Protection Philosophy
+                  </h3>
+                  
+                  <blockquote className="text-xl md:text-2xl font-luxury-serif italic text-white/95 leading-relaxed">
+                    "Every family deserves to sleep soundly knowing they're protected. My job is to make that protection affordable, understandable, and absolutely reliable."
+                  </blockquote>
+                  
+                  <div className="flex items-center justify-center mt-8">
+                    <div className="w-12 h-12 bg-gradient-to-br from-[hsl(157,72%,43%)] to-[hsl(224,100%,32%)] rounded-full flex items-center justify-center">
+                      <div className="w-6 h-6 bg-white/20 rounded-full"></div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </Reveal>
