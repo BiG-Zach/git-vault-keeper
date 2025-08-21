@@ -210,14 +210,14 @@ export default function CarriersPage() {
         {/* PPO Networks Section */}
         <section className="mb-20 relative">
           {/* Section background */}
-          <div className="absolute inset-0 bg-gradient-to-r from-white/50 via-brand-jade-500/5 to-white/50 rounded-3xl" />
+          <div className="absolute inset-0 bg-gradient-to-r from-white/50 via-big-green-500/5 to-white/50 rounded-3xl" />
           
           <div className="relative z-10">
             <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-5xl font-bold mb-6 text-slate-900">
+              <h2 className="text-4xl md:text-5xl font-bold mb-6 text-big-navy-500">
                 Find Your Doctor in Our Premium PPO Networks
               </h2>
-              <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
+              <p className="text-xl text-big-neutral-800 max-w-3xl mx-auto leading-relaxed">
                 Access over 1.3 million healthcare providers nationwide through our trusted PPO network partnerships in Florida, Michigan, and North Carolina.
               </p>
             </div>
@@ -235,14 +235,14 @@ export default function CarriersPage() {
         {/* Insurance Carriers Section */}
         <section className="mb-20 relative">
           {/* Section background */}
-          <div className="absolute inset-0 bg-gradient-to-r from-white/50 via-brand-sky-500/5 to-white/50 rounded-3xl" />
+          <div className="absolute inset-0 bg-gradient-to-r from-white/50 via-big-navy-500/5 to-white/50 rounded-3xl" />
           
           <div className="relative z-10">
             <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-5xl font-bold mb-6 text-slate-900">
+              <h2 className="text-4xl md:text-5xl font-bold mb-6 text-big-navy-500">
                 Our Trusted Insurance Carriers
               </h2>
-              <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
+              <p className="text-xl text-big-neutral-800 max-w-3xl mx-auto leading-relaxed">
                 We partner with A+ rated insurance carriers to provide you with comprehensive coverage options and competitive rates across health, life, and supplemental insurance.
               </p>
             </div>
@@ -258,11 +258,11 @@ export default function CarriersPage() {
         {/* Footer CTA Section */}
         <section className="relative rounded-3xl border border-gray-200 bg-white p-12 text-center shadow-sm">
           {/* Clean solid background */}
-          <div className="absolute inset-0 bg-gray-50" />
+          <div className="absolute inset-0 bg-big-neutral-50" />
           
           <div className="relative z-10">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-slate-900">Ready to Find Your Perfect Coverage?</h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto mb-8">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-big-navy-500">Ready to Find Your Perfect Coverage?</h2>
+            <p className="text-lg text-big-neutral-800 max-w-2xl mx-auto mb-8">
               Our licensed brokers are standing by to help you compare options and find the right insurance plan for your needs. Get personalized recommendations from carriers serving Florida, Michigan, and North Carolina.
             </p>
             
@@ -270,7 +270,7 @@ export default function CarriersPage() {
               <Button
                 asChild
                 size="lg"
-                className="bg-brand-jade-500 text-white hover:bg-brand-jade-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-jade-500 focus-visible:ring-offset-2 disabled:opacity-60 disabled:pointer-events-none bg-[#12bfae] hover:bg-[#0ea99d] px-10 py-5 text-lg"
+                className="bg-big-navy-500 text-white hover:bg-big-orange-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-big-navy-500 focus-visible:ring-offset-2 disabled:opacity-60 disabled:pointer-events-none px-10 py-5 text-lg transition-all duration-300"
               >
                 <a
                   href={BRAND.phoneTel}
@@ -286,7 +286,7 @@ export default function CarriersPage() {
                 asChild
                 variant="outline"
                 size="lg"
-                className="border-2 border-brand-sky-500 bg-white text-brand-sky-600 hover:bg-brand-sky-50 hover:border-brand-sky-600 px-10 py-5 text-lg"
+                className="border-2 border-big-orange-500 bg-white text-big-orange-500 hover:bg-big-orange-50 hover:border-big-orange-600 px-10 py-5 text-lg transition-all duration-300"
               >
                 <a
                   href="/quote"
