@@ -26,6 +26,13 @@ const LifeInsuranceYoungAdultsGuide = lazy(() => import('../pages/blog/LifeInsur
 const HowMuchLifeInsuranceCalculator = lazy(() => import('../pages/blog/HowMuchLifeInsuranceCalculator'));
 const LifeInsurancePreExistingConditions = lazy(() => import('../pages/blog/LifeInsurancePreExistingConditions'));
 const PPOHMOEPOPlanComparison = lazy(() => import('../pages/blog/PPOHMOEPOPlanComparison'));
+const HealthInsuranceDeductiblesGuide = lazy(() => import('../pages/blog/HealthInsuranceDeductiblesGuide'));
+const HealthInsuranceOpenEnrollmentChecklist = lazy(() => import('../pages/blog/HealthInsuranceOpenEnrollmentChecklist'));
+const TampaBayInsuranceBrokerGuide = lazy(() => import('../pages/blog/TampaBayInsuranceBrokerGuide'));
+const MichiganInsuranceLaws = lazy(() => import('../pages/blog/MichiganInsuranceLaws'));
+const NorthCarolinaBestHealthInsurance = lazy(() => import('../pages/blog/NorthCarolinaBestHealthInsurance'));
+const FloridaHurricaneInsuranceProtection = lazy(() => import('../pages/blog/FloridaHurricaneInsuranceProtection'));
+const AetnaCignaUnitedComparison = lazy(() => import('../pages/blog/AetnaCignaUnitedComparison'));
 
 export const routes = [
   {
@@ -54,6 +61,13 @@ export const routes = [
       { path: 'blog/how-much-life-insurance-calculator', element: <HowMuchLifeInsuranceCalculator /> },
       { path: 'blog/life-insurance-pre-existing-conditions', element: <LifeInsurancePreExistingConditions /> },
       { path: 'blog/ppo-hmo-epo-plan-comparison', element: <PPOHMOEPOPlanComparison /> },
+      { path: 'blog/health-insurance-deductibles-guide', element: <HealthInsuranceDeductiblesGuide /> },
+      { path: 'blog/health-insurance-open-enrollment-checklist', element: <HealthInsuranceOpenEnrollmentChecklist /> },
+      { path: 'blog/tampa-bay-insurance-broker-guide', element: <TampaBayInsuranceBrokerGuide /> },
+      { path: 'blog/michigan-insurance-laws', element: <MichiganInsuranceLaws /> },
+      { path: 'blog/north-carolina-best-health-insurance', element: <NorthCarolinaBestHealthInsurance /> },
+      { path: 'blog/florida-hurricane-insurance-protection', element: <FloridaHurricaneInsuranceProtection /> },
+      { path: 'blog/aetna-cigna-united-comparison', element: <AetnaCignaUnitedComparison /> },
     ],
   },
 ];
