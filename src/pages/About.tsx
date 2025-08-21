@@ -119,167 +119,233 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* TRUST BADGES & CREDENTIALS */}
-      <section className="py-20 bg-surface-base">
-        <div className="container mx-auto px-5 max-w-6xl">
+      {/* TRUST BADGES & CREDENTIALS - LUXURY WORLD CLASS */}
+      <section className="relative py-24 md:py-32 overflow-hidden bg-[hsl(220,26%,14%)]">
+        {/* Premium Dark Background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-[hsl(220,26%,14%)] via-[hsl(220,20%,10%)] to-[hsl(220,26%,14%)]"></div>
+        
+        {/* Ambient Light Effects */}
+        <div className="absolute inset-0">
+          <div className="absolute top-20 left-1/4 w-96 h-96 bg-[hsl(157,72%,43%)]/15 rounded-full blur-3xl opacity-60"></div>
+          <div className="absolute bottom-20 right-1/4 w-80 h-80 bg-[hsl(224,100%,32%)]/15 rounded-full blur-3xl opacity-40"></div>
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-gradient-to-r from-[hsl(157,72%,43%)]/5 via-transparent to-[hsl(224,100%,32%)]/5 rounded-full blur-3xl"></div>
+        </div>
+        
+        {/* Geometric Accents */}
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute top-0 right-0 w-96 h-96 border border-white/10 rotate-12 translate-x-48 -translate-y-48"></div>
+          <div className="absolute bottom-0 left-0 w-80 h-80 border border-white/5 rotate-45 -translate-x-40 translate-y-40"></div>
+        </div>
+        
+        <div className="relative container mx-auto px-6 max-w-7xl z-10">
           <Reveal>
-            <div className="text-center mb-12">
-              <h2 className="text-[2.25rem] md:text-[2.25rem] font-[700] mb-4 text-ink-900">Professional Credentials & Trust Signals</h2>
-              <p className="text-[1.25rem] font-[400] text-slate-600">Verified expertise you can rely on</p>
+            {/* Luxury Header */}
+            <div className="text-center mb-16">
+              <div className="inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-[hsl(157,72%,43%)]/20 to-[hsl(224,100%,32%)]/20 rounded-full border border-white/20 mb-8 backdrop-blur-sm">
+                <div className="w-2 h-2 bg-[hsl(157,72%,43%)] rounded-full animate-pulse"></div>
+                <span className="text-sm font-semibold text-white/90">Professional Excellence</span>
+              </div>
+              
+              <h2 className="font-luxury-serif text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+                <span className="bg-gradient-to-r from-[hsl(157,72%,43%)] via-[hsl(157,72%,53%)] to-[hsl(224,100%,32%)] bg-clip-text text-transparent">
+                  Professional Credentials
+                </span>
+                <br />
+                <span className="text-white font-luxury-serif">& Trust Signals</span>
+              </h2>
+              <p className="text-xl md:text-2xl text-white/80 max-w-3xl mx-auto leading-relaxed font-light">
+                Verified expertise and <span className="text-white font-medium">proven track record</span> you can rely on
+              </p>
             </div>
           </Reveal>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+          {/* Premium Credentials Grid */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
             <Reveal delay={0.1}>
-              <div className="p-8 bg-white rounded-lg border border-surface-glassLine hover:shadow-luxury transition-all duration-300"
-                   style={{ boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)' }}>
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-full bg-gradient-to-r from-brand-jade-500 to-brand-sky-500 flex items-center justify-center flex-shrink-0">
-                    <CheckCircle className="w-6 h-6 text-white" />
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="text-[1.125rem] font-[700] text-brand-jade-500 mb-1">Licensed Florida Broker</h3>
-                    <div className="text-[0.875rem] font-[600] text-slate-500 mb-2">W347851</div>
-                    <p className="text-[0.875rem] text-slate-600 leading-relaxed">State verified insurance professional</p>
+              <Magnetic strength={8}>
+                <div className="group p-10 bg-white/5 backdrop-blur-xl rounded-3xl border border-white/10 hover:bg-white/10 hover:border-white/15 transition-all duration-500 shadow-[0_25px_50px_-12px_rgba(0,0,0,0.25)] relative overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-[hsl(157,72%,43%)]/5 rounded-3xl opacity-60"></div>
+                  <div className="relative z-10">
+                    <div className="flex items-start gap-6">
+                      <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[hsl(157,72%,43%)] to-[hsl(157,72%,38%)] flex items-center justify-center shadow-lg shrink-0">
+                        <CheckCircle className="w-8 h-8 text-white" />
+                      </div>
+                      <div className="flex-1">
+                        <h3 className="text-xl font-bold text-[hsl(157,72%,53%)] mb-2">Licensed Florida Broker</h3>
+                        <div className="text-sm font-semibold text-white/60 mb-3">W347851</div>
+                        <p className="text-white/80 leading-relaxed">State verified insurance professional</p>
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
+              </Magnetic>
             </Reveal>
             
             <Reveal delay={0.2}>
-              <div className="p-8 bg-white rounded-lg border border-surface-glassLine hover:shadow-luxury transition-all duration-300"
-                   style={{ boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)' }}>
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-full bg-gradient-to-r from-brand-jade-500 to-brand-sky-500 flex items-center justify-center flex-shrink-0">
-                    <Award className="w-6 h-6 text-white" />
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="text-[1.125rem] font-[700] text-brand-sky-500 mb-1">8+ Years Experience</h3>
-                    <div className="text-[0.875rem] font-[600] text-slate-500 mb-2">Since 2016</div>
-                    <p className="text-[0.875rem] text-slate-600 leading-relaxed">Proven track record of excellence</p>
+              <Magnetic strength={8}>
+                <div className="group p-10 bg-white/5 backdrop-blur-xl rounded-3xl border border-white/10 hover:bg-white/10 hover:border-white/15 transition-all duration-500 shadow-[0_25px_50px_-12px_rgba(0,0,0,0.25)] relative overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-[hsl(224,100%,32%)]/5 rounded-3xl opacity-60"></div>
+                  <div className="relative z-10">
+                    <div className="flex items-start gap-6">
+                      <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[hsl(224,100%,32%)] to-[hsl(215,88%,39%)] flex items-center justify-center shadow-lg shrink-0">
+                        <Award className="w-8 h-8 text-white" />
+                      </div>
+                      <div className="flex-1">
+                        <h3 className="text-xl font-bold text-[hsl(224,100%,50%)] mb-2">8+ Years Experience</h3>
+                        <div className="text-sm font-semibold text-white/60 mb-3">Since 2016</div>
+                        <p className="text-white/80 leading-relaxed">Proven track record of excellence</p>
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
+              </Magnetic>
             </Reveal>
             
             <Reveal delay={0.3}>
-              <div className="p-8 bg-white rounded-lg border border-surface-glassLine hover:shadow-luxury transition-all duration-300"
-                   style={{ boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)' }}>
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-full bg-gradient-to-r from-brand-jade-500 to-brand-sky-500 flex items-center justify-center flex-shrink-0">
-                    <Users className="w-6 h-6 text-white" />
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="text-[1.125rem] font-[700] text-brand-jade-500 mb-1">1,000+ Families Served</h3>
-                    <div className="text-[0.875rem] font-[600] text-slate-500 mb-2">Growing Daily</div>
-                    <p className="text-[0.875rem] text-slate-600 leading-relaxed">Trusted by families across 3 states</p>
+              <Magnetic strength={8}>
+                <div className="group p-10 bg-white/5 backdrop-blur-xl rounded-3xl border border-white/10 hover:bg-white/10 hover:border-white/15 transition-all duration-500 shadow-[0_25px_50px_-12px_rgba(0,0,0,0.25)] relative overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-[hsl(157,72%,43%)]/5 rounded-3xl opacity-60"></div>
+                  <div className="relative z-10">
+                    <div className="flex items-start gap-6">
+                      <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[hsl(157,72%,43%)] to-[hsl(224,100%,32%)] flex items-center justify-center shadow-lg shrink-0">
+                        <Users className="w-8 h-8 text-white" />
+                      </div>
+                      <div className="flex-1">
+                        <h3 className="text-xl font-bold text-[hsl(157,72%,53%)] mb-2">1,000+ Families Served</h3>
+                        <div className="text-sm font-semibold text-white/60 mb-3">Growing Daily</div>
+                        <p className="text-white/80 leading-relaxed">Trusted by families across 3 states</p>
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
+              </Magnetic>
             </Reveal>
             
             <Reveal delay={0.4}>
-              <div className="p-8 bg-white rounded-lg border border-surface-glassLine hover:shadow-luxury transition-all duration-300"
-                   style={{ boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)' }}>
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-full bg-gradient-to-r from-brand-jade-500 to-brand-sky-500 flex items-center justify-center flex-shrink-0">
-                    <Star className="w-6 h-6 text-white" />
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="text-[1.125rem] font-[700] text-brand-sky-500 mb-1">A+ Rated Carrier Partners</h3>
-                    <div className="text-[0.875rem] font-[600] text-slate-500 mb-2">Top Tier Networks</div>
-                    <p className="text-[0.875rem] text-slate-600 leading-relaxed">Exclusive access to premium carriers</p>
+              <Magnetic strength={8}>
+                <div className="group p-10 bg-white/5 backdrop-blur-xl rounded-3xl border border-white/10 hover:bg-white/10 hover:border-white/15 transition-all duration-500 shadow-[0_25px_50px_-12px_rgba(0,0,0,0.25)] relative overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-[hsl(224,100%,32%)]/5 rounded-3xl opacity-60"></div>
+                  <div className="relative z-10">
+                    <div className="flex items-start gap-6">
+                      <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[hsl(224,100%,32%)] to-[hsl(157,72%,43%)] flex items-center justify-center shadow-lg shrink-0">
+                        <Star className="w-8 h-8 text-white" />
+                      </div>
+                      <div className="flex-1">
+                        <h3 className="text-xl font-bold text-[hsl(224,100%,50%)] mb-2">A+ Rated Carrier Partners</h3>
+                        <div className="text-sm font-semibold text-white/60 mb-3">Top Tier Networks</div>
+                        <p className="text-white/80 leading-relaxed">Exclusive access to premium carriers</p>
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
+              </Magnetic>
             </Reveal>
             
             <Reveal delay={0.5}>
-              <div className="p-8 bg-white rounded-lg border border-surface-glassLine hover:shadow-luxury transition-all duration-300"
-                   style={{ boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)' }}>
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-full bg-gradient-to-r from-brand-jade-500 to-brand-sky-500 flex items-center justify-center flex-shrink-0">
-                    <Shield className="w-6 h-6 text-white" />
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="text-[1.125rem] font-[700] text-brand-jade-500 mb-1">Licensed & Bonded</h3>
-                    <div className="text-[0.875rem] font-[600] text-slate-500 mb-2">Full Protection</div>
-                    <p className="text-[0.875rem] text-slate-600 leading-relaxed">Complete regulatory compliance</p>
+              <Magnetic strength={8}>
+                <div className="group p-10 bg-white/5 backdrop-blur-xl rounded-3xl border border-white/10 hover:bg-white/10 hover:border-white/15 transition-all duration-500 shadow-[0_25px_50px_-12px_rgba(0,0,0,0.25)] relative overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-[hsl(157,72%,43%)]/5 rounded-3xl opacity-60"></div>
+                  <div className="relative z-10">
+                    <div className="flex items-start gap-6">
+                      <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[hsl(157,72%,43%)] to-[hsl(157,72%,38%)] flex items-center justify-center shadow-lg shrink-0">
+                        <Shield className="w-8 h-8 text-white" />
+                      </div>
+                      <div className="flex-1">
+                        <h3 className="text-xl font-bold text-[hsl(157,72%,53%)] mb-2">Licensed & Bonded</h3>
+                        <div className="text-sm font-semibold text-white/60 mb-3">Full Protection</div>
+                        <p className="text-white/80 leading-relaxed">Complete regulatory compliance</p>
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
+              </Magnetic>
             </Reveal>
             
             <Reveal delay={0.6}>
-              <div className="p-8 bg-white rounded-lg border border-surface-glassLine hover:shadow-luxury transition-all duration-300"
-                   style={{ boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)' }}>
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-full bg-gradient-to-r from-brand-jade-500 to-brand-sky-500 flex items-center justify-center flex-shrink-0">
-                    <TrendingUp className="w-6 h-6 text-white" />
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="text-[1.125rem] font-[700] text-brand-sky-500 mb-1">$50M+ Coverage Placed</h3>
-                    <div className="text-[0.875rem] font-[600] text-slate-500 mb-2">Industry Leading</div>
-                    <p className="text-[0.875rem] text-slate-600 leading-relaxed">Comprehensive protection delivered</p>
+              <Magnetic strength={8}>
+                <div className="group p-10 bg-white/5 backdrop-blur-xl rounded-3xl border border-white/10 hover:bg-white/10 hover:border-white/15 transition-all duration-500 shadow-[0_25px_50px_-12px_rgba(0,0,0,0.25)] relative overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-[hsl(224,100%,32%)]/5 rounded-3xl opacity-60"></div>
+                  <div className="relative z-10">
+                    <div className="flex items-start gap-6">
+                      <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[hsl(224,100%,32%)] to-[hsl(224,100%,38%)] flex items-center justify-center shadow-lg shrink-0">
+                        <TrendingUp className="w-8 h-8 text-white" />
+                      </div>
+                      <div className="flex-1">
+                        <h3 className="text-xl font-bold text-[hsl(224,100%,50%)] mb-2">$50M+ Coverage Placed</h3>
+                        <div className="text-sm font-semibold text-white/60 mb-3">Industry Leading</div>
+                        <p className="text-white/80 leading-relaxed">Comprehensive protection delivered</p>
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
+              </Magnetic>
             </Reveal>
           </div>
           
-          {/* EXPERTISE & SPECIALIZATION SHOWCASE */}
+          {/* EXPERTISE & SPECIALIZATION SHOWCASE - LUXURY */}
           <Reveal delay={0.7}>
-            <div className="bg-gradient-to-b from-surface-base to-white p-12 rounded-lg">
-              <h3 className="text-[1.75rem] font-[700] mb-8 text-center text-ink-900">Service Specializations</h3>
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <div className="p-6 bg-white rounded-lg border border-surface-glassLine" style={{ boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)' }}>
-                  <div className="w-12 h-12 mb-4 rounded-full bg-gradient-to-r from-brand-jade-500 to-brand-sky-500 flex items-center justify-center">
-                    <Shield className="w-6 h-6 text-white" />
+            <div className="bg-white/5 backdrop-blur-xl p-16 rounded-3xl border border-white/10 shadow-[0_25px_50px_-12px_rgba(0,0,0,0.25)] relative overflow-hidden">
+              {/* Subtle inner glow */}
+              <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-[hsl(157,72%,43%)]/5 rounded-3xl opacity-60"></div>
+              
+              <div className="relative z-10">
+                <h3 className="font-luxury-serif text-3xl md:text-4xl font-bold mb-12 text-center text-white">Service Specializations</h3>
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                  <div className="p-8 bg-white/5 backdrop-blur-md rounded-2xl border border-white/10 hover:bg-white/10 hover:border-white/15 transition-all duration-500 shadow-lg group">
+                    <div className="w-14 h-14 mb-6 rounded-2xl bg-gradient-to-br from-[hsl(157,72%,43%)] to-[hsl(157,72%,38%)] flex items-center justify-center shadow-lg">
+                      <Shield className="w-7 h-7 text-white" />
+                    </div>
+                    <h4 className="text-xl font-bold text-white mb-4 group-hover:text-[hsl(157,72%,53%)] transition-colors duration-300">Individual Health Insurance</h4>
+                    <p className="text-white/70 leading-relaxed">Comprehensive individual and family health plans</p>
                   </div>
-                  <h4 className="text-[1.125rem] font-[600] text-ink-900 mb-2">Individual Health Insurance</h4>
-                  <p className="text-[0.875rem] text-slate-600 leading-relaxed">Comprehensive individual and family health plans</p>
-                </div>
-                
-                <div className="p-6 bg-white rounded-lg border border-surface-glassLine" style={{ boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)' }}>
-                  <div className="w-12 h-12 mb-4 rounded-full bg-gradient-to-r from-brand-jade-500 to-brand-sky-500 flex items-center justify-center">
-                    <Users className="w-6 h-6 text-white" />
+                  
+                  <div className="p-8 bg-white/5 backdrop-blur-md rounded-2xl border border-white/10 hover:bg-white/10 hover:border-white/15 transition-all duration-500 shadow-lg group">
+                    <div className="w-14 h-14 mb-6 rounded-2xl bg-gradient-to-br from-[hsl(224,100%,32%)] to-[hsl(215,88%,39%)] flex items-center justify-center shadow-lg">
+                      <Users className="w-7 h-7 text-white" />
+                    </div>
+                    <h4 className="text-xl font-bold text-white mb-4 group-hover:text-[hsl(224,100%,50%)] transition-colors duration-300">Family Coverage Plans</h4>
+                    <p className="text-white/70 leading-relaxed">Tailored protection for growing families</p>
                   </div>
-                  <h4 className="text-[1.125rem] font-[600] text-ink-900 mb-2">Family Coverage Plans</h4>
-                  <p className="text-[0.875rem] text-slate-600 leading-relaxed">Tailored protection for growing families</p>
-                </div>
-                
-                <div className="p-6 bg-white rounded-lg border border-surface-glassLine" style={{ boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)' }}>
-                  <div className="w-12 h-12 mb-4 rounded-full bg-gradient-to-r from-brand-jade-500 to-brand-sky-500 flex items-center justify-center">
-                    <Shield className="w-6 h-6 text-white" />
+                  
+                  <div className="p-8 bg-white/5 backdrop-blur-md rounded-2xl border border-white/10 hover:bg-white/10 hover:border-white/15 transition-all duration-500 shadow-lg group">
+                    <div className="w-14 h-14 mb-6 rounded-2xl bg-gradient-to-br from-[hsl(157,72%,43%)] to-[hsl(224,100%,32%)] flex items-center justify-center shadow-lg">
+                      <Shield className="w-7 h-7 text-white" />
+                    </div>
+                    <h4 className="text-xl font-bold text-white mb-4 group-hover:text-[hsl(157,72%,53%)] transition-colors duration-300">Life Insurance Solutions</h4>
+                    <p className="text-white/70 leading-relaxed">Term and permanent life insurance options</p>
                   </div>
-                  <h4 className="text-[1.125rem] font-[600] text-ink-900 mb-2">Life Insurance Solutions</h4>
-                  <p className="text-[0.875rem] text-slate-600 leading-relaxed">Term and permanent life insurance options</p>
-                </div>
-                
-                <div className="p-6 bg-white rounded-lg border border-surface-glassLine" style={{ boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)' }}>
-                  <div className="w-12 h-12 mb-4 rounded-full bg-gradient-to-r from-brand-jade-500 to-brand-sky-500 flex items-center justify-center">
-                    <Award className="w-6 h-6 text-white" />
+                  
+                  <div className="p-8 bg-white/5 backdrop-blur-md rounded-2xl border border-white/10 hover:bg-white/10 hover:border-white/15 transition-all duration-500 shadow-lg group">
+                    <div className="w-14 h-14 mb-6 rounded-2xl bg-gradient-to-br from-[hsl(224,100%,32%)] to-[hsl(157,72%,43%)] flex items-center justify-center shadow-lg">
+                      <Award className="w-7 h-7 text-white" />
+                    </div>
+                    <h4 className="text-xl font-bold text-white mb-4 group-hover:text-[hsl(224,100%,50%)] transition-colors duration-300">Medicare Guidance</h4>
+                    <p className="text-white/70 leading-relaxed">Expert Medicare and supplement planning</p>
                   </div>
-                  <h4 className="text-[1.125rem] font-[600] text-ink-900 mb-2">Medicare Guidance</h4>
-                  <p className="text-[0.875rem] text-slate-600 leading-relaxed">Expert Medicare and supplement planning</p>
-                </div>
-                
-                <div className="p-6 bg-white rounded-lg border border-surface-glassLine" style={{ boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)' }}>
-                  <div className="w-12 h-12 mb-4 rounded-full bg-gradient-to-r from-brand-jade-500 to-brand-sky-500 flex items-center justify-center">
-                    <TrendingUp className="w-6 h-6 text-white" />
+                  
+                  <div className="p-8 bg-white/5 backdrop-blur-md rounded-2xl border border-white/10 hover:bg-white/10 hover:border-white/15 transition-all duration-500 shadow-lg group">
+                    <div className="w-14 h-14 mb-6 rounded-2xl bg-gradient-to-br from-[hsl(157,72%,43%)] to-[hsl(157,72%,38%)] flex items-center justify-center shadow-lg">
+                      <TrendingUp className="w-7 h-7 text-white" />
+                    </div>
+                    <h4 className="text-xl font-bold text-white mb-4 group-hover:text-[hsl(157,72%,53%)] transition-colors duration-300">Small Business Plans</h4>
+                    <p className="text-white/70 leading-relaxed">Group health and business insurance solutions</p>
                   </div>
-                  <h4 className="text-[1.125rem] font-[600] text-ink-900 mb-2">Small Business Plans</h4>
-                  <p className="text-[0.875rem] text-slate-600 leading-relaxed">Group health and business insurance solutions</p>
-                </div>
-                
-                <div className="p-6 bg-white rounded-lg border border-surface-glassLine" style={{ boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)' }}>
-                  <div className="w-12 h-12 mb-4 rounded-full bg-gradient-to-r from-brand-jade-500 to-brand-sky-500 flex items-center justify-center">
-                    <CheckCircle className="w-6 h-6 text-white" />
+                  
+                  <div className="p-8 bg-white/5 backdrop-blur-md rounded-2xl border border-white/10 hover:bg-white/10 hover:border-white/15 transition-all duration-500 shadow-lg group">
+                    <div className="w-14 h-14 mb-6 rounded-2xl bg-gradient-to-br from-[hsl(224,100%,32%)] to-[hsl(224,100%,38%)] flex items-center justify-center shadow-lg">
+                      <CheckCircle className="w-7 h-7 text-white" />
+                    </div>
+                    <h4 className="text-xl font-bold text-white mb-4 group-hover:text-[hsl(224,100%,50%)] transition-colors duration-300">PPO Network Access</h4>
+                    <p className="text-white/70 leading-relaxed">Extensive provider networks and flexibility</p>
                   </div>
-                  <h4 className="text-[1.125rem] font-[600] text-ink-900 mb-2">PPO Network Access</h4>
-                  <p className="text-[0.875rem] text-slate-600 leading-relaxed">Extensive provider networks and flexibility</p>
                 </div>
               </div>
+              
+              {/* Corner Accents */}
+              <div className="absolute top-4 left-4 w-12 h-12 border-l-2 border-t-2 border-white/15 rounded-tl-2xl"></div>
+              <div className="absolute top-4 right-4 w-12 h-12 border-r-2 border-t-2 border-white/15 rounded-tr-2xl"></div>
+              <div className="absolute bottom-4 left-4 w-12 h-12 border-l-2 border-b-2 border-white/15 rounded-bl-2xl"></div>
+              <div className="absolute bottom-4 right-4 w-12 h-12 border-r-2 border-b-2 border-white/15 rounded-br-2xl"></div>
             </div>
           </Reveal>
         </div>
