@@ -508,7 +508,7 @@ export default function AboutPage() {
       {/* FINAL CTA SECTION - LUXURY TRANSFORMATION */}
       <section className="py-20 bg-gradient-to-br from-brand-sky-500 via-brand-jade-500 to-brand-sky-600 text-white relative overflow-hidden">
         {/* Overlay for better text contrast */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/30 to-black/50"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-brand-jade-500/30 via-brand-sky-500/40 to-brand-jade-600/50"></div>
         <div className="container mx-auto px-5 max-w-5xl text-center">
           <Reveal>
             <h2 className="text-[2.5rem] md:text-[3rem] font-[700] mb-6 leading-tight">
