@@ -507,14 +507,14 @@ export default function AboutPage() {
       </section>
 
       {/* LUXURY CTA SECTION - WORLD CLASS DESIGN */}
-      <section className="relative py-24 md:py-32 overflow-hidden">
+      <section className="relative py-24 md:py-32 overflow-hidden bg-[hsl(220,26%,14%)]">
         {/* Premium Background Layer */}
-        <div className="absolute inset-0 bg-gradient-to-br from-ink-900 via-slate-900 to-ink-900"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-[hsl(220,26%,14%)] via-[hsl(220,20%,10%)] to-[hsl(220,26%,14%)]"></div>
         
         {/* Ambient Light Effects */}
         <div className="absolute inset-0">
-          <div className="absolute top-20 left-1/4 w-96 h-96 bg-brand-jade-500/20 rounded-full blur-3xl opacity-60"></div>
-          <div className="absolute bottom-20 right-1/4 w-80 h-80 bg-brand-sky-500/20 rounded-full blur-3xl opacity-40"></div>
+          <div className="absolute top-20 left-1/4 w-96 h-96 bg-[hsl(157,72%,43%)]/20 rounded-full blur-3xl opacity-60"></div>
+          <div className="absolute bottom-20 right-1/4 w-80 h-80 bg-[hsl(224,100%,32%)]/20 rounded-full blur-3xl opacity-40"></div>
         </div>
         
         {/* Geometric Accents */}
@@ -523,14 +523,14 @@ export default function AboutPage() {
           <div className="absolute bottom-0 left-0 w-96 h-96 border border-white/5 rotate-12 -translate-x-48 translate-y-48"></div>
         </div>
         
-        <div className="relative container mx-auto px-6 max-w-6xl">
+        <div className="relative container mx-auto px-6 max-w-6xl z-10">
           <div className="text-center">
             <Reveal>
               {/* Luxury Typography */}
               <div className="mb-16">
                 <h2 className="font-luxury-serif text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-8 leading-[1.1] tracking-tight">
                   Ready to Secure Your 
-                  <span className="block bg-gradient-to-r from-brand-jade-500 via-brand-jade-300 to-brand-sky-500 bg-clip-text text-transparent font-bold">
+                  <span className="block bg-gradient-to-r from-[hsl(157,72%,43%)] via-[hsl(157,72%,53%)] to-[hsl(224,100%,32%)] bg-clip-text text-transparent font-bold">
                     Family&apos;s Future?
                   </span>
                 </h2>
@@ -545,7 +545,7 @@ export default function AboutPage() {
                 <Magnetic strength={15}>
                   <a 
                     href={BRAND.phoneTel}
-                    className="group relative inline-flex items-center gap-4 bg-gradient-to-r from-brand-jade-500 to-brand-jade-600 text-white px-12 py-6 rounded-2xl font-semibold text-lg shadow-luxury hover:shadow-glow transition-all duration-500 transform hover:scale-[1.02] active:scale-[0.98] overflow-hidden min-w-[280px]"
+                    className="group relative inline-flex items-center gap-4 bg-gradient-to-r from-[hsl(157,72%,43%)] to-[hsl(157,72%,38%)] text-white px-12 py-6 rounded-2xl font-semibold text-lg shadow-[0_25px_50px_-12px_rgba(0,0,0,0.25)] hover:shadow-[0_0_20px_rgba(34,197,94,0.3)] transition-all duration-500 transform hover:scale-[1.02] active:scale-[0.98] overflow-hidden min-w-[280px]"
                   >
                     <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     <Phone className="w-6 h-6 relative z-10" />
@@ -577,14 +577,14 @@ export default function AboutPage() {
               {/* Luxury Guarantee Box */}
               <div className="relative max-w-4xl mx-auto">
                 {/* Glass Card */}
-                <div className="relative bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-10 md:p-12 shadow-luxury">
+                <div className="relative bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-10 md:p-12 shadow-[0_25px_50px_-12px_rgba(0,0,0,0.25)]">
                   {/* Subtle Inner Glow */}
-                  <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-white/10 via-transparent to-brand-jade-500/5 opacity-60"></div>
+                  <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-white/10 via-transparent to-[hsl(157,72%,43%)]/5 opacity-60"></div>
                   
                   {/* Content */}
                   <div className="relative z-10">
                     <div className="flex items-center justify-center gap-4 mb-6">
-                      <div className="w-12 h-12 rounded-full bg-gradient-to-r from-brand-jade-500 to-brand-sky-500 flex items-center justify-center">
+                      <div className="w-12 h-12 rounded-full bg-gradient-to-r from-[hsl(157,72%,43%)] to-[hsl(224,100%,32%)] flex items-center justify-center">
                         <Shield className="w-6 h-6 text-white" />
                       </div>
                       <h3 className="font-luxury-serif text-2xl md:text-3xl font-bold text-white">
@@ -594,11 +594,11 @@ export default function AboutPage() {
                     
                     <p className="text-lg md:text-xl text-white/90 leading-relaxed max-w-2xl mx-auto">
                       No cost, no obligation, no pressure. Just expert guidance to help you make 
-                      <span className="text-brand-jade-300 font-medium"> the best decision for your family.</span>
+                      <span className="text-[hsl(157,72%,53%)] font-medium"> the best decision for your family.</span>
                     </p>
                     
                     {/* Premium Accent Line */}
-                    <div className="mt-8 mx-auto w-24 h-0.5 bg-gradient-to-r from-transparent via-brand-jade-500 to-transparent"></div>
+                    <div className="mt-8 mx-auto w-24 h-0.5 bg-gradient-to-r from-transparent via-[hsl(157,72%,43%)] to-transparent"></div>
                   </div>
                   
                   {/* Corner Accents */}
