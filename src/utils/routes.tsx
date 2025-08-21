@@ -22,6 +22,10 @@ const Terms = lazy(() => import('../pages/Terms'));
 // Blog posts
 const TermVsWholeLifeInsurance2024 = lazy(() => import('../pages/blog/TermVsWholeLifeInsurance2024'));
 const FloridaHealthInsuranceGuide2024 = lazy(() => import('../pages/blog/FloridaHealthInsuranceGuide2024'));
+const LifeInsuranceYoungAdultsGuide = lazy(() => import('../pages/blog/LifeInsuranceYoungAdultsGuide'));
+const HowMuchLifeInsuranceCalculator = lazy(() => import('../pages/blog/HowMuchLifeInsuranceCalculator'));
+const LifeInsurancePreExistingConditions = lazy(() => import('../pages/blog/LifeInsurancePreExistingConditions'));
+const PPOHMOEPOPlanComparison = lazy(() => import('../pages/blog/PPOHMOEPOPlanComparison'));
 
 export const routes = [
   {
@@ -46,6 +50,10 @@ export const routes = [
       // Blog routes
       { path: 'blog/term-vs-whole-life-insurance-2024', element: <TermVsWholeLifeInsurance2024 /> },
       { path: 'blog/florida-health-insurance-guide-2024', element: <FloridaHealthInsuranceGuide2024 /> },
+      { path: 'blog/life-insurance-young-adults-guide', element: <LifeInsuranceYoungAdultsGuide /> },
+      { path: 'blog/how-much-life-insurance-calculator', element: <HowMuchLifeInsuranceCalculator /> },
+      { path: 'blog/life-insurance-pre-existing-conditions', element: <LifeInsurancePreExistingConditions /> },
+      { path: 'blog/ppo-hmo-epo-plan-comparison', element: <PPOHMOEPOPlanComparison /> },
     ],
   },
 ];
