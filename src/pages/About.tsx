@@ -115,50 +115,6 @@ export default function AboutPage() {
               </div>
             </div>
           </Reveal>
-          
-          {/* Career Timeline */}
-          <Reveal delay={0.4}>
-            <div className="mt-16">
-              <h3 className="text-[1.75rem] font-[700] text-center mb-8 text-ink-900">Professional Journey & Milestones</h3>
-              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div className="text-center p-6 bg-white rounded-lg border border-surface-glassLine" style={{ boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)' }}>
-                  <div className="w-12 h-12 mx-auto mb-4 rounded-full bg-gradient-to-r from-brand-jade-500 to-brand-sky-500 flex items-center justify-center">
-                    <Shield className="w-6 h-6 text-white" />
-                  </div>
-                  <div className="text-lg font-[700] text-brand-jade-500 mb-2">2016</div>
-                  <h4 className="text-[1rem] font-[600] text-ink-900 mb-2 leading-tight">Licensed Florida Broker</h4>
-                  <p className="text-[0.875rem] text-slate-600 leading-relaxed">License W347851 obtained</p>
-                </div>
-                
-                <div className="text-center p-6 bg-white rounded-lg border border-surface-glassLine" style={{ boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)' }}>
-                  <div className="w-12 h-12 mx-auto mb-4 rounded-full bg-gradient-to-r from-brand-jade-500 to-brand-sky-500 flex items-center justify-center">
-                    <Users className="w-6 h-6 text-white" />
-                  </div>
-                  <div className="text-lg font-[700] text-brand-sky-500 mb-2">2017-2024</div>
-                  <h4 className="text-[1rem] font-[600] text-ink-900 mb-2 leading-tight">8+ Years Experience</h4>
-                  <p className="text-[0.875rem] text-slate-600 leading-relaxed">Continuous service excellence</p>
-                </div>
-                
-                <div className="text-center p-6 bg-white rounded-lg border border-surface-glassLine" style={{ boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)' }}>
-                  <div className="w-12 h-12 mx-auto mb-4 rounded-full bg-gradient-to-r from-brand-jade-500 to-brand-sky-500 flex items-center justify-center">
-                    <TrendingUp className="w-6 h-6 text-white" />
-                  </div>
-                  <div className="text-lg font-[700] text-brand-jade-500 mb-2">Present</div>
-                  <h4 className="text-[1rem] font-[600] text-ink-900 mb-2 leading-tight">1,000+ Policies Placed</h4>
-                  <p className="text-[0.875rem] text-slate-600 leading-relaxed">Trusted family advisor</p>
-                </div>
-                
-                <div className="text-center p-6 bg-white rounded-lg border border-surface-glassLine" style={{ boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)' }}>
-                  <div className="w-12 h-12 mx-auto mb-4 rounded-full bg-gradient-to-r from-brand-jade-500 to-brand-sky-500 flex items-center justify-center">
-                    <Award className="w-6 h-6 text-white" />
-                  </div>
-                  <div className="text-lg font-[700] text-brand-sky-500 mb-2">Achievement</div>
-                  <h4 className="text-[1rem] font-[600] text-ink-900 mb-2 leading-tight">$50M+ Coverage</h4>
-                  <p className="text-[0.875rem] text-slate-600 leading-relaxed">Comprehensive protection</p>
-                </div>
-              </div>
-            </div>
-          </Reveal>
         </div>
       </section>
 
