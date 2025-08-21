@@ -82,7 +82,7 @@ const blogPosts: { [key: string]: BlogPost[] } = {
       updated: 'Jan 2024'
     },
     {
-      slug: 'open-enrollment-checklist-2024',
+      slug: 'health-insurance-open-enrollment-checklist',
       title: 'Health Insurance Open Enrollment: Your Complete Success Checklist',
       preview: 'Don\'t miss critical deadlines. Our step-by-step checklist ensures you get the best coverage.',
       wordCount: '2,100 words',
@@ -102,7 +102,7 @@ const blogPosts: { [key: string]: BlogPost[] } = {
       updated: 'Jan 2024'
     },
     {
-      slug: 'michigan-insurance-requirements-2024',
+      slug: 'michigan-insurance-laws',
       title: 'Michigan Insurance Laws: What Every Resident Must Know',
       preview: 'Stay compliant and protected. Michigan\'s latest insurance requirements explained simply.',
       wordCount: '2,000 words',
@@ -131,7 +131,7 @@ const blogPosts: { [key: string]: BlogPost[] } = {
   ],
   'carrier-comparisons': [
     {
-      slug: 'aetna-cigna-united-comparison-2024',
+      slug: 'aetna-cigna-united-comparison',
       title: 'Aetna vs Cigna vs UnitedHealthcare: 2024 Independent Analysis',
       preview: 'Which major insurer offers the best value? Our comprehensive comparison reveals the winner.',
       wordCount: '2,800 words',

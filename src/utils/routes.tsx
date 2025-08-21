@@ -33,6 +33,9 @@ const MichiganInsuranceLaws = lazy(() => import('../pages/blog/MichiganInsurance
 const NorthCarolinaBestHealthInsurance = lazy(() => import('../pages/blog/NorthCarolinaBestHealthInsurance'));
 const FloridaHurricaneInsuranceProtection = lazy(() => import('../pages/blog/FloridaHurricaneInsuranceProtection'));
 const AetnaCignaUnitedComparison = lazy(() => import('../pages/blog/AetnaCignaUnitedComparison'));
+const AMBestInsuranceRatingsExplained = lazy(() => import('../pages/blog/AMBestInsuranceRatingsExplained'));
+const FloridaSmallBusinessHealthInsurance = lazy(() => import('../pages/blog/FloridaSmallBusinessHealthInsurance'));
+const LifeInsuranceCompaniesFinancialStrength = lazy(() => import('../pages/blog/LifeInsuranceCompaniesFinancialStrength'));
 
 export const routes = [
   {
@@ -68,6 +71,9 @@ export const routes = [
       { path: 'blog/north-carolina-best-health-insurance', element: <NorthCarolinaBestHealthInsurance /> },
       { path: 'blog/florida-hurricane-insurance-protection', element: <FloridaHurricaneInsuranceProtection /> },
       { path: 'blog/aetna-cigna-united-comparison', element: <AetnaCignaUnitedComparison /> },
+      { path: 'blog/am-best-insurance-ratings-explained', element: <AMBestInsuranceRatingsExplained /> },
+      { path: 'blog/florida-small-business-health-insurance', element: <FloridaSmallBusinessHealthInsurance /> },
+      { path: 'blog/life-insurance-companies-financial-strength', element: <LifeInsuranceCompaniesFinancialStrength /> },
     ],
   },
 ];
