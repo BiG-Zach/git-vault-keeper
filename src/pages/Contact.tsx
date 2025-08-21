@@ -210,7 +210,7 @@ export default function ContactPage() {
                     <MapPin className="w-6 h-6 text-emerald-500 mt-1" />
                     <div>
                       <div className="font-semibold text-slate-900">4200 W Cypress St, Tampa, FL 33607</div>
-                      <div className="text-slate-700">My Florida headquarters where I serve all of FL</div>
+                      <div className="text-slate-700">Best Insurance Group - where I proudly serve clients across Florida.</div>
                     </div>
                   </div>
                   <div className="flex items-start gap-4">
