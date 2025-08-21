@@ -12,73 +12,147 @@ export default function AboutPage() {
       {/* ENHANCED HERO SECTION WITH PROFESSIONAL BACKGROUND */}
       <AboutHero />
 
-      {/* PROFESSIONAL HEADSHOT SECTION - LUXURY ENHANCED */}
-      <section className="py-20 bg-gradient-to-b from-primary/5 to-background">
-        <div className="container mx-auto px-4">
-          <div className="grid lg:grid-cols-[1fr_1.2fr] gap-12 items-center max-w-6xl mx-auto">
+      {/* PROFESSIONAL HEADSHOT SECTION - LUXURY WORLD CLASS */}
+      <section className="relative py-24 md:py-32 overflow-hidden bg-[hsl(220,26%,14%)]">
+        {/* Premium Dark Background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-[hsl(220,26%,14%)] via-[hsl(220,20%,10%)] to-[hsl(220,26%,14%)]"></div>
+        
+        {/* Ambient Light Effects */}
+        <div className="absolute inset-0">
+          <div className="absolute top-20 left-1/4 w-96 h-96 bg-[hsl(157,72%,43%)]/15 rounded-full blur-3xl opacity-60"></div>
+          <div className="absolute bottom-20 right-1/4 w-80 h-80 bg-[hsl(224,100%,32%)]/15 rounded-full blur-3xl opacity-40"></div>
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-gradient-to-r from-[hsl(157,72%,43%)]/5 via-transparent to-[hsl(224,100%,32%)]/5 rounded-full blur-3xl"></div>
+        </div>
+        
+        {/* Geometric Accents */}
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute top-0 right-0 w-96 h-96 border border-white/10 rotate-12 translate-x-48 -translate-y-48"></div>
+          <div className="absolute bottom-0 left-0 w-80 h-80 border border-white/5 rotate-45 -translate-x-40 translate-y-40"></div>
+        </div>
+        
+        <div className="relative container mx-auto px-6 max-w-7xl z-10">
+          <div className="grid lg:grid-cols-[1fr_1.2fr] gap-16 items-center">
             <Reveal>
-              <div className="relative">
-                <img 
-                  src="/about/portrait.jpg" 
-                  alt="Zachary Bradford - Insurance Expert" 
-                  width="500" 
-                  height="600" 
-                  className="w-full h-auto rounded-lg" 
-                  style={{ boxShadow: '0 8px 32px rgba(0, 0, 0, 0.15)' }}
-                  loading="eager"
-                />
-                <div className="absolute -bottom-4 -right-4 bg-gradient-to-r from-brand-jade-500 to-brand-sky-500 text-white px-4 py-2 rounded-lg shadow-luxury">
-                  <div className="flex items-center gap-2">
-                    <Shield className="w-5 h-5" />
-                    <span className="font-semibold">Licensed Expert</span>
+              <div className="relative group">
+                {/* Portrait with premium effects */}
+                <div className="relative overflow-hidden rounded-2xl">
+                  {/* Gradient border */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-[hsl(157,72%,43%)] via-[hsl(224,100%,32%)] to-[hsl(157,72%,43%)] rounded-2xl p-[2px] group-hover:p-[3px] transition-all duration-500">
+                    <div className="w-full h-full bg-[hsl(220,26%,14%)] rounded-2xl overflow-hidden">
+                      <img 
+                        src="/about/portrait.jpg" 
+                        alt="Zachary Bradford - Insurance Expert" 
+                        width="500" 
+                        height="600" 
+                        className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105" 
+                        loading="eager"
+                      />
+                    </div>
+                  </div>
+                  
+                  {/* Premium glow effect */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-[hsl(157,72%,43%)]/20 via-transparent to-[hsl(224,100%,32%)]/20 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl"></div>
+                </div>
+                
+                {/* Floating badge */}
+                <div className="absolute -bottom-6 -right-6 group">
+                  <div className="relative">
+                    <div className="absolute inset-0 bg-gradient-to-r from-[hsl(157,72%,43%)] to-[hsl(224,100%,32%)] rounded-2xl blur-xl opacity-75"></div>
+                    <div className="relative bg-gradient-to-r from-[hsl(157,72%,43%)] to-[hsl(224,100%,32%)] text-white px-6 py-4 rounded-2xl backdrop-blur-sm border border-white/20">
+                      <div className="flex items-center gap-3">
+                        <Shield className="w-6 h-6" />
+                        <span className="font-bold text-lg">Licensed Expert</span>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
             </Reveal>
             
             <Reveal delay={0.2}>
-              <div>
-                <h1 className="text-[2rem] md:text-[2.25rem] lg:text-[3rem] font-[700] tracking-[-0.02em] leading-tight mb-6 text-ink-900">
-                  Your Insurance Advocate & 
-                  <span className="block text-brand-jade-500">Family Protection Expert</span>
-                </h1>
+              <div className="space-y-8">
+                {/* Premium header */}
+                <div>
+                  <div className="inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-[hsl(157,72%,43%)]/20 to-[hsl(224,100%,32%)]/20 rounded-full border border-white/20 mb-8 backdrop-blur-sm">
+                    <div className="w-2 h-2 bg-[hsl(157,72%,43%)] rounded-full animate-pulse"></div>
+                    <span className="text-sm font-semibold text-white/90">Your Trusted Guide</span>
+                  </div>
+                  
+                  <h1 className="font-luxury-serif text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+                    <span className="text-white">Your Insurance Advocate &</span><br />
+                    <span className="bg-gradient-to-r from-[hsl(157,72%,43%)] via-[hsl(157,72%,53%)] to-[hsl(224,100%,32%)] bg-clip-text text-transparent">
+                      Family Protection Expert
+                    </span>
+                  </h1>
+                </div>
                 
-                <div className="grid grid-cols-3 gap-6 mb-6 p-8 bg-white rounded-lg border border-surface-glassLine" 
-                     style={{ boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)' }}>
-                  <div className="text-center">
-                    <div className="text-2xl md:text-3xl font-[700] text-brand-jade-500">8+</div>
-                    <div className="text-sm font-[500] text-slate-600">Years Experience</div>
+                {/* Premium stats grid */}
+                <div className="grid grid-cols-3 gap-6 group">
+                  {/* Glass morphism background */}
+                  <div className="col-span-3 absolute inset-0 bg-gradient-to-br from-white/10 via-white/5 to-transparent rounded-2xl backdrop-blur-xl border border-white/20"></div>
+                  
+                  {/* Premium glow effect */}
+                  <div className="col-span-3 absolute inset-0 bg-gradient-to-r from-[hsl(157,72%,43%)]/20 via-transparent to-[hsl(224,100%,32%)]/20 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl"></div>
+                  
+                  {/* Stats content */}
+                  <div className="relative text-center p-6">
+                    <div className="text-3xl md:text-4xl font-bold mb-2 bg-gradient-to-r from-[hsl(157,72%,43%)] to-[hsl(224,100%,32%)] bg-clip-text text-transparent font-luxury-serif">8+</div>
+                    <div className="text-sm font-semibold text-white/80">Years Experience</div>
                   </div>
-                  <div className="text-center">
-                    <div className="text-2xl md:text-3xl font-[700] text-brand-jade-500">1,000+</div>
-                    <div className="text-sm font-[500] text-slate-600">Families Protected</div>
+                  <div className="relative text-center p-6 border-x border-white/10">
+                    <div className="text-3xl md:text-4xl font-bold mb-2 bg-gradient-to-r from-[hsl(157,72%,43%)] to-[hsl(224,100%,32%)] bg-clip-text text-transparent font-luxury-serif">1,000+</div>
+                    <div className="text-sm font-semibold text-white/80">Families Protected</div>
                   </div>
-                  <div className="text-center">
-                    <div className="text-2xl md:text-3xl font-[700] text-brand-jade-500">3</div>
-                    <div className="text-sm font-[500] text-slate-600">States Licensed</div>
+                  <div className="relative text-center p-6">
+                    <div className="text-3xl md:text-4xl font-bold mb-2 bg-gradient-to-r from-[hsl(157,72%,43%)] to-[hsl(224,100%,32%)] bg-clip-text text-transparent font-luxury-serif">3</div>
+                    <div className="text-sm font-semibold text-white/80">States Licensed</div>
                   </div>
                 </div>
                 
-                <p className="text-[1.125rem] md:text-[1.25rem] font-[400] text-slate-600 mb-8 leading-[1.7]">
+                {/* Premium description */}
+                <p className="text-xl font-luxury-sans text-white/90 leading-relaxed">
                   Turning insurance confusion into family confidence across Florida, Michigan, and North Carolina.
                 </p>
                 
+                {/* Premium CTA buttons */}
                 <div className="flex flex-wrap gap-4">
-                  <a 
-                    href={BRAND.phoneTel} 
-                    className="inline-flex items-center gap-2 bg-gradient-to-r from-brand-jade-500 to-brand-sky-500 text-white px-8 py-4 rounded-xl font-[600] transition-all duration-300"
-                    style={{ boxShadow: '0 4px 12px rgba(18, 191, 174, 0.3)' }}
-                  >
-                    <Phone className="w-5 h-5" />
-                    Call Now: {BRAND.phoneHuman}
-                  </a>
-                  <a 
-                    href={`mailto:${BRAND.email}`}
-                    className="inline-flex items-center gap-2 border-2 border-brand-jade-500 text-brand-jade-500 px-8 py-4 rounded-xl font-[600] hover:bg-brand-jade-500 hover:text-white transition-all duration-300"
-                  >
-                    <Mail className="w-5 h-5" />
-                    Email Expert
-                  </a>
+                  <Magnetic>
+                    <a 
+                      href={BRAND.phoneTel} 
+                      className="group relative inline-flex items-center gap-3 px-8 py-4 rounded-xl font-bold text-lg transition-all duration-300 overflow-hidden"
+                    >
+                      {/* Premium gradient background */}
+                      <div className="absolute inset-0 bg-gradient-to-r from-[hsl(157,72%,43%)] to-[hsl(224,100%,32%)] transition-all duration-300"></div>
+                      
+                      {/* Hover glow effect */}
+                      <div className="absolute inset-0 bg-gradient-to-r from-[hsl(157,72%,43%)] to-[hsl(224,100%,32%)] opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-xl"></div>
+                      
+                      {/* Content */}
+                      <div className="relative flex items-center gap-3 text-white">
+                        <Phone className="w-6 h-6" />
+                        <span>Call Now: {BRAND.phoneHuman}</span>
+                      </div>
+                    </a>
+                  </Magnetic>
+                  
+                  <Magnetic>
+                    <a 
+                      href={`mailto:${BRAND.email}`}
+                      className="group relative inline-flex items-center gap-3 px-8 py-4 rounded-xl font-bold text-lg transition-all duration-300 overflow-hidden"
+                    >
+                      {/* Glass morphism background */}
+                      <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-white/5 to-transparent backdrop-blur-xl border-2 border-white/20"></div>
+                      
+                      {/* Hover glow effect */}
+                      <div className="absolute inset-0 bg-gradient-to-r from-[hsl(157,72%,43%)]/20 to-[hsl(224,100%,32%)]/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-xl"></div>
+                      
+                      {/* Content */}
+                      <div className="relative flex items-center gap-3 text-white group-hover:text-[hsl(157,72%,43%)] transition-colors duration-300">
+                        <Mail className="w-6 h-6" />
+                        <span>Email Expert</span>
+                      </div>
+                    </a>
+                  </Magnetic>
                 </div>
               </div>
             </Reveal>
