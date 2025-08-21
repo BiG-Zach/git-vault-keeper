@@ -369,28 +369,6 @@ export default function ContactPage() {
           </div>
         </section>
 
-        {/* Emergency Coverage */}
-        <section className="py-16 bg-gradient-to-r from-red-500 to-red-600">
-          <div className="container mx-auto px-4 max-w-4xl text-center">
-            <div className="flex items-center justify-center mb-6">
-              <AlertTriangle className="w-12 h-12 text-yellow-300" />
-            </div>
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-              Need Coverage Fast? I'm Here for You
-            </h2>
-            <p className="text-xl text-red-100 mb-8 leading-relaxed">
-              Life changes happen. If you need immediate coverage due to job loss, marriage, birth, or other qualifying events, call me directly at (689) 325-6570. I'll personally handle your urgent situation and work to get you covered as quickly as possible.
-            </p>
-            <a
-              href="tel:(689) 325-6570"
-              className="inline-flex items-center justify-center px-8 py-4 bg-white text-red-600 font-semibold rounded-xl hover:bg-red-50 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
-            >
-              <Phone className="w-6 h-6 mr-2" />
-              Call for Emergency Coverage
-            </a>
-          </div>
-        </section>
-
         {/* State Licensing */}
         <section className="py-16">
           <div className="container mx-auto px-4 max-w-6xl">
