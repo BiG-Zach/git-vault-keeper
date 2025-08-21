@@ -13,13 +13,13 @@ interface StepProps {
 
 function ProcessStep({ number, icon, title, content, bulletPoints }: StepProps) {
   return (
-    <div className="bg-white rounded-2xl border border-slate-200 shadow-lg p-8 hover:shadow-xl transition-shadow duration-300">
+      <div className="bg-white rounded-2xl border border-slate-200 shadow-lg p-8 hover:shadow-xl hover:border-big-blue-300 transition-all duration-300">
       <div className="flex items-center gap-4 mb-6">
-        <div className="flex-shrink-0 w-16 h-16 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-2xl flex items-center justify-center text-white shadow-lg">
+        <div className="flex-shrink-0 w-16 h-16 bg-gradient-to-br from-big-blue-500 to-big-blue-600 rounded-2xl flex items-center justify-center text-white shadow-lg">
           {icon}
         </div>
         <div>
-          <div className="text-sm font-medium text-emerald-600 uppercase tracking-wide">Step {number}</div>
+          <div className="text-sm font-medium text-big-teal-600 uppercase tracking-wide">Step {number}</div>
           <h3 className="text-xl font-bold text-slate-900 mt-1">{title}</h3>
         </div>
       </div>
@@ -29,7 +29,7 @@ function ProcessStep({ number, icon, title, content, bulletPoints }: StepProps) 
       <ul className="space-y-3">
         {bulletPoints.map((point, index) => (
           <li key={index} className="flex items-start gap-3">
-            <CheckCircle className="w-5 h-5 text-emerald-500 mt-0.5 flex-shrink-0" />
+            <CheckCircle className="w-5 h-5 text-big-orange-500 mt-0.5 flex-shrink-0" />
             <span className="text-slate-700">{point}</span>
           </li>
         ))}
@@ -40,8 +40,8 @@ function ProcessStep({ number, icon, title, content, bulletPoints }: StepProps) 
 
 function TrustPoint({ children }: { children: string }) {
   return (
-    <div className="flex items-center gap-3 p-4 bg-white rounded-xl border border-slate-200">
-      <Shield className="w-6 h-6 text-emerald-500 flex-shrink-0" />
+    <div className="flex items-center gap-3 p-4 bg-white/90 backdrop-blur-sm rounded-xl border border-big-blue-200 hover:border-big-orange-300 transition-colors duration-300">
+      <Shield className="w-6 h-6 text-big-teal-500 flex-shrink-0" />
       <span className="text-slate-700 font-medium">{children}</span>
     </div>
   );
@@ -166,7 +166,7 @@ export default function HowItWorksPage() {
 
       <OurProcessHero />
 
-      <main className="min-h-screen bg-gradient-to-br from-slate-50 to-emerald-50">
+      <main className="min-h-screen bg-gradient-to-br from-slate-50 to-big-blue-50">
 
         {/* Process Steps */}
         <section className="py-16">
@@ -180,8 +180,8 @@ export default function HowItWorksPage() {
         </section>
 
         {/* Trust Section */}
-        <section className="py-16 bg-aurora-sweep relative overflow-hidden">
-          <div className="absolute inset-0 bg-triple-scrim opacity-60"></div>
+        <section className="py-16 bg-big-professional relative overflow-hidden">
+          <div className="absolute inset-0 bg-big-scrim opacity-60"></div>
           <div className="container mx-auto px-4 max-w-6xl">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
@@ -199,24 +199,24 @@ export default function HowItWorksPage() {
               <div className="inline-flex items-center gap-8 bg-white/10 backdrop-blur-sm rounded-2xl p-6">
                 <div className="text-center">
                   <div className="flex items-center justify-center mb-2">
-                    <Award className="w-8 h-8 text-emerald-200" />
+                    <Award className="w-8 h-8 text-big-orange-300" />
                   </div>
                   <div className="text-2xl font-bold text-white">Licensed</div>
-                  <div className="text-emerald-200">& Bonded</div>
+                  <div className="text-big-teal-300">& Bonded</div>
                 </div>
                 <div className="text-center">
                   <div className="flex items-center justify-center mb-2">
-                    <Clock className="w-8 h-8 text-emerald-200" />
+                    <Clock className="w-8 h-8 text-big-orange-300" />
                   </div>
                   <div className="text-2xl font-bold text-white">8+ Years</div>
-                  <div className="text-emerald-200">Experience</div>
+                  <div className="text-big-teal-300">Experience</div>
                 </div>
                 <div className="text-center">
                   <div className="flex items-center justify-center mb-2">
-                    <Users className="w-8 h-8 text-emerald-200" />
+                    <Users className="w-8 h-8 text-big-orange-300" />
                   </div>
                   <div className="text-2xl font-bold text-white">6+ Networks</div>
-                  <div className="text-emerald-200">Access</div>
+                  <div className="text-big-teal-300">Access</div>
                 </div>
               </div>
             </div>
@@ -239,15 +239,15 @@ export default function HowItWorksPage() {
             </div>
 
             <div className="text-center mt-12">
-              <div className="bg-gradient-to-r from-emerald-600 to-emerald-700 rounded-2xl p-8 text-white">
+              <div className="bg-big-professional rounded-2xl p-8 text-white shadow-2xl">
                 <h3 className="text-2xl font-bold mb-4">Ready to Get Started?</h3>
-                <p className="text-emerald-100 mb-6 text-lg">
+                <p className="text-big-teal-100 mb-6 text-lg">
                   Most clients get their perfect plan within 48 hours. Let's find yours.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <a
                     href="https://calendly.com/bradfordinformedguidance"
-                    className="inline-flex items-center justify-center px-8 py-4 bg-white text-emerald-700 font-semibold rounded-xl hover:bg-emerald-50 transition-colors duration-300"
+                    className="inline-flex items-center justify-center px-8 py-4 bg-white text-big-blue-700 font-semibold rounded-xl hover:bg-big-teal-50 transition-colors duration-300 shadow-lg"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -255,7 +255,7 @@ export default function HowItWorksPage() {
                   </a>
                   <a
                     href="tel:(689) 325-6570"
-                    className="inline-flex items-center justify-center px-8 py-4 bg-emerald-500 text-white font-semibold rounded-xl hover:bg-emerald-400 transition-colors duration-300"
+                    className="inline-flex items-center justify-center px-8 py-4 bg-big-accent text-white font-semibold rounded-xl hover:bg-big-orange-600 transition-colors duration-300 shadow-lg"
                   >
                     Call Now: (689) 325-6570
                   </a>

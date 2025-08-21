@@ -21,11 +21,39 @@ const config: Config = {
           warning: { 500: "#f4d164" },
           danger: { 500: "#e0523c" }
         },
+        // Best Insurance Group inspired colors
+        big: {
+          blue: { 
+            400: "#3b82f6",
+            500: "#1e3a8a", 
+            600: "#1e40af", 
+            700: "#1d4ed8", 
+            800: "#1e40af", 
+            900: "#1e3a8a" 
+          },
+          orange: { 
+            400: "#fb923c", 
+            500: "#f97316", 
+            600: "#ea580c",
+            700: "#c2410c" 
+          },
+          teal: { 
+            400: "#22d3ee", 
+            500: "#06b6d4", 
+            600: "#0891b2",
+            700: "#0e7490" 
+          }
+        },
       },
       backgroundImage: {
         "aurora-sweep": "linear-gradient(135deg, #12bfae 0%, #2aa8ff 55%, #1989ee 100%)",
         "triple-scrim":
           "linear-gradient(180deg, rgba(7,17,27,0.70) 0%, rgba(7,17,27,0.35) 28%, rgba(7,17,27,0.00) 46%), linear-gradient(180deg, rgba(7,17,27,0.00) 55%, rgba(7,17,27,0.35) 78%, rgba(7,17,27,0.70) 100%), radial-gradient(1200px 600px at 60% 20%, rgba(42,168,255,0.18), rgba(42,168,255,0) 60%)",
+        // BIG-inspired gradients
+        "big-professional": "linear-gradient(135deg, #1e3a8a 0%, #06b6d4 55%, #1e40af 100%)",
+        "big-accent": "linear-gradient(135deg, #f97316 0%, #fb923c 100%)",
+        "big-hero": "linear-gradient(135deg, #1e3a8a 0%, rgba(249, 115, 22, 0.1) 100%)",
+        "big-scrim": "linear-gradient(180deg, rgba(30,58,138,0.70) 0%, rgba(30,58,138,0.35) 28%, rgba(30,58,138,0.00) 46%), linear-gradient(180deg, rgba(30,58,138,0.00) 55%, rgba(30,58,138,0.35) 78%, rgba(30,58,138,0.70) 100%), radial-gradient(1200px 600px at 60% 20%, rgba(249,115,22,0.18), rgba(249,115,22,0) 60%)",
       },
       boxShadow: {
         glass: "0 1px 0 0 rgba(255,255,255,0.26) inset, 0 10px 36px rgba(25,137,238,0.18)",
