@@ -515,68 +515,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* GEOGRAPHIC SERVICE AREA */}
-      <section className="py-20 bg-ink-900 text-white">
-        <div className="container mx-auto px-5 max-w-6xl">
-          <Reveal>
-            <div className="text-center mb-12">
-              <h2 className="text-[2.25rem] md:text-[2.25rem] font-[700] mb-4 text-white">Geographic Service Excellence</h2>
-              <p className="text-[1.25rem] font-[400] text-white/90">Licensed expertise across three key markets</p>
-            </div>
-          </Reveal>
-          
-          <div className="grid md:grid-cols-3 gap-8">
-            <Reveal delay={0.1}>
-              <div className="p-8 bg-white/10 backdrop-blur-sm rounded-lg border border-white/20 hover:bg-white/15 transition-all duration-300">
-                <div className="mb-4">
-                  <div className="inline-block px-3 py-1 bg-brand-jade-500 text-white text-[0.75rem] font-[600] rounded-full mb-4">
-                    Home Market
-                  </div>
-                  <h3 className="text-[1.5rem] font-[700] text-white mb-2">Florida</h3>
-                  <p className="text-[1.125rem] font-[500] text-brand-jade-300 mb-4">Primary Market - Tampa Bay Focus</p>
-                </div>
-                <p className="text-[1rem] text-white/80 leading-[1.7]">Comprehensive statewide coverage with specialized Tampa Bay area expertise</p>
-              </div>
-            </Reveal>
-            
-            <Reveal delay={0.2}>
-              <div className="p-8 bg-white/10 backdrop-blur-sm rounded-lg border border-white/20 hover:bg-white/15 transition-all duration-300">
-                <div className="mb-4">
-                  <div className="inline-block px-3 py-1 bg-brand-sky-500 text-white text-[0.75rem] font-[600] rounded-full mb-4">
-                    Full Coverage
-                  </div>
-                  <h3 className="text-[1.5rem] font-[700] text-white mb-2">Michigan</h3>
-                  <p className="text-[1.125rem] font-[500] text-brand-sky-300 mb-4">Comprehensive Statewide Coverage</p>
-                </div>
-                <p className="text-[1rem] text-white/80 leading-[1.7]">Full state licensed service with deep understanding of Michigan healthcare needs</p>
-              </div>
-            </Reveal>
-            
-            <Reveal delay={0.3}>
-              <div className="p-8 bg-white/10 backdrop-blur-sm rounded-lg border border-white/20 hover:bg-white/15 transition-all duration-300">
-                <div className="mb-4">
-                  <div className="inline-block px-3 py-1 bg-brand-jade-500 text-white text-[0.75rem] font-[600] rounded-full mb-4">
-                    Statewide
-                  </div>
-                  <h3 className="text-[1.5rem] font-[700] text-white mb-2">North Carolina</h3>
-                  <p className="text-[1.125rem] font-[500] text-brand-jade-300 mb-4">Full State Licensed Service</p>
-                </div>
-                <p className="text-[1rem] text-white/80 leading-[1.7]">Complete North Carolina market access with personalized local service</p>
-              </div>
-            </Reveal>
-          </div>
-          
-          <Reveal delay={0.4}>
-            <div className="text-center mt-12 p-8 bg-white/5 backdrop-blur-sm rounded-lg border border-white/10">
-              <h3 className="text-[1.5rem] font-[700] text-white mb-4">Expanding Nationwide</h3>
-              <p className="text-[1.125rem] text-white/90 leading-[1.7]">
-                Currently pursuing additional state licenses to serve families across America. 
-                Contact us to learn about coverage options in your state.
-              </p>
-            </div>
-          </Reveal>
-        </div>
-      </section>
 
       {/* WHY FAMILIES CHOOSE BRADFORD */}
       <section className="py-20 bg-surface-base">
