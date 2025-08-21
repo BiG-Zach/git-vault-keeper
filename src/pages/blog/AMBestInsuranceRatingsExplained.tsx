@@ -57,7 +57,7 @@ export default function AMBestInsuranceRatingsExplained() {
               <li><a href="#why-ratings-matter" className="text-blue-600 hover:underline">Why Financial Strength Matters</a></li>
               <li><a href="#how-to-check" className="text-blue-600 hover:underline">How to Check Your Insurer's Rating</a></li>
               <li><a href="#red-flags" className="text-blue-600 hover:underline">Warning Signs to Avoid</a></li>
-              <li><a href="#choosing-carrier"ClassName="text-blue-600 hover:underline">Choosing the Right Carrier</a></li>
+              <li><a href="#choosing-carrier" className="text-blue-600 hover:underline">Choosing the Right Carrier</a></li>
             </ul>
           </div>
 
