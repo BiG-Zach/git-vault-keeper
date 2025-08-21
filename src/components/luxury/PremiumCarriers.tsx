@@ -99,7 +99,7 @@ const PremiumCarriers = () => {
               <div className="bg-white rounded-2xl p-6 lg:p-8 border border-slate-200 hover:border-emerald-300 hover:shadow-premium transition-all duration-300 h-full flex flex-col items-center justify-center group-hover:scale-105">
                 {/* Rating Badge */}
                 <div className="absolute top-3 right-3 bg-emerald-100 text-emerald-800 text-xs font-bold px-2 py-1 rounded-full">
-                  A (Excellent) AM Best Rated
+                  {carrier.rating}
                 </div>
                 
                 {/* Logo */}
