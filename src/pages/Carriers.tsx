@@ -179,26 +179,33 @@ export default function CarriersPage() {
         </picture>
 
         
-        {/* Hero Content - Left positioned for maximum conversion impact */}
-        <div className="relative z-10 text-left px-4 max-w-6xl mx-auto">
-          <div className="w-3/5 ml-10">
-            {/* Main Headline - SEO Optimized */}
-            <h1 className="text-[42px] font-bold text-white leading-[1.2] mb-4" style={{ textShadow: '0 2px 4px rgba(0,0,0,0.3)' }}>
-              Trusted PPO Insurance Networks in Florida, Michigan & North Carolina
+        {/* Hero Content - Strategically positioned for maximum visual impact */}
+        <div className="relative z-10 w-full px-6 max-w-7xl mx-auto">
+          <div className="text-center max-w-5xl mx-auto pt-20">
+            {/* Main Headline - Strategically positioned for maximum impact */}
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-[0.95] mb-8 tracking-tight" 
+                style={{ 
+                  textShadow: '0 4px 12px rgba(0,0,0,0.5), 0 2px 4px rgba(0,0,0,0.3)',
+                  transform: 'translateY(-10px)'
+                }}>
+              <span className="block">Trusted PPO Insurance Networks</span>
+              <span className="block text-4xl md:text-5xl lg:text-6xl font-semibold opacity-95 mt-3">
+                in Florida, Michigan & North Carolina
+              </span>
             </h1>
             
-            {/* Subheadline - SEO Enhanced */}
-            <h2 className="text-[24px] font-semibold text-white opacity-95 mt-4 mb-5">
+            {/* Subheadline - Enhanced positioning */}
+            <h2 className="text-xl md:text-2xl lg:text-3xl font-medium text-white opacity-90 mt-8 mb-6 max-w-4xl mx-auto leading-relaxed">
               Licensed Broker Connecting You to Top-Rated Carriers Nationwide
             </h2>
             
-            {/* Value Proposition - Enhanced */}
-            <p className="text-[18px] text-white opacity-90 mt-5 mb-3">
+            {/* Value Proposition - Centered for impact */}
+            <p className="text-lg md:text-xl text-white opacity-85 mt-6 mb-4 max-w-3xl mx-auto leading-relaxed">
               Access 6 extensive PPO networks • A+ rated carriers • Next-day approval • Licensed & bonded in FL, MI, NC
             </p>
             
-            {/* Trust Indicator - Local SEO */}
-            <p className="text-[16px] font-medium text-white opacity-85 mt-3">
+            {/* Trust Indicator - Enhanced visibility */}
+            <p className="text-base md:text-lg font-medium text-white opacity-80 mt-4 max-w-2xl mx-auto">
               20+ Years Combined Experience • Licensed & Bonded Insurance Broker
             </p>
           </div>
