@@ -612,10 +612,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* TESTIMONIAL REEL */}
-      <section className="py-16">
-        <TestimonialReel />
-      </section>
     </main>
   );
 }
