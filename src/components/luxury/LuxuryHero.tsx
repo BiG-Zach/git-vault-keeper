@@ -52,19 +52,6 @@ const LuxuryHero = () => {
           
           {/* Left: Premium Content */}
           <div className="text-white relative">
-            {/* Professional Badge */}
-            <div className="absolute -top-2 -right-2 lg:-right-8 z-20">
-              <div className="relative">
-                <img 
-                  src="/about/portrait.jpg" 
-                  alt="Zachary Bradford - Licensed Insurance Expert" 
-                  className="w-20 h-20 lg:w-24 lg:h-24 rounded-full border-4 border-white/20 shadow-xl object-cover"
-                />
-                <div className="absolute -bottom-1 -right-1 bg-emerald-500 text-white p-1.5 rounded-full shadow-lg">
-                  <Shield className="w-3 h-3" />
-                </div>
-              </div>
-            </div>
             <motion.div
               initial={{ opacity: 0, y: prefersReducedMotion ? 0 : 30 }}
               animate={{ opacity: 1, y: 0 }}
