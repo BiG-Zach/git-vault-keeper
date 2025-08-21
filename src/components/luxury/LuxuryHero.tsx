@@ -28,6 +28,25 @@ const LuxuryHero = () => {
         
       </div>
 
+      {/* Enhanced Trust Badge - Upper Left Corner */}
+      <motion.div
+        initial={{ opacity: 0, x: prefersReducedMotion ? 0 : -30 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
+        className="absolute top-6 left-6 z-30"
+      >
+        <div className="inline-flex items-center gap-3 px-6 py-3 rounded-2xl bg-white/15 backdrop-blur-xl border border-white/30 shadow-2xl">
+          <div className="flex items-center gap-2">
+            <div className="w-3 h-3 bg-emerald-400 rounded-full animate-pulse shadow-lg" />
+            <Shield className="w-5 h-5 text-white drop-shadow-sm" />
+          </div>
+          <div className="text-white">
+            <div className="text-sm font-semibold tracking-wide">Licensed Professional</div>
+            <div className="text-xs text-white/80 font-medium">{BRAND.licensed} States</div>
+          </div>
+        </div>
+      </motion.div>
+
       <div className="relative z-10 container mx-auto px-4 lg:px-6">
         <div className="grid lg:grid-cols-[1.2fr_0.8fr] gap-8 lg:gap-12 items-center">
           
@@ -52,11 +71,6 @@ const LuxuryHero = () => {
               transition={{ duration: 0.8, ease: "easeOut" }}
               className="mb-6"
             >
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 mb-6">
-                <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse" />
-                <span className="text-sm font-medium">Licensed in {BRAND.licensed}</span>
-              </div>
-              
               <h1 className="text-4xl lg:text-6xl xl:text-7xl font-bold leading-[1.1] tracking-tight mb-6">
                 <span className="block font-luxury-serif">Private Health &</span>
                 <span className="block gradient-text-luxury font-luxury-serif">Life Guidance.</span>
