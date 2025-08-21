@@ -21,12 +21,6 @@ const config: Config = {
           warning: { 500: "#f4d164" },
           danger: { 500: "#e0523c" }
         },
-        big: {
-          navy: { 500: "#003366", 600: "#002952", 700: "#001f3d" },
-          orange: { 500: "#F15A29", 600: "#d64920", 700: "#b83e1c" },
-          green: { 500: "#6CB33F", 600: "#5a9635", 700: "#4a7a2b" },
-          neutral: { 50: "#F8F9FA", 100: "#FFFFFF", 800: "#222222" }
-        },
       },
       backgroundImage: {
         "aurora-sweep": "linear-gradient(135deg, #12bfae 0%, #2aa8ff 55%, #1989ee 100%)",
