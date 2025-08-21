@@ -224,7 +224,7 @@ export default function ContactPage() {
                     <Clock className="w-6 h-6 text-emerald-500 mt-1" />
                     <div>
                       <div className="font-semibold text-slate-900">Office Hours</div>
-                      <div className="text-slate-700">Personal appointments available Monday-Friday</div>
+                      <div className="text-slate-700">Available Monday – Friday, 8:00 AM – 8:00 PM Weekend appointments offered upon request</div>
                     </div>
                   </div>
                 </div>
