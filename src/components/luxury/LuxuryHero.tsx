@@ -28,24 +28,6 @@ const LuxuryHero = () => {
         
       </div>
 
-      {/* Enhanced Trust Badge - Upper Left Corner */}
-      <motion.div
-        initial={{ opacity: 0, x: prefersReducedMotion ? 0 : -30 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
-        className="absolute top-6 left-6 z-30"
-      >
-        <div className="inline-flex items-center gap-3 px-6 py-3 rounded-2xl bg-white/15 backdrop-blur-xl border border-white/30 shadow-2xl">
-          <div className="flex items-center gap-2">
-            <div className="w-3 h-3 bg-emerald-400 rounded-full animate-pulse shadow-lg" />
-            <Shield className="w-5 h-5 text-white drop-shadow-sm" />
-          </div>
-          <div className="text-white">
-            <div className="text-sm font-semibold tracking-wide">Licensed Professional</div>
-            <div className="text-xs text-white/80 font-medium">{BRAND.licensed} States</div>
-          </div>
-        </div>
-      </motion.div>
 
       <div className="relative z-10 container mx-auto px-4 lg:px-6">
         <div className="grid lg:grid-cols-[1.2fr_0.8fr] gap-8 lg:gap-12 items-center">
