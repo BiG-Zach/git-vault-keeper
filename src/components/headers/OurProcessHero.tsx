@@ -21,26 +21,12 @@ export default function OurProcessHero() {
 
   const Content = (
     <div className="mx-auto max-w-4xl px-4 md:px-0 text-center">
-      <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight text-white drop-shadow-[0_6px_24px_rgba(0,0,0,.65)] mb-6 bg-gradient-to-r from-white via-big-teal-100 to-white bg-clip-text text-transparent">
+      <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight text-white drop-shadow-[0_6px_24px_rgba(0,0,0,.65)] mb-6">
         My Simple 4-Step Process to Get You Perfect Insurance Coverage
       </h1>
-      <p className="text-xl md:text-2xl text-big-teal-100 leading-relaxed drop-shadow-[0_3px_14px_rgba(0,0,0,.5)] mb-10 max-w-3xl mx-auto">
+      <p className="text-xl md:text-2xl text-white/95 leading-relaxed drop-shadow-[0_3px_14px_rgba(0,0,0,.5)] mb-8 max-w-3xl mx-auto">
         Getting the right insurance shouldn't be complicated. As your licensed broker serving Florida, Michigan, and North Carolina, I use my proven 4-step process to make it simple, fast, and stress-free.
       </p>
-      <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-        <a
-          href="https://calendly.com/bradfordinformedguidance"
-          className="group inline-flex items-center justify-center px-8 py-4 bg-big-accent text-white font-bold rounded-2xl hover:bg-big-orange-600 hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 shadow-lg text-lg"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Start Step 1 Now
-          <Calendar className="ml-3 w-5 h-5 group-hover:rotate-12 transition-transform duration-300" />
-        </a>
-        <div className="text-big-teal-200 text-sm font-medium">
-          Free consultation • No obligation • Licensed & bonded
-        </div>
-      </div>
     </div>
   );
 
@@ -81,9 +67,6 @@ export default function OurProcessHero() {
           )}
         </div>
 
-        {/* Overlay with BIG colors */}
-        <div className="absolute inset-0 z-10 bg-gradient-to-r from-big-blue-900/75 via-big-blue-800/50 to-big-teal-600/75"></div>
-        
         {/* Content */}
         <div className="absolute inset-0 z-30 grid place-items-center">
           <div className="w-full py-16 md:py-24">
