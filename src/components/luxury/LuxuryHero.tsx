@@ -96,13 +96,6 @@ const LuxuryHero = () => {
               className="flex flex-col sm:flex-row gap-4 mb-8"
             >
               <a
-                href="/lead"
-                className="inline-flex items-center justify-center px-8 py-4 bg-emerald-600 hover:bg-emerald-500 text-white font-semibold rounded-xl transition-all duration-300 transform hover:scale-105 hover:shadow-glow"
-                data-gtm={`${BRAND.gtm.quote}_luxury_hero`}
-              >
-                Get Premium Quote
-              </a>
-              <a
                 href={BRAND.phoneTel}
                 className="inline-flex items-center justify-center px-8 py-4 bg-white/10 hover:bg-white/20 text-white font-semibold rounded-xl border border-white/30 backdrop-blur-md transition-all duration-300"
                 data-gtm={`${BRAND.gtm.call}_luxury_hero`}
