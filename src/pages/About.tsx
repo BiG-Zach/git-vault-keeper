@@ -4,6 +4,7 @@ import { Shield, Award, Users, TrendingUp, Phone, Mail, Calendar, Star, CheckCir
 import Reveal from "../components/Reveal";
 import CalendlyInline from "../components/CalendlyInline";
 import AboutHero from "../components/about/AboutHero";
+import Magnetic from "../components/ui/Magnetic";
 
 export default function AboutPage() {
   return (
@@ -505,50 +506,110 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* FINAL CTA SECTION - LUXURY TRANSFORMATION */}
-      <section className="py-20 bg-gradient-to-br from-brand-sky-500 via-brand-jade-500 to-brand-sky-600 text-white relative overflow-hidden">
-        {/* Overlay for better text contrast */}
-        <div className="container mx-auto px-5 max-w-5xl text-center">
-          <Reveal>
-            <h2 className="text-[2.5rem] md:text-[3rem] font-[700] mb-6 leading-tight">
-              Ready to Secure Your Family's Future?
-            </h2>
-            <p className="text-[1.25rem] font-[400] mb-12 opacity-95 leading-[1.7] max-w-3xl mx-auto">
-              Let's start with a conversation. No pressure, no sales pitch—just honest guidance you can trust.
-            </p>
-            
-            <div className="flex flex-col sm:flex-row gap-6 justify-center mb-12">
-              <a 
-                href={BRAND.phoneTel}
-                className="inline-flex items-center gap-3 bg-white text-ink-900 px-10 py-5 rounded-lg font-[600] text-[1.125rem] hover:bg-white/95 transition-all duration-300"
-                style={{ boxShadow: '0 8px 20px rgba(255, 255, 255, 0.4)' }}
-              >
-                <Phone className="w-6 h-6" />
-                Call {BRAND.phoneHuman}
-              </a>
-              <a 
-                href={`mailto:${BRAND.email}`}
-                className="inline-flex items-center gap-3 border-2 border-white text-white px-10 py-5 rounded-lg font-[600] text-[1.125rem] hover:bg-white/10 transition-all duration-300"
-              >
-                <Mail className="w-6 h-6" />
-                Email Bradford
-              </a>
-              <a 
-                href="/lead"
-                className="inline-flex items-center gap-3 border-2 border-white text-white px-10 py-5 rounded-lg font-[600] text-[1.125rem] hover:bg-white/10 transition-all duration-300"
-              >
-                <Calendar className="w-6 h-6" />
-                Schedule Consultation
-              </a>
-            </div>
-            
-            <div className="bg-white/10 backdrop-blur-sm p-8 rounded-lg border border-white/20 max-w-2xl mx-auto">
-              <p className="text-[1.25rem] font-[700] mb-3">100% Risk-Free Consultation Guarantee</p>
-              <p className="text-[1.125rem] opacity-90 leading-[1.7]">
-                No cost, no obligation, no pressure. Just expert guidance to help you make the best decision for your family.
-              </p>
-            </div>
-          </Reveal>
+      {/* LUXURY CTA SECTION - WORLD CLASS DESIGN */}
+      <section className="relative py-24 md:py-32 overflow-hidden">
+        {/* Premium Background Layer */}
+        <div className="absolute inset-0 bg-gradient-to-br from-ink-900 via-slate-900 to-ink-900"></div>
+        
+        {/* Ambient Light Effects */}
+        <div className="absolute inset-0">
+          <div className="absolute top-20 left-1/4 w-96 h-96 bg-brand-jade-500/20 rounded-full blur-3xl opacity-60"></div>
+          <div className="absolute bottom-20 right-1/4 w-80 h-80 bg-brand-sky-500/20 rounded-full blur-3xl opacity-40"></div>
+        </div>
+        
+        {/* Geometric Accents */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-0 right-0 w-72 h-72 border border-white/10 rotate-45 translate-x-36 -translate-y-36"></div>
+          <div className="absolute bottom-0 left-0 w-96 h-96 border border-white/5 rotate-12 -translate-x-48 translate-y-48"></div>
+        </div>
+        
+        <div className="relative container mx-auto px-6 max-w-6xl">
+          <div className="text-center">
+            <Reveal>
+              {/* Luxury Typography */}
+              <div className="mb-16">
+                <h2 className="font-luxury-serif text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-8 leading-[1.1] tracking-tight">
+                  Ready to Secure Your 
+                  <span className="block bg-gradient-to-r from-brand-jade-500 via-white to-brand-sky-500 bg-clip-text text-transparent">
+                    Family's Future?
+                  </span>
+                </h2>
+                <p className="text-xl md:text-2xl text-white/80 max-w-4xl mx-auto leading-relaxed font-light">
+                  Let's start with a conversation. No pressure, no sales pitch—just honest guidance 
+                  <span className="text-white font-medium"> you can trust.</span>
+                </p>
+              </div>
+              
+              {/* Premium CTA Buttons */}
+              <div className="flex flex-col lg:flex-row gap-6 justify-center items-center mb-20">
+                <Magnetic strength={15}>
+                  <a 
+                    href={BRAND.phoneTel}
+                    className="group relative inline-flex items-center gap-4 bg-gradient-to-r from-brand-jade-500 to-brand-jade-600 text-white px-12 py-6 rounded-2xl font-semibold text-lg shadow-luxury hover:shadow-glow transition-all duration-500 transform hover:scale-[1.02] active:scale-[0.98] overflow-hidden min-w-[280px]"
+                  >
+                    <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <Phone className="w-6 h-6 relative z-10" />
+                    <span className="relative z-10">Call {BRAND.phoneHuman}</span>
+                  </a>
+                </Magnetic>
+                
+                <Magnetic strength={12}>
+                  <a 
+                    href={`mailto:${BRAND.email}`}
+                    className="group relative inline-flex items-center gap-4 bg-white/10 backdrop-blur-md border border-white/20 text-white px-12 py-6 rounded-2xl font-semibold text-lg hover:bg-white/20 hover:border-white/30 transition-all duration-500 transform hover:scale-[1.02] active:scale-[0.98] min-w-[280px]"
+                  >
+                    <Mail className="w-6 h-6" />
+                    <span>Email Bradford</span>
+                  </a>
+                </Magnetic>
+                
+                <Magnetic strength={12}>
+                  <a 
+                    href="/lead"
+                    className="group relative inline-flex items-center gap-4 bg-white/5 backdrop-blur-md border border-white/15 text-white px-12 py-6 rounded-2xl font-semibold text-lg hover:bg-white/15 hover:border-white/25 transition-all duration-500 transform hover:scale-[1.02] active:scale-[0.98] min-w-[280px]"
+                  >
+                    <Calendar className="w-6 h-6" />
+                    <span>Schedule Consultation</span>
+                  </a>
+                </Magnetic>
+              </div>
+              
+              {/* Luxury Guarantee Box */}
+              <div className="relative max-w-4xl mx-auto">
+                {/* Glass Card */}
+                <div className="relative bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-10 md:p-12 shadow-luxury">
+                  {/* Subtle Inner Glow */}
+                  <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-white/10 via-transparent to-brand-jade-500/5 opacity-60"></div>
+                  
+                  {/* Content */}
+                  <div className="relative z-10">
+                    <div className="flex items-center justify-center gap-4 mb-6">
+                      <div className="w-12 h-12 rounded-full bg-gradient-to-r from-brand-jade-500 to-brand-sky-500 flex items-center justify-center">
+                        <Shield className="w-6 h-6 text-white" />
+                      </div>
+                      <h3 className="font-luxury-serif text-2xl md:text-3xl font-bold text-white">
+                        100% Risk-Free Consultation
+                      </h3>
+                    </div>
+                    
+                    <p className="text-lg md:text-xl text-white/90 leading-relaxed max-w-2xl mx-auto">
+                      No cost, no obligation, no pressure. Just expert guidance to help you make 
+                      <span className="text-brand-jade-300 font-medium"> the best decision for your family.</span>
+                    </p>
+                    
+                    {/* Premium Accent Line */}
+                    <div className="mt-8 mx-auto w-24 h-0.5 bg-gradient-to-r from-transparent via-brand-jade-500 to-transparent"></div>
+                  </div>
+                  
+                  {/* Corner Accents */}
+                  <div className="absolute top-4 left-4 w-8 h-8 border-l-2 border-t-2 border-white/20 rounded-tl-lg"></div>
+                  <div className="absolute top-4 right-4 w-8 h-8 border-r-2 border-t-2 border-white/20 rounded-tr-lg"></div>
+                  <div className="absolute bottom-4 left-4 w-8 h-8 border-l-2 border-b-2 border-white/20 rounded-bl-lg"></div>
+                  <div className="absolute bottom-4 right-4 w-8 h-8 border-r-2 border-b-2 border-white/20 rounded-br-lg"></div>
+                </div>
+              </div>
+            </Reveal>
+          </div>
         </div>
       </section>
 
