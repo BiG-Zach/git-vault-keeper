@@ -36,8 +36,8 @@ export default function CarrierCard({ carrier }: CarrierCardProps) {
             <div className="ml-4">
               <div className={`inline-flex items-center gap-2 rounded-full px-4 py-2 text-xs font-semibold border backdrop-blur-sm ${
                 carrier.rating.includes('A+') || carrier.rating.includes('A (') 
-                  ? 'bg-gradient-to-r from-big-blue-500/15 to-big-blue-600/15 text-big-blue-600 border-big-blue-500/30' 
-                  : 'bg-gradient-to-r from-big-teal-500/15 to-big-teal-600/15 text-big-teal-600 border-big-teal-500/30'
+                  ? 'bg-gradient-to-r from-green-500/15 to-green-600/15 text-green-600 border-green-500/30' 
+                  : 'bg-gradient-to-r from-blue-500/15 to-blue-600/15 text-blue-600 border-blue-500/30'
               }`}>
                 <Shield className="h-3 w-3" />
                 {carrier.rating}
@@ -61,8 +61,8 @@ export default function CarrierCard({ carrier }: CarrierCardProps) {
                 key={index}
                 className={`inline-flex items-center rounded-lg px-3 py-2 text-sm font-semibold border backdrop-blur-sm transition-all duration-300 hover:scale-105 ${
                   isServiceType
-                    ? 'bg-big-blue-50 text-big-blue-700 border-big-blue-200 hover:bg-big-blue-100' 
-                    : 'bg-big-orange-50 text-big-orange-600 border-big-orange-200 hover:bg-big-orange-100'
+                    ? 'bg-slate-100 text-slate-700 border-slate-300' 
+                    : 'bg-slate-50 text-slate-600 border-slate-200'
                 }`}
               >
                 {specialty}
@@ -72,8 +72,8 @@ export default function CarrierCard({ carrier }: CarrierCardProps) {
         </div>
       </div>
 
-      {/* BIG Premium border glow */}
-      <div className="absolute inset-0 rounded-2xl border border-big-teal-500/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+      {/* Premium border glow */}
+      <div className="absolute inset-0 rounded-2xl border border-gradient-to-r from-brand-sky-500/30 to-brand-jade-500/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
     </div>
   );
 }

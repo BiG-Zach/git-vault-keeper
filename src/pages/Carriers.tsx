@@ -178,30 +178,28 @@ export default function CarriersPage() {
           />
         </picture>
 
-        {/* BIG Professional Overlay */}
-        <div className="absolute inset-0 bg-big-professional opacity-60" />
         
         {/* Hero Content - Left positioned for maximum conversion impact */}
         <div className="relative z-10 text-left px-4 max-w-6xl mx-auto">
           <div className="w-3/5 ml-10">
             {/* Main Headline - SEO Optimized */}
-            <h1 className="text-[42px] font-bold text-white leading-[1.2] mb-4" style={{ textShadow: '0 4px 8px rgba(30, 58, 138, 0.4)' }}>
+            <h1 className="text-[42px] font-bold text-white leading-[1.2] mb-4" style={{ textShadow: '0 2px 4px rgba(0,0,0,0.3)' }}>
               Trusted PPO Insurance Networks in Florida, Michigan & North Carolina
             </h1>
             
             {/* Subheadline - SEO Enhanced */}
             <h2 className="text-[24px] font-semibold text-white opacity-95 mt-4 mb-5">
-              Licensed Broker Connecting You to <span className="text-big-orange-400">Top-Rated Carriers</span> Nationwide
+              Licensed Broker Connecting You to Top-Rated Carriers Nationwide
             </h2>
             
             {/* Value Proposition - Enhanced */}
             <p className="text-[18px] text-white opacity-90 mt-5 mb-3">
-              Access <span className="text-big-teal-400 font-semibold">6 extensive PPO networks</span> • A+ rated carriers • Next-day approval • Licensed & bonded in FL, MI, NC
+              Access 6 extensive PPO networks • A+ rated carriers • Next-day approval • Licensed & bonded in FL, MI, NC
             </p>
             
             {/* Trust Indicator - Local SEO */}
             <p className="text-[16px] font-medium text-white opacity-85 mt-3">
-              20+ Years Combined Experience • <span className="text-big-orange-400">Licensed & Bonded</span> Insurance Broker
+              20+ Years Combined Experience • Licensed & Bonded Insurance Broker
             </p>
           </div>
         </div>
@@ -211,17 +209,16 @@ export default function CarriersPage() {
 
         {/* PPO Networks Section */}
         <section className="mb-20 relative">
-          {/* BIG Professional background */}
-          <div className="absolute inset-0 bg-big-professional opacity-10 rounded-3xl" />
-          <div className="absolute inset-0 bg-gradient-to-r from-big-blue-600/5 via-big-teal-500/5 to-big-blue-600/5 rounded-3xl" />
+          {/* Section background */}
+          <div className="absolute inset-0 bg-gradient-to-r from-white/50 via-brand-jade-500/5 to-white/50 rounded-3xl" />
           
           <div className="relative z-10">
             <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-5xl font-bold mb-6 text-big-blue-800">
-                Find Your Doctor in Our <span className="text-big-teal-600">Premium PPO Networks</span>
+              <h2 className="text-4xl md:text-5xl font-bold mb-6 text-slate-900">
+                Find Your Doctor in Our Premium PPO Networks
               </h2>
-              <p className="text-xl text-big-blue-700 max-w-3xl mx-auto leading-relaxed">
-                Access over <span className="text-big-orange-600 font-semibold">1.3 million healthcare providers</span> nationwide through our trusted PPO network partnerships in Florida, Michigan, and North Carolina.
+              <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
+                Access over 1.3 million healthcare providers nationwide through our trusted PPO network partnerships in Florida, Michigan, and North Carolina.
               </p>
             </div>
             
@@ -237,17 +234,16 @@ export default function CarriersPage() {
 
         {/* Insurance Carriers Section */}
         <section className="mb-20 relative">
-          {/* BIG Hero background */}
-          <div className="absolute inset-0 bg-big-hero opacity-15 rounded-3xl" />
-          <div className="absolute inset-0 bg-gradient-to-br from-big-blue-800/10 via-big-orange-500/5 to-big-teal-500/10 rounded-3xl" />
+          {/* Section background */}
+          <div className="absolute inset-0 bg-gradient-to-r from-white/50 via-brand-sky-500/5 to-white/50 rounded-3xl" />
           
           <div className="relative z-10">
             <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-5xl font-bold mb-6 text-big-blue-800">
-                Our <span className="text-big-orange-600">Trusted Insurance Carriers</span>
+              <h2 className="text-4xl md:text-5xl font-bold mb-6 text-slate-900">
+                Our Trusted Insurance Carriers
               </h2>
-              <p className="text-xl text-big-blue-700 max-w-3xl mx-auto leading-relaxed">
-                We partner with <span className="text-big-teal-600 font-semibold">A+ rated insurance carriers</span> to provide you with comprehensive coverage options and competitive rates across health, life, and supplemental insurance.
+              <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
+                We partner with A+ rated insurance carriers to provide you with comprehensive coverage options and competitive rates across health, life, and supplemental insurance.
               </p>
             </div>
             
@@ -260,22 +256,21 @@ export default function CarriersPage() {
         </section>
 
         {/* Footer CTA Section */}
-        <section className="relative rounded-3xl border border-big-orange-200 bg-white p-12 text-center shadow-xl">
-          {/* BIG Accent background */}
-          <div className="absolute inset-0 bg-big-accent opacity-5 rounded-3xl" />
-          <div className="absolute inset-0 bg-gradient-to-br from-big-orange-500/10 to-big-orange-600/5 rounded-3xl" />
+        <section className="relative rounded-3xl border border-gray-200 bg-white p-12 text-center shadow-sm">
+          {/* Clean solid background */}
+          <div className="absolute inset-0 bg-gray-50" />
           
           <div className="relative z-10">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-big-blue-800">Ready to Find Your <span className="text-big-orange-600">Perfect Coverage?</span></h2>
-            <p className="text-lg text-big-blue-700 max-w-2xl mx-auto mb-8">
-              Our <span className="text-big-teal-600 font-semibold">licensed brokers</span> are standing by to help you compare options and find the right insurance plan for your needs. Get personalized recommendations from carriers serving Florida, Michigan, and North Carolina.
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-slate-900">Ready to Find Your Perfect Coverage?</h2>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto mb-8">
+              Our licensed brokers are standing by to help you compare options and find the right insurance plan for your needs. Get personalized recommendations from carriers serving Florida, Michigan, and North Carolina.
             </p>
             
             <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
               <Button
                 asChild
                 size="lg"
-                className="bg-big-orange-500 text-white hover:bg-big-orange-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-big-orange-500 focus-visible:ring-offset-2 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 px-10 py-5 text-lg font-bold"
+                className="bg-brand-jade-500 text-white hover:bg-brand-jade-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-jade-500 focus-visible:ring-offset-2 disabled:opacity-60 disabled:pointer-events-none bg-[#12bfae] hover:bg-[#0ea99d] px-10 py-5 text-lg"
               >
                 <a
                   href={BRAND.phoneTel}
@@ -291,7 +286,7 @@ export default function CarriersPage() {
                 asChild
                 variant="outline"
                 size="lg"
-                className="border-2 border-big-blue-500 bg-white text-big-blue-600 hover:bg-big-blue-50 hover:border-big-blue-600 shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105 px-10 py-5 text-lg font-semibold"
+                className="border-2 border-brand-sky-500 bg-white text-brand-sky-600 hover:bg-brand-sky-50 hover:border-brand-sky-600 px-10 py-5 text-lg"
               >
                 <a
                   href="/quote"
@@ -304,7 +299,7 @@ export default function CarriersPage() {
               </Button>
             </div>
 
-            <p className="text-sm text-big-blue-600 mt-8">
+            <p className="text-sm text-slate-500 mt-8">
               Licensed and bonded in FL, MI, and NC. Plans to expand nationwide coming soon.
             </p>
           </div>

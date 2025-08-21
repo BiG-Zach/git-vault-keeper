@@ -17,17 +17,17 @@ export default function StickyBottomCTA() {
   if (!isVisible) return null;
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-40 border-t border-big-blue-200/30 bg-white/95 backdrop-blur-md p-4 shadow-xl">
+    <div className="fixed bottom-0 left-0 right-0 z-40 border-t border-surface-glassLine/20 bg-surface-glass/95 backdrop-blur-md p-4 shadow-luxury">
       <div className="container mx-auto flex items-center justify-between gap-4">
         <div className="hidden sm:block">
-          <p className="text-sm font-medium text-big-blue-800">Ready to confirm your network?</p>
-          <p className="text-xs text-big-blue-600">Get personalized guidance from Bradford</p>
+          <p className="text-sm font-medium text-ink-900">Ready to confirm your network?</p>
+          <p className="text-xs text-ink-900/70">Get personalized guidance from Bradford</p>
         </div>
         
         <div className="flex items-center gap-3 flex-1 sm:flex-none">
           <a
             href={BRAND.phoneTel}
-            className="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 rounded-xl bg-big-orange-500 px-6 py-3 text-sm font-medium text-white hover:bg-big-orange-600 transition-all duration-300 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-big-orange-500 focus:ring-offset-2 shadow-md hover:shadow-lg"
+            className="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 rounded-xl bg-brand-jade-500 px-6 py-3 text-sm font-medium text-white hover:bg-brand-jade-600 transition-colors focus:outline-none focus:ring-2 focus:ring-brand-jade-500 focus:ring-offset-2"
             data-gtm="carriers_footer_cta"
             data-action="schedule"
           >
@@ -37,7 +37,7 @@ export default function StickyBottomCTA() {
           
           <a
             href="/quote"
-            className="hidden sm:inline-flex items-center gap-2 rounded-xl border border-big-blue-500/30 bg-big-blue-500/10 px-4 py-3 text-sm font-medium text-big-blue-600 hover:bg-big-blue-500/20 transition-all duration-300 hover:scale-105"
+            className="hidden sm:inline-flex items-center gap-2 rounded-xl border border-brand-sky-500/30 bg-brand-sky-500/10 px-4 py-3 text-sm font-medium text-brand-sky-600 hover:bg-brand-sky-500/20 transition-colors"
             data-gtm="carriers_footer_cta"
             data-action="quote"
           >
