@@ -12,73 +12,102 @@ export default function AboutPage() {
       {/* ENHANCED HERO SECTION WITH PROFESSIONAL BACKGROUND */}
       <AboutHero />
 
-      {/* PROFESSIONAL HEADSHOT SECTION - LUXURY ENHANCED */}
-      <section className="py-20 bg-gradient-to-b from-primary/5 to-background">
-        <div className="container mx-auto px-4">
-          <div className="grid lg:grid-cols-[1fr_1.2fr] gap-12 items-center max-w-6xl mx-auto">
+      {/* PROFESSIONAL HEADSHOT SECTION - WORLD CLASS LUXURY */}
+      <section className="relative py-24 md:py-32 overflow-hidden bg-[hsl(220,26%,14%)]">
+        {/* Premium Dark Background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-[hsl(220,26%,14%)] via-[hsl(220,20%,10%)] to-[hsl(220,26%,14%)]"></div>
+        
+        {/* Ambient Light Effects */}
+        <div className="absolute inset-0">
+          <div className="absolute top-20 left-1/4 w-96 h-96 bg-brand-jade-500/20 rounded-full blur-3xl opacity-30"></div>
+          <div className="absolute bottom-20 right-1/4 w-80 h-80 bg-brand-sky-500/20 rounded-full blur-3xl opacity-25"></div>
+        </div>
+
+        {/* Geometric Accents */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute top-32 right-10 w-2 h-32 bg-gradient-to-b from-brand-jade-500/40 to-transparent rotate-12"></div>
+          <div className="absolute bottom-40 left-8 w-1 h-24 bg-gradient-to-t from-brand-sky-500/30 to-transparent -rotate-12"></div>
+        </div>
+
+        <div className="relative z-10 container mx-auto px-4">
+          <div className="grid lg:grid-cols-[1fr_1.2fr] gap-16 items-center max-w-7xl mx-auto">
             <Reveal>
-              <div className="relative">
-                <img 
-                  src="/about/portrait.jpg" 
-                  alt="Zachary Bradford - Insurance Expert" 
-                  width="500" 
-                  height="600" 
-                  className="w-full h-auto rounded-lg" 
-                  style={{ boxShadow: '0 8px 32px rgba(0, 0, 0, 0.15)' }}
-                  loading="eager"
-                />
-                <div className="absolute -bottom-4 -right-4 bg-gradient-to-r from-brand-jade-500 to-brand-sky-500 text-white px-4 py-2 rounded-lg shadow-luxury">
-                  <div className="flex items-center gap-2">
-                    <Shield className="w-5 h-5" />
-                    <span className="font-semibold">Licensed Expert</span>
+              <div className="relative group">
+                <div className="absolute inset-0 bg-gradient-to-r from-brand-jade-500/20 to-brand-sky-500/20 rounded-2xl blur-xl opacity-50 group-hover:opacity-70 transition-opacity duration-500"></div>
+                <div className="relative bg-surface-glass backdrop-blur-xs border border-surface-glassLine rounded-2xl p-2 shadow-glass">
+                  <img 
+                    src="/about/portrait.jpg" 
+                    alt="Zachary Bradford - Insurance Expert" 
+                    width="500" 
+                    height="600" 
+                    className="w-full h-auto rounded-xl" 
+                    loading="eager"
+                  />
+                  <div className="absolute -bottom-4 -right-4 bg-gradient-to-r from-brand-jade-500 to-brand-sky-500 text-white px-6 py-3 rounded-xl shadow-luxury backdrop-blur-sm">
+                    <div className="flex items-center gap-2">
+                      <Shield className="w-5 h-5" />
+                      <span className="font-luxury-sans font-semibold">Licensed Expert</span>
+                    </div>
                   </div>
                 </div>
               </div>
             </Reveal>
             
             <Reveal delay={0.2}>
-              <div>
-                <h1 className="text-[2rem] md:text-[2.25rem] lg:text-[3rem] font-[700] tracking-[-0.02em] leading-tight mb-6 text-ink-900">
-                  Your Insurance Advocate & 
-                  <span className="block text-brand-jade-500">Family Protection Expert</span>
-                </h1>
+              <div className="space-y-8">
+                <div>
+                  <h1 className="font-luxury-serif text-[2.5rem] md:text-[3rem] lg:text-[3.5rem] font-bold leading-tight mb-6 text-white">
+                    Your Insurance Advocate & 
+                    <span className="block bg-gradient-to-r from-brand-jade-500 to-brand-sky-500 bg-clip-text text-transparent">
+                      Family Protection Expert
+                    </span>
+                  </h1>
+                  
+                  <p className="text-xl font-luxury-sans text-white/80 mb-8 leading-relaxed">
+                    Turning insurance confusion into family confidence across Florida, Michigan, and North Carolina.
+                  </p>
+                </div>
                 
-                <div className="grid grid-cols-3 gap-6 mb-6 p-8 bg-white rounded-lg border border-surface-glassLine" 
-                     style={{ boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)' }}>
-                  <div className="text-center">
-                    <div className="text-2xl md:text-3xl font-[700] text-brand-jade-500">8+</div>
-                    <div className="text-sm font-[500] text-slate-600">Years Experience</div>
+                <div className="grid grid-cols-3 gap-6 p-8 bg-surface-glass backdrop-blur-xs border border-surface-glassLine rounded-2xl shadow-glass">
+                  <div className="text-center group">
+                    <div className="text-3xl md:text-4xl font-luxury-serif font-bold bg-gradient-to-r from-brand-jade-500 to-brand-sky-500 bg-clip-text text-transparent mb-2">
+                      8+
+                    </div>
+                    <div className="text-sm font-luxury-sans font-medium text-white/70">Years Experience</div>
                   </div>
-                  <div className="text-center">
-                    <div className="text-2xl md:text-3xl font-[700] text-brand-jade-500">1,000+</div>
-                    <div className="text-sm font-[500] text-slate-600">Families Protected</div>
+                  <div className="text-center group">
+                    <div className="text-3xl md:text-4xl font-luxury-serif font-bold bg-gradient-to-r from-brand-jade-500 to-brand-sky-500 bg-clip-text text-transparent mb-2">
+                      1,000+
+                    </div>
+                    <div className="text-sm font-luxury-sans font-medium text-white/70">Families Protected</div>
                   </div>
-                  <div className="text-center">
-                    <div className="text-2xl md:text-3xl font-[700] text-brand-jade-500">3</div>
-                    <div className="text-sm font-[500] text-slate-600">States Licensed</div>
+                  <div className="text-center group">
+                    <div className="text-3xl md:text-4xl font-luxury-serif font-bold bg-gradient-to-r from-brand-jade-500 to-brand-sky-500 bg-clip-text text-transparent mb-2">
+                      3
+                    </div>
+                    <div className="text-sm font-luxury-sans font-medium text-white/70">States Licensed</div>
                   </div>
                 </div>
                 
-                <p className="text-[1.125rem] md:text-[1.25rem] font-[400] text-slate-600 mb-8 leading-[1.7]">
-                  Turning insurance confusion into family confidence across Florida, Michigan, and North Carolina.
-                </p>
-                
                 <div className="flex flex-wrap gap-4">
-                  <a 
-                    href={BRAND.phoneTel} 
-                    className="inline-flex items-center gap-2 bg-gradient-to-r from-brand-jade-500 to-brand-sky-500 text-white px-8 py-4 rounded-xl font-[600] transition-all duration-300"
-                    style={{ boxShadow: '0 4px 12px rgba(18, 191, 174, 0.3)' }}
-                  >
-                    <Phone className="w-5 h-5" />
-                    Call Now: {BRAND.phoneHuman}
-                  </a>
-                  <a 
-                    href={`mailto:${BRAND.email}`}
-                    className="inline-flex items-center gap-2 border-2 border-brand-jade-500 text-brand-jade-500 px-8 py-4 rounded-xl font-[600] hover:bg-brand-jade-500 hover:text-white transition-all duration-300"
-                  >
-                    <Mail className="w-5 h-5" />
-                    Email Expert
-                  </a>
+                  <Magnetic>
+                    <a 
+                      href={BRAND.phoneTel} 
+                      className="inline-flex items-center gap-3 bg-aurora-sweep text-white px-8 py-4 rounded-2xl font-luxury-sans font-semibold transition-all duration-300 shadow-luxury hover:shadow-glow"
+                    >
+                      <Phone className="w-5 h-5" />
+                      Call Now: {BRAND.phoneHuman}
+                    </a>
+                  </Magnetic>
+                  <Magnetic>
+                    <a 
+                      href={`mailto:${BRAND.email}`}
+                      className="inline-flex items-center gap-3 bg-surface-glass backdrop-blur-xs border border-surface-glassLine text-white px-8 py-4 rounded-2xl font-luxury-sans font-semibold hover:bg-white/20 transition-all duration-300 shadow-glass"
+                    >
+                      <Mail className="w-5 h-5" />
+                      Email Expert
+                    </a>
+                  </Magnetic>
                 </div>
               </div>
             </Reveal>
@@ -86,198 +115,272 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* PERSONAL STORY SECTION - LUXURY UPGRADE */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-5 max-w-5xl">
+      {/* PERSONAL STORY SECTION - WORLD CLASS LUXURY */}
+      <section className="relative py-24 md:py-32 overflow-hidden bg-[hsl(220,20%,10%)]">
+        {/* Premium Dark Background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-[hsl(220,20%,10%)] via-[hsl(220,26%,14%)] to-[hsl(220,20%,10%)]"></div>
+        
+        {/* Ambient Story Glow */}
+        <div className="absolute inset-0">
+          <div className="absolute top-32 left-1/3 w-96 h-96 bg-brand-sky-500/15 rounded-full blur-3xl opacity-40"></div>
+          <div className="absolute bottom-20 right-1/3 w-80 h-80 bg-brand-jade-500/15 rounded-full blur-3xl opacity-35"></div>
+        </div>
+
+        {/* Geometric Story Elements */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute top-40 left-12 w-1 h-40 bg-gradient-to-b from-brand-jade-500/30 to-transparent rotate-6"></div>
+          <div className="absolute bottom-32 right-16 w-2 h-28 bg-gradient-to-t from-brand-sky-500/25 to-transparent -rotate-12"></div>
+        </div>
+
+        <div className="relative z-10 container mx-auto px-5 max-w-5xl">
           <Reveal>
-            <div className="text-center mb-12">
-              <h2 className="text-[2.25rem] md:text-[2.25rem] font-[700] mb-4 text-ink-900">Why I Became Your Insurance Guide</h2>
-              <p className="text-[1.25rem] font-[400] text-slate-600">From confused consumer to trusted expert</p>
+            <div className="text-center mb-16">
+              <h2 className="font-luxury-serif text-[2.75rem] md:text-[3.25rem] font-bold mb-6 text-white">
+                Why I Became Your Insurance Guide
+              </h2>
+              <p className="text-xl font-luxury-sans text-white/70">From confused consumer to trusted expert</p>
             </div>
           </Reveal>
           
           <Reveal delay={0.2}>
-            <div className="max-w-none text-center">
-              <p className="text-[1.125rem] leading-[1.7] mb-6 text-slate-700">
-                Like most people, I once thought insurance was just another monthly bill—confusing, expensive, and something to avoid thinking about. That changed when a friend's family faced a medical crisis without adequate coverage.
-              </p>
-              <p className="text-[1.125rem] leading-[1.7] mb-6 text-slate-700">
-                Watching them struggle with mountains of debt that proper insurance could have prevented was my wake-up call. I realized that insurance isn't about policies and premiums—it's about protecting the people and dreams that matter most.
-              </p>
-              <p className="text-[1.125rem] leading-[1.7] mb-8 text-slate-700">
-                That experience led me to become the insurance advocate I wish every family had: someone who explains options clearly, does the math honestly, and always puts your family's needs first. Because your peace of mind is worth more than any commission.
-              </p>
-              
-              <div className="bg-gradient-to-r from-brand-jade-500/10 to-brand-sky-500/10 p-8 rounded-lg border border-brand-jade-500/20">
-                <h3 className="text-[1.75rem] font-[700] mb-4 text-brand-jade-500">My Family Protection Philosophy</h3>
-                <p className="text-[1.125rem] italic text-slate-700">
-                  "Every family deserves to sleep soundly knowing they're protected. My job is to make that protection affordable, understandable, and absolutely reliable."
-                </p>
+            <div className="max-w-4xl mx-auto">
+              <div className="bg-surface-glass backdrop-blur-xs border border-surface-glassLine rounded-3xl p-12 shadow-glass mb-12">
+                <div className="space-y-8 text-center">
+                  <p className="text-lg font-luxury-sans leading-relaxed text-white/90">
+                    Like most people, I once thought insurance was just another monthly bill—confusing, expensive, and something to avoid thinking about. That changed when a friend's family faced a medical crisis without adequate coverage.
+                  </p>
+                  <p className="text-lg font-luxury-sans leading-relaxed text-white/90">
+                    Watching them struggle with mountains of debt that proper insurance could have prevented was my wake-up call. I realized that insurance isn't about policies and premiums—it's about protecting the people and dreams that matter most.
+                  </p>
+                  <p className="text-lg font-luxury-sans leading-relaxed text-white/90">
+                    That experience led me to become the insurance advocate I wish every family had: someone who explains options clearly, does the math honestly, and always puts your family's needs first. Because your peace of mind is worth more than any commission.
+                  </p>
+                </div>
               </div>
+              
+              <Reveal delay={0.4}>
+                <div className="relative group">
+                  <div className="absolute inset-0 bg-gradient-to-r from-brand-jade-500/20 to-brand-sky-500/20 rounded-3xl blur-xl opacity-50 group-hover:opacity-70 transition-opacity duration-500"></div>
+                  <div className="relative bg-surface-glass backdrop-blur-xs border border-surface-glassLine rounded-3xl p-10 shadow-glass text-center">
+                    <h3 className="font-luxury-serif text-2xl md:text-3xl font-bold mb-6 bg-gradient-to-r from-brand-jade-500 to-brand-sky-500 bg-clip-text text-transparent">
+                      My Family Protection Philosophy
+                    </h3>
+                    <blockquote className="text-xl font-luxury-sans italic text-white/90 leading-relaxed">
+                      "Every family deserves to sleep soundly knowing they're protected. My job is to make that protection affordable, understandable, and absolutely reliable."
+                    </blockquote>
+                  </div>
+                </div>
+              </Reveal>
             </div>
           </Reveal>
         </div>
       </section>
 
-      {/* TRUST BADGES & CREDENTIALS */}
-      <section className="py-20 bg-surface-base">
-        <div className="container mx-auto px-5 max-w-6xl">
+      {/* TRUST BADGES & CREDENTIALS - WORLD CLASS LUXURY */}
+      <section className="relative py-24 md:py-32 overflow-hidden bg-[hsl(220,26%,14%)]">
+        {/* Premium Dark Background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-[hsl(220,26%,14%)] via-[hsl(220,20%,10%)] to-[hsl(220,26%,14%)]"></div>
+        
+        {/* Ambient Credential Lighting */}
+        <div className="absolute inset-0">
+          <div className="absolute top-40 right-1/4 w-96 h-96 bg-brand-jade-500/15 rounded-full blur-3xl opacity-35"></div>
+          <div className="absolute bottom-32 left-1/4 w-80 h-80 bg-brand-sky-500/15 rounded-full blur-3xl opacity-30"></div>
+        </div>
+
+        {/* Geometric Trust Elements */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute top-32 right-20 w-2 h-32 bg-gradient-to-b from-brand-jade-500/40 to-transparent rotate-12"></div>
+          <div className="absolute bottom-40 left-16 w-1 h-24 bg-gradient-to-t from-brand-sky-500/30 to-transparent -rotate-12"></div>
+        </div>
+
+        <div className="relative z-10 container mx-auto px-5 max-w-6xl">
           <Reveal>
-            <div className="text-center mb-12">
-              <h2 className="text-[2.25rem] md:text-[2.25rem] font-[700] mb-4 text-ink-900">Professional Credentials & Trust Signals</h2>
-              <p className="text-[1.25rem] font-[400] text-slate-600">Verified expertise you can rely on</p>
+            <div className="text-center mb-16">
+              <h2 className="font-luxury-serif text-[2.75rem] md:text-[3.25rem] font-bold mb-6 text-white">
+                Professional Credentials & Trust Signals
+              </h2>
+              <p className="text-xl font-luxury-sans text-white/70">Verified expertise you can rely on</p>
             </div>
           </Reveal>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
             <Reveal delay={0.1}>
-              <div className="p-8 bg-white rounded-lg border border-surface-glassLine hover:shadow-luxury transition-all duration-300"
-                   style={{ boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)' }}>
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-full bg-gradient-to-r from-brand-jade-500 to-brand-sky-500 flex items-center justify-center flex-shrink-0">
-                    <CheckCircle className="w-6 h-6 text-white" />
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="text-[1.125rem] font-[700] text-brand-jade-500 mb-1">Licensed Florida Broker</h3>
-                    <div className="text-[0.875rem] font-[600] text-slate-500 mb-2">W347851</div>
-                    <p className="text-[0.875rem] text-slate-600 leading-relaxed">State verified insurance professional</p>
+              <Magnetic>
+                <div className="group relative">
+                  <div className="absolute inset-0 bg-gradient-to-r from-brand-jade-500/20 to-brand-sky-500/20 rounded-2xl blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  <div className="relative p-8 bg-surface-glass backdrop-blur-xs border border-surface-glassLine rounded-2xl shadow-glass hover:shadow-luxury transition-all duration-300">
+                    <div className="flex items-start gap-6">
+                      <div className="w-14 h-14 rounded-2xl bg-aurora-sweep flex items-center justify-center flex-shrink-0 shadow-luxury">
+                        <CheckCircle className="w-7 h-7 text-white" />
+                      </div>
+                      <div className="flex-1">
+                        <h3 className="text-lg font-luxury-serif font-bold text-white mb-2">Licensed Florida Broker</h3>
+                        <div className="text-sm font-luxury-sans font-semibold text-brand-jade-500 mb-3">W347851</div>
+                        <p className="text-sm font-luxury-sans text-white/70 leading-relaxed">State verified insurance professional</p>
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
+              </Magnetic>
             </Reveal>
             
             <Reveal delay={0.2}>
-              <div className="p-8 bg-white rounded-lg border border-surface-glassLine hover:shadow-luxury transition-all duration-300"
-                   style={{ boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)' }}>
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-full bg-gradient-to-r from-brand-jade-500 to-brand-sky-500 flex items-center justify-center flex-shrink-0">
-                    <Award className="w-6 h-6 text-white" />
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="text-[1.125rem] font-[700] text-brand-sky-500 mb-1">8+ Years Experience</h3>
-                    <div className="text-[0.875rem] font-[600] text-slate-500 mb-2">Since 2016</div>
-                    <p className="text-[0.875rem] text-slate-600 leading-relaxed">Proven track record of excellence</p>
+              <Magnetic>
+                <div className="group relative">
+                  <div className="absolute inset-0 bg-gradient-to-r from-brand-jade-500/20 to-brand-sky-500/20 rounded-2xl blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  <div className="relative p-8 bg-surface-glass backdrop-blur-xs border border-surface-glassLine rounded-2xl shadow-glass hover:shadow-luxury transition-all duration-300">
+                    <div className="flex items-start gap-6">
+                      <div className="w-14 h-14 rounded-2xl bg-aurora-sweep flex items-center justify-center flex-shrink-0 shadow-luxury">
+                        <Award className="w-7 h-7 text-white" />
+                      </div>
+                      <div className="flex-1">
+                        <h3 className="text-lg font-luxury-serif font-bold text-white mb-2">8+ Years Experience</h3>
+                        <div className="text-sm font-luxury-sans font-semibold text-brand-sky-500 mb-3">Since 2016</div>
+                        <p className="text-sm font-luxury-sans text-white/70 leading-relaxed">Proven track record of excellence</p>
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
+              </Magnetic>
             </Reveal>
             
             <Reveal delay={0.3}>
-              <div className="p-8 bg-white rounded-lg border border-surface-glassLine hover:shadow-luxury transition-all duration-300"
-                   style={{ boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)' }}>
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-full bg-gradient-to-r from-brand-jade-500 to-brand-sky-500 flex items-center justify-center flex-shrink-0">
-                    <Users className="w-6 h-6 text-white" />
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="text-[1.125rem] font-[700] text-brand-jade-500 mb-1">1,000+ Families Served</h3>
-                    <div className="text-[0.875rem] font-[600] text-slate-500 mb-2">Growing Daily</div>
-                    <p className="text-[0.875rem] text-slate-600 leading-relaxed">Trusted by families across 3 states</p>
+              <Magnetic>
+                <div className="group relative">
+                  <div className="absolute inset-0 bg-gradient-to-r from-brand-jade-500/20 to-brand-sky-500/20 rounded-2xl blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  <div className="relative p-8 bg-surface-glass backdrop-blur-xs border border-surface-glassLine rounded-2xl shadow-glass hover:shadow-luxury transition-all duration-300">
+                    <div className="flex items-start gap-6">
+                      <div className="w-14 h-14 rounded-2xl bg-aurora-sweep flex items-center justify-center flex-shrink-0 shadow-luxury">
+                        <Users className="w-7 h-7 text-white" />
+                      </div>
+                      <div className="flex-1">
+                        <h3 className="text-lg font-luxury-serif font-bold text-white mb-2">1,000+ Families Served</h3>
+                        <div className="text-sm font-luxury-sans font-semibold text-brand-jade-500 mb-3">Growing Daily</div>
+                        <p className="text-sm font-luxury-sans text-white/70 leading-relaxed">Trusted by families across 3 states</p>
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
+              </Magnetic>
             </Reveal>
             
             <Reveal delay={0.4}>
-              <div className="p-8 bg-white rounded-lg border border-surface-glassLine hover:shadow-luxury transition-all duration-300"
-                   style={{ boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)' }}>
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-full bg-gradient-to-r from-brand-jade-500 to-brand-sky-500 flex items-center justify-center flex-shrink-0">
-                    <Star className="w-6 h-6 text-white" />
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="text-[1.125rem] font-[700] text-brand-sky-500 mb-1">A+ Rated Carrier Partners</h3>
-                    <div className="text-[0.875rem] font-[600] text-slate-500 mb-2">Top Tier Networks</div>
-                    <p className="text-[0.875rem] text-slate-600 leading-relaxed">Exclusive access to premium carriers</p>
+              <Magnetic>
+                <div className="group relative">
+                  <div className="absolute inset-0 bg-gradient-to-r from-brand-jade-500/20 to-brand-sky-500/20 rounded-2xl blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  <div className="relative p-8 bg-surface-glass backdrop-blur-xs border border-surface-glassLine rounded-2xl shadow-glass hover:shadow-luxury transition-all duration-300">
+                    <div className="flex items-start gap-6">
+                      <div className="w-14 h-14 rounded-2xl bg-aurora-sweep flex items-center justify-center flex-shrink-0 shadow-luxury">
+                        <Star className="w-7 h-7 text-white" />
+                      </div>
+                      <div className="flex-1">
+                        <h3 className="text-lg font-luxury-serif font-bold text-white mb-2">A+ Rated Carrier Partners</h3>
+                        <div className="text-sm font-luxury-sans font-semibold text-brand-sky-500 mb-3">Top Tier Networks</div>
+                        <p className="text-sm font-luxury-sans text-white/70 leading-relaxed">Exclusive access to premium carriers</p>
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
+              </Magnetic>
             </Reveal>
             
             <Reveal delay={0.5}>
-              <div className="p-8 bg-white rounded-lg border border-surface-glassLine hover:shadow-luxury transition-all duration-300"
-                   style={{ boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)' }}>
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-full bg-gradient-to-r from-brand-jade-500 to-brand-sky-500 flex items-center justify-center flex-shrink-0">
-                    <Shield className="w-6 h-6 text-white" />
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="text-[1.125rem] font-[700] text-brand-jade-500 mb-1">Licensed & Bonded</h3>
-                    <div className="text-[0.875rem] font-[600] text-slate-500 mb-2">Full Protection</div>
-                    <p className="text-[0.875rem] text-slate-600 leading-relaxed">Complete regulatory compliance</p>
+              <Magnetic>
+                <div className="group relative">
+                  <div className="absolute inset-0 bg-gradient-to-r from-brand-jade-500/20 to-brand-sky-500/20 rounded-2xl blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  <div className="relative p-8 bg-surface-glass backdrop-blur-xs border border-surface-glassLine rounded-2xl shadow-glass hover:shadow-luxury transition-all duration-300">
+                    <div className="flex items-start gap-6">
+                      <div className="w-14 h-14 rounded-2xl bg-aurora-sweep flex items-center justify-center flex-shrink-0 shadow-luxury">
+                        <Shield className="w-7 h-7 text-white" />
+                      </div>
+                      <div className="flex-1">
+                        <h3 className="text-lg font-luxury-serif font-bold text-white mb-2">Licensed & Bonded</h3>
+                        <div className="text-sm font-luxury-sans font-semibold text-brand-jade-500 mb-3">Full Protection</div>
+                        <p className="text-sm font-luxury-sans text-white/70 leading-relaxed">Complete regulatory compliance</p>
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
+              </Magnetic>
             </Reveal>
             
             <Reveal delay={0.6}>
-              <div className="p-8 bg-white rounded-lg border border-surface-glassLine hover:shadow-luxury transition-all duration-300"
-                   style={{ boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)' }}>
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-full bg-gradient-to-r from-brand-jade-500 to-brand-sky-500 flex items-center justify-center flex-shrink-0">
-                    <TrendingUp className="w-6 h-6 text-white" />
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="text-[1.125rem] font-[700] text-brand-sky-500 mb-1">$50M+ Coverage Placed</h3>
-                    <div className="text-[0.875rem] font-[600] text-slate-500 mb-2">Industry Leading</div>
-                    <p className="text-[0.875rem] text-slate-600 leading-relaxed">Comprehensive protection delivered</p>
+              <Magnetic>
+                <div className="group relative">
+                  <div className="absolute inset-0 bg-gradient-to-r from-brand-jade-500/20 to-brand-sky-500/20 rounded-2xl blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  <div className="relative p-8 bg-surface-glass backdrop-blur-xs border border-surface-glassLine rounded-2xl shadow-glass hover:shadow-luxury transition-all duration-300">
+                    <div className="flex items-start gap-6">
+                      <div className="w-14 h-14 rounded-2xl bg-aurora-sweep flex items-center justify-center flex-shrink-0 shadow-luxury">
+                        <TrendingUp className="w-7 h-7 text-white" />
+                      </div>
+                      <div className="flex-1">
+                        <h3 className="text-lg font-luxury-serif font-bold text-white mb-2">$50M+ Coverage Placed</h3>
+                        <div className="text-sm font-luxury-sans font-semibold text-brand-sky-500 mb-3">Industry Leading</div>
+                        <p className="text-sm font-luxury-sans text-white/70 leading-relaxed">Comprehensive protection delivered</p>
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
+              </Magnetic>
             </Reveal>
           </div>
           
-          {/* EXPERTISE & SPECIALIZATION SHOWCASE */}
+          {/* EXPERTISE & SPECIALIZATION SHOWCASE - LUXURY UPGRADE */}
           <Reveal delay={0.7}>
-            <div className="bg-gradient-to-b from-surface-base to-white p-12 rounded-lg">
-              <h3 className="text-[1.75rem] font-[700] mb-8 text-center text-ink-900">Service Specializations</h3>
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <div className="p-6 bg-white rounded-lg border border-surface-glassLine" style={{ boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)' }}>
-                  <div className="w-12 h-12 mb-4 rounded-full bg-gradient-to-r from-brand-jade-500 to-brand-sky-500 flex items-center justify-center">
-                    <Shield className="w-6 h-6 text-white" />
+            <div className="relative group">
+              <div className="absolute inset-0 bg-gradient-to-r from-brand-jade-500/15 to-brand-sky-500/15 rounded-3xl blur-xl opacity-50 group-hover:opacity-70 transition-opacity duration-500"></div>
+              <div className="relative bg-surface-glass backdrop-blur-xs border border-surface-glassLine rounded-3xl p-12 shadow-glass">
+                <h3 className="font-luxury-serif text-2xl md:text-3xl font-bold mb-12 text-center bg-gradient-to-r from-brand-jade-500 to-brand-sky-500 bg-clip-text text-transparent">
+                  Service Specializations
+                </h3>
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                  <div className="p-6 bg-white/5 backdrop-blur-xs rounded-2xl border border-white/10 hover:bg-white/10 transition-all duration-300">
+                    <div className="w-12 h-12 mb-4 rounded-xl bg-aurora-sweep flex items-center justify-center shadow-luxury">
+                      <Shield className="w-6 h-6 text-white" />
+                    </div>
+                    <h4 className="text-lg font-luxury-serif font-semibold text-white mb-3">Individual Health Insurance</h4>
+                    <p className="text-sm font-luxury-sans text-white/70 leading-relaxed">Comprehensive individual and family health plans</p>
                   </div>
-                  <h4 className="text-[1.125rem] font-[600] text-ink-900 mb-2">Individual Health Insurance</h4>
-                  <p className="text-[0.875rem] text-slate-600 leading-relaxed">Comprehensive individual and family health plans</p>
-                </div>
-                
-                <div className="p-6 bg-white rounded-lg border border-surface-glassLine" style={{ boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)' }}>
-                  <div className="w-12 h-12 mb-4 rounded-full bg-gradient-to-r from-brand-jade-500 to-brand-sky-500 flex items-center justify-center">
-                    <Users className="w-6 h-6 text-white" />
+                  
+                  <div className="p-6 bg-white/5 backdrop-blur-xs rounded-2xl border border-white/10 hover:bg-white/10 transition-all duration-300">
+                    <div className="w-12 h-12 mb-4 rounded-xl bg-aurora-sweep flex items-center justify-center shadow-luxury">
+                      <Users className="w-6 h-6 text-white" />
+                    </div>
+                    <h4 className="text-lg font-luxury-serif font-semibold text-white mb-3">Family Coverage Plans</h4>
+                    <p className="text-sm font-luxury-sans text-white/70 leading-relaxed">Tailored protection for growing families</p>
                   </div>
-                  <h4 className="text-[1.125rem] font-[600] text-ink-900 mb-2">Family Coverage Plans</h4>
-                  <p className="text-[0.875rem] text-slate-600 leading-relaxed">Tailored protection for growing families</p>
-                </div>
-                
-                <div className="p-6 bg-white rounded-lg border border-surface-glassLine" style={{ boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)' }}>
-                  <div className="w-12 h-12 mb-4 rounded-full bg-gradient-to-r from-brand-jade-500 to-brand-sky-500 flex items-center justify-center">
-                    <Shield className="w-6 h-6 text-white" />
+                  
+                  <div className="p-6 bg-white/5 backdrop-blur-xs rounded-2xl border border-white/10 hover:bg-white/10 transition-all duration-300">
+                    <div className="w-12 h-12 mb-4 rounded-xl bg-aurora-sweep flex items-center justify-center shadow-luxury">
+                      <Shield className="w-6 h-6 text-white" />
+                    </div>
+                    <h4 className="text-lg font-luxury-serif font-semibold text-white mb-3">Life Insurance Solutions</h4>
+                    <p className="text-sm font-luxury-sans text-white/70 leading-relaxed">Term and permanent life insurance options</p>
                   </div>
-                  <h4 className="text-[1.125rem] font-[600] text-ink-900 mb-2">Life Insurance Solutions</h4>
-                  <p className="text-[0.875rem] text-slate-600 leading-relaxed">Term and permanent life insurance options</p>
-                </div>
-                
-                <div className="p-6 bg-white rounded-lg border border-surface-glassLine" style={{ boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)' }}>
-                  <div className="w-12 h-12 mb-4 rounded-full bg-gradient-to-r from-brand-jade-500 to-brand-sky-500 flex items-center justify-center">
-                    <Award className="w-6 h-6 text-white" />
+                  
+                  <div className="p-6 bg-white/5 backdrop-blur-xs rounded-2xl border border-white/10 hover:bg-white/10 transition-all duration-300">
+                    <div className="w-12 h-12 mb-4 rounded-xl bg-aurora-sweep flex items-center justify-center shadow-luxury">
+                      <Award className="w-6 h-6 text-white" />
+                    </div>
+                    <h4 className="text-lg font-luxury-serif font-semibold text-white mb-3">Medicare Guidance</h4>
+                    <p className="text-sm font-luxury-sans text-white/70 leading-relaxed">Expert Medicare and supplement planning</p>
                   </div>
-                  <h4 className="text-[1.125rem] font-[600] text-ink-900 mb-2">Medicare Guidance</h4>
-                  <p className="text-[0.875rem] text-slate-600 leading-relaxed">Expert Medicare and supplement planning</p>
-                </div>
-                
-                <div className="p-6 bg-white rounded-lg border border-surface-glassLine" style={{ boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)' }}>
-                  <div className="w-12 h-12 mb-4 rounded-full bg-gradient-to-r from-brand-jade-500 to-brand-sky-500 flex items-center justify-center">
-                    <TrendingUp className="w-6 h-6 text-white" />
+                  
+                  <div className="p-6 bg-white/5 backdrop-blur-xs rounded-2xl border border-white/10 hover:bg-white/10 transition-all duration-300">
+                    <div className="w-12 h-12 mb-4 rounded-xl bg-aurora-sweep flex items-center justify-center shadow-luxury">
+                      <TrendingUp className="w-6 h-6 text-white" />
+                    </div>
+                    <h4 className="text-lg font-luxury-serif font-semibold text-white mb-3">Small Business Plans</h4>
+                    <p className="text-sm font-luxury-sans text-white/70 leading-relaxed">Group health and business insurance solutions</p>
                   </div>
-                  <h4 className="text-[1.125rem] font-[600] text-ink-900 mb-2">Small Business Plans</h4>
-                  <p className="text-[0.875rem] text-slate-600 leading-relaxed">Group health and business insurance solutions</p>
-                </div>
-                
-                <div className="p-6 bg-white rounded-lg border border-surface-glassLine" style={{ boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)' }}>
-                  <div className="w-12 h-12 mb-4 rounded-full bg-gradient-to-r from-brand-jade-500 to-brand-sky-500 flex items-center justify-center">
-                    <CheckCircle className="w-6 h-6 text-white" />
+                  
+                  <div className="p-6 bg-white/5 backdrop-blur-xs rounded-2xl border border-white/10 hover:bg-white/10 transition-all duration-300">
+                    <div className="w-12 h-12 mb-4 rounded-xl bg-aurora-sweep flex items-center justify-center shadow-luxury">
+                      <CheckCircle className="w-6 h-6 text-white" />
+                    </div>
+                    <h4 className="text-lg font-luxury-serif font-semibold text-white mb-3">PPO Network Access</h4>
+                    <p className="text-sm font-luxury-sans text-white/70 leading-relaxed">Extensive provider networks and flexibility</p>
                   </div>
-                  <h4 className="text-[1.125rem] font-[600] text-ink-900 mb-2">PPO Network Access</h4>
-                  <p className="text-[0.875rem] text-slate-600 leading-relaxed">Extensive provider networks and flexibility</p>
                 </div>
               </div>
             </div>
@@ -478,15 +581,30 @@ export default function AboutPage() {
 
 
 
-      {/* WHY FAMILIES CHOOSE BRADFORD */}
-      <section className="py-20 bg-surface-base">
-        <div className="container mx-auto px-5 max-w-5xl">
+      {/* WHY FAMILIES CHOOSE BRADFORD - WORLD CLASS LUXURY */}
+      <section className="relative py-24 md:py-32 overflow-hidden bg-[hsl(220,20%,10%)]">
+        {/* Premium Dark Background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-[hsl(220,20%,10%)] via-[hsl(220,26%,14%)] to-[hsl(220,20%,10%)]"></div>
+        
+        {/* Ambient Value Lighting */}
+        <div className="absolute inset-0">
+          <div className="absolute top-32 right-1/3 w-96 h-96 bg-brand-jade-500/15 rounded-full blur-3xl opacity-40"></div>
+          <div className="absolute bottom-20 left-1/3 w-80 h-80 bg-brand-sky-500/15 rounded-full blur-3xl opacity-35"></div>
+        </div>
+
+        {/* Geometric Value Elements */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute top-40 right-12 w-1 h-32 bg-gradient-to-b from-brand-jade-500/30 to-transparent rotate-6"></div>
+          <div className="absolute bottom-32 left-16 w-2 h-28 bg-gradient-to-t from-brand-sky-500/25 to-transparent -rotate-12"></div>
+        </div>
+
+        <div className="relative z-10 container mx-auto px-5 max-w-5xl">
           <Reveal>
-            <div className="text-center mb-12">
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent leading-tight">
+            <div className="text-center mb-16">
+              <h2 className="font-luxury-serif text-[2.75rem] md:text-[3.25rem] font-bold mb-6 text-white leading-tight">
                 Why Families Choose Bradford
               </h2>
-              <p className="text-xl md:text-2xl font-medium text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+              <p className="text-xl font-luxury-sans text-white/70 max-w-3xl mx-auto leading-relaxed">
                 Personal service with professional expertise
               </p>
             </div>
@@ -494,33 +612,53 @@ export default function AboutPage() {
           
           <Reveal delay={0.2}>
             <div className="grid md:grid-cols-2 gap-8">
-              <div className="p-8 bg-white rounded-lg border border-surface-glassLine" style={{ boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)' }}>
-                <h3 className="text-[1.25rem] font-[600] mb-4 text-brand-jade-500">Deep Community Roots</h3>
-                <p className="text-[1rem] text-slate-700 leading-[1.7]">
-                  Born and raised in the communities I serve. I understand the unique challenges families face in Florida, Michigan, and North Carolina because I live them too.
-                </p>
-              </div>
+              <Magnetic>
+                <div className="group relative">
+                  <div className="absolute inset-0 bg-gradient-to-r from-brand-jade-500/20 to-brand-sky-500/20 rounded-2xl blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  <div className="relative p-10 bg-surface-glass backdrop-blur-xs border border-surface-glassLine rounded-2xl shadow-glass hover:shadow-luxury transition-all duration-300">
+                    <h3 className="text-xl font-luxury-serif font-bold text-white mb-4">Deep Community Roots</h3>
+                    <p className="text-base font-luxury-sans text-white/80 leading-relaxed">
+                      Born and raised in the communities I serve. I understand the unique challenges families face in Florida, Michigan, and North Carolina because I live them too.
+                    </p>
+                  </div>
+                </div>
+              </Magnetic>
               
-              <div className="p-8 bg-white rounded-lg border border-surface-glassLine" style={{ boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)' }}>
-                <h3 className="text-[1.25rem] font-[600] mb-4 text-brand-sky-500">Family-First Approach</h3>
-                <p className="text-[1rem] text-slate-700 leading-[1.7]">
-                  Every recommendation I make, I consider: "Would I recommend this to my own family?" Your protection is personal to me.
-                </p>
-              </div>
+              <Magnetic>
+                <div className="group relative">
+                  <div className="absolute inset-0 bg-gradient-to-r from-brand-jade-500/20 to-brand-sky-500/20 rounded-2xl blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  <div className="relative p-10 bg-surface-glass backdrop-blur-xs border border-surface-glassLine rounded-2xl shadow-glass hover:shadow-luxury transition-all duration-300">
+                    <h3 className="text-xl font-luxury-serif font-bold text-white mb-4">Family-First Approach</h3>
+                    <p className="text-base font-luxury-sans text-white/80 leading-relaxed">
+                      Every recommendation I make, I consider: "Would I recommend this to my own family?" Your protection is personal to me.
+                    </p>
+                  </div>
+                </div>
+              </Magnetic>
               
-              <div className="p-8 bg-white rounded-lg border border-surface-glassLine" style={{ boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)' }}>
-                <h3 className="text-[1.25rem] font-[600] mb-4 text-brand-jade-500">Local Commitment</h3>
-                <p className="text-[1rem] text-slate-700 leading-[1.7]">
-                  While insurance companies come and go, I'm here for the long haul. Your agent today, your advocate for years to come.
-                </p>
-              </div>
+              <Magnetic>
+                <div className="group relative">
+                  <div className="absolute inset-0 bg-gradient-to-r from-brand-jade-500/20 to-brand-sky-500/20 rounded-2xl blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  <div className="relative p-10 bg-surface-glass backdrop-blur-xs border border-surface-glassLine rounded-2xl shadow-glass hover:shadow-luxury transition-all duration-300">
+                    <h3 className="text-xl font-luxury-serif font-bold text-white mb-4">Local Commitment</h3>
+                    <p className="text-base font-luxury-sans text-white/80 leading-relaxed">
+                      While insurance companies come and go, I'm here for the long haul. Your agent today, your advocate for years to come.
+                    </p>
+                  </div>
+                </div>
+              </Magnetic>
               
-              <div className="p-8 bg-white rounded-lg border border-surface-glassLine" style={{ boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)' }}>
-                <h3 className="text-[1.25rem] font-[600] mb-4 text-brand-sky-500">Always Available</h3>
-                <p className="text-[1rem] text-slate-700 leading-[1.7]">
-                  Real person, real phone number, real responses. When you call, you get me—not a call center or voicemail system.
-                </p>
-              </div>
+              <Magnetic>
+                <div className="group relative">
+                  <div className="absolute inset-0 bg-gradient-to-r from-brand-jade-500/20 to-brand-sky-500/20 rounded-2xl blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  <div className="relative p-10 bg-surface-glass backdrop-blur-xs border border-surface-glassLine rounded-2xl shadow-glass hover:shadow-luxury transition-all duration-300">
+                    <h3 className="text-xl font-luxury-serif font-bold text-white mb-4">Always Available</h3>
+                    <p className="text-base font-luxury-sans text-white/80 leading-relaxed">
+                      Real person, real phone number, real responses. When you call, you get me—not a call center or voicemail system.
+                    </p>
+                  </div>
+                </div>
+              </Magnetic>
             </div>
           </Reveal>
         </div>
