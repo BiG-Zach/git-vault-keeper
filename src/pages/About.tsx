@@ -285,40 +285,49 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* PARTNERSHIP SECTION - WORLD CLASS */}
-      <section id="big-partnership" role="region" aria-labelledby="big-partnership-title" className="relative py-24 md:py-32 overflow-hidden">
-        {/* Premium Background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-brand-jade-500/10 via-brand-sky-500/15 to-brand-jade-600/10"></div>
-        <div className="absolute inset-0 bg-gradient-to-t from-white/30 to-transparent"></div>
+      {/* PARTNERSHIP SECTION - WORLD CLASS LUXURY */}
+      <section id="big-partnership" role="region" aria-labelledby="big-partnership-title" className="relative py-24 md:py-32 overflow-hidden bg-[hsl(220,26%,14%)]">
+        {/* Premium Dark Background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-[hsl(220,26%,14%)] via-[hsl(220,20%,10%)] to-[hsl(220,26%,14%)]"></div>
         
-        {/* Decorative Elements */}
-        <div className="absolute top-20 left-10 w-72 h-72 bg-brand-jade-500/5 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-20 right-10 w-80 h-80 bg-brand-sky-500/5 rounded-full blur-3xl"></div>
+        {/* Ambient Light Effects */}
+        <div className="absolute inset-0">
+          <div className="absolute top-20 left-1/4 w-96 h-96 bg-[hsl(157,72%,43%)]/15 rounded-full blur-3xl opacity-60"></div>
+          <div className="absolute bottom-20 right-1/4 w-80 h-80 bg-[hsl(224,100%,32%)]/15 rounded-full blur-3xl opacity-40"></div>
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-gradient-to-r from-[hsl(157,72%,43%)]/5 via-transparent to-[hsl(224,100%,32%)]/5 rounded-full blur-3xl"></div>
+        </div>
         
-        <div className="relative container mx-auto px-4 max-w-7xl">
+        {/* Geometric Accents */}
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute top-0 right-0 w-96 h-96 border border-white/10 rotate-12 translate-x-48 -translate-y-48"></div>
+          <div className="absolute bottom-0 left-0 w-80 h-80 border border-white/5 rotate-45 -translate-x-40 translate-y-40"></div>
+        </div>
+        
+        <div className="relative container mx-auto px-6 max-w-7xl z-10">
           <Reveal>
-            {/* Premium Card Container */}
-            <div className="bg-white/80 backdrop-blur-xl p-12 md:p-16 rounded-3xl border border-white/30 shadow-luxury relative overflow-hidden">
-              {/* Subtle gradient overlay */}
-              <div className="absolute inset-0 bg-gradient-to-br from-brand-jade-500/3 to-brand-sky-500/3 rounded-3xl"></div>
+            {/* Luxury Glass Card Container */}
+            <div className="bg-white/5 backdrop-blur-xl p-12 md:p-16 rounded-3xl border border-white/10 shadow-[0_25px_50px_-12px_rgba(0,0,0,0.25)] relative overflow-hidden">
+              {/* Subtle inner glow */}
+              <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-[hsl(157,72%,43%)]/5 rounded-3xl opacity-60"></div>
               
               <div className="relative z-10">
-                {/* Header Section */}
+                {/* Luxury Header Section */}
                 <div className="text-center mb-16">
-                  <div className="inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-brand-jade-500/10 to-brand-sky-500/10 rounded-full border border-brand-jade-500/20 mb-8">
-                    <div className="w-2 h-2 bg-brand-jade-500 rounded-full animate-pulse"></div>
-                    <span className="text-sm font-semibold text-brand-jade-600">Strategic Partnership</span>
+                  <div className="inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-[hsl(157,72%,43%)]/20 to-[hsl(224,100%,32%)]/20 rounded-full border border-white/20 mb-8 backdrop-blur-sm">
+                    <div className="w-2 h-2 bg-[hsl(157,72%,43%)] rounded-full animate-pulse"></div>
+                    <span className="text-sm font-semibold text-white/90">Strategic Partnership</span>
                   </div>
                   
-                  <h2 id="big-partnership-title" className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-                    <span className="bg-gradient-to-r from-brand-jade-500 via-brand-sky-500 to-brand-jade-600 bg-clip-text text-transparent">
+                  <h2 id="big-partnership-title" className="font-luxury-serif text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+                    <span className="bg-gradient-to-r from-[hsl(157,72%,43%)] via-[hsl(157,72%,53%)] to-[hsl(224,100%,32%)] bg-clip-text text-transparent">
                       Proudly Partnered with
                     </span>
                     <br />
-                    <span className="text-ink-900 font-luxury-serif">Best Insurance Group</span>
+                    <span className="text-white font-luxury-serif">Best Insurance Group</span>
                   </h2>
-                  <p className="text-xl md:text-2xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
-                    5 years of trusted collaboration serving families nationwide with enterprise-level resources.
+                  <p className="text-xl md:text-2xl text-white/80 max-w-3xl mx-auto leading-relaxed font-light">
+                    5 years of trusted collaboration serving families nationwide with 
+                    <span className="text-white font-medium"> enterprise-level resources.</span>
                   </p>
                 </div>
                 
@@ -326,131 +335,142 @@ export default function AboutPage() {
                 <div className="flex flex-col lg:flex-row items-center justify-center gap-12 mb-16">
                   <div className="flex items-center gap-6">
                     <div className="relative">
-                      <div className="w-24 h-24 bg-gradient-to-br from-brand-jade-500 to-brand-sky-500 rounded-2xl flex items-center justify-center shadow-luxury relative overflow-hidden">
+                      <div className="w-28 h-28 bg-gradient-to-br from-[hsl(157,72%,43%)] to-[hsl(224,100%,32%)] rounded-3xl flex items-center justify-center shadow-[0_25px_50px_-12px_rgba(0,0,0,0.25)] relative overflow-hidden">
                         <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent"></div>
-                        <span className="relative text-white font-bold text-2xl font-luxury-serif">BiG</span>
+                        <span className="relative text-white font-bold text-3xl font-luxury-serif">BiG</span>
                       </div>
-                      <div className="absolute -top-2 -right-2 w-6 h-6 bg-brand-jade-500 rounded-full flex items-center justify-center">
-                        <CheckCircle className="w-4 h-4 text-white" />
+                      <div className="absolute -top-3 -right-3 w-8 h-8 bg-[hsl(157,72%,43%)] rounded-full flex items-center justify-center shadow-lg">
+                        <CheckCircle className="w-5 h-5 text-white" />
                       </div>
                     </div>
                     <div>
-                      <div className="text-2xl font-bold text-ink-900 mb-1">Best Insurance Group</div>
-                      <div className="text-brand-sky-500 font-semibold">Industry Leader Since 2005</div>
+                      <div className="text-2xl md:text-3xl font-bold text-white mb-1">Best Insurance Group</div>
+                      <div className="text-[hsl(157,72%,53%)] font-semibold text-lg">Industry Leader Since 2005</div>
                     </div>
                   </div>
                   
-                  <div className="px-8 py-4 bg-gradient-to-r from-brand-jade-500 to-brand-sky-500 text-white rounded-2xl font-bold text-lg shadow-glow relative overflow-hidden">
-                    <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent"></div>
-                    <span className="relative">5-Year Partnership</span>
-                  </div>
+                  <Magnetic strength={10}>
+                    <div className="px-10 py-5 bg-gradient-to-r from-[hsl(157,72%,43%)] to-[hsl(224,100%,32%)] text-white rounded-2xl font-bold text-xl shadow-[0_0_20px_rgba(34,197,94,0.3)] relative overflow-hidden transform hover:scale-105 transition-all duration-300">
+                      <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
+                      <span className="relative">5-Year Partnership</span>
+                    </div>
+                  </Magnetic>
                 </div>
                 
                 {/* Premium Benefits Grid */}
                 <div className="grid md:grid-cols-2 gap-8 mb-16">
-                  <div className="group p-6 bg-gradient-to-br from-white/60 to-white/30 backdrop-blur-sm rounded-2xl border border-white/40 hover:shadow-premium transition-all duration-500">
-                    <div className="flex items-start gap-4">
-                      <div className="w-12 h-12 bg-gradient-to-br from-brand-jade-500 to-brand-jade-600 rounded-xl flex items-center justify-center shadow-lg">
-                        <CheckCircle className="w-6 h-6 text-white" />
+                  <div className="group p-8 bg-white/5 backdrop-blur-md rounded-2xl border border-white/10 hover:bg-white/10 hover:border-white/15 transition-all duration-500 shadow-lg">
+                    <div className="flex items-start gap-5">
+                      <div className="w-14 h-14 bg-gradient-to-br from-[hsl(157,72%,43%)] to-[hsl(157,72%,38%)] rounded-2xl flex items-center justify-center shadow-lg shrink-0">
+                        <CheckCircle className="w-7 h-7 text-white" />
                       </div>
                       <div>
-                        <h4 className="text-lg font-bold text-ink-900 mb-2">Exclusive Carrier Networks</h4>
-                        <p className="text-slate-600 leading-relaxed">Access to premium insurance carriers and specialized networks unavailable to independent agents.</p>
+                        <h4 className="text-xl font-bold text-white mb-3">Exclusive Carrier Networks</h4>
+                        <p className="text-white/70 leading-relaxed">Access to premium insurance carriers and specialized networks unavailable to independent agents.</p>
                       </div>
                     </div>
                   </div>
                   
-                  <div className="group p-6 bg-gradient-to-br from-white/60 to-white/30 backdrop-blur-sm rounded-2xl border border-white/40 hover:shadow-premium transition-all duration-500">
-                    <div className="flex items-start gap-4">
-                      <div className="w-12 h-12 bg-gradient-to-br from-brand-sky-500 to-brand-sky-600 rounded-xl flex items-center justify-center shadow-lg">
-                        <CheckCircle className="w-6 h-6 text-white" />
+                  <div className="group p-8 bg-white/5 backdrop-blur-md rounded-2xl border border-white/10 hover:bg-white/10 hover:border-white/15 transition-all duration-500 shadow-lg">
+                    <div className="flex items-start gap-5">
+                      <div className="w-14 h-14 bg-gradient-to-br from-[hsl(224,100%,32%)] to-[hsl(215,88%,39%)] rounded-2xl flex items-center justify-center shadow-lg shrink-0">
+                        <CheckCircle className="w-7 h-7 text-white" />
                       </div>
                       <div>
-                        <h4 className="text-lg font-bold text-ink-900 mb-2">Industry Leadership</h4>
-                        <p className="text-slate-600 leading-relaxed">Backed by an established industry leader with nationwide presence and proven track record.</p>
+                        <h4 className="text-xl font-bold text-white mb-3">Industry Leadership</h4>
+                        <p className="text-white/70 leading-relaxed">Backed by an established industry leader with nationwide presence and proven track record.</p>
                       </div>
                     </div>
                   </div>
                   
-                  <div className="group p-6 bg-gradient-to-br from-white/60 to-white/30 backdrop-blur-sm rounded-2xl border border-white/40 hover:shadow-premium transition-all duration-500">
-                    <div className="flex items-start gap-4">
-                      <div className="w-12 h-12 bg-gradient-to-br from-brand-jade-500 to-brand-sky-500 rounded-xl flex items-center justify-center shadow-lg">
-                        <CheckCircle className="w-6 h-6 text-white" />
+                  <div className="group p-8 bg-white/5 backdrop-blur-md rounded-2xl border border-white/10 hover:bg-white/10 hover:border-white/15 transition-all duration-500 shadow-lg">
+                    <div className="flex items-start gap-5">
+                      <div className="w-14 h-14 bg-gradient-to-br from-[hsl(157,72%,43%)] to-[hsl(224,100%,32%)] rounded-2xl flex items-center justify-center shadow-lg shrink-0">
+                        <CheckCircle className="w-7 h-7 text-white" />
                       </div>
                       <div>
-                        <h4 className="text-lg font-bold text-ink-900 mb-2">Shared Values</h4>
-                        <p className="text-slate-600 leading-relaxed">United commitment to affordable, personal, transparent, and simple insurance solutions.</p>
+                        <h4 className="text-xl font-bold text-white mb-3">Shared Values</h4>
+                        <p className="text-white/70 leading-relaxed">United commitment to affordable, personal, transparent, and simple insurance solutions.</p>
                       </div>
                     </div>
                   </div>
                   
-                  <div className="group p-6 bg-gradient-to-br from-white/60 to-white/30 backdrop-blur-sm rounded-2xl border border-white/40 hover:shadow-premium transition-all duration-500">
-                    <div className="flex items-start gap-4">
-                      <div className="w-12 h-12 bg-gradient-to-br from-brand-sky-500 to-brand-jade-500 rounded-xl flex items-center justify-center shadow-lg">
-                        <CheckCircle className="w-6 h-6 text-white" />
+                  <div className="group p-8 bg-white/5 backdrop-blur-md rounded-2xl border border-white/10 hover:bg-white/10 hover:border-white/15 transition-all duration-500 shadow-lg">
+                    <div className="flex items-start gap-5">
+                      <div className="w-14 h-14 bg-gradient-to-br from-[hsl(224,100%,32%)] to-[hsl(157,72%,43%)] rounded-2xl flex items-center justify-center shadow-lg shrink-0">
+                        <CheckCircle className="w-7 h-7 text-white" />
                       </div>
                       <div>
-                        <h4 className="text-lg font-bold text-ink-900 mb-2">Enhanced Buying Power</h4>
-                        <p className="text-slate-600 leading-relaxed">Group purchasing power delivers better rates and enhanced coverage options for clients.</p>
+                        <h4 className="text-xl font-bold text-white mb-3">Enhanced Buying Power</h4>
+                        <p className="text-white/70 leading-relaxed">Group purchasing power delivers better rates and enhanced coverage options for clients.</p>
                       </div>
                     </div>
                   </div>
                 </div>
                 
-                {/* Value Proposition */}
-                <div className="p-8 bg-gradient-to-r from-brand-jade-500/5 to-brand-sky-500/5 rounded-2xl border border-brand-jade-500/20 mb-12">
-                  <div className="text-center space-y-4">
-                    <h3 className="text-2xl font-bold text-ink-900 mb-4">The Perfect Partnership</h3>
-                    <p className="text-lg text-slate-700 leading-relaxed max-w-4xl mx-auto">
-                      Bradford Informed Guidance combines <span className="font-semibold text-brand-jade-600">local expertise and personal touch</span> with 
-                      <span className="font-semibold text-brand-sky-600"> Best Insurance Group's enterprise-level resources</span> and carrier relationships.
+                {/* Luxury Value Proposition */}
+                <div className="p-10 bg-gradient-to-r from-[hsl(157,72%,43%)]/10 to-[hsl(224,100%,32%)]/10 rounded-3xl border border-white/15 mb-16 backdrop-blur-sm">
+                  <div className="text-center space-y-6">
+                    <h3 className="font-luxury-serif text-3xl font-bold text-white mb-6">The Perfect Partnership</h3>
+                    <p className="text-lg text-white/80 leading-relaxed max-w-4xl mx-auto">
+                      Bradford Informed Guidance combines <span className="font-semibold text-[hsl(157,72%,53%)]">local expertise and personal touch</span> with 
+                      <span className="font-semibold text-[hsl(224,100%,50%)]"> Best Insurance Group's enterprise-level resources</span> and carrier relationships.
                     </p>
-                    <p className="text-xl font-semibold text-brand-jade-600">
+                    <p className="text-xl font-semibold text-[hsl(157,72%,53%)]">
                       Your local agent with national group strength.
                     </p>
                   </div>
                 </div>
                 
                 {/* Premium Timeline */}
-                <div className="mb-12">
-                  <h3 className="text-2xl font-bold text-center text-ink-900 mb-8">Partnership Milestones</h3>
+                <div className="mb-16">
+                  <h3 className="font-luxury-serif text-3xl font-bold text-center text-white mb-12">Partnership Milestones</h3>
                   <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
-                    <div className="text-center p-6 bg-gradient-to-br from-brand-jade-500/10 to-brand-jade-600/5 rounded-2xl border border-brand-jade-500/20 hover:shadow-premium transition-all duration-300">
-                      <div className="text-3xl font-bold text-brand-jade-500 mb-2">2019</div>
-                      <div className="text-sm font-semibold text-slate-600">Partnership Begins</div>
+                    <div className="text-center p-8 bg-gradient-to-br from-[hsl(157,72%,43%)]/15 to-[hsl(157,72%,43%)]/5 rounded-3xl border border-white/10 hover:bg-gradient-to-br hover:from-[hsl(157,72%,43%)]/20 hover:to-[hsl(157,72%,43%)]/10 transition-all duration-500 backdrop-blur-sm">
+                      <div className="text-4xl font-bold text-[hsl(157,72%,53%)] mb-3">2019</div>
+                      <div className="text-sm font-semibold text-white/80">Partnership Begins</div>
                     </div>
-                    <div className="text-center p-6 bg-gradient-to-br from-brand-sky-500/10 to-brand-sky-600/5 rounded-2xl border border-brand-sky-500/20 hover:shadow-premium transition-all duration-300">
-                      <div className="text-3xl font-bold text-brand-sky-500 mb-2">2021</div>
-                      <div className="text-sm font-semibold text-slate-600">Expanded Access</div>
+                    <div className="text-center p-8 bg-gradient-to-br from-[hsl(224,100%,32%)]/15 to-[hsl(224,100%,32%)]/5 rounded-3xl border border-white/10 hover:bg-gradient-to-br hover:from-[hsl(224,100%,32%)]/20 hover:to-[hsl(224,100%,32%)]/10 transition-all duration-500 backdrop-blur-sm">
+                      <div className="text-4xl font-bold text-[hsl(224,100%,50%)] mb-3">2021</div>
+                      <div className="text-sm font-semibold text-white/80">Expanded Access</div>
                     </div>
-                    <div className="text-center p-6 bg-gradient-to-br from-brand-jade-500/10 to-brand-jade-600/5 rounded-2xl border border-brand-jade-500/20 hover:shadow-premium transition-all duration-300">
-                      <div className="text-3xl font-bold text-brand-jade-500 mb-2">2023</div>
-                      <div className="text-sm font-semibold text-slate-600">Multi-State Growth</div>
+                    <div className="text-center p-8 bg-gradient-to-br from-[hsl(157,72%,43%)]/15 to-[hsl(157,72%,43%)]/5 rounded-3xl border border-white/10 hover:bg-gradient-to-br hover:from-[hsl(157,72%,43%)]/20 hover:to-[hsl(157,72%,43%)]/10 transition-all duration-500 backdrop-blur-sm">
+                      <div className="text-4xl font-bold text-[hsl(157,72%,53%)] mb-3">2023</div>
+                      <div className="text-sm font-semibold text-white/80">Multi-State Growth</div>
                     </div>
-                    <div className="text-center p-6 bg-gradient-to-br from-brand-sky-500/10 to-brand-sky-600/5 rounded-2xl border border-brand-sky-500/20 hover:shadow-premium transition-all duration-300">
-                      <div className="text-3xl font-bold text-brand-sky-500 mb-2">2025</div>
-                      <div className="text-sm font-semibold text-slate-600">5-Year Mark</div>
+                    <div className="text-center p-8 bg-gradient-to-br from-[hsl(224,100%,32%)]/15 to-[hsl(224,100%,32%)]/5 rounded-3xl border border-white/10 hover:bg-gradient-to-br hover:from-[hsl(224,100%,32%)]/20 hover:to-[hsl(224,100%,32%)]/10 transition-all duration-500 backdrop-blur-sm">
+                      <div className="text-4xl font-bold text-[hsl(224,100%,50%)] mb-3">2025</div>
+                      <div className="text-sm font-semibold text-white/80">5-Year Mark</div>
                     </div>
                   </div>
                 </div>
                 
-                {/* Verification Link */}
+                {/* Luxury Verification Link */}
                 <div className="text-center">
-                  <a 
-                    href="https://bestinsurancegroup.net" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    aria-label="Open Best Insurance Group website"
-                    className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-brand-jade-500 to-brand-sky-500 text-white font-bold text-lg rounded-2xl shadow-glow hover:shadow-luxury transition-all duration-300 transform hover:scale-105"
-                  >
-                    <span>Verify Partnership</span>
-                    <div className="w-6 h-6 bg-white/20 rounded-full flex items-center justify-center">
-                      <span className="text-sm">→</span>
-                    </div>
-                  </a>
-                  <p className="text-sm text-slate-500 mt-3">bestinsurancegroup.net</p>
+                  <Magnetic strength={15}>
+                    <a 
+                      href="https://bestinsurancegroup.net" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      aria-label="Open Best Insurance Group website"
+                      className="inline-flex items-center gap-4 px-12 py-6 bg-gradient-to-r from-[hsl(157,72%,43%)] to-[hsl(224,100%,32%)] text-white font-bold text-xl rounded-2xl shadow-[0_0_20px_rgba(34,197,94,0.3)] hover:shadow-[0_0_30px_rgba(34,197,94,0.4)] transition-all duration-500 transform hover:scale-105 relative overflow-hidden"
+                    >
+                      <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
+                      <span className="relative">Verify Partnership</span>
+                      <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center relative">
+                        <span className="text-lg">→</span>
+                      </div>
+                    </a>
+                  </Magnetic>
+                  <p className="text-sm text-white/60 mt-4 font-medium">bestinsurancegroup.net</p>
                 </div>
               </div>
+              
+              {/* Corner Accents */}
+              <div className="absolute top-4 left-4 w-12 h-12 border-l-2 border-t-2 border-white/15 rounded-tl-2xl"></div>
+              <div className="absolute top-4 right-4 w-12 h-12 border-r-2 border-t-2 border-white/15 rounded-tr-2xl"></div>
+              <div className="absolute bottom-4 left-4 w-12 h-12 border-l-2 border-b-2 border-white/15 rounded-bl-2xl"></div>
+              <div className="absolute bottom-4 right-4 w-12 h-12 border-r-2 border-b-2 border-white/15 rounded-br-2xl"></div>
             </div>
           </Reveal>
         </div>
