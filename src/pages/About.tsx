@@ -509,7 +509,6 @@ export default function AboutPage() {
       <section className="py-20 bg-gradient-to-br from-brand-sky-500 via-brand-jade-500 to-brand-sky-600 text-white relative overflow-hidden">
         {/* Overlay for better text contrast */}
         <div className="absolute inset-0 bg-gradient-to-br from-black/20 via-slate-900/40 to-black/60 backdrop-blur-[0.5px]"></div>
-        <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent"></div>
         <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_30%_20%,rgba(255,255,255,0.1)_0%,transparent_50%)] animate-pulse"></div>
         <div className="container mx-auto px-5 max-w-5xl text-center">
           <Reveal>
