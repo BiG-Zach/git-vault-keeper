@@ -35,7 +35,7 @@ export default function NetworkCard({ network }: NetworkCardProps) {
           </div>
           {network.rating && (
             <div className="ml-4">
-              <div className="inline-flex items-center gap-2 rounded-full bg-green-50 px-4 py-2 text-xs font-semibold text-green-700 border border-green-200 backdrop-blur-sm">
+              <div className="inline-flex items-center gap-2 rounded-full bg-big-teal-50 px-4 py-2 text-xs font-semibold text-big-teal-700 border border-big-teal-200 backdrop-blur-sm">
                 <CheckCircle2 className="h-3 w-3" />
                 {network.rating}
               </div>
@@ -56,8 +56,8 @@ export default function NetworkCard({ network }: NetworkCardProps) {
         <div className="space-y-3">
           {network.highlights.map((highlight, index) => (
             <div key={index} className="flex items-center gap-3">
-              <CheckCircle2 className="h-4 w-4 text-slate-600 flex-shrink-0" />
-              <span className="text-sm text-slate-700 font-medium">{highlight}</span>
+              <CheckCircle2 className="h-4 w-4 text-big-orange-500 flex-shrink-0" />
+              <span className="text-sm text-big-blue-700 font-medium">{highlight}</span>
             </div>
           ))}
         </div>
@@ -67,7 +67,7 @@ export default function NetworkCard({ network }: NetworkCardProps) {
       <div className="relative z-10 p-6 pt-4 mt-auto">
         <Button
           asChild
-          className="w-full h-12 bg-brand-jade-500 text-white hover:bg-brand-jade-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-jade-500 focus-visible:ring-offset-2 disabled:opacity-60 disabled:pointer-events-none bg-[#10B981] hover:bg-[#059669] font-bold text-base rounded-lg transition-all duration-300 hover:scale-[1.02] animate-pulse hover:animate-none shadow-lg hover:shadow-xl"
+          className="w-full h-12 bg-big-orange-500 text-white hover:bg-big-orange-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-big-orange-500 focus-visible:ring-offset-2 disabled:opacity-60 disabled:pointer-events-none font-bold text-base rounded-lg transition-all duration-300 hover:scale-[1.02] shadow-lg hover:shadow-xl animate-pulse hover:animate-none"
         >
           <a
             href={network.lookupUrl}
