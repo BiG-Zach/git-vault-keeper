@@ -32,47 +32,64 @@ const LuxuryHero = () => {
       <div className="relative z-10 container mx-auto px-4 lg:px-6">
         <div className="grid lg:grid-cols-[1.2fr_0.8fr] gap-8 lg:gap-12 items-center">
           
-          {/* Left: Premium Content */}
-          <div className="text-white relative">
-            <motion.div
-              initial={{ opacity: 0, y: prefersReducedMotion ? 0 : 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
-              className="mb-6"
-            >
-              <h1 className="text-4xl lg:text-6xl xl:text-7xl font-bold leading-[1.1] tracking-tight mb-6">
-                <span className="block font-luxury-serif">Private Health &</span>
-                <span className="block gradient-text-luxury font-luxury-serif">Life Guidance.</span>
-                <span className="block text-2xl lg:text-3xl xl:text-4xl font-normal mt-2 text-white/90">
-                  Clear. Fast. Year-Round.
-                </span>
-              </h1>
-            </motion.div>
+          {/* Left: Premium Content - Strategically positioned for optimal viewing */}
+          <div className="text-white relative max-w-2xl lg:max-w-none">
+            {/* Content container with optimal spacing and visual flow */}
+            <div className="space-y-8 lg:space-y-10">
+              
+              <motion.div
+                initial={{ opacity: 0, y: prefersReducedMotion ? 0 : 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
+                className="space-y-6"
+              >
+                <h1 className="text-4xl lg:text-6xl xl:text-7xl font-bold leading-[0.95] tracking-tight">
+                  <span className="block font-luxury-serif mb-2">Private Health &</span>
+                  <span className="block gradient-text-luxury font-luxury-serif mb-4">Life Guidance.</span>
+                  <span className="block text-2xl lg:text-3xl xl:text-4xl font-normal text-white/90 mt-6">
+                    Clear. Fast. Year-Round.
+                  </span>
+                </h1>
+              </motion.div>
 
-            <motion.p
-              initial={{ opacity: 0, y: prefersReducedMotion ? 0 : 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-              className="text-lg lg:text-xl text-white/90 mb-8 leading-relaxed max-w-xl"
-            >
-              Medically underwritten options with PPO networks. Expert guidance from licensed professionals who understand your unique needs.
-            </motion.p>
+              <motion.div
+                initial={{ opacity: 0, y: prefersReducedMotion ? 0 : 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+                className="space-y-6"
+              >
+                <p className="text-lg lg:text-xl text-white/90 leading-relaxed max-w-2xl lg:max-w-xl">
+                  Medically underwritten options with PPO networks. Expert guidance from licensed professionals who understand your unique needs.
+                </p>
 
-
-            {/* Trust indicators */}
-            <motion.div
-              initial={{ opacity: 0, y: prefersReducedMotion ? 0 : 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
-              className="grid grid-cols-2 gap-4 lg:hidden"
-            >
-              {benefits.slice(0, 2).map((benefit, index) => (
-                <div key={index} className="flex items-center gap-2 text-sm text-white/80">
-                  <benefit.icon className="w-4 h-4 text-emerald-400" />
-                  <span>{benefit.text}</span>
+                {/* Enhanced trust indicators with better visual hierarchy */}
+                <div className="flex flex-wrap gap-4 lg:gap-6 pt-2">
+                  {benefits.slice(0, 2).map((benefit, index) => (
+                    <div key={index} className="flex items-center gap-3 text-sm lg:text-base text-white/85 bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 border border-white/20">
+                      <benefit.icon className="w-4 h-4 lg:w-5 lg:h-5 text-emerald-400 flex-shrink-0" />
+                      <span className="font-medium">{benefit.text}</span>
+                    </div>
+                  ))}
                 </div>
-              ))}
-            </motion.div>
+              </motion.div>
+
+              {/* Additional mobile-specific trust elements */}
+              <motion.div
+                initial={{ opacity: 0, y: prefersReducedMotion ? 0 : 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+                className="lg:hidden pt-4"
+              >
+                <div className="flex flex-wrap gap-3">
+                  {benefits.slice(2).map((benefit, index) => (
+                    <div key={index} className="flex items-center gap-2 text-sm text-white/80 bg-white/5 rounded-lg px-3 py-2">
+                      <benefit.icon className="w-4 h-4 text-emerald-400" />
+                      <span>{benefit.text}</span>
+                    </div>
+                  ))}
+                </div>
+              </motion.div>
+            </div>
           </div>
 
           {/* Right: Premium Form */}
