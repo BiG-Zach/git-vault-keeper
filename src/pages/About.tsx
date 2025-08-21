@@ -530,8 +530,8 @@ export default function AboutPage() {
               <div className="mb-16">
                 <h2 className="font-luxury-serif text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-8 leading-[1.1] tracking-tight">
                   Ready to Secure Your 
-                  <span className="block bg-gradient-to-r from-brand-jade-500 via-white to-brand-sky-500 bg-clip-text text-transparent">
-                    Family's Future?
+                  <span className="block bg-gradient-to-r from-brand-jade-500 via-brand-jade-300 to-brand-sky-500 bg-clip-text text-transparent font-bold">
+                    Family&apos;s Future?
                   </span>
                 </h2>
                 <p className="text-xl md:text-2xl text-white/80 max-w-4xl mx-auto leading-relaxed font-light">
