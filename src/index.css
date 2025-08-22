@@ -17,12 +17,6 @@
     --color-gold: hsl(43, 74%, 66%);           /* luxury gold */
     --color-platinum: hsl(210, 20%, 85%);      /* premium gray */
     
-    /* BiG Brand Colors - Authentic from Business Card */
-    --big-primary-blue: #2aa8ff;                /* BiG signature blue */
-    --big-secondary-orange: #ff6b35;            /* BiG energy orange */
-    --big-accent-green: #22c98d;               /* BiG success green */
-    --big-professional-dark: #1a365d;          /* BiG professional dark */
-    
     /* Surface Colors */
     --surface-luxury: hsl(220, 26%, 14%);      /* deep luxury background */
     --surface-glass: hsla(0, 0%, 100%, 0.08);  /* glass morphism */
@@ -37,17 +31,10 @@
     --gradient-gold: linear-gradient(135deg, hsl(43, 74%, 66%) 0%, hsl(43, 84%, 56%) 100%);
     --gradient-glass: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
     
-    /* BiG Brand Gradients */
-    --gradient-big-primary: linear-gradient(135deg, var(--big-primary-blue) 0%, var(--big-secondary-orange) 50%, var(--big-accent-green) 100%);
-    --gradient-big-glow: linear-gradient(135deg, rgba(42, 168, 255, 0.3) 0%, rgba(255, 107, 53, 0.2) 50%, rgba(34, 201, 141, 0.3) 100%);
-    
     /* Shadows */
     --shadow-luxury: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
     --shadow-premium: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
     --shadow-glow: 0 0 0px rgba(34, 197, 94, 0);
-    --shadow-big-blue: 0 0 40px rgba(42, 168, 255, 0.4);
-    --shadow-big-orange: 0 0 40px rgba(255, 107, 53, 0.4);
-    --shadow-big-green: 0 0 40px rgba(34, 201, 141, 0.4);
   }
 
   html {
@@ -72,20 +59,6 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-  }
-
-  /* BiG Brand Animation Classes */
-  .animate-gradient {
-    animation: gradientShift 8s ease-in-out infinite;
-  }
-
-  .bg-300\% {
-    background-size: 300% 300%;
-  }
-
-  @keyframes gradientShift {
-    0%, 100% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
   }
 }
 
