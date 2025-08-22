@@ -30,7 +30,7 @@ export default function ContactHero() {
   );
 
   return (
-    <Section as="header" className="relative isolate px-0 py-0 w-full">
+    <Section as="header" className="relative isolate px-0 py-0 w-full max-w-none">
       <div ref={ref} className="relative w-full min-h-[70vh] md:min-h-[80vh] overflow-hidden">
         {/* Parallax layer */}
         <div

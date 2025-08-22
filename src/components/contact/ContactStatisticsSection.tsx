@@ -2,6 +2,7 @@ import * as React from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { Shield, Users, Clock, Award } from "lucide-react";
 import Section from "../layout/Section";
+import { useParallax } from "../../lib/useParallax";
 
 const stats = [
   {
@@ -55,16 +56,15 @@ export default function ContactStatisticsSection() {
   return (
     <Section className="relative bg-slate-900 overflow-hidden py-16 md:py-20">
       {/* Background Pattern */}
-      <div 
-        className="absolute inset-0 opacity-30"
-        style={{
-          backgroundImage: `radial-gradient(circle at 25% 25%, hsl(var(--brand-sky-500) / 0.15) 0%, transparent 50%),
-                           radial-gradient(circle at 75% 75%, hsl(var(--brand-jade-500) / 0.15) 0%, transparent 50%),
-                           radial-gradient(1px 1px at 20px 30px, rgba(255,255,255,0.15), transparent),
+      <div className="absolute inset-0 opacity-30">
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-500/15 to-transparent rounded-full w-96 h-96 -top-48 -left-48"></div>
+        <div className="absolute inset-0 bg-gradient-to-tl from-teal-500/15 to-transparent rounded-full w-96 h-96 -bottom-48 -right-48"></div>
+        <div className="absolute inset-0" style={{
+          backgroundImage: `radial-gradient(1px 1px at 20px 30px, rgba(255,255,255,0.15), transparent),
                            radial-gradient(1px 1px at 40px 70px, rgba(255,255,255,0.1), transparent)`,
-          backgroundSize: '400px 400px, 400px 400px, 80px 80px, 80px 80px'
-        }}
-      />
+          backgroundSize: '80px 80px, 80px 80px'
+        }}></div>
+      </div>
 
       <div className="relative z-10">
         <div className="text-center mb-12">
@@ -101,12 +101,12 @@ export default function ContactStatisticsSection() {
               className="relative group"
               variants={prefersReducedMotion ? {} : itemVariants}
             >
-              <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 text-center hover:bg-white/10 transition-all duration-300 group-hover:scale-105">
+                <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 text-center hover:bg-white/10 transition-all duration-300 group-hover:scale-105">
                 {/* Gradient Border Effect */}
-                <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-brand-jade-500/20 to-brand-sky-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-teal-500/20 to-blue-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 
                 <div className="relative z-10">
-                  <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-brand-jade-500 to-brand-sky-500 rounded-xl flex items-center justify-center text-white">
+                  <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-teal-500 to-blue-500 rounded-xl flex items-center justify-center text-white">
                     {stat.icon}
                   </div>
                   
@@ -114,7 +114,7 @@ export default function ContactStatisticsSection() {
                     {stat.number}
                   </div>
                   
-                  <div className="text-lg font-semibold text-brand-opal-300 mb-1">
+                  <div className="text-lg font-semibold text-slate-300 mb-1">
                     {stat.label}
                   </div>
                   
