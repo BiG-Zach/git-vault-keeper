@@ -405,192 +405,299 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* PARTNERSHIP SECTION - WORLD CLASS LUXURY */}
-      <section id="big-partnership" role="region" aria-labelledby="big-partnership-title" className="relative py-24 md:py-32 overflow-hidden bg-[hsl(220,26%,14%)]">
-        {/* Premium Dark Background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-[hsl(220,26%,14%)] via-[hsl(220,20%,10%)] to-[hsl(220,26%,14%)]"></div>
+      {/* BiG PARTNERSHIP SECTION - VISUAL MASTERPIECE */}
+      <section id="big-partnership" role="region" aria-labelledby="big-partnership-title" className="relative py-32 md:py-40 overflow-hidden bg-gradient-to-br from-[#1a365d] via-[#0f172a] to-[#1e293b]">
         
-        {/* Ambient Light Effects */}
+        {/* BiG Brand Ambient Light Effects */}
         <div className="absolute inset-0">
-          <div className="absolute top-20 left-1/4 w-96 h-96 bg-[hsl(157,72%,43%)]/15 rounded-full blur-3xl opacity-60"></div>
-          <div className="absolute bottom-20 right-1/4 w-80 h-80 bg-[hsl(224,100%,32%)]/15 rounded-full blur-3xl opacity-40"></div>
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-gradient-to-r from-[hsl(157,72%,43%)]/5 via-transparent to-[hsl(224,100%,32%)]/5 rounded-full blur-3xl"></div>
+          {/* Primary Blue Glow */}
+          <div className="absolute top-20 left-1/4 w-[500px] h-[500px] bg-[#2aa8ff]/20 rounded-full blur-[100px] opacity-70 animate-pulse"></div>
+          {/* Orange Energy Burst */}
+          <div className="absolute bottom-20 right-1/4 w-[400px] h-[400px] bg-[#ff6b35]/25 rounded-full blur-[80px] opacity-60"></div>
+          {/* Green Success Accent */}
+          <div className="absolute top-1/3 right-1/3 w-[300px] h-[300px] bg-[#22c98d]/15 rounded-full blur-[60px] opacity-50"></div>
+          {/* Central BiG Gradient */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[600px] bg-gradient-to-r from-[#2aa8ff]/8 via-[#ff6b35]/5 to-[#22c98d]/8 rounded-full blur-[120px]"></div>
         </div>
         
-        {/* Geometric Accents */}
-        <div className="absolute inset-0 opacity-5">
-          <div className="absolute top-0 right-0 w-96 h-96 border border-white/10 rotate-12 translate-x-48 -translate-y-48"></div>
-          <div className="absolute bottom-0 left-0 w-80 h-80 border border-white/5 rotate-45 -translate-x-40 translate-y-40"></div>
+        {/* Dynamic BiG Geometric Elements */}
+        <div className="absolute inset-0">
+          {/* Floating BiG Logo Elements */}
+          <div className="absolute top-1/4 left-1/6 w-32 h-32 border-2 border-[#2aa8ff]/20 rounded-3xl rotate-12 opacity-30 animate-pulse"></div>
+          <div className="absolute top-3/4 right-1/6 w-24 h-24 border border-[#ff6b35]/25 rounded-full opacity-25"></div>
+          <div className="absolute bottom-1/4 left-1/3 w-16 h-16 bg-[#22c98d]/10 rounded-2xl rotate-45 opacity-40"></div>
+          
+          {/* Dynamic Light Rays */}
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-full bg-gradient-to-b from-[#2aa8ff]/30 via-transparent to-[#ff6b35]/20 opacity-50"></div>
+          <div className="absolute top-1/2 left-0 -translate-y-1/2 w-full h-px bg-gradient-to-r from-transparent via-[#22c98d]/20 to-transparent opacity-40"></div>
+          
+          {/* BiG Brand Pattern */}
+          <div className="absolute inset-0 opacity-5" style={{
+            backgroundImage: `radial-gradient(circle at 25% 25%, #2aa8ff 2px, transparent 2px),
+                             radial-gradient(circle at 75% 75%, #ff6b35 1px, transparent 1px)`,
+            backgroundSize: '60px 60px, 40px 40px'
+          }}></div>
         </div>
         
         <div className="relative container mx-auto px-6 max-w-7xl z-10">
           <Reveal>
-            {/* Luxury Glass Card Container */}
-            <div className="bg-white/5 backdrop-blur-xl p-12 md:p-16 rounded-3xl border border-white/10 shadow-[0_25px_50px_-12px_rgba(0,0,0,0.25)] relative overflow-hidden">
-              {/* Subtle inner glow */}
-              <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-[hsl(157,72%,43%)]/5 rounded-3xl opacity-60"></div>
+            {/* BiG Masterpiece Glass Container */}
+            <div className="group bg-white/8 backdrop-blur-2xl p-16 md:p-20 rounded-[2rem] border border-white/20 shadow-[0_40px_100px_-20px_rgba(42,168,255,0.3)] relative overflow-hidden transform hover:scale-[1.02] transition-all duration-700">
+              
+              {/* BiG Brand Inner Glow System */}
+              <div className="absolute inset-0 bg-gradient-to-br from-[#2aa8ff]/10 via-[#ff6b35]/5 to-[#22c98d]/8 rounded-[2rem] opacity-80"></div>
+              <div className="absolute inset-0 bg-gradient-to-tr from-white/5 via-transparent to-[#2aa8ff]/10 rounded-[2rem] group-hover:opacity-100 opacity-60 transition-opacity duration-500"></div>
+              
+              {/* Animated BiG Energy Lines */}
+              <div className="absolute top-0 left-1/4 w-px h-full bg-gradient-to-b from-[#2aa8ff]/40 via-transparent to-[#ff6b35]/30 opacity-60 animate-pulse"></div>
+              <div className="absolute top-1/4 right-0 w-full h-px bg-gradient-to-l from-[#22c98d]/30 via-transparent to-transparent opacity-50"></div>
               
               <div className="relative z-10">
-                {/* Luxury Header Section */}
-                <div className="text-center mb-16">
-                  <div className="inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-[hsl(157,72%,43%)]/20 to-[hsl(224,100%,32%)]/20 rounded-full border border-white/20 mb-8 backdrop-blur-sm">
-                    <div className="w-2 h-2 bg-[hsl(157,72%,43%)] rounded-full animate-pulse"></div>
-                    <span className="text-sm font-semibold text-white/90">Strategic Partnership</span>
+                {/* BiG Brand Masterpiece Header */}
+                <div className="text-center mb-20">
+                  <div className="inline-flex items-center gap-4 px-8 py-4 bg-gradient-to-r from-[#2aa8ff]/30 via-[#ff6b35]/20 to-[#22c98d]/25 rounded-full border-2 border-white/30 mb-12 backdrop-blur-xl shadow-[0_0_40px_rgba(42,168,255,0.4)] relative overflow-hidden group">
+                    <div className="absolute inset-0 bg-gradient-to-r from-[#2aa8ff]/20 to-[#ff6b35]/15 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div className="w-3 h-3 bg-[#22c98d] rounded-full animate-pulse shadow-[0_0_10px_#22c98d] relative z-10"></div>
+                    <span className="text-base font-bold text-white relative z-10 tracking-wider">STRATEGIC PARTNERSHIP</span>
+                    <div className="w-3 h-3 bg-[#2aa8ff] rounded-full animate-pulse shadow-[0_0_10px_#2aa8ff] relative z-10"></div>
                   </div>
                   
-                  <h2 id="big-partnership-title" className="font-luxury-serif text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-                    <span className="bg-gradient-to-r from-[hsl(157,72%,43%)] via-[hsl(157,72%,53%)] to-[hsl(224,100%,32%)] bg-clip-text text-transparent">
+                  <h2 id="big-partnership-title" className="font-luxury-serif text-5xl md:text-6xl lg:text-7xl font-bold mb-8 leading-tight">
+                    <span className="bg-gradient-to-r from-[#2aa8ff] via-[#ff6b35] to-[#22c98d] bg-clip-text text-transparent animate-gradient bg-300% drop-shadow-[0_0_30px_rgba(42,168,255,0.5)]">
                       Proudly Partnered with
                     </span>
                     <br />
-                    <span className="text-white font-luxury-serif">Best Insurance Group</span>
+                    <div className="relative inline-block">
+                      <span className="text-white font-luxury-serif drop-shadow-[0_0_20px_rgba(255,255,255,0.3)]">Best Insurance Group</span>
+                      <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-32 h-1 bg-gradient-to-r from-[#2aa8ff] via-[#ff6b35] to-[#22c98d] rounded-full shadow-[0_0_15px_rgba(42,168,255,0.6)]"></div>
+                    </div>
                   </h2>
-                  <p className="text-xl md:text-2xl text-white/80 max-w-3xl mx-auto leading-relaxed font-light">
-                    5 years of trusted collaboration serving families nationwide with 
-                    <span className="text-white font-medium"> enterprise-level resources.</span>
+                  <p className="text-xl md:text-2xl text-white/90 max-w-4xl mx-auto leading-relaxed font-medium">
+                    <span className="text-[#2aa8ff] font-bold">5 years</span> of trusted collaboration serving families nationwide with 
+                    <span className="text-[#ff6b35] font-bold drop-shadow-[0_0_10px_rgba(255,107,53,0.5)]"> enterprise-level resources</span> and 
+                    <span className="text-[#22c98d] font-bold">unmatched expertise</span>.
                   </p>
                 </div>
                 
-                {/* Premium Logo Section */}
-                <div className="flex flex-col lg:flex-row items-center justify-center gap-12 mb-16">
-                  <div className="flex items-center gap-6">
+                {/* BiG Brand Showcase - Logo Masterpiece */}
+                <div className="flex flex-col lg:flex-row items-center justify-center gap-16 mb-20">
+                  <div className="group flex items-center gap-8 p-8 bg-white/10 backdrop-blur-xl rounded-[2rem] border border-white/20 shadow-[0_0_60px_rgba(42,168,255,0.3)] hover:shadow-[0_0_80px_rgba(42,168,255,0.5)] transition-all duration-500">
                     <div className="relative">
-                      <div className="w-28 h-28 bg-gradient-to-br from-[hsl(157,72%,43%)] to-[hsl(224,100%,32%)] rounded-3xl flex items-center justify-center shadow-[0_25px_50px_-12px_rgba(0,0,0,0.25)] relative overflow-hidden">
-                        <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent"></div>
-                        <span className="relative text-white font-bold text-3xl font-luxury-serif">BiG</span>
+                      {/* Animated BiG Logo Container */}
+                      <div className="w-36 h-36 bg-gradient-to-br from-[#2aa8ff] via-[#ff6b35] to-[#22c98d] rounded-[2rem] flex items-center justify-center shadow-[0_0_40px_rgba(42,168,255,0.6)] relative overflow-hidden group-hover:rotate-3 transition-transform duration-500 animate-gradient bg-300%">
+                        <div className="absolute inset-0 bg-gradient-to-br from-white/30 to-transparent rounded-[2rem]"></div>
+                        <div className="absolute inset-2 bg-gradient-to-br from-[#1a365d]/90 to-[#0f172a]/90 rounded-[1.5rem] flex items-center justify-center">
+                          <span className="relative text-white font-bold text-4xl font-luxury-serif tracking-wider drop-shadow-[0_0_10px_rgba(255,255,255,0.5)]">BiG</span>
+                        </div>
                       </div>
-                      <div className="absolute -top-3 -right-3 w-8 h-8 bg-[hsl(157,72%,43%)] rounded-full flex items-center justify-center shadow-lg">
-                        <CheckCircle className="w-5 h-5 text-white" />
+                      
+                      {/* Verification Badge with Animation */}
+                      <div className="absolute -top-4 -right-4 w-12 h-12 bg-gradient-to-br from-[#22c98d] to-[#16a085] rounded-full flex items-center justify-center shadow-[0_0_20px_rgba(34,201,141,0.6)] animate-pulse">
+                        <CheckCircle className="w-7 h-7 text-white drop-shadow-sm" />
+                      </div>
+                      
+                      {/* Floating Particles */}
+                      <div className="absolute -inset-8 opacity-60">
+                        <div className="absolute top-0 left-4 w-2 h-2 bg-[#2aa8ff] rounded-full animate-bounce" style={{animationDelay: '0s'}}></div>
+                        <div className="absolute top-8 right-0 w-1.5 h-1.5 bg-[#ff6b35] rounded-full animate-bounce" style={{animationDelay: '0.5s'}}></div>
+                        <div className="absolute bottom-4 left-0 w-1 h-1 bg-[#22c98d] rounded-full animate-bounce" style={{animationDelay: '1s'}}></div>
                       </div>
                     </div>
-                    <div>
-                      <div className="text-2xl md:text-3xl font-bold text-white mb-1">Best Insurance Group</div>
-                      <div className="text-[hsl(157,72%,53%)] font-semibold text-lg">Industry Leader Since 2005</div>
+                    
+                    <div className="text-left">
+                      <div className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-[#2aa8ff] to-[#ff6b35] bg-clip-text text-transparent mb-2 drop-shadow-sm">Best Insurance Group</div>
+                      <div className="text-[#22c98d] font-bold text-xl mb-1 drop-shadow-[0_0_10px_rgba(34,201,141,0.4)]">Industry Leader Since 2005</div>
+                      <div className="text-white/80 text-sm font-medium">Trusted by thousands nationwide</div>
                     </div>
                   </div>
                   
-                  <Magnetic strength={10}>
-                    <div className="px-10 py-5 bg-gradient-to-r from-[hsl(157,72%,43%)] to-[hsl(224,100%,32%)] text-white rounded-2xl font-bold text-xl shadow-[0_0_20px_rgba(34,197,94,0.3)] relative overflow-hidden transform hover:scale-105 transition-all duration-300">
-                      <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
-                      <span className="relative">5-Year Partnership</span>
+                  <Magnetic strength={15}>
+                    <div className="group px-12 py-6 bg-gradient-to-r from-[#2aa8ff] via-[#ff6b35] to-[#22c98d] text-white rounded-[2rem] font-bold text-2xl shadow-[0_0_40px_rgba(42,168,255,0.4)] relative overflow-hidden transform hover:scale-110 transition-all duration-500 cursor-pointer animate-gradient bg-300%">
+                      <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-[2rem]"></div>
+                      <div className="absolute inset-0 animate-pulse opacity-30">
+                        <div className="absolute top-2 left-4 w-2 h-2 bg-white rounded-full"></div>
+                        <div className="absolute bottom-2 right-4 w-1.5 h-1.5 bg-white rounded-full"></div>
+                      </div>
+                      <span className="relative drop-shadow-sm">5-Year Partnership</span>
                     </div>
                   </Magnetic>
                 </div>
                 
-                {/* Premium Benefits Grid */}
-                <div className="grid md:grid-cols-2 gap-8 mb-16">
-                  <div className="group p-8 bg-white/5 backdrop-blur-md rounded-2xl border border-white/10 hover:bg-white/10 hover:border-white/15 transition-all duration-500 shadow-lg">
-                    <div className="flex items-start gap-5">
-                      <div className="w-14 h-14 bg-gradient-to-br from-[hsl(157,72%,43%)] to-[hsl(157,72%,38%)] rounded-2xl flex items-center justify-center shadow-lg shrink-0">
-                        <CheckCircle className="w-7 h-7 text-white" />
+                {/* BiG Benefits Masterpiece Grid */}
+                <div className="grid md:grid-cols-2 gap-10 mb-20">
+                  <div className="group p-10 bg-gradient-to-br from-[#2aa8ff]/15 via-white/5 to-[#ff6b35]/10 backdrop-blur-xl rounded-[2rem] border border-white/20 hover:bg-gradient-to-br hover:from-[#2aa8ff]/20 hover:via-white/8 hover:to-[#ff6b35]/15 hover:border-[#2aa8ff]/40 transition-all duration-700 shadow-[0_0_40px_rgba(42,168,255,0.2)] hover:shadow-[0_0_60px_rgba(42,168,255,0.4)] transform hover:scale-105 relative overflow-hidden">
+                    <div className="absolute inset-0 bg-gradient-to-br from-[#2aa8ff]/5 to-transparent rounded-[2rem] opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div className="flex items-start gap-6 relative z-10">
+                      <div className="w-16 h-16 bg-gradient-to-br from-[#2aa8ff] to-[#1e40af] rounded-[1.5rem] flex items-center justify-center shadow-[0_0_30px_rgba(42,168,255,0.5)] shrink-0 group-hover:rotate-6 transition-transform duration-500">
+                        <CheckCircle className="w-8 h-8 text-white drop-shadow-sm" />
                       </div>
                       <div>
-                        <h4 className="text-xl font-bold text-white mb-3">Exclusive Carrier Networks</h4>
-                        <p className="text-white/70 leading-relaxed">Access to premium insurance carriers and specialized networks unavailable to independent agents.</p>
+                        <h4 className="text-2xl font-bold bg-gradient-to-r from-[#2aa8ff] to-[#1e40af] bg-clip-text text-transparent mb-4 drop-shadow-sm">Exclusive Carrier Networks</h4>
+                        <p className="text-white/90 leading-relaxed text-lg font-medium">Access to premium insurance carriers and specialized networks unavailable to independent agents.</p>
                       </div>
                     </div>
                   </div>
                   
-                  <div className="group p-8 bg-white/5 backdrop-blur-md rounded-2xl border border-white/10 hover:bg-white/10 hover:border-white/15 transition-all duration-500 shadow-lg">
-                    <div className="flex items-start gap-5">
-                      <div className="w-14 h-14 bg-gradient-to-br from-[hsl(224,100%,32%)] to-[hsl(215,88%,39%)] rounded-2xl flex items-center justify-center shadow-lg shrink-0">
-                        <CheckCircle className="w-7 h-7 text-white" />
+                  <div className="group p-10 bg-gradient-to-br from-[#ff6b35]/15 via-white/5 to-[#22c98d]/10 backdrop-blur-xl rounded-[2rem] border border-white/20 hover:bg-gradient-to-br hover:from-[#ff6b35]/20 hover:via-white/8 hover:to-[#22c98d]/15 hover:border-[#ff6b35]/40 transition-all duration-700 shadow-[0_0_40px_rgba(255,107,53,0.2)] hover:shadow-[0_0_60px_rgba(255,107,53,0.4)] transform hover:scale-105 relative overflow-hidden">
+                    <div className="absolute inset-0 bg-gradient-to-br from-[#ff6b35]/5 to-transparent rounded-[2rem] opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div className="flex items-start gap-6 relative z-10">
+                      <div className="w-16 h-16 bg-gradient-to-br from-[#ff6b35] to-[#dc2626] rounded-[1.5rem] flex items-center justify-center shadow-[0_0_30px_rgba(255,107,53,0.5)] shrink-0 group-hover:rotate-6 transition-transform duration-500">
+                        <CheckCircle className="w-8 h-8 text-white drop-shadow-sm" />
                       </div>
                       <div>
-                        <h4 className="text-xl font-bold text-white mb-3">Industry Leadership</h4>
-                        <p className="text-white/70 leading-relaxed">Backed by an established industry leader with nationwide presence and proven track record.</p>
+                        <h4 className="text-2xl font-bold bg-gradient-to-r from-[#ff6b35] to-[#dc2626] bg-clip-text text-transparent mb-4 drop-shadow-sm">Industry Leadership</h4>
+                        <p className="text-white/90 leading-relaxed text-lg font-medium">Backed by an established industry leader with nationwide presence and proven track record.</p>
                       </div>
                     </div>
                   </div>
                   
-                  <div className="group p-8 bg-white/5 backdrop-blur-md rounded-2xl border border-white/10 hover:bg-white/10 hover:border-white/15 transition-all duration-500 shadow-lg">
-                    <div className="flex items-start gap-5">
-                      <div className="w-14 h-14 bg-gradient-to-br from-[hsl(157,72%,43%)] to-[hsl(224,100%,32%)] rounded-2xl flex items-center justify-center shadow-lg shrink-0">
-                        <CheckCircle className="w-7 h-7 text-white" />
+                  <div className="group p-10 bg-gradient-to-br from-[#22c98d]/15 via-white/5 to-[#2aa8ff]/10 backdrop-blur-xl rounded-[2rem] border border-white/20 hover:bg-gradient-to-br hover:from-[#22c98d]/20 hover:via-white/8 hover:to-[#2aa8ff]/15 hover:border-[#22c98d]/40 transition-all duration-700 shadow-[0_0_40px_rgba(34,201,141,0.2)] hover:shadow-[0_0_60px_rgba(34,201,141,0.4)] transform hover:scale-105 relative overflow-hidden">
+                    <div className="absolute inset-0 bg-gradient-to-br from-[#22c98d]/5 to-transparent rounded-[2rem] opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div className="flex items-start gap-6 relative z-10">
+                      <div className="w-16 h-16 bg-gradient-to-br from-[#22c98d] to-[#059669] rounded-[1.5rem] flex items-center justify-center shadow-[0_0_30px_rgba(34,201,141,0.5)] shrink-0 group-hover:rotate-6 transition-transform duration-500">
+                        <CheckCircle className="w-8 h-8 text-white drop-shadow-sm" />
                       </div>
                       <div>
-                        <h4 className="text-xl font-bold text-white mb-3">Shared Values</h4>
-                        <p className="text-white/70 leading-relaxed">United commitment to affordable, personal, transparent, and simple insurance solutions.</p>
+                        <h4 className="text-2xl font-bold bg-gradient-to-r from-[#22c98d] to-[#059669] bg-clip-text text-transparent mb-4 drop-shadow-sm">Shared Values</h4>
+                        <p className="text-white/90 leading-relaxed text-lg font-medium">United commitment to affordable, personal, transparent, and simple insurance solutions.</p>
                       </div>
                     </div>
                   </div>
                   
-                  <div className="group p-8 bg-white/5 backdrop-blur-md rounded-2xl border border-white/10 hover:bg-white/10 hover:border-white/15 transition-all duration-500 shadow-lg">
-                    <div className="flex items-start gap-5">
-                      <div className="w-14 h-14 bg-gradient-to-br from-[hsl(224,100%,32%)] to-[hsl(157,72%,43%)] rounded-2xl flex items-center justify-center shadow-lg shrink-0">
-                        <CheckCircle className="w-7 h-7 text-white" />
+                  <div className="group p-10 bg-gradient-to-br from-[#2aa8ff]/15 via-[#ff6b35]/5 to-[#22c98d]/10 backdrop-blur-xl rounded-[2rem] border border-white/20 hover:bg-gradient-to-br hover:from-[#2aa8ff]/20 hover:via-[#ff6b35]/8 hover:to-[#22c98d]/15 hover:border-white/40 transition-all duration-700 shadow-[0_0_40px_rgba(42,168,255,0.2)] hover:shadow-[0_0_60px_rgba(42,168,255,0.4)] transform hover:scale-105 relative overflow-hidden">
+                    <div className="absolute inset-0 bg-gradient-to-br from-[#2aa8ff]/5 via-[#ff6b35]/3 to-[#22c98d]/5 rounded-[2rem] opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div className="flex items-start gap-6 relative z-10">
+                      <div className="w-16 h-16 bg-gradient-to-br from-[#2aa8ff] via-[#ff6b35] to-[#22c98d] rounded-[1.5rem] flex items-center justify-center shadow-[0_0_30px_rgba(42,168,255,0.5)] shrink-0 group-hover:rotate-6 transition-transform duration-500 animate-gradient bg-300%">
+                        <CheckCircle className="w-8 h-8 text-white drop-shadow-sm" />
                       </div>
                       <div>
-                        <h4 className="text-xl font-bold text-white mb-3">Enhanced Buying Power</h4>
-                        <p className="text-white/70 leading-relaxed">Group purchasing power delivers better rates and enhanced coverage options for clients.</p>
+                        <h4 className="text-2xl font-bold bg-gradient-to-r from-[#2aa8ff] via-[#ff6b35] to-[#22c98d] bg-clip-text text-transparent mb-4 drop-shadow-sm animate-gradient bg-300%">Enhanced Buying Power</h4>
+                        <p className="text-white/90 leading-relaxed text-lg font-medium">Group purchasing power delivers better rates and enhanced coverage options for clients.</p>
                       </div>
                     </div>
                   </div>
                 </div>
                 
-                {/* Luxury Value Proposition */}
-                <div className="p-10 bg-gradient-to-r from-[hsl(157,72%,43%)]/10 to-[hsl(224,100%,32%)]/10 rounded-3xl border border-white/15 mb-16 backdrop-blur-sm">
-                  <div className="text-center space-y-6">
-                    <h3 className="font-luxury-serif text-3xl font-bold text-white mb-6">The Perfect Partnership</h3>
-                    <p className="text-lg text-white/80 leading-relaxed max-w-4xl mx-auto">
-                      Bradford Informed Guidance combines <span className="font-semibold text-[hsl(157,72%,53%)]">local expertise and personal touch</span> with 
-                      <span className="font-semibold text-[hsl(224,100%,50%)]"> Best Insurance Group's enterprise-level resources</span> and carrier relationships.
+                {/* BiG Value Proposition Masterpiece */}
+                <div className="group p-16 bg-gradient-to-br from-[#2aa8ff]/20 via-[#ff6b35]/10 to-[#22c98d]/15 rounded-[2.5rem] border-2 border-white/25 mb-20 backdrop-blur-2xl shadow-[0_0_80px_rgba(42,168,255,0.3)] hover:shadow-[0_0_120px_rgba(42,168,255,0.5)] transition-all duration-700 relative overflow-hidden transform hover:scale-[1.02]">
+                  
+                  {/* Animated BiG Brand Pattern */}
+                  <div className="absolute inset-0 opacity-10">
+                    <div className="absolute top-4 right-8 w-16 h-16 border-2 border-[#2aa8ff] rounded-full animate-spin" style={{animationDuration: '20s'}}></div>
+                    <div className="absolute bottom-8 left-12 w-12 h-12 border border-[#ff6b35] rounded-2xl rotate-45 animate-pulse"></div>
+                    <div className="absolute top-1/2 left-1/4 w-8 h-8 bg-[#22c98d]/30 rounded-full animate-bounce"></div>
+                  </div>
+                  
+                  <div className="text-center space-y-8 relative z-10">
+                    <div className="inline-flex items-center gap-4 px-8 py-4 bg-gradient-to-r from-[#2aa8ff]/30 to-[#22c98d]/30 rounded-full border border-white/30 backdrop-blur-xl">
+                      <div className="w-4 h-4 bg-[#ff6b35] rounded-full animate-pulse shadow-[0_0_10px_#ff6b35]"></div>
+                      <span className="font-bold text-white text-lg tracking-wide">THE PERFECT PARTNERSHIP</span>
+                      <div className="w-4 h-4 bg-[#22c98d] rounded-full animate-pulse shadow-[0_0_10px_#22c98d]"></div>
+                    </div>
+                    
+                    <h3 className="font-luxury-serif text-4xl md:text-5xl font-bold bg-gradient-to-r from-[#2aa8ff] via-[#ff6b35] to-[#22c98d] bg-clip-text text-transparent mb-8 drop-shadow-[0_0_20px_rgba(42,168,255,0.4)] animate-gradient bg-300%">The Perfect Partnership</h3>
+                    
+                    <p className="text-xl md:text-2xl text-white/95 leading-relaxed max-w-5xl mx-auto font-medium">
+                      Bradford Informed Guidance combines 
+                      <span className="font-bold bg-gradient-to-r from-[#22c98d] to-[#16a085] bg-clip-text text-transparent drop-shadow-[0_0_15px_rgba(34,201,141,0.5)]"> local expertise and personal touch</span> with 
+                      <span className="font-bold bg-gradient-to-r from-[#2aa8ff] to-[#1e40af] bg-clip-text text-transparent drop-shadow-[0_0_15px_rgba(42,168,255,0.5)]"> Best Insurance Group's enterprise-level resources</span> and carrier relationships.
                     </p>
-                    <p className="text-xl font-semibold text-[hsl(157,72%,53%)]">
+                    
+                    <div className="text-3xl font-bold bg-gradient-to-r from-[#ff6b35] via-[#2aa8ff] to-[#22c98d] bg-clip-text text-transparent drop-shadow-[0_0_20px_rgba(255,107,53,0.4)] animate-gradient bg-300%">
                       Your local agent with national group strength.
-                    </p>
-                  </div>
-                </div>
-                
-                {/* Premium Timeline */}
-                <div className="mb-16">
-                  <h3 className="font-luxury-serif text-3xl font-bold text-center text-white mb-12">Partnership Milestones</h3>
-                  <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
-                    <div className="text-center p-8 bg-gradient-to-br from-[hsl(157,72%,43%)]/15 to-[hsl(157,72%,43%)]/5 rounded-3xl border border-white/10 hover:bg-gradient-to-br hover:from-[hsl(157,72%,43%)]/20 hover:to-[hsl(157,72%,43%)]/10 transition-all duration-500 backdrop-blur-sm">
-                      <div className="text-4xl font-bold text-[hsl(157,72%,53%)] mb-3">2019</div>
-                      <div className="text-sm font-semibold text-white/80">Partnership Begins</div>
-                    </div>
-                    <div className="text-center p-8 bg-gradient-to-br from-[hsl(224,100%,32%)]/15 to-[hsl(224,100%,32%)]/5 rounded-3xl border border-white/10 hover:bg-gradient-to-br hover:from-[hsl(224,100%,32%)]/20 hover:to-[hsl(224,100%,32%)]/10 transition-all duration-500 backdrop-blur-sm">
-                      <div className="text-4xl font-bold text-[hsl(224,100%,50%)] mb-3">2021</div>
-                      <div className="text-sm font-semibold text-white/80">Expanded Access</div>
-                    </div>
-                    <div className="text-center p-8 bg-gradient-to-br from-[hsl(157,72%,43%)]/15 to-[hsl(157,72%,43%)]/5 rounded-3xl border border-white/10 hover:bg-gradient-to-br hover:from-[hsl(157,72%,43%)]/20 hover:to-[hsl(157,72%,43%)]/10 transition-all duration-500 backdrop-blur-sm">
-                      <div className="text-4xl font-bold text-[hsl(157,72%,53%)] mb-3">2023</div>
-                      <div className="text-sm font-semibold text-white/80">Multi-State Growth</div>
-                    </div>
-                    <div className="text-center p-8 bg-gradient-to-br from-[hsl(224,100%,32%)]/15 to-[hsl(224,100%,32%)]/5 rounded-3xl border border-white/10 hover:bg-gradient-to-br hover:from-[hsl(224,100%,32%)]/20 hover:to-[hsl(224,100%,32%)]/10 transition-all duration-500 backdrop-blur-sm">
-                      <div className="text-4xl font-bold text-[hsl(224,100%,50%)] mb-3">2025</div>
-                      <div className="text-sm font-semibold text-white/80">5-Year Mark</div>
                     </div>
                   </div>
                 </div>
                 
-                {/* Luxury Verification Link */}
+                {/* BiG Partnership Timeline Masterpiece */}
+                <div className="mb-20">
+                  <div className="text-center mb-16">
+                    <h3 className="font-luxury-serif text-4xl md:text-5xl font-bold bg-gradient-to-r from-[#2aa8ff] via-[#ff6b35] to-[#22c98d] bg-clip-text text-transparent mb-4 drop-shadow-[0_0_20px_rgba(42,168,255,0.4)] animate-gradient bg-300%">Partnership Milestones</h3>
+                    <div className="w-32 h-1.5 bg-gradient-to-r from-[#2aa8ff] via-[#ff6b35] to-[#22c98d] rounded-full mx-auto shadow-[0_0_20px_rgba(42,168,255,0.5)]"></div>
+                  </div>
+                  
+                  <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div className="group text-center p-10 bg-gradient-to-br from-[#2aa8ff]/20 via-[#2aa8ff]/10 to-[#2aa8ff]/5 rounded-[2rem] border-2 border-[#2aa8ff]/30 hover:border-[#2aa8ff]/50 transition-all duration-700 backdrop-blur-xl shadow-[0_0_40px_rgba(42,168,255,0.2)] hover:shadow-[0_0_60px_rgba(42,168,255,0.4)] transform hover:scale-110 relative overflow-hidden">
+                      <div className="absolute inset-0 bg-gradient-to-br from-[#2aa8ff]/5 to-transparent rounded-[2rem] opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                      <div className="relative z-10">
+                        <div className="text-5xl md:text-6xl font-bold text-[#2aa8ff] mb-4 drop-shadow-[0_0_15px_rgba(42,168,255,0.6)] group-hover:animate-pulse">2019</div>
+                        <div className="text-lg font-bold text-white mb-2">Partnership Begins</div>
+                        <div className="w-16 h-1 bg-[#2aa8ff] rounded-full mx-auto shadow-[0_0_10px_rgba(42,168,255,0.5)]"></div>
+                      </div>
+                    </div>
+                    
+                    <div className="group text-center p-10 bg-gradient-to-br from-[#ff6b35]/20 via-[#ff6b35]/10 to-[#ff6b35]/5 rounded-[2rem] border-2 border-[#ff6b35]/30 hover:border-[#ff6b35]/50 transition-all duration-700 backdrop-blur-xl shadow-[0_0_40px_rgba(255,107,53,0.2)] hover:shadow-[0_0_60px_rgba(255,107,53,0.4)] transform hover:scale-110 relative overflow-hidden">
+                      <div className="absolute inset-0 bg-gradient-to-br from-[#ff6b35]/5 to-transparent rounded-[2rem] opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                      <div className="relative z-10">
+                        <div className="text-5xl md:text-6xl font-bold text-[#ff6b35] mb-4 drop-shadow-[0_0_15px_rgba(255,107,53,0.6)] group-hover:animate-pulse">2021</div>
+                        <div className="text-lg font-bold text-white mb-2">Expanded Access</div>
+                        <div className="w-16 h-1 bg-[#ff6b35] rounded-full mx-auto shadow-[0_0_10px_rgba(255,107,53,0.5)]"></div>
+                      </div>
+                    </div>
+                    
+                    <div className="group text-center p-10 bg-gradient-to-br from-[#22c98d]/20 via-[#22c98d]/10 to-[#22c98d]/5 rounded-[2rem] border-2 border-[#22c98d]/30 hover:border-[#22c98d]/50 transition-all duration-700 backdrop-blur-xl shadow-[0_0_40px_rgba(34,201,141,0.2)] hover:shadow-[0_0_60px_rgba(34,201,141,0.4)] transform hover:scale-110 relative overflow-hidden">
+                      <div className="absolute inset-0 bg-gradient-to-br from-[#22c98d]/5 to-transparent rounded-[2rem] opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                      <div className="relative z-10">
+                        <div className="text-5xl md:text-6xl font-bold text-[#22c98d] mb-4 drop-shadow-[0_0_15px_rgba(34,201,141,0.6)] group-hover:animate-pulse">2023</div>
+                        <div className="text-lg font-bold text-white mb-2">Multi-State Growth</div>
+                        <div className="w-16 h-1 bg-[#22c98d] rounded-full mx-auto shadow-[0_0_10px_rgba(34,201,141,0.5)]"></div>
+                      </div>
+                    </div>
+                    
+                    <div className="group text-center p-10 bg-gradient-to-br from-[#2aa8ff]/15 via-[#ff6b35]/10 to-[#22c98d]/15 rounded-[2rem] border-2 border-white/40 hover:border-white/60 transition-all duration-700 backdrop-blur-xl shadow-[0_0_40px_rgba(42,168,255,0.2)] hover:shadow-[0_0_60px_rgba(42,168,255,0.4)] transform hover:scale-110 relative overflow-hidden animate-gradient bg-300%">
+                      <div className="absolute inset-0 bg-gradient-to-br from-[#2aa8ff]/5 via-[#ff6b35]/3 to-[#22c98d]/5 rounded-[2rem] opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                      <div className="relative z-10">
+                        <div className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-[#2aa8ff] via-[#ff6b35] to-[#22c98d] bg-clip-text text-transparent mb-4 drop-shadow-[0_0_15px_rgba(42,168,255,0.6)] group-hover:animate-pulse animate-gradient bg-300%">2025</div>
+                        <div className="text-lg font-bold text-white mb-2">5-Year Milestone</div>
+                        <div className="w-16 h-1 bg-gradient-to-r from-[#2aa8ff] via-[#ff6b35] to-[#22c98d] rounded-full mx-auto shadow-[0_0_10px_rgba(42,168,255,0.5)]"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                {/* BiG Verification Masterpiece */}
                 <div className="text-center">
-                  <Magnetic strength={15}>
+                  <Magnetic strength={20}>
                     <a 
                       href="https://bestinsurancegroup.net" 
                       target="_blank" 
                       rel="noopener noreferrer"
                       aria-label="Open Best Insurance Group website"
-                      className="inline-flex items-center gap-4 px-12 py-6 bg-gradient-to-r from-[hsl(157,72%,43%)] to-[hsl(224,100%,32%)] text-white font-bold text-xl rounded-2xl shadow-[0_0_20px_rgba(34,197,94,0.3)] hover:shadow-[0_0_30px_rgba(34,197,94,0.4)] transition-all duration-500 transform hover:scale-105 relative overflow-hidden"
+                      className="group inline-flex items-center gap-6 px-16 py-8 bg-gradient-to-r from-[#2aa8ff] via-[#ff6b35] to-[#22c98d] text-white font-bold text-2xl rounded-[2rem] shadow-[0_0_60px_rgba(42,168,255,0.4)] hover:shadow-[0_0_100px_rgba(42,168,255,0.6)] transition-all duration-700 transform hover:scale-110 relative overflow-hidden animate-gradient bg-300%"
                     >
-                      <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
-                      <span className="relative">Verify Partnership</span>
-                      <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center relative">
-                        <span className="text-lg">→</span>
+                      {/* Dynamic Background Effect */}
+                      <div className="absolute inset-0 bg-gradient-to-r from-white/30 via-white/20 to-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-[2rem]"></div>
+                      
+                      {/* Floating Particles */}
+                      <div className="absolute inset-0 opacity-60">
+                        <div className="absolute top-3 left-8 w-2 h-2 bg-white/80 rounded-full animate-bounce" style={{animationDelay: '0s'}}></div>
+                        <div className="absolute top-6 right-12 w-1.5 h-1.5 bg-white/70 rounded-full animate-bounce" style={{animationDelay: '0.3s'}}></div>
+                        <div className="absolute bottom-4 left-16 w-1 h-1 bg-white/60 rounded-full animate-bounce" style={{animationDelay: '0.6s'}}></div>
+                      </div>
+                      
+                      {/* Content */}
+                      <span className="relative drop-shadow-[0_0_10px_rgba(0,0,0,0.3)] tracking-wide">Verify Partnership</span>
+                      
+                      {/* Animated Icon */}
+                      <div className="w-12 h-12 bg-white/25 rounded-full flex items-center justify-center relative transform group-hover:rotate-12 transition-transform duration-500 shadow-[0_0_20px_rgba(255,255,255,0.2)]">
+                        <div className="absolute inset-0 bg-gradient-to-br from-white/30 to-transparent rounded-full"></div>
+                        <span className="text-2xl relative font-bold">→</span>
                       </div>
                     </a>
                   </Magnetic>
-                  <p className="text-sm text-white/60 mt-4 font-medium">bestinsurancegroup.net</p>
+                  
+                  <div className="mt-8 space-y-3">
+                    <p className="text-lg font-bold bg-gradient-to-r from-[#2aa8ff] to-[#22c98d] bg-clip-text text-transparent drop-shadow-[0_0_10px_rgba(42,168,255,0.3)]">bestinsurancegroup.net</p>
+                    <p className="text-white/70 text-sm font-medium">Verified Partnership Since 2019</p>
+                  </div>
                 </div>
               </div>
               
-              {/* Corner Accents */}
-              <div className="absolute top-4 left-4 w-12 h-12 border-l-2 border-t-2 border-white/15 rounded-tl-2xl"></div>
-              <div className="absolute top-4 right-4 w-12 h-12 border-r-2 border-t-2 border-white/15 rounded-tr-2xl"></div>
-              <div className="absolute bottom-4 left-4 w-12 h-12 border-l-2 border-b-2 border-white/15 rounded-bl-2xl"></div>
-              <div className="absolute bottom-4 right-4 w-12 h-12 border-r-2 border-b-2 border-white/15 rounded-br-2xl"></div>
+              {/* BiG Brand Corner Accents - Enhanced */}
+              <div className="absolute top-6 left-6 w-16 h-16 border-l-4 border-t-4 border-[#2aa8ff]/40 rounded-tl-3xl opacity-60"></div>
+              <div className="absolute top-6 right-6 w-16 h-16 border-r-4 border-t-4 border-[#ff6b35]/40 rounded-tr-3xl opacity-60"></div>
+              <div className="absolute bottom-6 left-6 w-16 h-16 border-l-4 border-b-4 border-[#22c98d]/40 rounded-bl-3xl opacity-60"></div>
+              <div className="absolute bottom-6 right-6 w-16 h-16 border-r-4 border-b-4 border-[#2aa8ff]/40 rounded-br-3xl opacity-60"></div>
             </div>
           </Reveal>
         </div>
