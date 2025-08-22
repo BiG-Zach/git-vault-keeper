@@ -62,15 +62,6 @@ const LuxuryHero = () => {
                   Medically underwritten options with PPO networks. Expert guidance from licensed professionals who understand your unique needs.
                 </p>
 
-                {/* Enhanced trust indicators with better visual hierarchy */}
-                <div className="flex flex-wrap gap-4 lg:gap-6 pt-2">
-                  {benefits.slice(0, 2).map((benefit, index) => (
-                    <div key={index} className="flex items-center gap-3 text-sm lg:text-base text-white/85 bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 border border-white/20">
-                      <benefit.icon className="w-4 h-4 lg:w-5 lg:h-5 text-emerald-400 flex-shrink-0" />
-                      <span className="font-medium">{benefit.text}</span>
-                    </div>
-                  ))}
-                </div>
               </motion.div>
 
               {/* Additional mobile-specific trust elements */}
