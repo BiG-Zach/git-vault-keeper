@@ -12,36 +12,17 @@ export default function AboutPage() {
       {/* ENHANCED HERO SECTION WITH PROFESSIONAL BACKGROUND */}
       <AboutHero />
 
-      {/* PROFESSIONAL HEADSHOT SECTION - WORLD CLASS LUXURY */}
-      <section className="relative py-24 md:py-32 overflow-hidden bg-[hsl(220,26%,14%)]">
-        {/* Premium Dark Background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-[hsl(220,26%,14%)] via-[hsl(220,20%,10%)] to-[hsl(220,26%,14%)]"></div>
-        
-        {/* Ambient Light Effects */}
-        <div className="absolute inset-0">
-          <div className="absolute top-20 left-1/4 w-96 h-96 bg-[hsl(157,72%,43%)]/20 rounded-full blur-3xl opacity-70"></div>
-          <div className="absolute bottom-20 right-1/4 w-80 h-80 bg-[hsl(224,100%,32%)]/20 rounded-full blur-3xl opacity-50"></div>
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] bg-gradient-to-r from-[hsl(157,72%,43%)]/8 via-transparent to-[hsl(224,100%,32%)]/8 rounded-full blur-3xl"></div>
-        </div>
-        
-        {/* Geometric Accents */}
-        <div className="absolute inset-0 opacity-5">
-          <div className="absolute top-0 right-0 w-80 h-80 border border-white/10 rotate-12 translate-x-40 -translate-y-40"></div>
-          <div className="absolute bottom-0 left-0 w-64 h-64 border border-white/5 rotate-45 -translate-x-32 translate-y-32"></div>
-        </div>
-        
-        <div className="relative container mx-auto px-6 max-w-7xl z-10">
+      {/* PROFESSIONAL CREDENTIALS & BIO - LIGHT SECTION */}
+      <section className="relative py-24 md:py-32 bg-slate-50/40">
+        <div className="container mx-auto px-6 max-w-7xl">
           <div className="grid lg:grid-cols-[1.3fr_1fr] gap-16 items-center">
             {/* Strategic Portrait Positioning - Left Side for Maximum Impact */}
             <Reveal>
               <div className="relative group">
-                {/* Portrait Frame with Luxury Effects */}
+                {/* Portrait Frame with Clean Light Design */}
                 <div className="relative">
-                  {/* Premium Glow Behind Portrait */}
-                  <div className="absolute -inset-8 bg-gradient-to-br from-[hsl(157,72%,43%)]/30 via-[hsl(157,72%,43%)]/10 to-[hsl(224,100%,32%)]/20 rounded-3xl blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
-                  
-                  {/* Glass Frame */}
-                  <div className="relative bg-white/5 backdrop-blur-xl p-4 rounded-3xl border border-white/20 shadow-[0_25px_50px_-12px_rgba(0,0,0,0.25)]">
+                  {/* Professional Frame */}
+                  <div className="relative bg-white p-4 rounded-3xl border border-slate-200 shadow-xl">
                     <img 
                       src="/about/portrait.jpg" 
                       alt="Zachary Bradford - Insurance Expert" 
@@ -51,70 +32,64 @@ export default function AboutPage() {
                       loading="eager"
                     />
                     
-                    {/* Luxury Badge - Repositioned for Maximum Visibility */}
-                    <div className="absolute -top-4 -right-4 bg-gradient-to-r from-[hsl(157,72%,43%)] to-[hsl(224,100%,32%)] text-white px-6 py-3 rounded-2xl shadow-[0_25px_50px_-12px_rgba(0,0,0,0.25)] transform hover:scale-105 transition-transform duration-300">
+                    {/* Professional Badge */}
+                    <div className="absolute -top-4 -right-4 bg-gradient-to-r from-[hsl(157,72%,43%)] to-[hsl(224,100%,32%)] text-white px-6 py-3 rounded-2xl shadow-lg transform hover:scale-105 transition-transform duration-300">
                       <div className="flex items-center gap-3">
                         <Shield className="w-6 h-6" />
                         <span className="font-bold text-lg">Licensed Expert</span>
                       </div>
                     </div>
-                    
-                    {/* Premium Corner Accents */}
-                    <div className="absolute top-4 left-4 w-8 h-8 border-l-2 border-t-2 border-white/30 rounded-tl-xl"></div>
-                    <div className="absolute top-4 right-4 w-8 h-8 border-r-2 border-t-2 border-white/30 rounded-tr-xl"></div>
-                    <div className="absolute bottom-4 left-4 w-8 h-8 border-l-2 border-b-2 border-white/30 rounded-bl-xl"></div>
-                    <div className="absolute bottom-4 right-4 w-8 h-8 border-r-2 border-b-2 border-white/30 rounded-br-xl"></div>
                   </div>
                 </div>
               </div>
             </Reveal>
             
-            {/* Content Section with Premium Typography */}
+            {/* Content Section with Professional Typography */}
             <Reveal delay={0.2}>
               <div className="space-y-8">
-                {/* Luxury Header */}
+                {/* Professional Header */}
                 <div>
-                  <div className="inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-[hsl(157,72%,43%)]/20 to-[hsl(224,100%,32%)]/20 rounded-full border border-white/20 mb-8 backdrop-blur-sm">
+                  <div className="inline-flex items-center gap-3 px-6 py-3 bg-[hsl(157,72%,43%)]/10 rounded-full border border-[hsl(157,72%,43%)]/20 mb-8">
                     <div className="w-2 h-2 bg-[hsl(157,72%,43%)] rounded-full animate-pulse"></div>
-                    <span className="text-sm font-semibold text-white/90">Your Insurance Expert</span>
+                    <span className="text-sm font-semibold text-slate-700">Your Insurance Expert</span>
                   </div>
                   
-                  <h1 className="font-luxury-serif text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mb-6 text-white">
-                    Your Insurance Advocate & 
+                  <h1 className="font-luxury-serif text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mb-6 text-slate-900">
+                    Meet Your Insurance Advocate & 
                     <span className="block bg-gradient-to-r from-[hsl(157,72%,43%)] via-[hsl(157,72%,53%)] to-[hsl(224,100%,32%)] bg-clip-text text-transparent">
                       Family Protection Expert
                     </span>
                   </h1>
                 </div>
                 
-                {/* Premium Stats Cards */}
-                <div className="grid grid-cols-3 gap-4 p-8 bg-white/5 backdrop-blur-xl rounded-2xl border border-white/10 shadow-[0_25px_50px_-12px_rgba(0,0,0,0.25)]">
+                {/* Professional Stats Cards */}
+                <div className="grid grid-cols-3 gap-4 p-8 bg-white rounded-2xl border border-slate-200 shadow-lg">
                   <div className="text-center group">
-                    <div className="text-2xl md:text-3xl font-bold text-[hsl(157,72%,53%)] mb-2 group-hover:scale-110 transition-transform duration-300">8+</div>
-                    <div className="text-xs md:text-sm font-semibold text-white/80">Years Experience</div>
+                    <div className="text-2xl md:text-3xl font-bold text-[hsl(157,72%,43%)] mb-2 group-hover:scale-110 transition-transform duration-300">8+</div>
+                    <div className="text-xs md:text-sm font-semibold text-slate-600">Years Experience</div>
                   </div>
                   <div className="text-center group">
-                    <div className="text-2xl md:text-3xl font-bold text-[hsl(224,100%,50%)] mb-2 group-hover:scale-110 transition-transform duration-300">1,000+</div>
-                    <div className="text-xs md:text-sm font-semibold text-white/80">Families Protected</div>
+                    <div className="text-2xl md:text-3xl font-bold text-[hsl(224,100%,45%)] mb-2 group-hover:scale-110 transition-transform duration-300">1,000+</div>
+                    <div className="text-xs md:text-sm font-semibold text-slate-600">Clients Protected</div>
                   </div>
                   <div className="text-center group">
-                    <div className="text-2xl md:text-3xl font-bold text-[hsl(157,72%,53%)] mb-2 group-hover:scale-110 transition-transform duration-300">3</div>
-                    <div className="text-xs md:text-sm font-semibold text-white/80">States Licensed</div>
+                    <div className="text-2xl md:text-3xl font-bold text-[hsl(157,72%,43%)] mb-2 group-hover:scale-110 transition-transform duration-300">3</div>
+                    <div className="text-xs md:text-sm font-semibold text-slate-600">States Licensed</div>
                   </div>
                 </div>
                 
-                {/* Premium Description */}
-                <p className="text-lg md:text-xl text-white/90 leading-relaxed font-light">
+                {/* Professional Description */}
+                <p className="text-lg md:text-xl text-slate-700 leading-relaxed">
                   Turning insurance confusion into family confidence across 
-                  <span className="text-white font-medium"> Florida, Michigan, and North Carolina.</span>
+                  <span className="text-slate-900 font-medium"> Florida, Michigan, and North Carolina.</span>
                 </p>
                 
-                {/* Luxury CTA Buttons */}
+                {/* Professional CTA Buttons */}
                 <div className="flex flex-col sm:flex-row gap-4 pt-4">
                   <Magnetic strength={12}>
                     <a 
                       href={BRAND.phoneTel} 
-                      className="group relative inline-flex items-center gap-3 bg-gradient-to-r from-[hsl(157,72%,43%)] to-[hsl(157,72%,38%)] text-white px-8 py-4 rounded-2xl font-semibold text-lg shadow-[0_25px_50px_-12px_rgba(0,0,0,0.25)] hover:shadow-[0_0_20px_rgba(34,197,94,0.3)] transition-all duration-500 transform hover:scale-[1.02] active:scale-[0.98] overflow-hidden"
+                      className="group relative inline-flex items-center gap-3 bg-gradient-to-r from-[hsl(157,72%,43%)] to-[hsl(157,72%,38%)] text-white px-8 py-4 rounded-2xl font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-500 transform hover:scale-[1.02] active:scale-[0.98] overflow-hidden"
                     >
                       <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                       <Phone className="w-5 h-5 relative z-10" />
@@ -125,7 +100,7 @@ export default function AboutPage() {
                   <Magnetic strength={10}>
                     <a 
                       href={`mailto:${BRAND.email}`}
-                      className="inline-flex items-center gap-3 bg-white/10 backdrop-blur-md border border-white/20 text-white px-8 py-4 rounded-2xl font-semibold text-lg hover:bg-white/20 hover:border-white/30 transition-all duration-500 transform hover:scale-[1.02] active:scale-[0.98]"
+                      className="inline-flex items-center gap-3 bg-white border border-slate-300 text-slate-700 px-8 py-4 rounded-2xl font-semibold text-lg hover:bg-slate-50 hover:border-slate-400 transition-all duration-500 transform hover:scale-[1.02] active:scale-[0.98]"
                     >
                       <Mail className="w-5 h-5" />
                       <span>Email Expert</span>
@@ -223,61 +198,45 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* TRUST BADGES & CREDENTIALS - LUXURY WORLD CLASS */}
-      <section className="relative py-24 md:py-32 overflow-hidden bg-[hsl(220,26%,14%)]">
-        {/* Premium Dark Background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-[hsl(220,26%,14%)] via-[hsl(220,20%,10%)] to-[hsl(220,26%,14%)]"></div>
-        
-        {/* Ambient Light Effects */}
-        <div className="absolute inset-0">
-          <div className="absolute top-20 left-1/4 w-96 h-96 bg-[hsl(157,72%,43%)]/15 rounded-full blur-3xl opacity-60"></div>
-          <div className="absolute bottom-20 right-1/4 w-80 h-80 bg-[hsl(224,100%,32%)]/15 rounded-full blur-3xl opacity-40"></div>
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-gradient-to-r from-[hsl(157,72%,43%)]/5 via-transparent to-[hsl(224,100%,32%)]/5 rounded-full blur-3xl"></div>
-        </div>
-        
-        {/* Geometric Accents */}
-        <div className="absolute inset-0 opacity-5">
-          <div className="absolute top-0 right-0 w-96 h-96 border border-white/10 rotate-12 translate-x-48 -translate-y-48"></div>
-          <div className="absolute bottom-0 left-0 w-80 h-80 border border-white/5 rotate-45 -translate-x-40 translate-y-40"></div>
-        </div>
-        
-        <div className="relative container mx-auto px-6 max-w-7xl z-10">
+      {/* PROFESSIONAL PROCESS & APPROACH - LIGHT SECTION */}
+      <section className="relative py-24 md:py-32 bg-white">
+        <div className="container mx-auto px-6 max-w-7xl">
           <Reveal>
-            {/* Luxury Header */}
+            {/* Professional Header */}
             <div className="text-center mb-16">
-              <div className="inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-[hsl(157,72%,43%)]/20 to-[hsl(224,100%,32%)]/20 rounded-full border border-white/20 mb-8 backdrop-blur-sm">
+              <div className="inline-flex items-center gap-3 px-6 py-3 bg-[hsl(157,72%,43%)]/10 rounded-full border border-[hsl(157,72%,43%)]/20 mb-8">
                 <div className="w-2 h-2 bg-[hsl(157,72%,43%)] rounded-full animate-pulse"></div>
-                <span className="text-sm font-semibold text-white/90">Professional Excellence</span>
+                <span className="text-sm font-semibold text-slate-700">Professional Excellence</span>
               </div>
               
-              <h2 className="font-luxury-serif text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-                <span className="bg-gradient-to-r from-[hsl(157,72%,43%)] via-[hsl(157,72%,53%)] to-[hsl(224,100%,32%)] bg-clip-text text-transparent">
-                  Professional Credentials
-                </span>
+              <h2 className="font-luxury-serif text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight text-slate-900">
+                Professional Credentials
                 <br />
-                <span className="text-white font-luxury-serif">& Trust Signals</span>
+                <span className="bg-gradient-to-r from-[hsl(157,72%,43%)] via-[hsl(157,72%,53%)] to-[hsl(224,100%,32%)] bg-clip-text text-transparent">
+                  & Service Process
+                </span>
               </h2>
-              <p className="text-xl md:text-2xl text-white/80 max-w-3xl mx-auto leading-relaxed font-light">
-                Verified expertise and <span className="text-white font-medium">proven track record</span> you can rely on
+              <p className="text-xl md:text-2xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
+                Verified expertise and <span className="text-slate-900 font-medium">proven methodology</span> you can rely on
               </p>
             </div>
           </Reveal>
           
-          {/* Premium Credentials Grid */}
+          {/* Professional Credentials Grid */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
             <Reveal delay={0.1}>
               <Magnetic strength={8}>
-                <div className="group p-10 bg-white/5 backdrop-blur-xl rounded-3xl border border-white/10 hover:bg-white/10 hover:border-white/15 transition-all duration-500 shadow-[0_25px_50px_-12px_rgba(0,0,0,0.25)] relative overflow-hidden">
-                  <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-[hsl(157,72%,43%)]/5 rounded-3xl opacity-60"></div>
+                <div className="group p-10 bg-white rounded-3xl border border-slate-200 hover:border-[hsl(157,72%,43%)]/30 hover:shadow-xl transition-all duration-500 shadow-lg relative overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-br from-[hsl(157,72%,43%)]/5 via-transparent to-transparent rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                   <div className="relative z-10">
                     <div className="flex items-start gap-6">
                       <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[hsl(157,72%,43%)] to-[hsl(157,72%,38%)] flex items-center justify-center shadow-lg shrink-0">
                         <CheckCircle className="w-8 h-8 text-white" />
                       </div>
                       <div className="flex-1">
-                        <h3 className="text-xl font-bold text-[hsl(157,72%,53%)] mb-2">Licensed Florida Broker</h3>
-                        <div className="text-sm font-semibold text-white/60 mb-3">W347851</div>
-                        <p className="text-white/80 leading-relaxed">State verified insurance professional</p>
+                        <h3 className="text-xl font-bold text-[hsl(157,72%,43%)] mb-2">Licensed Florida Broker</h3>
+                        <div className="text-sm font-semibold text-slate-500 mb-3">W347851</div>
+                        <p className="text-slate-600 leading-relaxed">State verified insurance professional</p>
                       </div>
                     </div>
                   </div>
@@ -287,17 +246,17 @@ export default function AboutPage() {
             
             <Reveal delay={0.2}>
               <Magnetic strength={8}>
-                <div className="group p-10 bg-white/5 backdrop-blur-xl rounded-3xl border border-white/10 hover:bg-white/10 hover:border-white/15 transition-all duration-500 shadow-[0_25px_50px_-12px_rgba(0,0,0,0.25)] relative overflow-hidden">
-                  <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-[hsl(224,100%,32%)]/5 rounded-3xl opacity-60"></div>
+                <div className="group p-10 bg-white rounded-3xl border border-slate-200 hover:border-[hsl(224,100%,32%)]/30 hover:shadow-xl transition-all duration-500 shadow-lg relative overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-br from-[hsl(224,100%,32%)]/5 via-transparent to-transparent rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                   <div className="relative z-10">
                     <div className="flex items-start gap-6">
                       <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[hsl(224,100%,32%)] to-[hsl(215,88%,39%)] flex items-center justify-center shadow-lg shrink-0">
                         <Award className="w-8 h-8 text-white" />
                       </div>
                       <div className="flex-1">
-                        <h3 className="text-xl font-bold text-[hsl(224,100%,50%)] mb-2">8+ Years Experience</h3>
-                        <div className="text-sm font-semibold text-white/60 mb-3">Since 2016</div>
-                        <p className="text-white/80 leading-relaxed">Proven track record of excellence</p>
+                        <h3 className="text-xl font-bold text-[hsl(224,100%,45%)] mb-2">8+ Years Experience</h3>
+                        <div className="text-sm font-semibold text-slate-500 mb-3">Since 2016</div>
+                        <p className="text-slate-600 leading-relaxed">Proven track record of excellence</p>
                       </div>
                     </div>
                   </div>
@@ -307,17 +266,17 @@ export default function AboutPage() {
             
             <Reveal delay={0.3}>
               <Magnetic strength={8}>
-                <div className="group p-10 bg-white/5 backdrop-blur-xl rounded-3xl border border-white/10 hover:bg-white/10 hover:border-white/15 transition-all duration-500 shadow-[0_25px_50px_-12px_rgba(0,0,0,0.25)] relative overflow-hidden">
-                  <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-[hsl(157,72%,43%)]/5 rounded-3xl opacity-60"></div>
+                <div className="group p-10 bg-white rounded-3xl border border-slate-200 hover:border-[hsl(157,72%,43%)]/30 hover:shadow-xl transition-all duration-500 shadow-lg relative overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-br from-[hsl(157,72%,43%)]/5 via-transparent to-transparent rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                   <div className="relative z-10">
                     <div className="flex items-start gap-6">
                       <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[hsl(157,72%,43%)] to-[hsl(224,100%,32%)] flex items-center justify-center shadow-lg shrink-0">
                         <Users className="w-8 h-8 text-white" />
                       </div>
                       <div className="flex-1">
-                        <h3 className="text-xl font-bold text-[hsl(157,72%,53%)] mb-2">1,000+ Families Served</h3>
-                        <div className="text-sm font-semibold text-white/60 mb-3">Growing Daily</div>
-                        <p className="text-white/80 leading-relaxed">Trusted by families across 3 states</p>
+                        <h3 className="text-xl font-bold text-[hsl(157,72%,43%)] mb-2">1,000+ Families Served</h3>
+                        <div className="text-sm font-semibold text-slate-500 mb-3">Growing Daily</div>
+                        <p className="text-slate-600 leading-relaxed">Trusted by families across 3 states</p>
                       </div>
                     </div>
                   </div>
@@ -327,17 +286,17 @@ export default function AboutPage() {
             
             <Reveal delay={0.4}>
               <Magnetic strength={8}>
-                <div className="group p-10 bg-white/5 backdrop-blur-xl rounded-3xl border border-white/10 hover:bg-white/10 hover:border-white/15 transition-all duration-500 shadow-[0_25px_50px_-12px_rgba(0,0,0,0.25)] relative overflow-hidden">
-                  <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-[hsl(224,100%,32%)]/5 rounded-3xl opacity-60"></div>
+                <div className="group p-10 bg-white rounded-3xl border border-slate-200 hover:border-[hsl(224,100%,32%)]/30 hover:shadow-xl transition-all duration-500 shadow-lg relative overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-br from-[hsl(224,100%,32%)]/5 via-transparent to-transparent rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                   <div className="relative z-10">
                     <div className="flex items-start gap-6">
                       <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[hsl(224,100%,32%)] to-[hsl(157,72%,43%)] flex items-center justify-center shadow-lg shrink-0">
                         <Star className="w-8 h-8 text-white" />
                       </div>
                       <div className="flex-1">
-                        <h3 className="text-xl font-bold text-[hsl(224,100%,50%)] mb-2">A+ Rated Carrier Partners</h3>
-                        <div className="text-sm font-semibold text-white/60 mb-3">Top Tier Networks</div>
-                        <p className="text-white/80 leading-relaxed">Exclusive access to premium carriers</p>
+                        <h3 className="text-xl font-bold text-[hsl(224,100%,45%)] mb-2">A+ Rated Carrier Partners</h3>
+                        <div className="text-sm font-semibold text-slate-500 mb-3">Top Tier Networks</div>
+                        <p className="text-slate-600 leading-relaxed">Exclusive access to premium carriers</p>
                       </div>
                     </div>
                   </div>
@@ -347,17 +306,17 @@ export default function AboutPage() {
             
             <Reveal delay={0.5}>
               <Magnetic strength={8}>
-                <div className="group p-10 bg-white/5 backdrop-blur-xl rounded-3xl border border-white/10 hover:bg-white/10 hover:border-white/15 transition-all duration-500 shadow-[0_25px_50px_-12px_rgba(0,0,0,0.25)] relative overflow-hidden">
-                  <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-[hsl(157,72%,43%)]/5 rounded-3xl opacity-60"></div>
+                <div className="group p-10 bg-white rounded-3xl border border-slate-200 hover:border-[hsl(157,72%,43%)]/30 hover:shadow-xl transition-all duration-500 shadow-lg relative overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-br from-[hsl(157,72%,43%)]/5 via-transparent to-transparent rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                   <div className="relative z-10">
                     <div className="flex items-start gap-6">
                       <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[hsl(157,72%,43%)] to-[hsl(157,72%,38%)] flex items-center justify-center shadow-lg shrink-0">
                         <Shield className="w-8 h-8 text-white" />
                       </div>
                       <div className="flex-1">
-                        <h3 className="text-xl font-bold text-[hsl(157,72%,53%)] mb-2">Licensed & Bonded</h3>
-                        <div className="text-sm font-semibold text-white/60 mb-3">Full Protection</div>
-                        <p className="text-white/80 leading-relaxed">Complete regulatory compliance</p>
+                        <h3 className="text-xl font-bold text-[hsl(157,72%,43%)] mb-2">Licensed & Bonded</h3>
+                        <div className="text-sm font-semibold text-slate-500 mb-3">Full Protection</div>
+                        <p className="text-slate-600 leading-relaxed">Complete regulatory compliance</p>
                       </div>
                     </div>
                   </div>
@@ -367,17 +326,17 @@ export default function AboutPage() {
             
             <Reveal delay={0.6}>
               <Magnetic strength={8}>
-                <div className="group p-10 bg-white/5 backdrop-blur-xl rounded-3xl border border-white/10 hover:bg-white/10 hover:border-white/15 transition-all duration-500 shadow-[0_25px_50px_-12px_rgba(0,0,0,0.25)] relative overflow-hidden">
-                  <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-[hsl(224,100%,32%)]/5 rounded-3xl opacity-60"></div>
+                <div className="group p-10 bg-white rounded-3xl border border-slate-200 hover:border-[hsl(224,100%,32%)]/30 hover:shadow-xl transition-all duration-500 shadow-lg relative overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-br from-[hsl(224,100%,32%)]/5 via-transparent to-transparent rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                   <div className="relative z-10">
                     <div className="flex items-start gap-6">
                       <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[hsl(224,100%,32%)] to-[hsl(224,100%,38%)] flex items-center justify-center shadow-lg shrink-0">
                         <TrendingUp className="w-8 h-8 text-white" />
                       </div>
                       <div className="flex-1">
-                        <h3 className="text-xl font-bold text-[hsl(224,100%,50%)] mb-2">$50M+ Coverage Placed</h3>
-                        <div className="text-sm font-semibold text-white/60 mb-3">Industry Leading</div>
-                        <p className="text-white/80 leading-relaxed">Comprehensive protection delivered</p>
+                        <h3 className="text-xl font-bold text-[hsl(224,100%,45%)] mb-2">$50M+ Coverage Placed</h3>
+                        <div className="text-sm font-semibold text-slate-500 mb-3">Industry Leading</div>
+                        <p className="text-slate-600 leading-relaxed">Comprehensive protection delivered</p>
                       </div>
                     </div>
                   </div>
@@ -386,70 +345,61 @@ export default function AboutPage() {
             </Reveal>
           </div>
           
-          {/* EXPERTISE & SPECIALIZATION SHOWCASE - LUXURY */}
+          {/* HOW I HELP YOU - STEP-BY-STEP PROCESS */}
           <Reveal delay={0.7}>
-            <div className="bg-white/5 backdrop-blur-xl p-16 rounded-3xl border border-white/10 shadow-[0_25px_50px_-12px_rgba(0,0,0,0.25)] relative overflow-hidden">
-              {/* Subtle inner glow */}
-              <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-[hsl(157,72%,43%)]/5 rounded-3xl opacity-60"></div>
-              
+            <div className="bg-slate-50 p-16 rounded-3xl border border-slate-200 shadow-lg relative overflow-hidden">
               <div className="relative z-10">
-                <h3 className="font-luxury-serif text-3xl md:text-4xl font-bold mb-12 text-center text-white">Service Specializations</h3>
+                <h3 className="font-luxury-serif text-3xl md:text-4xl font-bold mb-12 text-center text-slate-900">How I Help You</h3>
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                  <div className="p-8 bg-white/5 backdrop-blur-md rounded-2xl border border-white/10 hover:bg-white/10 hover:border-white/15 transition-all duration-500 shadow-lg group">
+                  <div className="p-8 bg-white rounded-2xl border border-slate-200 hover:border-[hsl(157,72%,43%)]/30 hover:shadow-lg transition-all duration-500 group">
                     <div className="w-14 h-14 mb-6 rounded-2xl bg-gradient-to-br from-[hsl(157,72%,43%)] to-[hsl(157,72%,38%)] flex items-center justify-center shadow-lg">
                       <Shield className="w-7 h-7 text-white" />
                     </div>
-                    <h4 className="text-xl font-bold text-white mb-4 group-hover:text-[hsl(157,72%,53%)] transition-colors duration-300">Individual Health Insurance</h4>
-                    <p className="text-white/70 leading-relaxed">Comprehensive individual and family health plans</p>
+                    <h4 className="text-xl font-bold text-slate-900 mb-4 group-hover:text-[hsl(157,72%,43%)] transition-colors duration-300">Individual Health Insurance</h4>
+                    <p className="text-slate-600 leading-relaxed">Comprehensive individual and family health plans tailored to your needs</p>
                   </div>
                   
-                  <div className="p-8 bg-white/5 backdrop-blur-md rounded-2xl border border-white/10 hover:bg-white/10 hover:border-white/15 transition-all duration-500 shadow-lg group">
+                  <div className="p-8 bg-white rounded-2xl border border-slate-200 hover:border-[hsl(224,100%,32%)]/30 hover:shadow-lg transition-all duration-500 group">
                     <div className="w-14 h-14 mb-6 rounded-2xl bg-gradient-to-br from-[hsl(224,100%,32%)] to-[hsl(215,88%,39%)] flex items-center justify-center shadow-lg">
                       <Users className="w-7 h-7 text-white" />
                     </div>
-                    <h4 className="text-xl font-bold text-white mb-4 group-hover:text-[hsl(224,100%,50%)] transition-colors duration-300">Family Coverage Plans</h4>
-                    <p className="text-white/70 leading-relaxed">Tailored protection for growing families</p>
+                    <h4 className="text-xl font-bold text-slate-900 mb-4 group-hover:text-[hsl(224,100%,45%)] transition-colors duration-300">Family Coverage Plans</h4>
+                    <p className="text-slate-600 leading-relaxed">Tailored protection strategies for growing families</p>
                   </div>
                   
-                  <div className="p-8 bg-white/5 backdrop-blur-md rounded-2xl border border-white/10 hover:bg-white/10 hover:border-white/15 transition-all duration-500 shadow-lg group">
+                  <div className="p-8 bg-white rounded-2xl border border-slate-200 hover:border-[hsl(157,72%,43%)]/30 hover:shadow-lg transition-all duration-500 group">
                     <div className="w-14 h-14 mb-6 rounded-2xl bg-gradient-to-br from-[hsl(157,72%,43%)] to-[hsl(224,100%,32%)] flex items-center justify-center shadow-lg">
                       <Shield className="w-7 h-7 text-white" />
                     </div>
-                    <h4 className="text-xl font-bold text-white mb-4 group-hover:text-[hsl(157,72%,53%)] transition-colors duration-300">Life Insurance Solutions</h4>
-                    <p className="text-white/70 leading-relaxed">Term and permanent life insurance options</p>
+                    <h4 className="text-xl font-bold text-slate-900 mb-4 group-hover:text-[hsl(157,72%,43%)] transition-colors duration-300">Life Insurance Solutions</h4>
+                    <p className="text-slate-600 leading-relaxed">Term and permanent life insurance options for every budget</p>
                   </div>
                   
-                  <div className="p-8 bg-white/5 backdrop-blur-md rounded-2xl border border-white/10 hover:bg-white/10 hover:border-white/15 transition-all duration-500 shadow-lg group">
+                  <div className="p-8 bg-white rounded-2xl border border-slate-200 hover:border-[hsl(224,100%,32%)]/30 hover:shadow-lg transition-all duration-500 group">
                     <div className="w-14 h-14 mb-6 rounded-2xl bg-gradient-to-br from-[hsl(224,100%,32%)] to-[hsl(157,72%,43%)] flex items-center justify-center shadow-lg">
                       <Award className="w-7 h-7 text-white" />
                     </div>
-                    <h4 className="text-xl font-bold text-white mb-4 group-hover:text-[hsl(224,100%,50%)] transition-colors duration-300">Medicare Guidance</h4>
-                    <p className="text-white/70 leading-relaxed">Expert Medicare and supplement planning</p>
+                    <h4 className="text-xl font-bold text-slate-900 mb-4 group-hover:text-[hsl(224,100%,45%)] transition-colors duration-300">Medicare Guidance</h4>
+                    <p className="text-slate-600 leading-relaxed">Expert Medicare and supplement planning for seniors</p>
                   </div>
                   
-                  <div className="p-8 bg-white/5 backdrop-blur-md rounded-2xl border border-white/10 hover:bg-white/10 hover:border-white/15 transition-all duration-500 shadow-lg group">
+                  <div className="p-8 bg-white rounded-2xl border border-slate-200 hover:border-[hsl(157,72%,43%)]/30 hover:shadow-lg transition-all duration-500 group">
                     <div className="w-14 h-14 mb-6 rounded-2xl bg-gradient-to-br from-[hsl(157,72%,43%)] to-[hsl(157,72%,38%)] flex items-center justify-center shadow-lg">
                       <TrendingUp className="w-7 h-7 text-white" />
                     </div>
-                    <h4 className="text-xl font-bold text-white mb-4 group-hover:text-[hsl(157,72%,53%)] transition-colors duration-300">Small Business Plans</h4>
-                    <p className="text-white/70 leading-relaxed">Group health and business insurance solutions</p>
+                    <h4 className="text-xl font-bold text-slate-900 mb-4 group-hover:text-[hsl(157,72%,43%)] transition-colors duration-300">Small Business Plans</h4>
+                    <p className="text-slate-600 leading-relaxed">Group health and business insurance solutions</p>
                   </div>
                   
-                  <div className="p-8 bg-white/5 backdrop-blur-md rounded-2xl border border-white/10 hover:bg-white/10 hover:border-white/15 transition-all duration-500 shadow-lg group">
+                  <div className="p-8 bg-white rounded-2xl border border-slate-200 hover:border-[hsl(224,100%,32%)]/30 hover:shadow-lg transition-all duration-500 group">
                     <div className="w-14 h-14 mb-6 rounded-2xl bg-gradient-to-br from-[hsl(224,100%,32%)] to-[hsl(224,100%,38%)] flex items-center justify-center shadow-lg">
                       <CheckCircle className="w-7 h-7 text-white" />
                     </div>
-                    <h4 className="text-xl font-bold text-white mb-4 group-hover:text-[hsl(224,100%,50%)] transition-colors duration-300">PPO Network Access</h4>
-                    <p className="text-white/70 leading-relaxed">Extensive provider networks and flexibility</p>
+                    <h4 className="text-xl font-bold text-slate-900 mb-4 group-hover:text-[hsl(224,100%,45%)] transition-colors duration-300">PPO Network Access</h4>
+                    <p className="text-slate-600 leading-relaxed">Extensive provider networks and maximum flexibility</p>
                   </div>
                 </div>
               </div>
-              
-              {/* Corner Accents */}
-              <div className="absolute top-4 left-4 w-12 h-12 border-l-2 border-t-2 border-white/15 rounded-tl-2xl"></div>
-              <div className="absolute top-4 right-4 w-12 h-12 border-r-2 border-t-2 border-white/15 rounded-tr-2xl"></div>
-              <div className="absolute bottom-4 left-4 w-12 h-12 border-l-2 border-b-2 border-white/15 rounded-bl-2xl"></div>
-              <div className="absolute bottom-4 right-4 w-12 h-12 border-r-2 border-b-2 border-white/15 rounded-br-2xl"></div>
             </div>
           </Reveal>
         </div>
@@ -648,60 +598,44 @@ export default function AboutPage() {
 
 
 
-      {/* WHY FAMILIES CHOOSE BRADFORD - LUXURY WORLD CLASS */}
-      <section className="relative py-24 md:py-32 overflow-hidden bg-[hsl(220,26%,14%)]">
-        {/* Premium Dark Background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-[hsl(220,26%,14%)] via-[hsl(220,20%,10%)] to-[hsl(220,26%,14%)]"></div>
-        
-        {/* Ambient Light Effects */}
-        <div className="absolute inset-0">
-          <div className="absolute top-20 left-1/4 w-96 h-96 bg-[hsl(157,72%,43%)]/15 rounded-full blur-3xl opacity-60"></div>
-          <div className="absolute bottom-20 right-1/4 w-80 h-80 bg-[hsl(224,100%,32%)]/15 rounded-full blur-3xl opacity-40"></div>
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-gradient-to-r from-[hsl(157,72%,43%)]/5 via-transparent to-[hsl(224,100%,32%)]/5 rounded-full blur-3xl"></div>
-        </div>
-        
-        {/* Geometric Accents */}
-        <div className="absolute inset-0 opacity-5">
-          <div className="absolute top-0 right-0 w-96 h-96 border border-white/10 rotate-12 translate-x-48 -translate-y-48"></div>
-          <div className="absolute bottom-0 left-0 w-80 h-80 border border-white/5 rotate-45 -translate-x-40 translate-y-40"></div>
-        </div>
-        
-        <div className="relative container mx-auto px-6 max-w-6xl z-10">
+      {/* WHY FAMILIES CHOOSE BRADFORD - LIGHT SECTION */}
+      <section className="relative py-24 md:py-32 bg-slate-50/40">
+        <div className="container mx-auto px-6 max-w-6xl">
           <Reveal>
-            {/* Luxury Header */}
+            {/* Professional Header */}
             <div className="text-center mb-16">
-              <div className="inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-[hsl(157,72%,43%)]/20 to-[hsl(224,100%,32%)]/20 rounded-full border border-white/20 mb-8 backdrop-blur-sm">
+              <div className="inline-flex items-center gap-3 px-6 py-3 bg-[hsl(157,72%,43%)]/10 rounded-full border border-[hsl(157,72%,43%)]/20 mb-8">
                 <div className="w-2 h-2 bg-[hsl(157,72%,43%)] rounded-full animate-pulse"></div>
-                <span className="text-sm font-semibold text-white/90">Client Experience</span>
+                <span className="text-sm font-semibold text-slate-700">Client Experience</span>
               </div>
               
-              <h2 className="font-luxury-serif text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-                <span className="bg-gradient-to-r from-[hsl(157,72%,43%)] via-[hsl(157,72%,53%)] to-[hsl(224,100%,32%)] bg-clip-text text-transparent">
-                  Why Families Choose
-                </span>
+              <h2 className="font-luxury-serif text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight text-slate-900">
+                Why Families Choose
                 <br />
-                <span className="text-white font-luxury-serif">Bradford</span>
+                <span className="bg-gradient-to-r from-[hsl(157,72%,43%)] via-[hsl(157,72%,53%)] to-[hsl(224,100%,32%)] bg-clip-text text-transparent">
+                  Bradford
+                </span>
               </h2>
-              <p className="text-xl md:text-2xl text-white/80 max-w-3xl mx-auto leading-relaxed font-light">
-                Personal service with <span className="text-white font-medium">professional expertise</span>
+              <p className="text-xl md:text-2xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
+                Personal service with <span className="text-slate-900 font-medium">professional expertise</span>
               </p>
             </div>
           </Reveal>
           
           <Reveal delay={0.2}>
-            {/* Premium Cards Grid */}
+            {/* Professional Cards Grid */}
             <div className="grid md:grid-cols-2 gap-8">
               <Magnetic strength={8}>
-                <div className="group p-10 bg-white/5 backdrop-blur-xl rounded-3xl border border-white/10 hover:bg-white/10 hover:border-white/15 transition-all duration-500 shadow-[0_25px_50px_-12px_rgba(0,0,0,0.25)] relative overflow-hidden">
-                  <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-[hsl(157,72%,43%)]/5 rounded-3xl opacity-60"></div>
+                <div className="group p-10 bg-white rounded-3xl border border-slate-200 hover:border-[hsl(157,72%,43%)]/30 hover:shadow-xl transition-all duration-500 shadow-lg relative overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-br from-[hsl(157,72%,43%)]/5 via-transparent to-transparent rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                   <div className="relative z-10">
                     <div className="flex items-start gap-6">
                       <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[hsl(157,72%,43%)] to-[hsl(157,72%,38%)] flex items-center justify-center shadow-lg shrink-0">
                         <Users className="w-7 h-7 text-white" />
                       </div>
                       <div className="flex-1">
-                        <h3 className="text-xl font-bold text-[hsl(157,72%,53%)] mb-4 group-hover:text-white transition-colors duration-300">Deep Community Roots</h3>
-                        <p className="text-white/80 leading-relaxed">
+                        <h3 className="text-xl font-bold text-[hsl(157,72%,43%)] mb-4 group-hover:text-slate-900 transition-colors duration-300">Deep Community Roots</h3>
+                        <p className="text-slate-600 leading-relaxed">
                           Born and raised in the communities I serve. I understand the unique challenges families face in Florida, Michigan, and North Carolina because I live them too.
                         </p>
                       </div>
@@ -711,16 +645,16 @@ export default function AboutPage() {
               </Magnetic>
               
               <Magnetic strength={8}>
-                <div className="group p-10 bg-white/5 backdrop-blur-xl rounded-3xl border border-white/10 hover:bg-white/10 hover:border-white/15 transition-all duration-500 shadow-[0_25px_50px_-12px_rgba(0,0,0,0.25)] relative overflow-hidden">
-                  <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-[hsl(224,100%,32%)]/5 rounded-3xl opacity-60"></div>
+                <div className="group p-10 bg-white rounded-3xl border border-slate-200 hover:border-[hsl(224,100%,32%)]/30 hover:shadow-xl transition-all duration-500 shadow-lg relative overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-br from-[hsl(224,100%,32%)]/5 via-transparent to-transparent rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                   <div className="relative z-10">
                     <div className="flex items-start gap-6">
                       <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[hsl(224,100%,32%)] to-[hsl(215,88%,39%)] flex items-center justify-center shadow-lg shrink-0">
                         <Shield className="w-7 h-7 text-white" />
                       </div>
                       <div className="flex-1">
-                        <h3 className="text-xl font-bold text-[hsl(224,100%,50%)] mb-4 group-hover:text-white transition-colors duration-300">Family-First Approach</h3>
-                        <p className="text-white/80 leading-relaxed">
+                        <h3 className="text-xl font-bold text-[hsl(224,100%,45%)] mb-4 group-hover:text-slate-900 transition-colors duration-300">Family-First Approach</h3>
+                        <p className="text-slate-600 leading-relaxed">
                           Every recommendation I make, I consider: "Would I recommend this to my own family?" Your protection is personal to me.
                         </p>
                       </div>
@@ -730,16 +664,16 @@ export default function AboutPage() {
               </Magnetic>
               
               <Magnetic strength={8}>
-                <div className="group p-10 bg-white/5 backdrop-blur-xl rounded-3xl border border-white/10 hover:bg-white/10 hover:border-white/15 transition-all duration-500 shadow-[0_25px_50px_-12px_rgba(0,0,0,0.25)] relative overflow-hidden">
-                  <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-[hsl(157,72%,43%)]/5 rounded-3xl opacity-60"></div>
+                <div className="group p-10 bg-white rounded-3xl border border-slate-200 hover:border-[hsl(157,72%,43%)]/30 hover:shadow-xl transition-all duration-500 shadow-lg relative overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-br from-[hsl(157,72%,43%)]/5 via-transparent to-transparent rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                   <div className="relative z-10">
                     <div className="flex items-start gap-6">
                       <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[hsl(157,72%,43%)] to-[hsl(224,100%,32%)] flex items-center justify-center shadow-lg shrink-0">
                         <Award className="w-7 h-7 text-white" />
                       </div>
                       <div className="flex-1">
-                        <h3 className="text-xl font-bold text-[hsl(157,72%,53%)] mb-4 group-hover:text-white transition-colors duration-300">Local Commitment</h3>
-                        <p className="text-white/80 leading-relaxed">
+                        <h3 className="text-xl font-bold text-[hsl(157,72%,43%)] mb-4 group-hover:text-slate-900 transition-colors duration-300">Local Commitment</h3>
+                        <p className="text-slate-600 leading-relaxed">
                           While insurance companies come and go, I'm here for the long haul. Your agent today, your advocate for years to come.
                         </p>
                       </div>
@@ -749,16 +683,16 @@ export default function AboutPage() {
               </Magnetic>
               
               <Magnetic strength={8}>
-                <div className="group p-10 bg-white/5 backdrop-blur-xl rounded-3xl border border-white/10 hover:bg-white/10 hover:border-white/15 transition-all duration-500 shadow-[0_25px_50px_-12px_rgba(0,0,0,0.25)] relative overflow-hidden">
-                  <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-[hsl(224,100%,32%)]/5 rounded-3xl opacity-60"></div>
+                <div className="group p-10 bg-white rounded-3xl border border-slate-200 hover:border-[hsl(224,100%,32%)]/30 hover:shadow-xl transition-all duration-500 shadow-lg relative overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-br from-[hsl(224,100%,32%)]/5 via-transparent to-transparent rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                   <div className="relative z-10">
                     <div className="flex items-start gap-6">
                       <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[hsl(224,100%,32%)] to-[hsl(157,72%,43%)] flex items-center justify-center shadow-lg shrink-0">
                         <Phone className="w-7 h-7 text-white" />
                       </div>
                       <div className="flex-1">
-                        <h3 className="text-xl font-bold text-[hsl(224,100%,50%)] mb-4 group-hover:text-white transition-colors duration-300">Always Available</h3>
-                        <p className="text-white/80 leading-relaxed">
+                        <h3 className="text-xl font-bold text-[hsl(224,100%,45%)] mb-4 group-hover:text-slate-900 transition-colors duration-300">Always Available</h3>
+                        <p className="text-slate-600 leading-relaxed">
                           Real person, real phone number, real responses. When you call, you get me—not a call center or voicemail system.
                         </p>
                       </div>
