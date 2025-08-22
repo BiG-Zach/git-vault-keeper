@@ -208,9 +208,73 @@ export default function EnhancedMap() {
             ref={mapContainerRef}
             className="bg-gradient-to-br from-white to-slate-50 rounded-3xl p-6 lg:p-8 shadow-luxury border border-slate-200 relative overflow-hidden"
           >
-            {/* Premium background pattern */}
-            <div className="absolute inset-0 opacity-5">
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--color-accent)_1px,_transparent_1px)] bg-[length:20px_20px]" />
+            {/* Visual Masterpiece Background */}
+            <div className="absolute inset-0 overflow-hidden">
+              {/* Animated Gradient Orbs */}
+              <div className="absolute inset-0">
+                <div className="absolute top-1/5 left-1/5 w-80 h-80 bg-gradient-to-br from-emerald-400/25 via-cyan-300/20 to-transparent rounded-full blur-3xl animate-pulse" />
+                <div className="absolute bottom-1/4 right-1/5 w-72 h-72 bg-gradient-to-br from-blue-400/20 via-emerald-300/25 to-transparent rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1.5s' }} />
+                <div className="absolute top-2/3 left-2/3 w-56 h-56 bg-gradient-to-br from-cyan-300/15 via-blue-400/20 to-transparent rounded-full blur-2xl animate-pulse" style={{ animationDelay: '3s' }} />
+              </div>
+
+              {/* Dynamic Light Streams */}
+              <div className="absolute inset-0 opacity-40">
+                <div className="absolute top-0 left-1/5 w-px h-full bg-gradient-to-b from-transparent via-emerald-300/60 to-transparent transform -rotate-12 animate-pulse" style={{ animationDuration: '4s' }} />
+                <div className="absolute top-0 right-1/4 w-px h-full bg-gradient-to-b from-transparent via-cyan-300/50 to-transparent transform rotate-12 animate-pulse" style={{ animationDelay: '1s', animationDuration: '5s' }} />
+                <div className="absolute top-0 left-3/4 w-px h-full bg-gradient-to-b from-transparent via-blue-300/40 to-transparent transform -rotate-6 animate-pulse" style={{ animationDelay: '2s', animationDuration: '6s' }} />
+              </div>
+
+              {/* Floating Interactive Elements */}
+              <div className="absolute inset-0 opacity-25">
+                <div className="absolute top-1/6 left-1/6 w-3 h-3 border border-emerald-400/60 rotate-45 animate-bounce" style={{ animationDelay: '0.5s', animationDuration: '3s' }} />
+                <div className="absolute top-1/2 right-1/6 w-4 h-4 border border-cyan-400/50 rounded-full animate-ping" style={{ animationDelay: '1.5s', animationDuration: '4s' }} />
+                <div className="absolute bottom-1/4 left-1/3 w-2 h-2 bg-blue-400/40 rounded-full animate-pulse" style={{ animationDelay: '2.5s' }} />
+                <div className="absolute top-1/4 right-1/3 w-5 h-5 border-2 border-emerald-500/40 transform rotate-45 animate-spin" style={{ animationDuration: '12s' }} />
+                <div className="absolute bottom-1/6 right-1/5 w-3 h-3 bg-gradient-to-br from-cyan-400/30 to-blue-400/20 rounded-full animate-ping" style={{ animationDelay: '3s', animationDuration: '5s' }} />
+              </div>
+
+              {/* Premium Texture Layers */}
+              <div className="absolute inset-0 opacity-8">
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_30%,_hsl(var(--emerald-400))_0.8px,_transparent_0.8px)] bg-[length:40px_40px]" />
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_70%,_hsl(var(--cyan-400))_0.5px,_transparent_0.5px)] bg-[length:28px_28px]" style={{ transform: 'rotate(30deg)' }} />
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_60%_20%,_hsl(var(--blue-400))_0.3px,_transparent_0.3px)] bg-[length:36px_36px]" style={{ transform: 'rotate(-15deg)' }} />
+              </div>
+
+              {/* Interconnected Network Lines */}
+              <svg className="absolute inset-0 w-full h-full opacity-20" preserveAspectRatio="none">
+                <defs>
+                  <linearGradient id="mapNetworkGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stopColor="hsl(var(--emerald-500))" stopOpacity="0.4" />
+                    <stop offset="50%" stopColor="hsl(var(--cyan-500))" stopOpacity="0.3" />
+                    <stop offset="100%" stopColor="hsl(var(--blue-500))" stopOpacity="0.2" />
+                  </linearGradient>
+                  <filter id="glow">
+                    <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+                    <feMerge> 
+                      <feMergeNode in="coloredBlur"/>
+                      <feMergeNode in="SourceGraphic"/>
+                    </feMerge>
+                  </filter>
+                </defs>
+                <line x1="15%" y1="25%" x2="35%" y2="40%" stroke="url(#mapNetworkGradient)" strokeWidth="0.8" filter="url(#glow)" />
+                <line x1="35%" y1="40%" x2="65%" y2="30%" stroke="url(#mapNetworkGradient)" strokeWidth="0.6" filter="url(#glow)" />
+                <line x1="65%" y1="30%" x2="85%" y2="50%" stroke="url(#mapNetworkGradient)" strokeWidth="0.7" filter="url(#glow)" />
+                <line x1="25%" y1="75%" x2="50%" y2="85%" stroke="url(#mapNetworkGradient)" strokeWidth="0.5" filter="url(#glow)" />
+                <line x1="50%" y1="85%" x2="80%" y2="75%" stroke="url(#mapNetworkGradient)" strokeWidth="0.6" filter="url(#glow)" />
+                <circle cx="15%" cy="25%" r="2.5" fill="hsl(var(--emerald-500))" opacity="0.7" filter="url(#glow)" />
+                <circle cx="35%" cy="40%" r="2" fill="hsl(var(--cyan-500))" opacity="0.6" filter="url(#glow)" />
+                <circle cx="65%" cy="30%" r="3" fill="hsl(var(--blue-500))" opacity="0.5" filter="url(#glow)" />
+                <circle cx="85%" cy="50%" r="2" fill="hsl(var(--emerald-500))" opacity="0.6" filter="url(#glow)" />
+                <circle cx="25%" cy="75%" r="2.5" fill="hsl(var(--cyan-500))" opacity="0.4" filter="url(#glow)" />
+                <circle cx="50%" cy="85%" r="2" fill="hsl(var(--blue-500))" opacity="0.5" filter="url(#glow)" />
+                <circle cx="80%" cy="75%" r="2.5" fill="hsl(var(--emerald-500))" opacity="0.6" filter="url(#glow)" />
+              </svg>
+
+              {/* Luxury Shimmer Wave */}
+              <div className="absolute inset-0 opacity-15">
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent transform -skew-x-12 animate-pulse" style={{ animationDuration: '8s' }} />
+                <div className="absolute inset-0 bg-gradient-to-l from-transparent via-emerald-200/10 to-transparent transform skew-x-6 animate-pulse" style={{ animationDelay: '2s', animationDuration: '10s' }} />
+              </div>
             </div>
 
             {/* Enhanced tooltip */}
