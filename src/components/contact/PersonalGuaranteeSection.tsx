@@ -56,17 +56,69 @@ export default function PersonalGuaranteeSection() {
 
   return (
     <Section className="relative bg-slate-900 overflow-hidden py-16 md:py-20">
-      {/* Background Pattern */}
-      <div 
-        className="absolute inset-0 opacity-25"
-        style={{
-          backgroundImage: `radial-gradient(circle at 25% 25%, hsl(var(--brand-sky-500) / 0.15) 0%, transparent 50%),
-                           radial-gradient(circle at 75% 75%, hsl(var(--brand-jade-500) / 0.15) 0%, transparent 50%),
-                           radial-gradient(1px 1px at 20px 30px, rgba(255,255,255,0.12), transparent),
-                           radial-gradient(1px 1px at 40px 70px, rgba(255,255,255,0.08), transparent)`,
-          backgroundSize: '400px 400px, 400px 400px, 80px 80px, 80px 80px'
-        }}
-      />
+      {/* Enhanced Visual Masterpiece Background */}
+      <div className="absolute inset-0 overflow-hidden">
+        {/* Primary Animated Gradients */}
+        <div className="absolute inset-0 opacity-40">
+          <div className="absolute top-0 left-0 w-96 h-96 bg-gradient-to-br from-teal-500/30 to-transparent rounded-full blur-3xl animate-pulse transform -translate-x-1/2 -translate-y-1/2"></div>
+          <div className="absolute top-1/4 right-0 w-80 h-80 bg-gradient-to-bl from-blue-500/25 to-transparent rounded-full blur-3xl animate-pulse delay-1000 transform translate-x-1/2"></div>
+          <div className="absolute bottom-0 left-1/3 w-72 h-72 bg-gradient-to-tr from-cyan-500/20 to-transparent rounded-full blur-3xl animate-pulse delay-2000"></div>
+          <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-gradient-to-tl from-teal-400/15 to-transparent rounded-full blur-2xl animate-pulse delay-3000"></div>
+        </div>
+        
+        {/* Secondary Glow Effects */}
+        <div className="absolute inset-0 opacity-30">
+          <div className="absolute top-1/2 left-1/4 w-40 h-40 bg-gradient-to-r from-blue-400/20 to-cyan-400/20 rounded-full blur-2xl animate-pulse delay-500 transform -translate-y-1/2"></div>
+          <div className="absolute top-3/4 right-1/3 w-32 h-32 bg-gradient-to-l from-teal-300/25 to-blue-300/25 rounded-full blur-xl animate-pulse delay-1500"></div>
+        </div>
+        
+        {/* Floating Particles Network */}
+        <div className="absolute inset-0 opacity-20">
+          <div className="absolute top-1/4 left-1/4 w-1 h-1 bg-teal-400 rounded-full animate-pulse"></div>
+          <div className="absolute top-1/3 left-2/3 w-0.5 h-0.5 bg-blue-300 rounded-full animate-pulse delay-700"></div>
+          <div className="absolute top-2/3 left-1/2 w-1.5 h-1.5 bg-cyan-400 rounded-full animate-pulse delay-1400"></div>
+          <div className="absolute top-3/4 left-1/5 w-0.5 h-0.5 bg-teal-500 rounded-full animate-pulse delay-2100"></div>
+          <div className="absolute top-1/2 right-1/4 w-1 h-1 bg-blue-400 rounded-full animate-pulse delay-2800"></div>
+          
+          {/* Connecting Lines */}
+          <svg className="absolute inset-0 w-full h-full" style={{ filter: 'blur(0.5px)' }}>
+            <defs>
+              <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stopColor="rgba(20, 184, 166, 0.3)" />
+                <stop offset="50%" stopColor="rgba(59, 130, 246, 0.2)" />
+                <stop offset="100%" stopColor="rgba(6, 182, 212, 0.1)" />
+              </linearGradient>
+            </defs>
+            <line x1="25%" y1="25%" x2="66%" y2="33%" stroke="url(#lineGradient)" strokeWidth="0.5" opacity="0.4" />
+            <line x1="66%" y1="33%" x2="50%" y2="66%" stroke="url(#lineGradient)" strokeWidth="0.5" opacity="0.3" />
+            <line x1="50%" y1="66%" x2="20%" y2="75%" stroke="url(#lineGradient)" strokeWidth="0.5" opacity="0.2" />
+            <line x1="20%" y1="75%" x2="75%" y2="50%" stroke="url(#lineGradient)" strokeWidth="0.5" opacity="0.25" />
+          </svg>
+        </div>
+        
+        {/* Luxury Texture Overlay */}
+        <div 
+          className="absolute inset-0 opacity-15"
+          style={{
+            backgroundImage: `
+              radial-gradient(circle at 10% 20%, rgba(255,255,255,0.08) 0%, transparent 50%),
+              radial-gradient(circle at 80% 80%, rgba(20,184,166,0.12) 0%, transparent 50%),
+              radial-gradient(circle at 40% 40%, rgba(59,130,246,0.08) 0%, transparent 50%),
+              radial-gradient(1px 1px at 25px 35px, rgba(255,255,255,0.15), transparent),
+              radial-gradient(1px 1px at 60px 85px, rgba(20,184,166,0.1), transparent),
+              radial-gradient(0.5px 0.5px at 40px 60px, rgba(59,130,246,0.12), transparent)
+            `,
+            backgroundSize: '600px 600px, 500px 500px, 400px 400px, 100px 100px, 120px 120px, 80px 80px'
+          }}
+        />
+        
+        {/* Premium Light Rays */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-0 left-1/4 w-px h-full bg-gradient-to-b from-teal-400 via-transparent to-blue-400 transform rotate-12"></div>
+          <div className="absolute top-0 right-1/3 w-px h-full bg-gradient-to-b from-blue-400 via-transparent to-cyan-400 transform -rotate-6"></div>
+          <div className="absolute top-0 left-2/3 w-px h-full bg-gradient-to-b from-cyan-300 via-transparent to-teal-300 transform rotate-3"></div>
+        </div>
+      </div>
 
       <div className="relative z-10">
         {/* Personal Guarantees */}
