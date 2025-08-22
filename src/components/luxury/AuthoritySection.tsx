@@ -53,7 +53,78 @@ const AuthoritySection = () => {
       <div className="absolute inset-0">
         <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_top_left,rgba(34,197,94,0.1)_0%,transparent_50%)]" />
         <div className="absolute bottom-0 right-0 w-full h-full bg-[radial-gradient(ellipse_at_bottom_right,rgba(59,130,246,0.1)_0%,transparent_50%)]" />
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle_at_center,_rgba(16,185,129,0.1)_1px,_transparent_1px)] bg-[length:40px_40px]" />
+        {/* Visual Masterpiece Background */}
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full h-full overflow-hidden">
+          {/* Animated Gradient Orbs */}
+          <div className="absolute inset-0">
+            <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-br from-emerald-400/20 via-cyan-300/15 to-transparent rounded-full blur-3xl animate-pulse" />
+            <div className="absolute bottom-1/3 right-1/4 w-80 h-80 bg-gradient-to-br from-blue-400/15 via-emerald-300/20 to-transparent rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }} />
+            <div className="absolute top-2/3 left-3/5 w-64 h-64 bg-gradient-to-br from-cyan-300/10 via-blue-400/15 to-transparent rounded-full blur-2xl animate-pulse" style={{ animationDelay: '4s' }} />
+          </div>
+
+          {/* Dynamic Light Rays */}
+          <div className="absolute inset-0 opacity-30">
+            <div className="absolute top-0 left-1/5 w-px h-full bg-gradient-to-b from-transparent via-emerald-300/50 to-transparent transform -rotate-15 animate-pulse" style={{ animationDuration: '5s' }} />
+            <div className="absolute top-0 right-1/4 w-px h-full bg-gradient-to-b from-transparent via-cyan-300/40 to-transparent transform rotate-15 animate-pulse" style={{ animationDelay: '1.5s', animationDuration: '6s' }} />
+            <div className="absolute top-0 left-2/3 w-px h-full bg-gradient-to-b from-transparent via-blue-300/35 to-transparent transform -rotate-8 animate-pulse" style={{ animationDelay: '3s', animationDuration: '7s' }} />
+          </div>
+
+          {/* Floating Geometric Elements */}
+          <div className="absolute inset-0 opacity-20">
+            <div className="absolute top-1/6 left-1/6 w-4 h-4 border-2 border-emerald-400/60 rotate-45 animate-bounce" style={{ animationDelay: '1s', animationDuration: '4s' }} />
+            <div className="absolute top-1/2 right-1/6 w-5 h-5 border border-cyan-400/50 rounded-full animate-ping" style={{ animationDelay: '2s', animationDuration: '5s' }} />
+            <div className="absolute bottom-1/4 left-1/3 w-3 h-3 bg-blue-400/40 rounded-full animate-pulse" style={{ animationDelay: '3s' }} />
+            <div className="absolute top-1/4 right-1/3 w-6 h-6 border-2 border-emerald-500/40 transform rotate-45 animate-spin" style={{ animationDuration: '15s' }} />
+            <div className="absolute bottom-1/6 right-1/5 w-3 h-3 bg-gradient-to-br from-cyan-400/30 to-blue-400/20 rounded-full animate-ping" style={{ animationDelay: '4s', animationDuration: '6s' }} />
+            <div className="absolute top-3/4 left-1/5 w-4 h-4 border border-emerald-300/40 rounded-full animate-bounce" style={{ animationDelay: '0.5s', animationDuration: '3.5s' }} />
+          </div>
+
+          {/* Premium Dot Matrix Pattern */}
+          <div className="absolute inset-0 opacity-12">
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_30%,_rgba(16,185,129,0.3)_1px,_transparent_1px)] bg-[length:45px_45px]" />
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_70%,_rgba(34,211,238,0.2)_0.8px,_transparent_0.8px)] bg-[length:35px_35px]" style={{ transform: 'rotate(30deg)' }} />
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_60%_20%,_rgba(59,130,246,0.15)_0.6px,_transparent_0.6px)] bg-[length:50px_50px]" style={{ transform: 'rotate(-20deg)' }} />
+          </div>
+
+          {/* Advanced Network Connections */}
+          <svg className="absolute inset-0 w-full h-full opacity-15" preserveAspectRatio="none">
+            <defs>
+              <linearGradient id="authorityNetworkGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stopColor="rgba(16,185,129,0.4)" />
+                <stop offset="50%" stopColor="rgba(34,211,238,0.3)" />
+                <stop offset="100%" stopColor="rgba(59,130,246,0.2)" />
+              </linearGradient>
+              <filter id="authorityGlow">
+                <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                <feMerge> 
+                  <feMergeNode in="coloredBlur"/>
+                  <feMergeNode in="SourceGraphic"/>
+                </feMerge>
+              </filter>
+            </defs>
+            <line x1="12%" y1="20%" x2="38%" y2="35%" stroke="url(#authorityNetworkGradient)" strokeWidth="1" filter="url(#authorityGlow)" />
+            <line x1="38%" y1="35%" x2="70%" y2="25%" stroke="url(#authorityNetworkGradient)" strokeWidth="0.8" filter="url(#authorityGlow)" />
+            <line x1="70%" y1="25%" x2="88%" y2="45%" stroke="url(#authorityNetworkGradient)" strokeWidth="0.9" filter="url(#authorityGlow)" />
+            <line x1="22%" y1="70%" x2="55%" y2="80%" stroke="url(#authorityNetworkGradient)" strokeWidth="0.7" filter="url(#authorityGlow)" />
+            <line x1="55%" y1="80%" x2="85%" y2="70%" stroke="url(#authorityNetworkGradient)" strokeWidth="0.8" filter="url(#authorityGlow)" />
+            <line x1="15%" y1="50%" x2="45%" y2="60%" stroke="url(#authorityNetworkGradient)" strokeWidth="0.6" filter="url(#authorityGlow)" />
+            <circle cx="12%" cy="20%" r="3" fill="rgba(16,185,129,0.6)" filter="url(#authorityGlow)" />
+            <circle cx="38%" cy="35%" r="2.5" fill="rgba(34,211,238,0.5)" filter="url(#authorityGlow)" />
+            <circle cx="70%" cy="25%" r="3.5" fill="rgba(59,130,246,0.4)" filter="url(#authorityGlow)" />
+            <circle cx="88%" cy="45%" r="2.5" fill="rgba(16,185,129,0.5)" filter="url(#authorityGlow)" />
+            <circle cx="22%" cy="70%" r="3" fill="rgba(34,211,238,0.4)" filter="url(#authorityGlow)" />
+            <circle cx="55%" cy="80%" r="2" fill="rgba(59,130,246,0.5)" filter="url(#authorityGlow)" />
+            <circle cx="85%" cy="70%" r="3" fill="rgba(16,185,129,0.5)" filter="url(#authorityGlow)" />
+            <circle cx="15%" cy="50%" r="2.5" fill="rgba(34,211,238,0.4)" filter="url(#authorityGlow)" />
+            <circle cx="45%" cy="60%" r="2" fill="rgba(59,130,246,0.3)" filter="url(#authorityGlow)" />
+          </svg>
+
+          {/* Luxury Shimmer Effects */}
+          <div className="absolute inset-0 opacity-10">
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/15 to-transparent transform -skew-x-12 animate-pulse" style={{ animationDuration: '10s' }} />
+            <div className="absolute inset-0 bg-gradient-to-l from-transparent via-emerald-200/8 to-transparent transform skew-x-6 animate-pulse" style={{ animationDelay: '3s', animationDuration: '12s' }} />
+          </div>
+        </div>
       </div>
 
       <div className="container mx-auto px-4 lg:px-6 relative z-10">
