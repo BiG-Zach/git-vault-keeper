@@ -20,16 +20,7 @@ export default function OurProcessHero() {
 
   const Content = (
     <div className="mx-auto max-w-5xl px-6 md:px-8 text-center">
-      {/* Professional badge */}
-      <motion.div
-        initial={{ opacity: 0, y: prefersReducedMotion ? 0 : 10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
-        className="inline-flex items-center gap-2 bg-emerald-600/90 backdrop-blur-sm text-white px-6 py-3 rounded-full font-semibold text-sm mb-8 shadow-lg"
-      >
-        <Shield className="w-4 h-4" />
-        Licensed Broker Since 2016
-      </motion.div>
+      
       
       <h1 className="text-5xl md:text-6xl lg:text-7xl font-luxury-serif font-bold tracking-tight leading-tight text-white drop-shadow-[0_8px_32px_rgba(0,0,0,.75)] mb-8">
         My Simple 4-Step Process to Get You Perfect Coverage
