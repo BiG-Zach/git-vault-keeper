@@ -143,37 +143,6 @@ const IndustryRecognitionSection = () => {
           ))}
         </motion.div>
 
-        {/* Bottom CTA Section */}
-        <motion.div
-          initial={{ opacity: 0, y: prefersReducedMotion ? 0 : 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
-          className="mt-12 lg:mt-16 text-center"
-        >
-          <div className="bg-white/5 backdrop-blur-md rounded-2xl p-8 lg:p-12 border border-white/10 max-w-4xl mx-auto">
-            <h3 className="text-2xl lg:text-3xl font-bold text-white mb-4">
-              Experience the Difference
-            </h3>
-            <p className="text-white/80 text-lg mb-6 max-w-2xl mx-auto">
-              Join thousands of families who've discovered better coverage, significant savings, and peace of mind through our trusted guidance.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a 
-                href="/lead" 
-                className="inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-emerald-500 to-emerald-600 text-white font-semibold rounded-xl hover:from-emerald-600 hover:to-emerald-700 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105"
-              >
-                Get Your Quote Now
-              </a>
-              <a 
-                href="tel:+16893256570" 
-                className="inline-flex items-center justify-center px-8 py-4 bg-white/10 text-white font-semibold rounded-xl border border-white/20 hover:bg-white/20 transition-all duration-300 backdrop-blur-sm"
-              >
-                Speak with an Expert
-              </a>
-            </div>
-          </div>
-        </motion.div>
       </div>
     </section>
   );
