@@ -161,57 +161,108 @@ export default function PersonalGuaranteeSection() {
             {states.map((state, index) => (
               <motion.div
                 key={index}
-                className="group bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 text-center hover:bg-white/10 transition-all duration-300"
+                className="group relative"
                 variants={prefersReducedMotion ? {} : itemVariants}
               >
-                <div className="text-3xl md:text-4xl font-bold text-brand-jade-400 mb-2 font-luxury-serif">
-                  {state.code}
+                {/* Card Background with Enhanced Effects */}
+                <div className="relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 text-center hover:bg-white/8 transition-all duration-500 group-hover:scale-105 group-hover:shadow-2xl overflow-hidden">
+                  {/* Animated Glow Effects */}
+                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-teal-500/10 to-blue-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-teal-400/20 via-blue-400/20 to-teal-400/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 animate-pulse"></div>
+                  
+                  {/* Floating Particles Effect */}
+                  <div className="absolute top-4 right-4 w-2 h-2 bg-teal-400 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500 animate-pulse"></div>
+                  <div className="absolute bottom-4 left-4 w-1 h-1 bg-blue-400 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700 animate-pulse delay-300"></div>
+                  
+                  <div className="relative z-10">
+                    {/* Enhanced State Code Display */}
+                    <div className="relative mb-6">
+                      <div className="absolute inset-0 bg-gradient-to-br from-teal-500/20 to-blue-500/20 rounded-2xl blur-xl group-hover:scale-110 transition-transform duration-500"></div>
+                      <div className="relative w-20 h-20 mx-auto bg-gradient-to-br from-teal-500 to-blue-500 rounded-2xl flex items-center justify-center text-white shadow-xl group-hover:shadow-2xl transition-all duration-500">
+                        <span className="text-2xl font-bold font-luxury-serif group-hover:scale-110 transition-transform duration-300">
+                          {state.code}
+                        </span>
+                      </div>
+                    </div>
+                    
+                    {/* Enhanced State Name */}
+                    <h4 className="text-2xl font-bold text-white mb-3 font-luxury-serif group-hover:text-teal-200 transition-colors duration-300">
+                      {state.name}
+                    </h4>
+                    
+                    {/* Enhanced Description */}
+                    <p className="text-slate-300 leading-relaxed group-hover:text-white/90 transition-colors duration-300 mb-4">
+                      {state.description}
+                    </p>
+                    
+                    {/* Premium Accent Line */}
+                    <div className="w-16 h-1 bg-gradient-to-r from-teal-400 to-blue-400 rounded-full mx-auto opacity-0 group-hover:opacity-100 transition-all duration-500 transform scale-x-0 group-hover:scale-x-100"></div>
+                  </div>
                 </div>
-                <h4 className="text-lg font-semibold text-white mb-2 font-luxury-serif">
-                  {state.name}
-                </h4>
-                <p className="text-slate-300 text-sm leading-relaxed">
-                  {state.description}
-                </p>
               </motion.div>
             ))}
           </motion.div>
 
-          {/* Call to Action */}
+          {/* Enhanced Call to Action */}
           <motion.div 
-            className="text-center mt-12"
-            initial={prefersReducedMotion ? {} : { opacity: 0, y: 20 }}
+            className="text-center mt-16"
+            initial={prefersReducedMotion ? {} : { opacity: 0, y: 30 }}
             whileInView={prefersReducedMotion ? {} : { opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.4 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
           >
-            <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 max-w-2xl mx-auto">
-              <div className="flex justify-center mb-4">
-                <div className="w-16 h-16 bg-gradient-to-br from-brand-jade-500 to-brand-sky-500 rounded-xl flex items-center justify-center text-white">
-                  <Users className="w-8 h-8" />
+            <div className="relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-12 max-w-2xl mx-auto overflow-hidden">
+              {/* Animated Background */}
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent rounded-3xl"></div>
+              <div className="absolute -top-20 -left-20 w-40 h-40 bg-gradient-to-br from-teal-500/20 to-transparent rounded-full blur-3xl animate-pulse"></div>
+              <div className="absolute -bottom-20 -right-20 w-32 h-32 bg-gradient-to-tl from-blue-500/20 to-transparent rounded-full blur-2xl animate-pulse delay-1000"></div>
+              
+              <div className="relative z-10">
+                {/* Enhanced Icon */}
+                <div className="relative mb-8">
+                  <div className="absolute inset-0 bg-gradient-to-br from-teal-500/30 to-blue-500/30 rounded-2xl blur-xl animate-pulse"></div>
+                  <div className="relative w-20 h-20 bg-gradient-to-br from-teal-500 to-blue-500 rounded-2xl flex items-center justify-center mx-auto shadow-2xl">
+                    <Users className="w-10 h-10 text-white" />
+                  </div>
                 </div>
-              </div>
-              <h4 className="text-xl font-semibold text-white mb-3 font-luxury-serif">
-                Ready to Experience the Difference?
-              </h4>
-              <p className="text-slate-300 mb-6 leading-relaxed">
-                Join over 1,500 families who trust Zach Bradford for their insurance needs.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <a
-                  href="tel:(689) 325-6570"
-                  className="inline-flex items-center justify-center px-6 py-3 bg-gradient-to-r from-brand-jade-600 to-brand-sky-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
-                >
-                  Call (689) 325-6570
-                </a>
-                <a
-                  href="https://calendly.com/bradfordinformedguidance"
-                  className="inline-flex items-center justify-center px-6 py-3 bg-white/10 text-white font-semibold rounded-xl border border-white/20 hover:bg-white/20 transition-all duration-300"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Schedule Consultation
-                </a>
+                
+                {/* Enhanced Heading */}
+                <h4 className="text-3xl md:text-4xl font-bold text-white mb-4 font-luxury-serif">
+                  <span className="block">Ready to Experience</span>
+                  <span className="block bg-gradient-to-r from-teal-200 to-blue-200 bg-clip-text text-transparent">
+                    the Difference?
+                  </span>
+                </h4>
+                
+                {/* Enhanced Description */}
+                <p className="text-xl text-slate-300 mb-8 leading-relaxed max-w-lg mx-auto">
+                  Join over{" "}
+                  <span className="font-bold text-white bg-gradient-to-r from-teal-200 to-blue-200 bg-clip-text text-transparent">
+                    1,500 families
+                  </span>{" "}
+                  who trust Zach Bradford for their insurance needs.
+                </p>
+                
+                {/* Enhanced Buttons */}
+                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                  <a
+                    href="tel:(689) 325-6570"
+                    className="group/btn relative inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-teal-600 to-blue-600 text-white font-bold rounded-xl shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300 overflow-hidden"
+                  >
+                    <div className="absolute inset-0 bg-gradient-to-r from-teal-500 to-blue-500 opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300"></div>
+                    <span className="relative z-10 group-hover/btn:scale-110 transition-transform duration-300">
+                      Call (689) 325-6570
+                    </span>
+                  </a>
+                  <a
+                    href="https://calendly.com/bradfordinformedguidance"
+                    className="inline-flex items-center justify-center px-8 py-4 bg-white/10 text-white font-bold rounded-xl border-2 border-white/20 hover:bg-white/20 hover:border-white/40 backdrop-blur-sm transition-all duration-300"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Schedule Consultation
+                  </a>
+                </div>
               </div>
             </div>
           </motion.div>
