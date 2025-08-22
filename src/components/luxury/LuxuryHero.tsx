@@ -29,13 +29,13 @@ const LuxuryHero = () => {
       </div>
 
 
-      <div className="relative z-10 container mx-auto px-4 lg:px-6">
-        <div className="grid lg:grid-cols-[1.2fr_0.8fr] gap-8 lg:gap-12 items-center">
+      <div className="relative z-10 container mx-auto px-4 lg:px-6 h-full flex items-start lg:items-center pt-20 lg:pt-0">
+        <div className="grid lg:grid-cols-[0.6fr_1.4fr] gap-8 lg:gap-12 items-start lg:items-center w-full">
           
-          {/* Left: Premium Content - Strategically positioned for optimal viewing */}
-          <div className="text-white relative max-w-2xl lg:max-w-none">
-            {/* Content container with optimal spacing and visual flow */}
-            <div className="space-y-8 lg:space-y-10">
+          {/* Left: Premium Content - Repositioned to show family */}
+          <div className="text-white relative max-w-lg">
+            {/* Content container with compact spacing to reveal family image */}
+            <div className="space-y-6 lg:space-y-8">
               
               <motion.div
                 initial={{ opacity: 0, y: prefersReducedMotion ? 0 : 30 }}
