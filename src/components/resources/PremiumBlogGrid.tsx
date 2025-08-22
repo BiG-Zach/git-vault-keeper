@@ -39,13 +39,75 @@ export default function PremiumBlogGrid({ posts, selectedCategory, categories }:
 
   return (
     <section className="py-20 bg-white relative overflow-hidden">
-      {/* Subtle background pattern */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute inset-0" style={{
-          backgroundImage: `radial-gradient(circle at 2px 2px, rgba(0,0,0,0.1) 1px, transparent 0)`,
-          backgroundSize: '24px 24px'
-        }} />
+      {/* Enhanced Visual Masterpiece Background */}
+      <div className="absolute inset-0 overflow-hidden">
+        {/* Animated Gradient Orbs */}
+        <div className="absolute top-20 left-10 w-96 h-96 bg-gradient-to-r from-blue-500/20 to-purple-400/20 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute bottom-20 right-10 w-80 h-80 bg-gradient-to-r from-emerald-500/15 to-cyan-500/15 rounded-full blur-3xl animate-pulse delay-1000" />
+        <div className="absolute top-1/2 left-1/3 w-64 h-64 bg-gradient-to-r from-pink-400/10 to-orange-500/10 rounded-full blur-2xl animate-pulse delay-500" />
+        
+        {/* Premium Light Rays */}
+        <div className="absolute inset-0 opacity-20">
+          <div className="absolute top-0 left-1/4 w-px h-full bg-gradient-to-b from-transparent via-blue-300/30 to-transparent transform rotate-12 animate-pulse" />
+          <div className="absolute top-0 right-1/3 w-px h-full bg-gradient-to-b from-transparent via-emerald-300/30 to-transparent transform -rotate-12 animate-pulse delay-700" />  
+          <div className="absolute top-0 left-2/3 w-px h-full bg-gradient-to-b from-transparent via-purple-300/30 to-transparent transform rotate-6 animate-pulse delay-1400" />
+        </div>
+        
+        {/* Floating Geometric Elements */}
+        <div className="absolute top-24 right-20 w-8 h-8 border border-blue-300/20 rotate-45 animate-bounce" style={{ animationDelay: '0s', animationDuration: '3s' }} />
+        <div className="absolute bottom-32 left-16 w-6 h-6 bg-emerald-300/10 rounded-full animate-bounce" style={{ animationDelay: '1s', animationDuration: '4s' }} />
+        <div className="absolute top-1/3 right-1/4 w-4 h-4 border-2 border-purple-300/30 rounded-full animate-bounce" style={{ animationDelay: '2s', animationDuration: '5s' }} />
+        
+        {/* Network Connection Lines with Glow */}
+        <svg className="absolute inset-0 w-full h-full opacity-10" viewBox="0 0 800 600">
+          <defs>
+            <filter id="blogGlow">
+              <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+              <feMerge> 
+                <feMergeNode in="coloredBlur"/>
+                <feMergeNode in="SourceGraphic"/>
+              </feMerge>
+            </filter>
+          </defs>
+          <path d="M100,100 Q400,50 700,150" stroke="rgba(59,130,246,0.3)" strokeWidth="1" fill="none" filter="url(#blogGlow)">
+            <animate attributeName="opacity" values="0.1;0.4;0.1" dur="4s" repeatCount="indefinite" />
+          </path>
+          <path d="M150,300 Q450,200 650,400" stroke="rgba(16,185,129,0.3)" strokeWidth="1" fill="none" filter="url(#blogGlow)">
+            <animate attributeName="opacity" values="0.4;0.1;0.4" dur="5s" repeatCount="indefinite" />
+          </path>
+          <path d="M50,450 Q350,350 600,500" stroke="rgba(168,85,247,0.3)" strokeWidth="1" fill="none" filter="url(#blogGlow)">
+            <animate attributeName="opacity" values="0.2;0.5;0.2" dur="6s" repeatCount="indefinite" />
+          </path>
+        </svg>
+        
+        {/* Luxury Shimmer Waves */}
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute top-0 left-0 w-full h-full transform -skew-x-12" style={{ 
+            background: 'linear-gradient(90deg, transparent 0%, rgba(59,130,246,0.1) 25%, rgba(59,130,246,0.2) 50%, rgba(59,130,246,0.1) 75%, transparent 100%)',
+            animation: 'blogShimmer 12s infinite linear'
+          }} />
+        </div>
+        
+        {/* Enhanced Dot Pattern */}
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute inset-0" style={{
+            backgroundImage: `
+              radial-gradient(circle at 2px 2px, rgba(59,130,246,0.4) 1px, transparent 0),
+              radial-gradient(circle at 12px 12px, rgba(16,185,129,0.3) 0.5px, transparent 0),
+              radial-gradient(circle at 22px 2px, rgba(168,85,247,0.3) 0.5px, transparent 0)
+            `,
+            backgroundSize: '24px 24px, 24px 24px, 24px 24px'
+          }} />
+        </div>
       </div>
+      
+      {/* Custom Animation */}
+      <style>{`
+        @keyframes blogShimmer {
+          0% { transform: translateX(-100%) skewX(-12deg); }
+          100% { transform: translateX(200%) skewX(-12deg); }
+        }
+      `}</style>
       
       <div className="container mx-auto px-4 max-w-7xl relative z-10">
         <motion.div
