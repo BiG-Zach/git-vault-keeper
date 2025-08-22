@@ -94,26 +94,6 @@ const LuxuryHero = () => {
           </motion.div>
         </div>
 
-        {/* Bottom urgency ticker */}
-        <motion.div
-          initial={{ opacity: 0, y: prefersReducedMotion ? 0 : 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.8, ease: "easeOut" }}
-          className="mt-12 lg:mt-16"
-        >
-          <div className="bg-white/10 backdrop-blur-md rounded-xl border border-white/20 px-6 py-4">
-            <div className="flex items-center justify-center gap-6 text-white/90 text-sm">
-              <span className="flex items-center gap-2">
-                <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse" />
-                Avg first options in 45–90 mins
-              </span>
-              <span className="hidden sm:block">•</span>
-              <span className="hidden sm:inline">{BRAND.hours}</span>
-              <span className="hidden md:block">•</span>
-              <span className="hidden md:inline">No obligation quotes</span>
-            </div>
-          </div>
-        </motion.div>
       </div>
     </section>
   );
