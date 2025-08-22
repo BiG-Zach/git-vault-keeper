@@ -84,7 +84,89 @@ export default function EnhancedMessageForm() {
   };
 
   return (
-    <Section className="py-16 md:py-20 bg-gradient-to-br from-white via-slate-50 to-brand-cyan-300/10">
+    <Section className="relative py-16 md:py-20 overflow-hidden">
+      {/* Visual Masterpiece Background */}
+      <div className="absolute inset-0">
+        {/* Primary Luxury Gradient Foundation */}
+        <div className="absolute inset-0 bg-gradient-to-br from-white via-slate-50 to-blue-50/60"></div>
+        
+        {/* Animated Gradient Orbs */}
+        <div className="absolute inset-0 opacity-50">
+          <div className="absolute -top-40 -left-40 w-80 h-80 bg-gradient-to-br from-teal-200/70 to-transparent rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute top-1/4 -right-40 w-96 h-96 bg-gradient-to-bl from-blue-200/60 to-transparent rounded-full blur-3xl animate-pulse delay-1000"></div>
+          <div className="absolute -bottom-40 left-1/3 w-72 h-72 bg-gradient-to-tr from-cyan-200/50 to-transparent rounded-full blur-3xl animate-pulse delay-2000"></div>
+          <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-gradient-to-tl from-teal-100/60 to-transparent rounded-full blur-2xl animate-pulse delay-3000"></div>
+        </div>
+        
+        {/* Premium Geometric Floating Elements */}
+        <div className="absolute inset-0 opacity-15">
+          <div className="absolute top-1/5 left-1/6 w-24 h-24 border border-teal-300/30 rounded-full animate-spin" style={{ animationDuration: '25s' }}></div>
+          <div className="absolute top-3/4 right-1/5 w-32 h-32 border border-blue-300/25 rounded-lg animate-spin" style={{ animationDuration: '30s', animationDirection: 'reverse' }}></div>
+          <div className="absolute top-1/2 left-3/4 w-16 h-16 bg-gradient-to-br from-cyan-300/20 to-teal-300/20 rounded-full animate-pulse delay-1500"></div>
+          <div className="absolute top-2/3 left-1/4 w-20 h-20 bg-gradient-to-tr from-blue-200/15 to-cyan-200/15 rounded-xl animate-pulse delay-2500 transform rotate-12"></div>
+        </div>
+        
+        {/* Luxury Light Streams */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-0 left-1/5 w-px h-full bg-gradient-to-b from-teal-400 via-transparent to-blue-400 transform rotate-6"></div>
+          <div className="absolute top-0 right-1/4 w-px h-full bg-gradient-to-b from-blue-400 via-transparent to-cyan-400 transform -rotate-12"></div>
+          <div className="absolute top-0 left-3/4 w-px h-full bg-gradient-to-b from-cyan-300 via-transparent to-teal-300 transform rotate-3"></div>
+        </div>
+        
+        {/* Sophisticated Texture Pattern */}
+        <div 
+          className="absolute inset-0 opacity-8"
+          style={{
+            backgroundImage: `
+              radial-gradient(circle at 30% 20%, rgba(20,184,166,0.06) 0%, transparent 50%),
+              radial-gradient(circle at 80% 70%, rgba(59,130,246,0.04) 0%, transparent 50%),
+              radial-gradient(circle at 10% 90%, rgba(6,182,212,0.05) 0%, transparent 50%),
+              linear-gradient(135deg, transparent 48%, rgba(255,255,255,0.03) 49%, rgba(255,255,255,0.03) 51%, transparent 52%),
+              radial-gradient(2px 2px at 40px 50px, rgba(20,184,166,0.08), transparent),
+              radial-gradient(1px 1px at 80px 30px, rgba(59,130,246,0.06), transparent)
+            `,
+            backgroundSize: '600px 600px, 500px 500px, 400px 400px, 200px 200px, 150px 150px, 100px 100px'
+          }}
+        />
+        
+        {/* Floating Particles Network */}
+        <div className="absolute inset-0 opacity-20">
+          <div className="absolute top-1/6 left-1/3 w-1 h-1 bg-teal-400 rounded-full animate-pulse"></div>
+          <div className="absolute top-1/2 left-1/5 w-0.5 h-0.5 bg-blue-400 rounded-full animate-pulse delay-1000"></div>
+          <div className="absolute top-4/5 left-2/3 w-1.5 h-1.5 bg-cyan-400 rounded-full animate-pulse delay-2000"></div>
+          <div className="absolute top-2/5 right-1/4 w-0.5 h-0.5 bg-teal-500 rounded-full animate-pulse delay-3000"></div>
+          <div className="absolute top-3/4 right-1/3 w-1 h-1 bg-blue-300 rounded-full animate-pulse delay-1500"></div>
+          
+          {/* Connecting Lines */}
+          <svg className="absolute inset-0 w-full h-full opacity-40">
+            <defs>
+              <linearGradient id="formLineGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stopColor="rgba(20, 184, 166, 0.2)" />
+                <stop offset="50%" stopColor="rgba(59, 130, 246, 0.15)" />
+                <stop offset="100%" stopColor="rgba(6, 182, 212, 0.1)" />
+              </linearGradient>
+            </defs>
+            <line x1="33%" y1="16%" x2="20%" y2="50%" stroke="url(#formLineGradient)" strokeWidth="0.5" />
+            <line x1="20%" y1="50%" x2="66%" y2="80%" stroke="url(#formLineGradient)" strokeWidth="0.5" />
+            <line x1="66%" y1="80%" x2="75%" y2="40%" stroke="url(#formLineGradient)" strokeWidth="0.5" />
+            <line x1="75%" y1="40%" x2="66%" y2="75%" stroke="url(#formLineGradient)" strokeWidth="0.5" />
+          </svg>
+        </div>
+        
+        {/* Premium Shimmer Wave */}
+        <div className="absolute inset-0 opacity-20">
+          <div 
+            className="absolute inset-0 transform -skew-x-12"
+            style={{ 
+              background: 'linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.1) 30%, rgba(20,184,166,0.05) 50%, rgba(255,255,255,0.1) 70%, transparent 100%)',
+              animation: 'shimmerWave 12s ease-in-out infinite'
+            }}
+          ></div>
+        </div>
+      </div>
+      
+      {/* Enhanced Content Layer */}
+      <div className="relative z-10 backdrop-blur-[0.5px]">
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-12">
           <motion.h2 
@@ -298,6 +380,7 @@ export default function EnhancedMessageForm() {
             </form>
           </div>
         </motion.div>
+      </div>
       </div>
     </Section>
   );
