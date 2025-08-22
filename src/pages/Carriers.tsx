@@ -1,8 +1,10 @@
 import { Calendar, FileText } from 'lucide-react';
 import { Button } from '../components/ui/button';
-import NetworkCard, { type Network } from "../components/carriers/NetworkCard";
-import CarrierCard, { type Carrier } from "../components/carriers/CarrierCard";
-import NetworkFAQ from "../components/carriers/FAQ";
+import PremiumNetworkCard, { type Network } from "../components/carriers/PremiumNetworkCard";
+import LuxuryCarrierCard, { type Carrier } from "../components/carriers/LuxuryCarrierCard";
+import CarriersStatisticsSection from "../components/carriers/CarriersStatisticsSection";
+import PremiumCarriersFAQ from "../components/carriers/PremiumCarriersFAQ";
+import CarriersFooterCTA from "../components/carriers/CarriersFooterCTA";
 import StickyBottomCTA from "../components/carriers/StickyBottomCTA";
 import SEO from "../components/SEO";
 import { organizationSchema, localBusinessSchema, serviceSchema, websiteSchema } from "../utils/schema";
@@ -212,106 +214,102 @@ export default function CarriersPage() {
         </div>
       </header>
 
-      <main className="container mx-auto px-4 py-10 md:py-12">
-
-        {/* PPO Networks Section */}
-        <section className="mb-20 relative">
-          {/* Section background */}
-          <div className="absolute inset-0 bg-gradient-to-r from-white/50 via-brand-jade-500/5 to-white/50 rounded-3xl" />
-          
-          <div className="relative z-10">
-            <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-5xl font-bold mb-6 text-slate-900">
-                Find Your Doctor in Our Premium PPO Networks
-              </h2>
-              <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
-                Access over 1.3 million healthcare providers nationwide through our trusted PPO network partnerships in Florida, Michigan, and North Carolina.
-              </p>
+      {/* PPO Networks Section - Light Theme (20%) */}
+      <section className="relative py-20 overflow-hidden">
+        {/* Premium light background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-white via-slate-50 to-white">
+          {/* Radial dot pattern */}
+          <div 
+            className="absolute inset-0 opacity-40"
+            style={{
+              backgroundImage: `radial-gradient(circle at 2px 2px, rgba(34, 197, 94, 0.08) 1px, transparent 0)`,
+              backgroundSize: '32px 32px'
+            }}
+          />
+          {/* Gradient overlays */}
+          <div className="absolute inset-0 bg-gradient-to-r from-emerald-50/50 via-transparent to-cyan-50/50" />
+          <div className="absolute top-0 left-0 w-96 h-96 bg-emerald-100/20 rounded-full blur-3xl" />
+          <div className="absolute bottom-0 right-0 w-96 h-96 bg-cyan-100/20 rounded-full blur-3xl" />
+        </div>
+        
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            {/* Premium badge */}
+            <div className="inline-flex items-center gap-2 bg-emerald-100/80 rounded-full px-6 py-3 mb-8">
+              <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse" />
+              <span className="text-emerald-700 font-bold text-sm">Premium PPO Networks</span>
             </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mb-16">
-              {NETWORKS.map((network) => (
-                <NetworkCard key={network.name} network={network} />
-              ))}
-            </div>
-
-            <NetworkFAQ />
-          </div>
-        </section>
-
-        {/* Insurance Carriers Section */}
-        <section className="mb-20 relative">
-          {/* Section background */}
-          <div className="absolute inset-0 bg-gradient-to-r from-white/50 via-brand-sky-500/5 to-white/50 rounded-3xl" />
-          
-          <div className="relative z-10">
-            <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-5xl font-bold mb-6 text-slate-900">
-                Our Trusted Insurance Carriers
-              </h2>
-              <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
-                We partner with A+ rated insurance carriers to provide you with comprehensive coverage options and competitive rates across health, life, and supplemental insurance.
-              </p>
-            </div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10">
-              {CARRIERS.map((carrier) => (
-                <CarrierCard key={carrier.name} carrier={carrier} />
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Footer CTA Section */}
-        <section className="relative rounded-3xl border border-gray-200 bg-white p-12 text-center shadow-sm">
-          {/* Clean solid background */}
-          <div className="absolute inset-0 bg-gray-50" />
-          
-          <div className="relative z-10">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-slate-900">Ready to Find Your Perfect Coverage?</h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto mb-8">
-              Our licensed brokers are standing by to help you compare options and find the right insurance plan for your needs. Get personalized recommendations from carriers serving Florida, Michigan, and North Carolina.
-            </p>
-            
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-              <Button
-                asChild
-                size="lg"
-                className="bg-brand-jade-500 text-white hover:bg-brand-jade-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-jade-500 focus-visible:ring-offset-2 disabled:opacity-60 disabled:pointer-events-none bg-[#12bfae] hover:bg-[#0ea99d] px-10 py-5 text-lg"
-              >
-                <a
-                  href={BRAND.phoneTel}
-                  data-gtm="carriers_footer_cta"
-                  data-action="schedule"
-                >
-                  <Calendar className="h-6 w-6 mr-2" />
-                  Schedule Consultation
-                </a>
-              </Button>
-              
-              <Button
-                asChild
-                variant="outline"
-                size="lg"
-                className="border-2 border-brand-sky-500 bg-white text-brand-sky-600 hover:bg-brand-sky-50 hover:border-brand-sky-600 px-10 py-5 text-lg"
-              >
-                <a
-                  href="/quote"
-                  data-gtm="carriers_footer_cta" 
-                  data-action="quote"
-                >
-                  <FileText className="h-6 w-6 mr-2" />
-                  Get Quote
-                </a>
-              </Button>
-            </div>
-
-            <p className="text-sm text-slate-500 mt-8">
-              Licensed and bonded in FL, MI, and NC. Plans to expand nationwide coming soon.
+            <h2 className="text-4xl md:text-6xl font-bold mb-6 text-slate-900">
+              Find Your Doctor in Our
+              <span className="block gradient-text-luxury">Exclusive Network Partners</span>
+            </h2>
+            <p className="text-xl text-slate-700 max-w-4xl mx-auto leading-relaxed">
+              Access over 1.3 million healthcare providers nationwide through our trusted PPO network partnerships. 
+              Licensed and serving Florida, Michigan, and North Carolina with excellence.
             </p>
           </div>
-        </section>
-      </main>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
+            {NETWORKS.map((network, index) => (
+              <PremiumNetworkCard key={network.name} network={network} index={index} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Statistics Section - Dark Theme (15%) */}
+      <CarriersStatisticsSection />
+
+      {/* Insurance Carriers Section - Dark Theme (15%) */}
+      <section className="relative py-20 overflow-hidden">
+        {/* Dark luxury background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
+          {/* Pattern overlay */}
+          <div 
+            className="absolute inset-0 opacity-20"
+            style={{
+              backgroundImage: `radial-gradient(circle at 1px 1px, rgba(255,255,255,0.1) 1px, transparent 0)`,
+              backgroundSize: '20px 20px'
+            }}
+          />
+          {/* Gradient accents */}
+          <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/5 via-transparent to-cyan-500/5" />
+          <div className="absolute top-0 right-0 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl" />
+          <div className="absolute bottom-0 left-0 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl" />
+        </div>
+        
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            {/* Premium badge */}
+            <div className="inline-flex items-center gap-2 bg-emerald-500/20 rounded-full px-6 py-3 mb-8">
+              <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse" />
+              <span className="text-emerald-300 font-bold text-sm">A+ Rated Insurance Carriers</span>
+            </div>
+            
+            <h2 className="text-4xl md:text-6xl font-bold mb-6 text-white">
+              Our Trusted
+              <span className="block gradient-text-luxury">Insurance Partners</span>
+            </h2>
+            <p className="text-xl text-slate-300 max-w-4xl mx-auto leading-relaxed">
+              We partner exclusively with A+ rated insurance carriers to provide you with comprehensive coverage options, 
+              competitive rates, and reliable claim processing across health, life, and supplemental insurance.
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+            {CARRIERS.map((carrier, index) => (
+              <LuxuryCarrierCard key={carrier.name} carrier={carrier} index={index} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section - Dark Theme (10%) */}
+      <PremiumCarriersFAQ />
+
+      {/* Footer CTA Section - Light Theme (40%) */}
+      <CarriersFooterCTA />
 
       
     </>
