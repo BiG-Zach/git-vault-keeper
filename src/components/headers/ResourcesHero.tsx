@@ -16,11 +16,6 @@ export default function ResourcesHero() {
 
   const Content = (
     <div className="mx-auto max-w-5xl px-4 md:px-0 text-center relative">
-      {/* Premium Badge Overlay */}
-      <div className="absolute -top-8 right-4 md:right-8 bg-gradient-to-r from-emerald-500 to-emerald-600 text-white px-4 py-2 rounded-full text-sm font-medium shadow-lg flex items-center gap-2">
-        <Shield className="w-4 h-4" />
-        Licensed FL Broker W347851
-      </div>
 
       {/* Trust Badge */}
       <div className="mb-6 inline-flex items-center gap-2 bg-white/15 backdrop-blur-sm rounded-full px-5 py-2 text-white text-sm border border-white/20">
