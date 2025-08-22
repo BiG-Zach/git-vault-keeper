@@ -1,6 +1,6 @@
 import * as React from "react";
 import { motion, useReducedMotion } from "framer-motion";
-import { Send, Shield, Clock } from "lucide-react";
+import { Send, Shield, Clock, Check, AlertCircle } from "lucide-react";
 import Section from "../layout/Section";
 import { useState } from "react";
 
@@ -14,11 +14,66 @@ export default function EnhancedMessageForm() {
     insuranceType: '',
     message: ''
   });
+  
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [errorMessage, setErrorMessage] = useState('');
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Form submission logic would go here
-    alert("Thanks! I'll personally respond within 4 business hours.");
+    setIsSubmitting(true);
+    setSubmitStatus('idle');
+    setErrorMessage('');
+    
+    try {
+      // Split name into first and last name
+      const nameParts = formData.name.trim().split(' ');
+      const firstName = nameParts[0] || '';
+      const lastName = nameParts.slice(1).join(' ') || '';
+      
+      // Create payload matching the lead API format
+      const payload = {
+        firstName,
+        lastName,
+        email: formData.email,
+        phone: formData.phone,
+        zipCode: '00000', // Default as it's required by API
+        ages: 'Contact Form',
+        consentChecked: true,
+        consentText: `I consent to be contacted about insurance services. Message: ${formData.message}. State: ${formData.state}. Insurance Type: ${formData.insuranceType}.`,
+        landingUrl: window.location.href,
+        utm: {}
+      };
+      
+      const response = await fetch('/api/lead', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(payload),
+      });
+      
+      if (response.ok) {
+        setSubmitStatus('success');
+        setFormData({
+          name: '',
+          phone: '',
+          email: '',
+          state: '',
+          insuranceType: '',
+          message: ''
+        });
+      } else {
+        const errorData = await response.json();
+        throw new Error(errorData.error || 'Failed to send message');
+      }
+    } catch (error) {
+      console.error('Form submission error:', error);
+      setSubmitStatus('error');
+      setErrorMessage(error instanceof Error ? error.message : 'Failed to send message');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
@@ -179,13 +234,58 @@ export default function EnhancedMessageForm() {
 
               <button
                 type="submit"
-                className="group w-full px-8 py-4 bg-gradient-to-r from-brand-jade-600 to-brand-sky-600 text-white font-semibold rounded-xl shadow-luxury hover:shadow-xl transform hover:scale-105 transition-all duration-300"
+                disabled={isSubmitting}
+                className={`group w-full px-8 py-4 font-semibold rounded-xl shadow-luxury hover:shadow-xl transform transition-all duration-300 ${
+                  isSubmitting 
+                    ? 'bg-slate-400 cursor-not-allowed' 
+                    : submitStatus === 'success'
+                    ? 'bg-green-600 hover:bg-green-700'
+                    : 'bg-gradient-to-r from-brand-jade-600 to-brand-sky-600 hover:scale-105'
+                } text-white`}
               >
                 <div className="flex items-center justify-center gap-3">
-                  <Send className="w-5 h-5 group-hover:scale-110 transition-transform duration-300" />
-                  <span>Send Message to Zach</span>
+                  {isSubmitting ? (
+                    <>
+                      <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                      <span>Sending...</span>
+                    </>
+                  ) : submitStatus === 'success' ? (
+                    <>
+                      <Check className="w-5 h-5" />
+                      <span>Message Sent!</span>
+                    </>
+                  ) : (
+                    <>
+                      <Send className="w-5 h-5 group-hover:scale-110 transition-transform duration-300" />
+                      <span>Send Message to Zach</span>
+                    </>
+                  )}
                 </div>
               </button>
+              
+              {submitStatus === 'success' && (
+                <motion.div 
+                  className="flex items-center justify-center gap-2 text-green-700 bg-green-50 px-4 py-3 rounded-xl border border-green-200"
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <Check className="w-4 h-4" />
+                  <span className="font-medium">Message sent successfully! I'll respond within 4 business hours.</span>
+                </motion.div>
+              )}
+              
+              {submitStatus === 'error' && (
+                <motion.div 
+                  className="flex items-center justify-center gap-2 text-red-700 bg-red-50 px-4 py-3 rounded-xl border border-red-200"
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <AlertCircle className="w-4 h-4" />
+                  <span className="font-medium">{errorMessage || 'Failed to send message. Please try again.'}</span>
+                </motion.div>
+              )}
 
               <div className="text-center space-y-2">
                 <p className="text-sm font-medium text-slate-700">
