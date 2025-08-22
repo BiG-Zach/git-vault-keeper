@@ -119,18 +119,85 @@ export default function ResourcesHero() {
           <div className="absolute inset-0 bg-gradient-to-r from-blue-900/70 via-blue-800/60 to-blue-900/70" />
         </div>
 
+        {/* Animated Visual Masterpiece Elements */}
+        <div className="absolute inset-0 z-20 overflow-hidden pointer-events-none">
+          {/* Animated Gradient Orbs */}
+          <div className="absolute top-20 left-10 w-96 h-96 bg-gradient-to-r from-blue-500/30 to-cyan-400/30 rounded-full blur-3xl animate-pulse" />
+          <div className="absolute bottom-20 right-10 w-80 h-80 bg-gradient-to-r from-emerald-500/25 to-blue-500/25 rounded-full blur-3xl animate-pulse delay-1000" />
+          <div className="absolute top-1/2 left-1/3 w-64 h-64 bg-gradient-to-r from-yellow-400/20 to-orange-500/20 rounded-full blur-2xl animate-pulse delay-500" />
+          
+          {/* Premium Light Rays */}
+          <div className="absolute inset-0 opacity-30">
+            <div className="absolute top-0 left-1/4 w-px h-full bg-gradient-to-b from-transparent via-white/40 to-transparent transform rotate-12 animate-pulse" />
+            <div className="absolute top-0 right-1/3 w-px h-full bg-gradient-to-b from-transparent via-blue-300/40 to-transparent transform -rotate-12 animate-pulse delay-700" />
+            <div className="absolute top-0 left-2/3 w-px h-full bg-gradient-to-b from-transparent via-emerald-300/40 to-transparent transform rotate-6 animate-pulse delay-1400" />
+          </div>
+          
+          {/* Floating Geometric Elements */}
+          <div className="absolute top-24 right-20 w-8 h-8 border border-white/30 rotate-45 animate-bounce" style={{ animationDelay: '0s', animationDuration: '3s' }} />
+          <div className="absolute bottom-32 left-16 w-6 h-6 bg-white/20 rounded-full animate-bounce" style={{ animationDelay: '1s', animationDuration: '4s' }} />
+          <div className="absolute top-1/3 right-1/4 w-4 h-4 border-2 border-blue-300/40 rounded-full animate-bounce" style={{ animationDelay: '2s', animationDuration: '5s' }} />
+          <div className="absolute bottom-1/4 left-1/3 w-10 h-1 bg-gradient-to-r from-transparent via-white/30 to-transparent animate-pulse" />
+          
+          {/* Network Connection Lines with Glow */}
+          <svg className="absolute inset-0 w-full h-full opacity-20" viewBox="0 0 800 600">
+            <defs>
+              <filter id="glow">
+                <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                <feMerge> 
+                  <feMergeNode in="coloredBlur"/>
+                  <feMergeNode in="SourceGraphic"/>
+                </feMerge>
+              </filter>
+            </defs>
+            <path d="M100,100 Q400,50 700,150" stroke="rgba(59,130,246,0.4)" strokeWidth="1" fill="none" filter="url(#glow)">
+              <animate attributeName="opacity" values="0.2;0.6;0.2" dur="4s" repeatCount="indefinite" />
+            </path>
+            <path d="M150,300 Q450,200 650,400" stroke="rgba(16,185,129,0.4)" strokeWidth="1" fill="none" filter="url(#glow)">
+              <animate attributeName="opacity" values="0.6;0.2;0.6" dur="5s" repeatCount="indefinite" />
+            </path>
+            <path d="M50,450 Q350,350 600,500" stroke="rgba(236,72,153,0.4)" strokeWidth="1" fill="none" filter="url(#glow)">
+              <animate attributeName="opacity" values="0.3;0.7;0.3" dur="6s" repeatCount="indefinite" />
+            </path>
+          </svg>
+          
+          {/* Luxury Shimmer Waves */}
+          <div className="absolute inset-0 opacity-10">
+            <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent transform -skew-x-12 animate-pulse" style={{ 
+              background: 'linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.1) 25%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0.1) 75%, transparent 100%)',
+              animation: 'shimmer 8s infinite linear'
+            }} />
+          </div>
+        </div>
+
         {/* Content */}
         <div className="absolute inset-0 z-30 grid place-items-center">
-          <div className="w-full py-16 md:py-24">
+          <div className="w-full py-16 md:py-24 relative">
+            {/* Premium Backdrop Enhancement */}
+            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/5 to-transparent rounded-3xl pointer-events-none" />
+            
             {prefersReducedMotion ? (
               Content
             ) : (
-              <motion.div initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.45, ease: "easeOut" }}>
+              <motion.div 
+                initial={{ opacity: 0, y: 14 }} 
+                animate={{ opacity: 1, y: 0 }} 
+                transition={{ duration: 0.45, ease: "easeOut" }}
+                className="relative z-10"
+              >
                 {Content}
               </motion.div>
             )}
           </div>
         </div>
+
+        {/* Custom Shimmer Animation */}
+        <style>{`
+          @keyframes shimmer {
+            0% { transform: translateX(-100%) skewX(-12deg); }
+            100% { transform: translateX(200%) skewX(-12deg); }
+          }
+        `}</style>
       </div>
     </header>
   );
