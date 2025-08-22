@@ -1,7 +1,6 @@
 import * as React from "react";
 import { motion, useReducedMotion } from "framer-motion";
-import { Calendar } from "lucide-react";
-import Section from "../layout/Section";
+import { Shield } from "lucide-react";
 import { useParallax } from "../../lib/useParallax";
 
 const HAS_MULTI = true;
@@ -20,19 +19,33 @@ export default function OurProcessHero() {
   const [imgError, setImgError] = React.useState(false);
 
   const Content = (
-    <div className="mx-auto max-w-4xl px-4 md:px-0 text-center">
-      <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight text-white drop-shadow-[0_6px_24px_rgba(0,0,0,.65)] mb-6">
-        My Simple 4-Step Process to Get You Perfect Insurance Coverage
+    <div className="mx-auto max-w-5xl px-6 md:px-8 text-center">
+      {/* Professional badge */}
+      <motion.div
+        initial={{ opacity: 0, y: prefersReducedMotion ? 0 : 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
+        className="inline-flex items-center gap-2 bg-emerald-600/90 backdrop-blur-sm text-white px-6 py-3 rounded-full font-semibold text-sm mb-8 shadow-lg"
+      >
+        <Shield className="w-4 h-4" />
+        Licensed Broker Since 2016
+      </motion.div>
+      
+      <h1 className="text-5xl md:text-6xl lg:text-7xl font-luxury-serif font-bold tracking-tight leading-tight text-white drop-shadow-[0_8px_32px_rgba(0,0,0,.75)] mb-8">
+        My Simple 4-Step Process to Get You Perfect Coverage
       </h1>
-      <p className="text-xl md:text-2xl text-white/95 leading-relaxed drop-shadow-[0_3px_14px_rgba(0,0,0,.5)] mb-8 max-w-3xl mx-auto">
-        Getting the right insurance shouldn't be complicated. As your licensed broker serving Florida, Michigan, and North Carolina, I use my proven 4-step process to make it simple, fast, and stress-free.
+      <p className="text-2xl md:text-3xl text-white/95 leading-relaxed drop-shadow-[0_4px_16px_rgba(0,0,0,.6)] mb-6 max-w-4xl mx-auto font-light">
+        Getting the right insurance shouldn't be complicated.
+      </p>
+      <p className="text-xl md:text-2xl text-white/90 leading-relaxed drop-shadow-[0_3px_14px_rgba(0,0,0,.5)] max-w-4xl mx-auto">
+        As your licensed broker serving Florida, Michigan, and North Carolina, I use my proven process to make it simple, fast, and stress-free.
       </p>
     </div>
   );
 
   return (
-    <Section as="header" className="relative isolate px-0 py-0">
-      <div ref={ref} className="relative w-full min-h-[60vh] md:min-h-[70vh] overflow-hidden">
+    <header className="relative isolate w-full">
+      <div ref={ref} className="relative w-full min-h-[75vh] md:min-h-[85vh] overflow-hidden">
         {/* Parallax layer */}
         <div
           className="absolute inset-0 z-0 will-change-transform"
@@ -69,17 +82,17 @@ export default function OurProcessHero() {
 
         {/* Content */}
         <div className="absolute inset-0 z-30 grid place-items-center">
-          <div className="w-full py-16 md:py-24">
+          <div className="w-full py-20 md:py-28">
             {prefersReducedMotion ? (
               Content
             ) : (
-              <motion.div initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.45, ease: "easeOut" }}>
+              <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, ease: "easeOut" }}>
                 {Content}
               </motion.div>
             )}
           </div>
         </div>
       </div>
-    </Section>
+    </header>
   );
 }
