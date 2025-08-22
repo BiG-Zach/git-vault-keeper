@@ -160,7 +160,7 @@ const AuthoritySection = () => {
                   <div className="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-emerald-500/20 to-emerald-600/20 rounded-xl mb-4 group-hover:scale-110 transition-transform duration-300">
                     <achievement.icon className="w-6 h-6 text-emerald-400" />
                   </div>
-                  <div className="text-2xl lg:text-3xl font-bold text-white gradient-text-luxury mb-2">
+                  <div className="text-2xl lg:text-3xl font-bold text-white mb-2">
                     {achievement.number}
                   </div>
                   <div className="text-sm font-semibold text-slate-200 mb-1">
