@@ -240,7 +240,7 @@ export default function EnhancedMessageForm() {
                     ? 'bg-slate-400 cursor-not-allowed' 
                     : submitStatus === 'success'
                     ? 'bg-green-600 hover:bg-green-700'
-                    : 'bg-gradient-to-r from-brand-jade-600 to-brand-sky-600 hover:scale-105'
+                    : 'bg-gradient-to-r from-teal-600 to-blue-600 hover:scale-105'
                 } text-white`}
               >
                 <div className="flex items-center justify-center gap-3">
