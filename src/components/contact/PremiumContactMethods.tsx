@@ -56,7 +56,63 @@ export default function PremiumContactMethods() {
   };
 
   return (
-    <Section className="py-16 md:py-20 bg-gradient-to-br from-slate-50 via-white to-slate-100">
+    <Section className="relative py-16 md:py-20 overflow-hidden">
+      {/* Visual Masterpiece Background */}
+      <div className="absolute inset-0">
+        {/* Primary Luxury Gradient */}
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-50 via-white to-blue-50/30"></div>
+        
+        {/* Animated Gradient Orbs */}
+        <div className="absolute inset-0 opacity-60">
+          <div className="absolute top-0 left-0 w-96 h-96 bg-gradient-to-br from-teal-100/80 to-transparent rounded-full blur-3xl animate-pulse transform -translate-x-1/2 -translate-y-1/2"></div>
+          <div className="absolute top-1/4 right-0 w-80 h-80 bg-gradient-to-bl from-blue-100/70 to-transparent rounded-full blur-3xl animate-pulse delay-1000 transform translate-x-1/2"></div>
+          <div className="absolute bottom-0 left-1/3 w-72 h-72 bg-gradient-to-tr from-cyan-100/60 to-transparent rounded-full blur-3xl animate-pulse delay-2000"></div>
+        </div>
+        
+        {/* Premium Light Streaks */}
+        <div className="absolute inset-0 opacity-20">
+          <div className="absolute top-0 left-1/4 w-px h-full bg-gradient-to-b from-teal-300 via-transparent to-blue-300 transform rotate-12"></div>
+          <div className="absolute top-0 right-1/3 w-px h-full bg-gradient-to-b from-blue-300 via-transparent to-cyan-300 transform -rotate-6"></div>
+          <div className="absolute top-0 left-2/3 w-px h-full bg-gradient-to-b from-cyan-200 via-transparent to-teal-200 transform rotate-3"></div>
+        </div>
+        
+        {/* Floating Geometric Elements */}
+        <div className="absolute inset-0 opacity-15">
+          <div className="absolute top-1/4 left-1/5 w-32 h-32 border border-teal-200/40 rounded-full animate-spin" style={{ animationDuration: '20s' }}></div>
+          <div className="absolute top-2/3 right-1/4 w-24 h-24 border border-blue-200/30 rounded-full animate-spin" style={{ animationDuration: '25s', animationDirection: 'reverse' }}></div>
+          <div className="absolute top-1/2 left-2/3 w-16 h-16 bg-gradient-to-br from-cyan-200/20 to-teal-200/20 rounded-lg animate-pulse delay-1000 transform rotate-45"></div>
+        </div>
+        
+        {/* Luxury Texture Pattern */}
+        <div 
+          className="absolute inset-0 opacity-10"
+          style={{
+            backgroundImage: `
+              radial-gradient(circle at 20% 30%, rgba(20,184,166,0.08) 0%, transparent 50%),
+              radial-gradient(circle at 70% 60%, rgba(59,130,246,0.06) 0%, transparent 50%),
+              radial-gradient(circle at 50% 80%, rgba(6,182,212,0.05) 0%, transparent 50%),
+              linear-gradient(45deg, transparent 48%, rgba(255,255,255,0.05) 49%, rgba(255,255,255,0.05) 51%, transparent 52%),
+              radial-gradient(2px 2px at 30px 40px, rgba(20,184,166,0.1), transparent),
+              radial-gradient(1px 1px at 60px 80px, rgba(59,130,246,0.08), transparent)
+            `,
+            backgroundSize: '500px 500px, 400px 400px, 300px 300px, 100px 100px, 120px 120px, 80px 80px'
+          }}
+        />
+        
+        {/* Shimmer Effect */}
+        <div className="absolute inset-0 opacity-30">
+          <div 
+            className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent transform -skew-x-12 animate-pulse"
+            style={{ 
+              animation: 'shimmer 8s ease-in-out infinite',
+              background: 'linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.2) 50%, transparent 100%)'
+            }}
+          ></div>
+        </div>
+      </div>
+      
+      {/* Content with enhanced backdrop */}
+      <div className="relative z-10 backdrop-blur-[0.5px]">
       <div className="text-center mb-12">
         <motion.h2 
           className="text-3xl md:text-4xl lg:text-5xl font-luxury-serif font-bold text-slate-900 mb-6"
@@ -188,6 +244,7 @@ export default function PremiumContactMethods() {
           </ContactCard>
         </motion.div>
       </motion.div>
+      </div>
     </Section>
   );
 }
