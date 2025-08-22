@@ -13,10 +13,6 @@ export default function Header() {
           >
             Bradford Informed Guidance
           </a>
-          <div className="hidden lg:flex items-center gap-2 px-3 py-1 bg-emerald-50 rounded-full border border-emerald-200">
-            <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse" />
-            <span className="text-xs font-medium text-emerald-700">Licensed & Bonded</span>
-          </div>
         </div>
         {/* Desktop nav */}
         <nav className={`hidden md:flex items-center gap-8 text-sm ${styles.nav} ${headerMobile.mobileNav}`}>
