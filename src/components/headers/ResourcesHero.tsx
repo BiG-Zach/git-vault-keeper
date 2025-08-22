@@ -2,7 +2,7 @@ import * as React from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { Calendar, Search, Users, Shield } from "lucide-react";
 import { TypeAnimation } from 'react-type-animation';
-import Section from "../layout/Section";
+// Removed Section import for full-width design
 import { useParallax } from "../../lib/useParallax";
 
 const HAS_MULTI = false;
@@ -28,12 +28,16 @@ export default function ResourcesHero() {
         <span>Trusted by 1,000+ Florida families since 2016</span>
       </div>
 
-      <h1 className="text-3xl md:text-5xl font-bold tracking-tight leading-tight text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)] mb-4 font-luxury-sans">
-        Your Complete Insurance Knowledge Center
+        {/* Enhanced typography and stronger text effects */}
+      <h1 className="text-4xl md:text-6xl font-bold tracking-tight leading-tight text-white mb-6 font-luxury-serif">
+        <span className="bg-gradient-to-r from-white via-blue-100 to-white bg-clip-text text-transparent drop-shadow-[0_4px_12px_rgba(0,0,0,0.8)]">
+          Your Complete Insurance Knowledge Center
+        </span>
       </h1>
       
-      <p className="text-lg md:text-xl text-white/95 leading-relaxed mb-8 max-w-3xl mx-auto font-luxury-sans">
-        Expert guidance from Zach Bradford, Licensed FL Broker W347851 | 8+ Years Experience
+      <p className="text-xl md:text-2xl text-white/95 leading-relaxed mb-8 max-w-4xl mx-auto font-luxury-sans drop-shadow-[0_2px_6px_rgba(0,0,0,0.6)]">
+        Expert guidance from <span className="font-semibold text-yellow-300">Zach Bradford</span>, Licensed FL Broker W347851<br />
+        <span className="text-lg text-white/80">8+ Years Experience | 1,000+ Families Served</span>
       </p>
       
       {/* Executive Search Bar */}
@@ -70,8 +74,8 @@ export default function ResourcesHero() {
   );
 
   return (
-    <Section as="header" className="relative isolate px-0 py-0">
-      <div ref={ref} className="relative w-full min-h-[60vh] md:min-h-[70vh] overflow-hidden">
+    <header className="relative isolate w-full overflow-hidden">
+      <div ref={ref} className="relative w-full min-h-[70vh] md:min-h-[80vh] overflow-hidden">
         {/* Parallax layer */}
         <div
           className="absolute inset-0 z-0 will-change-transform"
@@ -88,7 +92,27 @@ export default function ResourcesHero() {
               style={LQIP ? { backgroundImage: `url(${LQIP})`, backgroundSize: "cover", backgroundPosition: "50% 50%" } : undefined}
             />
           ) : (
-            <div className="h-full w-full bg-gradient-to-br from-slate-900 to-slate-700" />
+            <div className="h-full w-full bg-gradient-to-br from-blue-900 via-slate-800 to-blue-900 relative">
+              {/* Amazing library pattern overlay */}
+              <div className="absolute inset-0 opacity-20" style={{
+                backgroundImage: `
+                  radial-gradient(circle at 25% 25%, rgba(255,215,0,0.3) 0%, transparent 50%),
+                  radial-gradient(circle at 75% 75%, rgba(0,150,255,0.3) 0%, transparent 50%),
+                  linear-gradient(45deg, rgba(255,255,255,0.1) 0%, transparent 100%)
+                `,
+                backgroundSize: '200px 200px, 300px 300px, 100% 100%'
+              }} />
+              {/* Executive knowledge pattern */}
+              <div className="absolute inset-0 opacity-10" style={{
+                backgroundImage: `repeating-linear-gradient(
+                  90deg,
+                  transparent,
+                  transparent 98px,
+                  rgba(255,215,0,0.4) 100px,
+                  rgba(255,215,0,0.4) 102px
+                )`
+              }} />
+            </div>
           )}
           
           {/* Luxury Executive Overlay */}
@@ -108,6 +132,6 @@ export default function ResourcesHero() {
           </div>
         </div>
       </div>
-    </Section>
+    </header>
   );
 }
