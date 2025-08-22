@@ -225,21 +225,21 @@ const LuxuryHeroForm = () => {
       {/* Premium Glow Effect */}
       <div className="absolute -inset-4 bg-gradient-to-br from-[hsl(157,72%,43%)]/20 via-[hsl(157,72%,43%)]/5 to-[hsl(224,100%,32%)]/15 rounded-3xl blur-xl opacity-60"></div>
       
-      {/* Main Form Container - Perfectly Aligned */}
-      <div className="relative bg-white/95 backdrop-blur-md rounded-3xl p-10 shadow-[0_25px_50px_-12px_rgba(0,0,0,0.25)] border border-white/30 transform hover:scale-[1.01] transition-all duration-500">
+      {/* Main Form Container - Compact */}
+      <div className="relative bg-white/95 backdrop-blur-md rounded-2xl p-6 shadow-[0_25px_50px_-12px_rgba(0,0,0,0.25)] border border-white/30 transform hover:scale-[1.01] transition-all duration-500 max-w-sm mx-auto">
         {/* Corner Accents for Premium Look */}
         <div className="absolute top-4 left-4 w-6 h-6 border-l-2 border-t-2 border-[hsl(157,72%,43%)]/30 rounded-tl-lg"></div>
         <div className="absolute top-4 right-4 w-6 h-6 border-r-2 border-t-2 border-[hsl(224,100%,32%)]/30 rounded-tr-lg"></div>
         <div className="absolute bottom-4 left-4 w-6 h-6 border-l-2 border-b-2 border-[hsl(157,72%,43%)]/30 rounded-bl-lg"></div>
         <div className="absolute bottom-4 right-4 w-6 h-6 border-r-2 border-b-2 border-[hsl(224,100%,32%)]/30 rounded-br-lg"></div>
         
-        <div className="text-center mb-6">
-          <h3 className="text-2xl font-bold text-slate-900 mb-2">Get Your Premium Quote</h3>
-          <p className="text-slate-600">{getStepMessage()}</p>
+        <div className="text-center mb-5">
+          <h3 className="text-lg font-bold text-slate-900 mb-1">Get Your Premium Quote</h3>
+          <p className="text-sm text-slate-600">{getStepMessage()}</p>
         </div>
         
         {/* Progress Bar */}
-        <div className="mb-6">
+        <div className="mb-4">
           <div className="flex justify-between items-center mb-2">
             <span className="text-xs text-slate-500">Step {currentStep} of 3</span>
             <span className="text-xs text-slate-500">{Math.round((currentStep / 3) * 100)}% Complete</span>
@@ -249,7 +249,7 @@ const LuxuryHeroForm = () => {
           </div>
         </div>
 
-        <form className="space-y-4">
+        <form className="space-y-3">
           <AnimatePresence mode="wait">
             {/* Step 1 */}
             {currentStep === 1 && (

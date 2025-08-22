@@ -30,7 +30,7 @@ const LuxuryHero = () => {
 
 
       <div className="relative z-10 container mx-auto px-4 lg:px-6">
-        <div className="grid lg:grid-cols-[1.2fr_0.8fr] gap-8 lg:gap-12 items-center">
+        <div className="grid lg:grid-cols-[1.5fr_0.5fr] gap-8 lg:gap-12 items-center">
           
           {/* Left: Premium Content - Strategically positioned for optimal viewing */}
           <div className="text-white relative max-w-2xl lg:max-w-none">
