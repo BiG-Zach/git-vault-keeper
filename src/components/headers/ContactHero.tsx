@@ -19,13 +19,68 @@ export default function ContactHero() {
   const [imgError, setImgError] = React.useState(false);
 
   const Content = (
-    <div className="mx-auto max-w-4xl px-4 md:px-0 text-center">
-      <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight text-white drop-shadow-[0_6px_24px_rgba(0,0,0,.65)] mb-6">
-        Get In Touch - Your Licensed Insurance Broker Ready to Help
-      </h1>
-      <p className="text-xl md:text-2xl text-white/95 leading-relaxed drop-shadow-[0_3px_14px_rgba(0,0,0,.5)] max-w-3xl mx-auto">
-        Questions about health or life insurance? I'm Zach Bradford, your licensed broker, and I'm here to help personally. Multiple ways to connect with me directly - no call centers, no middlemen.
-      </p>
+    <div className="relative mx-auto max-w-6xl px-6 md:px-8 text-center">
+      {/* Decorative Elements */}
+      <div className="absolute -top-20 -left-20 w-40 h-40 bg-gradient-to-br from-white/20 to-transparent rounded-full blur-3xl animate-pulse"></div>
+      <div className="absolute -bottom-20 -right-20 w-32 h-32 bg-gradient-to-tl from-blue-300/30 to-transparent rounded-full blur-2xl animate-pulse delay-1000"></div>
+      
+      {/* Main Content */}
+      <div className="relative z-10">
+        {/* Subtitle */}
+        <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full text-white/90 text-sm font-medium mb-6">
+          <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+          Licensed Insurance Broker • Available Now
+        </div>
+        
+        {/* Main Heading */}
+        <h1 className="text-4xl md:text-6xl lg:text-7xl font-luxury-serif font-bold tracking-tight leading-[1.1] text-white mb-8">
+          <span className="block">Get In Touch</span>
+          <span className="block bg-gradient-to-r from-white via-blue-100 to-teal-200 bg-clip-text text-transparent">
+            Your Licensed Insurance
+          </span>
+          <span className="block text-white">
+            Broker Ready to{" "}
+            <span className="relative inline-block">
+              <span className="relative z-10">Help</span>
+              <div className="absolute inset-0 bg-gradient-to-r from-teal-400 to-blue-400 transform -skew-x-12 -z-10 opacity-80"></div>
+            </span>
+          </span>
+        </h1>
+        
+        {/* Enhanced Description */}
+        <div className="max-w-4xl mx-auto mb-8">
+          <p className="text-xl md:text-2xl lg:text-3xl text-white/95 leading-relaxed font-light mb-4">
+            Questions about{" "}
+            <span className="font-semibold text-teal-200">health</span> or{" "}
+            <span className="font-semibold text-blue-200">life insurance</span>?
+          </p>
+          <p className="text-lg md:text-xl text-white/85 leading-relaxed">
+            I'm{" "}
+            <span className="font-bold text-white">Zach Bradford</span>, your licensed broker, 
+            and I'm here to help personally. Multiple ways to connect with me directly — 
+            <span className="italic">no call centers, no middlemen.</span>
+          </p>
+        </div>
+        
+        {/* Trust Indicators */}
+        <div className="flex flex-wrap justify-center items-center gap-6 md:gap-8 text-white/80">
+          <div className="flex items-center gap-2">
+            <div className="w-3 h-3 bg-green-400 rounded-full"></div>
+            <span className="text-sm font-medium">8+ Years Licensed</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <div className="w-3 h-3 bg-blue-400 rounded-full"></div>
+            <span className="text-sm font-medium">3 States Coverage</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <div className="w-3 h-3 bg-teal-400 rounded-full"></div>
+            <span className="text-sm font-medium">&lt;4hr Response</span>
+          </div>
+        </div>
+      </div>
+      
+      {/* Background Glow Effect */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none"></div>
     </div>
   );
 
@@ -66,9 +121,12 @@ export default function ContactHero() {
           )}
         </div>
 
+        {/* Content overlay for better readability */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/20 to-black/30 z-20"></div>
+        
         {/* Content */}
         <div className="absolute inset-0 z-30 grid place-items-center">
-          <div className="w-full py-16 md:py-24">
+          <div className="w-full py-20 md:py-28">
             {prefersReducedMotion ? (
               Content
             ) : (
