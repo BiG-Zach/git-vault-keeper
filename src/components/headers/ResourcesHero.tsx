@@ -17,11 +17,6 @@ export default function ResourcesHero() {
   const Content = (
     <div className="mx-auto max-w-5xl px-4 md:px-0 text-center relative">
 
-      {/* Trust Badge */}
-      <div className="mb-6 inline-flex items-center gap-2 bg-white/15 backdrop-blur-sm rounded-full px-5 py-2 text-white text-sm border border-white/20">
-        <span className="text-yellow-300">⭐</span>
-        <span>Trusted by 1,000+ Florida families since 2016</span>
-      </div>
 
         {/* Enhanced typography and stronger text effects */}
       <h1 className="text-4xl md:text-6xl font-bold tracking-tight leading-tight text-white mb-6 font-luxury-serif">
