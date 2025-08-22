@@ -15,16 +15,16 @@ function ContactCard({ icon, title, subtitle, children, className = "" }: Contac
   return (
     <div className={`group relative bg-white/70 backdrop-blur-sm border border-white/20 shadow-luxury rounded-2xl p-6 hover:bg-white/80 hover:shadow-xl transition-all duration-300 ${className}`}>
       {/* Gradient Border Effect */}
-      <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-brand-jade-500/10 to-brand-sky-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+      <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-teal-500/10 to-blue-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
       
       <div className="relative z-10">
         <div className="flex items-center gap-4 mb-6">
-          <div className="w-14 h-14 bg-gradient-to-br from-brand-jade-500 to-brand-sky-500 rounded-xl flex items-center justify-center text-white shadow-lg">
+          <div className="w-14 h-14 bg-gradient-to-br from-teal-500 to-blue-500 rounded-xl flex items-center justify-center text-white shadow-lg">
             {icon}
           </div>
           <div>
             <h3 className="text-xl font-bold text-slate-900 font-luxury-serif">{title}</h3>
-            {subtitle && <p className="text-brand-jade-600 font-semibold">{subtitle}</p>}
+            {subtitle && <p className="text-teal-600 font-semibold">{subtitle}</p>}
           </div>
         </div>
         {children}
@@ -56,7 +56,7 @@ export default function PremiumContactMethods() {
   };
 
   return (
-    <Section className="py-16 md:py-20 bg-gradient-to-br from-slate-50 via-white to-brand-opal-300/20">
+    <Section className="py-16 md:py-20 bg-gradient-to-br from-slate-50 via-white to-slate-100">
       <div className="text-center mb-12">
         <motion.h2 
           className="text-3xl md:text-4xl lg:text-5xl font-luxury-serif font-bold text-slate-900 mb-6"
@@ -94,21 +94,21 @@ export default function PremiumContactMethods() {
           >
             <div className="space-y-4 mb-6">
               <div className="flex items-center gap-3">
-                <CheckCircle className="w-5 h-5 text-brand-jade-500 flex-shrink-0" />
+                <CheckCircle className="w-5 h-5 text-teal-500 flex-shrink-0" />
                 <span className="text-slate-700">Speak with me personally, not a call center</span>
               </div>
               <div className="flex items-center gap-3">
-                <CheckCircle className="w-5 h-5 text-brand-jade-500 flex-shrink-0" />
+                <CheckCircle className="w-5 h-5 text-teal-500 flex-shrink-0" />
                 <span className="text-slate-700">Available by phone 9 AM - 6 PM EST, Monday-Friday</span>
               </div>
               <div className="flex items-center gap-3">
-                <CheckCircle className="w-5 h-5 text-brand-jade-500 flex-shrink-0" />
+                <CheckCircle className="w-5 h-5 text-teal-500 flex-shrink-0" />
                 <span className="text-slate-700">Text for after-hours questions - I'll respond quickly</span>
               </div>
             </div>
             <a
               href="tel:(689) 325-6570"
-              className="group/btn inline-flex items-center justify-center w-full px-6 py-4 bg-gradient-to-r from-brand-jade-600 to-brand-jade-500 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
+              className="group/btn inline-flex items-center justify-center w-full px-6 py-4 bg-gradient-to-r from-teal-600 to-teal-500 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
             >
               <Phone className="w-5 h-5 mr-2 group-hover/btn:scale-110 transition-transform duration-300" />
               Call Now
@@ -125,25 +125,25 @@ export default function PremiumContactMethods() {
           >
             <div className="space-y-4 mb-6">
               <div className="flex items-center gap-3">
-                <CheckCircle className="w-5 h-5 text-brand-jade-500 flex-shrink-0" />
+                <CheckCircle className="w-5 h-5 text-teal-500 flex-shrink-0" />
                 <span className="text-slate-700">Phone consultations available</span>
               </div>
               <div className="flex items-center gap-3">
-                <CheckCircle className="w-5 h-5 text-brand-jade-500 flex-shrink-0" />
+                <CheckCircle className="w-5 h-5 text-teal-500 flex-shrink-0" />
                 <span className="text-slate-700">Evenings and weekends by appointment</span>
               </div>
               <div className="flex items-center gap-3">
-                <CheckCircle className="w-5 h-5 text-brand-jade-500 flex-shrink-0" />
+                <CheckCircle className="w-5 h-5 text-teal-500 flex-shrink-0" />
                 <span className="text-slate-700">Usually available within 24 hours</span>
               </div>
               <div className="flex items-center gap-3">
-                <CheckCircle className="w-5 h-5 text-brand-jade-500 flex-shrink-0" />
+                <CheckCircle className="w-5 h-5 text-teal-500 flex-shrink-0" />
                 <span className="text-slate-700">Free 15-30 minute consultations</span>
               </div>
             </div>
             <a
               href="https://calendly.com/bradfordinformedguidance"
-              className="group/btn inline-flex items-center justify-center w-full px-6 py-4 bg-brand-sky-500 text-white font-semibold rounded-xl shadow-lg hover:bg-brand-sky-600 hover:shadow-xl transform hover:scale-105 transition-all duration-300"
+              className="group/btn inline-flex items-center justify-center w-full px-6 py-4 bg-blue-500 text-white font-semibold rounded-xl shadow-lg hover:bg-blue-600 hover:shadow-xl transform hover:scale-105 transition-all duration-300"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -162,19 +162,19 @@ export default function PremiumContactMethods() {
           >
             <div className="space-y-4 mb-6">
               <div className="flex items-center gap-3">
-                <CheckCircle className="w-5 h-5 text-brand-jade-500 flex-shrink-0" />
+                <CheckCircle className="w-5 h-5 text-teal-500 flex-shrink-0" />
                 <span className="text-slate-700">Detailed questions welcome - I read every email</span>
               </div>
               <div className="flex items-center gap-3">
-                <CheckCircle className="w-5 h-5 text-brand-jade-500 flex-shrink-0" />
+                <CheckCircle className="w-5 h-5 text-teal-500 flex-shrink-0" />
                 <span className="text-slate-700">Personal response within 4 business hours</span>
               </div>
               <div className="flex items-center gap-3">
-                <CheckCircle className="w-5 h-5 text-brand-jade-500 flex-shrink-0" />
+                <CheckCircle className="w-5 h-5 text-teal-500 flex-shrink-0" />
                 <span className="text-slate-700">Secure document sharing available</span>
               </div>
               <div className="flex items-center gap-3">
-                <CheckCircle className="w-5 h-5 text-brand-jade-500 flex-shrink-0" />
+                <CheckCircle className="w-5 h-5 text-teal-500 flex-shrink-0" />
                 <span className="text-slate-700">Perfect for non-urgent questions</span>
               </div>
             </div>
