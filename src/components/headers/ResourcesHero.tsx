@@ -26,7 +26,7 @@ export default function ResourcesHero() {
       </h1>
       
       <p className="text-xl md:text-2xl text-white/95 leading-relaxed mb-8 max-w-4xl mx-auto font-luxury-sans drop-shadow-[0_2px_6px_rgba(0,0,0,0.6)]">
-        Expert guidance from <span className="font-semibold text-yellow-300">Zach Bradford</span>, Licensed FL Broker W347851<br />
+        Expert guidance from <span className="font-semibold text-blue-200">Zach Bradford</span>, Licensed FL Broker W347851<br />
         <span className="text-lg text-white/80">8+ Years Experience | 1,000+ Families Served</span>
       </p>
       
