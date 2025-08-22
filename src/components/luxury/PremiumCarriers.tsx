@@ -97,10 +97,6 @@ const PremiumCarriers = () => {
               className="group relative"
             >
               <div className="bg-white rounded-2xl p-6 lg:p-8 border border-slate-200 hover:border-emerald-300 hover:shadow-premium transition-all duration-300 h-full flex flex-col items-center justify-center group-hover:scale-105">
-                {/* Rating Badge */}
-                <div className="absolute top-3 right-3 bg-emerald-100 text-emerald-800 text-xs font-bold px-2 py-1 rounded-full">
-                  {carrier.rating}
-                </div>
                 
                 {/* Logo */}
                 <div className="w-full max-w-[120px] h-12 lg:h-16 flex items-center justify-center mb-4">
