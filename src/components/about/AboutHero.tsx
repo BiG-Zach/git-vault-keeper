@@ -39,15 +39,8 @@ export default function AboutHero() {
   );
 
   return (
-    <Section as="header" className="relative isolate px-0 py-0">
-      {/* Luxury background layer */}
-      <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
-        <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-black/10" />
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-brand-jade-500/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-brand-sky-500/8 rounded-full blur-3xl" />
-      </div>
-      
-      <div ref={ref} className="relative w-full min-h-[52vh] md:min-h-[58vh] overflow-hidden z-10">
+    <header className="relative isolate w-full">
+      <div ref={ref} className="relative w-full min-h-[52vh] md:min-h-[58vh] overflow-hidden">
         {/* Parallax layer */}
         <div
           className="absolute inset-0 z-0 will-change-transform"
@@ -99,6 +92,6 @@ export default function AboutHero() {
           </div>
         </div>
       </div>
-    </Section>
+    </header>
   );
 }
