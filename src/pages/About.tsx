@@ -442,8 +442,6 @@ export default function AboutPage() {
                     <span className="bg-gradient-to-r from-[hsl(157,72%,43%)] via-[hsl(157,72%,53%)] to-[hsl(224,100%,32%)] bg-clip-text text-transparent">
                       Trusted Health & Life Insurance Solutions
                     </span>
-                    <br />
-                    <span className="text-white font-luxury-serif">Backed by Best Insurance Group</span>
                   </h2>
                   <p className="text-xl md:text-2xl text-white/80 max-w-3xl mx-auto leading-relaxed font-light">
                     5 years of trusted collaboration serving families nationwide with 
