@@ -136,11 +136,12 @@ const TestimonialsCarousel = () => {
   const current = testimonials[currentIndex];
 
   return (
-    <section className="py-16 lg:py-24 bg-gradient-to-b from-slate-50 to-white relative overflow-hidden">
-      {/* Background Effects */}
+    <section className="relative py-20 lg:py-24 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 overflow-hidden">
+      {/* Background Effects - Matching AuthoritySection */}
       <div className="absolute inset-0">
-        <div className="absolute top-1/3 left-1/4 w-64 h-64 bg-emerald-200/20 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/3 right-1/4 w-64 h-64 bg-blue-200/20 rounded-full blur-3xl" />
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute bottom-1/4 right-1/3 w-64 h-64 bg-blue-500/10 rounded-full blur-2xl" />
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle_at_center,_rgba(16,185,129,0.1)_1px,_transparent_1px)] bg-[length:40px_40px]" />
       </div>
 
       <div className="container mx-auto px-4 lg:px-6 relative z-10">
@@ -152,16 +153,16 @@ const TestimonialsCarousel = () => {
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="text-center mb-12 lg:mb-16"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-100 text-emerald-800 text-sm font-medium mb-6">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/20 text-emerald-300 text-sm font-medium mb-6 backdrop-blur-sm border border-emerald-500/20">
             <Star className="w-4 h-4" />
             <span>Real Stories, Real Savings</span>
           </div>
           
-          <h2 className="text-3xl lg:text-5xl font-bold text-slate-900 mb-6 font-luxury-serif">
-            What <span className="gradient-text-luxury">Families</span> Say
+          <h2 className="text-3xl lg:text-5xl font-bold text-white mb-6 font-luxury-serif">
+            What <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400">Families</span> Say
           </h2>
           
-          <p className="text-lg text-slate-600 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-lg text-white/80 max-w-3xl mx-auto leading-relaxed">
             Don't just take our word for it. Hear from real families across Florida, Michigan, and North Carolina who've found better coverage and significant savings.
           </p>
         </motion.div>
@@ -174,7 +175,7 @@ const TestimonialsCarousel = () => {
           transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
           className="relative max-w-4xl mx-auto"
         >
-          <div className="bg-white rounded-3xl shadow-luxury border border-slate-200 overflow-hidden">
+          <div className="bg-white/5 backdrop-blur-md rounded-3xl border border-white/10 overflow-hidden shadow-2xl">
             {/* Testimonial Content */}
             <div className="relative h-[400px] lg:h-[350px]">
               <AnimatePresence mode="wait" custom={direction}>
@@ -207,23 +208,23 @@ const TestimonialsCarousel = () => {
                         )}
                       </div>
                       
-                      <h3 className="text-xl font-bold text-slate-900 mb-1">
+                      <h3 className="text-xl font-bold text-white mb-1">
                         {current.name}
                       </h3>
                       
                       {current.title && (
-                        <p className="text-sm text-slate-600 mb-2">
+                        <p className="text-sm text-white/70 mb-2">
                           {current.title}
                         </p>
                       )}
                       
-                      <div className="flex items-center justify-center lg:justify-start gap-1 text-sm text-slate-500 mb-3">
+                      <div className="flex items-center justify-center lg:justify-start gap-1 text-sm text-white/60 mb-3">
                         <MapPin className="w-4 h-4" />
                         <span>{current.location}</span>
                       </div>
                       
                       {current.savings && (
-                        <div className="inline-flex items-center gap-1 px-3 py-1 bg-emerald-100 text-emerald-800 rounded-full text-sm font-semibold">
+                        <div className="inline-flex items-center gap-1 px-3 py-1 bg-emerald-500/20 text-emerald-300 rounded-full text-sm font-semibold border border-emerald-500/30 backdrop-blur-sm">
                           <span>Saved {current.savings}</span>
                         </div>
                       )}
@@ -234,19 +235,19 @@ const TestimonialsCarousel = () => {
                       {/* Rating */}
                       <div className="flex items-center gap-1 mb-4 justify-center lg:justify-start">
                         {[...Array(current.rating)].map((_, i) => (
-                          <Star key={i} className="w-5 h-5 text-yellow-400 fill-current" />
+                          <Star key={i} className="w-5 h-5 text-emerald-400 fill-current" />
                         ))}
                       </div>
                       
                       {/* Quote */}
-                      <blockquote className="text-lg lg:text-xl text-slate-700 leading-relaxed text-center lg:text-left font-medium">
+                      <blockquote className="text-lg lg:text-xl text-white leading-relaxed text-center lg:text-left font-medium">
                         "{current.quote}"
                       </blockquote>
                       
                       {/* State Badge */}
                       <div className="mt-6 flex justify-center lg:justify-start">
-                        <div className="inline-flex items-center gap-2 px-3 py-1 bg-slate-100 rounded-full text-sm text-slate-600">
-                          <div className="w-2 h-2 bg-emerald-500 rounded-full" />
+                        <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/10 rounded-full text-sm text-white/80 backdrop-blur-sm border border-white/20">
+                          <div className="w-2 h-2 bg-emerald-400 rounded-full" />
                           <span>Verified {current.state} Customer</span>
                         </div>
                       </div>
@@ -257,14 +258,14 @@ const TestimonialsCarousel = () => {
             </div>
 
             {/* Navigation Controls */}
-            <div className="flex items-center justify-between p-6 bg-slate-50 border-t border-slate-200">
+            <div className="flex items-center justify-between p-6 bg-white/5 border-t border-white/10 backdrop-blur-sm">
               {/* Previous Button */}
               <button
                 onClick={prevTestimonial}
-                className="flex items-center justify-center w-12 h-12 bg-white hover:bg-emerald-50 border border-slate-200 hover:border-emerald-300 rounded-xl transition-all duration-300 group"
+                className="flex items-center justify-center w-12 h-12 bg-white/10 hover:bg-emerald-500/20 border border-white/20 hover:border-emerald-500/30 rounded-xl transition-all duration-300 group backdrop-blur-sm"
                 aria-label="Previous testimonial"
               >
-                <ChevronLeft className="w-5 h-5 text-slate-600 group-hover:text-emerald-600" />
+                <ChevronLeft className="w-5 h-5 text-white/70 group-hover:text-emerald-300" />
               </button>
 
               {/* Dots Indicator */}
@@ -275,8 +276,8 @@ const TestimonialsCarousel = () => {
                     onClick={() => goToTestimonial(index)}
                     className={`w-3 h-3 rounded-full transition-all duration-300 ${
                       index === currentIndex
-                        ? 'bg-emerald-500 scale-125'
-                        : 'bg-slate-300 hover:bg-slate-400'
+                        ? 'bg-emerald-400 scale-125'
+                        : 'bg-white/30 hover:bg-white/50'
                     }`}
                     aria-label={`Go to testimonial ${index + 1}`}
                   />
@@ -286,10 +287,10 @@ const TestimonialsCarousel = () => {
               {/* Next Button */}
               <button
                 onClick={nextTestimonial}
-                className="flex items-center justify-center w-12 h-12 bg-white hover:bg-emerald-50 border border-slate-200 hover:border-emerald-300 rounded-xl transition-all duration-300 group"
+                className="flex items-center justify-center w-12 h-12 bg-white/10 hover:bg-emerald-500/20 border border-white/20 hover:border-emerald-500/30 rounded-xl transition-all duration-300 group backdrop-blur-sm"
                 aria-label="Next testimonial"
               >
-                <ChevronRight className="w-5 h-5 text-slate-600 group-hover:text-emerald-600" />
+                <ChevronRight className="w-5 h-5 text-white/70 group-hover:text-emerald-300" />
               </button>
             </div>
           </div>
@@ -304,17 +305,17 @@ const TestimonialsCarousel = () => {
           className="mt-12 lg:mt-16 text-center"
         >
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-3xl mx-auto">
-            <div className="bg-white rounded-xl p-6 shadow-premium border border-slate-200">
-              <div className="text-3xl font-bold text-emerald-600 mb-2">4.9/5</div>
-              <div className="text-sm text-slate-600">Average Rating</div>
+            <div className="bg-white/5 backdrop-blur-md rounded-xl p-6 border border-white/10 hover:bg-white/10 transition-all duration-300">
+              <div className="text-3xl font-bold text-emerald-400 mb-2">4.9/5</div>
+              <div className="text-sm text-white/70">Average Rating</div>
             </div>
-            <div className="bg-white rounded-xl p-6 shadow-premium border border-slate-200">
-              <div className="text-3xl font-bold text-emerald-600 mb-2">98%</div>
-              <div className="text-sm text-slate-600">Satisfaction Rate</div>
+            <div className="bg-white/5 backdrop-blur-md rounded-xl p-6 border border-white/10 hover:bg-white/10 transition-all duration-300">
+              <div className="text-3xl font-bold text-emerald-400 mb-2">98%</div>
+              <div className="text-sm text-white/70">Satisfaction Rate</div>
             </div>
-            <div className="bg-white rounded-xl p-6 shadow-premium border border-slate-200">
-              <div className="text-3xl font-bold text-emerald-600 mb-2">$195</div>
-              <div className="text-sm text-slate-600">Avg Monthly Savings</div>
+            <div className="bg-white/5 backdrop-blur-md rounded-xl p-6 border border-white/10 hover:bg-white/10 transition-all duration-300">
+              <div className="text-3xl font-bold text-emerald-400 mb-2">$195</div>
+              <div className="text-sm text-white/70">Avg Monthly Savings</div>
             </div>
           </div>
         </motion.div>

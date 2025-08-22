@@ -121,44 +121,6 @@ const PremiumCarriers = () => {
           ))}
         </motion.div>
 
-        {/* Awards & Certifications */}
-        <motion.div
-          initial={{ opacity: 0, y: prefersReducedMotion ? 0 : 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
-          className="mt-12 lg:mt-16 text-center"
-        >
-          <div className="bg-gradient-to-r from-slate-50 to-emerald-50 rounded-2xl p-8 lg:p-12 border border-slate-200">
-            <h3 className="text-xl lg:text-2xl font-bold text-slate-900 mb-6">Industry Recognition</h3>
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 items-center">
-              <div className="text-center">
-                <div className="w-16 h-16 bg-white rounded-xl flex items-center justify-center mx-auto mb-3 shadow-sm">
-                  <span className="text-2xl font-bold text-emerald-600">A+</span>
-                </div>
-                <p className="text-sm font-medium text-slate-700">BBB Rating</p>
-              </div>
-              <div className="text-center">
-                <div className="w-16 h-16 bg-white rounded-xl flex items-center justify-center mx-auto mb-3 shadow-sm">
-                  <Star className="w-8 h-8 text-yellow-500" />
-                </div>
-                <p className="text-sm font-medium text-slate-700">5-Star Service</p>
-              </div>
-              <div className="text-center">
-                <div className="w-16 h-16 bg-white rounded-xl flex items-center justify-center mx-auto mb-3 shadow-sm">
-                  <Shield className="w-8 h-8 text-blue-600" />
-                </div>
-                <p className="text-sm font-medium text-slate-700">Licensed Professional</p>
-              </div>
-              <div className="text-center">
-                <div className="w-16 h-16 bg-white rounded-xl flex items-center justify-center mx-auto mb-3 shadow-sm">
-                  <TrendingUp className="w-8 h-8 text-emerald-600" />
-                </div>
-                <p className="text-sm font-medium text-slate-700">Industry Leader</p>
-              </div>
-            </div>
-          </div>
-        </motion.div>
       </div>
     </section>
   );
