@@ -60,11 +60,14 @@ export default function CarriersStatisticsSection() {
           viewport={{ once: true }}
         >
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            Trusted by Thousands Across
+            Trusted by <span className="text-emerald-400">Thousands of Families</span> Across
             <span className="block text-emerald-400">Three States</span>
           </h2>
           <p className="text-xl text-slate-300 max-w-3xl mx-auto">
-            Our proven track record speaks for itself. Licensed and bonded in Florida, Michigan, and North Carolina.
+            My <span className="text-white font-semibold">proven track record delivers results</span>. 
+            <span className="text-emerald-300 font-medium">Licensed and bonded professional</span> serving 
+            <span className="text-white font-medium">Florida, Michigan, and North Carolina</span> with 
+            <span className="text-emerald-300">expanding nationwide reach</span>.
           </p>
         </motion.div>
 
