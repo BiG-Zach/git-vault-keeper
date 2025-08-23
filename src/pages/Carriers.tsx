@@ -206,10 +206,6 @@ export default function CarriersPage() {
               Access 6 extensive PPO networks • A+ rated carriers • Next-day approval • Licensed & bonded in FL, MI, NC
             </p>
             
-            {/* Trust Indicator - Enhanced visibility */}
-            <p className="text-base md:text-lg font-medium text-white opacity-80 mt-4 max-w-2xl mx-auto">
-              20+ Years Combined Experience • Licensed & Bonded Insurance Broker
-            </p>
           </div>
         </div>
       </header>
