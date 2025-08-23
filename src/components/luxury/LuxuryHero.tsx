@@ -44,12 +44,12 @@ const LuxuryHero = () => {
                 className="space-y-6"
               >
                 <h1 className="text-4xl lg:text-6xl xl:text-7xl font-bold leading-[0.95] tracking-tight">
-                  <span className="block font-luxury-serif mb-2">Private Health &</span>
-                  <span className="block gradient-text-luxury font-luxury-serif mb-4">Life Guidance.</span>
-                  <span className="block text-2xl lg:text-3xl xl:text-4xl font-normal text-white/90 mt-6">
-                    Clear. Fast. Year-Round.
-                  </span>
+                  <span className="block font-luxury-serif mb-4">Affordable Health &</span>
+                  <span className="block gradient-text-luxury font-luxury-serif">Life Insurance</span>
                 </h1>
+                <h2 className="text-2xl lg:text-3xl xl:text-4xl font-normal text-white/90 mt-6">
+                  Compare Today's Top-Rated Plans in 60 Seconds - No Medical Exams
+                </h2>
               </motion.div>
 
               <motion.div
@@ -59,7 +59,7 @@ const LuxuryHero = () => {
                 className="space-y-6"
               >
                 <p className="text-lg lg:text-xl text-white/90 leading-relaxed max-w-2xl lg:max-w-xl">
-                  Medically underwritten options with PPO networks. Expert guidance from licensed professionals who understand your unique needs.
+                  Stop overpaying for health insurance. As a licensed broker, I've helped thousands of families find premium PPO coverage with $0 deductibles and next-day approval. Get your personalized quote now and discover why families save an average of $2,400 annually.
                 </p>
 
               </motion.div>
