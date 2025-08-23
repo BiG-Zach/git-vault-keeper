@@ -104,285 +104,165 @@ function ActiveStateTemplate({ entry, codeUC, slug }: { entry: any; codeUC: stri
         </div>
       </section>
 
-      {/* State Insurance Landscape Section */}
+      {/* Comprehensive State Coverage Section */}
       <section className="section bg-slate-50">
         <div className="container-default">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-12"
+            className="text-center mb-16"
           >
             <h2 className="text-3xl font-bold text-slate-900 mb-4">
-              {entry.name} Health Insurance Market Overview
+              {entry.name} Insurance Market & Coverage
             </h2>
             <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-              Understanding the unique insurance landscape and regulations in {entry.name}
+              Licensed expertise, comprehensive coverage, and state-specific knowledge for {entry.name} residents
             </p>
           </motion.div>
           
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="space-y-6"
-            >
-              <div className="bg-white rounded-xl p-6 shadow-sm border border-slate-200">
-                <h3 className="text-lg font-semibold text-slate-900 mb-3">Market Statistics</h3>
-                <div className="space-y-3">
-                  <div className="flex justify-between items-center">
-                    <span className="text-slate-600">Average Monthly Premium</span>
-                    <span className="font-semibold text-emerald-600">
-                      {codeUC === 'FL' ? '$385' : codeUC === 'MI' ? '$425' : '$395'}
-                    </span>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <span className="text-slate-600">Uninsured Rate</span>
-                    <span className="font-semibold">
-                      {codeUC === 'FL' ? '13.2%' : codeUC === 'MI' ? '6.1%' : '10.8%'}
-                    </span>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <span className="text-slate-600">Available Carriers</span>
-                    <span className="font-semibold">15+</span>
-                  </div>
-                </div>
-              </div>
-              
-              <div className="bg-white rounded-xl p-6 shadow-sm border border-slate-200">
-                <h3 className="text-lg font-semibold text-slate-900 mb-3">Key Considerations</h3>
-                <ul className="space-y-2">
-                  {codeUC === 'FL' && (
-                    <>
-                      <li className="flex items-start gap-2">
-                        <CheckCircle className="w-4 h-4 text-emerald-600 mt-0.5 flex-shrink-0" />
-                        <span className="text-slate-600">Hurricane and natural disaster coverage options</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <CheckCircle className="w-4 h-4 text-emerald-600 mt-0.5 flex-shrink-0" />
-                        <span className="text-slate-600">Year-round enrollment periods for qualifying events</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <CheckCircle className="w-4 h-4 text-emerald-600 mt-0.5 flex-shrink-0" />
-                        <span className="text-slate-600">Strong network coverage in major metro areas</span>
-                      </li>
-                    </>
-                  )}
-                  {codeUC === 'MI' && (
-                    <>
-                      <li className="flex items-start gap-2">
-                        <CheckCircle className="w-4 h-4 text-emerald-600 mt-0.5 flex-shrink-0" />
-                        <span className="text-slate-600">Robust Medicaid expansion program</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <CheckCircle className="w-4 h-4 text-emerald-600 mt-0.5 flex-shrink-0" />
-                        <span className="text-slate-600">Strong employer-sponsored insurance market</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <CheckCircle className="w-4 h-4 text-emerald-600 mt-0.5 flex-shrink-0" />
-                        <span className="text-slate-600">Comprehensive mental health coverage requirements</span>
-                      </li>
-                    </>
-                  )}
-                  {codeUC === 'NC' && (
-                    <>
-                      <li className="flex items-start gap-2">
-                        <CheckCircle className="w-4 h-4 text-emerald-600 mt-0.5 flex-shrink-0" />
-                        <span className="text-slate-600">Growing marketplace with increasing competition</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <CheckCircle className="w-4 h-4 text-emerald-600 mt-0.5 flex-shrink-0" />
-                        <span className="text-slate-600">Rural coverage initiatives and telehealth expansion</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <CheckCircle className="w-4 h-4 text-emerald-600 mt-0.5 flex-shrink-0" />
-                        <span className="text-slate-600">State-specific tax credits and subsidies</span>
-                      </li>
-                    </>
-                  )}
-                </ul>
-              </div>
-            </motion.div>
-            
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="bg-white rounded-xl p-8 shadow-lg border border-slate-200"
-            >
-              <h3 className="text-2xl font-bold text-slate-900 mb-6">Why Choose Local Expertise?</h3>
-              <div className="space-y-6">
-                <div className="flex gap-4">
-                  <div className="flex-shrink-0 w-12 h-12 bg-emerald-100 rounded-lg flex items-center justify-center">
-                    <Shield className="w-6 h-6 text-emerald-600" />
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-slate-900 mb-2">State-Licensed Advisors</h4>
-                    <p className="text-slate-600">Our team is fully licensed and trained on {entry.name}-specific regulations and requirements.</p>
-                  </div>
-                </div>
-                
-                <div className="flex gap-4">
-                  <div className="flex-shrink-0 w-12 h-12 bg-emerald-100 rounded-lg flex items-center justify-center">
-                    <TrendingUp className="w-6 h-6 text-emerald-600" />
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-slate-900 mb-2">Market Knowledge</h4>
-                    <p className="text-slate-600">Deep understanding of carrier networks, pricing trends, and coverage options in {entry.name}.</p>
-                  </div>
-                </div>
-                
-                <div className="flex gap-4">
-                  <div className="flex-shrink-0 w-12 h-12 bg-emerald-100 rounded-lg flex items-center justify-center">
-                    <Users className="w-6 h-6 text-emerald-600" />
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-slate-900 mb-2">Local Support</h4>
-                    <p className="text-slate-600">Ongoing assistance with claims, renewals, and changes specific to your {entry.name} coverage.</p>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* Coverage Areas & Benefits Section */}
-      <section className="section">
-        <div className="container-default">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-12"
-          >
-            <h2 className="text-3xl font-bold text-slate-900 mb-4">
-              Comprehensive Coverage Across {entry.name}
-            </h2>
-            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-              We serve families and individuals throughout {entry.name} with personalized insurance solutions
-            </p>
-          </motion.div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-            {/* Major Cities Coverage */}
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
+            {/* Market Statistics */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="bg-gradient-to-br from-emerald-50 to-emerald-100 rounded-xl p-6"
+              className="bg-white rounded-xl p-8 shadow-lg border border-slate-200"
             >
-              <h3 className="text-lg font-semibold text-slate-900 mb-4">Major Metro Areas</h3>
-              <ul className="space-y-2">
-                {codeUC === 'FL' && (
-                  <>
-                    <li className="text-slate-700">• Miami-Dade County</li>
-                    <li className="text-slate-700">• Tampa Bay Area</li>
-                    <li className="text-slate-700">• Orlando & Central Florida</li>
-                    <li className="text-slate-700">• Jacksonville</li>
-                    <li className="text-slate-700">• Fort Lauderdale</li>
-                  </>
-                )}
-                {codeUC === 'MI' && (
-                  <>
-                    <li className="text-slate-700">• Detroit Metro</li>
-                    <li className="text-slate-700">• Grand Rapids</li>
-                    <li className="text-slate-700">• Ann Arbor</li>
-                    <li className="text-slate-700">• Lansing</li>
-                    <li className="text-slate-700">• Kalamazoo</li>
-                  </>
-                )}
-                {codeUC === 'NC' && (
-                  <>
-                    <li className="text-slate-700">• Charlotte Metro</li>
-                    <li className="text-slate-700">• Raleigh-Durham</li>
-                    <li className="text-slate-700">• Greensboro</li>
-                    <li className="text-slate-700">• Asheville</li>
-                    <li className="text-slate-700">• Wilmington</li>
-                  </>
-                )}
-              </ul>
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-12 h-12 bg-emerald-100 rounded-lg flex items-center justify-center">
+                  <TrendingUp className="w-6 h-6 text-emerald-600" />
+                </div>
+                <h3 className="text-xl font-semibold text-slate-900">Market Overview</h3>
+              </div>
+              <div className="space-y-4">
+                <div className="flex justify-between items-center">
+                  <span className="text-slate-600">Average Monthly Premium</span>
+                  <span className="font-semibold text-emerald-600">
+                    {codeUC === 'FL' ? '$385' : codeUC === 'MI' ? '$425' : '$395'}
+                  </span>
+                </div>
+                <div className="flex justify-between items-center">
+                  <span className="text-slate-600">Available Carriers</span>
+                  <span className="font-semibold">15+</span>
+                </div>
+                <div className="flex justify-between items-center">
+                  <span className="text-slate-600">Uninsured Rate</span>
+                  <span className="font-semibold">
+                    {codeUC === 'FL' ? '13.2%' : codeUC === 'MI' ? '6.1%' : '10.8%'}
+                  </span>
+                </div>
+              </div>
             </motion.div>
 
-            {/* State-Specific Benefits */}
+            {/* State Advantages */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="bg-gradient-to-br from-sky-50 to-sky-100 rounded-xl p-6"
+              className="bg-white rounded-xl p-8 shadow-lg border border-slate-200"
             >
-              <h3 className="text-lg font-semibold text-slate-900 mb-4">{entry.name} Advantages</h3>
-              <ul className="space-y-2">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-12 h-12 bg-sky-100 rounded-lg flex items-center justify-center">
+                  <Star className="w-6 h-6 text-sky-600" />
+                </div>
+                <h3 className="text-xl font-semibold text-slate-900">{entry.name} Benefits</h3>
+              </div>
+              <ul className="space-y-3">
                 {codeUC === 'FL' && (
                   <>
-                    <li className="text-slate-700">• No state income tax</li>
-                    <li className="text-slate-700">• Year-round enrollment options</li>
-                    <li className="text-slate-700">• Telehealth expansion</li>
-                    <li className="text-slate-700">• Senior-friendly benefits</li>
+                    <li className="flex items-start gap-2">
+                      <CheckCircle className="w-4 h-4 text-emerald-600 mt-0.5 flex-shrink-0" />
+                      <span className="text-slate-600">No state income tax savings</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <CheckCircle className="w-4 h-4 text-emerald-600 mt-0.5 flex-shrink-0" />
+                      <span className="text-slate-600">Hurricane coverage options</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <CheckCircle className="w-4 h-4 text-emerald-600 mt-0.5 flex-shrink-0" />
+                      <span className="text-slate-600">Year-round enrollment periods</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <CheckCircle className="w-4 h-4 text-emerald-600 mt-0.5 flex-shrink-0" />
+                      <span className="text-slate-600">Senior-friendly benefits</span>
+                    </li>
                   </>
                 )}
                 {codeUC === 'MI' && (
                   <>
-                    <li className="text-slate-700">• Expanded Medicaid eligibility</li>
-                    <li className="text-slate-700">• Strong auto insurance coordination</li>
-                    <li className="text-slate-700">• Mental health parity</li>
-                    <li className="text-slate-700">• Prescription drug programs</li>
+                    <li className="flex items-start gap-2">
+                      <CheckCircle className="w-4 h-4 text-emerald-600 mt-0.5 flex-shrink-0" />
+                      <span className="text-slate-600">Expanded Medicaid program</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <CheckCircle className="w-4 h-4 text-emerald-600 mt-0.5 flex-shrink-0" />
+                      <span className="text-slate-600">Mental health coverage</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <CheckCircle className="w-4 h-4 text-emerald-600 mt-0.5 flex-shrink-0" />
+                      <span className="text-slate-600">Auto insurance coordination</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <CheckCircle className="w-4 h-4 text-emerald-600 mt-0.5 flex-shrink-0" />
+                      <span className="text-slate-600">Prescription drug programs</span>
+                    </li>
                   </>
                 )}
                 {codeUC === 'NC' && (
                   <>
-                    <li className="text-slate-700">• State reinsurance program</li>
-                    <li className="text-slate-700">• Rural health initiatives</li>
-                    <li className="text-slate-700">• Cancer coverage programs</li>
-                    <li className="text-slate-700">• Preventive care focus</li>
+                    <li className="flex items-start gap-2">
+                      <CheckCircle className="w-4 h-4 text-emerald-600 mt-0.5 flex-shrink-0" />
+                      <span className="text-slate-600">State reinsurance program</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <CheckCircle className="w-4 h-4 text-emerald-600 mt-0.5 flex-shrink-0" />
+                      <span className="text-slate-600">Rural health initiatives</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <CheckCircle className="w-4 h-4 text-emerald-600 mt-0.5 flex-shrink-0" />
+                      <span className="text-slate-600">Cancer coverage programs</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <CheckCircle className="w-4 h-4 text-emerald-600 mt-0.5 flex-shrink-0" />
+                      <span className="text-slate-600">Preventive care focus</span>
+                    </li>
                   </>
                 )}
               </ul>
             </motion.div>
 
-            {/* Carrier Network */}
+            {/* Local Expertise */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
-              className="bg-gradient-to-br from-purple-50 to-purple-100 rounded-xl p-6"
+              className="bg-white rounded-xl p-8 shadow-lg border border-slate-200"
             >
-              <h3 className="text-lg font-semibold text-slate-900 mb-4">Top Carrier Partners</h3>
-              <ul className="space-y-2">
-                <li className="text-slate-700">• Blue Cross Blue Shield</li>
-                <li className="text-slate-700">• UnitedHealthcare</li>
-                <li className="text-slate-700">• Aetna</li>
-                <li className="text-slate-700">• Cigna</li>
-                <li className="text-slate-700">• Local regional plans</li>
-              </ul>
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
+                  <Shield className="w-6 h-6 text-purple-600" />
+                </div>
+                <h3 className="text-xl font-semibold text-slate-900">Licensed Expertise</h3>
+              </div>
+              <div className="space-y-4">
+                <div>
+                  <h4 className="font-semibold text-slate-900 mb-2">State-Licensed Since {licenseDate}</h4>
+                  <p className="text-slate-600 text-sm">Full licensing and regulatory compliance in {entry.name}</p>
+                </div>
+                <div>
+                  <h4 className="font-semibold text-slate-900 mb-2">Local Market Knowledge</h4>
+                  <p className="text-slate-600 text-sm">Deep understanding of {entry.name} carriers and networks</p>
+                </div>
+                <div>
+                  <h4 className="font-semibold text-slate-900 mb-2">Ongoing Support</h4>
+                  <p className="text-slate-600 text-sm">Claims assistance and coverage management</p>
+                </div>
+              </div>
             </motion.div>
           </div>
-
-          {/* Quick Start CTA */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="bg-white rounded-2xl shadow-lg p-8 text-center max-w-2xl mx-auto"
-          >
-            <h3 className="text-2xl font-bold text-slate-900 mb-4">
-              Ready to Explore Your {entry.name} Options?
-            </h3>
-            <p className="text-slate-600 mb-6">
-              Get personalized quotes from our licensed advisors and discover the best coverage for your needs.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button as="a" href="/" variant="primary" size="lg">
-                Get My Quote
-              </Button>
-              <Button as="a" href={`tel:+16893256570`} variant="outline" size="lg">
-                Call (689) 325-6570
-              </Button>
-            </div>
-          </motion.div>
         </div>
       </section>
 
