@@ -28,12 +28,11 @@ export default function AboutHero() {
     <div className="mx-auto max-w-4xl px-4 md:px-0">
       <h1 className="text-[2rem] md:text-[3rem] lg:text-[3rem] font-[700] tracking-[-0.02em] leading-tight text-white" 
           style={{ textShadow: '0 1px 0 rgba(255,255,255,0.7), 0 2px 6px rgba(0,0,0,0.45), 0 0 24px rgba(255,255,255,0.15)' }}>
-        Guidance You Can Trust.<br className="hidden md:block" /> Protection You Can Rely On.
+        Expert Guidance You Can Trust.<br className="hidden md:block" /> Comprehensive Protection You Can Count On.
       </h1>
       <p className="mt-4 text-[1.25rem] md:text-[1.25rem] font-[400] text-white/95 leading-[1.4]" 
          style={{ textShadow: '0 1px 4px rgba(0,0,0,0.25)' }}>
-        We help self-employed professionals, families, and early retirees make confident insurance decisions.
-        Licensed in FL, MI, and NC — expanding nationwide.
+        I'm your dedicated insurance broker, specializing in health and life coverage for self-employed professionals, families, and those planning retirement. Licensed across multiple states and expanding nationwide, I cut through the confusion to find you the best coverage at the lowest rates.
       </p>
     </div>
   );
