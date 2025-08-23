@@ -107,7 +107,9 @@ export default function CarriersFooterCTA() {
                   className="bg-gradient-to-r from-emerald-500 to-emerald-600 text-white hover:from-emerald-600 hover:to-emerald-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2 px-12 py-6 text-lg font-bold rounded-2xl transition-all duration-300 hover:scale-105 shadow-xl hover:shadow-2xl border-0"
                 >
                   <a
-                    href={BRAND.phoneTel}
+                    href="https://calendly.com/bradfordinformedguidance"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     data-gtm="carriers_footer_cta"
                     data-action="schedule"
                   >
