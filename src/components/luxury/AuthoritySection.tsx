@@ -86,38 +86,6 @@ const AuthoritySection = () => {
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_60%_20%,_rgba(59,130,246,0.15)_0.6px,_transparent_0.6px)] bg-[length:50px_50px]" style={{ transform: 'rotate(-20deg)' }} />
           </div>
 
-          {/* Advanced Network Connections */}
-          <svg className="absolute inset-0 w-full h-full opacity-15" preserveAspectRatio="none">
-            <defs>
-              <linearGradient id="authorityNetworkGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stopColor="rgba(16,185,129,0.4)" />
-                <stop offset="50%" stopColor="rgba(34,211,238,0.3)" />
-                <stop offset="100%" stopColor="rgba(59,130,246,0.2)" />
-              </linearGradient>
-              <filter id="authorityGlow">
-                <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
-                <feMerge> 
-                  <feMergeNode in="coloredBlur"/>
-                  <feMergeNode in="SourceGraphic"/>
-                </feMerge>
-              </filter>
-            </defs>
-            <line x1="12%" y1="20%" x2="38%" y2="35%" stroke="url(#authorityNetworkGradient)" strokeWidth="1" filter="url(#authorityGlow)" />
-            <line x1="38%" y1="35%" x2="70%" y2="25%" stroke="url(#authorityNetworkGradient)" strokeWidth="0.8" filter="url(#authorityGlow)" />
-            <line x1="70%" y1="25%" x2="88%" y2="45%" stroke="url(#authorityNetworkGradient)" strokeWidth="0.9" filter="url(#authorityGlow)" />
-            <line x1="22%" y1="70%" x2="55%" y2="80%" stroke="url(#authorityNetworkGradient)" strokeWidth="0.7" filter="url(#authorityGlow)" />
-            <line x1="55%" y1="80%" x2="85%" y2="70%" stroke="url(#authorityNetworkGradient)" strokeWidth="0.8" filter="url(#authorityGlow)" />
-            <line x1="15%" y1="50%" x2="45%" y2="60%" stroke="url(#authorityNetworkGradient)" strokeWidth="0.6" filter="url(#authorityGlow)" />
-            <circle cx="12%" cy="20%" r="3" fill="rgba(16,185,129,0.6)" filter="url(#authorityGlow)" />
-            <circle cx="38%" cy="35%" r="2.5" fill="rgba(34,211,238,0.5)" filter="url(#authorityGlow)" />
-            <circle cx="70%" cy="25%" r="3.5" fill="rgba(59,130,246,0.4)" filter="url(#authorityGlow)" />
-            <circle cx="88%" cy="45%" r="2.5" fill="rgba(16,185,129,0.5)" filter="url(#authorityGlow)" />
-            <circle cx="22%" cy="70%" r="3" fill="rgba(34,211,238,0.4)" filter="url(#authorityGlow)" />
-            <circle cx="55%" cy="80%" r="2" fill="rgba(59,130,246,0.5)" filter="url(#authorityGlow)" />
-            <circle cx="85%" cy="70%" r="3" fill="rgba(16,185,129,0.5)" filter="url(#authorityGlow)" />
-            <circle cx="15%" cy="50%" r="2.5" fill="rgba(34,211,238,0.4)" filter="url(#authorityGlow)" />
-            <circle cx="45%" cy="60%" r="2" fill="rgba(59,130,246,0.3)" filter="url(#authorityGlow)" />
-          </svg>
 
         </div>
       </div>
