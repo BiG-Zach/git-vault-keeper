@@ -4,6 +4,7 @@ import Section from "../layout/Section";
 import BrandGrade from "../media/BrandGrade";
 import { useParallax } from "../../lib/useParallax";
 import { useScrollProgress } from "../../lib/useScrollProgress";
+import { Star, Shield, Award } from "lucide-react";
 
 const HAS_MULTI = true; // set to true when you add @1x/@2x webp/jpg
 const SINGLE_FALLBACK = "/images/hero/about-hero-desktop.webp"; // drop one image here for now
@@ -21,19 +22,89 @@ export default function AboutHero() {
   const page = useScrollProgress(); // 0..1 over the whole page
   const [imgError, setImgError] = React.useState(false);
 
-  // Scroll-reactive strength: 75 → 95 as user scrolls
-  const strength = prefersReducedMotion ? 85 : Math.round(75 + page * 20);
-
   const Content = (
-    <div className="mx-auto max-w-4xl px-4 md:px-0">
-      <h1 className="text-[2rem] md:text-[3rem] lg:text-[3rem] font-[700] tracking-[-0.02em] leading-tight text-white" 
-          style={{ textShadow: '0 1px 0 rgba(255,255,255,0.7), 0 2px 6px rgba(0,0,0,0.45), 0 0 24px rgba(255,255,255,0.15)' }}>
-        Expert Guidance You Can Trust.<br className="hidden md:block" /> Comprehensive Protection You Can Count On.
-      </h1>
-      <p className="mt-4 text-[1.25rem] md:text-[1.25rem] font-[400] text-white/95 leading-[1.4]" 
-         style={{ textShadow: '0 1px 4px rgba(0,0,0,0.25)' }}>
-        I'm your dedicated insurance broker, specializing in health and life coverage for self-employed professionals, families, and those planning retirement. Licensed across multiple states and expanding nationwide, I cut through the confusion to find you the best coverage at the lowest rates.
-      </p>
+    <div className="relative mx-auto max-w-6xl px-4 md:px-6">
+      {/* Floating Trust Badges */}
+      <div className="absolute -top-20 right-4 md:right-8 z-10">
+        <div className="flex flex-col gap-3 opacity-90">
+          <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-4 py-2 flex items-center gap-2">
+            <Star className="w-4 h-4 text-yellow-400 fill-current" />
+            <span className="text-white text-sm font-medium">Licensed Professional</span>
+          </div>
+          <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-4 py-2 flex items-center gap-2 ml-4">
+            <Shield className="w-4 h-4 text-blue-400" />
+            <span className="text-white text-sm font-medium">Multi-State Authority</span>
+          </div>
+        </div>
+      </div>
+
+      {/* Main Content */}
+      <div className="relative">
+        {/* Premium Badge */}
+        <div className="mb-6 flex justify-center md:justify-start">
+          <div className="bg-gradient-to-r from-white/20 to-white/10 backdrop-blur-sm border border-white/30 rounded-full px-6 py-2 flex items-center gap-2">
+            <Award className="w-5 h-5 text-amber-400" />
+            <span className="text-white/90 text-sm font-medium tracking-wide">PREMIUM INSURANCE BROKER</span>
+          </div>
+        </div>
+
+        {/* Headlines with Playfair Display */}
+        <h1 
+          className="font-playfair text-[2.5rem] md:text-[4rem] lg:text-[4.5rem] font-bold tracking-tight leading-[0.9] text-white mb-6"
+          style={{ 
+            background: 'linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            backgroundClip: 'text',
+            textShadow: '0 2px 8px rgba(0,0,0,0.3), 0 0 40px rgba(255,255,255,0.1)'
+          }}
+        >
+          Expert Guidance<br />
+          <span className="text-white/95 font-playfair italic">You Can Trust</span>
+        </h1>
+
+        <h2 
+          className="font-sans text-[1.5rem] md:text-[2rem] font-medium text-white/90 mb-8 leading-tight"
+          style={{ textShadow: '0 2px 6px rgba(0,0,0,0.4)' }}
+        >
+          Comprehensive Protection You Can Count On
+        </h2>
+
+        {/* Enhanced Body Text */}
+        <div className="max-w-2xl">
+          <p className="text-[1.1rem] md:text-[1.3rem] font-light text-white/95 leading-[1.6] mb-8" 
+             style={{ textShadow: '0 1px 4px rgba(0,0,0,0.3)' }}>
+            I'm your dedicated insurance broker, specializing in <em className="font-medium text-white">health and life coverage</em> for self-employed professionals, families, and those planning retirement.
+          </p>
+          
+          <div className="flex flex-wrap gap-6 text-white/90 text-sm">
+            <div className="flex items-center gap-2">
+              <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+              <span>Licensed Across Multiple States</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse"></div>
+              <span>Expanding Nationwide</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <div className="w-2 h-2 bg-purple-400 rounded-full animate-pulse"></div>
+              <span>Best Rates Guaranteed</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Call-to-Action */}
+        <div className="mt-10 flex flex-col sm:flex-row gap-4">
+          <button className="group bg-white text-gray-900 px-8 py-4 rounded-full font-semibold text-lg hover:bg-white/90 transition-all duration-300 hover:scale-105 hover:shadow-2xl">
+            Get Your Free Quote
+            <span className="ml-2 group-hover:translate-x-1 transition-transform duration-300">→</span>
+          </button>
+          <button className="group bg-white/10 backdrop-blur-sm border-2 border-white/30 text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-white/20 transition-all duration-300 hover:scale-105">
+            Schedule Consultation
+            <span className="ml-2 group-hover:translate-x-1 transition-transform duration-300">→</span>
+          </button>
+        </div>
+      </div>
     </div>
   );
 
@@ -76,7 +147,8 @@ export default function AboutHero() {
           )}
         </div>
 
-        {/* Removed overlays and effects to show clean hero image */}
+        {/* Enhanced Radial Gradient Overlay */}
+        <div className="absolute inset-0 z-20 bg-gradient-radial from-black/10 via-black/30 to-black/50" />
 
         {/* Content */}
         <div className="absolute inset-0 z-30 grid place-items-end">
@@ -84,7 +156,13 @@ export default function AboutHero() {
             {prefersReducedMotion ? (
               Content
             ) : (
-              <motion.div initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.45, ease: "easeOut" }}>
+              <motion.div 
+                initial={{ opacity: 0, y: 40 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
+                className="w-full"
+                style={{ willChange: 'transform, opacity' }}
+              >
                 {Content}
               </motion.div>
             )}
