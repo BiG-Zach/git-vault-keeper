@@ -49,10 +49,6 @@ export default function AboutPage() {
               <div className="space-y-8">
                 {/* Professional Header */}
                 <div>
-                  <div className="inline-flex items-center gap-3 px-6 py-3 bg-[hsl(157,72%,43%)]/10 rounded-full border border-[hsl(157,72%,43%)]/20 mb-8">
-                    <div className="w-2 h-2 bg-[hsl(157,72%,43%)] rounded-full animate-pulse"></div>
-                    <span className="text-sm font-semibold text-slate-700">Your Insurance Expert</span>
-                  </div>
                   
                   <h1 className="font-luxury-serif text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mb-6 text-slate-900">
                     Meet Your Insurance Advocate & 
