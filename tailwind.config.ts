@@ -24,6 +24,7 @@ const config: Config = {
       },
       backgroundImage: {
         "aurora-sweep": "linear-gradient(135deg, #12bfae 0%, #2aa8ff 55%, #1989ee 100%)",
+        "gradient-radial": "radial-gradient(circle, var(--tw-gradient-stops))",
         "triple-scrim":
           "linear-gradient(180deg, rgba(7,17,27,0.70) 0%, rgba(7,17,27,0.35) 28%, rgba(7,17,27,0.00) 46%), linear-gradient(180deg, rgba(7,17,27,0.00) 55%, rgba(7,17,27,0.35) 78%, rgba(7,17,27,0.70) 100%), radial-gradient(1200px 600px at 60% 20%, rgba(42,168,255,0.18), rgba(42,168,255,0) 60%)",
       },

@@ -16,7 +16,7 @@ const LuxuryHero = () => {
 
   return (
     <section className="relative min-h-[90vh] lg:min-h-[85vh] flex items-center overflow-hidden">
-      {/* Premium Background */}
+      {/* Premium Background with Vignette */}
       <div className="absolute inset-0">
         <img
           src="/hero-family.webp"
@@ -25,7 +25,8 @@ const LuxuryHero = () => {
           loading="eager"
           fetchPriority="high"
         />
-        
+        {/* Subtle radial gradient overlay for natural vignetting */}
+        <div className="absolute inset-0 bg-gradient-radial from-black/10 via-black/20 to-black/40"></div>
       </div>
 
 
@@ -40,14 +41,22 @@ const LuxuryHero = () => {
               <motion.div
                 initial={{ opacity: 0, y: prefersReducedMotion ? 0 : 30 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, ease: "easeOut" }}
+                transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
                 className="space-y-6"
               >
-                <h1 className="text-4xl lg:text-6xl xl:text-7xl font-bold leading-[0.95] tracking-tight">
-                  <span className="block font-luxury-serif mb-4">Affordable Health &</span>
+                <h1 className="text-6xl lg:text-7xl xl:text-8xl font-luxury-serif font-bold leading-[0.95] tracking-[-0.02em]">
+                  <span className="block mb-4 bg-gradient-to-br from-white to-gray-50 bg-clip-text text-transparent">Affordable Health &</span>
                   <span className="block gradient-text-luxury font-luxury-serif">Life Insurance</span>
                 </h1>
-                <h2 className="text-2xl lg:text-3xl xl:text-4xl font-normal text-white/90 mt-6">
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, x: prefersReducedMotion ? 0 : -30 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8, delay: 0.5, ease: "easeOut" }}
+                className="space-y-6"
+              >
+                <h2 className="text-2xl lg:text-3xl xl:text-4xl font-luxury-sans font-normal text-white/95 leading-relaxed">
                   Compare Today's Top-Rated Plans in 60 Seconds - No Medical Exams
                 </h2>
               </motion.div>
@@ -55,10 +64,10 @@ const LuxuryHero = () => {
               <motion.div
                 initial={{ opacity: 0, y: prefersReducedMotion ? 0 : 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+                transition={{ duration: 0.8, delay: 0.7, ease: "easeOut" }}
                 className="space-y-6"
               >
-                <p className="text-lg lg:text-xl text-white/90 leading-relaxed max-w-2xl lg:max-w-xl">
+                <p className="text-lg lg:text-xl font-luxury-sans text-white/90 leading-relaxed max-w-2xl lg:max-w-xl antialiased">
                   Stop overpaying for health insurance. As a licensed broker, I've helped thousands of families find premium PPO coverage with $0 deductibles and next-day approval. Get your personalized quote now and discover why families save an average of $2,400 annually.
                 </p>
 
