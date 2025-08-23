@@ -122,7 +122,6 @@ const AuthoritySection = () => {
           {/* Luxury Shimmer Effects */}
           <div className="absolute inset-0 opacity-10">
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/15 to-transparent transform -skew-x-12 animate-pulse" style={{ animationDuration: '10s' }} />
-            <div className="absolute inset-0 bg-gradient-to-l from-transparent via-emerald-200/8 to-transparent transform skew-x-6 animate-pulse" style={{ animationDelay: '3s', animationDuration: '12s' }} />
           </div>
         </div>
       </div>
