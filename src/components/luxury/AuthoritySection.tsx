@@ -69,15 +69,6 @@ const AuthoritySection = () => {
             <div className="absolute top-0 left-2/3 w-px h-full bg-gradient-to-b from-transparent via-blue-300/35 to-transparent transform -rotate-8 animate-pulse" style={{ animationDelay: '3s', animationDuration: '7s' }} />
           </div>
 
-          {/* Floating Geometric Elements */}
-          <div className="absolute inset-0 opacity-20">
-            <div className="absolute top-1/6 left-1/6 w-4 h-4 border-2 border-emerald-400/60 rotate-45 animate-bounce" style={{ animationDelay: '1s', animationDuration: '4s' }} />
-            <div className="absolute top-1/2 right-1/6 w-5 h-5 border border-cyan-400/50 rounded-full animate-ping" style={{ animationDelay: '2s', animationDuration: '5s' }} />
-            <div className="absolute bottom-1/4 left-1/3 w-3 h-3 bg-blue-400/40 rounded-full animate-pulse" style={{ animationDelay: '3s' }} />
-            <div className="absolute top-1/4 right-1/3 w-6 h-6 border-2 border-emerald-500/40 transform rotate-45 animate-spin" style={{ animationDuration: '15s' }} />
-            <div className="absolute bottom-1/6 right-1/5 w-3 h-3 bg-gradient-to-br from-cyan-400/30 to-blue-400/20 rounded-full animate-ping" style={{ animationDelay: '4s', animationDuration: '6s' }} />
-            <div className="absolute top-3/4 left-1/5 w-4 h-4 border border-emerald-300/40 rounded-full animate-bounce" style={{ animationDelay: '0.5s', animationDuration: '3.5s' }} />
-          </div>
 
           {/* Premium Dot Matrix Pattern */}
           <div className="absolute inset-0 opacity-12">
