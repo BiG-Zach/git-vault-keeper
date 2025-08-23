@@ -27,9 +27,9 @@ export const stateMetadata: Record<StateCodeSlug, StateMetaEntry> = {
   al: {
     name: 'Alabama',
     seo: {
-      title: 'Private Health Insurance in Alabama',
-      description: 'Compare private health plans in Alabama. Get clear guidance on medically underwritten coverage, PPO options, and costs. Schedule a no-pressure consultation.',
-      keywords: kw(['Alabama private health insurance', 'AL health plans', 'PPO coverage', 'medically underwritten plans', 'affordable premiums', 'family health']),
+      title: 'Alabama Health Insurance Broker | Bradford Informed Guidance',
+      description: 'Expert health & life insurance guidance in Alabama. Compare plans, understand options, and get personalized recommendations from licensed professionals.',
+      keywords: kw(['Alabama health insurance broker', 'AL insurance agent', 'health insurance guidance', 'life insurance quotes', 'personalized insurance advice', 'licensed advisor']),
     },
   },
   ak: {
@@ -100,9 +100,9 @@ export const stateMetadata: Record<StateCodeSlug, StateMetaEntry> = {
     name: 'Florida',
     available: true,
     seo: {
-      title: 'Private Health Insurance in Florida',
-      description: 'Explore medically underwritten plans available in Florida. Compare coverage options and learn how to reduce monthly costs with expert, local guidance.',
-      keywords: kw(['Florida private health insurance', 'FL PPO plans', 'medically underwritten coverage', 'affordable premiums', 'individual plans', 'family health']),
+      title: 'Florida Health Insurance Broker | Bradford Informed Guidance',
+      description: 'Licensed Florida health & life insurance broker. Get expert guidance, compare top carriers, and find the right coverage for your family\'s needs.',
+      keywords: kw(['Florida health insurance broker', 'FL insurance agent', 'licensed insurance advisor', 'health insurance guidance', 'life insurance quotes', 'Tampa insurance']),
     },
   },
   ga: {
@@ -205,9 +205,9 @@ export const stateMetadata: Record<StateCodeSlug, StateMetaEntry> = {
     name: 'Michigan',
     available: true,
     seo: {
-      title: 'Private Health Insurance in Michigan',
-      description: 'Discover Michigan private health plans. Get guidance on medically underwritten coverage, eligibility, and ways to reduce monthly premiums.',
-      keywords: kw(['Michigan private health insurance', 'MI PPO plans', 'underwritten coverage', 'affordable premiums', 'individual plans', 'family insurance']),
+      title: 'Michigan Health Insurance Broker | Bradford Informed Guidance',
+      description: 'Licensed Michigan health & life insurance broker. Expert guidance on health plans, life insurance options, and personalized coverage recommendations.',
+      keywords: kw(['Michigan health insurance broker', 'MI insurance agent', 'licensed insurance advisor', 'health insurance guidance', 'life insurance quotes', 'Detroit insurance']),
     },
   },
   mn: {
@@ -294,9 +294,9 @@ export const stateMetadata: Record<StateCodeSlug, StateMetaEntry> = {
     name: 'North Carolina',
     available: true,
     seo: {
-      title: 'Private Health Insurance in North Carolina',
-      description: 'Explore North Carolina private health plans. Learn about medically underwritten coverage, eligibility, and ways to reduce costs.',
-      keywords: kw(['North Carolina private health insurance', 'NC PPO plans', 'underwritten options', 'affordable coverage', 'individual health', 'family plans']),
+      title: 'North Carolina Health Insurance Broker | Bradford Informed Guidance',
+      description: 'Licensed North Carolina health & life insurance broker. Get expert guidance, compare carriers, and find personalized coverage solutions.',
+      keywords: kw(['North Carolina health insurance broker', 'NC insurance agent', 'licensed insurance advisor', 'health insurance guidance', 'life insurance quotes', 'Charlotte insurance']),
     },
   },
   nd: {

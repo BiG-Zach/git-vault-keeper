@@ -73,21 +73,21 @@ function ActiveStateTemplate({ entry, codeUC, slug }: { entry: any; codeUC: stri
           >
             <div className="mb-6">
               <span className="inline-flex items-center gap-2 bg-emerald-100 text-emerald-800 px-4 py-2 rounded-full text-sm font-semibold">
-                <CheckCircle className="w-4 h-4" />
-                Licensed in {entry.name} since {licenseDate}
+                <Shield className="w-4 h-4" />
+                Licensed Insurance Broker
               </span>
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 mb-6">
               {entry.name} Health & Life Insurance
-              <span className="block text-emerald-600">Licensed & Ready to Serve</span>
+              <span className="block text-emerald-600">Expert Guidance</span>
             </h1>
             <p className="text-xl text-slate-600 mb-8 max-w-3xl mx-auto">
-              Get instant quotes, next-day protection, and ongoing expert guidance from licensed advisors. 
-              Your {entry.name} family's future starts today.
+              Navigate health and life insurance options with confidence. Get personalized recommendations, 
+              compare top carriers, and secure the right coverage for your family.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button as="a" href="/" variant="primary" size="lg">
-                Get Your Quote Today
+                Schedule Consultation
               </Button>
               <Button as="a" href={`tel:+16893256570`} variant="outline" size="lg">
                 Call (689) 325-6570
@@ -104,7 +104,7 @@ function ActiveStateTemplate({ entry, codeUC, slug }: { entry: any; codeUC: stri
         </div>
       </section>
 
-      {/* Comprehensive State Coverage Section */}
+      {/* Why Choose Bradford Section */}
       <section className="section bg-slate-50">
         <div className="container-default">
           <motion.div
@@ -114,151 +114,76 @@ function ActiveStateTemplate({ entry, codeUC, slug }: { entry: any; codeUC: stri
             className="text-center mb-16"
           >
             <h2 className="text-3xl font-bold text-slate-900 mb-4">
-              {entry.name} Insurance Market & Coverage
+              Why {entry.name} Families Choose Bradford
             </h2>
             <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-              Licensed expertise, comprehensive coverage, and state-specific knowledge for {entry.name} residents
+              Licensed since {licenseDate}, we simplify insurance decisions with expert guidance and personalized service
             </p>
           </motion.div>
           
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
-            {/* Market Statistics */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            {/* Benefits List */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="bg-white rounded-xl p-8 shadow-lg border border-slate-200"
+              className="space-y-6"
             >
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-12 h-12 bg-emerald-100 rounded-lg flex items-center justify-center">
-                  <TrendingUp className="w-6 h-6 text-emerald-600" />
+              <div className="flex items-start gap-4">
+                <div className="w-12 h-12 bg-emerald-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <Users className="w-6 h-6 text-emerald-600" />
                 </div>
-                <h3 className="text-xl font-semibold text-slate-900">Market Overview</h3>
+                <div>
+                  <h3 className="text-xl font-semibold text-slate-900 mb-2">Personalized Recommendations</h3>
+                  <p className="text-slate-600">We analyze your unique situation to recommend the most suitable health and life insurance options.</p>
+                </div>
               </div>
-              <div className="space-y-4">
-                <div className="flex justify-between items-center">
-                  <span className="text-slate-600">Average Monthly Premium</span>
-                  <span className="font-semibold text-emerald-600">
-                    {codeUC === 'FL' ? '$385' : codeUC === 'MI' ? '$425' : '$395'}
-                  </span>
+              
+              <div className="flex items-start gap-4">
+                <div className="w-12 h-12 bg-sky-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <Shield className="w-6 h-6 text-sky-600" />
                 </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-slate-600">Available Carriers</span>
-                  <span className="font-semibold">15+</span>
+                <div>
+                  <h3 className="text-xl font-semibold text-slate-900 mb-2">Licensed Professional</h3>
+                  <p className="text-slate-600">Fully licensed and compliant in {entry.name}, with deep knowledge of state regulations and carriers.</p>
                 </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-slate-600">Uninsured Rate</span>
-                  <span className="font-semibold">
-                    {codeUC === 'FL' ? '13.2%' : codeUC === 'MI' ? '6.1%' : '10.8%'}
-                  </span>
+              </div>
+              
+              <div className="flex items-start gap-4">
+                <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <Star className="w-6 h-6 text-purple-600" />
+                </div>
+                <div>
+                  <h3 className="text-xl font-semibold text-slate-900 mb-2">Ongoing Support</h3>
+                  <p className="text-slate-600">From enrollment through claims, we're your advocate throughout your insurance journey.</p>
                 </div>
               </div>
             </motion.div>
 
-            {/* State Advantages */}
+            {/* Statistics */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.1 }}
-              className="bg-white rounded-xl p-8 shadow-lg border border-slate-200"
+              className="bg-white rounded-2xl p-8 shadow-lg border border-slate-200"
             >
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-12 h-12 bg-sky-100 rounded-lg flex items-center justify-center">
-                  <Star className="w-6 h-6 text-sky-600" />
+              <h3 className="text-2xl font-bold text-slate-900 mb-6 text-center">Our Track Record</h3>
+              <div className="grid grid-cols-2 gap-6">
+                <div className="text-center">
+                  <div className="text-3xl font-bold text-emerald-600 mb-2">1000+</div>
+                  <div className="text-slate-600">Families Protected</div>
                 </div>
-                <h3 className="text-xl font-semibold text-slate-900">{entry.name} Benefits</h3>
-              </div>
-              <ul className="space-y-3">
-                {codeUC === 'FL' && (
-                  <>
-                    <li className="flex items-start gap-2">
-                      <CheckCircle className="w-4 h-4 text-emerald-600 mt-0.5 flex-shrink-0" />
-                      <span className="text-slate-600">No state income tax savings</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <CheckCircle className="w-4 h-4 text-emerald-600 mt-0.5 flex-shrink-0" />
-                      <span className="text-slate-600">Hurricane coverage options</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <CheckCircle className="w-4 h-4 text-emerald-600 mt-0.5 flex-shrink-0" />
-                      <span className="text-slate-600">Year-round enrollment periods</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <CheckCircle className="w-4 h-4 text-emerald-600 mt-0.5 flex-shrink-0" />
-                      <span className="text-slate-600">Senior-friendly benefits</span>
-                    </li>
-                  </>
-                )}
-                {codeUC === 'MI' && (
-                  <>
-                    <li className="flex items-start gap-2">
-                      <CheckCircle className="w-4 h-4 text-emerald-600 mt-0.5 flex-shrink-0" />
-                      <span className="text-slate-600">Expanded Medicaid program</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <CheckCircle className="w-4 h-4 text-emerald-600 mt-0.5 flex-shrink-0" />
-                      <span className="text-slate-600">Mental health coverage</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <CheckCircle className="w-4 h-4 text-emerald-600 mt-0.5 flex-shrink-0" />
-                      <span className="text-slate-600">Auto insurance coordination</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <CheckCircle className="w-4 h-4 text-emerald-600 mt-0.5 flex-shrink-0" />
-                      <span className="text-slate-600">Prescription drug programs</span>
-                    </li>
-                  </>
-                )}
-                {codeUC === 'NC' && (
-                  <>
-                    <li className="flex items-start gap-2">
-                      <CheckCircle className="w-4 h-4 text-emerald-600 mt-0.5 flex-shrink-0" />
-                      <span className="text-slate-600">State reinsurance program</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <CheckCircle className="w-4 h-4 text-emerald-600 mt-0.5 flex-shrink-0" />
-                      <span className="text-slate-600">Rural health initiatives</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <CheckCircle className="w-4 h-4 text-emerald-600 mt-0.5 flex-shrink-0" />
-                      <span className="text-slate-600">Cancer coverage programs</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <CheckCircle className="w-4 h-4 text-emerald-600 mt-0.5 flex-shrink-0" />
-                      <span className="text-slate-600">Preventive care focus</span>
-                    </li>
-                  </>
-                )}
-              </ul>
-            </motion.div>
-
-            {/* Local Expertise */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
-              className="bg-white rounded-xl p-8 shadow-lg border border-slate-200"
-            >
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
-                  <Shield className="w-6 h-6 text-purple-600" />
+                <div className="text-center">
+                  <div className="text-3xl font-bold text-sky-600 mb-2">15+</div>
+                  <div className="text-slate-600">Top Carriers</div>
                 </div>
-                <h3 className="text-xl font-semibold text-slate-900">Licensed Expertise</h3>
-              </div>
-              <div className="space-y-4">
-                <div>
-                  <h4 className="font-semibold text-slate-900 mb-2">State-Licensed Since {licenseDate}</h4>
-                  <p className="text-slate-600 text-sm">Full licensing and regulatory compliance in {entry.name}</p>
+                <div className="text-center">
+                  <div className="text-3xl font-bold text-purple-600 mb-2">24hr</div>
+                  <div className="text-slate-600">Response Time</div>
                 </div>
-                <div>
-                  <h4 className="font-semibold text-slate-900 mb-2">Local Market Knowledge</h4>
-                  <p className="text-slate-600 text-sm">Deep understanding of {entry.name} carriers and networks</p>
-                </div>
-                <div>
-                  <h4 className="font-semibold text-slate-900 mb-2">Ongoing Support</h4>
-                  <p className="text-slate-600 text-sm">Claims assistance and coverage management</p>
+                <div className="text-center">
+                  <div className="text-3xl font-bold text-emerald-600 mb-2">98%</div>
+                  <div className="text-slate-600">Client Satisfaction</div>
                 </div>
               </div>
             </motion.div>
@@ -275,13 +200,13 @@ function ActiveStateTemplate({ entry, codeUC, slug }: { entry: any; codeUC: stri
             viewport={{ once: true }}
             className="text-center text-white"
           >
-            <h2 className="text-3xl font-bold mb-4">Ready to Get Started?</h2>
+            <h2 className="text-3xl font-bold mb-4">Let's Find Your Perfect Coverage</h2>
             <p className="text-xl mb-8 text-emerald-100">
-              Join thousands of {entry.name} families who trust Bradford for their health insurance needs.
+              Schedule a free consultation to explore health and life insurance options tailored to your {entry.name} family.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button as="a" href="/" variant="primary" size="lg" className="bg-white text-emerald-600 hover:bg-slate-50">
-                Get Your Quote Now
+                Schedule Free Consultation
               </Button>
               <Button as="a" href={`tel:+16893256570`} variant="outline" size="lg" className="border-white text-white hover:bg-white hover:text-emerald-600">
                 Call (689) 325-6570
