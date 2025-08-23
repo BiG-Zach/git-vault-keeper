@@ -127,28 +127,6 @@ const AuthoritySection = () => {
       </div>
 
       <div className="container mx-auto px-4 lg:px-6 relative z-10">
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: prefersReducedMotion ? 0 : 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="text-center mb-12 lg:mb-16"
-        >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/20 border border-emerald-500/30 text-emerald-300 text-sm font-medium mb-6">
-            <Award className="w-4 h-4" />
-            <span>Industry Leadership</span>
-          </div>
-          
-          <h2 className="text-3xl lg:text-5xl font-bold text-white mb-6 font-luxury-serif">
-            Why <span className="gradient-text-luxury">Bradford</span> Leads
-          </h2>
-          
-          <p className="text-lg text-slate-300 max-w-3xl mx-auto leading-relaxed">
-            With over 15 years of experience and thousands of satisfied families, Bradford has established itself as the trusted leader in health and life insurance guidance.
-          </p>
-        </motion.div>
-
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           
           {/* Left: Professional Photo & Bio */}
