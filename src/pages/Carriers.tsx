@@ -183,40 +183,94 @@ export default function CarriersPage() {
         
         {/* Hero Content - Strategically positioned for maximum visual impact */}
         <div className="relative z-10 w-full px-6 max-w-7xl mx-auto">
-          <div className="text-center max-w-5xl mx-auto pt-12">
-            {/* Main Headlines - Enhanced with premium messaging */}
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-[0.95] mb-8 tracking-tight" 
-                style={{ 
-                  textShadow: '0 6px 16px rgba(0,0,0,0.6), 0 3px 6px rgba(0,0,0,0.4)',
-                  transform: 'translateY(-10px)'
-                }}>
-              <span className="block bg-gradient-to-r from-white via-blue-50 to-white bg-clip-text text-transparent">
-                Premium PPO Networks That Actually Work
-              </span>
-              <span className="block text-3xl md:text-4xl lg:text-5xl font-semibold opacity-95 mt-4">
-                Serving Florida, Michigan & North Carolina
-              </span>
-            </h1>
+          <div className="text-center max-w-5xl mx-auto pt-12 relative">
+            {/* Floating decorative elements */}
+            <div className="absolute -top-8 left-1/4 w-32 h-32 bg-gradient-to-br from-blue-400/20 to-cyan-400/20 rounded-full blur-2xl animate-pulse"></div>
+            <div className="absolute -top-12 right-1/3 w-24 h-24 bg-gradient-to-br from-emerald-400/20 to-teal-400/20 rounded-full blur-xl animate-pulse delay-700"></div>
             
-            {/* Subheadline - Enhanced authority positioning */}
-            <h2 className="text-xl md:text-2xl lg:text-3xl font-medium text-white opacity-90 mt-8 mb-6 max-w-4xl mx-auto leading-relaxed"
-                style={{ textShadow: '0 2px 8px rgba(0,0,0,0.5)' }}>
-              Your Licensed Broker - Connecting Families to A+ Superior-Rated Carriers Nationwide
-            </h2>
-            
-            {/* Enhanced Value Proposition - Premium benefits with glassmorphism */}
-            <div className="mt-8 mb-6">
-              <p className="text-lg md:text-xl text-white font-medium opacity-90 max-w-4xl mx-auto leading-relaxed px-6 py-5"
-                 style={{ 
-                   textShadow: '0 2px 6px rgba(0,0,0,0.4)',
-                   background: 'rgba(255,255,255,0.12)',
-                   backdropFilter: 'blur(12px)',
-                   borderRadius: '16px',
-                   border: '1px solid rgba(255,255,255,0.25)',
-                   boxShadow: '0 8px 24px rgba(0,0,0,0.3)'
+            {/* Premium content container with enhanced visual effects */}
+            <div className="relative z-10"
+                 style={{
+                   background: 'linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.02) 100%)',
+                   backdropFilter: 'blur(20px)',
+                   borderRadius: '32px',
+                   border: '1px solid rgba(255,255,255,0.15)',
+                   boxShadow: '0 20px 60px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.2)',
+                   padding: '48px 32px 64px',
+                   margin: '0 16px',
+                   animation: 'fade-in 1s ease-out'
                  }}>
-                Instant access to 6 extensive PPO networks • A+ financial strength ratings • Same-day approval • Licensed & bonded professional in FL, MI, NC with nationwide expansion
-              </p>
+              
+              {/* Animated top accent line */}
+              <div className="w-24 h-1 bg-gradient-to-r from-blue-400 to-cyan-400 mx-auto mb-8 rounded-full opacity-80"
+                   style={{ animation: 'scale-in 0.8s ease-out 0.3s both' }}></div>
+              
+              {/* Main Headlines - Enhanced with premium messaging and animations */}
+              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-[0.95] mb-8 tracking-tight" 
+                  style={{ 
+                    textShadow: '0 8px 24px rgba(0,0,0,0.7), 0 4px 8px rgba(0,0,0,0.5)',
+                    transform: 'translateY(-10px)',
+                    animation: 'fade-in 1.2s ease-out 0.2s both'
+                  }}>
+                <span className="block bg-gradient-to-r from-white via-blue-50 to-white bg-clip-text text-transparent hover:scale-105 transition-transform duration-500">
+                  Premium PPO Networks That Actually Work
+                </span>
+                <span className="block text-3xl md:text-4xl lg:text-5xl font-semibold opacity-95 mt-4"
+                      style={{ animation: 'fade-in 1.2s ease-out 0.4s both' }}>
+                  Serving Florida, Michigan & North Carolina
+                </span>
+              </h1>
+              
+              {/* Subheadline - Enhanced authority positioning with premium styling */}
+              <h2 className="text-xl md:text-2xl lg:text-3xl font-medium text-white opacity-90 mt-8 mb-6 max-w-4xl mx-auto leading-relaxed"
+                  style={{ 
+                    textShadow: '0 4px 12px rgba(0,0,0,0.6)',
+                    animation: 'fade-in 1.2s ease-out 0.6s both'
+                  }}>
+                Your Licensed Broker - Connecting Families to A+ Superior-Rated Carriers Nationwide
+              </h2>
+              
+              {/* Enhanced Value Proposition - Premium benefits with advanced glassmorphism */}
+              <div className="mt-10 mb-8"
+                   style={{ animation: 'fade-in 1.2s ease-out 0.8s both' }}>
+                <div className="relative group">
+                  <p className="text-lg md:text-xl text-white font-medium opacity-95 max-w-4xl mx-auto leading-relaxed px-8 py-6 hover:scale-[1.02] transition-transform duration-300"
+                     style={{ 
+                       textShadow: '0 2px 8px rgba(0,0,0,0.5)',
+                       background: 'linear-gradient(135deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.05) 100%)',
+                       backdropFilter: 'blur(16px)',
+                       borderRadius: '20px',
+                       border: '1px solid rgba(255,255,255,0.3)',
+                       boxShadow: '0 12px 32px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.3)',
+                       transition: 'all 0.3s ease'
+                     }}>
+                    Instant access to 6 extensive PPO networks • A+ financial strength ratings • Same-day approval • Licensed & bonded professional in FL, MI, NC with nationwide expansion
+                  </p>
+                  
+                  {/* Decorative corner elements */}
+                  <div className="absolute -top-2 -left-2 w-4 h-4 border-t-2 border-l-2 border-white/30 rounded-tl-lg"></div>
+                  <div className="absolute -top-2 -right-2 w-4 h-4 border-t-2 border-r-2 border-white/30 rounded-tr-lg"></div>
+                  <div className="absolute -bottom-2 -left-2 w-4 h-4 border-b-2 border-l-2 border-white/30 rounded-bl-lg"></div>
+                  <div className="absolute -bottom-2 -right-2 w-4 h-4 border-b-2 border-r-2 border-white/30 rounded-br-lg"></div>
+                </div>
+              </div>
+              
+              {/* Premium trust indicators with animations */}
+              <div className="flex flex-wrap justify-center gap-6 mt-12 text-sm text-white/80"
+                   style={{ animation: 'fade-in 1.2s ease-out 1s both' }}>
+                <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/15 transition-all duration-300">
+                  <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+                  <span>A+ Financial Ratings</span>
+                </div>
+                <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/15 transition-all duration-300">
+                  <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse delay-150"></div>
+                  <span>Licensed Professional</span>
+                </div>
+                <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/15 transition-all duration-300">
+                  <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse delay-300"></div>
+                  <span>Same-Day Approval</span>
+                </div>
+              </div>
             </div>
             
           </div>
