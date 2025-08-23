@@ -184,27 +184,40 @@ export default function CarriersPage() {
         {/* Hero Content - Strategically positioned for maximum visual impact */}
         <div className="relative z-10 w-full px-6 max-w-7xl mx-auto">
           <div className="text-center max-w-5xl mx-auto pt-20">
-            {/* Main Headline - Strategically positioned for maximum impact */}
+            {/* Main Headlines - Enhanced with premium messaging */}
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-[0.95] mb-8 tracking-tight" 
                 style={{ 
-                  textShadow: '0 4px 12px rgba(0,0,0,0.5), 0 2px 4px rgba(0,0,0,0.3)',
+                  textShadow: '0 6px 16px rgba(0,0,0,0.6), 0 3px 6px rgba(0,0,0,0.4)',
                   transform: 'translateY(-10px)'
                 }}>
-              <span className="block">Trusted PPO Insurance Networks</span>
-              <span className="block text-4xl md:text-5xl lg:text-6xl font-semibold opacity-95 mt-3">
-                in Florida, Michigan & North Carolina
+              <span className="block bg-gradient-to-r from-white via-blue-50 to-white bg-clip-text text-transparent">
+                Premium PPO Networks That Actually Work
+              </span>
+              <span className="block text-3xl md:text-4xl lg:text-5xl font-semibold opacity-95 mt-4">
+                Serving Florida, Michigan & North Carolina
               </span>
             </h1>
             
-            {/* Subheadline - Enhanced positioning */}
-            <h2 className="text-xl md:text-2xl lg:text-3xl font-medium text-white opacity-90 mt-8 mb-6 max-w-4xl mx-auto leading-relaxed">
-              Licensed Broker Connecting You to Top-Rated Carriers Nationwide
+            {/* Subheadline - Enhanced authority positioning */}
+            <h2 className="text-xl md:text-2xl lg:text-3xl font-medium text-white opacity-90 mt-8 mb-6 max-w-4xl mx-auto leading-relaxed"
+                style={{ textShadow: '0 2px 8px rgba(0,0,0,0.5)' }}>
+              Your Licensed Broker - Connecting Families to A+ Superior-Rated Carriers Nationwide
             </h2>
             
-            {/* Value Proposition - Centered for impact */}
-            <p className="text-lg md:text-xl text-white opacity-85 mt-6 mb-4 max-w-3xl mx-auto leading-relaxed">
-              Access 6 extensive PPO networks • A+ rated carriers • Next-day approval • Licensed & bonded in FL, MI, NC
-            </p>
+            {/* Enhanced Value Proposition - Premium benefits with glassmorphism */}
+            <div className="mt-8 mb-6">
+              <p className="text-lg md:text-xl text-white font-medium opacity-90 max-w-4xl mx-auto leading-relaxed px-6 py-5"
+                 style={{ 
+                   textShadow: '0 2px 6px rgba(0,0,0,0.4)',
+                   background: 'rgba(255,255,255,0.12)',
+                   backdropFilter: 'blur(12px)',
+                   borderRadius: '16px',
+                   border: '1px solid rgba(255,255,255,0.25)',
+                   boxShadow: '0 8px 24px rgba(0,0,0,0.3)'
+                 }}>
+                Instant access to 6 extensive PPO networks • A+ financial strength ratings • Same-day approval • Licensed & bonded professional in FL, MI, NC with nationwide expansion
+              </p>
+            </div>
             
           </div>
         </div>
