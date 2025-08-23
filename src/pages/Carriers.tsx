@@ -183,7 +183,7 @@ export default function CarriersPage() {
         
         {/* Hero Content - Strategically positioned for maximum visual impact */}
         <div className="relative z-10 w-full px-6 max-w-7xl mx-auto">
-          <div className="text-center max-w-5xl mx-auto pt-20">
+          <div className="text-center max-w-5xl mx-auto pt-12">
             {/* Main Headlines - Enhanced with premium messaging */}
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-[0.95] mb-8 tracking-tight" 
                 style={{ 
