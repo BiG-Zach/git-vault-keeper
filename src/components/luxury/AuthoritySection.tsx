@@ -62,12 +62,6 @@ const AuthoritySection = () => {
             <div className="absolute top-2/3 left-3/5 w-64 h-64 bg-gradient-to-br from-cyan-300/10 via-blue-400/15 to-transparent rounded-full blur-2xl animate-pulse" style={{ animationDelay: '4s' }} />
           </div>
 
-          {/* Dynamic Light Rays */}
-          <div className="absolute inset-0 opacity-30">
-            <div className="absolute top-0 left-1/5 w-px h-full bg-gradient-to-b from-transparent via-emerald-300/50 to-transparent transform -rotate-15 animate-pulse" style={{ animationDuration: '5s' }} />
-            <div className="absolute top-0 right-1/4 w-px h-full bg-gradient-to-b from-transparent via-cyan-300/40 to-transparent transform rotate-15 animate-pulse" style={{ animationDelay: '1.5s', animationDuration: '6s' }} />
-            <div className="absolute top-0 left-2/3 w-px h-full bg-gradient-to-b from-transparent via-blue-300/35 to-transparent transform -rotate-8 animate-pulse" style={{ animationDelay: '3s', animationDuration: '7s' }} />
-          </div>
 
 
 
