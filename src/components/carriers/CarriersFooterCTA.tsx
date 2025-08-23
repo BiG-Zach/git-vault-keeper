@@ -15,7 +15,7 @@ const features = [
   },
   {
     icon: Clock,
-    text: 'Next-Day Approval Available'
+    text: 'Same-Day Approval Available'
   }
 ];
 
