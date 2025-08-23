@@ -24,7 +24,7 @@ const stats = [
   {
     number: '98%',
     label: 'Client Satisfaction',
-    description: 'Next-day approval rate',
+    description: 'Same-day approval rate',
     icon: TrendingUp
   }
 ];
