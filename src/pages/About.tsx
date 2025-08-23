@@ -103,7 +103,7 @@ export default function AboutPage() {
                       className="inline-flex items-center gap-3 bg-white border border-slate-300 text-slate-700 px-8 py-4 rounded-2xl font-semibold text-lg hover:bg-slate-50 hover:border-slate-400 transition-all duration-500 transform hover:scale-[1.02] active:scale-[0.98]"
                     >
                       <Mail className="w-5 h-5" />
-                      <span>Email Expert</span>
+                      <span>Email</span>
                     </a>
                   </Magnetic>
                 </div>
