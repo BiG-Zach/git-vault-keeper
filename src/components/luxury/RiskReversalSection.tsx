@@ -63,7 +63,7 @@ const RiskReversalSection = () => {
           </h2>
           
           <p className="text-lg text-slate-300 max-w-3xl mx-auto leading-relaxed">
-            We're so confident in our service that we remove all the risk. Experience the Bradford difference with complete confidence and zero obligation.
+            As your independent broker, I stake my reputation on finding you better coverage. That's why I guarantee your complete satisfaction with zero risk.
           </p>
         </motion.div>
 
