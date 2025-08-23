@@ -1,8 +1,10 @@
 import { Calendar, FileText } from 'lucide-react';
 import { Button } from '../components/ui/button';
-import NetworkCard, { type Network } from "../components/carriers/NetworkCard";
-import CarrierCard, { type Carrier } from "../components/carriers/CarrierCard";
-import NetworkFAQ from "../components/carriers/FAQ";
+import PremiumNetworkCard, { type Network } from "../components/carriers/PremiumNetworkCard";
+import LuxuryCarrierCard, { type Carrier } from "../components/carriers/LuxuryCarrierCard";
+import CarriersStatisticsSection from "../components/carriers/CarriersStatisticsSection";
+import PremiumCarriersFAQ from "../components/carriers/PremiumCarriersFAQ";
+import CarriersFooterCTA from "../components/carriers/CarriersFooterCTA";
 import StickyBottomCTA from "../components/carriers/StickyBottomCTA";
 import SEO from "../components/SEO";
 import { organizationSchema, localBusinessSchema, serviceSchema, websiteSchema } from "../utils/schema";
@@ -67,56 +69,56 @@ const CARRIERS: Carrier[] = [
     logoSrc: "/logos/carriers/allstate.webp", 
     description: "Flexible health solutions with broad PPO access and member-first service.",
     rating: "A+ (Superior) AM Best Rated",
-    specialties: ["Health", "PPO", "Next-day approval"]
+    specialties: ["Health", "PPO", "Fast issue"]
   },
   {
     name: "UnitedHealthcare",
     logoSrc: "/logos/carriers/unitedhealthcare.webp",
     description: "Nationwide strength with extensive provider access and digital care innovation.",
     rating: "A+ (Superior) AM Best Rated", 
-    specialties: ["Health", "PPO", "Next-day approval"]
+    specialties: ["Health", "PPO", "Largest network"]
   },
   {
     name: "Mutual of Omaha",
     logoSrc: "/logos/carriers/mutualofomaha.webp",
     description: "Financially strong life and health products backed by a century of service.",
     rating: "A+ (Superior) AM Best Rated",
-    specialties: ["Life", "Supplemental", "Next-day approval"]
+    specialties: ["Life", "Supplemental", "Living benefits"]
   },
   {
     name: "Americo",
     logoSrc: "/logos/carriers/americo.webp",
     description: "Competitive life solutions with simplified underwriting options.",
     rating: "A- (Excellent) AM Best Rated",
-    specialties: ["Life", "Next-day approval"]
+    specialties: ["Life", "Annuities"]
   },
   {
     name: "SGIC",
     logoSrc: "/logos/carriers/sgic.webp", 
     description: "Modern health benefits with practical, everyday value.",
     rating: "B++ (Good) AM Best Rated",
-    specialties: ["Health", "Next-day approval"]
+    specialties: ["Health", "Regional focus"]
   },
   {
     name: "Aflac",
     logoSrc: "/logos/carriers/aflac.webp",
     description: "Supplemental benefits that pay you cash for covered events.",
     rating: "A+ (Superior) AM Best Rated",
-    specialties: ["Supplemental", "Next-day approval"]
+    specialties: ["Supplemental", "Cash payouts"]
   },
   {
     name: "Philadelphia American Life",
     logoSrc: "/logos/carriers/pal.webp",
     description: "Focused health offerings with member-centric support.",
     rating: "A- (Excellent) AM Best Rated",
-    specialties: ["Health", "Next-day approval"]
+    specialties: ["Health", "Cost-effective"]
   },
   {
     name: "Blue Cross Blue Shield",
     logoSrc: "/logos/carriers/bluecrossblueshield.png",
     description: "Community-rooted coverage with trusted local provider networks.",
     rating: "A (Excellent) AM Best Rated",
-    specialties: ["Health", "PPO", "Next-day approval"]
+    specialties: ["Health", "PPO", "Nationwide coverage"]
   }
 ];
 
@@ -179,139 +181,137 @@ export default function CarriersPage() {
         </picture>
 
         
-        {/* Hero Content - Left positioned for maximum conversion impact */}
-        <div className="relative z-10 text-left px-4 max-w-6xl mx-auto">
-          <div className="w-3/5 ml-10">
-            {/* Main Headline - SEO Optimized */}
-            <h1 className="text-[42px] font-bold text-white leading-[1.2] mb-4" style={{ textShadow: '0 2px 4px rgba(0,0,0,0.3)' }}>
-              Trusted PPO Insurance Networks in Florida, Michigan & North Carolina
+        {/* Hero Content - Strategically positioned for maximum visual impact */}
+        <div className="relative z-10 w-full px-6 max-w-7xl mx-auto">
+          <div className="text-center max-w-5xl mx-auto pt-20">
+            {/* Main Headline - Strategically positioned for maximum impact */}
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-[0.95] mb-8 tracking-tight" 
+                style={{ 
+                  textShadow: '0 4px 12px rgba(0,0,0,0.5), 0 2px 4px rgba(0,0,0,0.3)',
+                  transform: 'translateY(-10px)'
+                }}>
+              <span className="block">Trusted PPO Insurance Networks</span>
+              <span className="block text-4xl md:text-5xl lg:text-6xl font-semibold opacity-95 mt-3">
+                in Florida, Michigan & North Carolina
+              </span>
             </h1>
             
-            {/* Subheadline - SEO Enhanced */}
-            <h2 className="text-[24px] font-semibold text-white opacity-95 mt-4 mb-5">
+            {/* Subheadline - Enhanced positioning */}
+            <h2 className="text-xl md:text-2xl lg:text-3xl font-medium text-white opacity-90 mt-8 mb-6 max-w-4xl mx-auto leading-relaxed">
               Licensed Broker Connecting You to Top-Rated Carriers Nationwide
             </h2>
             
-            {/* Value Proposition - Enhanced */}
-            <p className="text-[18px] text-white opacity-90 mt-5 mb-3">
+            {/* Value Proposition - Centered for impact */}
+            <p className="text-lg md:text-xl text-white opacity-85 mt-6 mb-4 max-w-3xl mx-auto leading-relaxed">
               Access 6 extensive PPO networks • A+ rated carriers • Next-day approval • Licensed & bonded in FL, MI, NC
             </p>
             
-            {/* Trust Indicator - Local SEO */}
-            <p className="text-[16px] font-medium text-white opacity-85 mt-3">
+            {/* Trust Indicator - Enhanced visibility */}
+            <p className="text-base md:text-lg font-medium text-white opacity-80 mt-4 max-w-2xl mx-auto">
               20+ Years Combined Experience • Licensed & Bonded Insurance Broker
             </p>
           </div>
         </div>
       </header>
 
-      <main className="container mx-auto px-4 py-10 md:py-12">
-
-        {/* PPO Networks Section */}
-        <section className="mb-20 relative">
-          {/* Section background */}
-          <div className="absolute inset-0 bg-gradient-to-r from-white/50 via-brand-jade-500/5 to-white/50 rounded-3xl" />
-          
-          <div className="relative z-10">
-            <div className="text-center mb-16">
-              <h2 className="text-5xl font-bold text-gray-900 mb-8 leading-tight">
-                Find Your Doctor in Our 
-                <span className="bg-gradient-to-r from-brand-jade-600 to-brand-sky-600 bg-clip-text text-transparent"> Premium PPO Networks in FL, MI, NC</span>
-              </h2>
-              <p className="text-xl text-gray-700 max-w-4xl mx-auto font-medium leading-relaxed">
-                Verify your healthcare providers are in-network before choosing your plan with our <span className="text-brand-jade-600 font-bold">direct provider lookup tools</span>. Serving Florida, Michigan, and North Carolina with comprehensive PPO network access.
-              </p>
+      {/* PPO Networks Section - Light Theme (20%) */}
+      <section className="relative py-20 overflow-hidden">
+        {/* Premium light background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-white via-slate-50 to-white">
+          {/* Radial dot pattern */}
+          <div 
+            className="absolute inset-0 opacity-40"
+            style={{
+              backgroundImage: `radial-gradient(circle at 2px 2px, rgba(34, 197, 94, 0.08) 1px, transparent 0)`,
+              backgroundSize: '32px 32px'
+            }}
+          />
+          {/* Gradient overlays */}
+          <div className="absolute inset-0 bg-gradient-to-r from-emerald-50/50 via-transparent to-cyan-50/50" />
+          <div className="absolute top-0 left-0 w-96 h-96 bg-emerald-100/20 rounded-full blur-3xl" />
+          <div className="absolute bottom-0 right-0 w-96 h-96 bg-cyan-100/20 rounded-full blur-3xl" />
+        </div>
+        
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            {/* Premium badge */}
+            <div className="inline-flex items-center gap-2 bg-emerald-100/80 rounded-full px-6 py-3 mb-8">
+              <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse" />
+              <span className="text-emerald-700 font-bold text-sm">Premium PPO Networks</span>
             </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mb-16">
-              {NETWORKS.map((network) => (
-                <NetworkCard key={network.name} network={network} />
-              ))}
-            </div>
-
-            <NetworkFAQ />
-          </div>
-        </section>
-
-        {/* Insurance Carriers Section */}
-        <section className="mb-20 relative">
-          {/* Section background */}
-          <div className="absolute inset-0 bg-gradient-to-r from-white/50 via-brand-sky-500/5 to-white/50 rounded-3xl" />
-          
-          <div className="relative z-10">
-            <div className="text-center mb-16">
-              <h2 className="text-5xl font-bold text-gray-900 mb-8 leading-tight">
-                Our 
-                <span className="bg-gradient-to-r from-brand-sky-600 to-brand-jade-600 bg-clip-text text-transparent"> A+ Rated Insurance Carriers</span> for FL, MI, NC
-              </h2>
-              <p className="text-xl text-gray-700 max-w-4xl mx-auto font-medium leading-relaxed">
-                <span className="text-brand-success-500 font-bold">A+ rated carriers only</span> providing comprehensive health and life coverage solutions across Florida, Michigan, and North Carolina with <span className="text-brand-jade-600 font-bold">next-day approval available</span>
-              </p>
-            </div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10">
-              {CARRIERS.map((carrier) => (
-                <CarrierCard key={carrier.name} carrier={carrier} />
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Footer CTA Section */}
-        <section className="relative rounded-3xl border border-gray-200 bg-white p-12 text-center shadow-sm">
-          {/* Clean solid background */}
-          <div className="absolute inset-0 bg-gray-50" />
-          
-          <div className="relative z-10">
-            <h2 className="text-3xl font-bold text-gray-900 mb-6">
-              Ready to Find Your 
-              <span className="bg-gradient-to-r from-brand-jade-600 to-brand-sky-600 bg-clip-text text-transparent"> Perfect Coverage?</span>
+            <h2 className="text-4xl md:text-6xl font-bold mb-6 text-slate-900">
+              Find Your Doctor in Our
+              <span className="block gradient-text-luxury">Exclusive Network Partners</span>
             </h2>
-            <p className="text-gray-700 mb-10 max-w-3xl mx-auto text-lg font-medium leading-relaxed">
-              Let Bradford guide you through our network of trusted carriers and help you find the right coverage for your family with <span className="text-brand-jade-600 font-bold">personalized expert guidance</span>.
+            <p className="text-xl text-slate-700 max-w-4xl mx-auto leading-relaxed">
+              Access over 1.3 million healthcare providers nationwide through our trusted PPO network partnerships. 
+              Licensed and serving Florida, Michigan, and North Carolina with excellence.
             </p>
-            
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-              <Button
-                asChild
-                size="lg"
-                className="bg-brand-jade-500 text-white hover:bg-brand-jade-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-jade-500 focus-visible:ring-offset-2 disabled:opacity-60 disabled:pointer-events-none bg-[#12bfae] hover:bg-[#0ea99d] px-10 py-5 text-lg"
-              >
-                <a
-                  href={BRAND.phoneTel}
-                  data-gtm="carriers_footer_cta"
-                  data-action="schedule"
-                >
-                  <Calendar className="h-6 w-6 mr-2" />
-                  Schedule Consultation
-                </a>
-              </Button>
-              
-              <Button
-                asChild
-                variant="outline"
-                size="lg"
-                className="border-2 border-brand-sky-500 bg-white text-brand-sky-600 hover:bg-brand-sky-50 hover:border-brand-sky-600 px-10 py-5 text-lg"
-              >
-                <a
-                  href="/quote"
-                  data-gtm="carriers_footer_cta" 
-                  data-action="quote"
-                >
-                  <FileText className="h-6 w-6 mr-2" />
-                  Get Quote
-                </a>
-              </Button>
-            </div>
-
-            <div className="mt-10 pt-8 border-t border-white/20 text-sm text-gray-600">
-              Licensed in FL, MI, NC - Expanding Nationwide | Prefer a human? <a className="underline hover:text-brand-jade-600 transition-colors font-semibold" href={BRAND.phoneTel} data-gtm={`${BRAND.gtm.call}_carriers`}>Call {BRAND.phoneHuman}</a>.
-            </div>
           </div>
-        </section>
-      </main>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
+            {NETWORKS.map((network, index) => (
+              <PremiumNetworkCard key={network.name} network={network} index={index} />
+            ))}
+          </div>
+        </div>
+      </section>
 
-      <StickyBottomCTA />
+      {/* Statistics Section - Dark Theme (15%) */}
+      <CarriersStatisticsSection />
+
+      {/* Insurance Carriers Section - Dark Theme (15%) */}
+      <section className="relative py-20 overflow-hidden">
+        {/* Dark luxury background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
+          {/* Pattern overlay */}
+          <div 
+            className="absolute inset-0 opacity-20"
+            style={{
+              backgroundImage: `radial-gradient(circle at 1px 1px, rgba(255,255,255,0.1) 1px, transparent 0)`,
+              backgroundSize: '20px 20px'
+            }}
+          />
+          {/* Gradient accents */}
+          <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/5 via-transparent to-cyan-500/5" />
+          <div className="absolute top-0 right-0 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl" />
+          <div className="absolute bottom-0 left-0 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl" />
+        </div>
+        
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            {/* Premium badge */}
+            <div className="inline-flex items-center gap-2 bg-emerald-500/20 rounded-full px-6 py-3 mb-8">
+              <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse" />
+              <span className="text-emerald-300 font-bold text-sm">A+ Rated Insurance Carriers</span>
+            </div>
+            
+            <h2 className="text-4xl md:text-6xl font-bold mb-6 text-white">
+              Our Trusted
+              <span className="block gradient-text-luxury">Insurance Partners</span>
+            </h2>
+            <p className="text-xl text-slate-300 max-w-4xl mx-auto leading-relaxed">
+              We partner exclusively with A+ rated insurance carriers to provide you with comprehensive coverage options, 
+              competitive rates, and reliable claim processing across health, life, and supplemental insurance.
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+            {CARRIERS.map((carrier, index) => (
+              <LuxuryCarrierCard key={carrier.name} carrier={carrier} index={index} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section - Dark Theme (10%) */}
+      <PremiumCarriersFAQ />
+
+      {/* Footer CTA Section - Light Theme (40%) */}
+      <CarriersFooterCTA />
+
+      
     </>
   );
 }

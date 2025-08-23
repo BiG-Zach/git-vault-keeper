@@ -14,6 +14,7 @@ import MobileTestimonials from "../mobile/MobileTestimonials";
 // Luxury Desktop Components
 import LuxuryHero from "../components/luxury/LuxuryHero";
 import PremiumCarriers from "../components/luxury/PremiumCarriers";
+import IndustryRecognitionSection from "../components/luxury/IndustryRecognitionSection";
 import EnhancedMap from "../components/luxury/EnhancedMap";
 import TestimonialsCarousel from "../components/luxury/TestimonialsCarousel";
 import RiskReversalSection from "../components/luxury/RiskReversalSection";
@@ -44,6 +45,8 @@ export default function Home() {
           <LuxuryHero />
           
           <PremiumCarriers />
+          
+          <IndustryRecognitionSection />
           
           <EnhancedMap />
           

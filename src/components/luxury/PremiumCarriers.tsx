@@ -28,9 +28,63 @@ const PremiumCarriers = () => {
 
   return (
     <section className="py-16 lg:py-20 bg-gradient-to-b from-slate-50 to-white relative overflow-hidden">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--color-accent)_1px,_transparent_1px)] bg-[length:24px_24px]" />
+      {/* Visual Masterpiece Background */}
+      <div className="absolute inset-0 overflow-hidden">
+        {/* Animated Gradient Orbs */}
+        <div className="absolute inset-0">
+          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-br from-emerald-400/20 via-sky-300/15 to-transparent rounded-full blur-3xl animate-pulse" />
+          <div className="absolute top-3/4 right-1/4 w-80 h-80 bg-gradient-to-br from-blue-400/15 via-emerald-300/20 to-transparent rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
+          <div className="absolute top-1/2 left-3/4 w-64 h-64 bg-gradient-to-br from-cyan-300/10 via-emerald-400/15 to-transparent rounded-full blur-2xl animate-pulse" style={{ animationDelay: '2s' }} />
+        </div>
+
+        {/* Premium Light Rays */}
+        <div className="absolute inset-0 opacity-30">
+          <div className="absolute top-0 left-1/4 w-px h-full bg-gradient-to-b from-transparent via-emerald-200/40 to-transparent transform -rotate-12" />
+          <div className="absolute top-0 right-1/3 w-px h-full bg-gradient-to-b from-transparent via-sky-200/30 to-transparent transform rotate-12" />
+          <div className="absolute top-0 left-2/3 w-px h-full bg-gradient-to-b from-transparent via-cyan-200/25 to-transparent transform -rotate-6" />
+        </div>
+
+        {/* Floating Geometric Elements */}
+        <div className="absolute inset-0 opacity-20">
+          <div className="absolute top-1/6 left-1/6 w-4 h-4 border border-emerald-300/50 rotate-45 animate-bounce" style={{ animationDelay: '0.5s', animationDuration: '3s' }} />
+          <div className="absolute top-2/3 right-1/5 w-6 h-6 border border-sky-300/40 rounded-full animate-ping" style={{ animationDelay: '1.5s', animationDuration: '4s' }} />
+          <div className="absolute bottom-1/4 left-1/2 w-3 h-3 bg-cyan-300/30 rounded-full animate-pulse" style={{ animationDelay: '2.5s' }} />
+          <div className="absolute top-1/3 right-1/3 w-5 h-5 border-2 border-emerald-400/30 transform rotate-45 animate-spin" style={{ animationDuration: '8s' }} />
+        </div>
+
+        {/* Luxury Texture Pattern */}
+        <div className="absolute inset-0 opacity-8">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_25%_25%,_hsl(var(--emerald-300))_1px,_transparent_1px)] bg-[length:48px_48px]" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_75%_75%,_hsl(var(--sky-300))_0.5px,_transparent_0.5px)] bg-[length:32px_32px]" style={{ transform: 'rotate(45deg)' }} />
+        </div>
+
+        {/* Connected Particle Network */}
+        <svg className="absolute inset-0 w-full h-full opacity-15" preserveAspectRatio="none">
+          <defs>
+            <linearGradient id="networkGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="hsl(var(--emerald-400))" stopOpacity="0.3" />
+              <stop offset="50%" stopColor="hsl(var(--sky-400))" stopOpacity="0.2" />
+              <stop offset="100%" stopColor="hsl(var(--cyan-400))" stopOpacity="0.1" />
+            </linearGradient>
+          </defs>
+          <line x1="10%" y1="20%" x2="30%" y2="35%" stroke="url(#networkGradient)" strokeWidth="0.5" opacity="0.6" />
+          <line x1="30%" y1="35%" x2="60%" y2="25%" stroke="url(#networkGradient)" strokeWidth="0.5" opacity="0.4" />
+          <line x1="60%" y1="25%" x2="85%" y2="45%" stroke="url(#networkGradient)" strokeWidth="0.5" opacity="0.5" />
+          <line x1="20%" y1="70%" x2="45%" y2="80%" stroke="url(#networkGradient)" strokeWidth="0.5" opacity="0.3" />
+          <line x1="45%" y1="80%" x2="80%" y2="70%" stroke="url(#networkGradient)" strokeWidth="0.5" opacity="0.4" />
+          <circle cx="10%" cy="20%" r="2" fill="hsl(var(--emerald-400))" opacity="0.6" />
+          <circle cx="30%" cy="35%" r="1.5" fill="hsl(var(--sky-400))" opacity="0.5" />
+          <circle cx="60%" cy="25%" r="2.5" fill="hsl(var(--cyan-400))" opacity="0.4" />
+          <circle cx="85%" cy="45%" r="1.5" fill="hsl(var(--emerald-400))" opacity="0.5" />
+          <circle cx="20%" cy="70%" r="2" fill="hsl(var(--sky-400))" opacity="0.3" />
+          <circle cx="45%" cy="80%" r="1.5" fill="hsl(var(--cyan-400))" opacity="0.4" />
+          <circle cx="80%" cy="70%" r="2" fill="hsl(var(--emerald-400))" opacity="0.5" />
+        </svg>
+
+        {/* Premium Shimmer Effect */}
+        <div className="absolute inset-0 opacity-20">
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent transform -skew-x-12 animate-pulse" style={{ animationDuration: '6s' }} />
+        </div>
       </div>
 
       <div className="container mx-auto px-4 lg:px-6 relative z-10">
@@ -97,10 +151,6 @@ const PremiumCarriers = () => {
               className="group relative"
             >
               <div className="bg-white rounded-2xl p-6 lg:p-8 border border-slate-200 hover:border-emerald-300 hover:shadow-premium transition-all duration-300 h-full flex flex-col items-center justify-center group-hover:scale-105">
-                {/* Rating Badge */}
-                <div className="absolute top-3 right-3 bg-emerald-100 text-emerald-800 text-xs font-bold px-2 py-1 rounded-full">
-                  {carrier.rating}
-                </div>
                 
                 {/* Logo */}
                 <div className="w-full max-w-[120px] h-12 lg:h-16 flex items-center justify-center mb-4">
@@ -121,44 +171,6 @@ const PremiumCarriers = () => {
           ))}
         </motion.div>
 
-        {/* Awards & Certifications */}
-        <motion.div
-          initial={{ opacity: 0, y: prefersReducedMotion ? 0 : 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
-          className="mt-12 lg:mt-16 text-center"
-        >
-          <div className="bg-gradient-to-r from-slate-50 to-emerald-50 rounded-2xl p-8 lg:p-12 border border-slate-200">
-            <h3 className="text-xl lg:text-2xl font-bold text-slate-900 mb-6">Industry Recognition</h3>
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 items-center">
-              <div className="text-center">
-                <div className="w-16 h-16 bg-white rounded-xl flex items-center justify-center mx-auto mb-3 shadow-sm">
-                  <span className="text-2xl font-bold text-emerald-600">A+</span>
-                </div>
-                <p className="text-sm font-medium text-slate-700">BBB Rating</p>
-              </div>
-              <div className="text-center">
-                <div className="w-16 h-16 bg-white rounded-xl flex items-center justify-center mx-auto mb-3 shadow-sm">
-                  <Star className="w-8 h-8 text-yellow-500" />
-                </div>
-                <p className="text-sm font-medium text-slate-700">5-Star Service</p>
-              </div>
-              <div className="text-center">
-                <div className="w-16 h-16 bg-white rounded-xl flex items-center justify-center mx-auto mb-3 shadow-sm">
-                  <Shield className="w-8 h-8 text-blue-600" />
-                </div>
-                <p className="text-sm font-medium text-slate-700">Licensed Professional</p>
-              </div>
-              <div className="text-center">
-                <div className="w-16 h-16 bg-white rounded-xl flex items-center justify-center mx-auto mb-3 shadow-sm">
-                  <TrendingUp className="w-8 h-8 text-emerald-600" />
-                </div>
-                <p className="text-sm font-medium text-slate-700">Industry Leader</p>
-              </div>
-            </div>
-          </div>
-        </motion.div>
       </div>
     </section>
   );
