@@ -9,20 +9,20 @@ const RiskReversalSection = () => {
   const guarantees = [
     {
       icon: Shield,
-      title: "100% Money-Back Guarantee",
-      description: "If you're not completely satisfied with our service within 30 days, we'll refund every penny. No questions asked.",
+      title: "My Personal Guarantee",
+      description: "Not happy with your coverage? I'll make it right or get your money back. Period.",
       badge: "30-Day Promise"
     },
     {
       icon: Clock,
-      title: "No-Obligation Quotes",
-      description: "Get comprehensive quotes with zero commitment. Compare options at your own pace without any pressure or hidden fees.",
+      title: "Always Free to You",
+      description: "Professional broker services at no cost. I work for you, not the insurance companies.",
       badge: "Always Free"
     },
     {
       icon: CheckCircle,
-      title: "Free Expert Consultation",
-      description: "Receive personalized guidance from licensed professionals. Our experts review your needs and recommend the best options.",
+      title: "Your Personal Advocate",
+      description: "Dedicated licensed professional fighting for your best interests every step of the way.",
       badge: "Licensed Pros"
     }
   ];
