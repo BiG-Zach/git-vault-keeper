@@ -188,16 +188,9 @@ export default function CarriersPage() {
             <div className="absolute -top-8 left-1/4 w-32 h-32 bg-gradient-to-br from-blue-400/20 to-cyan-400/20 rounded-full blur-2xl animate-pulse"></div>
             <div className="absolute -top-12 right-1/3 w-24 h-24 bg-gradient-to-br from-emerald-400/20 to-teal-400/20 rounded-full blur-xl animate-pulse delay-700"></div>
             
-            {/* Premium content container with enhanced visual effects */}
-            <div className="relative z-10"
+            {/* Premium content container - Background removed for hero image visibility */}
+            <div className="relative z-10 px-8 py-12"
                  style={{
-                   background: 'linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.02) 100%)',
-                   backdropFilter: 'blur(20px)',
-                   borderRadius: '32px',
-                   border: '1px solid rgba(255,255,255,0.15)',
-                   boxShadow: '0 20px 60px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.2)',
-                   padding: '48px 32px 64px',
-                   margin: '0 16px',
                    animation: 'fade-in 1s ease-out'
                  }}>
               
