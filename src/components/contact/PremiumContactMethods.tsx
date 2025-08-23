@@ -121,7 +121,7 @@ export default function PremiumContactMethods() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          Connect Directly with Zach Bradford
+          Connect Directly
         </motion.h2>
         <motion.p 
           className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed"
