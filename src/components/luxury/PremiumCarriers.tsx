@@ -21,8 +21,8 @@ const PremiumCarriers = () => {
   ];
 
   const stats = [
-    { number: "12", label: "A+ Rated Carriers", icon: Star },
-    { number: "98%", label: "Customer Satisfaction", icon: TrendingUp },
+    { number: "12", label: "A+ Superior-Rated Carriers", icon: Star },
+    { number: "98%", label: "Client Satisfaction Rate", icon: TrendingUp },
     { number: "$2.5B", label: "Coverage Written", icon: Shield }
   ];
 
@@ -102,11 +102,11 @@ const PremiumCarriers = () => {
           </div>
           
           <h2 className="text-3xl lg:text-5xl font-bold text-slate-900 mb-4 font-luxury-serif">
-            Trusted by <span className="gradient-text-luxury">Leading Carriers</span>
+            Trusted by <span className="gradient-text-luxury">A+ Superior-Rated Insurance Giants</span>
           </h2>
           
           <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
-            We partner exclusively with A+ rated insurance carriers to ensure your coverage is backed by financial strength and stability.
+            I partner exclusively with A+ and A-rated insurance carriers - the industry's most financially stable companies. Your coverage is backed by billions in reserves and guaranteed claim-paying ability.
           </p>
         </motion.div>
 
@@ -169,6 +169,19 @@ const PremiumCarriers = () => {
               </div>
             </motion.div>
           ))}
+        </motion.div>
+
+        {/* AM Best Rating Disclaimer */}
+        <motion.div
+          initial={{ opacity: 0, y: prefersReducedMotion ? 0 : 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.6, delay: 0.6, ease: "easeOut" }}
+          className="text-center mt-8"
+        >
+          <p className="text-sm text-slate-500 font-medium">
+            All carriers maintain A or A+ financial strength ratings from AM Best
+          </p>
         </motion.div>
 
       </div>
