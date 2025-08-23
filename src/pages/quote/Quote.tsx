@@ -55,10 +55,10 @@ export default function QuotePage() {
 
   const progress = useMemo(
     () => [
-      { id: 0, label: 'Basics' },
-      { id: 1, label: 'Household' },
-      { id: 2, label: 'Contact' },
-      { id: 3, label: 'Review' },
+      { id: 0, label: 'Tell Me About Your Coverage Needs' },
+      { id: 1, label: 'Who Are We Protecting Today?' },
+      { id: 2, label: "Let's Connect - Your Quote is Ready!" },
+      { id: 3, label: 'Review Your Information' },
     ],
     []
   );
@@ -100,20 +100,41 @@ export default function QuotePage() {
   }
 
   async function submit() {
-    // Placeholder submit — replace with API integration
-    const payload = {
-      ...data,
-      contact: {
-        ...data.contact,
-        phone: normalizePhone(data.contact.phone),
-        consentAt: new Date().toISOString(),
-      },
-      meta: { source: 'web', path: location.pathname },
-    };
-    console.log('Submitting quote payload', payload);
-    // Mock delay
-    await new Promise((r) => setTimeout(r, 600));
-    location.assign('/thank-you');
+    try {
+      const payload = {
+        ...data,
+        contact: {
+          ...data.contact,
+          phone: normalizePhone(data.contact.phone),
+          consentAt: new Date().toISOString(),
+        },
+        meta: { source: 'web', path: location.pathname },
+        timestamp: new Date().toISOString(),
+      };
+      
+      // Submit to email API
+      const response = await fetch('/api/lead', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          ...payload,
+          subject: `New Quote Request - ${data.contact.firstName} ${data.contact.lastName} - ${data.basics.coverageType}`,
+          email: 'zbradford@bradfordinformedguidance.com'
+        })
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to submit quote');
+      }
+      
+      // Redirect to thank you page
+      location.assign('/thank-you');
+    } catch (error) {
+      console.error('Submission error:', error);
+      alert('There was an error submitting your quote. Please try again or call (689) 325-6570 for immediate assistance.');
+    }
   }
 
   return (
@@ -121,23 +142,63 @@ export default function QuotePage() {
       <SEO
         title="Get a Quote"
         path="/quote"
-        description="Start your personalized quote. Answer a few quick questions and we’ll match options from top carriers."
+        description="Start your personalized quote. Answer a few quick questions and we'll match options from top carriers."
       />
 
       <section className="section">
         <div className="container-default">
-          <Reveal>
-            <h1 className="h1 mb-2">Get a Free Quote</h1>
-          </Reveal>
-          <Reveal delay={0.08}>
-            <p className="lead mb-8">
-              Complete the steps below. We’ll review your details and present clear options that fit your needs.
-            </p>
-          </Reveal>
+          {/* Premium Header Section */}
+          <div className="text-center mb-12">
+            <Reveal>
+              <h1 className="text-5xl font-bold bg-gradient-to-r from-blue-800 to-indigo-900 bg-clip-text text-transparent mb-4">
+                Get Your Personalized Quote in 60 Seconds
+              </h1>
+            </Reveal>
+            <Reveal delay={0.08}>
+              <p className="text-xl text-slate-700 max-w-2xl mx-auto leading-relaxed mb-8">
+                Complete the steps below. I'll review your details and present premium options tailored specifically for your needs.
+              </p>
+            </Reveal>
+            
+            {/* Trust Badges */}
+            <Reveal delay={0.16}>
+              <div className="flex flex-wrap justify-center gap-6 text-sm text-slate-600">
+                <div className="flex items-center gap-2">
+                  <div className="w-5 h-5 bg-green-500 rounded-full flex items-center justify-center">
+                    <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                    </svg>
+                  </div>
+                  <span>No obligation</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="w-5 h-5 bg-green-500 rounded-full flex items-center justify-center">
+                    <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                    </svg>
+                  </div>
+                  <span>Instant results</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="w-5 h-5 bg-green-500 rounded-full flex items-center justify-center">
+                    <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                    </svg>
+                  </div>
+                  <span>Licensed professional review</span>
+                </div>
+              </div>
+            </Reveal>
+          </div>
 
-          {/* Stepper */}
+          {/* Enhanced Stepper */}
           <div className="mb-8">
-            <ol className="grid grid-cols-4 gap-2 text-sm">
+            <div className="text-center mb-4">
+              <div className="text-lg font-medium text-blue-600">
+                Step {step + 1} of 4 - Almost there!
+              </div>
+            </div>
+            <ol className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2 text-sm">
               {progress.map((p, i) => {
                 const active = step === i;
                 const done = step > i;
@@ -145,15 +206,16 @@ export default function QuotePage() {
                   <li
                     key={p.id}
                     className={
-                      'rounded-lg border px-3 py-2 text-center ' +
+                      'rounded-lg border px-3 py-2 text-center transition-all duration-200 ' +
                       (active
-                        ? 'border-sky-500 bg-sky-50 text-sky-700'
+                        ? 'border-sky-500 bg-sky-50 text-sky-700 shadow-md'
                         : done
                         ? 'border-teal-600 bg-teal-50 text-teal-700'
                         : 'border-slate-200 text-slate-600')
                     }
                   >
-                    {p.label}
+                    <div className="font-medium">{done ? '✓' : active ? '●' : '○'}</div>
+                    <div className="text-xs mt-1 leading-tight">{p.label}</div>
                   </li>
                 );
               })}
@@ -449,6 +511,36 @@ function ContactStep({
         </div>
       </div>
 
+      {/* Security badges for contact step */}
+      <div className="mb-6 p-4 bg-blue-50 rounded-lg border border-blue-100">
+        <div className="flex flex-wrap justify-center gap-4 text-xs text-blue-700 mb-3">
+          <div className="flex items-center gap-1">
+            <div className="w-4 h-4 bg-blue-500 rounded-full flex items-center justify-center">
+              <svg className="w-2 h-2 text-white" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+              </svg>
+            </div>
+            <span>SSL encrypted</span>
+          </div>
+          <div className="flex items-center gap-1">
+            <div className="w-4 h-4 bg-blue-500 rounded-full flex items-center justify-center">
+              <svg className="w-2 h-2 text-white" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+              </svg>
+            </div>
+            <span>HIPAA compliant</span>
+          </div>
+          <div className="flex items-center gap-1">
+            <div className="w-4 h-4 bg-blue-500 rounded-full flex items-center justify-center">
+              <svg className="w-2 h-2 text-white" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+              </svg>
+            </div>
+            <span>No spam guarantee</span>
+          </div>
+        </div>
+      </div>
+
       <div className="flex items-start gap-2">
         <input
           id="consent"
@@ -457,9 +549,10 @@ function ContactStep({
           onChange={(e) => onChange({ ...data, consent: e.target.checked })}
           className="mt-1 h-4 w-4 rounded border-slate-300 text-sky-600 focus:ring-sky-500"
         />
-        <label htmlFor="consent" className="text-sm text-slate-700">
-          By submitting, you agree to receive calls, texts, or emails from Bradford Informed Guidance about insurance
-          options. Consent is not a condition of purchase. Message and data rates may apply.
+        <label htmlFor="consent" className="text-sm text-slate-700 leading-relaxed">
+          By submitting, you agree to receive personalized insurance guidance from Bradford Informed Guidance. 
+          I respect your privacy and will only contact you about coverage options that fit your needs. 
+          Standard message rates apply.
         </label>
       </div>
       <FieldError msg={errors.consent} />
@@ -484,8 +577,15 @@ function Row({ label, value }: { label: string; value: string }) {
 function ReviewStep({ data, onPrev, onSubmit }: { data: QuoteData; onPrev: () => void; onSubmit: () => void }) {
   const { basics, household, contact } = data;
   return (
-    <div className="grid gap-6">
-      <div className="rounded-lg border border-slate-200 p-6">
+    <div className="grid gap-6 max-w-2xl">
+      <div className="text-center mb-6">
+        <h2 className="text-2xl font-semibold text-slate-800 mb-2">Review Your Information</h2>
+        <p className="text-slate-600">
+          I'll personally review these details and contact you within 24 hours with your customized options
+        </p>
+      </div>
+      
+      <div className="rounded-lg border border-slate-200 p-6 bg-white shadow-sm">
         <h2 className="font-semibold text-lg mb-3">Review Details</h2>
         <div className="divide-y divide-slate-200">
           <Row label="ZIP" value={basics.zip} />
@@ -498,13 +598,14 @@ function ReviewStep({ data, onPrev, onSubmit }: { data: QuoteData; onPrev: () =>
           <Row label="Last Name" value={contact.lastName} />
           <Row label="Email" value={contact.email} />
           <Row label="Phone" value={contact.phone} />
-          <Row label="Consent" value={contact.consent ? 'Given' : 'Not given'} />
         </div>
       </div>
 
       <div className="flex items-center gap-3">
-        <button type="button" onClick={onPrev} className="btn btn-ghost">Back</button>
-        <button type="button" onClick={onSubmit} className="btn btn-primary">Submit</button>
+        <button type="button" onClick={onPrev} className="flex-1 px-6 py-3 border-2 border-slate-300 rounded-xl text-slate-700 hover:bg-slate-50 font-medium transition-all duration-200">Back</button>
+        <button type="button" onClick={onSubmit} className="flex-1 px-6 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-xl hover:from-blue-700 hover:to-indigo-700 font-semibold shadow-lg hover:shadow-xl transition-all duration-200">
+          Submit Quote Request
+        </button>
       </div>
     </div>
   );
