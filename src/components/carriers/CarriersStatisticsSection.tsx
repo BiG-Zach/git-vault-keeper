@@ -16,9 +16,9 @@ const stats = [
     icon: Users
   },
   {
-    number: '20+',
-    label: 'Years Experience',
-    description: 'Combined industry expertise',
+    number: '$2,400',
+    label: 'Average Annual Savings',
+    description: 'Typical family savings with optimized coverage',
     icon: Award
   },
   {
