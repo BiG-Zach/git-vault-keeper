@@ -70,12 +70,6 @@ const AuthoritySection = () => {
           </div>
 
 
-          {/* Premium Dot Matrix Pattern */}
-          <div className="absolute inset-0 opacity-12">
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_30%,_rgba(16,185,129,0.3)_1px,_transparent_1px)] bg-[length:45px_45px]" />
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_70%,_rgba(34,211,238,0.2)_0.8px,_transparent_0.8px)] bg-[length:35px_35px]" style={{ transform: 'rotate(30deg)' }} />
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_60%_20%,_rgba(59,130,246,0.15)_0.6px,_transparent_0.6px)] bg-[length:50px_50px]" style={{ transform: 'rotate(-20deg)' }} />
-          </div>
 
 
         </div>
