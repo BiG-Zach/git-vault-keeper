@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { useReducedMotion } from 'framer-motion';
-import { Shield, Users, Award, TrendingUp } from 'lucide-react';
+import { Shield, Users, DollarSign, TrendingUp } from 'lucide-react';
 
 const stats = [
   {
@@ -19,7 +19,7 @@ const stats = [
     number: '$2,400',
     label: 'Average Annual Savings',
     description: 'Typical family savings with optimized coverage',
-    icon: Award
+    icon: DollarSign
   },
   {
     number: '98%',
