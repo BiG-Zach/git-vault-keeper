@@ -28,7 +28,7 @@ const TestimonialsCarousel = () => {
       location: "Tampa, FL",
       quote: "Bradford found us coverage that actually fits our budget and keeps our pediatrician. The process was so smooth and transparent - exactly what we needed as busy parents.",
       rating: 5,
-      avatar: "https://images.unsplash.com/photo-1494790108755-2616b612b5e5?w=150&h=150&fit=crop&crop=face",
+      avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face",
       verified: true,
       savings: "$210/month",
       state: "FL"
