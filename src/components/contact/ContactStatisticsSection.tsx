@@ -13,7 +13,7 @@ const stats = [
   },
   {
     icon: <Users className="w-8 h-8" />,
-    number: "1,500+",
+    number: "1,000+",
     label: "Families Protected", 
     description: "Personal guidance provided"
   },
