@@ -103,18 +103,6 @@ export default function OfficeLocationLuxury() {
                 </div>
               </motion.div>
 
-              <motion.div 
-                className="group flex items-start gap-4 p-4 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10 hover:bg-white/10 transition-all duration-300"
-                variants={prefersReducedMotion ? {} : itemVariants}
-              >
-                <div className="w-12 h-12 bg-gradient-to-br from-brand-jade-500 to-brand-sky-500 rounded-xl flex items-center justify-center text-white flex-shrink-0 mt-1">
-                  <Building className="w-6 h-6" />
-                </div>
-                <div>
-                  <div className="font-semibold text-white text-lg mb-1">Professional Environment</div>
-                  <div className="text-slate-300 leading-relaxed">Modern office space designed for comfortable, private consultations about your insurance needs.</div>
-                </div>
-              </motion.div>
             </div>
           </motion.div>
 
