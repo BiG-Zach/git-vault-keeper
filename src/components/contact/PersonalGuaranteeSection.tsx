@@ -290,7 +290,7 @@ export default function PersonalGuaranteeSection() {
                 <p className="text-xl text-slate-300 mb-8 leading-relaxed max-w-lg mx-auto">
                   Join over{" "}
                   <span className="font-bold text-white bg-gradient-to-r from-teal-200 to-blue-200 bg-clip-text text-transparent">
-                    1,500 families
+                    1,000 families
                   </span>{" "}
                   who trust Zach Bradford for their insurance needs.
                 </p>
