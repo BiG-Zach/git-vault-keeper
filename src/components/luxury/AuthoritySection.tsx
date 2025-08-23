@@ -119,10 +119,6 @@ const AuthoritySection = () => {
             <circle cx="45%" cy="60%" r="2" fill="rgba(59,130,246,0.3)" filter="url(#authorityGlow)" />
           </svg>
 
-          {/* Luxury Shimmer Effects */}
-          <div className="absolute inset-0 opacity-10">
-            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/15 to-transparent transform -skew-x-12 animate-pulse" style={{ animationDuration: '10s' }} />
-          </div>
         </div>
       </div>
 
