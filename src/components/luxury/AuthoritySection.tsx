@@ -55,12 +55,6 @@ const AuthoritySection = () => {
         <div className="absolute bottom-0 right-0 w-full h-full bg-[radial-gradient(ellipse_at_bottom_right,rgba(59,130,246,0.1)_0%,transparent_50%)]" />
         {/* Visual Masterpiece Background */}
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full h-full overflow-hidden">
-          {/* Animated Gradient Orbs */}
-          <div className="absolute inset-0">
-            <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-br from-emerald-400/20 via-cyan-300/15 to-transparent rounded-full blur-3xl animate-pulse" />
-            <div className="absolute bottom-1/3 right-1/4 w-80 h-80 bg-gradient-to-br from-blue-400/15 via-emerald-300/20 to-transparent rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }} />
-            <div className="absolute top-2/3 left-3/5 w-64 h-64 bg-gradient-to-br from-cyan-300/10 via-blue-400/15 to-transparent rounded-full blur-2xl animate-pulse" style={{ animationDelay: '4s' }} />
-          </div>
 
 
 
