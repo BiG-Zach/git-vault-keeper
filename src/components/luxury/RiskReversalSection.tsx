@@ -30,7 +30,7 @@ const RiskReversalSection = () => {
   const trustSignals = [
     { icon: Star, text: "A+ BBB Rating" },
     { icon: Shield, text: "Licensed & Bonded" },
-    { icon: CheckCircle, text: "5,000+ Families Served" },
+    { icon: CheckCircle, text: "1,000+ Families Served" },
     { icon: Phone, text: `${BRAND.hours} Support` }
   ];
 
