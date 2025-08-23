@@ -25,12 +25,8 @@ const LuxuryHero = () => {
           loading="eager"
           fetchPriority="high"
         />
-        {/* Enhanced radial gradient overlay for sophisticated vignetting */}
-        <div className="absolute inset-0" 
-             style={{
-               background: 'radial-gradient(circle at center, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.5) 100%)'
-             }}>
-        </div>
+        {/* Subtle radial gradient overlay for natural vignetting */}
+        <div className="absolute inset-0 bg-gradient-radial from-black/10 via-black/20 to-black/40"></div>
       </div>
 
 
@@ -57,17 +53,10 @@ const LuxuryHero = () => {
               <motion.div
                 initial={{ opacity: 0, x: prefersReducedMotion ? 0 : -30 }}
                 animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5, delay: 0.2, ease: "easeOut" }}
+                transition={{ duration: 0.8, delay: 0.5, ease: "easeOut" }}
                 className="space-y-6"
               >
-                <h2 className="text-2xl lg:text-3xl xl:text-4xl font-luxury-serif font-medium leading-relaxed"
-                    style={{
-                      background: 'linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%)',
-                      WebkitBackgroundClip: 'text',
-                      WebkitTextFillColor: 'transparent',
-                      backgroundClip: 'text',
-                      textShadow: '2px 2px 8px rgba(0,0,0,0.8)'
-                    }}>
+                <h2 className="text-2xl lg:text-3xl xl:text-4xl font-luxury-sans font-normal text-white/95 leading-relaxed">
                   Compare Today's Top-Rated Plans in 60 Seconds - No Medical Exams
                 </h2>
               </motion.div>
@@ -75,15 +64,11 @@ const LuxuryHero = () => {
               <motion.div
                 initial={{ opacity: 0, y: prefersReducedMotion ? 0 : 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7, delay: 0.4, ease: "easeOut" }}
+                transition={{ duration: 0.8, delay: 0.7, ease: "easeOut" }}
                 className="space-y-6"
               >
-                <p className="text-lg lg:text-xl font-luxury-sans leading-relaxed max-w-2xl lg:max-w-xl antialiased"
-                   style={{
-                     color: 'rgba(255, 255, 255, 0.95)',
-                     textShadow: '1px 1px 4px rgba(0,0,0,0.7)'
-                   }}>
-                  Stop overpaying for health insurance. As your licensed broker, I've helped thousands of families secure premium PPO coverage with $0 deductibles and next-day approval. Get your personalized quote now and discover why families save an average of $2,400 annually.
+                <p className="text-lg lg:text-xl font-luxury-sans text-white/90 leading-relaxed max-w-2xl lg:max-w-xl antialiased">
+                  Stop overpaying for health insurance. As a licensed broker, I've helped thousands of families find premium PPO coverage with $0 deductibles and next-day approval. Get your personalized quote now and discover why families save an average of $2,400 annually.
                 </p>
 
               </motion.div>
