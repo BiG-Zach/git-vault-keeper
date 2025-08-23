@@ -57,7 +57,7 @@ export default function QuotePage() {
     () => [
       { id: 0, label: 'Tell Me About Your Coverage Needs' },
       { id: 1, label: 'Who Are We Protecting Today?' },
-      { id: 2, label: "Let's Connect - Your Quote is Ready!" },
+      { id: 2, label: "Let's Connect" },
       { id: 3, label: 'Review Your Information' },
     ],
     []
