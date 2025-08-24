@@ -1,0 +1,1 @@
+import{a as s,j as i,m as u}from"./index-DzAfjPtZ.js";function c({as:e="div",className:t,children:o,delay:n=0}){const r=s(),a=e;return r?i.jsx(a,{className:t,children:o}):i.jsx(u.div,{className:t,initial:{opacity:0,y:20},whileInView:{opacity:1,y:0},viewport:{amount:.1,once:!0},transition:{duration:.6,ease:[.25,.46,.45,.94],delay:n},children:o})}export{c as R};

@@ -2,6 +2,8 @@ import type { VercelRequest, VercelResponse } from '@vercel/node';
 import jwt from 'jsonwebtoken';
 import crypto from 'node:crypto';
 
+// Ringy CRM dual-vendor integration - Production ready
+
 function getClientIP(req: VercelRequest) {
   const xf = (req.headers['x-forwarded-for'] as string) || '';
   return xf.split(',')[0].trim() || (req.socket?.remoteAddress ?? 'unknown');
