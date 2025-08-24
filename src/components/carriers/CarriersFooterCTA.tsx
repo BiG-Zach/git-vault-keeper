@@ -67,8 +67,8 @@ export default function CarriersFooterCTA() {
                 </h2>
                 
                 <p className="text-xl text-slate-700 max-w-3xl mx-auto mb-12 leading-relaxed">
-                  Our licensed brokers are standing by to help you compare options from our premium carrier network. 
-                  Get personalized recommendations that fit your budget and healthcare needs.
+                  I'm personally standing by to help you discover the perfect coverage from my exclusive carrier network. 
+                  Get expert recommendations tailored to your budget and healthcare needs - because your family deserves more than a generic quote.
                 </p>
               </motion.div>
 
