@@ -57,19 +57,19 @@ export default function LuxuryCarrierCard({ carrier, index }: LuxuryCarrierCardP
         {/* Content */}
         <div className="relative z-10 p-8 h-full flex flex-col">
           {/* Header with Logo */}
-          <div className="flex items-center justify-between mb-6">
-            <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-4 group-hover:bg-white transition-colors duration-300">
+          <div className="flex flex-col items-center mb-8">
+            <div className="bg-white/95 backdrop-blur-sm rounded-3xl p-8 mb-4 group-hover:bg-white transition-colors duration-300 shadow-lg">
               <img 
                 src={carrier.logoSrc} 
                 alt={`${carrier.name} logo`}
-                className="h-12 w-auto object-contain filter brightness-90 contrast-120"
+                className="h-32 w-auto object-contain filter brightness-90 contrast-120"
                 loading="lazy"
               />
             </div>
             
             {carrier.rating && (
-              <div className="inline-flex items-center gap-2 rounded-full bg-emerald-500/20 px-3 py-1.5 text-xs font-bold text-emerald-300 border border-emerald-500/30 backdrop-blur-sm">
-                <Star className="h-3 w-3 fill-emerald-400 text-emerald-400" />
+              <div className="inline-flex items-center gap-2 rounded-full bg-emerald-500/20 px-4 py-2 text-sm font-bold text-emerald-300 border border-emerald-500/30 backdrop-blur-sm">
+                <Star className="h-4 w-4 fill-emerald-400 text-emerald-400" />
                 <span className="text-emerald-200">{carrier.rating}</span>
               </div>
             )}
