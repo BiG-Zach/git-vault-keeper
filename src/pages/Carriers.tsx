@@ -289,21 +289,83 @@ export default function CarriersPage() {
         </div>
         
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            {/* Premium badge */}
-            <div className="inline-flex items-center gap-2 bg-emerald-100/80 rounded-full px-6 py-3 mb-8">
-              <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse" />
-              <span className="text-emerald-700 font-bold text-sm">Premium PPO Networks</span>
+          <div className="text-center mb-16 relative">
+            {/* Decorative background glow */}
+            <div className="absolute inset-0 -z-10">
+              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[600px] bg-gradient-radial from-emerald-500/15 via-emerald-500/5 to-transparent rounded-full blur-3xl opacity-60" />
+              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-gradient-radial from-cyan-500/10 via-cyan-500/3 to-transparent rounded-full blur-2xl opacity-40" />
+            </div>
+
+            {/* Floating decorative elements */}
+            <div className="absolute -top-20 left-1/4 w-32 h-32 bg-gradient-to-br from-emerald-400/20 to-cyan-400/20 rounded-full blur-xl opacity-60 animate-pulse" />
+            <div className="absolute -top-10 right-1/3 w-24 h-24 bg-gradient-to-br from-cyan-400/15 to-emerald-400/15 rounded-full blur-lg opacity-40 animate-pulse delay-700" />
+            
+            {/* Premium badge with enhanced design */}
+            <div className="inline-flex items-center gap-3 bg-gradient-to-r from-emerald-50 via-white to-cyan-50 rounded-full px-8 py-4 mb-12 border border-emerald-200/50 backdrop-blur-sm shadow-2xl relative overflow-hidden">
+              {/* Badge glow effect */}
+              <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/10 via-transparent to-cyan-500/10 rounded-full" />
+              
+              {/* Animated dots */}
+              <div className="w-3 h-3 bg-gradient-to-r from-emerald-500 to-emerald-400 rounded-full animate-pulse shadow-lg" />
+              <span className="text-emerald-800 font-bold text-sm tracking-wider relative z-10">PREMIUM PPO NETWORKS</span>
+              <div className="w-3 h-3 bg-gradient-to-r from-cyan-500 to-cyan-400 rounded-full animate-pulse delay-500 shadow-lg" />
+              
+              {/* Shimmer effect */}
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -skew-x-12 animate-shimmer" />
             </div>
             
-            <h2 className="text-4xl md:text-6xl font-bold mb-6 text-slate-900">
-              Find Your Doctor in Our
-              <span className="block gradient-text-luxury">Exclusive Network Partners</span>
+            {/* Enhanced main heading with multiple gradient layers */}
+            <h2 className="text-5xl md:text-7xl lg:text-8xl font-black mb-8 text-slate-900 leading-tight relative">
+              <span className="block relative">
+                Find Your Doctor in Our
+                <div className="absolute -inset-2 bg-gradient-to-r from-emerald-500/10 via-transparent to-cyan-500/10 rounded-lg blur-xl opacity-60" />
+              </span>
+              <span className="block relative mt-2">
+                <span className="relative inline-block">
+                  <span className="bg-gradient-to-r from-emerald-600 via-emerald-500 to-cyan-500 bg-clip-text text-transparent font-black tracking-tight">
+                    Exclusive Network Partners
+                  </span>
+                  {/* Multiple gradient underlayers for depth */}
+                  <div className="absolute -bottom-4 left-0 right-0 h-2 bg-gradient-to-r from-emerald-500/80 via-emerald-400/60 to-cyan-500/80 rounded-full opacity-60 blur-sm" />
+                  <div className="absolute -bottom-3 left-4 right-4 h-1 bg-gradient-to-r from-emerald-400 to-cyan-400 rounded-full opacity-80" />
+                  
+                  {/* Sparkle effects */}
+                  <div className="absolute -top-6 left-1/4 w-2 h-2 bg-emerald-400 rounded-full animate-ping opacity-75" />
+                  <div className="absolute -top-4 right-1/3 w-1.5 h-1.5 bg-cyan-400 rounded-full animate-ping delay-300 opacity-60" />
+                  <div className="absolute -bottom-8 right-1/4 w-2 h-2 bg-emerald-500 rounded-full animate-ping delay-700 opacity-70" />
+                </span>
+              </span>
             </h2>
-            <p className="text-xl text-slate-700 max-w-4xl mx-auto leading-relaxed">
-              Access over 1.3 million healthcare providers nationwide through our trusted PPO network partnerships. 
-              Licensed and serving Florida, Michigan, and North Carolina with excellence.
-            </p>
+            
+            {/* Enhanced description with premium styling */}
+            <div className="max-w-5xl mx-auto relative">
+              <p className="text-2xl lg:text-3xl text-slate-700 leading-relaxed mb-4 font-medium">
+                Access over <span className="text-emerald-600 font-bold bg-emerald-50 px-2 py-1 rounded-md">1.3 million</span> healthcare providers nationwide through our 
+                <span className="relative inline-block text-slate-900 font-bold mx-2">
+                  trusted PPO network partnerships
+                  <div className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-emerald-500 to-cyan-500 rounded-full opacity-70" />
+                </span>.
+              </p>
+              <p className="text-lg lg:text-xl text-slate-600 leading-relaxed">
+                <span className="inline-flex items-center gap-2 bg-slate-100 px-3 py-1 rounded-full">
+                  <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse" />
+                  <span className="font-semibold text-slate-800">Licensed and serving</span>
+                </span>
+                <span className="mx-2 font-bold text-slate-900">Florida, Michigan, and North Carolina</span>
+                with <span className="text-emerald-600 font-semibold">excellence</span>.
+              </p>
+            </div>
+
+            {/* Decorative bottom elements */}
+            <div className="flex justify-center items-center gap-8 mt-12">
+              <div className="hidden md:block w-32 h-0.5 bg-gradient-to-r from-transparent via-emerald-500/50 to-transparent" />
+              <div className="flex items-center gap-3">
+                <div className="w-4 h-4 bg-gradient-to-r from-emerald-500 to-emerald-400 rounded-full shadow-lg animate-pulse" />
+                <div className="w-3 h-3 bg-gradient-to-r from-cyan-500 to-cyan-400 rounded-full shadow-lg animate-pulse delay-300" />
+                <div className="w-4 h-4 bg-gradient-to-r from-emerald-500 to-emerald-400 rounded-full shadow-lg animate-pulse delay-700" />
+              </div>
+              <div className="hidden md:block w-32 h-0.5 bg-gradient-to-r from-transparent via-emerald-500/50 to-transparent" />
+            </div>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
