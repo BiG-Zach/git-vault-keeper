@@ -58,11 +58,11 @@ export default function LuxuryCarrierCard({ carrier, index }: LuxuryCarrierCardP
         <div className="relative z-10 p-8 h-full flex flex-col">
           {/* Header with Logo */}
           <div className="flex items-center justify-between mb-6">
-            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-4 group-hover:bg-white/15 transition-colors duration-300">
+            <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-4 group-hover:bg-white transition-colors duration-300">
               <img 
                 src={carrier.logoSrc} 
                 alt={`${carrier.name} logo`}
-                className="h-12 w-auto object-contain filter brightness-110 contrast-110"
+                className="h-12 w-auto object-contain filter brightness-90 contrast-120"
                 loading="lazy"
               />
             </div>
