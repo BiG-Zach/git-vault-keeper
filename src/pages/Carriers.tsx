@@ -315,7 +315,7 @@ export default function CarriersPage() {
             </div>
             
             {/* Enhanced main heading with multiple gradient layers */}
-            <h2 className="text-5xl md:text-7xl lg:text-8xl font-black mb-8 text-slate-900 leading-tight relative">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black mb-8 text-slate-900 leading-tight relative">
               <span className="block relative">
                 Find Your Doctor in Our
                 <div className="absolute -inset-2 bg-gradient-to-r from-emerald-500/10 via-transparent to-cyan-500/10 rounded-lg blur-xl opacity-60" />
