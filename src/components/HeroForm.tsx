@@ -7,6 +7,7 @@ export default function HeroForm() {
   const [ages, setAges] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
+  const [preferredContact, setPreferredContact] = useState<'text' | 'email' | 'phone'>('email');
   const [consent, setConsent] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
@@ -27,6 +28,7 @@ export default function HeroForm() {
         'By submitting, you agree Bradford Informed Guidance may call and text you at the number provided (including via autodialer). Consent is not a condition of purchase. Message/data rates may apply.';
       const body = {
         firstName, lastName, zipCode, ages, email, phone,
+        preferredContact,
         consentChecked: true, consentText,
         landingUrl: window.location.href, utm
       };
@@ -135,6 +137,44 @@ export default function HeroForm() {
             style={{ fontSize: '16px', minHeight: '44px' }}
             required
           />
+        </div>
+        <div>
+          <label className="block text-sm font-semibold text-gray-700 mb-2">Preferred Contact Method</label>
+          <div className="grid grid-cols-3 gap-2">
+            <button
+              type="button"
+              onClick={() => setPreferredContact('text')}
+              className={`p-3 border-2 rounded-xl text-sm font-medium transition-colors ${
+                preferredContact === 'text'
+                  ? 'border-emerald-500 bg-emerald-50 text-emerald-700'
+                  : 'border-gray-300 hover:border-gray-400'
+              }`}
+            >
+              📱 Text
+            </button>
+            <button
+              type="button"
+              onClick={() => setPreferredContact('email')}
+              className={`p-3 border-2 rounded-xl text-sm font-medium transition-colors ${
+                preferredContact === 'email'
+                  ? 'border-emerald-500 bg-emerald-50 text-emerald-700'
+                  : 'border-gray-300 hover:border-gray-400'
+              }`}
+            >
+              ✉️ Email
+            </button>
+            <button
+              type="button"
+              onClick={() => setPreferredContact('phone')}
+              className={`p-3 border-2 rounded-xl text-sm font-medium transition-colors ${
+                preferredContact === 'phone'
+                  ? 'border-emerald-500 bg-emerald-50 text-emerald-700'
+                  : 'border-gray-300 hover:border-gray-400'
+              }`}
+            >
+              📞 Call
+            </button>
+          </div>
         </div>
         <div className="flex items-start space-x-3">
           <input
