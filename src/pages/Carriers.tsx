@@ -403,18 +403,18 @@ export default function CarriersPage() {
             <div className="absolute inset-0 -z-10">
               <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[1200px] h-[800px] bg-gradient-radial from-emerald-500/25 via-emerald-500/10 to-transparent rounded-full blur-3xl opacity-70 animate-pulse" />
               <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[900px] h-[600px] bg-gradient-radial from-cyan-500/20 via-cyan-500/5 to-transparent rounded-full blur-2xl opacity-50 animate-pulse delay-1000" />
-              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-gradient-radial from-purple-500/15 via-purple-500/3 to-transparent rounded-full blur-xl opacity-40 animate-pulse delay-2000" />
+              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-gradient-radial from-orange-800/15 via-orange-800/3 to-transparent rounded-full blur-xl opacity-40 animate-pulse delay-2000" />
             </div>
 
             {/* Floating decorative orbs */}
             <div className="absolute -top-32 left-1/4 w-24 h-24 bg-gradient-to-br from-emerald-400/30 to-cyan-400/30 rounded-full blur-xl opacity-80 animate-pulse" />
-            <div className="absolute -top-20 right-1/3 w-16 h-16 bg-gradient-to-br from-cyan-400/25 to-purple-400/25 rounded-full blur-lg opacity-60 animate-pulse delay-700" />
-            <div className="absolute -top-28 left-2/3 w-20 h-20 bg-gradient-to-br from-purple-400/20 to-emerald-400/20 rounded-full blur-lg opacity-50 animate-pulse delay-1400" />
+            <div className="absolute -top-20 right-1/3 w-16 h-16 bg-gradient-to-br from-cyan-400/25 to-orange-600/25 rounded-full blur-lg opacity-60 animate-pulse delay-700" />
+            <div className="absolute -top-28 left-2/3 w-20 h-20 bg-gradient-to-br from-orange-600/20 to-emerald-400/20 rounded-full blur-lg opacity-50 animate-pulse delay-1400" />
             
             {/* Ultra-premium badge with multiple layers */}
             <div className="relative inline-block mb-12">
               {/* Outer glow ring */}
-              <div className="absolute inset-0 -scale-110 bg-gradient-to-r from-emerald-500/30 via-cyan-500/30 to-purple-500/30 rounded-full blur-xl animate-pulse opacity-60" />
+              <div className="absolute inset-0 -scale-110 bg-gradient-to-r from-emerald-500/30 via-cyan-500/30 to-orange-700/30 rounded-full blur-xl animate-pulse opacity-60" />
               
               {/* Main badge container */}
               <div className="relative inline-flex items-center gap-4 bg-gradient-to-r from-emerald-50/10 via-white/15 to-cyan-50/10 rounded-full px-10 py-5 border border-emerald-200/30 backdrop-blur-lg shadow-2xl overflow-hidden">
@@ -422,7 +422,7 @@ export default function CarriersPage() {
                 <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/10 via-transparent to-cyan-500/10 rounded-full" />
                 
                 {/* Animated border effect */}
-                <div className="absolute inset-0 bg-gradient-to-r from-emerald-400/40 via-cyan-400/40 to-purple-400/40 rounded-full animate-pulse opacity-30" />
+                <div className="absolute inset-0 bg-gradient-to-r from-emerald-400/40 via-cyan-400/40 to-orange-600/40 rounded-full animate-pulse opacity-30" />
                 
                 {/* Left animated orb */}
                 <div className="relative">
@@ -463,19 +463,19 @@ export default function CarriersPage() {
               
               <span className="relative block mt-3">
                 <span className="relative inline-block">
-                  <span className="bg-gradient-to-r from-emerald-300 via-cyan-200 to-purple-300 bg-clip-text text-transparent font-black tracking-tight hover:scale-105 transition-transform duration-500">
+                  <span className="bg-gradient-to-r from-emerald-300 via-cyan-200 to-orange-400 bg-clip-text text-transparent font-black tracking-tight hover:scale-105 transition-transform duration-500">
                     Insurance Partners
                   </span>
                   
                   {/* Multiple gradient underlayers for premium effect */}
-                  <div className="absolute -bottom-6 left-0 right-0 h-3 bg-gradient-to-r from-emerald-500/60 via-cyan-500/60 to-purple-500/60 rounded-full opacity-50 blur-lg" />
-                  <div className="absolute -bottom-4 left-4 right-4 h-2 bg-gradient-to-r from-emerald-400/80 via-cyan-400/80 to-purple-400/80 rounded-full opacity-70 blur-sm" />
-                  <div className="absolute -bottom-3 left-8 right-8 h-1 bg-gradient-to-r from-emerald-300 via-cyan-300 to-purple-300 rounded-full opacity-90" />
+                  <div className="absolute -bottom-6 left-0 right-0 h-3 bg-gradient-to-r from-emerald-500/60 via-cyan-500/60 to-orange-700/60 rounded-full opacity-50 blur-lg" />
+                  <div className="absolute -bottom-4 left-4 right-4 h-2 bg-gradient-to-r from-emerald-400/80 via-cyan-400/80 to-orange-600/80 rounded-full opacity-70 blur-sm" />
+                  <div className="absolute -bottom-3 left-8 right-8 h-1 bg-gradient-to-r from-emerald-300 via-cyan-300 to-orange-500 rounded-full opacity-90" />
                   
                   {/* Floating sparkle effects */}
                   <div className="absolute -top-8 left-1/4 w-3 h-3 bg-emerald-400 rounded-full animate-ping opacity-75" />
                   <div className="absolute -top-6 right-1/3 w-2 h-2 bg-cyan-400 rounded-full animate-ping delay-300 opacity-60" />
-                  <div className="absolute -top-10 left-2/3 w-2.5 h-2.5 bg-purple-400 rounded-full animate-ping delay-700 opacity-70" />
+                  <div className="absolute -top-10 left-2/3 w-2.5 h-2.5 bg-orange-500 rounded-full animate-ping delay-700 opacity-70" />
                   <div className="absolute -bottom-10 right-1/4 w-3 h-3 bg-emerald-500 rounded-full animate-ping delay-1000 opacity-80" />
                   <div className="absolute -bottom-8 left-1/3 w-2 h-2 bg-cyan-500 rounded-full animate-ping delay-1300 opacity-65" />
                 </span>
@@ -485,7 +485,7 @@ export default function CarriersPage() {
             {/* Ultra-premium description with glassmorphism container */}
             <div className="relative max-w-5xl mx-auto">
               {/* Container background effects */}
-              <div className="absolute -inset-6 bg-gradient-to-r from-emerald-500/10 via-cyan-500/15 to-purple-500/10 rounded-2xl blur-2xl opacity-60" />
+              <div className="absolute -inset-6 bg-gradient-to-r from-emerald-500/10 via-cyan-500/15 to-orange-700/10 rounded-2xl blur-2xl opacity-60" />
               
               <div className="relative bg-white/5 backdrop-blur-xl border border-white/20 rounded-2xl p-8 shadow-2xl hover:bg-white/10 hover:border-emerald-400/30 transition-all duration-500 hover:scale-[1.02]">
                 {/* Inner glow effect */}
@@ -526,15 +526,15 @@ export default function CarriersPage() {
                   <div className="absolute inset-0 w-4 h-4 bg-cyan-400/30 rounded-full animate-ping delay-300" />
                 </div>
                 <div className="relative">
-                  <div className="w-3 h-3 bg-gradient-to-r from-purple-500 to-purple-400 rounded-full shadow-lg animate-pulse delay-700" />
-                  <div className="absolute inset-0 w-3 h-3 bg-purple-400/30 rounded-full animate-ping delay-700" />
+                  <div className="w-3 h-3 bg-gradient-to-r from-orange-700 to-orange-600 rounded-full shadow-lg animate-pulse delay-700" />
+                  <div className="absolute inset-0 w-3 h-3 bg-orange-600/30 rounded-full animate-ping delay-700" />
                 </div>
                 <div className="relative">
                   <div className="w-4 h-4 bg-gradient-to-r from-emerald-500 to-cyan-500 rounded-full shadow-lg animate-pulse delay-1000" />
                   <div className="absolute inset-0 w-4 h-4 bg-emerald-400/30 rounded-full animate-ping delay-1000" />
                 </div>
                 <div className="relative">
-                  <div className="w-5 h-5 bg-gradient-to-r from-cyan-500 to-purple-500 rounded-full shadow-lg animate-pulse delay-1300" />
+                  <div className="w-5 h-5 bg-gradient-to-r from-cyan-500 to-orange-700 rounded-full shadow-lg animate-pulse delay-1300" />
                   <div className="absolute inset-0 w-5 h-5 bg-cyan-400/30 rounded-full animate-ping delay-1300" />
                 </div>
               </div>
