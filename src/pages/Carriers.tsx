@@ -406,12 +406,11 @@ export default function CarriersPage() {
             </div>
             
             <h2 className="text-4xl md:text-6xl font-bold mb-6 text-white">
-              Our Trusted
+              My Trusted
               <span className="block gradient-text-luxury">Insurance Partners</span>
             </h2>
             <p className="text-xl text-slate-300 max-w-4xl mx-auto leading-relaxed">
-              We partner exclusively with A+ rated insurance carriers to provide you with comprehensive coverage options, 
-              competitive rates, and reliable claim processing across health, life, and supplemental insurance.
+              As your licensed health and life insurance broker, I partner exclusively with A+ rated insurance carriers to provide you with comprehensive coverage options, competitive rates, and reliable claim processing across health, life, and supplemental insurance.
             </p>
           </div>
           
