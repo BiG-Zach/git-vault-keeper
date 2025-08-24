@@ -398,148 +398,20 @@ export default function CarriersPage() {
         </div>
         
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-20 relative">
-            {/* Ambient background effects */}
-            <div className="absolute inset-0 -z-10">
-              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[1200px] h-[800px] bg-gradient-radial from-emerald-500/25 via-emerald-500/10 to-transparent rounded-full blur-3xl opacity-70 animate-pulse" />
-              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[900px] h-[600px] bg-gradient-radial from-cyan-500/20 via-cyan-500/5 to-transparent rounded-full blur-2xl opacity-50 animate-pulse delay-1000" />
-              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-gradient-radial from-orange-800/15 via-orange-800/3 to-transparent rounded-full blur-xl opacity-40 animate-pulse delay-2000" />
-            </div>
-
-            {/* Floating decorative orbs */}
-            <div className="absolute -top-32 left-1/4 w-24 h-24 bg-gradient-to-br from-emerald-400/30 to-cyan-400/30 rounded-full blur-xl opacity-80 animate-pulse" />
-            <div className="absolute -top-20 right-1/3 w-16 h-16 bg-gradient-to-br from-cyan-400/25 to-orange-600/25 rounded-full blur-lg opacity-60 animate-pulse delay-700" />
-            <div className="absolute -top-28 left-2/3 w-20 h-20 bg-gradient-to-br from-orange-600/20 to-emerald-400/20 rounded-full blur-lg opacity-50 animate-pulse delay-1400" />
-            
-            {/* Ultra-premium badge with multiple layers */}
-            <div className="relative inline-block mb-12">
-              {/* Outer glow ring */}
-              <div className="absolute inset-0 -scale-110 bg-gradient-to-r from-emerald-500/30 via-cyan-500/30 to-orange-700/30 rounded-full blur-xl animate-pulse opacity-60" />
-              
-              {/* Main badge container */}
-              <div className="relative inline-flex items-center gap-4 bg-gradient-to-r from-emerald-50/10 via-white/15 to-cyan-50/10 rounded-full px-10 py-5 border border-emerald-200/30 backdrop-blur-lg shadow-2xl overflow-hidden">
-                {/* Badge background pattern */}
-                <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/10 via-transparent to-cyan-500/10 rounded-full" />
-                
-                {/* Animated border effect */}
-                <div className="absolute inset-0 bg-gradient-to-r from-emerald-400/40 via-cyan-400/40 to-orange-600/40 rounded-full animate-pulse opacity-30" />
-                
-                {/* Left animated orb */}
-                <div className="relative">
-                  <div className="w-4 h-4 bg-gradient-to-r from-emerald-500 to-emerald-400 rounded-full shadow-lg animate-pulse" />
-                  <div className="absolute inset-0 w-4 h-4 bg-emerald-400/50 rounded-full animate-ping" />
-                </div>
-                
-                {/* Badge text with enhanced styling */}
-                <span className="relative z-10 text-white font-black text-base tracking-wider bg-gradient-to-r from-emerald-200 via-white to-cyan-200 bg-clip-text text-transparent">
-                  EXCLUSIVE A+ RATED INSURANCE CARRIERS
-                </span>
-                
-                {/* Right animated orb */}
-                <div className="relative">
-                  <div className="w-4 h-4 bg-gradient-to-r from-cyan-500 to-cyan-400 rounded-full shadow-lg animate-pulse delay-500" />
-                  <div className="absolute inset-0 w-4 h-4 bg-cyan-400/50 rounded-full animate-ping delay-500" />
-                </div>
-                
-                {/* Shimmer overlay effect */}
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -skew-x-12 animate-pulse opacity-20" />
-              </div>
+          <div className="text-center mb-16">
+            {/* Premium badge */}
+            <div className="inline-flex items-center gap-2 bg-emerald-500/20 rounded-full px-6 py-3 mb-8">
+              <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse" />
+              <span className="text-emerald-300 font-bold text-sm">A+ Rated Insurance Carriers</span>
             </div>
             
-            {/* Ultra-enhanced main heading with layered effects */}
-            <h2 className="relative text-4xl md:text-5xl lg:text-6xl font-black mb-10 text-white leading-tight">
-              {/* Background glow layers */}
-              <div className="absolute -inset-8 bg-gradient-to-r from-emerald-500/20 via-transparent to-cyan-500/20 rounded-2xl blur-2xl opacity-60" />
-              <div className="absolute -inset-4 bg-gradient-to-r from-emerald-500/10 via-transparent to-cyan-500/10 rounded-xl blur-xl opacity-40" />
-              
-              <span className="relative block">
-                <span className="relative inline-block">
-                  My Trusted
-                  {/* Word underline effect */}
-                  <div className="absolute -bottom-3 left-0 right-0 h-1 bg-gradient-to-r from-emerald-500/80 to-cyan-500/80 rounded-full opacity-70 blur-sm" />
-                  <div className="absolute -bottom-2 left-2 right-2 h-0.5 bg-gradient-to-r from-emerald-400 to-cyan-400 rounded-full opacity-90" />
-                </span>
-              </span>
-              
-              <span className="relative block mt-3">
-                <span className="relative inline-block">
-                  <span className="bg-gradient-to-r from-emerald-300 via-cyan-200 to-orange-400 bg-clip-text text-transparent font-black tracking-tight hover:scale-105 transition-transform duration-500">
-                    Insurance Partners
-                  </span>
-                  
-                  {/* Multiple gradient underlayers for premium effect */}
-                  <div className="absolute -bottom-6 left-0 right-0 h-3 bg-gradient-to-r from-emerald-500/60 via-cyan-500/60 to-orange-700/60 rounded-full opacity-50 blur-lg" />
-                  <div className="absolute -bottom-4 left-4 right-4 h-2 bg-gradient-to-r from-emerald-400/80 via-cyan-400/80 to-orange-600/80 rounded-full opacity-70 blur-sm" />
-                  <div className="absolute -bottom-3 left-8 right-8 h-1 bg-gradient-to-r from-emerald-300 via-cyan-300 to-orange-500 rounded-full opacity-90" />
-                  
-                  {/* Floating sparkle effects */}
-                  <div className="absolute -top-8 left-1/4 w-3 h-3 bg-emerald-400 rounded-full animate-ping opacity-75" />
-                  <div className="absolute -top-6 right-1/3 w-2 h-2 bg-cyan-400 rounded-full animate-ping delay-300 opacity-60" />
-                  <div className="absolute -top-10 left-2/3 w-2.5 h-2.5 bg-orange-500 rounded-full animate-ping delay-700 opacity-70" />
-                  <div className="absolute -bottom-10 right-1/4 w-3 h-3 bg-emerald-500 rounded-full animate-ping delay-1000 opacity-80" />
-                  <div className="absolute -bottom-8 left-1/3 w-2 h-2 bg-cyan-500 rounded-full animate-ping delay-1300 opacity-65" />
-                </span>
-              </span>
+            <h2 className="text-4xl md:text-6xl font-bold mb-6 text-white">
+              My Trusted
+              <span className="block gradient-text-luxury">Insurance Partners</span>
             </h2>
-            
-            {/* Ultra-premium description with glassmorphism container */}
-            <div className="relative max-w-5xl mx-auto">
-              {/* Container background effects */}
-              <div className="absolute -inset-6 bg-gradient-to-r from-emerald-500/10 via-cyan-500/15 to-orange-700/10 rounded-2xl blur-2xl opacity-60" />
-              
-              <div className="relative bg-white/5 backdrop-blur-xl border border-white/20 rounded-2xl p-8 shadow-2xl hover:bg-white/10 hover:border-emerald-400/30 transition-all duration-500 hover:scale-[1.02]">
-                {/* Inner glow effect */}
-                <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/5 via-transparent to-cyan-500/5 rounded-2xl" />
-                
-                <p className="relative z-10 text-xl lg:text-2xl text-slate-200 leading-relaxed font-medium">
-                  As your 
-                  <span className="relative inline-block mx-2 text-white font-bold">
-                    licensed health and life insurance broker
-                    <div className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-emerald-500 to-cyan-500 rounded-full opacity-80" />
-                  </span>,
-                  I partner exclusively with 
-                  <span className="relative inline-block mx-1 text-emerald-300 font-bold bg-emerald-500/10 px-3 py-1 rounded-lg">
-                    A+ rated insurance carriers
-                  </span>
-                  to provide you with comprehensive coverage options, competitive rates, and reliable claim processing across 
-                  <span className="text-cyan-300 font-semibold">health, life, and supplemental insurance</span>.
-                </p>
-
-                {/* Decorative corner elements */}
-                <div className="absolute -top-2 -left-2 w-6 h-6 border-t-2 border-l-2 border-emerald-400/30 rounded-tl-xl" />
-                <div className="absolute -top-2 -right-2 w-6 h-6 border-t-2 border-r-2 border-cyan-400/30 rounded-tr-xl" />
-                <div className="absolute -bottom-2 -left-2 w-6 h-6 border-b-2 border-l-2 border-emerald-400/30 rounded-bl-xl" />
-                <div className="absolute -bottom-2 -right-2 w-6 h-6 border-b-2 border-r-2 border-cyan-400/30 rounded-br-xl" />
-              </div>
-            </div>
-
-            {/* Enhanced decorative bottom elements */}
-            <div className="flex justify-center items-center gap-12 mt-16">
-              <div className="hidden md:block w-40 h-0.5 bg-gradient-to-r from-transparent via-emerald-500/60 to-transparent" />
-              <div className="flex items-center gap-4">
-                <div className="relative">
-                  <div className="w-5 h-5 bg-gradient-to-r from-emerald-500 to-emerald-400 rounded-full shadow-lg animate-pulse" />
-                  <div className="absolute inset-0 w-5 h-5 bg-emerald-400/30 rounded-full animate-ping" />
-                </div>
-                <div className="relative">
-                  <div className="w-4 h-4 bg-gradient-to-r from-cyan-500 to-cyan-400 rounded-full shadow-lg animate-pulse delay-300" />
-                  <div className="absolute inset-0 w-4 h-4 bg-cyan-400/30 rounded-full animate-ping delay-300" />
-                </div>
-                <div className="relative">
-                  <div className="w-3 h-3 bg-gradient-to-r from-orange-700 to-orange-600 rounded-full shadow-lg animate-pulse delay-700" />
-                  <div className="absolute inset-0 w-3 h-3 bg-orange-600/30 rounded-full animate-ping delay-700" />
-                </div>
-                <div className="relative">
-                  <div className="w-4 h-4 bg-gradient-to-r from-emerald-500 to-cyan-500 rounded-full shadow-lg animate-pulse delay-1000" />
-                  <div className="absolute inset-0 w-4 h-4 bg-emerald-400/30 rounded-full animate-ping delay-1000" />
-                </div>
-                <div className="relative">
-                  <div className="w-5 h-5 bg-gradient-to-r from-cyan-500 to-orange-700 rounded-full shadow-lg animate-pulse delay-1300" />
-                  <div className="absolute inset-0 w-5 h-5 bg-cyan-400/30 rounded-full animate-ping delay-1300" />
-                </div>
-              </div>
-              <div className="hidden md:block w-40 h-0.5 bg-gradient-to-r from-transparent via-cyan-500/60 to-transparent" />
-            </div>
+            <p className="text-xl text-slate-300 max-w-4xl mx-auto leading-relaxed">
+              As your licensed health and life insurance broker, I partner exclusively with A+ rated insurance carriers to provide you with comprehensive coverage options, competitive rates, and reliable claim processing across health, life, and supplemental insurance.
+            </p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
