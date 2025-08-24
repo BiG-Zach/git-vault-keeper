@@ -205,7 +205,7 @@ export default function CarriersPage() {
                     transform: 'translateY(-10px)',
                     animation: 'fade-in 1.2s ease-out 0.2s both'
                   }}>
-                <span className="block bg-gradient-to-r from-emerald-400 via-cyan-300 to-emerald-400 bg-clip-text text-transparent hover:scale-105 transition-transform duration-500">
+                <span className="block bg-gradient-to-r from-cyan-300 via-sky-200 to-teal-300 bg-clip-text text-transparent hover:scale-105 transition-transform duration-500">
                   Premium PPO Networks That Actually Work
                 </span>
                 <span className="block text-3xl md:text-4xl lg:text-5xl font-semibold opacity-95 mt-4"
