@@ -194,7 +194,7 @@ export default function CarriersStatisticsSection() {
           viewport={{ once: true }}
         >
           <p className="text-slate-300 text-lg">
-            Ready to join our satisfied clients?{' '}
+            Ready to join my family of satisfied clients?{' '}
             <a 
               href="/quote" 
               className="text-emerald-400 hover:text-emerald-300 underline decoration-emerald-400 underline-offset-4 transition-colors duration-300"
