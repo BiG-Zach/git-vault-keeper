@@ -322,7 +322,7 @@ export default function CarriersPage() {
               </span>
               <span className="block relative mt-2">
                 <span className="relative inline-block">
-                  <span className="bg-gradient-to-r from-emerald-600 via-emerald-500 to-cyan-500 bg-clip-text text-transparent font-black tracking-tight">
+                  <span className="bg-gradient-to-r from-cyan-300 via-sky-200 to-teal-300 bg-clip-text text-transparent font-black tracking-tight">
                     Exclusive Network Partners
                   </span>
                   {/* Multiple gradient underlayers for depth */}
