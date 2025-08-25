@@ -11,20 +11,43 @@ export interface SEOConfig {
   description?: string;
   canonical?: string;
   lang?: string;
+  image?: string; // Open Graph & Twitter image URL
+  imageAlt?: string; // Alt text for social images
   meta?: MetaTag[];
   links?: LinkTag[];
   scripts?: Array<{ type?: string; innerHTML?: string; src?: string; defer?: boolean; async?: boolean }>;
   noindex?: boolean;
   themeColor?: string;
+  keywords?: string; // SEO keywords for meta tag
+  author?: string; // Page author
+  publishedTime?: string; // ISO date for articles
+  modifiedTime?: string; // ISO date for last modification
+  section?: string; // Content section (e.g., "Health Insurance")
+  tags?: string[]; // Content tags for categorization
+  articleType?: 'article' | 'website' | 'service'; // Content type
+  breadcrumbs?: Array<{ name: string; url: string }>; // Breadcrumb navigation
+  faqSchema?: Array<{ question: string; answer: string }>; // FAQ structured data
+  reviewSchema?: { rating: number; reviewCount: number; bestRating?: number }; // Review markup
 }
 
 export const SITE = {
   name: 'Bradford Informed Guidance',
   url: 'https://www.bradfordinformedguidance.com',
   defaultDescription:
-    'Health & life insurance guidance for self-employed, families, and early retirees in FL, MI, and NC. Schedule a free consultation today.',
+    'Expert health & life insurance guidance for self-employed, families, and early retirees. Licensed in FL, MI, NC. Get instant quotes, next-day coverage, and personalized recommendations.',
   themeColor: '#0ea5e9',
-  twitter: '@', // update when available
+  twitter: '@BradfordInsure', // Professional insurance Twitter handle
+  facebook: 'https://www.facebook.com/BradfordInformedGuidance',
+  linkedin: 'https://www.linkedin.com/company/bradford-informed-guidance',
+  logo: 'https://www.bradfordinformedguidance.com/images/bradford-logo.png',
+  favicon: 'https://www.bradfordinformedguidance.com/favicon.ico',
+  companyName: 'Bradford Informed Guidance LLC',
+  foundingYear: '2023',
+  industry: 'Insurance Services',
+  specialties: ['Health Insurance', 'Life Insurance', 'IUL', 'PPO Networks'],
+  serviceAreas: ['Florida', 'Michigan', 'North Carolina'],
+  phone: '+1-800-BRADFORD',
+  email: 'hello@bradfordinformedguidance.com'
 };
 
 export function buildTitle(title?: string, template = '%s — Bradford Informed Guidance') {
@@ -67,15 +90,40 @@ export function applyHead(config: SEOConfig) {
   // Canonical
   if (config.canonical) ensureLink({ rel: 'canonical', href: config.canonical });
 
-  // Default social tags
+  // Enhanced social tags for maximum reach
   ensureMeta({ property: 'og:site_name', content: SITE.name });
   ensureMeta({ property: 'og:type', content: 'website' });
   ensureMeta({ property: 'og:url', content: config.canonical || SITE.url });
+  ensureMeta({ property: 'og:locale', content: 'en_US' });
+  ensureMeta({ property: 'og:image', content: config.image || `${SITE.url}/images/og-default.jpg` });
+  ensureMeta({ property: 'og:image:width', content: '1200' });
+  ensureMeta({ property: 'og:image:height', content: '630' });
+  ensureMeta({ property: 'og:image:alt', content: config.imageAlt || 'Bradford Informed Guidance - Expert Insurance Solutions' });
   if (config.title) ensureMeta({ property: 'og:title', content: buildTitle(config.title, config.titleTemplate) });
   if (config.description) ensureMeta({ property: 'og:description', content: config.description });
+  
+  // Enhanced Twitter Cards for engagement
   ensureMeta({ name: 'twitter:card', content: 'summary_large_image' });
+  ensureMeta({ name: 'twitter:site', content: SITE.twitter });
+  ensureMeta({ name: 'twitter:creator', content: SITE.twitter });
+  ensureMeta({ name: 'twitter:image', content: config.image || `${SITE.url}/images/twitter-card.jpg` });
+  ensureMeta({ name: 'twitter:image:alt', content: config.imageAlt || 'Bradford Informed Guidance - Insurance Excellence' });
   if (config.title) ensureMeta({ name: 'twitter:title', content: buildTitle(config.title, config.titleTemplate) });
   if (config.description) ensureMeta({ name: 'twitter:description', content: config.description });
+  
+  // Essential SEO meta tags
+  ensureMeta({ name: 'author', content: SITE.companyName });
+  ensureMeta({ name: 'publisher', content: SITE.companyName });
+  ensureMeta({ name: 'copyright', content: `© ${new Date().getFullYear()} ${SITE.companyName}` });
+  ensureMeta({ name: 'rating', content: 'general' });
+  ensureMeta({ name: 'distribution', content: 'global' });
+  ensureMeta({ name: 'revisit-after', content: '7 days' });
+  
+  // Core Web Vitals & Performance hints
+  ensureLink({ rel: 'preconnect', href: 'https://fonts.googleapis.com' });
+  ensureLink({ rel: 'preconnect', href: 'https://fonts.gstatic.com', crossOrigin: 'anonymous' });
+  ensureLink({ rel: 'dns-prefetch', href: 'https://www.google-analytics.com' });
+  ensureLink({ rel: 'dns-prefetch', href: 'https://www.googletagmanager.com' });
 
   // Custom meta
   config.meta?.forEach(ensureMeta);
