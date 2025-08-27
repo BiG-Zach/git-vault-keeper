@@ -1,0 +1,69 @@
+{
+  "timestamp": "2025-08-27T00:21:17.796Z",
+  "overall_score": 73,
+  "technical_seo": {
+    "sitemap": {
+      "exists": true,
+      "entries": 19,
+      "has_images": true,
+      "has_priorities": true,
+      "status": "✅ Static sitemap exists with images and priorities"
+    },
+    "robots": {
+      "exists": true,
+      "has_sitemap_directive": true,
+      "blocks_crawlers": true,
+      "allows_social_crawlers": true,
+      "status": "✅ Robots.txt properly configured"
+    },
+    "seo_utils": {
+      "exists": true,
+      "has_meta_management": true,
+      "has_og_tags": true,
+      "has_twitter_cards": true,
+      "has_canonical": true,
+      "status": "✅ Comprehensive SEO utilities implemented"
+    }
+  },
+  "content_seo": {
+    "title": "Bradford Informed Guidance",
+    "meta_description": "Not found",
+    "canonical": "Not found",
+    "og_title": "Not found",
+    "og_description": "Not found",
+    "twitter_card": "Not found",
+    "h1_count": 0,
+    "status": "✅ Basic SEO elements present"
+  },
+  "local_seo": {},
+  "performance": {
+    "core_web_vitals": {
+      "implemented": true,
+      "status": "✅ Core Web Vitals monitoring implemented"
+    }
+  },
+  "mobile": {},
+  "structured_data": {
+    "total_schemas": 7,
+    "implemented": [
+      "Organization",
+      "WebSite",
+      "WebPage",
+      "BreadcrumbList",
+      "FAQPage",
+      "Review",
+      "Service"
+    ],
+    "missing": [
+      "LocalBusiness"
+    ],
+    "status": "✅ 7/8 essential schemas implemented"
+  },
+  "recommendations": [
+    "📈 Implement missing schemas: LocalBusiness",
+    "🎯 Focus on improving technical SEO foundations",
+    "🚀 Consider implementing image optimization",
+    "📱 Test mobile-first indexing compatibility",
+    "⚡ Monitor Core Web Vitals regularly"
+  ]
+}

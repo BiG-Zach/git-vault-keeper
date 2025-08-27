@@ -21,11 +21,14 @@ export default function SEO({
   scripts,
   noindex,
 }: SEOProps) {
+  // Ensure description is always provided
+  const finalDescription = description || SITE.defaultDescription;
+  
   useEffect(() => {
     applyHead({
       title,
       titleTemplate: template,
-      description,
+      description: finalDescription,
       canonical: canonicalFor(path),
       lang,
       meta,
@@ -34,7 +37,7 @@ export default function SEO({
       noindex,
       themeColor,
     });
-  }, [title, description, path, template, themeColor, lang, meta, links, scripts, noindex]);
+  }, [title, finalDescription, path, template, themeColor, lang, meta, links, scripts, noindex]);
 
   return null;
 }

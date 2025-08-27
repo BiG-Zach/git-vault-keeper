@@ -84,8 +84,14 @@ export function applyHead(config: SEOConfig) {
     removeMetaByName('robots');
   }
 
-  // Description
-  if (config.description) ensureMeta({ name: 'description', content: config.description });
+  // Description - always ensure one is set
+  const metaDescription = config.description || SITE.defaultDescription;
+  ensureMeta({ name: 'description', content: metaDescription });
+  
+  // Keywords if provided
+  if (config.keywords) {
+    ensureMeta({ name: 'keywords', content: config.keywords });
+  }
 
   // Canonical
   if (config.canonical) ensureLink({ rel: 'canonical', href: config.canonical });
@@ -100,7 +106,8 @@ export function applyHead(config: SEOConfig) {
   ensureMeta({ property: 'og:image:height', content: '630' });
   ensureMeta({ property: 'og:image:alt', content: config.imageAlt || 'Bradford Informed Guidance - Expert Insurance Solutions' });
   if (config.title) ensureMeta({ property: 'og:title', content: buildTitle(config.title, config.titleTemplate) });
-  if (config.description) ensureMeta({ property: 'og:description', content: config.description });
+  // Always include description for Open Graph
+  ensureMeta({ property: 'og:description', content: metaDescription });
   
   // Enhanced Twitter Cards for engagement
   ensureMeta({ name: 'twitter:card', content: 'summary_large_image' });
@@ -109,7 +116,8 @@ export function applyHead(config: SEOConfig) {
   ensureMeta({ name: 'twitter:image', content: config.image || `${SITE.url}/images/twitter-card.jpg` });
   ensureMeta({ name: 'twitter:image:alt', content: config.imageAlt || 'Bradford Informed Guidance - Insurance Excellence' });
   if (config.title) ensureMeta({ name: 'twitter:title', content: buildTitle(config.title, config.titleTemplate) });
-  if (config.description) ensureMeta({ name: 'twitter:description', content: config.description });
+  // Always include description for Twitter Cards
+  ensureMeta({ name: 'twitter:description', content: metaDescription });
   
   // Essential SEO meta tags
   ensureMeta({ name: 'author', content: SITE.companyName });

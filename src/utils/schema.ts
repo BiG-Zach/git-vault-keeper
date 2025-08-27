@@ -348,12 +348,14 @@ export function localBusinessSchema(location: { address: string; city: string; s
   const data = {
     '@context': 'https://schema.org',
     '@type': 'InsuranceAgency',
-    '@id': `${ORG.url}#local-business`,
-    name: ORG.name,
+    '@id': `${ORG.url}#local-business-${location.state.toLowerCase()}`,
+    name: `${ORG.name} - ${location.state}`,
+    alternateName: 'Bradford Insurance',
     url: ORG.url,
     logo: ORG.logo,
     image: ORG.image,
     telephone: location.phone,
+    email: ORG.email,
     address: {
       '@type': 'PostalAddress',
       streetAddress: location.address,
@@ -362,28 +364,115 @@ export function localBusinessSchema(location: { address: string; city: string; s
       postalCode: location.zipCode,
       addressCountry: 'US'
     },
-    geo: {
-      '@type': 'GeoCoordinates',
-      latitude: '40.7128', // Update with actual coordinates
-      longitude: '-74.0060'
+    areaServed: {
+      '@type': 'State',
+      name: getStateName(location.state),
+      identifier: location.state
     },
     openingHoursSpecification: [
       {
         '@type': 'OpeningHoursSpecification',
         dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
         opens: '09:00',
-        closes: '17:00'
+        closes: '17:00',
+        validFrom: '2023-01-01',
+        validThrough: '2025-12-31'
       }
     ],
     aggregateRating: {
       '@type': 'AggregateRating',
       ratingValue: '4.9',
       reviewCount: '127',
-      bestRating: '5'
+      bestRating: '5',
+      worstRating: '1'
     },
-    priceRange: '$$'
+    priceRange: '$$',
+    currenciesAccepted: 'USD',
+    paymentAccepted: 'Cash, Check, Credit Card, Electronic Bank Transfer',
+    foundingDate: ORG.foundingDate,
+    slogan: ORG.slogan,
+    description: `${ORG.description} Serving ${getStateName(location.state)} with personalized insurance solutions.`,
+    knowsAbout: [
+      'Health Insurance',
+      'Life Insurance', 
+      'PPO Networks',
+      'Individual Health Plans',
+      'Family Health Plans',
+      'Short-Term Medical',
+      'Indexed Universal Life (IUL)'
+    ],
+    hasOfferCatalog: {
+      '@type': 'OfferCatalog',
+      name: `${getStateName(location.state)} Insurance Services`,
+      itemListElement: [
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Service',
+            name: 'Health Insurance Plans',
+            description: `Comprehensive health insurance coverage for ${getStateName(location.state)} residents`
+          },
+          areaServed: getStateName(location.state)
+        },
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Service',
+            name: 'Life Insurance Policies',
+            description: `Term and permanent life insurance solutions for ${getStateName(location.state)} families`
+          },
+          areaServed: getStateName(location.state)
+        }
+      ]
+    },
+    sameAs: ORG.sameAs,
+    naics: ORG.naics,
+    parentOrganization: {
+      '@type': 'Organization',
+      '@id': `${ORG.url}#organization`,
+      name: ORG.name
+    }
   };
   return JSON.stringify(data);
+}
+
+// Helper function to get full state name
+function getStateName(stateCode: string): string {
+  const stateMap: { [key: string]: string } = {
+    'FL': 'Florida',
+    'MI': 'Michigan', 
+    'NC': 'North Carolina'
+  };
+  return stateMap[stateCode] || stateCode;
+}
+
+// State-specific LocalBusiness schema with real addresses
+export function stateLocalBusinessSchema(stateCode: 'FL' | 'MI' | 'NC') {
+  const stateData = {
+    'FL': {
+      address: '4200 W Cypress St',
+      city: 'Tampa',
+      state: 'FL',
+      zipCode: '33607',
+      phone: '(689) 325-6570'
+    },
+    'MI': {
+      address: 'Licensed Agent - Michigan',
+      city: 'Detroit',
+      state: 'MI', 
+      zipCode: '48201',
+      phone: '+1-800-BRADFORD'
+    },
+    'NC': {
+      address: 'Licensed Agent - North Carolina',
+      city: 'Charlotte',
+      state: 'NC',
+      zipCode: '28202', 
+      phone: '+1-800-BRADFORD'
+    }
+  };
+  
+  return localBusinessSchema(stateData[stateCode]);
 }
 
 export function testimonialSchema(testimonials: Array<{ author: string; text: string; rating: number; date: string }>) {

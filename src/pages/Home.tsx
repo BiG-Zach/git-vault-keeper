@@ -4,7 +4,9 @@ import LogoRail from "../components/marketing/LogoRail";
 import TestimonialsGrid from "../components/social/TestimonialsGrid";
 import USAvailability from "../components/marketing/USAvailability";
 import StickyCTA from "../components/global/StickyCTA";
+import SEO from "../components/SEO";
 import { BRAND } from "../lib/brand";
+import { organizationSchema, stateLocalBusinessSchema, websiteSchema, faqSchema, reviewSchema } from "../utils/schema";
 import MobileHome from "../mobile";
 import MobileTrust from "../mobile/MobileTrust";
 import MobileCarriers from "../mobile/MobileCarriers";
@@ -37,8 +39,46 @@ const logos = [
 ];
 
 export default function Home() {
+  const homePageFAQs = [
+    {
+      question: "What states are you licensed in?",
+      answer: "I am licensed to sell health and life insurance in Florida, Michigan, and North Carolina. My license numbers are FL: W347851, MI: 0428156, NC: 18095186."
+    },
+    {
+      question: "How quickly can I get coverage?",
+      answer: "Most applications can be processed within 24-48 hours. For urgent needs, I can often secure same-day approval for qualified applicants."
+    },
+    {
+      question: "Do you charge fees for your services?",
+      answer: "No, my services are completely free to you. I'm compensated by the insurance carriers when you enroll in a plan, so there are no additional costs or fees."
+    },
+    {
+      question: "What types of insurance do you offer?",
+      answer: "I specialize in health insurance (individual, family, short-term), life insurance (term and permanent), and Indexed Universal Life (IUL) policies with access to major PPO networks."
+    }
+  ];
+
   return (
     <>
+      <SEO
+        title="Health & Life Insurance FL MI NC | Licensed Broker Zach Bradford"
+        description="Licensed insurance broker serving Florida, Michigan & North Carolina. Get instant health & life insurance quotes from top carriers. Expert guidance since 2016. Call (689) 325-6570."
+        path="/"
+        meta={[
+          { name: 'keywords', content: 'health insurance Florida Michigan North Carolina, life insurance broker FL MI NC, licensed insurance agent, PPO networks, individual health insurance, family health insurance, life insurance quotes' },
+          { property: 'og:type', content: 'website' },
+          { name: 'robots', content: 'index, follow' },
+        ]}
+        scripts={[
+          { type: 'application/ld+json', innerHTML: organizationSchema() },
+          { type: 'application/ld+json', innerHTML: websiteSchema() },
+          { type: 'application/ld+json', innerHTML: stateLocalBusinessSchema('FL') },
+          { type: 'application/ld+json', innerHTML: stateLocalBusinessSchema('MI') },
+          { type: 'application/ld+json', innerHTML: stateLocalBusinessSchema('NC') },
+          { type: 'application/ld+json', innerHTML: faqSchema(homePageFAQs) },
+          { type: 'application/ld+json', innerHTML: reviewSchema(4.9, 127, 5) }
+        ]}
+      />
       {/* Desktop Luxury Experience (1024px+) */}
       <div className="hidden lg:block">
         <main className="relative">

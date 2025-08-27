@@ -11,6 +11,13 @@ const Carriers = lazy(() => import('../pages/Carriers'));
 const HowItWorks = lazy(() => import('../pages/HowItWorks'));
 const Resources = lazy(() => import('../pages/Resources'));
 const HowItWorksRedirect = () => { window.location.replace('/our-process'); return null; };
+
+// Service pages
+const HealthInsurance = lazy(() => import('../pages/services/HealthInsurance'));
+const LifeInsurance = lazy(() => import('../pages/services/LifeInsurance'));
+const IULInsurance = lazy(() => import('../pages/services/IULInsurance'));
+const PPONetworks = lazy(() => import('../pages/services/PPONetworks'));
+
 // Dynamic state page
 const StateDynamic = lazy(() => import('../pages/states/[code]'));
 const Referral = lazy(() => import('../pages/Referral'));
@@ -50,6 +57,13 @@ export const routes = [
       { path: 'our-process', element: <HowItWorks /> },
       { path: 'resources', element: <Resources /> },
       { path: 'how-it-works', element: <HowItWorksRedirect /> },
+      
+      // Service routes
+      { path: 'services/health-insurance', element: <HealthInsurance /> },
+      { path: 'services/life-insurance', element: <LifeInsurance /> },
+      { path: 'services/iul-insurance', element: <IULInsurance /> },
+      { path: 'services/ppo-networks', element: <PPONetworks /> },
+      
       // Dynamic state route: /states/:code (expects 2-letter code like 'fl')
       { path: 'states/:code', element: <StateDynamic /> },
       { path: 'referral', element: <Referral /> },
