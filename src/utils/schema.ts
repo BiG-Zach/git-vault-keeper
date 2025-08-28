@@ -344,7 +344,39 @@ export function insuranceQuoteSchema(insuranceType: string, coverage: string, pr
 }
 
 // Enhanced schema builders for insurance industry rich snippets
-export function localBusinessSchema(location: { address: string; city: string; state: string; zipCode: string; phone: string }) {
+// Function overload to support multiple calling patterns
+export function localBusinessSchema(stateCode: 'FL' | 'MI' | 'NC', address: { streetAddress: string; addressLocality: string; addressRegion: string; postalCode: string; addressCountry?: string }, phone: string): string;
+export function localBusinessSchema(location: { address: string; city: string; state: string; zipCode: string; phone: string }): string;
+export function localBusinessSchema(
+  stateCodeOrLocation: 'FL' | 'MI' | 'NC' | { address: string; city: string; state: string; zipCode: string; phone: string },
+  address?: { streetAddress: string; addressLocality: string; addressRegion: string; postalCode: string; addressCountry?: string },
+  phone?: string
+): string {
+  // Handle both calling patterns
+  let location: { address: string; city: string; state: string; zipCode: string; phone: string };
+  
+  if (typeof stateCodeOrLocation === 'string') {
+    // New calling pattern: localBusinessSchema('FL', {...}, phone)
+    if (!address || !phone) {
+      throw new Error('Address and phone are required when using state code parameter');
+    }
+    location = {
+      address: address.streetAddress,
+      city: address.addressLocality,
+      state: address.addressRegion,
+      zipCode: address.postalCode,
+      phone: phone
+    };
+  } else {
+    // Original calling pattern: localBusinessSchema({...})
+    location = stateCodeOrLocation;
+  }
+  
+  // Add validation to ensure required fields are present
+  if (!location.state) {
+    throw new Error('State is required for localBusinessSchema');
+  }
+  
   const data = {
     '@context': 'https://schema.org',
     '@type': 'InsuranceAgency',
