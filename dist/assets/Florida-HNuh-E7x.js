@@ -1,0 +1,1 @@
+import{j as o}from"./index-CNKKlJuX.js";import{S as r,U as a}from"./StatePage-BcZitFjf.js";import"./seo-DwG_K4zv.js";import"./schema-CUwJzgYl.js";import"./gtm-tnOO6FcS.js";const p=()=>{const t=a.FL;return o.jsx(r,{stateInfo:t})};export{p as default};

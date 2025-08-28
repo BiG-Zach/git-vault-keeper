@@ -5,9 +5,15 @@ import { TypeAnimation } from 'react-type-animation';
 // Removed Section import for full-width design
 import { useParallax } from "../../lib/useParallax";
 
-const HAS_MULTI = false;
-const SINGLE_FALLBACK = "/lovable-uploads/f5b6b0de-192c-40c8-8fb2-35eaa4905195.png";
+const HAS_MULTI = true;
+const SINGLE_FALLBACK = "/images/hero/resources-hero-desktop.webp";
 const LQIP = "";
+
+// multi-source names
+const JPG1X = "/images/hero/resources-hero-desktop.webp";
+const JPG2X = "/images/hero/resources-hero-retina.webp";
+const WEBP1X = "/images/hero/resources-hero-mobile.webp";
+const WEBP2X = "/images/hero/resources-hero-retina.webp";
 
 export default function ResourcesHero() {
   const prefersReducedMotion = useReducedMotion();
@@ -71,7 +77,29 @@ export default function ResourcesHero() {
           className="absolute inset-0 z-0 will-change-transform"
           style={{ transform: prefersReducedMotion ? undefined : `translate3d(0, ${y}px, 0)` }}
         >
-          {SINGLE_FALLBACK && !imgError ? (
+          {HAS_MULTI && !imgError ? (
+            <picture>
+              <source
+                srcSet={`${WEBP1X} 1x, ${WEBP2X} 2x`}
+                type="image/webp"
+                media="(max-width: 767px)"
+              />
+              <source
+                srcSet={`${JPG1X} 1x, ${JPG2X} 2x`}
+                type="image/webp"
+                media="(min-width: 768px)"
+              />
+              <img
+                src={SINGLE_FALLBACK}
+                alt="Executive library office with sophisticated bookshelves representing complete insurance knowledge center"
+                className="block h-full w-full object-cover"
+                loading="eager"
+                fetchPriority="high"
+                onError={() => setImgError(true)}
+                style={LQIP ? { backgroundImage: `url(${LQIP})`, backgroundSize: "cover", backgroundPosition: "50% 50%" } : undefined}
+              />
+            </picture>
+          ) : SINGLE_FALLBACK && !imgError ? (
             <img
               src={SINGLE_FALLBACK}
               alt="Executive library office with sophisticated bookshelves representing complete insurance knowledge center"
@@ -105,8 +133,7 @@ export default function ResourcesHero() {
             </div>
           )}
           
-          {/* Luxury Executive Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-r from-blue-900/70 via-blue-800/60 to-blue-900/70" />
+
         </div>
 
         {/* Animated Visual Masterpiece Elements */}
