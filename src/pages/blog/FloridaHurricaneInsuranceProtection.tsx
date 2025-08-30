@@ -712,10 +712,10 @@ export default function FloridaHurricaneInsuranceProtection() {
             <Link to="/blog/tampa-bay-insurance-broker-guide" className="group">
               <div className="bg-white border border-slate-200 rounded-lg p-6 hover:shadow-md transition-shadow">
                 <h3 className="text-lg font-semibold text-slate-900 mb-2 group-hover:text-blue-600 transition-colors">
-                  Tampa Bay Insurance: Local Broker's Insider Market Guide
+                  Tampa Bay Insurance: Research-Based Market Analysis
                 </h3>
                 <p className="text-slate-600 text-sm">
-                  Local Tampa Bay insurance insights and hurricane protection strategies.
+                  Educational research on Tampa Bay insurance market characteristics and coverage considerations.
                 </p>
               </div>
             </Link>
