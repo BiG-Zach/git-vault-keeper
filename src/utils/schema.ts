@@ -479,8 +479,8 @@ function getStateName(stateCode: string): string {
 }
 
 // State-specific LocalBusiness schema with real addresses
-export function stateLocalBusinessSchema(stateCode: 'FL' | 'MI' | 'NC') {
-  const stateData = {
+export function stateLocalBusinessSchema(stateCode: string) {
+  const stateData: Record<string, any> = {
     'FL': {
       address: '4200 W Cypress St',
       city: 'Tampa',
@@ -491,7 +491,7 @@ export function stateLocalBusinessSchema(stateCode: 'FL' | 'MI' | 'NC') {
     'MI': {
       address: 'Licensed Agent - Michigan',
       city: 'Detroit',
-      state: 'MI', 
+      state: 'MI',
       zipCode: '48201',
       phone: '+1-800-BRADFORD'
     },
@@ -499,12 +499,21 @@ export function stateLocalBusinessSchema(stateCode: 'FL' | 'MI' | 'NC') {
       address: 'Licensed Agent - North Carolina',
       city: 'Charlotte',
       state: 'NC',
-      zipCode: '28202', 
+      zipCode: '28202',
       phone: '+1-800-BRADFORD'
     }
   };
-  
-  return localBusinessSchema(stateData[stateCode]);
+
+  // For non-licensed states, use a generic national address
+  const defaultStateData = {
+    address: 'Licensed Insurance Professional',
+    city: 'Virtual Office',
+    state: stateCode.toUpperCase(),
+    zipCode: '00000',
+    phone: '+1-800-BRADFORD'
+  };
+
+  return localBusinessSchema(stateData[stateCode] || defaultStateData);
 }
 
 export function testimonialSchema(testimonials: Array<{ author: string; text: string; rating: number; date: string }>) {

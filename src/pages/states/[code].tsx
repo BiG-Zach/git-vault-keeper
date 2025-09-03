@@ -3,7 +3,7 @@ import { useParams, Navigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { CheckCircle, Clock, Users, Shield, Star, TrendingUp } from 'lucide-react';
 import SEO from '../../components/SEO';
-import { localBusinessSchema } from '../../utils/schema';
+import { localBusinessSchema, stateLocalBusinessSchema } from '../../utils/schema';
 import { stateMetadata, type StateCodeSlug } from '../../utils/stateMetadata';
 import Button from '../../components/Button';
 import { getStateVisual } from '../../utils/stateVisuals';
@@ -596,7 +596,7 @@ export default function StateDynamicPage() {
           { name: 'robots', content: 'index, follow' },
         ]}
         scripts={[
-          { innerHTML: localBusinessSchema(codeUC as 'FL' | 'MI' | 'NC') },
+          { innerHTML: stateLocalBusinessSchema(codeUC) },
           {
             innerHTML: JSON.stringify({
               "@context": "https://schema.org",
