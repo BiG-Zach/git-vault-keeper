@@ -53,12 +53,21 @@ export const US_STATES: Record<string, StateInfo> = {
 };
 
 const StatePage: React.FC<StatePageProps> = ({ stateInfo }) => {
+  // Map state codes to their URL paths
+  const stateUrlMap: Record<string, string> = {
+    'FL': 'florida',
+    'MI': 'michigan',
+    'NC': 'north-carolina'
+  };
+  
+  const stateUrlPath = stateUrlMap[stateInfo.code] || stateInfo.code.toLowerCase();
+  
   useEffect(() => {
     // SEO optimization for state-specific pages
     applyHead({
       title: `${stateInfo.name} Health Insurance Plans & Quotes | Licensed ${stateInfo.code} Agents`,
       description: `Find the best health insurance in ${stateInfo.name}. Compare ${stateInfo.topCarriers.join(', ')} plans. Licensed ${stateInfo.code} agents. Average ${stateInfo.averagePremium}. Get quotes now.`,
-      canonical: `https://www.bradfordinformedguidance.com/states/${stateInfo.code.toLowerCase()}`,
+      canonical: `https://bradfordinformedguidance.com/states/${stateUrlPath}`,
       keywords: `${stateInfo.name} health insurance, health insurance ${stateInfo.name}, ${stateInfo.code} health insurance plans, health insurance quotes ${stateInfo.name}, ${stateInfo.name} insurance agents, health insurance ${stateInfo.majorCities.join(', ')}, ${stateInfo.topCarriers.join(' ')}, health insurance rates ${stateInfo.name}`,
       image: `https://www.bradfordinformedguidance.com/images/states/${stateInfo.code.toLowerCase()}-health-insurance.jpg`,
       imageAlt: `${stateInfo.name} health insurance coverage and plans`,
@@ -67,7 +76,7 @@ const StatePage: React.FC<StatePageProps> = ({ stateInfo }) => {
       breadcrumbs: [
         { name: 'Home', url: '/' },
         { name: 'States', url: '/states' },
-        { name: stateInfo.name, url: `/states/${stateInfo.code.toLowerCase()}` }
+        { name: stateInfo.name, url: `/states/${stateUrlPath}` }
       ],
       scripts: [
         {

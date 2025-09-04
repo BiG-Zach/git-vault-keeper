@@ -5,9 +5,31 @@ import Reveal from "../components/Reveal";
 import CalendlyInline from "../components/CalendlyInline";
 import AboutHero from "../components/about/AboutHero";
 import Magnetic from "../components/ui/Magnetic";
+import SEO from "../components/SEO";
+import { organizationSchema, professionalServiceSchema } from "../utils/schema";
 
 export default function AboutPage() {
   return (
+    <>
+      <SEO
+        title="About Zachary Bradford | Licensed Insurance Expert & Family Protection Advocate"
+        description="Meet Zachary Bradford, your trusted insurance advocate with 8+ years experience protecting 1,000+ families across FL, MI, NC. Expert guidance on health, life & IUL insurance plans."
+        path="/about"
+        meta={[
+          { name: 'keywords', content: 'Zachary Bradford, insurance expert, licensed insurance agent, family protection advocate, insurance guidance, Florida Michigan North Carolina insurance' },
+          { property: 'og:image', content: 'https://bradfordinformedguidance.com/about/portrait.jpg' },
+          { property: 'og:image:alt', content: 'Zachary Bradford - Licensed Insurance Expert and Family Protection Advocate' },
+          { property: 'og:type', content: 'profile' },
+          { name: 'robots', content: 'index, follow' },
+        ]}
+        scripts={[
+          { type: 'application/ld+json', innerHTML: organizationSchema() },
+          { type: 'application/ld+json', innerHTML: professionalServiceSchema(
+            'Insurance Expert & Family Protection Services',
+            'Expert insurance guidance and family protection services from licensed professional Zachary Bradford, serving families across Florida, Michigan, and North Carolina with comprehensive health, life, and IUL insurance solutions.'
+          ) }
+        ]}
+      />
     <main className="min-h-screen">
       {/* ENHANCED HERO SECTION WITH PROFESSIONAL BACKGROUND */}
       <AboutHero />
@@ -807,5 +829,6 @@ export default function AboutPage() {
       </section>
 
     </main>
+    </>
   );
 }
