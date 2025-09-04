@@ -11,7 +11,8 @@
     "tunnel": "node scripts/tunnel.js",
     "live": "cross-env NGROK_DOMAIN=bradfordinformedguidance.ngrok-free.app concurrently -k -n VITE,NGROK -c auto \"npm:dev\" \"npm:tunnel\"",
     "dev:vercel": "vercel dev",
-    "postbuild": "node scripts/postbuild.mjs"
+    "postbuild": "node scripts/generate-sitemaps.mjs",
+    "build:full": "npm run build && npm run preview & sleep 3 && node scripts/prerender-simple.mjs && node scripts/generate-sitemaps.mjs"
   },
   "dependencies": {
     "@fontsource/playfair-display": "^5.2.6",
