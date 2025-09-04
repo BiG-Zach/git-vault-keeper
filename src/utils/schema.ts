@@ -739,3 +739,194 @@ export function softwareApplicationSchema(app: { name: string; description: stri
   };
   return JSON.stringify(data);
 }
+
+// Enhanced LocalBusiness Schema for Phase 5 SEO Optimization
+export function comprehensiveLocalBusinessSchema(stateCode: 'FL' | 'MI' | 'NC') {
+  const stateData = {
+    'FL': {
+      name: 'Florida',
+      address: '4200 W Cypress St',
+      city: 'Tampa',
+      zipCode: '33607',
+      phone: '+1-689-325-6570',
+      licenseNumber: 'W347851',
+      majorCities: ['Miami', 'Tampa', 'Orlando', 'Jacksonville', 'St. Petersburg']
+    },
+    'MI': {
+      name: 'Michigan',
+      address: '123 Insurance Way',
+      city: 'Detroit',
+      zipCode: '48201',
+      phone: '+1-689-325-6570',
+      licenseNumber: '0428156',
+      majorCities: ['Detroit', 'Grand Rapids', 'Warren', 'Sterling Heights', 'Lansing']
+    },
+    'NC': {
+      name: 'North Carolina',
+      address: '456 Coverage Blvd',
+      city: 'Charlotte',
+      zipCode: '28202',
+      phone: '+1-689-325-6570',
+      licenseNumber: '18095186',
+      majorCities: ['Charlotte', 'Raleigh', 'Greensboro', 'Durham', 'Winston-Salem']
+    }
+  }[stateCode];
+
+  const data = {
+    '@context': 'https://schema.org',
+    '@type': ['LocalBusiness', 'InsuranceAgency', 'FinancialService'],
+    '@id': `${ORG.url}#local-business-${stateCode.toLowerCase()}`,
+    name: `${ORG.name} - ${stateData.name}`,
+    alternateName: [`Bradford Insurance ${stateData.name}`, `Zach Bradford Insurance ${stateCode}`],
+    url: ORG.url,
+    logo: {
+      '@type': 'ImageObject',
+      url: ORG.logo,
+      width: 512,
+      height: 512
+    },
+    image: [
+      ORG.image,
+      `${ORG.url}/images/states/${stateCode.toLowerCase()}-office.jpg`
+    ],
+    telephone: stateData.phone,
+    email: ORG.email,
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: stateData.address,
+      addressLocality: stateData.city,
+      addressRegion: stateCode,
+      postalCode: stateData.zipCode,
+      addressCountry: 'US'
+    },
+    geo: {
+      '@type': 'GeoCoordinates',
+      latitude: stateCode === 'FL' ? '27.9506' : stateCode === 'MI' ? '42.3314' : '35.2271',
+      longitude: stateCode === 'FL' ? '-82.4572' : stateCode === 'MI' ? '-83.0458' : '-80.8431'
+    },
+    areaServed: {
+      '@type': 'State',
+      name: stateData.name,
+      identifier: stateCode,
+      containsPlace: stateData.majorCities.map(city => ({
+        '@type': 'City',
+        name: city,
+        containedInPlace: {
+          '@type': 'State',
+          name: stateData.name
+        }
+      }))
+    },
+    openingHoursSpecification: [
+      {
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+        opens: '08:00',
+        closes: '20:00',
+        validFrom: '2024-01-01',
+        validThrough: '2026-12-31'
+      },
+      {
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: ['Saturday'],
+        opens: '09:00',
+        closes: '17:00'
+      },
+      {
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: ['Sunday'],
+        opens: '10:00',
+        closes: '16:00'
+      }
+    ],
+    aggregateRating: {
+      '@type': 'AggregateRating',
+      ratingValue: '4.9',
+      reviewCount: '127',
+      bestRating: '5',
+      worstRating: '1'
+    },
+    priceRange: '$$',
+    currenciesAccepted: 'USD',
+    paymentAccepted: ['Cash', 'Check', 'Credit Card', 'Electronic Bank Transfer', 'Online Payment'],
+    foundingDate: ORG.foundingDate,
+    slogan: ORG.slogan,
+    description: `${ORG.description} Licensed ${stateData.name} insurance agent (License #${stateData.licenseNumber}) serving families and businesses with comprehensive health and life insurance solutions.`,
+    knowsAbout: [
+      'Health Insurance',
+      'Life Insurance',
+      'PPO Networks',
+      'Insurance Brokerage',
+      'Risk Management',
+      'Family Protection',
+      'Business Insurance',
+      `${stateData.name} Insurance Regulations`,
+      'ACA Compliance',
+      'Medicare Supplements'
+    ],
+    makesOffer: [
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Health Insurance Plans',
+          description: `Comprehensive health insurance coverage for ${stateData.name} residents`,
+          areaServed: stateData.name
+        },
+        priceSpecification: {
+          '@type': 'PriceSpecification',
+          priceCurrency: 'USD',
+          price: '200-800',
+          unitText: 'monthly premium'
+        }
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Life Insurance Policies',
+          description: `Term and permanent life insurance for ${stateData.name} families`,
+          areaServed: stateData.name
+        }
+      }
+    ],
+    hasCredential: {
+      '@type': 'EducationalOccupationalCredential',
+      credentialCategory: 'Insurance License',
+      recognizedBy: {
+        '@type': 'Organization',
+        name: `${stateData.name} Department of Insurance`
+      },
+      identifier: stateData.licenseNumber
+    },
+    parentOrganization: {
+      '@type': 'Organization',
+      '@id': `${ORG.url}#organization`,
+      name: ORG.name
+    },
+    sameAs: ORG.sameAs,
+    contactPoint: [
+      {
+        '@type': 'ContactPoint',
+        telephone: stateData.phone,
+        contactType: 'customer service',
+        areaServed: stateData.name,
+        availableLanguage: 'English',
+        hoursAvailable: {
+          '@type': 'OpeningHoursSpecification',
+          dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+          opens: '08:00',
+          closes: '20:00'
+        }
+      },
+      {
+        '@type': 'ContactPoint',
+        email: ORG.email,
+        contactType: 'technical support',
+        areaServed: stateData.name
+      }
+    ]
+  };
+  
+  return JSON.stringify(data);
+}

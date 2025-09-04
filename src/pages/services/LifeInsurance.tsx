@@ -32,7 +32,7 @@ const LifeInsurance: React.FC = () => {
     <>
       <SEO
         title="Life Insurance Plans & Quotes | Term & Whole Life Coverage"
-        description="Compare life insurance quotes from top-rated carriers. Term life, whole life, universal life, and IUL policies. Licensed in FL, MI, NC. Instant quotes, expert guidance."
+        description="Compare life insurance quotes from top carriers. Term, whole, universal life, and IUL policies. Licensed FL, MI, NC. Instant quotes, expert guidance."
         path="/services/life-insurance"
         meta={[
           { name: 'keywords', content: 'life insurance, term life insurance, whole life insurance, universal life insurance, IUL, life insurance quotes, life insurance rates, life insurance coverage, life insurance policy' },

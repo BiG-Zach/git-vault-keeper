@@ -13,7 +13,7 @@ export default function AboutPage() {
     <>
       <SEO
         title="About Zachary Bradford | Licensed Insurance Expert & Family Protection Advocate"
-        description="Meet Zachary Bradford, your trusted insurance advocate with 8+ years experience protecting 1,000+ families across FL, MI, NC. Expert guidance on health, life & IUL insurance plans."
+        description="Meet Zachary Bradford, your trusted insurance advocate with 8+ years protecting 1,000+ families across FL, MI, NC. Expert guidance on health, life & IUL insurance."
         path="/about"
         meta={[
           { name: 'keywords', content: 'Zachary Bradford, insurance expert, licensed insurance agent, family protection advocate, insurance guidance, Florida Michigan North Carolina insurance' },

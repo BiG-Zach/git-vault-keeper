@@ -55,7 +55,7 @@ export default function HeroForm() {
       }}
     >
       <div className="text-center mb-4 sm:mb-6">
-        <h1
+        <h2
           className="font-bold text-gray-900 leading-tight"
           style={{
             fontSize: 'clamp(20px, 4vw, 24px)',
@@ -63,7 +63,7 @@ export default function HeroForm() {
           }}
         >
           Premium Health & Life Coverage
-        </h1>
+        </h2>
         <p
           className="text-emerald-600 font-semibold"
           style={{ fontSize: 'clamp(16px, 3.5vw, 18px)' }}

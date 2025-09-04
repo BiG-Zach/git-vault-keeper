@@ -6,22 +6,22 @@ import USAvailability from "../components/marketing/USAvailability";
 import StickyCTA from "../components/global/StickyCTA";
 import SEO from "../components/SEO";
 import { BRAND } from "../lib/brand";
-import { organizationSchema, stateLocalBusinessSchema, websiteSchema, faqSchema, reviewSchema } from "../utils/schema";
-import MobileHome from "../mobile";
-import MobileTrust from "../mobile/MobileTrust";
-import MobileCarriers from "../mobile/MobileCarriers";
-import MobileHowItWorks from "../mobile/MobileHowItWorks";
-import MobileTestimonials from "../mobile/MobileTestimonials";
+import { organizationSchema, stateLocalBusinessSchema, websiteSchema, faqSchema, reviewSchema, comprehensiveLocalBusinessSchema } from "../utils/schema";
+import MobileHome from "../mobile/Home";
+import { ImageOptimizer, FontOptimizer, ResourceHints } from "../utils/coreWebVitals";
+import { useEffect, lazy, Suspense } from "react";
+
+// Lazy load heavy luxury components for better performance
+const PremiumCarriers = lazy(() => import("../components/luxury/PremiumCarriers"));
+const IndustryRecognitionSection = lazy(() => import("../components/luxury/IndustryRecognitionSection"));
+const EnhancedMap = lazy(() => import("../components/luxury/EnhancedMap"));
+const TestimonialsCarousel = lazy(() => import("../components/luxury/TestimonialsCarousel"));
+const AuthoritySection = lazy(() => import("../components/luxury/AuthoritySection"));
+const RiskReversalSection = lazy(() => import("../components/luxury/RiskReversalSection"));
+const SocialProofTicker = lazy(() => import("../components/luxury/SocialProofTicker"));
 
 // Luxury Desktop Components
 import LuxuryHero from "../components/luxury/LuxuryHero";
-import PremiumCarriers from "../components/luxury/PremiumCarriers";
-import IndustryRecognitionSection from "../components/luxury/IndustryRecognitionSection";
-import EnhancedMap from "../components/luxury/EnhancedMap";
-import TestimonialsCarousel from "../components/luxury/TestimonialsCarousel";
-import RiskReversalSection from "../components/luxury/RiskReversalSection";
-import AuthoritySection from "../components/luxury/AuthoritySection";
-import SocialProofTicker from "../components/luxury/SocialProofTicker";
 
 const logos = [
   { src: "/logos/carriers/aetna.webp", alt: "Aetna health insurance carrier" },
@@ -39,6 +39,30 @@ const logos = [
 ];
 
 export default function Home() {
+  // Performance optimizations
+  useEffect(() => {
+    // Preload critical above-the-fold images
+    ImageOptimizer.preloadCriticalImages([
+      '/hero-family.webp',
+      '/logos/carriers/aetna.webp',
+      '/logos/carriers/cigna.webp'
+    ]);
+
+    // Enable font display swap for better performance
+    FontOptimizer.enableFontDisplay();
+
+    // Add resource hints for external domains
+    ResourceHints.addPreconnect([
+      'https://fonts.googleapis.com',
+      'https://fonts.gstatic.com'
+    ]);
+
+    // Preload critical fonts
+    FontOptimizer.preloadFonts([
+      'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap'
+    ]);
+  }, []);
+
   const homePageFAQs = [
     {
       question: "What states are you licensed in?",
@@ -62,7 +86,7 @@ export default function Home() {
     <>
       <SEO
         title="Health & Life Insurance FL MI NC | Licensed Broker Zach Bradford"
-        description="Licensed insurance broker serving Florida, Michigan & North Carolina. Get instant health & life insurance quotes from top carriers. Expert guidance since 2016. Call (689) 325-6570."
+        description="Licensed insurance broker FL, MI, NC. Get instant health & life insurance quotes from top carriers. Expert guidance since 2016. Call (689) 325-6570."
         path="/"
         meta={[
           { name: 'keywords', content: 'health insurance Florida Michigan North Carolina, life insurance broker FL MI NC, licensed insurance agent, PPO networks, individual health insurance, family health insurance, life insurance quotes' },
@@ -72,9 +96,9 @@ export default function Home() {
         scripts={[
           { type: 'application/ld+json', innerHTML: organizationSchema() },
           { type: 'application/ld+json', innerHTML: websiteSchema() },
-          { type: 'application/ld+json', innerHTML: stateLocalBusinessSchema('FL') },
-          { type: 'application/ld+json', innerHTML: stateLocalBusinessSchema('MI') },
-          { type: 'application/ld+json', innerHTML: stateLocalBusinessSchema('NC') },
+          { type: 'application/ld+json', innerHTML: comprehensiveLocalBusinessSchema('FL') },
+          { type: 'application/ld+json', innerHTML: comprehensiveLocalBusinessSchema('MI') },
+          { type: 'application/ld+json', innerHTML: comprehensiveLocalBusinessSchema('NC') },
           { type: 'application/ld+json', innerHTML: faqSchema(homePageFAQs) },
           { type: 'application/ld+json', innerHTML: reviewSchema(4.9, 127, 5) }
         ]}
@@ -83,23 +107,37 @@ export default function Home() {
       <div className="hidden lg:block">
         <main className="relative">
           <LuxuryHero />
-          
-          <PremiumCarriers />
-          
-          <IndustryRecognitionSection />
-          
-          <EnhancedMap />
-          
-          <TestimonialsCarousel />
-          
-          <AuthoritySection />
-          
-          <RiskReversalSection />
+
+          <Suspense fallback={<div className="h-32 bg-gradient-to-r from-slate-100 to-slate-200 animate-pulse rounded-lg"></div>}>
+            <PremiumCarriers />
+          </Suspense>
+
+          <Suspense fallback={<div className="h-24 bg-gradient-to-r from-slate-100 to-slate-200 animate-pulse rounded-lg"></div>}>
+            <IndustryRecognitionSection />
+          </Suspense>
+
+          <Suspense fallback={<div className="h-96 bg-gradient-to-r from-slate-100 to-slate-200 animate-pulse rounded-lg"></div>}>
+            <EnhancedMap />
+          </Suspense>
+
+          <Suspense fallback={<div className="h-64 bg-gradient-to-r from-slate-100 to-slate-200 animate-pulse rounded-lg"></div>}>
+            <TestimonialsCarousel />
+          </Suspense>
+
+          <Suspense fallback={<div className="h-48 bg-gradient-to-r from-slate-100 to-slate-200 animate-pulse rounded-lg"></div>}>
+            <AuthoritySection />
+          </Suspense>
+
+          <Suspense fallback={<div className="h-40 bg-gradient-to-r from-slate-100 to-slate-200 animate-pulse rounded-lg"></div>}>
+            <RiskReversalSection />
+          </Suspense>
 
           <StickyCTA/>
-          
+
           {/* Social Proof Ticker */}
-          <SocialProofTicker />
+          <Suspense fallback={<div className="h-16 bg-gradient-to-r from-slate-100 to-slate-200 animate-pulse rounded-lg"></div>}>
+            <SocialProofTicker />
+          </Suspense>
         </main>
       </div>
 
@@ -111,15 +149,27 @@ export default function Home() {
             aria-label="Hero"
           >
             {/* BACKGROUND IMAGE — ONLY LAYER */}
-            <img
-              src="/hero-family.webp"
-              alt=""
-              aria-hidden="true"
-              loading="eager"
-              fetchPriority="high"
-              className="absolute inset-0 -z-10 h-full w-full object-cover"
-              style={{ objectPosition: "center center" }}
-            />
+            <picture>
+              <source
+                media="(min-width: 768px)"
+                srcSet="/hero-family.webp 1x, /hero-family.webp 2x"
+                type="image/webp"
+              />
+              <source
+                media="(max-width: 767px)"
+                srcSet="/hero-family-mobile.webp 1x, /hero-family-mobile.webp 2x"
+                type="image/webp"
+              />
+              <img
+                src="/hero-family.webp"
+                alt=""
+                aria-hidden="true"
+                loading="eager"
+                fetchPriority="high"
+                className="absolute inset-0 -z-10 h-full w-full object-cover"
+                style={{ objectPosition: "center center" }}
+              />
+            </picture>
 
             {/* CONTENT */}
             <div className="relative z-10 h-full flex items-center">
@@ -169,10 +219,6 @@ export default function Home() {
 
       <div className="block md:hidden">
         <MobileHome />
-        <MobileTrust />
-        <MobileCarriers />
-        <MobileHowItWorks />
-        <MobileTestimonials />
       </div>
     </>
   );

@@ -1,0 +1,124 @@
+{
+  "timestamp": "2025-09-04T04:20:14.887Z",
+  "url": "http://localhost:8082",
+  "performance": {
+    "loadTime": 1052.1000000238419,
+    "domContentLoaded": 1020.5,
+    "timeToInteractive": 456.19999998807907,
+    "firstContentfulPaint": 1542.4000000357628,
+    "totalResources": 83,
+    "imageResources": 4,
+    "scriptResources": 2,
+    "cssResources": 0,
+    "totalTransferSize": 6068062,
+    "httpStatusCode": 200,
+    "compressionEnabled": false,
+    "httpsEnabled": false,
+    "totalLoadTimeActual": 2999
+  },
+  "seo": {
+    "headings": {
+      "h1Count": 1,
+      "h1Text": "Private Health & Life Guidance. Clear. Fast. Year-Round.",
+      "h2Count": 16,
+      "h3Count": 23,
+      "properHierarchy": true
+    },
+    "meta": {
+      "title": "Health & Life Insurance FL MI NC | Licensed Broker Zach Bradford — Bradford Informed Guidance",
+      "titleLength": 93,
+      "description": "Licensed insurance broker FL, MI, NC. Get instant health & life insurance quotes from top carriers. Expert guidance since 2016. Call (689) 325-6570.",
+      "descriptionLength": 148,
+      "hasCanonical": true,
+      "canonical": "https://bradfordinformedguidance.com/"
+    },
+    "images": {
+      "total": 39,
+      "withAlt": 37,
+      "altOptimization": 94.87179487179486,
+      "webpCount": 13,
+      "webpOptimization": 33.33333333333333,
+      "lazyLoadCount": 24,
+      "lazyLoadOptimization": 61.53846153846154
+    },
+    "schema": {
+      "count": 7,
+      "types": [
+        "Organization",
+        "WebSite",
+        [
+          "LocalBusiness",
+          "InsuranceAgency",
+          "FinancialService"
+        ],
+        [
+          "LocalBusiness",
+          "InsuranceAgency",
+          "FinancialService"
+        ],
+        [
+          "LocalBusiness",
+          "InsuranceAgency",
+          "FinancialService"
+        ],
+        "FAQPage",
+        "Organization"
+      ]
+    },
+    "links": {
+      "internal": 25,
+      "external": 10,
+      "total": 35
+    },
+    "technical": {
+      "hasViewport": true,
+      "hasRobots": true,
+      "hasOgTags": true,
+      "hasTwitterCard": true
+    }
+  },
+  "accessibility": {
+    "issues": {
+      "imagesWithoutAlt": 0,
+      "linksWithoutText": 0,
+      "buttonsWithoutText": 0,
+      "formsWithoutLabels": 14
+    },
+    "features": {
+      "headingCount": 43,
+      "hasSkipLinks": false,
+      "hasLandmarkRoles": false
+    },
+    "score": 0
+  },
+  "technical": {
+    "sitemap": {
+      "exists": true,
+      "status": 200,
+      "url": "http://localhost:8082/sitemap_index.xml"
+    },
+    "robots": {
+      "exists": true,
+      "status": 200,
+      "hasSitemap": true,
+      "content": "User-agent: *\r\nAllow: /\r\n\r\nSitemap: https://bradfordinformedguidance.com/sitemap_index.xml"
+    },
+    "ssl": false,
+    "mobileFriendly": {
+      "hasViewport": true,
+      "viewportContent": "width=device-width, initial-scale=1",
+      "hasTouchTargets": true,
+      "isMobileFriendly": true
+    },
+    "pageSpeed": true
+  },
+  "monitoring": {
+    "seoScore": 68,
+    "breakdown": {
+      "performance": 25,
+      "seo": 25,
+      "technical": 20,
+      "accessibility": 0
+    }
+  }
+}

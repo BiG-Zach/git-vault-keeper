@@ -75,13 +75,13 @@ export default function MobileHero() {
             transition={{ duration: 0.6 }}
             className={s.heroText}
           >
-            <h1 className={s.heroHeadline}>
+            <h2 className={s.heroHeadline}>
               <div className={s.headlineLine}>Secure Your</div>
               <div className={`${s.headlineLine} ${s.tomorrowLine}`}>
                 <span style={{color: '#06A66B', fontWeight: 700, fontSize: '1.1em', textShadow: '0 1px 2px rgba(0,0,0,0.3)'}}>TOMORROW,</span>
               </div>
               <div className={s.headlineLine}>Starting Today</div>
-            </h1>
+            </h2>
             <p className={s.heroSubheadline}>
               Instant quotes, next-day protection, ongoing expert guidance—so your family's future is never left to chance.
             </p>

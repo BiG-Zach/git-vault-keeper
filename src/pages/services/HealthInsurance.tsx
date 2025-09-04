@@ -38,7 +38,7 @@ const HealthInsurance: React.FC = () => {
     <>
       <SEO
         title="Best Health Insurance Plans 2024 | Expert Guidance & Quotes"
-        description="Find the perfect health insurance plan with expert guidance. Compare PPO plans, get instant quotes, and save up to 50% on premiums. Licensed agents in FL, MI, NC ready to help."
+        description="Find the perfect health insurance plan with expert guidance. Compare PPO plans, get instant quotes, save up to 50%. Licensed FL, MI, NC agents ready to help."
         path="/services/health-insurance"
         meta={[
           { name: 'keywords', content: 'health insurance, health insurance plans, affordable health insurance, best health insurance, health insurance quotes, PPO health plans, individual health insurance, family health insurance, health insurance coverage' },
