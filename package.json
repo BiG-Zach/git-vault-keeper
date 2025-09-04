@@ -10,7 +10,8 @@
     "preview": "vite preview --port 8080",
     "tunnel": "node scripts/tunnel.js",
     "live": "cross-env NGROK_DOMAIN=bradfordinformedguidance.ngrok-free.app concurrently -k -n VITE,NGROK -c auto \"npm:dev\" \"npm:tunnel\"",
-    "dev:vercel": "vercel dev"
+    "dev:vercel": "vercel dev",
+    "postbuild": "node scripts/postbuild.mjs"
   },
   "dependencies": {
     "@fontsource/playfair-display": "^5.2.6",
@@ -76,6 +77,7 @@
     "d3-geo": "^3.1.1",
     "d3-geo-projection": "^4.0.0",
     "postcss": "^8.4.24",
+    "puppeteer": "^21.11.0",
     "tailwindcss": "^3.4.1",
     "topojson-client": "^3.1.0",
     "ts-node": "^10.9.2",

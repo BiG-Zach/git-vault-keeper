@@ -6,11 +6,11 @@
 export const ORG = {
   name: 'Bradford Informed Guidance',
   legalName: 'Bradford Informed Guidance LLC',
-  url: 'https://www.bradfordinformedguidance.com',
-  logo: 'https://www.bradfordinformedguidance.com/images/bradford-logo-512.png',
-  image: 'https://www.bradfordinformedguidance.com/images/bradford-office.jpg',
-  telephone: '+1-800-BRADFORD',
-  email: 'hello@bradfordinformedguidance.com',
+  url: 'https://bradfordinformedguidance.com',
+  logo: 'https://bradfordinformedguidance.com/images/bradford-logo-512.png',
+  image: 'https://bradfordinformedguidance.com/images/bradford-office.jpg',
+  telephone: '+1-689-325-6570',
+  email: 'zbradford@bradfordinformedguidance.com',
   foundingDate: '2023',
   numberOfEmployees: '5-10',
   description: 'Expert health and life insurance guidance for individuals, families, and businesses across Florida, Michigan, and North Carolina.',
@@ -18,29 +18,21 @@ export const ORG = {
   vatID: 'US123456789', // Update with actual tax ID
   duns: '123456789', // Update with actual DUNS number
   naics: '524210', // Insurance Agencies and Brokerages
+  address: {
+    streetAddress: '4200 W Cypress St',
+    addressLocality: 'Tampa',
+    addressRegion: 'FL',
+    postalCode: '33607',
+    addressCountry: 'US'
+  },
+  openingHours: 'Mo-Su 08:00-20:00',
+  areaServed: ['Florida', 'Michigan', 'North Carolina'],
   sameAs: [
     'https://www.facebook.com/BradfordInformedGuidance',
     'https://www.linkedin.com/company/bradford-informed-guidance',
     'https://twitter.com/BradfordInsure',
     'https://www.instagram.com/bradford_insurance',
     'https://www.youtube.com/c/BradfordInformedGuidance'
-  ],
-  areaServed: [
-    {
-      '@type': 'State',
-      'name': 'Florida',
-      'identifier': 'FL'
-    },
-    {
-      '@type': 'State', 
-      'name': 'Michigan',
-      'identifier': 'MI'
-    },
-    {
-      '@type': 'State',
-      'name': 'North Carolina', 
-      'identifier': 'NC'
-    }
   ],
   serviceType: [
     'Health Insurance',
@@ -486,21 +478,21 @@ export function stateLocalBusinessSchema(stateCode: string) {
       city: 'Tampa',
       state: 'FL',
       zipCode: '33607',
-      phone: '(689) 325-6570'
+      phone: '+1-689-325-6570'
     },
     'MI': {
       address: 'Licensed Agent - Michigan',
       city: 'Detroit',
       state: 'MI',
       zipCode: '48201',
-      phone: '+1-800-BRADFORD'
+      phone: '+1-689-325-6570'
     },
     'NC': {
       address: 'Licensed Agent - North Carolina',
       city: 'Charlotte',
       state: 'NC',
       zipCode: '28202',
-      phone: '+1-800-BRADFORD'
+      phone: '+1-689-325-6570'
     }
   };
 
@@ -510,7 +502,7 @@ export function stateLocalBusinessSchema(stateCode: string) {
     city: 'Virtual Office',
     state: stateCode.toUpperCase(),
     zipCode: '00000',
-    phone: '+1-800-BRADFORD'
+    phone: '+1-689-325-6570'
   };
 
   return localBusinessSchema(stateData[stateCode] || defaultStateData);

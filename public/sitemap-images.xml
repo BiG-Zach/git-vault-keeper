@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://bradfordinformedguidance.com/images/hero/hero-insurance.jpg</loc>
+    <lastmod>2025-09-04T02:36:20.380Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://bradfordinformedguidance.com/images/hero/hero-insurance.jpg</image:loc>
+      <image:title>Insurance Services - hero insurance</image:title>
+      <image:caption>Professional insurance guidance and coverage options</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://bradfordinformedguidance.com/images/hero/hero-family.jpg</loc>
+    <lastmod>2025-09-04T02:36:20.380Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://bradfordinformedguidance.com/images/hero/hero-family.jpg</image:loc>
+      <image:title>Insurance Services - hero family</image:title>
+      <image:caption>Professional insurance guidance and coverage options</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://bradfordinformedguidance.com/images/hero/hero-business.jpg</loc>
+    <lastmod>2025-09-04T02:36:20.380Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://bradfordinformedguidance.com/images/hero/hero-business.jpg</image:loc>
+      <image:title>Insurance Services - hero business</image:title>
+      <image:caption>Professional insurance guidance and coverage options</image:caption>
+    </image:image>
+  </url>
+</urlset>
