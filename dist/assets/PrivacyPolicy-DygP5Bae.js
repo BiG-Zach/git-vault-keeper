@@ -1,1 +1,0 @@
-import{m as o}from"./_stubs-xI7jFL2H.js";import"./index-IK_TNqee.js";import"./SEO-BFY4Vzzv.js";import"./seo-DwG_K4zv.js";const m=o("Privacy Policy — Bradford Informed Guidance","/privacy-policy");export{m as default};
