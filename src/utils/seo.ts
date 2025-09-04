@@ -32,7 +32,7 @@ export interface SEOConfig {
 
 export const SITE = {
   name: 'Bradford Informed Guidance',
-  url: 'https://www.bradfordinformedguidance.com',
+  url: 'https://bradfordinformedguidance.com',
   defaultDescription:
     'Expert health & life insurance guidance for self-employed, families, and early retirees. Licensed in FL, MI, NC. Get instant quotes, next-day coverage, and personalized recommendations.',
   themeColor: '#0ea5e9',

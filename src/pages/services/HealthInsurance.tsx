@@ -1,72 +1,9 @@
-import React, { useEffect } from 'react';
-import { applyHead } from '../../utils/seo';
+import React from 'react';
+import SEO from '../../components/SEO';
 import { organizationSchema, faqSchema, professionalServiceSchema } from '../../utils/schema';
 import { trackEvent } from '../../utils/gtm';
 
 const HealthInsurance: React.FC = () => {
-  useEffect(() => {
-    // SEO optimization for Health Insurance pillar page
-    applyHead({
-      title: 'Best Health Insurance Plans 2024 | Expert Guidance & Quotes',
-      description: 'Find the perfect health insurance plan with expert guidance. Compare PPO plans, get instant quotes, and save up to 50% on premiums. Licensed agents in FL, MI, NC ready to help.',
-      canonical: 'https://www.bradfordinformedguidance.com/services/health-insurance',
-      keywords: 'health insurance, health insurance plans, affordable health insurance, best health insurance, health insurance quotes, PPO health plans, individual health insurance, family health insurance, health insurance coverage',
-      image: 'https://www.bradfordinformedguidance.com/images/health-insurance-hero-2024.webp',
-      imageAlt: 'Expert health insurance guidance and plan comparison',
-      section: 'Health Insurance',
-      articleType: 'service',
-      breadcrumbs: [
-        { name: 'Home', url: '/' },
-        { name: 'Services', url: '/services' },
-        { name: 'Health Insurance', url: '/services/health-insurance' }
-      ],
-      scripts: [
-        {
-          type: 'application/ld+json',
-          innerHTML: organizationSchema()
-        },
-        {
-          type: 'application/ld+json',
-          innerHTML: professionalServiceSchema(
-            'Health Insurance Plans',
-            'Comprehensive health insurance coverage for individuals and families with PPO networks, competitive rates, and expert guidance from licensed professionals.'
-          )
-        },
-        {
-          type: 'application/ld+json',
-          innerHTML: faqSchema([
-            {
-              question: 'What is the best health insurance plan for individuals?',
-              answer: 'The best health insurance plan depends on your specific needs, budget, and health status. Our licensed agents analyze your situation to recommend PPO plans with comprehensive coverage, affordable premiums, and access to top-rated provider networks. We specialize in medically underwritten plans that can offer significant savings for healthy individuals.'
-            },
-            {
-              question: 'How much does health insurance cost per month?',
-              answer: 'Health insurance costs vary based on age, location, coverage level, and health status. Individual plans typically range from $200-$800 monthly, while family plans range from $500-$2,000. Our medically underwritten options often provide 30-50% savings compared to ACA marketplace plans for qualified applicants.'
-            },
-            {
-              question: 'What is the difference between PPO and HMO health insurance?',
-              answer: 'PPO (Preferred Provider Organization) plans offer more flexibility with out-of-network coverage and no referral requirements, while HMO (Health Maintenance Organization) plans require referrals and typically have lower costs. We primarily offer PPO plans for maximum flexibility and nationwide coverage.'
-            },
-            {
-              question: 'Can I get health insurance with pre-existing conditions?',
-              answer: 'Yes, we offer several options for individuals with pre-existing conditions, including guaranteed issue plans and short-term medical coverage. Our licensed agents will review your specific situation and find coverage options that provide the protection you need at competitive rates.'
-            }
-          ])
-        }
-      ]
-    });
-
-    // Track page view for analytics
-    trackEvent({
-      event: 'page_view',
-      event_category: 'health_insurance',
-      event_action: 'pillar_page_view',
-      page_type: 'service_pillar',
-      insurance_type: 'health_insurance',
-      user_journey_stage: 'research'
-    });
-  }, []);
-
   const handleQuoteRequest = (insuranceType: string) => {
     trackEvent({
       event: 'quote_request',
@@ -78,7 +15,45 @@ const HealthInsurance: React.FC = () => {
     });
   };
 
+  const healthInsuranceFAQs = [
+    {
+      question: 'What is the best health insurance plan for individuals?',
+      answer: 'The best health insurance plan depends on your specific needs, budget, and health status. Our licensed agents analyze your situation to recommend PPO plans with comprehensive coverage, affordable premiums, and access to top-rated provider networks. We specialize in medically underwritten plans that can offer significant savings for healthy individuals.'
+    },
+    {
+      question: 'How much does health insurance cost per month?',
+      answer: 'Health insurance costs vary based on age, location, coverage level, and health status. Individual plans typically range from $200-$800 monthly, while family plans range from $500-$2,000. Our medically underwritten options often provide 30-50% savings compared to ACA marketplace plans for qualified applicants.'
+    },
+    {
+      question: 'What is the difference between PPO and HMO health insurance?',
+      answer: 'PPO (Preferred Provider Organization) plans offer more flexibility with out-of-network coverage and no referral requirements, while HMO (Health Maintenance Organization) plans require referrals and typically have lower costs. We primarily offer PPO plans for maximum flexibility and nationwide coverage.'
+    },
+    {
+      question: 'Can I get health insurance with pre-existing conditions?',
+      answer: 'Yes, we offer several options for individuals with pre-existing conditions, including guaranteed issue plans and short-term medical coverage. Our licensed agents will review your specific situation and find coverage options that provide the protection you need at competitive rates.'
+    }
+  ];
+
   return (
+    <>
+      <SEO
+        title="Best Health Insurance Plans 2024 | Expert Guidance & Quotes"
+        description="Find the perfect health insurance plan with expert guidance. Compare PPO plans, get instant quotes, and save up to 50% on premiums. Licensed agents in FL, MI, NC ready to help."
+        path="/services/health-insurance"
+        meta={[
+          { name: 'keywords', content: 'health insurance, health insurance plans, affordable health insurance, best health insurance, health insurance quotes, PPO health plans, individual health insurance, family health insurance, health insurance coverage' },
+          { property: 'og:type', content: 'website' },
+          { name: 'robots', content: 'index, follow' },
+        ]}
+        scripts={[
+          { type: 'application/ld+json', innerHTML: organizationSchema() },
+          { type: 'application/ld+json', innerHTML: professionalServiceSchema(
+            'Health Insurance Plans',
+            'Comprehensive health insurance coverage for individuals and families with PPO networks, competitive rates, and expert guidance from licensed professionals.'
+          ) },
+          { type: 'application/ld+json', innerHTML: faqSchema(healthInsuranceFAQs) }
+        ]}
+      />
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section - H1 Optimization */}
       <section className="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-20">
@@ -266,6 +241,7 @@ const HealthInsurance: React.FC = () => {
         </div>
       </section>
     </div>
+    </>
   );
 };
 
