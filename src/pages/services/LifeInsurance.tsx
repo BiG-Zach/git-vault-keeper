@@ -1,60 +1,10 @@
 import React, { useEffect } from 'react';
-import { applyHead } from '../../utils/seo';
+import SEO from '../../components/SEO';
 import { organizationSchema, faqSchema, professionalServiceSchema } from '../../utils/schema';
 import { trackEvent } from '../../utils/gtm';
 
 const LifeInsurance: React.FC = () => {
   useEffect(() => {
-    // SEO optimization for Life Insurance pillar page
-    applyHead({
-      title: 'Life Insurance Plans & Quotes | Term & Whole Life Coverage',
-      description: 'Compare life insurance quotes from top-rated carriers. Term life, whole life, universal life, and IUL policies. Licensed in FL, MI, NC. Instant quotes, expert guidance.',
-      canonical: 'https://www.bradfordinformedguidance.com/services/life-insurance',
-      keywords: 'life insurance, term life insurance, whole life insurance, universal life insurance, IUL, life insurance quotes, life insurance rates, life insurance coverage, life insurance policy',
-      image: 'https://www.bradfordinformedguidance.com/images/life-insurance-family.jpg',
-      imageAlt: 'Happy family protected by comprehensive life insurance coverage',
-      section: 'Life Insurance',
-      articleType: 'service',
-      breadcrumbs: [
-        { name: 'Home', url: '/' },
-        { name: 'Services', url: '/services' },
-        { name: 'Life Insurance', url: '/services/life-insurance' }
-      ],
-      scripts: [
-        {
-          type: 'application/ld+json',
-          innerHTML: organizationSchema()
-        },
-        {
-          type: 'application/ld+json',
-          innerHTML: professionalServiceSchema(
-            'Life Insurance Services',
-            'Comprehensive life insurance solutions including term, whole, universal, and indexed universal life policies'
-          )
-        },
-        {
-          type: 'application/ld+json',
-          innerHTML: faqSchema([
-            {
-              question: 'How much life insurance do I need?',
-              answer: 'Most experts recommend 10-12 times your annual income in life insurance coverage. However, factors like debt, dependents, future expenses, and existing coverage should be considered. Our agents provide personalized calculations based on your specific situation.'
-            },
-            {
-              question: 'What is the difference between term and whole life insurance?',
-              answer: 'Term life insurance provides coverage for a specific period (10, 20, or 30 years) at lower premiums. Whole life insurance provides permanent coverage with a cash value component but higher premiums. Term is ideal for temporary needs, while whole life offers lifetime protection and investment benefits.'
-            },
-            {
-              question: 'Can I get life insurance if I have health issues?',
-              answer: 'Yes, many carriers offer coverage for individuals with health conditions. Options include simplified issue policies, guaranteed acceptance plans, and graded death benefit policies. We work with multiple carriers to find the best coverage for your health situation.'
-            },
-            {
-              question: 'How quickly can I get life insurance coverage?',
-              answer: 'Coverage timeline varies by policy type. Simplified issue policies can provide coverage within 24-48 hours. Traditional underwritten policies typically take 4-8 weeks. Some carriers offer temporary coverage while your application is processed.'
-            }
-          ])
-        }
-      ]
-    });
 
     // Track page view for analytics
     trackEvent({
@@ -79,6 +29,44 @@ const LifeInsurance: React.FC = () => {
   };
 
   return (
+    <>
+      <SEO
+        title="Life Insurance Plans & Quotes | Term & Whole Life Coverage"
+        description="Compare life insurance quotes from top-rated carriers. Term life, whole life, universal life, and IUL policies. Licensed in FL, MI, NC. Instant quotes, expert guidance."
+        path="/services/life-insurance"
+        meta={[
+          { name: 'keywords', content: 'life insurance, term life insurance, whole life insurance, universal life insurance, IUL, life insurance quotes, life insurance rates, life insurance coverage, life insurance policy' },
+          { property: 'og:image', content: 'https://bradfordinformedguidance.com/images/life-insurance-family.jpg' },
+          { property: 'og:image:alt', content: 'Happy family protected by comprehensive life insurance coverage' },
+          { property: 'og:type', content: 'website' },
+          { name: 'robots', content: 'index, follow' },
+        ]}
+        scripts={[
+          { type: 'application/ld+json', innerHTML: organizationSchema() },
+          { type: 'application/ld+json', innerHTML: professionalServiceSchema(
+            'Life Insurance Services',
+            'Comprehensive life insurance solutions including term, whole, universal, and indexed universal life policies'
+          ) },
+          { type: 'application/ld+json', innerHTML: faqSchema([
+            {
+              question: 'How much life insurance do I need?',
+              answer: 'Most experts recommend 10-12 times your annual income in life insurance coverage. However, factors like debt, dependents, future expenses, and existing coverage should be considered. Our agents provide personalized calculations based on your specific situation.'
+            },
+            {
+              question: 'What is the difference between term and whole life insurance?',
+              answer: 'Term life insurance provides coverage for a specific period (10, 20, or 30 years) at lower premiums. Whole life insurance provides permanent coverage with a cash value component but higher premiums. Term is ideal for temporary needs, while whole life offers lifetime protection and investment benefits.'
+            },
+            {
+              question: 'Can I get life insurance if I have health issues?',
+              answer: 'Yes, many carriers offer coverage for individuals with health conditions. Options include simplified issue policies, guaranteed acceptance plans, and graded death benefit policies. We work with multiple carriers to find the best coverage for your health situation.'
+            },
+            {
+              question: 'How quickly can I get life insurance coverage?',
+              answer: 'Coverage timeline varies by policy type. Simplified issue policies can provide coverage within 24-48 hours. Traditional underwritten policies typically take 4-8 weeks. Some carriers offer temporary coverage while your application is processed.'
+            }
+          ]) }
+        ]}
+      />
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section - H1 Optimization */}
       <section className="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-20">
@@ -455,6 +443,7 @@ const LifeInsurance: React.FC = () => {
         </div>
       </section>
     </div>
+    </>
   );
 };
 

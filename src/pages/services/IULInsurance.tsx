@@ -1,60 +1,10 @@
 import React, { useEffect } from 'react';
-import { applyHead } from '../../utils/seo';
+import SEO from '../../components/SEO';
 import { organizationSchema, faqSchema, professionalServiceSchema } from '../../utils/schema';
 import { trackEvent } from '../../utils/gtm';
 
 const IULInsurance: React.FC = () => {
   useEffect(() => {
-    // SEO optimization for IUL pillar page - targeting high-value keywords
-    applyHead({
-      title: 'Indexed Universal Life Insurance (IUL) | Tax-Free Retirement Income',
-      description: 'Discover IUL insurance benefits: market-linked growth, tax-free retirement income, and flexible premiums. Compare top IUL policies in FL, MI, NC. Expert IUL guidance and quotes.',
-      canonical: 'https://www.bradfordinformedguidance.com/services/iul-insurance',
-      keywords: 'IUL insurance, indexed universal life insurance, IUL benefits, tax-free retirement income, IUL vs 401k, indexed life insurance, IUL policy, universal life insurance',
-      image: 'https://www.bradfordinformedguidance.com/images/iul-retirement-planning.jpg',
-      imageAlt: 'IUL indexed universal life insurance retirement planning strategy',
-      section: 'IUL Insurance',
-      articleType: 'service',
-      breadcrumbs: [
-        { name: 'Home', url: '/' },
-        { name: 'Services', url: '/services' },
-        { name: 'IUL Insurance', url: '/services/iul-insurance' }
-      ],
-      scripts: [
-        {
-          type: 'application/ld+json',
-          innerHTML: organizationSchema()
-        },
-        {
-          type: 'application/ld+json',
-          innerHTML: professionalServiceSchema(
-            'Indexed Universal Life Insurance (IUL)',
-            'Advanced IUL insurance solutions offering market-linked growth potential, tax-advantaged retirement income, and flexible premium structures'
-          )
-        },
-        {
-          type: 'application/ld+json',
-          innerHTML: faqSchema([
-            {
-              question: 'What is Indexed Universal Life (IUL) insurance?',
-              answer: 'IUL is a type of permanent life insurance that combines death benefit protection with a cash value component linked to market index performance. It offers growth potential with downside protection, typically guaranteeing a 0% floor even when markets decline.'
-            },
-            {
-              question: 'How does IUL provide tax-free retirement income?',
-              answer: 'IUL cash value grows tax-deferred, and you can access funds through tax-free policy loans during retirement. This strategy allows you to supplement retirement income without increasing your taxable income, potentially keeping you in lower tax brackets.'
-            },
-            {
-              question: 'What are the main benefits of IUL over traditional retirement accounts?',
-              answer: 'IUL offers several advantages: no contribution limits like 401(k)s, tax-free access to cash value, market upside with downside protection, flexible premiums, and a death benefit for beneficiaries. It is not subject to required minimum distributions.'
-            },
-            {
-              question: 'What market indexes are available with IUL policies?',
-              answer: 'Most IUL policies offer multiple index options including S&P 500, NASDAQ-100, Russell 2000, and international indexes. Many also provide fixed interest rate options and blended index strategies for diversification.'
-            }
-          ])
-        }
-      ]
-    });
 
     // Track page view for analytics
     trackEvent({
@@ -79,6 +29,44 @@ const IULInsurance: React.FC = () => {
   };
 
   return (
+    <>
+      <SEO
+        title="Indexed Universal Life Insurance (IUL) | Tax-Free Retirement Income"
+        description="Discover IUL insurance benefits: market-linked growth, tax-free retirement income, and flexible premiums. Compare top IUL policies in FL, MI, NC. Expert IUL guidance and quotes."
+        path="/services/iul-insurance"
+        meta={[
+          { name: 'keywords', content: 'IUL insurance, indexed universal life insurance, IUL benefits, tax-free retirement income, IUL vs 401k, indexed life insurance, IUL policy, universal life insurance' },
+          { property: 'og:image', content: 'https://bradfordinformedguidance.com/images/iul-retirement-planning.jpg' },
+          { property: 'og:image:alt', content: 'IUL indexed universal life insurance retirement planning strategy' },
+          { property: 'og:type', content: 'website' },
+          { name: 'robots', content: 'index, follow' },
+        ]}
+        scripts={[
+          { type: 'application/ld+json', innerHTML: organizationSchema() },
+          { type: 'application/ld+json', innerHTML: professionalServiceSchema(
+            'Indexed Universal Life Insurance (IUL)',
+            'Advanced IUL insurance solutions offering market-linked growth potential, tax-advantaged retirement income, and flexible premium structures'
+          ) },
+          { type: 'application/ld+json', innerHTML: faqSchema([
+            {
+              question: 'What is Indexed Universal Life (IUL) insurance?',
+              answer: 'IUL is a type of permanent life insurance that combines death benefit protection with a cash value component linked to market index performance. It offers growth potential with downside protection, typically guaranteeing a 0% floor even when markets decline.'
+            },
+            {
+              question: 'How does IUL provide tax-free retirement income?',
+              answer: 'IUL cash value grows tax-deferred, and you can access funds through tax-free policy loans during retirement. This strategy allows you to supplement retirement income without increasing your taxable income, potentially keeping you in lower tax brackets.'
+            },
+            {
+              question: 'What are the main benefits of IUL over traditional retirement accounts?',
+              answer: 'IUL offers several advantages: no contribution limits like 401(k)s, tax-free access to cash value, market upside with downside protection, flexible premiums, and a death benefit for beneficiaries. It is not subject to required minimum distributions.'
+            },
+            {
+              question: 'What market indexes are available with IUL policies?',
+              answer: 'Most IUL policies offer multiple index options including S&P 500, NASDAQ-100, Russell 2000, and international indexes. Many also provide fixed interest rate options and blended index strategies for diversification.'
+            }
+          ]) }
+        ]}
+      />
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section - H1 Optimization for IUL Keywords */}
       <section className="bg-gradient-to-r from-purple-600 to-blue-800 text-white py-20">
@@ -517,6 +505,7 @@ const IULInsurance: React.FC = () => {
         </div>
       </section>
     </div>
+    </>
   );
 };
 

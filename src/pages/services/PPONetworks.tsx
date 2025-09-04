@@ -1,60 +1,10 @@
 import React, { useEffect } from 'react';
-import { applyHead } from '../../utils/seo';
+import SEO from '../../components/SEO';
 import { organizationSchema, faqSchema, professionalServiceSchema } from '../../utils/schema';
 import { trackEvent } from '../../utils/gtm';
 
 const PPONetworks: React.FC = () => {
   useEffect(() => {
-    // SEO optimization for PPO Networks pillar page
-    applyHead({
-      title: 'PPO Health Insurance Plans | Preferred Provider Networks & Coverage',
-      description: 'Find the best PPO health insurance plans with extensive provider networks. Compare PPO vs HMO options, network coverage, and premiums in FL, MI, NC. Expert PPO guidance.',
-      canonical: 'https://www.bradfordinformedguidance.com/services/ppo-networks',
-      keywords: 'PPO health insurance, PPO networks, preferred provider organization, PPO vs HMO, PPO plans, health insurance networks, PPO coverage, PPO providers',
-      image: 'https://www.bradfordinformedguidance.com/images/ppo-network-doctors.jpg',
-      imageAlt: 'PPO health insurance network with doctors and medical providers',
-      section: 'PPO Networks',
-      articleType: 'service',
-      breadcrumbs: [
-        { name: 'Home', url: '/' },
-        { name: 'Services', url: '/services' },
-        { name: 'PPO Networks', url: '/services/ppo-networks' }
-      ],
-      scripts: [
-        {
-          type: 'application/ld+json',
-          innerHTML: organizationSchema()
-        },
-        {
-          type: 'application/ld+json',
-          innerHTML: professionalServiceSchema(
-            'PPO Health Insurance Networks',
-            'Comprehensive PPO health insurance plans with extensive provider networks, flexible coverage options, and access to specialists without referrals'
-          )
-        },
-        {
-          type: 'application/ld+json',
-          innerHTML: faqSchema([
-            {
-              question: 'What is a PPO health insurance plan?',
-              answer: 'A Preferred Provider Organization (PPO) is a type of health insurance plan that offers flexibility in choosing healthcare providers. You can see any doctor or specialist without a referral, though you will pay less if you use providers in the PPO network.'
-            },
-            {
-              question: 'What is the difference between PPO and HMO plans?',
-              answer: 'PPO plans offer more flexibility - you can see specialists without referrals and use out-of-network providers (at higher cost). HMO plans require referrals for specialists and typically only cover in-network care, but usually have lower premiums and out-of-pocket costs.'
-            },
-            {
-              question: 'Do I need referrals to see specialists with a PPO plan?',
-              answer: 'No, PPO plans do not require referrals to see specialists. You can directly schedule appointments with any specialist, whether they are in-network or out-of-network, though in-network visits will cost less.'
-            },
-            {
-              question: 'What happens if I use an out-of-network provider with a PPO plan?',
-              answer: 'You can still receive care from out-of-network providers with a PPO plan, but you will pay higher costs including higher deductibles, coinsurance, and potentially balance billing. Some services may not be covered at all when using out-of-network providers.'
-            }
-          ])
-        }
-      ]
-    });
 
     // Track page view for analytics
     trackEvent({
@@ -79,6 +29,44 @@ const PPONetworks: React.FC = () => {
   };
 
   return (
+    <>
+      <SEO
+        title="PPO Health Insurance Plans | Preferred Provider Networks & Coverage"
+        description="Find the best PPO health insurance plans with extensive provider networks. Compare PPO vs HMO options, network coverage, and premiums in FL, MI, NC. Expert PPO guidance."
+        path="/services/ppo-networks"
+        meta={[
+          { name: 'keywords', content: 'PPO health insurance, PPO networks, preferred provider organization, PPO vs HMO, PPO plans, health insurance networks, PPO coverage, PPO providers' },
+          { property: 'og:image', content: 'https://bradfordinformedguidance.com/images/ppo-network-doctors.jpg' },
+          { property: 'og:image:alt', content: 'PPO health insurance network with doctors and medical providers' },
+          { property: 'og:type', content: 'website' },
+          { name: 'robots', content: 'index, follow' },
+        ]}
+        scripts={[
+          { type: 'application/ld+json', innerHTML: organizationSchema() },
+          { type: 'application/ld+json', innerHTML: professionalServiceSchema(
+            'PPO Health Insurance Networks',
+            'Comprehensive PPO health insurance plans with extensive provider networks, flexible coverage options, and access to specialists without referrals'
+          ) },
+          { type: 'application/ld+json', innerHTML: faqSchema([
+            {
+              question: 'What is a PPO health insurance plan?',
+              answer: 'A Preferred Provider Organization (PPO) is a type of health insurance plan that offers flexibility in choosing healthcare providers. You can see any doctor or specialist without a referral, though you will pay less if you use providers in the PPO network.'
+            },
+            {
+              question: 'What is the difference between PPO and HMO plans?',
+              answer: 'PPO plans offer more flexibility - you can see specialists without referrals and use out-of-network providers (at higher cost). HMO plans require referrals for specialists and typically only cover in-network care, but usually have lower premiums and out-of-pocket costs.'
+            },
+            {
+              question: 'Do I need referrals to see specialists with a PPO plan?',
+              answer: 'No, PPO plans do not require referrals to see specialists. You can directly schedule appointments with any specialist, whether they are in-network or out-of-network, though in-network visits will cost less.'
+            },
+            {
+              question: 'What happens if I use an out-of-network provider with a PPO plan?',
+              answer: 'You can still receive care from out-of-network providers with a PPO plan, but you will pay higher costs including higher deductibles, coinsurance, and potentially balance billing. Some services may not be covered at all when using out-of-network providers.'
+            }
+          ]) }
+        ]}
+      />
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section - H1 Optimization for PPO Keywords */}
       <section className="bg-gradient-to-r from-teal-600 to-blue-800 text-white py-20">
