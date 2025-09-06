@@ -1,0 +1,222 @@
+{
+  "timestamp": "2025-09-04T05:08:20.045Z",
+  "monitoringSession": "session-1756962500045",
+  "submissionCompleted": true,
+  "hoursElapsed": 0,
+  "urlStatuses": [
+    {
+      "url": "https://bradfordinformedguidance.com/",
+      "submitted": "2025-09-04T05:08:19.995Z",
+      "priority": "Homepage",
+      "expectedKeywords": [
+        "florida insurance",
+        "health insurance quotes",
+        "life insurance florida"
+      ],
+      "status": 200,
+      "loadTime": 1607,
+      "accessible": true,
+      "seo": {
+        "title": "Health & Life Insurance FL MI NC | Licensed Broker Zach Bradford — Bradford Informed Guidance",
+        "titleLength": 93,
+        "description": "Licensed insurance broker FL, MI, NC. Get instant health & life insurance quotes from top carriers. Expert guidance since 2016. Call (689) 325-6570.",
+        "descriptionLength": 148,
+        "h1": "Private Health & Life Guidance. Clear. Fast. Year-Round.",
+        "h1Count": 1,
+        "canonical": "https://bradfordinformedguidance.com/",
+        "robots": "index, follow",
+        "wordCount": 1067,
+        "imageCount": 39,
+        "structuredData": [
+          {
+            "type": "Organization",
+            "context": "https://schema.org"
+          },
+          {
+            "type": "WebSite",
+            "context": "https://schema.org"
+          },
+          {
+            "type": [
+              "LocalBusiness",
+              "InsuranceAgency",
+              "FinancialService"
+            ],
+            "context": "https://schema.org"
+          },
+          {
+            "type": [
+              "LocalBusiness",
+              "InsuranceAgency",
+              "FinancialService"
+            ],
+            "context": "https://schema.org"
+          },
+          {
+            "type": [
+              "LocalBusiness",
+              "InsuranceAgency",
+              "FinancialService"
+            ],
+            "context": "https://schema.org"
+          },
+          {
+            "type": "FAQPage",
+            "context": "https://schema.org"
+          },
+          {
+            "type": "Organization",
+            "context": "https://schema.org"
+          }
+        ]
+      },
+      "indexingScore": 85,
+      "indexingReady": true,
+      "lastChecked": "2025-09-04T05:08:31.612Z",
+      "recommendations": [
+        "Optimize title length: 93 chars (ideal: 30-60)"
+      ]
+    },
+    {
+      "url": "https://bradfordinformedguidance.com/services/health-insurance",
+      "submitted": "2025-09-04T05:08:20.045Z",
+      "priority": "High-value service",
+      "expectedKeywords": [
+        "florida health insurance",
+        "best health insurance florida",
+        "health insurance plans"
+      ],
+      "status": 200,
+      "loadTime": 1085,
+      "accessible": true,
+      "seo": {
+        "title": "Best Health Insurance Plans 2024 | Expert Guidance & Quotes — Bradford Informed Guidance",
+        "titleLength": 88,
+        "description": "Find the perfect health insurance plan with expert guidance. Compare PPO plans, get instant quotes, save up to 50%. Licensed FL, MI, NC agents ready to help.",
+        "descriptionLength": 157,
+        "h1": "Find the Best Health Insurance Plans for Your Family",
+        "h1Count": 1,
+        "canonical": "https://bradfordinformedguidance.com/services/health-insurance",
+        "robots": "index, follow",
+        "wordCount": 316,
+        "imageCount": 0,
+        "structuredData": [
+          {
+            "type": "Organization",
+            "context": "https://schema.org"
+          },
+          {
+            "type": "ProfessionalService",
+            "context": "https://schema.org"
+          },
+          {
+            "type": "FAQPage",
+            "context": "https://schema.org"
+          }
+        ]
+      },
+      "indexingScore": 85,
+      "indexingReady": true,
+      "lastChecked": "2025-09-04T05:08:34.824Z",
+      "recommendations": [
+        "Optimize title length: 88 chars (ideal: 30-60)"
+      ]
+    },
+    {
+      "url": "https://bradfordinformedguidance.com/services/life-insurance",
+      "submitted": "2025-09-04T05:08:20.045Z",
+      "priority": "High-value service",
+      "expectedKeywords": [
+        "florida life insurance",
+        "term life insurance",
+        "whole life insurance"
+      ],
+      "status": 200,
+      "loadTime": 997,
+      "accessible": true,
+      "seo": {
+        "title": "Life Insurance Plans & Quotes | Term & Whole Life Coverage — Bradford Informed Guidance",
+        "titleLength": 87,
+        "description": "Compare life insurance quotes from top carriers. Term, whole, universal life, and IUL policies. Licensed FL, MI, NC. Instant quotes, expert guidance.",
+        "descriptionLength": 149,
+        "h1": "Life Insurance Plans That Protect What Matters Most",
+        "h1Count": 1,
+        "canonical": "https://bradfordinformedguidance.com/services/life-insurance",
+        "robots": "index, follow",
+        "wordCount": 630,
+        "imageCount": 0,
+        "structuredData": [
+          {
+            "type": "Organization",
+            "context": "https://schema.org"
+          },
+          {
+            "type": "ProfessionalService",
+            "context": "https://schema.org"
+          },
+          {
+            "type": "FAQPage",
+            "context": "https://schema.org"
+          }
+        ]
+      },
+      "indexingScore": 85,
+      "indexingReady": true,
+      "lastChecked": "2025-09-04T05:08:38.030Z",
+      "recommendations": [
+        "Optimize title length: 87 chars (ideal: 30-60)"
+      ]
+    },
+    {
+      "url": "https://bradfordinformedguidance.com/about",
+      "submitted": "2025-09-04T05:08:20.045Z",
+      "priority": "Brand authority",
+      "expectedKeywords": [
+        "bradford informed guidance",
+        "florida insurance agency",
+        "insurance experts"
+      ],
+      "status": 200,
+      "loadTime": 994,
+      "accessible": true,
+      "seo": {
+        "title": "About Zachary Bradford | Licensed Insurance Expert & Family Protection Advocate — Bradford Informed Guidance",
+        "titleLength": 108,
+        "description": "Meet Zachary Bradford, your trusted insurance advocate with 8+ years protecting 1,000+ families across FL, MI, NC. Expert guidance on health, life & IUL insurance.",
+        "descriptionLength": 163,
+        "h1": "Expert GuidanceYou Can Trust",
+        "h1Count": 2,
+        "canonical": "https://bradfordinformedguidance.com/about",
+        "robots": "index, follow",
+        "wordCount": 603,
+        "imageCount": 2,
+        "structuredData": [
+          {
+            "type": "Organization",
+            "context": "https://schema.org"
+          },
+          {
+            "type": "ProfessionalService",
+            "context": "https://schema.org"
+          }
+        ]
+      },
+      "indexingScore": 65,
+      "indexingReady": false,
+      "lastChecked": "2025-09-04T05:08:41.151Z",
+      "recommendations": [
+        "Fix H1 structure: Found 2 H1 tags, should be exactly 1",
+        "Optimize title length: 108 chars (ideal: 30-60)",
+        "Optimize meta description: 163 chars (ideal: 120-160)"
+      ]
+    }
+  ],
+  "recommendations": [],
+  "summary": {
+    "hoursElapsed": 0,
+    "readyUrls": 3,
+    "accessibleUrls": 4,
+    "avgScore": 80,
+    "avgLoadTime": 1171
+  }
+}

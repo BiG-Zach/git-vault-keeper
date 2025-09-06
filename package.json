@@ -11,8 +11,10 @@
     "tunnel": "node scripts/tunnel.js",
     "live": "cross-env NGROK_DOMAIN=bradfordinformedguidance.ngrok-free.app concurrently -k -n VITE,NGROK -c auto \"npm:dev\" \"npm:tunnel\"",
     "dev:vercel": "vercel dev",
-    "postbuild": "node scripts/generate-sitemaps.mjs",
-    "build:full": "npm run build && npm run preview & sleep 3 && node scripts/prerender-simple.mjs && node scripts/generate-sitemaps.mjs"
+    "postbuild": "node scripts/generate-sitemaps.mjs && node scripts/generate-route-htmls.cjs",
+    "build:full": "npm run build && npm run preview & sleep 3 && node scripts/prerender-simple.mjs && node scripts/generate-sitemaps.mjs",
+    "verify:security": "bash scripts/verify-security.sh",
+    "verify:seo": "bash scripts/verify-seo.sh"
   },
   "dependencies": {
     "@fontsource/playfair-display": "^5.2.6",
