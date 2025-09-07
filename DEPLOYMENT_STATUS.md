@@ -208,3 +208,32 @@ curl -I https://bradfordinformedguidance.com/sitemap_index.xml
 ---
 
 **🎯 Once deployment completes, we'll immediately validate all optimizations and confirm the 96+ SEO score achievement!**
+
+---
+
+## CI + Vercel Deployment Setup (GitHub)
+
+Status (2025-09-06 20:06):
+- GitHub repository is up to date on main (pushed successfully).
+- CI workflow added: .github/workflows/vercel-deploy.yml (deploys to Vercel on push to main).
+- Action required: add repository secrets in GitHub Settings > Secrets and variables > Actions:
+  - VERCEL_TOKEN = <your Vercel token>
+  - VERCEL_ORG_ID = <your Vercel Org ID>
+  - VERCEL_PROJECT_ID = <your Vercel Project ID>
+- Once secrets are added, push any new commit to main (or use "Run workflow") to deploy to production.
+
+How to obtain values:
+- VERCEL_TOKEN: vercel.com > Account Settings > Tokens > Create Token.
+- ORG/PROJECT IDs: In the Vercel dashboard, Project Settings > General; or run `npx vercel link` locally to generate .vercel/project.json (do not commit secrets).
+
+Manual alternative (local, optional):
+- `npm run build`
+- `npx vercel pull --yes --environment=production --token $VERCEL_TOKEN`
+- `npx vercel build --prod --token $VERCEL_TOKEN`
+- `npx vercel deploy --prebuilt --prod --token $VERCEL_TOKEN`
+
+Post-deploy verification (do not weaken CSP):
+- Run: `npm run check:headers` and confirm 404s and CSP headers.
+- Perform Ringy E2E per RINGY_E2E_CHECK.md (no changes to /api/lead).
+- Update INDEXING_TARGETS.md once deployment is live (GSC URL Inspection actions).
+
