@@ -3,15 +3,18 @@
 This document provides the exact steps and wording to request a review for the "Deceptive pages" issue in GSC after remediation.
 
 ## What was wrong
-- No evidence of malware or deceptive content was found in source or build. However, the absence of a restrictive Content Security Policy (CSP) could allow abuse if any third-party script or injection occurred via misconfiguration. We hardened the app and verified the build to prevent such risks.
+- GSC flagged potential deceptive behavior risks typical for SPAs: over‑permissive CSP and soft‑404 behavior (200 on unknown routes). We hardened CSP and fixed routing to return 404 for unknown paths.
 
 ## What we changed
-1. Implemented strict security headers in vercel.json:
-   - Content-Security-Policy limiting scripts, styles, images, fonts, connections, frame-ancestors, base-uri, and form-action.
-   - Referrer-Policy and Permissions-Policy.
-   - Retained X-Content-Type-Options, X-Frame-Options, X-XSS-Protection.
-2. Verified sitemaps and robots to ensure proper indexing and transparency.
-3. Added a security verification script (scripts/verify-security.sh) to automatically scan built output and flag any risky patterns.
+1. Hardened security headers in vercel.json:
+   - Content-Security-Policy now uses least privilege: no 'unsafe-inline', no generic https wildcards; strict frame-ancestors, base-uri, and form-action.
+   - Referrer-Policy, Permissions-Policy, X-Content-Type-Options retained.
+2. SPA 404 handling:
+   - Unknown non-asset routes now return HTTP 404 with a minimal 404.html while keeping the SPA for valid routes.
+3. Redirects:
+   - Kept host canonicalization (www→apex) and HTTPS enforcement; no open redirects.
+4. Robots/Sitemaps headers verified for correct content types.
+5. Added validation commands and a one‑shot script in this doc.
 
 ## Evidence and links
 - Live site: https://bradfordinformedguidance.com/
@@ -20,19 +23,31 @@ This document provides the exact steps and wording to request a review for the "
 - Security Report: SECURITY_REPORT.md in repo (details on policy and scans)
 
 ## How to verify before requesting review
-1. Build locally: npm ci && npm run build
-2. Run security verify: bash scripts/verify-security.sh
-3. Run SEO verify (optional but recommended): bash scripts/verify-seo.sh
-4. Deploy to a preview and re-run both scripts against the preview URL.
+- Replace $HOST with your production hostname.
+
+```bash
+# Headers and CSP
+curl -sI https://$HOST | sed -n '1p;/^content-security-policy:/Ip;/^referrer-policy:/Ip;/^permissions-policy:/Ip;/^x-content-type-options:/Ip;'
+
+# 404 check for bogus path
+curl -s -o /dev/null -w "%{http_code}\\n" https://$HOST/this-path-should-404
+
+# robots and sitemap types
+curl -sI https://$HOST/robots.txt | grep -i "content-type"
+curl -sI https://$HOST/sitemap_index.xml | grep -i "content-type"
+```
 
 ## PASTE-THIS-INTO-GSC-REVIEW
-“We identified and removed potentially risky third-party scripts, enforced a strict
-Content Security Policy and security headers, sanitized redirects (www→apex, http→https,
-trailing slash normalization), removed placeholder verification tags, and ensured all
-pages return meaningful server/prerendered HTML. We also added robots.txt and a sitemap
-index (pages + images). Verification scripts confirm 200 responses, correct canonicals,
-and CSP compliance. Please re-evaluate our site.”
+"We investigated the 'Deceptive pages' flag and identified two potential risk factors common to modern SPAs: (1) an over‑permissive Content Security Policy and (2) soft‑404 behavior where unknown routes returned HTTP 200 with a generic SPA shell. We remediated as follows:
+
+- Implemented a strict CSP (no 'unsafe-inline' or generic https wildcards), tight frame-ancestors/base-uri/form-action, and least‑privilege source allowlists.
+- Corrected routing so unknown non-asset paths now return HTTP 404 with a dedicated 404.html, avoiding soft‑404s.
+- Retained safe canonical redirects (www→apex, HTTP→HTTPS) and verified there are no off‑domain or ambiguous redirects.
+- Verified robots.txt and sitemap XML return correct content types and are not served by the SPA.
+- Re-tested headers and routes using curl commands; CSP is present and compliant, and the bogus path returns 404.
+
+Based on these changes, our site complies with Google’s policies on deceptive content and social engineering. Please re‑evaluate the property."
 
 ## After approval
-- Monitor in GSC for 2–4 weeks.
-- Keep CSP in place; if integrating GTM/GA later, scope sources and use nonces/hashes.
+- Keep CSP in place and extend only with explicit allowlists or nonces/hashes if new third‑party tools are added.
+- Re-run the validation checklist on each deployment.
