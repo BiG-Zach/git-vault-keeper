@@ -237,3 +237,7 @@ Post-deploy verification (do not weaken CSP):
 - Perform Ringy E2E per RINGY_E2E_CHECK.md (no changes to /api/lead).
 - Update INDEXING_TARGETS.md once deployment is live (GSC URL Inspection actions).
 
+
+
+
+Deployment CI Trigger Note: 2025-09-06 20:06 — Preparing to trigger GitHub Actions Vercel deploy on push to main.
