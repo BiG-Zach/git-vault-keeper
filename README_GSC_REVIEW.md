@@ -26,7 +26,12 @@ This document provides the exact steps and wording to request a review for the "
 4. Deploy to a preview and re-run both scripts against the preview URL.
 
 ## PASTE-THIS-INTO-GSC-REVIEW
-We investigated the "Deceptive pages" flag and completed security hardening. We found no deceptive content or malware. We implemented a restrictive Content Security Policy (CSP) and additional security headers on all routes to block unauthorized scripts and framing. We also audited the codebase and built output to confirm there are no off-domain redirects, hidden iframes, or download prompts. Our automated security check (scripts/verify-security.sh) verifies no mixed content or unauthorized external scripts in the build. Please review and lift the warning. Thank you.
+“We identified and removed potentially risky third-party scripts, enforced a strict
+Content Security Policy and security headers, sanitized redirects (www→apex, http→https,
+trailing slash normalization), removed placeholder verification tags, and ensured all
+pages return meaningful server/prerendered HTML. We also added robots.txt and a sitemap
+index (pages + images). Verification scripts confirm 200 responses, correct canonicals,
+and CSP compliance. Please re-evaluate our site.”
 
 ## After approval
 - Monitor in GSC for 2–4 weeks.

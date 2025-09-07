@@ -13,8 +13,8 @@
     "dev:vercel": "vercel dev",
     "postbuild": "node scripts/generate-sitemaps.mjs && node scripts/generate-route-htmls.cjs",
     "build:full": "npm run build && npm run preview & sleep 3 && node scripts/prerender-simple.mjs && node scripts/generate-sitemaps.mjs",
-    "verify:security": "bash scripts/verify-security.sh",
-    "verify:seo": "bash scripts/verify-seo.sh"
+    "verify:security": "pwsh -File scripts/verify-security.ps1",
+    "verify:seo": "pwsh -File scripts/verify-seo.ps1"
   },
   "dependencies": {
     "@fontsource/playfair-display": "^5.2.6",
