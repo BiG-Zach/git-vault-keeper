@@ -25,6 +25,16 @@ jobs:
       - name: Build (Vite)
         run: npm run build
 
+      - name: Check Vercel secrets are present
+        env:
+          HAS_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          HAS_ORG: ${{ secrets.VERCEL_ORG_ID }}
+          HAS_PROJECT: ${{ secrets.VERCEL_PROJECT_ID }}
+        run: |
+          [ -n "$HAS_TOKEN" ] || (echo "Missing VERCEL_TOKEN repo secret" && exit 1)
+          [ -n "$HAS_ORG" ] || (echo "Missing VERCEL_ORG_ID repo secret" && exit 1)
+          [ -n "$HAS_PROJECT" ] || (echo "Missing VERCEL_PROJECT_ID repo secret" && exit 1)
+
       # Optional: run lightweight header checks with curl here if desired
       # PowerShell-based scripts are skipped in CI by default to avoid installing pwsh.
 
