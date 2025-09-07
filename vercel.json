@@ -19,10 +19,6 @@
       "destination": "/index.html"
     }
   ],
-  "routes": [
-    { "src": "^/(?:assets|favicon\\.ico|robots\\.txt|sitemap.*\\.xml)(?:/.*)?$", "dest": "/$0" },
-    { "src": "^/(.*)$", "status": 404, "dest": "/404.html" }
-  ],
   "headers": [
     {
       "source": "/(.*)",
