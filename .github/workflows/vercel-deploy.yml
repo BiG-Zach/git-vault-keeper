@@ -45,3 +45,23 @@ jobs:
         env:
           VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
           VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+
+      - name: Post-deploy header checks (production)
+        run: |
+          set -e
+          HOST="https://bradfordinformedguidance.com"
+          echo "Checking headers for $HOST"
+          H=$(curl -sI "$HOST")
+          echo "$H"
+          echo "$H" | grep -i '^content-security-policy:' >/dev/null
+          echo "$H" | grep -i '^referrer-policy:' >/dev/null
+          echo "$H" | grep -i '^permissions-policy:' >/dev/null
+          echo "$H" | grep -i '^x-content-type-options:' >/dev/null
+          echo "Checking 404 behavior..."
+          CODE=$(curl -sI -o /dev/null -w "%{http_code}" "$HOST/this-path-should-404")
+          [ "$CODE" = "404" ]
+          echo "Checking robots.txt content-type..."
+          curl -sI "$HOST/robots.txt" | grep -i 'content-type' | grep -Eqi 'text/plain'
+          echo "Checking sitemap_index.xml content-type..."
+          curl -sI "$HOST/sitemap_index.xml" | grep -i 'content-type' | grep -Eqi 'application/xml|text/xml'
+          echo "Header checks passed."
