@@ -3,10 +3,9 @@
  * Generates SEO-optimized crawling directives for search engine domination
  */
 
-import type { APIRoute } from 'astro';
-import { generateRobotsTxt } from '../utils/sitemap';
+import { generateRobotsTxt } from '../src/utils/sitemap';
 
-export const GET: APIRoute = async ({ url }) => {
+export const GET = async () => {
   try {
     const baseUrl = 'https://www.bradfordinformedguidance.com';
     

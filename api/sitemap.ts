@@ -3,10 +3,10 @@
  * Generates real-time XML sitemaps for maximum SEO performance
  */
 
-import type { APIRoute } from 'astro';
-import { generateSitemapXML } from '../utils/sitemap';
+import { generateSitemapXML } from '../src/utils/sitemap';
 
-export const GET: APIRoute = async ({ url }) => {
+export const GET = async (req: Request) => {
+  const { url } = req as any;
   try {
     const searchParams = new URL(url).searchParams;
     const includeImages = searchParams.get('images') !== 'false';
