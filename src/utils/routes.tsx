@@ -49,6 +49,7 @@ const AetnaCignaUnitedComparison = lazy(() => import('../pages/blog/AetnaCignaUn
 const AMBestInsuranceRatingsExplained = lazy(() => import('../pages/blog/AMBestInsuranceRatingsExplained'));
 const FloridaSmallBusinessHealthInsurance = lazy(() => import('../pages/blog/FloridaSmallBusinessHealthInsurance'));
 const LifeInsuranceCompaniesFinancialStrength = lazy(() => import('../pages/blog/LifeInsuranceCompaniesFinancialStrength'));
+const NotFound = lazy(() => import('../pages/NotFound'));
 
 export const routes = [
   {
@@ -104,6 +105,7 @@ export const routes = [
       { path: 'blog/am-best-insurance-ratings-explained', element: <AMBestInsuranceRatingsExplained /> },
       { path: 'blog/florida-small-business-health-insurance', element: <FloridaSmallBusinessHealthInsurance /> },
       { path: 'blog/life-insurance-companies-financial-strength', element: <LifeInsuranceCompaniesFinancialStrength /> },
+      { path: '*', element: <NotFound /> },
     ],
   },
 ];
