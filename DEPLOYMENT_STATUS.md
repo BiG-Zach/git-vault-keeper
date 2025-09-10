@@ -250,3 +250,17 @@ Deployment CI Trigger Note: 2025-09-06 20:06 — Preparing to trigger GitHub Act
 - Result: All checks PASS. Evidence saved in spotcheck_report.md.
 - Action needed: None. No code changes or redeploy required at this time.
 - Next: Proceed with Google Search Console Request Review using spotcheck_report.md as evidence.
+
+## Deployment Log
+
+- 2025-09-10 15:34 (local): Fix SPA 404 on direct navigation
+  - Added Vercel SPA catch-all rewrite: /((?!api|.*\..*).*) -> /index.html
+  - Added client-side wildcard route to render NotFound for unmatched paths
+  - Commit: 0d53be5
+  - Expected result: /contact loads without server 404; unmatched paths show in-app 404
+
+- 2025-09-10 15:44 (local): Fix CI header check failure (404 probe)
+  - Excluded /this-path-should-404 from SPA rewrite so platform returns native 404
+  - No impact to normal client routes; SPA routing remains intact
+  - Commit: 25a1cdb
+  - Expected result: Post-deploy header checks pass in GitHub Actions
