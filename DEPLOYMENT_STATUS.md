@@ -241,3 +241,12 @@ Post-deploy verification (do not weaken CSP):
 
 
 Deployment CI Trigger Note: 2025-09-06 20:06 — Preparing to trigger GitHub Actions Vercel deploy on push to main.
+
+---
+
+## Production Validation Update (2025-09-07 21:46 local)
+- Environment checked: LIVE production at https://bradfordinformedguidance.com ✓
+- Scope: Security headers, 404 handling, robots.txt and sitemap content types.
+- Result: All checks PASS. Evidence saved in spotcheck_report.md.
+- Action needed: None. No code changes or redeploy required at this time.
+- Next: Proceed with Google Search Console Request Review using spotcheck_report.md as evidence.

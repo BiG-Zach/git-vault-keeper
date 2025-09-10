@@ -26,7 +26,6 @@ const ROUTES = [
   "/north-carolina",
   "/referral",
   "/checklist",
-  "/thank-you",
   "/privacy-policy",
   "/terms",
   "/blog/term-vs-whole-life-insurance-2024",

@@ -1,3 +1,7 @@
+# Bradford Informed Guidance — Project Readme
+
+- Start here for immediate actions: NEXT_STEPS_NOW.md
+
 ## Mobile Styling Policy
 
 **Scope:**
@@ -10,7 +14,7 @@ This project uses a **component-scoped mobile CSS** approach to ensure mobile ch
 4. All media queries use:
 ```css
 @media (max-width: 767.98px) { … }
-
+```
 
 ## SEO & Indexability
 

@@ -8,15 +8,6 @@
     {
       "source": "/api/(.*)",
       "destination": "/api/$1"
-    },
-    {
-      "source": "/(.*)",
-      "has": [{
-        "type": "header",
-        "key": "x-matched-path",
-        "value": "/(.*)"
-      }],
-      "destination": "/index.html"
     }
   ],
   "headers": [

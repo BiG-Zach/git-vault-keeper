@@ -155,10 +155,11 @@ const PremiumCarriers = () => {
                 {/* Logo */}
                 <div className="w-full max-w-[120px] h-12 lg:h-16 flex items-center justify-center mb-4">
                   <img
-                    data-src={carrier.src}
+                    src={carrier.src}
                     alt={carrier.alt}
-                    className="max-w-full max-h-full object-contain opacity-80 group-hover:opacity-100 transition-opacity duration-300 lazy"
+                    className="max-w-full max-h-full object-contain opacity-80 group-hover:opacity-100 transition-opacity duration-300"
                     loading="lazy"
+                    decoding="async"
                   />
                 </div>
                 

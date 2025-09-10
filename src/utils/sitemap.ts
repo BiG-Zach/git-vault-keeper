@@ -24,7 +24,7 @@ export interface SitemapConfig {
 }
 
 const DEFAULT_CONFIG: SitemapConfig = {
-  baseUrl: 'https://www.bradfordinformedguidance.com',
+  baseUrl: 'https://bradfordinformedguidance.com',
   includeStatePages: true,
   includeBlogPosts: true,
   includeServicePages: true,
@@ -359,9 +359,9 @@ export function generateRobotsTxt(baseUrl: string, additionalDirectives: string[
     'Allow: /js/',
     '',
     '# Sitemap locations',
-    `Sitemap: ${baseUrl}/sitemap.xml`,
+    `Sitemap: ${baseUrl}/sitemap_index.xml`,
+    `Sitemap: ${baseUrl}/sitemap-pages.xml`,
     `Sitemap: ${baseUrl}/sitemap-images.xml`,
-    `Sitemap: ${baseUrl}/sitemap-news.xml`,
     '',
     '# Host declaration for primary domain',
     `Host: ${baseUrl.replace('https://', '').replace('http://', '')}`

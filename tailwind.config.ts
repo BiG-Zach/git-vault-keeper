@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import aspectRatio from "@tailwindcss/aspect-ratio";
 
 const config: Config = {
   darkMode: ["class", '[data-theme="dark"]'],
@@ -44,6 +45,7 @@ const config: Config = {
     },
   },
   plugins: [
+    aspectRatio,
     function({ addUtilities }) {
       addUtilities({
         ".text-nuclear": {

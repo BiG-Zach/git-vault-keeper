@@ -13,7 +13,7 @@ export const GET = async (req: Request) => {
     const format = searchParams.get('format') || 'xml';
     
     const sitemapXML = generateSitemapXML({
-      baseUrl: 'https://www.bradfordinformedguidance.com',
+      baseUrl: 'https://bradfordinformedguidance.com',
       includeStatePages: true,
       includeBlogPosts: true,
       includeServicePages: true,
