@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import SEO from '../../components/SEO';
-import { organizationSchema, faqSchema, professionalServiceSchema } from '../../utils/schema';
+import Canonical from '../../seo/canonical';
+import { organizationSchema, faqSchema, professionalServiceSchema, breadcrumbSchema } from '../../utils/schema';
 import { trackEvent } from '../../utils/gtm';
 
 const LifeInsurance: React.FC = () => {
@@ -30,10 +31,12 @@ const LifeInsurance: React.FC = () => {
 
   return (
     <>
+      <Canonical pathname="/services/life-insurance" />
       <SEO
         title="Life Insurance Plans & Quotes | Term & Whole Life Coverage"
         description="Compare life insurance quotes from top carriers. Term, whole, universal life, and IUL policies. Licensed FL, MI, NC. Instant quotes, expert guidance."
         path="/services/life-insurance"
+        disableCanonical={true}
         meta={[
           { name: 'keywords', content: 'life insurance, term life insurance, whole life insurance, universal life insurance, IUL, life insurance quotes, life insurance rates, life insurance coverage, life insurance policy' },
           { property: 'og:image', content: 'https://bradfordinformedguidance.com/images/life-insurance-family.jpg' },
@@ -64,6 +67,10 @@ const LifeInsurance: React.FC = () => {
               question: 'How quickly can I get life insurance coverage?',
               answer: 'Coverage timeline varies by policy type. Simplified issue policies can provide coverage within 24-48 hours. Traditional underwritten policies typically take 4-8 weeks. Some carriers offer temporary coverage while your application is processed.'
             }
+          ]) },
+          { type: 'application/ld+json', innerHTML: breadcrumbSchema([
+            { name: 'Home', item: 'https://bradfordinformedguidance.com/' },
+            { name: 'Life Insurance', item: 'https://bradfordinformedguidance.com/services/life-insurance' }
           ]) }
         ]}
       />

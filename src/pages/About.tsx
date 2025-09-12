@@ -6,15 +6,18 @@ import CalendlyInline from "../components/CalendlyInline";
 import AboutHero from "../components/about/AboutHero";
 import Magnetic from "../components/ui/Magnetic";
 import SEO from "../components/SEO";
-import { organizationSchema, professionalServiceSchema } from "../utils/schema";
+import Canonical from "../seo/canonical";
+import { organizationSchema, professionalServiceSchema, breadcrumbSchema } from "../utils/schema";
 
 export default function AboutPage() {
   return (
     <>
+      <Canonical pathname="/about" />
       <SEO
         title="About Zachary Bradford | Licensed Insurance Expert & Family Protection Advocate"
         description="Meet Zachary Bradford, your trusted insurance advocate with 8+ years protecting 1,000+ families across FL, MI, NC. Expert guidance on health, life & IUL insurance."
         path="/about"
+        disableCanonical={true}
         meta={[
           { name: 'keywords', content: 'Zachary Bradford, insurance expert, licensed insurance agent, family protection advocate, insurance guidance, Florida Michigan North Carolina insurance' },
           { property: 'og:image', content: 'https://bradfordinformedguidance.com/about/portrait.jpg' },
@@ -27,7 +30,11 @@ export default function AboutPage() {
           { type: 'application/ld+json', innerHTML: professionalServiceSchema(
             'Insurance Expert & Family Protection Services',
             'Expert insurance guidance and family protection services from licensed professional Zachary Bradford, serving families across Florida, Michigan, and North Carolina with comprehensive health, life, and IUL insurance solutions.'
-          ) }
+          ) },
+          { type: 'application/ld+json', innerHTML: breadcrumbSchema([
+            { name: 'Home', item: 'https://bradfordinformedguidance.com/' },
+            { name: 'About', item: 'https://bradfordinformedguidance.com/about' }
+          ]) }
         ]}
       />
     <main className="min-h-screen">

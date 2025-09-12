@@ -1,6 +1,7 @@
 import React from 'react';
 import SEO from '../../components/SEO';
-import { organizationSchema, faqSchema, professionalServiceSchema } from '../../utils/schema';
+import Canonical from '../../seo/canonical';
+import { organizationSchema, faqSchema, professionalServiceSchema, breadcrumbSchema } from '../../utils/schema';
 import { trackEvent } from '../../utils/gtm';
 
 const HealthInsurance: React.FC = () => {
@@ -36,14 +37,15 @@ const HealthInsurance: React.FC = () => {
 
   return (
     <>
+      <Canonical pathname="/services/health-insurance" />
       <SEO
         title="Best Health Insurance Plans 2024 | Expert Guidance & Quotes"
         description="Find the perfect health insurance plan with expert guidance. Compare PPO plans, get instant quotes, save up to 50%. Licensed FL, MI, NC agents ready to help."
         path="/services/health-insurance"
+        disableCanonical={true}
         meta={[
           { name: 'keywords', content: 'health insurance, health insurance plans, affordable health insurance, best health insurance, health insurance quotes, PPO health plans, individual health insurance, family health insurance, health insurance coverage' },
-          { property: 'og:type', content: 'website' },
-          { name: 'robots', content: 'index, follow' },
+          { property: 'og:type', content: 'website' }
         ]}
         scripts={[
           { type: 'application/ld+json', innerHTML: organizationSchema() },
@@ -51,7 +53,11 @@ const HealthInsurance: React.FC = () => {
             'Health Insurance Plans',
             'Comprehensive health insurance coverage for individuals and families with PPO networks, competitive rates, and expert guidance from licensed professionals.'
           ) },
-          { type: 'application/ld+json', innerHTML: faqSchema(healthInsuranceFAQs) }
+          { type: 'application/ld+json', innerHTML: faqSchema(healthInsuranceFAQs) },
+          { type: 'application/ld+json', innerHTML: breadcrumbSchema([
+            { name: 'Home', item: 'https://bradfordinformedguidance.com/' },
+            { name: 'Health Insurance', item: 'https://bradfordinformedguidance.com/services/health-insurance' }
+          ]) }
         ]}
       />
     <div className="min-h-screen bg-gray-50">

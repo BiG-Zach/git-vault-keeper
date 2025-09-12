@@ -7,6 +7,7 @@ type SEOProps = Omit<SEOConfig, 'canonical' | 'themeColor' | 'titleTemplate'> & 
   title?: string;
   template?: string;
   themeColor?: string;
+  disableCanonical?: boolean;
 };
 
 export default function SEO({
@@ -20,6 +21,7 @@ export default function SEO({
   links,
   scripts,
   noindex,
+  disableCanonical,
 }: SEOProps) {
   // Ensure description is always provided
   const finalDescription = description || SITE.defaultDescription;
@@ -29,7 +31,7 @@ export default function SEO({
       title,
       titleTemplate: template,
       description: finalDescription,
-      canonical: canonicalFor(path),
+      canonical: disableCanonical ? undefined : canonicalFor(path),
       lang,
       meta,
       links,
