@@ -92,6 +92,16 @@
       "permanent": true
     },
     {
+      "source": "/health-insurance",
+      "destination": "/services/health-insurance",
+      "permanent": true
+    },
+    {
+      "source": "/life-insurance",
+      "destination": "/services/life-insurance",
+      "permanent": true
+    },
+    {
       "source": "/(.*)/",
       "destination": "/$1",
       "permanent": true

@@ -48,7 +48,7 @@ const ROUTES = [
   "/blog/life-insurance-companies-financial-strength"
 ];
 
-const BASE_URL = 'http://localhost:8082';
+const BASE_URL = 'http://localhost:8080';
 const DIST_DIR = path.join(__dirname, '..', 'dist');
 
 async function prerenderRoute(browser, route) {

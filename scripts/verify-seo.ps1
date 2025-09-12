@@ -13,42 +13,42 @@ $Routes = @(
 )
 
 $pass = 0; $fail = 0; $warn = 0; $tests = 0
-function Print-Pass($m){ $script:pass++; $script:tests++; Write-Output "✅ PASS: $m" }
-function Print-Fail($m){ $script:fail++; $script:tests++; Write-Output "❌ FAIL: $m" }
-function Print-Warn($m){ $script:warn++; $script:tests++; Write-Output "⚠️  WARN: $m" }
+function Print-Pass($m){ $script:pass++; $script:tests++; Write-Output "PASS: $m" }
+function Print-Fail($m){ $script:fail++; $script:tests++; Write-Output "FAIL: $m" }
+function Print-Warn($m){ $script:warn++; $script:tests++; Write-Output "WARN: $m" }
 
-Write-Output "🚀 Starting SEO verification"
-Write-Output "📊 Base URL: $Base"
-Write-Output "🤖 User Agent: $UA"
+Write-Output "Starting SEO verification"
+Write-Output "Base URL: $Base"
+Write-Output "User Agent: $UA"
 
 # Helpers
 function Test-Head200Html($url){
   try {
     $resp = iwr -Method Head -Headers @{ 'User-Agent' = $UA } -Uri $url -MaximumRedirection 5 -TimeoutSec 30
-    if ($resp.StatusCode -eq 200) { Print-Pass "HEAD 200 for $url" } else { Print-Fail "HEAD $($resp.StatusCode) for $url" }
+    if ($resp.StatusCode -eq 200) { Print-Pass "HEAD 200 for ${url}" } else { Print-Fail "HEAD $($resp.StatusCode) for ${url}" }
     $ctype = ($resp.Headers['Content-Type'] | Select-Object -First 1)
     if ($ctype -and ($ctype -match 'text/html' -or $ctype -match 'text/plain' -and $url -match 'robots\.txt$')) {
-      Print-Pass "Content-Type ok ($ctype) for $url"
+      Print-Pass "Content-Type ok ($ctype) for ${url}"
     } else {
-      Print-Fail "Unexpected Content-Type ($ctype) for $url"
+      Print-Fail "Unexpected Content-Type ($ctype) for ${url}"
     }
-  } catch { Print-Fail "HEAD failed for $url: $($_.Exception.Message)" }
+  } catch { Print-Fail "HEAD failed for ${url}: $($_.Exception.Message)" }
 }
 
 function Assert-HtmlElements($url){
   try {
     $resp = iwr -Headers @{ 'User-Agent' = $UA } -Uri $url -MaximumRedirection 5 -TimeoutSec 60
     $html = $resp.Content
-    if ($html | Select-String -SimpleMatch '<title>') { Print-Pass "<title> present $url" } else { Print-Fail "<title> missing $url" }
-    if ($html | Select-String 'name="description"') { Print-Pass "meta description present $url" } else { Print-Fail "meta description missing $url" }
-    if ($html | Select-String -SimpleMatch '<h1') { Print-Pass "<h1> present $url" } else { Print-Fail "<h1> missing $url" }
-    if ($html | Select-String 'rel="canonical"') { Print-Pass "canonical present $url" } else { Print-Fail "canonical missing $url" }
-    if ($html | Select-String 'application/ld\+json') { Print-Pass "JSON-LD present $url" } else { Print-Warn "JSON-LD not found $url" }
-  } catch { Print-Fail "GET failed for $url: $($_.Exception.Message)" }
+    if ($html | Select-String -SimpleMatch '<title>') { Print-Pass "`<title`> present ${url}" } else { Print-Fail "`<title`> missing ${url}" }
+    if ($html | Select-String 'name="description"') { Print-Pass "meta description present ${url}" } else { Print-Fail "meta description missing ${url}" }
+    if ($html | Select-String -SimpleMatch '<h1') { Print-Pass "`<h1`> present ${url}" } else { Print-Fail "`<h1`> missing ${url}" }
+    if ($html | Select-String 'rel="canonical"') { Print-Pass "canonical present ${url}" } else { Print-Fail "canonical missing ${url}" }
+    if ($html | Select-String 'application/ld\+json') { Print-Pass "JSON-LD present ${url}" } else { Print-Warn "JSON-LD not found ${url}" }
+  } catch { Print-Fail "GET failed for ${url}: $($_.Exception.Message)" }
 }
 
 # robots.txt
-Write-Output ""; Write-Output "🔍 Checking robots.txt"
+Write-Output ""; Write-Output "Checking robots.txt"
 try {
   Test-Head200Html "$Base/robots.txt"
   $robots = iwr -Headers @{ 'User-Agent' = $UA } -Uri "$Base/robots.txt" -TimeoutSec 30
@@ -58,7 +58,7 @@ try {
 
 # Sitemaps
 function Check-Sitemap($url, $name){
-  Write-Output ""; Write-Output "🔍 Checking $name"
+  Write-Output ""; Write-Output "Checking $name"
   try {
     $head = iwr -Method Head -Headers @{ 'User-Agent' = $UA } -Uri $url -TimeoutSec 30
     if ($head.StatusCode -eq 200) { Print-Pass "$name returns 200" } else { Print-Fail "$name returned $($head.StatusCode)" }
@@ -75,7 +75,7 @@ Check-Sitemap "$Base/sitemap-pages.xml" 'sitemap-pages.xml'
 Check-Sitemap "$Base/sitemap-images.xml" 'sitemap-images.xml'
 
 # Redirect checks
-Write-Output ""; Write-Output "🔍 Checking redirects"
+Write-Output ""; Write-Output "Checking redirects"
 try {
   $wwwResp = iwr -Uri 'https://www.bradfordinformedguidance.com/' -MaximumRedirection 0 -ErrorAction SilentlyContinue
   if ($wwwResp.StatusCode -ge 300 -and $wwwResp.StatusCode -lt 400) {
@@ -93,7 +93,7 @@ try {
 } catch { Print-Warn "Trailing slash check: $($_.Exception.Message)" }
 
 # Routes
-Write-Output ""; Write-Output "🔍 Checking prerendered routes"
+Write-Output ""; Write-Output "Checking prerendered routes"
 foreach ($route in $Routes) {
   $url = "$Base$route"
   Write-Output ""; Write-Output "📄 Testing $route"
@@ -108,4 +108,4 @@ Write-Output "- Total checks: $tests"
 Write-Output "- Passed: $pass"
 Write-Output "- Failed: $fail"
 Write-Output "- Warnings: $warn"
-if ($fail -eq 0) { Write-Output "✅ All SEO checks passed."; exit 0 } else { Write-Output "❌ $fail SEO checks failed."; exit 1 }
+if ($fail -eq 0) { Write-Output "All SEO checks passed."; exit 0 } else { Write-Output "$fail SEO checks failed."; exit 1 }
