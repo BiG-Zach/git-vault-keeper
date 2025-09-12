@@ -1,0 +1,1 @@
+{"version":3,"file":"PrivacyPolicy-DgPAMiaU.js","sources":["../../src/pages/PrivacyPolicy.tsx"],"sourcesContent":["import { makePage } from './_stubs';\r\n\r\nexport default makePage('Privacy Policy — Bradford Informed Guidance', '/privacy-policy');"],"names":["PrivacyPolicy","makePage"],"mappings":"gKAEA,MAAAA,EAAeC,EAAS,8CAA+C,iBAAiB"}

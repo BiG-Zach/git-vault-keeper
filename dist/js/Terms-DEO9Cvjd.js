@@ -1,1 +1,0 @@
-import{m as r}from"./_stubs-CbnD5up4.js";import"./ui-vendor-DKUhjf_c.js";import"./react-vendor-CNb0Rz5q.js";import"./SEO-Bkf5ZhAa.js";import"./seo-CkCgrUKe.js";const i=r("Terms — Bradford Informed Guidance","/terms");export{i as default};

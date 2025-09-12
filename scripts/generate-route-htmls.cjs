@@ -34,53 +34,123 @@ const ROUTES = [
 
 function generateHTML(route) {
   const canonical = `${BASE_URL}/${route.path}`;
-  
+
+  // Minimal static body content with an H1 and supporting copy per route
+  let h1 = '';
+  let bodyCopy = '';
+  let breadcrumbs = [];
+
+  if (route.path === 'services/health-insurance') {
+    h1 = 'Health Insurance Plans & Expert Guidance';
+    bodyCopy = 'Compare PPO and other plan types with licensed guidance. Get quotes and find the right coverage for your needs in FL, MI, and NC.';
+    breadcrumbs = [
+      { name: 'Home', url: `${BASE_URL}/` },
+      { name: 'Services', url: `${BASE_URL}/services/health-insurance` },
+      { name: 'Health Insurance', url: canonical }
+    ];
+  } else if (route.path === 'services/life-insurance') {
+    h1 = 'Life Insurance Quotes: Term, Whole Life, and IUL';
+    bodyCopy = 'Explore affordable term and permanent life insurance options from top-rated carriers. Get personalized recommendations and instant quotes.';
+    breadcrumbs = [
+      { name: 'Home', url: `${BASE_URL}/` },
+      { name: 'Services', url: `${BASE_URL}/services/life-insurance` },
+      { name: 'Life Insurance', url: canonical }
+    ];
+  } else if (route.path === 'about') {
+    h1 = 'About Bradford Informed Guidance';
+    bodyCopy = 'Since 2016, we have helped families and businesses select the right health and life insurance coverage with personalized, unbiased guidance.';
+    breadcrumbs = [
+      { name: 'Home', url: `${BASE_URL}/` },
+      { name: 'About', url: canonical }
+    ];
+  } else {
+    h1 = route.title || 'Bradford Informed Guidance';
+    bodyCopy = route.description || '';
+    breadcrumbs = [
+      { name: 'Home', url: `${BASE_URL}/` },
+      { name: h1, url: canonical }
+    ];
+  }
+
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: breadcrumbs.map((b, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      name: b.name,
+      item: b.url
+    }))
+  };
+
+  const webPageJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    url: canonical,
+    name: route.title,
+    description: route.description
+  };
+
   return `<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    
+
     <!-- CRITICAL: Route-specific Canonical URL -->
     <link rel="canonical" href="${canonical}" />
-    
+
     <!-- Essential SEO Meta Tags -->
     <title>${route.title}</title>
     <meta name="description" content="${route.description}" />
     <meta name="keywords" content="${route.keywords}" />
-    
+
     <!-- Google Search Console Verification -->
     <meta name="google-site-verification" content="GSC_VERIFICATION_CODE_PLACEHOLDER" />
-    
+
     <!-- Robots and Indexing -->
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
     <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
-    
+
     <!-- Open Graph Tags -->
     <meta property="og:title" content="${route.title}" />
     <meta property="og:description" content="${route.description}" />
     <meta property="og:url" content="${canonical}" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Bradford Informed Guidance" />
-    
+
     <!-- Twitter Card Tags -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="${route.title}" />
     <meta name="twitter:description" content="${route.description}" />
-    
+
     <!-- Preconnect to Critical External Resources -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="preconnect" href="https://www.googletagmanager.com" />
     <link rel="preconnect" href="https://www.google-analytics.com" />
-    
+
     <!-- DNS Prefetch for Performance -->
     <link rel="dns-prefetch" href="//fonts.googleapis.com" />
     <link rel="dns-prefetch" href="//www.googletagmanager.com" />
     <link rel="dns-prefetch" href="//www.google-analytics.com" />
   </head>
   <body>
-    <div id="root"></div>
+    <main>
+      <header>
+        <h1>${h1}</h1>
+      </header>
+      <section>
+        <p>${bodyCopy}</p>
+      </section>
+    </main>
+
+    <!-- Structured Data: Breadcrumbs + WebPage -->
+    <script type="application/ld+json">${JSON.stringify(breadcrumbJsonLd)}</script>
+    <script type="application/ld+json">${JSON.stringify(webPageJsonLd)}</script>
+
+    <!-- Fallback SPA entry (will be ignored by crawlers) -->
+    <div id="root" style="display:none"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>`;
