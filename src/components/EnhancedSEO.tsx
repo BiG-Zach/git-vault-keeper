@@ -47,6 +47,11 @@ interface EnhancedSEOProps {
   title?: string;
   description?: string;
   canonical?: string;
+
+  // Disable guards to prevent duplicate tags after prerender
+  disableTitle?: boolean;
+  disableMetaDescription?: boolean;
+  disableCanonical?: boolean;
   
   // Schema markup options
   includeOrganization?: boolean;
@@ -125,9 +130,15 @@ const EnhancedSEO: React.FC<EnhancedSEOProps> = ({
   title,
   description,
   canonical,
+  // Guards
+  disableTitle = false,
+  disableMetaDescription = false,
+  disableCanonical = false,
+  // Schema toggles
   includeOrganization = true,
   includeWebsite = true,
   includeBreadcrumbs = false,
+  // Data
   faqs,
   testimonials,
   breadcrumbs,
@@ -240,6 +251,16 @@ const EnhancedSEO: React.FC<EnhancedSEOProps> = ({
   // Custom schemas
   schemas.push(...customSchemas);
   
+  // Render guards to prevent duplicate tags after static prerender
+  const canUseDOM = typeof document !== 'undefined';
+  const existingTitle = canUseDOM ? !!document.head.querySelector('title') : false;
+  const existingDescription = canUseDOM ? !!document.head.querySelector('meta[name="description"]') : false;
+  const existingCanonical = canUseDOM ? !!document.head.querySelector('link[rel="canonical"]') : false;
+
+  const renderTitle = !!title && !(disableTitle || existingTitle);
+  const renderDescription = !!description && !(disableMetaDescription || existingDescription);
+  const renderCanonical = !!canonical && !(disableCanonical || existingCanonical);
+
   return (
     <>
       {/* JSON-LD Schema Markup */}
@@ -251,16 +272,16 @@ const EnhancedSEO: React.FC<EnhancedSEOProps> = ({
         />
       ))}
       
-      {/* Basic meta tags */}
-      {title && (
+      {/* Basic meta tags (guarded) */}
+      {renderTitle && (
         <title>{title}</title>
       )}
       
-      {description && (
+      {renderDescription && (
         <meta name="description" content={description} />
       )}
       
-      {canonical && (
+      {renderCanonical && (
         <link rel="canonical" href={canonical} />
       )}
       

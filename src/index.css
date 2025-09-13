@@ -1,11 +1,11 @@
-/* Tailwind layers (must come before any custom imports/styles for correct layering) */
+/* Custom imports (must appear before any other rules per CSS spec) */
+@import "./styles/accents.css";
+@import "./styles/mobile-header.css";
+
+/* Tailwind layers */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-/* Custom imports */
-@import "./styles/accents.css";
-@import "./styles/mobile-header.css";
 
 /* Base layer: tokens + typography */
 @layer base {

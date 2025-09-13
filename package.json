@@ -14,10 +14,11 @@
     "live": "cross-env NGROK_DOMAIN=bradfordinformedguidance.ngrok-free.app concurrently -k -n VITE,NGROK -c auto \"npm:dev\" \"npm:tunnel\"",
     "dev:vercel": "vercel dev",
     "postbuild": "node scripts/generate-sitemaps.mjs && node scripts/generate-route-htmls.cjs",
-    "build:full": "npm run build && npm run prerender:all && node scripts/generate-sitemaps.mjs", 
+    "build:full": "node scripts/build-full.mjs", 
     "build:vercel": "npm run build",
     "verify:security": "pwsh -File scripts/verify-security.ps1",
-    "check:headers": "pwsh -File scripts/remote-header-checks.ps1 -Host https://bradfordinformedguidance.com",
+    "check:headers": "pwsh -File scripts/remote-header-checks.ps1 -BaseUrl https://bradfordinformedguidance.com",
+    "check:headers:win": "powershell -ExecutionPolicy Bypass -File scripts\\remote-header-checks.ps1 -BaseUrl https://bradfordinformedguidance.com",
     "ringy:e2e": "pwsh -File scripts/ringy-e2e-check.ps1 -Host https://bradfordinformedguidance.com -Label TEST LEAD",
     "verify:seo": "pwsh -File scripts/verify-seo.ps1",
     "verify:seo:win": "powershell -ExecutionPolicy Bypass -File scripts\\verify-seo.ps1"

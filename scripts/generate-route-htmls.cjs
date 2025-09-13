@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 
 /**
- * Generate static HTML files for key routes with proper canonical URLs
- * This solves the SPA SEO canonical URL issue
+ * Generate static, SEO-complete HTML for all indexable routes (no headless browser)
+ * Uses scripts/route-meta.json as the single source of truth.
  */
 
 const fs = require('fs');
@@ -10,188 +10,152 @@ const path = require('path');
 
 const BASE_URL = 'https://bradfordinformedguidance.com';
 
-// Routes that need individual HTML files with proper canonical URLs
-const ROUTES = [
-  {
-    path: 'services/health-insurance',
-    title: 'Best Health Insurance Plans 2024 | Expert Guidance & Quotes',
-    description: 'Find the perfect health insurance plan with expert guidance. Compare PPO plans, get instant quotes, save up to 50%. Licensed FL, MI, NC agents ready to help.',
-    keywords: 'health insurance, health insurance plans, affordable health insurance, best health insurance, health insurance quotes, PPO health plans, individual health insurance, family health insurance'
-  },
-  {
-    path: 'services/life-insurance', 
-    title: 'Life Insurance Quotes & Plans 2024 | Term & Whole Life Coverage',
-    description: 'Get affordable life insurance quotes from top-rated carriers. Term life, whole life, and IUL policies. Licensed agents in FL, MI, NC. Instant quotes available.',
-    keywords: 'life insurance, life insurance quotes, term life insurance, whole life insurance, life insurance plans, affordable life insurance, life insurance coverage'
-  },
-  {
-    path: 'about',
-    title: 'About Bradford Informed Guidance | Licensed Insurance Expert',
-    description: 'Meet Zach Bradford, licensed insurance broker serving FL, MI, NC since 2016. Expert guidance on health & life insurance with personalized service and competitive rates.',
-    keywords: 'Bradford Informed Guidance, Zach Bradford, licensed insurance broker, insurance expert FL MI NC, insurance agent'
+function loadRouteMeta() {
+  const metaPath = path.join(__dirname, 'route-meta.json');
+  const raw = fs.readFileSync(metaPath, 'utf-8');
+  const list = JSON.parse(raw);
+  return list;
+}
+
+function readBuildAssets() {
+  // Extract built asset tags from dist/index.html to ensure hydration works
+  const indexPath = path.join(process.cwd(), 'dist', 'index.html');
+  if (!fs.existsSync(indexPath)) return { scripts: '', styles: '' };
+  const html = fs.readFileSync(indexPath, 'utf-8');
+  const headAssets = [];
+  const assetRegex = /<(script[^>]*type="module"[^>]*><\/script>|link[^>]*rel="modulepreload"[^>]*>|link[^>]*rel="stylesheet"[^>]*>)/g;
+  let m;
+  while ((m = assetRegex.exec(html)) !== null) {
+    headAssets.push(m[0]);
   }
-];
+  const scripts = headAssets.filter(t => t.startsWith('<script')).join('\n    ');
+  const styles = headAssets.filter(t => t.startsWith('<link')).join('\n    ');
+  return { scripts, styles };
+}
 
-function generateHTML(route) {
-  const canonical = `${BASE_URL}/${route.path}`;
+function toCanonical(p) {
+  const pathNorm = p.startsWith('/') ? p : `/${p}`;
+  return `${BASE_URL}${pathNorm}`;
+}
 
-  // Minimal static body content with an H1 and supporting copy per route
-  let h1 = '';
-  let bodyCopy = '';
-  let breadcrumbs = [];
-
-  if (route.path === 'services/health-insurance') {
-    h1 = 'Health Insurance Plans & Expert Guidance';
-    bodyCopy = 'Compare PPO and other plan types with licensed guidance. Get quotes and find the right coverage for your needs in FL, MI, and NC.';
-    breadcrumbs = [
-      { name: 'Home', url: `${BASE_URL}/` },
-      { name: 'Services', url: `${BASE_URL}/services/health-insurance` },
-      { name: 'Health Insurance', url: canonical }
-    ];
-  } else if (route.path === 'services/life-insurance') {
-    h1 = 'Life Insurance Quotes: Term, Whole Life, and IUL';
-    bodyCopy = 'Explore affordable term and permanent life insurance options from top-rated carriers. Get personalized recommendations and instant quotes.';
-    breadcrumbs = [
-      { name: 'Home', url: `${BASE_URL}/` },
-      { name: 'Services', url: `${BASE_URL}/services/life-insurance` },
-      { name: 'Life Insurance', url: canonical }
-    ];
-  } else if (route.path === 'about') {
-    h1 = 'About Bradford Informed Guidance';
-    bodyCopy = 'Since 2016, we have helped families and businesses select the right health and life insurance coverage with personalized, unbiased guidance.';
-    breadcrumbs = [
-      { name: 'Home', url: `${BASE_URL}/` },
-      { name: 'About', url: canonical }
-    ];
-  } else {
-    h1 = route.title || 'Bradford Informed Guidance';
-    bodyCopy = route.description || '';
-    breadcrumbs = [
-      { name: 'Home', url: `${BASE_URL}/` },
-      { name: h1, url: canonical }
-    ];
+function makeBreadcrumbJsonLd(breadcrumbs, canonical) {
+  const items = (breadcrumbs || []).map((b, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    name: b.name,
+    item: toCanonical(b.url || '/')
+  }));
+  // Ensure the current page is included as the last item if not provided
+  if (!items.length || items[items.length - 1].item !== canonical) {
+    items.push({ '@type': 'ListItem', position: items.length + 1, name: 'Page', item: canonical });
   }
-
-  const breadcrumbJsonLd = {
+  return {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
-    itemListElement: breadcrumbs.map((b, i) => ({
-      '@type': 'ListItem',
-      position: i + 1,
-      name: b.name,
-      item: b.url
-    }))
+    itemListElement: items
   };
+}
 
-  const webPageJsonLd = {
+function makeWebPageJsonLd(route, canonical) {
+  return {
     '@context': 'https://schema.org',
     '@type': 'WebPage',
+    '@id': `${canonical}#webpage`,
     url: canonical,
     name: route.title,
-    description: route.description
+    description: route.description,
+    inLanguage: 'en-US',
+    isPartOf: {
+      '@type': 'WebSite',
+      '@id': `${BASE_URL}/#website`
+    }
   };
+}
 
-  return `<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+function makeArticleJsonLd(route, canonical) {
+  const article = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: route.title,
+    description: route.description,
+    author: { '@type': 'Organization', name: route.authorName || 'Bradford Informed Guidance' },
+    datePublished: route.datePublished || new Date().toISOString(),
+    dateModified: route.dateModified || route.datePublished || new Date().toISOString(),
+    mainEntityOfPage: { '@type': 'WebPage', '@id': canonical },
+    url: canonical
+  };
+  if (route.image) {
+    article.image = Array.isArray(route.image) ? route.image : [route.image];
+  }
+  article.publisher = { '@type': 'Organization', name: 'Bradford Informed Guidance' };
+  return article;
+}
 
-    <!-- CRITICAL: Route-specific Canonical URL -->
-    <link rel="canonical" href="${canonical}" />
+function escapeHtml(s = '') {
+  return String(s)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
 
-    <!-- Essential SEO Meta Tags -->
-    <title>${route.title}</title>
-    <meta name="description" content="${route.description}" />
-    <meta name="keywords" content="${route.keywords}" />
+function generateHTML(route, assets) {
+  const canonical = toCanonical(route.path);
+  const title = escapeHtml(route.title || 'Bradford Informed Guidance');
+  const description = escapeHtml(route.description || '');
+  const h1 = escapeHtml(route.h1 || route.title || 'Bradford Informed Guidance');
+  const keywords = Array.isArray(route.keywords) ? route.keywords.join(', ') : (route.keywords || '');
 
-    <!-- Google Search Console Verification -->
-    <meta name="google-site-verification" content="GSC_VERIFICATION_CODE_PLACEHOLDER" />
+  const breadcrumbJsonLd = makeBreadcrumbJsonLd(route.breadcrumbs || [], canonical);
+  const webPageJsonLd = makeWebPageJsonLd(route, canonical);
+  const jsonLdBlocks = [breadcrumbJsonLd, webPageJsonLd];
+  if (route.type === 'blog') {
+    jsonLdBlocks.push(makeArticleJsonLd(route, canonical));
+  }
 
-    <!-- Robots and Indexing -->
-    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
-    <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
-
-    <!-- Open Graph Tags -->
-    <meta property="og:title" content="${route.title}" />
-    <meta property="og:description" content="${route.description}" />
-    <meta property="og:url" content="${canonical}" />
-    <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="Bradford Informed Guidance" />
-
-    <!-- Twitter Card Tags -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="${route.title}" />
-    <meta name="twitter:description" content="${route.description}" />
-
-    <!-- Preconnect to Critical External Resources -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preconnect" href="https://www.googletagmanager.com" />
-    <link rel="preconnect" href="https://www.google-analytics.com" />
-
-    <!-- DNS Prefetch for Performance -->
-    <link rel="dns-prefetch" href="//fonts.googleapis.com" />
-    <link rel="dns-prefetch" href="//www.googletagmanager.com" />
-    <link rel="dns-prefetch" href="//www.google-analytics.com" />
-  </head>
-  <body>
-    <main>
-      <header>
-        <h1>${h1}</h1>
-      </header>
-      <section>
-        <p>${bodyCopy}</p>
-      </section>
-    </main>
-
-    <!-- Structured Data: Breadcrumbs + WebPage -->
-    <script type="application/ld+json">${JSON.stringify(breadcrumbJsonLd)}</script>
-    <script type="application/ld+json">${JSON.stringify(webPageJsonLd)}</script>
-
-    <!-- Fallback SPA entry (will be ignored by crawlers) -->
-    <div id="root" style="display:none"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
-</html>`;
+  return `<!doctype html><html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
+<link rel="canonical" href="${canonical}"/>
+<title>${title}</title><meta name="description" content="${description}"/>${keywords ? `
+<meta name="keywords" content="${escapeHtml(keywords)}"/>` : ''}
+${assets.styles}
+</head><body>
+<main id="prerender">
+  <header><h1>${h1}</h1></header>
+  ${description ? `<section><p>${description}</p></section>` : ''}
+</main>
+${jsonLdBlocks.map(obj => `<script type="application/ld+json">${JSON.stringify(obj)}</script>`).join('')}
+<div id="root"></div>
+${assets.scripts}
+</body></html>`;
 }
 
 function generateRouteHTMLFiles() {
-  console.log('🔧 Generating route-specific HTML files for SEO...');
-  
-  // Ensure dist directory exists
+  console.log('🔧 Generating SEO-complete static HTML for indexable routes...');
   if (!fs.existsSync('dist')) {
     console.log('❌ dist directory not found. Run npm run build first.');
     process.exit(1);
   }
-  
+
+  const metaList = loadRouteMeta();
+  const assets = readBuildAssets();
   let generated = 0;
-  
-  for (const route of ROUTES) {
-    const routePath = path.join('dist', route.path);
-    const htmlPath = path.join(routePath, 'index.html');
-    
-    // Create directory structure if it doesn't exist
-    fs.mkdirSync(routePath, { recursive: true });
-    
-    // Generate HTML content
-    const htmlContent = generateHTML(route);
-    
-    // Write HTML file
-    fs.writeFileSync(htmlPath, htmlContent);
-    
-    console.log(`✅ Generated: ${htmlPath}`);
+
+  for (const route of metaList) {
+    const rawPath = route.path || '';
+    const isRoot = rawPath === '/' || rawPath === '';
+    const routePath = rawPath.replace(/^\//, '');
+    const outDir = isRoot ? path.join('dist') : path.join('dist', routePath);
+    const outFile = path.join(outDir, 'index.html');
+    fs.mkdirSync(outDir, { recursive: true });
+
+    const html = generateHTML(route, assets);
+    fs.writeFileSync(outFile, html);
+    console.log(`✅ Generated: ${outFile}`);
     generated++;
   }
-  
-  console.log(`\n🎯 Successfully generated ${generated} route-specific HTML files`);
-  console.log('📊 These routes now have proper canonical URLs for Google indexing');
-  
-  // Update package.json postbuild script info
-  console.log('\n📋 Next steps:');
-  console.log('1. Deploy to production: npx vercel --prod');
-  console.log('2. Test canonical URLs: curl -s https://bradfordinformedguidance.com/services/health-insurance | grep canonical');
-  console.log('3. Re-request indexing in Google Search Console');
+
+  console.log(`\n🎯 Successfully generated ${generated} SEO HTML files from route-meta.json`);
 }
 
 // Execute if run directly

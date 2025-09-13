@@ -5,73 +5,39 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Routes from src/utils/routes.tsx - hardcoded for now since parsing TSX is complex
-const ROUTES = [
-  "/",
-  "/about",
-  "/contact",
-  "/quote",
-  "/carriers",
-  "/our-process",
-  "/resources",
-  "/services/health-insurance",
-  "/services/life-insurance",
-  "/services/iul-insurance",
-  "/services/ppo-networks",
-  "/states/florida",
-  "/states/michigan",
-  "/states/north-carolina",
-  "/florida",
-  "/michigan",
-  "/north-carolina",
-  "/referral",
-  "/checklist",
-  "/privacy-policy",
-  "/terms",
-  "/blog/term-vs-whole-life-insurance-2024",
-  "/blog/florida-health-insurance-guide-2024",
-  "/blog/life-insurance-young-adults-guide",
-  "/blog/how-much-life-insurance-calculator",
-  "/blog/life-insurance-pre-existing-conditions",
-  "/blog/ppo-hmo-epo-plan-comparison",
-  "/blog/health-insurance-deductibles-guide",
-  "/blog/health-insurance-open-enrollment-checklist",
-  "/blog/tampa-bay-insurance-broker-guide",
-  "/blog/michigan-insurance-laws",
-  "/blog/north-carolina-best-health-insurance",
-  "/blog/florida-hurricane-insurance-protection",
-  "/blog/aetna-cigna-united-comparison",
-  "/blog/am-best-insurance-ratings-explained",
-  "/blog/florida-small-business-health-insurance",
-  "/blog/life-insurance-companies-financial-strength"
-];
-
 const BASE_URL = 'https://bradfordinformedguidance.com';
-const LASTMOD = new Date().toISOString();
 
-function getPriority(path) {
-  if (path === '/') return '1.0';
-  if (path.startsWith('/services/')) return '0.9';
-  if (path.startsWith('/blog/')) return '0.8';
-  if (path === '/about' || path === '/contact' || path === '/quote' || path === '/carriers') return '0.9';
-  if (path === '/privacy-policy' || path === '/terms') return '0.3';
+function loadRouteMeta() {
+  const metaPath = path.join(__dirname, 'route-meta.json');
+  const raw = fs.readFileSync(metaPath, 'utf-8');
+  return JSON.parse(raw);
+}
+
+function getPriority(routePath) {
+  if (routePath === '/') return '1.0';
+  if (routePath.startsWith('/services/')) return '0.9';
+  if (routePath.startsWith('/blog/')) return '0.8';
+  if (['/about','/contact','/quote','/carriers'].includes(routePath)) return '0.9';
+  if (['/privacy-policy','/terms'].includes(routePath)) return '0.3';
   return '0.8';
 }
 
-function getChangefreq(path) {
-  if (path === '/') return 'weekly';
-  if (path.startsWith('/blog/')) return 'monthly';
-  if (path === '/privacy-policy' || path === '/terms') return 'yearly';
+function getChangefreq(routePath) {
+  if (routePath === '/') return 'weekly';
+  if (routePath.startsWith('/blog/')) return 'monthly';
+  if (['/privacy-policy','/terms'].includes(routePath)) return 'yearly';
   return 'monthly';
 }
 
-function generateSitemapPages() {
-  const urls = ROUTES.map(route => {
+function generateSitemapPages(routes) {
+  const urls = routes.map(r => {
+    const loc = `${BASE_URL}${r.path}`;
+    const lastmod = r.dateModified || r.datePublished || new Date().toISOString();
     return `  <url>
-    <loc>${BASE_URL}${route}</loc>
-    <lastmod>${LASTMOD}</lastmod>
-    <changefreq>${getChangefreq(route)}</changefreq>
-    <priority>${getPriority(route)}</priority>
+    <loc>${loc}</loc>
+    <lastmod>${lastmod}</lastmod>
+    <changefreq>${getChangefreq(r.path)}</changefreq>
+    <priority>${getPriority(r.path)}</priority>
   </url>`;
   }).join('\n');
 
@@ -82,7 +48,6 @@ ${urls}
 }
 
 function generateSitemapImages() {
-  // Hero images - assuming they exist in public/images/hero/
   const heroImages = [
     'hero-insurance.jpg',
     'hero-family.jpg',
@@ -92,7 +57,7 @@ function generateSitemapImages() {
   const imageUrls = heroImages.map(image => {
     return `  <url>
     <loc>${BASE_URL}/images/hero/${image}</loc>
-    <lastmod>${LASTMOD}</lastmod>
+    <lastmod>${new Date().toISOString()}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <image:image>
@@ -111,41 +76,36 @@ ${imageUrls}
 }
 
 function generateSitemapIndex() {
+  const lastmod = new Date().toISOString();
   return `<?xml version="1.0" encoding="UTF-8"?>
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <sitemap>
     <loc>${BASE_URL}/sitemap-pages.xml</loc>
-    <lastmod>${LASTMOD}</lastmod>
+    <lastmod>${lastmod}</lastmod>
   </sitemap>
   <sitemap>
     <loc>${BASE_URL}/sitemap-images.xml</loc>
-    <lastmod>${LASTMOD}</lastmod>
+    <lastmod>${lastmod}</lastmod>
   </sitemap>
 </sitemapindex>`;
 }
 
 function main() {
   const publicDir = path.join(__dirname, '..', 'public');
+  if (!fs.existsSync(publicDir)) fs.mkdirSync(publicDir, { recursive: true });
 
-  // Ensure public directory exists
-  if (!fs.existsSync(publicDir)) {
-    fs.mkdirSync(publicDir, { recursive: true });
-  }
-
-  // Generate sitemaps
-  const sitemapIndex = generateSitemapIndex();
-  const sitemapPages = generateSitemapPages();
+  const meta = loadRouteMeta();
+  // Use all entries from route-meta.json (assumed already filtered to indexable)
+  const sitemapPages = generateSitemapPages(meta);
   const sitemapImages = generateSitemapImages();
+  const sitemapIndex = generateSitemapIndex();
 
-  // Write files
-  fs.writeFileSync(path.join(publicDir, 'sitemap_index.xml'), sitemapIndex);
   fs.writeFileSync(path.join(publicDir, 'sitemap-pages.xml'), sitemapPages);
   fs.writeFileSync(path.join(publicDir, 'sitemap-images.xml'), sitemapImages);
+  // Per project context, public/sitemap.xml is the sitemap index
+  fs.writeFileSync(path.join(publicDir, 'sitemap.xml'), sitemapIndex);
 
   console.log('✅ Sitemaps generated successfully!');
-  console.log(`📄 sitemap_index.xml - ${sitemapIndex.split('\n').length} lines`);
-  console.log(`📄 sitemap-pages.xml - ${sitemapPages.split('\n').length} lines`);
-  console.log(`📄 sitemap-images.xml - ${sitemapImages.split('\n').length} lines`);
 }
 
 main();
