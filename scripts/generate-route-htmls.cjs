@@ -17,6 +17,17 @@ function loadRouteMeta() {
   return list;
 }
 
+function loadStates() {
+  const statesPath = path.join(__dirname, 'states.json');
+  if (!fs.existsSync(statesPath)) return {};
+  try {
+    return JSON.parse(fs.readFileSync(statesPath, 'utf-8'));
+  } catch (e) {
+    console.warn('⚠️ Failed to read states.json:', e);
+    return {};
+  }
+}
+
 function readBuildAssets() {
   // Extract built asset tags from dist/index.html to ensure hydration works
   const indexPath = path.join(process.cwd(), 'dist', 'index.html');
@@ -117,7 +128,15 @@ function generateHTML(route, assets) {
   return `<!doctype html><html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
 <link rel="canonical" href="${canonical}"/>
 <title>${title}</title><meta name="description" content="${description}"/>${keywords ? `
-<meta name="keywords" content="${escapeHtml(keywords)}"/>` : ''}
+<meta name=\"keywords\" content=\"${escapeHtml(keywords)}\"/>` : ''}
+<meta name="robots" content="index, follow"/>
+<meta property="og:title" content="${title}"/>
+<meta property="og:description" content="${description}"/>
+<meta property="og:url" content="${canonical}"/>
+<meta property="og:type" content="website"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="${title}"/>
+<meta name="twitter:description" content="${description}"/>
 ${assets.styles}
 </head><body>
 <main id="prerender">
@@ -138,10 +157,34 @@ function generateRouteHTMLFiles() {
   }
 
   const metaList = loadRouteMeta();
+  const states = loadStates();
   const assets = readBuildAssets();
   let generated = 0;
 
-  for (const route of metaList) {
+  // Build augmented route list with all /states/:code
+  const byPath = new Map();
+  for (const r of metaList) byPath.set(r.path, r);
+  for (const [code, name] of Object.entries(states)) {
+    const p = `/states/${code}`;
+    if (!byPath.has(p)) {
+      byPath.set(p, {
+        path: p,
+        title: `${name} Private Health Insurance | Bradford Informed Guidance`,
+        description: `Explore medically underwritten private health insurance options in ${name}. Get expert guidance and compare plans tailored to your needs.`,
+        h1: `${name} Health Insurance Guidance`,
+        keywords: [`${name} health insurance`, 'private health insurance', 'PPO options'],
+        breadcrumbs: [
+          { name: 'Home', url: '/' },
+          { name: 'States', url: p },
+          { name: name, url: p }
+        ],
+        type: 'state'
+      });
+    }
+  }
+  const finalList = Array.from(byPath.values());
+
+  for (const route of finalList) {
     const rawPath = route.path || '';
     const isRoot = rawPath === '/' || rawPath === '';
     const routePath = rawPath.replace(/^\//, '');

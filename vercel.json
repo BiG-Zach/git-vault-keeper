@@ -4,6 +4,7 @@
   "devCommand": "npm run dev",
   "installCommand": "npm install",
   "framework": "vite",
+  "trailingSlash": false,
   "rewrites": [
     {
       "source": "/api/(.*)",
@@ -102,8 +103,23 @@
       "permanent": true
     },
     {
+      "source": "/states/florida",
+      "destination": "/states/fl",
+      "permanent": true
+    },
+    {
+      "source": "/states/michigan",
+      "destination": "/states/mi",
+      "permanent": true
+    },
+    {
+      "source": "/states/north-carolina",
+      "destination": "/states/nc",
+      "permanent": true
+    },
+    {
       "source": "/(.*)/",
-      "destination": "/$1",
+      "destination": "https://bradfordinformedguidance.com/$1",
       "permanent": true
     }
   ]

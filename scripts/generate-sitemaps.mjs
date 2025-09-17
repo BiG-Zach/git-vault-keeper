@@ -95,8 +95,26 @@ function main() {
   if (!fs.existsSync(publicDir)) fs.mkdirSync(publicDir, { recursive: true });
 
   const meta = loadRouteMeta();
-  // Use all entries from route-meta.json (assumed already filtered to indexable)
-  const sitemapPages = generateSitemapPages(meta);
+
+  // Augment with all state routes from scripts/states.json as /states/:code
+  const statesPath = path.join(__dirname, 'states.json');
+  let stateRoutes = [];
+  if (fs.existsSync(statesPath)) {
+    try {
+      const states = JSON.parse(fs.readFileSync(statesPath, 'utf-8'));
+      stateRoutes = Object.keys(states).map(code => ({ path: `/states/${code}` }));
+    } catch (e) {
+      console.warn('⚠️ Failed to read states.json:', e);
+    }
+  }
+
+  // Deduplicate by path, prefer explicit meta entries
+  const byPath = new Map();
+  for (const r of meta) byPath.set(r.path, r);
+  for (const r of stateRoutes) if (!byPath.has(r.path)) byPath.set(r.path, r);
+  const merged = Array.from(byPath.values());
+
+  const sitemapPages = generateSitemapPages(merged);
   const sitemapImages = generateSitemapImages();
   const sitemapIndex = generateSitemapIndex();
 

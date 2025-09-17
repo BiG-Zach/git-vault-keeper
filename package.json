@@ -21,7 +21,8 @@
     "check:headers:win": "powershell -ExecutionPolicy Bypass -File scripts\\remote-header-checks.ps1 -BaseUrl https://bradfordinformedguidance.com",
     "ringy:e2e": "pwsh -File scripts/ringy-e2e-check.ps1 -Host https://bradfordinformedguidance.com -Label TEST LEAD",
     "verify:seo": "pwsh -File scripts/verify-seo.ps1",
-    "verify:seo:win": "powershell -ExecutionPolicy Bypass -File scripts\\verify-seo.ps1"
+    "verify:seo:win": "powershell -ExecutionPolicy Bypass -File scripts\\verify-seo.ps1",
+    "verify:sitemap": "node scripts/verify-sitemap.mjs"
   },
   "dependencies": {
     "@fontsource/playfair-display": "^5.2.6",

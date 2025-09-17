@@ -603,7 +603,7 @@ export default function StateDynamicPage() {
               "@type": "WebPage",
               "name": seo.title,
               "description": seo.description,
-              "url": `https://bradfordinsurance.com${seo.path}`,
+              "url": `https://bradfordinformedguidance.com${seo.path}`,
               "about": {
                 "@type": "Service",
                 "name": "Health Insurance",

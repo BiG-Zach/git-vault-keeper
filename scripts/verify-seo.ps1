@@ -27,7 +27,10 @@ function Test-Head200Html($url){
     $resp = iwr -Method Head -Headers @{ 'User-Agent' = $UA } -Uri $url -MaximumRedirection 5 -TimeoutSec 30
     if ($resp.StatusCode -eq 200) { Print-Pass "HEAD 200 for ${url}" } else { Print-Fail "HEAD $($resp.StatusCode) for ${url}" }
     $ctype = ($resp.Headers['Content-Type'] | Select-Object -First 1)
-    if ($ctype -and ($ctype -match 'text/html' -or $ctype -match 'text/plain' -and $url -match 'robots\.txt$')) {
+    $ctypeNorm = ($ctype | ForEach-Object { $_.ToString().ToLowerInvariant().Trim() })
+    $isHtml = ($ctypeNorm -like 'text/html*')
+    $isRobotsPlain = ($ctypeNorm -like 'text/plain*' -and $url -match 'robots\.txt$')
+    if ($ctype -and ($isHtml -or $isRobotsPlain)) {
       Print-Pass "Content-Type ok ($ctype) for ${url}"
     } else {
       Print-Fail "Unexpected Content-Type ($ctype) for ${url}"

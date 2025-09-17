@@ -71,10 +71,10 @@ export const routes = [
       { path: 'services/iul-insurance', element: <IULInsurance /> },
       { path: 'services/ppo-networks', element: <PPONetworks /> },
       
-      // Individual state routes (for SEO and direct access)
-      { path: 'states/florida', element: <Florida /> },
-      { path: 'states/michigan', element: <Michigan /> },
-      { path: 'states/north-carolina', element: <NorthCarolina /> },
+      // Individual state routes (for SEO and direct access) — align with canonical /states/:code
+      { path: 'states/fl', element: <Florida /> },
+      { path: 'states/mi', element: <Michigan /> },
+      { path: 'states/nc', element: <NorthCarolina /> },
       
       // Direct state name routes (alternative URLs)
       { path: 'florida', element: <Florida /> },

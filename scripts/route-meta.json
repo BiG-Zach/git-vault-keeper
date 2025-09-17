@@ -124,41 +124,41 @@
     "type": "service"
   },
   {
-    "path": "/states/florida",
+    "path": "/states/fl",
     "title": "Florida Health & Life Insurance | Local Guidance",
     "description": "Licensed in Florida – get help choosing health and life insurance in your area.",
     "keywords": ["Florida","health insurance","life insurance"],
     "h1": "Florida Insurance Guidance",
     "breadcrumbs": [
       {"name": "Home", "url": "/"},
-      {"name": "States", "url": "/states/florida"},
-      {"name": "Florida", "url": "/states/florida"}
+      {"name": "States", "url": "/states/fl"},
+      {"name": "Florida", "url": "/states/fl"}
     ],
     "type": "state"
   },
   {
-    "path": "/states/michigan",
+    "path": "/states/mi",
     "title": "Michigan Health & Life Insurance | Local Guidance",
     "description": "Licensed in Michigan – compare health and life insurance options with expert help.",
     "keywords": ["Michigan","health insurance","life insurance"],
     "h1": "Michigan Insurance Guidance",
     "breadcrumbs": [
       {"name": "Home", "url": "/"},
-      {"name": "States", "url": "/states/michigan"},
-      {"name": "Michigan", "url": "/states/michigan"}
+      {"name": "States", "url": "/states/mi"},
+      {"name": "Michigan", "url": "/states/mi"}
     ],
     "type": "state"
   },
   {
-    "path": "/states/north-carolina",
+    "path": "/states/nc",
     "title": "North Carolina Health & Life Insurance | Local Guidance",
     "description": "Licensed in North Carolina – get guidance on coverage options and enrollment.",
     "keywords": ["North Carolina","health insurance","life insurance"],
     "h1": "North Carolina Insurance Guidance",
     "breadcrumbs": [
       {"name": "Home", "url": "/"},
-      {"name": "States", "url": "/states/north-carolina"},
-      {"name": "North Carolina", "url": "/states/north-carolina"}
+      {"name": "States", "url": "/states/nc"},
+      {"name": "North Carolina", "url": "/states/nc"}
     ],
     "type": "state"
   },
