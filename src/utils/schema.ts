@@ -15,8 +15,6 @@ export const ORG = {
   numberOfEmployees: '5-10',
   description: 'Expert health and life insurance guidance for individuals, families, and businesses across Florida, Michigan, and North Carolina.',
   slogan: 'Insurance Made Simple, Coverage Made Smart',
-  vatID: 'US123456789', // Update with actual tax ID
-  duns: '123456789', // Update with actual DUNS number
   naics: '524210', // Insurance Agencies and Brokerages
   address: {
     streetAddress: '4200 W Cypress St',
@@ -76,8 +74,6 @@ export function organizationSchema() {
     numberOfEmployees: ORG.numberOfEmployees,
     description: ORG.description,
     slogan: ORG.slogan,
-    vatID: ORG.vatID,
-    duns: ORG.duns,
     naics: ORG.naics,
     sameAs: ORG.sameAs,
     areaServed: ORG.areaServed,
@@ -791,14 +787,16 @@ export function comprehensiveLocalBusinessSchema(stateCode: 'FL' | 'MI' | 'NC') 
     ],
     telephone: stateData.phone,
     email: ORG.email,
-    address: {
-      '@type': 'PostalAddress',
-      streetAddress: stateData.address,
-      addressLocality: stateData.city,
-      addressRegion: stateCode,
-      postalCode: stateData.zipCode,
-      addressCountry: 'US'
-    },
+    ...(stateCode === 'FL' ? {
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: stateData.address,
+        addressLocality: stateData.city,
+        addressRegion: stateCode,
+        postalCode: stateData.zipCode,
+        addressCountry: 'US'
+      }
+    } : {}),
     geo: {
       '@type': 'GeoCoordinates',
       latitude: stateCode === 'FL' ? '27.9506' : stateCode === 'MI' ? '42.3314' : '35.2271',

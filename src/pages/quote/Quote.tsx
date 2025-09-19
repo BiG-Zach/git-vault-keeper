@@ -8,7 +8,6 @@ import {
   validateBasics,
   validateHousehold,
   validateContact,
-  normalizePhone,
 } from '../../utils/validation';
 
 type Step = 0 | 1 | 2 | 3;
@@ -101,35 +100,8 @@ export default function QuotePage() {
 
   async function submit() {
     try {
-      const payload = {
-        ...data,
-        contact: {
-          ...data.contact,
-          phone: normalizePhone(data.contact.phone),
-          consentAt: new Date().toISOString(),
-        },
-        meta: { source: 'web', path: location.pathname },
-        timestamp: new Date().toISOString(),
-      };
-      
-      // Submit to email API
-      const response = await fetch('/api/lead', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          ...payload,
-          subject: `New Quote Request - ${data.contact.firstName} ${data.contact.lastName} - ${data.basics.coverageType}`,
-          email: 'zbradford@bradfordinformedguidance.com'
-        })
-      });
-
-      if (!response.ok) {
-        throw new Error('Failed to submit quote');
-      }
-      
-      // Redirect to thank you page
+      const { submitLead } = await import('../../utils/submitLead');
+      await submitLead(data);
       location.assign('/thank-you');
     } catch (error) {
       console.error('Submission error:', error);

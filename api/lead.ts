@@ -4,6 +4,12 @@ import crypto from 'node:crypto';
 
 // Ringy CRM dual-vendor integration - Production ready
 
+const requireEnv = (key: string) => {
+  const value = process.env[key];
+  if (!value) throw new Error(`${key} must be configured`);
+  return value;
+};
+
 function getClientIP(req: VercelRequest) {
   const xf = (req.headers['x-forwarded-for'] as string) || '';
   return xf.split(',')[0].trim() || (req.socket?.remoteAddress ?? 'unknown');
@@ -31,7 +37,6 @@ function buildNotes(params: {
   landingUrl?: string;
   utm?: Record<string, string>;
   consentTimestamp: string;
-  ip: string;
   vendorType: string;
 }) {
   const utmStr = params.utm ? JSON.stringify(params.utm) : '{}';
@@ -40,55 +45,49 @@ function buildNotes(params: {
     `Landing: ${params.landingUrl || 'n/a'}`,
     `UTM: ${utmStr}`,
     `Vendor: ${params.vendorType}`,
-    `Consent: ${params.consentTimestamp} • ${params.ip}`,
+    `Consent: ${params.consentTimestamp}`,
   ].join(' | ');
 }
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
-  // Add CORS headers
-  res.setHeader('Access-Control-Allow-Origin', '*');
+  // CORS: restrict to allowed origins
+  const allowedOrigins = new Set(['https://bradfordinformedguidance.com']);
+  const origin = (req.headers.origin as string) ?? '';
+  if (allowedOrigins.has(origin)) {
+    res.setHeader('Access-Control-Allow-Origin', origin);
+    res.setHeader('Vary', 'Origin');
+  }
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
   
-  // Add cache-busting headers
+  // Cache-busting headers
   res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
   res.setHeader('Pragma', 'no-cache');
   res.setHeader('Expires', '0');
   
   // Handle preflight requests
   if (req.method === 'OPTIONS') {
-    return res.status(200).end();
+    return res.status(204).end();
   }
   
   if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
 
   try {
-    // Debug: Log environment variables (without revealing sensitive data)
-    console.log('Environment check:', {
-      hasAutoEndpoint: !!process.env.RINGY_AUTO_ENDPOINT,
-      hasAutoSid: !!process.env.RINGY_AUTO_SID,
-      hasAutoToken: !!process.env.RINGY_AUTO_AUTH_TOKEN,
-      hasManualEndpoint: !!process.env.RINGY_MANUAL_ENDPOINT,
-      hasManualSid: !!process.env.RINGY_MANUAL_SID,
-      hasManualToken: !!process.env.RINGY_MANUAL_AUTH_TOKEN,
-      hasJwtSecret: !!process.env.JWT_SECRET
-    });
-    
     // Environment variables for both vendors
-    const JWT_SECRET = process.env.JWT_SECRET || 'fallback-secret-for-development';
+    const JWT_SECRET = requireEnv('JWT_SECRET');
     const LEAD_SOURCE = process.env.LEAD_SOURCE || 'Website – Mobile Hero';
     
     const autoConfig: VendorConfig = {
-      endpoint: process.env.RINGY_AUTO_ENDPOINT || 'https://app.ringy.com/api/public/leads/new-lead',
-      sid: process.env.RINGY_AUTO_SID || 'iSn1i8zzvctb9s5s59twszulgbvajgnf',
-      authToken: process.env.RINGY_AUTO_AUTH_TOKEN || 'm0birq3b6wmrn2k4f40plwxtngspqabr',
+      endpoint: requireEnv('RINGY_AUTO_ENDPOINT'),
+      sid: requireEnv('RINGY_AUTO_SID'),
+      authToken: requireEnv('RINGY_AUTO_AUTH_TOKEN'),
       type: 'auto-text'
     };
     
     const manualConfig: VendorConfig = {
-      endpoint: process.env.RINGY_MANUAL_ENDPOINT || 'https://app.ringy.com/api/public/leads/new-lead',
-      sid: process.env.RINGY_MANUAL_SID || 'iSaynato1vqs8mydydrula3rlw5varda',
-      authToken: process.env.RINGY_MANUAL_AUTH_TOKEN || '2v8wz98saqx2nvl7ckuoe2vz0k75s6eh',
+      endpoint: requireEnv('RINGY_MANUAL_ENDPOINT'),
+      sid: requireEnv('RINGY_MANUAL_SID'),
+      authToken: requireEnv('RINGY_MANUAL_AUTH_TOKEN'),
       type: 'manual'
     };
 
@@ -106,16 +105,6 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       utm = {}
     } = (req.body || {}) as Record<string, any>;
 
-    console.log('Received lead data:', {
-      zipCode,
-      email: email ? '***@***' : 'missing',
-      phone: phone ? '***-***-****' : 'missing',
-      firstName,
-      lastName,
-      preferredContact,
-      consentChecked
-    });
-
     if (!zipCode || !email || !phone || !consentChecked || !consentText) {
       return res.status(400).json({ error: 'Missing required fields or consent' });
     }
@@ -128,11 +117,11 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     const vendorChoice = determineVendor(preferredContact);
     const vendorConfig = vendorChoice === 'auto' ? autoConfig : manualConfig;
 
-    // Stateless consent receipt (JWT) valid ~10 years
+    // Stateless consent receipt (JWT) with minimal, non-PII payload and short TTL
     const token = jwt.sign(
-      { consentText, method: 'checkbox', consentTimestamp, ip, landingUrl, utm },
+      { method: 'checkbox', consentTimestamp, vendorRefId, v: 1 },
       JWT_SECRET,
-      { expiresIn: '3650d' }
+      { expiresIn: '24h' }
     );
 
     const proto = (req.headers['x-forwarded-proto'] as string) || 'https';
@@ -144,7 +133,6 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       landingUrl, 
       utm, 
       consentTimestamp, 
-      ip, 
       vendorType: `${vendorConfig.type} (${preferredContact} preference)` 
     });
 
