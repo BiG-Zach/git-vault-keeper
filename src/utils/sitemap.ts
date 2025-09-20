@@ -20,6 +20,7 @@ export interface SitemapConfig {
   includeBlogPosts: boolean;
   includeServicePages: boolean;
   includeImages: boolean;
+  includeGuidePages: boolean;
   lastBuildDate?: string;
 }
 
@@ -29,6 +30,7 @@ const DEFAULT_CONFIG: SitemapConfig = {
   includeBlogPosts: true,
   includeServicePages: true,
   includeImages: true,
+  includeGuidePages: false, // TODO: Enable once /guides content and assets are live.
   lastBuildDate: new Date().toISOString(),
 };
 
@@ -230,7 +232,14 @@ export function generateLongTailPages(): SitemapEntry[] {
 
 export function generateSitemapXML(config: Partial<SitemapConfig> = {}): string {
   const fullConfig = { ...DEFAULT_CONFIG, ...config };
-  const { baseUrl, includeStatePages, includeBlogPosts, includeServicePages, includeImages } = fullConfig;
+  const {
+    baseUrl,
+    includeStatePages,
+    includeBlogPosts,
+    includeServicePages,
+    includeImages,
+    includeGuidePages,
+  } = fullConfig;
   
   let entries: SitemapEntry[] = [...CORE_PAGES];
   
@@ -246,8 +255,9 @@ export function generateSitemapXML(config: Partial<SitemapConfig> = {}): string 
     entries.push(...BLOG_CATEGORIES);
   }
   
-  // Add longtail keyword pages for competitive advantage
-  entries.push(...generateLongTailPages());
+  if (includeGuidePages) {
+    entries.push(...generateLongTailPages());
+  }
   
   // Add lastmod to all entries
   const lastmod = new Date().toISOString().split('T')[0];
