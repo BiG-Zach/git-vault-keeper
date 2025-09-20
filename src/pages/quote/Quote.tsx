@@ -100,8 +100,9 @@ export default function QuotePage() {
 
   async function submit() {
     try {
-      const { submitLead } = await import('../../utils/submitLead');
-      await submitLead(data);
+      const { submitLead, quoteDataToLeadInput } = await import('../../utils/submitLead');
+      await submitLead(quoteDataToLeadInput(data));
+      try { sessionStorage.removeItem(STORAGE_KEY); } catch {}
       location.assign('/thank-you');
     } catch (error) {
       console.error('Submission error:', error);

@@ -478,16 +478,16 @@ export function stateLocalBusinessSchema(stateCode: string) {
     },
     'MI': {
       address: 'Licensed Agent - Michigan',
-      city: 'Detroit',
+      city: 'Virtual Office',
       state: 'MI',
-      zipCode: '48201',
+      zipCode: '00000',
       phone: '+1-689-325-6570'
     },
     'NC': {
       address: 'Licensed Agent - North Carolina',
-      city: 'Charlotte',
+      city: 'Virtual Office',
       state: 'NC',
-      zipCode: '28202',
+      zipCode: '00000',
       phone: '+1-689-325-6570'
     }
   };
@@ -750,19 +750,17 @@ export function comprehensiveLocalBusinessSchema(stateCode: 'FL' | 'MI' | 'NC') 
     },
     'MI': {
       name: 'Michigan',
-      address: '123 Insurance Way',
-      city: 'Detroit',
-      zipCode: '48201',
       phone: '+1-689-325-6570',
+      city: 'Virtual Office',
+      zipCode: '00000',
       licenseNumber: '0428156',
       majorCities: ['Detroit', 'Grand Rapids', 'Warren', 'Sterling Heights', 'Lansing']
     },
     'NC': {
       name: 'North Carolina',
-      address: '456 Coverage Blvd',
-      city: 'Charlotte',
-      zipCode: '28202',
       phone: '+1-689-325-6570',
+      city: 'Virtual Office',
+      zipCode: '00000',
       licenseNumber: '18095186',
       majorCities: ['Charlotte', 'Raleigh', 'Greensboro', 'Durham', 'Winston-Salem']
     }
@@ -785,18 +783,20 @@ export function comprehensiveLocalBusinessSchema(stateCode: 'FL' | 'MI' | 'NC') 
       ORG.image,
       `${ORG.url}/images/states/${stateCode.toLowerCase()}-office.jpg`
     ],
-    telephone: stateData.phone,
+    telephone: ORG.telephone,
     email: ORG.email,
-    ...(stateCode === 'FL' ? {
-      address: {
-        '@type': 'PostalAddress',
-        streetAddress: stateData.address,
-        addressLocality: stateData.city,
-        addressRegion: stateCode,
-        postalCode: stateData.zipCode,
-        addressCountry: 'US'
-      }
-    } : {}),
+    ...(stateData.address
+      ? {
+          address: {
+            '@type': 'PostalAddress',
+            streetAddress: stateData.address,
+            addressLocality: stateData.city,
+            addressRegion: stateCode,
+            postalCode: stateData.zipCode,
+            addressCountry: 'US'
+          }
+        }
+      : {}),
     geo: {
       '@type': 'GeoCoordinates',
       latitude: stateCode === 'FL' ? '27.9506' : stateCode === 'MI' ? '42.3314' : '35.2271',
@@ -806,7 +806,7 @@ export function comprehensiveLocalBusinessSchema(stateCode: 'FL' | 'MI' | 'NC') 
       '@type': 'State',
       name: stateData.name,
       identifier: stateCode,
-      containsPlace: stateData.majorCities.map(city => ({
+      containsPlace: stateData.majorCities.map((city) => ({
         '@type': 'City',
         name: city,
         containedInPlace: {
@@ -906,7 +906,7 @@ export function comprehensiveLocalBusinessSchema(stateCode: 'FL' | 'MI' | 'NC') 
     contactPoint: [
       {
         '@type': 'ContactPoint',
-        telephone: stateData.phone,
+        telephone: ORG.telephone,
         contactType: 'customer service',
         areaServed: stateData.name,
         availableLanguage: 'English',
@@ -925,6 +925,6 @@ export function comprehensiveLocalBusinessSchema(stateCode: 'FL' | 'MI' | 'NC') 
       }
     ]
   };
-  
+
   return JSON.stringify(data);
 }

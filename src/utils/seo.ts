@@ -46,7 +46,7 @@ export const SITE = {
   industry: 'Insurance Services',
   specialties: ['Health Insurance', 'Life Insurance', 'IUL', 'PPO Networks'],
   serviceAreas: ['Florida', 'Michigan', 'North Carolina'],
-  phone: '+1-800-BRADFORD',
+  phone: '+1-689-325-6570',
   email: 'hello@bradfordinformedguidance.com'
 };
 
