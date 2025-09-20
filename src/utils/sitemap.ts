@@ -99,7 +99,7 @@ const SERVICE_PAGES: SitemapEntry[] = [
   },
   {
     url: '/services/life-insurance',
-    changefreq: 'weekly', 
+    changefreq: 'weekly',
     priority: 0.9,
     images: [
       { loc: '/images/life-insurance-family.webp', caption: 'Life insurance protection for families' }
@@ -120,21 +120,6 @@ const SERVICE_PAGES: SitemapEntry[] = [
     images: [
       { loc: '/images/ppo-doctor-network.webp', caption: 'Extensive PPO provider networks' }
     ]
-  },
-  {
-    url: '/services/short-term-medical',
-    changefreq: 'monthly',
-    priority: 0.7
-  },
-  {
-    url: '/services/dental-insurance',
-    changefreq: 'monthly',
-    priority: 0.7
-  },
-  {
-    url: '/services/vision-insurance',
-    changefreq: 'monthly',
-    priority: 0.7
   }
 ];
 
