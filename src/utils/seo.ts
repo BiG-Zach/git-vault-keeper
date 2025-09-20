@@ -194,13 +194,32 @@ function removeMetaByName(name: string) {
 
 function ensureLink(def: LinkTag) {
   const head = document.head;
-  const selector = `link[rel="${def.rel}"]${def.rel === 'canonical' && def.href ? `[href="${def.href}"]` : ''}`;
-  let el = head.querySelector<HTMLLinkElement>(selector);
+  let el: HTMLLinkElement | null = null;
+
+  if (def.rel === 'canonical') {
+    const canonicals = head.querySelectorAll<HTMLLinkElement>('link[rel="canonical"]');
+    if (canonicals.length > 0) {
+      el = canonicals[0];
+      for (let i = 1; i < canonicals.length; i++) {
+        canonicals[i].remove();
+      }
+    }
+  }
+
+  if (!el) {
+    const hrefSelector = def.href ? `[href="${def.href}"]` : '';
+    const selector = def.rel === 'canonical' ? 'link[rel="canonical"]' : `link[rel="${def.rel}"]${hrefSelector}`;
+    el = head.querySelector<HTMLLinkElement>(selector);
+  }
+
   if (!el) {
     el = document.createElement('link');
     el.rel = def.rel;
     head.appendChild(el);
+  } else if (el.rel !== def.rel) {
+    el.rel = def.rel;
   }
+
   if (def.href) el.href = def.href;
   if (def.as) el.as = def.as;
   if (def.type) el.type = def.type;
