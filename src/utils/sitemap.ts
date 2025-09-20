@@ -3,6 +3,9 @@
  * Generates comprehensive sitemaps with priority scoring, lastmod dates, and hreflang
  */
 
+import { readdirSync } from 'node:fs';
+import { join } from 'node:path';
+
 import { stateMetadata, type StateCodeSlug } from './stateMetadata';
 
 export interface SitemapEntry {
@@ -21,6 +24,33 @@ export interface SitemapConfig {
   includeServicePages: boolean;
   includeImages: boolean;
   lastBuildDate?: string;
+}
+
+const stateImageDirectory = join(process.cwd(), 'public', 'images', 'states');
+
+const stateImageMap = new Map<string, string>();
+
+try {
+  readdirSync(stateImageDirectory, { withFileTypes: true }).forEach(entry => {
+    if (entry.isFile()) {
+      stateImageMap.set(entry.name.toLowerCase(), entry.name);
+    }
+  });
+} catch (error) {
+  if (process.env.NODE_ENV !== 'production') {
+    console.warn('[sitemap] Unable to read state image directory:', error);
+  }
+}
+
+function resolveStateImagePath(...fileNames: string[]): string | undefined {
+  for (const fileName of fileNames) {
+    const normalized = fileName.toLowerCase();
+    const actual = stateImageMap.get(normalized);
+    if (actual) {
+      return `/images/states/${actual}`;
+    }
+  }
+  return undefined;
 }
 
 const DEFAULT_CONFIG: SitemapConfig = {
@@ -158,34 +188,44 @@ export function generateStatePages(): SitemapEntry[] {
   Object.entries(stateMetadata).forEach(([code, meta]) => {
     const priority = meta.available ? 0.9 : 0.6; // Higher priority for active states
     const changefreq = meta.available ? 'weekly' : 'monthly';
-    
+
+    const primaryImage = resolveStateImagePath(`${code}-coverage.webp`, `${code}.webp`);
+    const stateImages = primaryImage
+      ? [
+          {
+            loc: primaryImage,
+            caption: `${meta.name} insurance coverage map`,
+            title: `Insurance options in ${meta.name}`
+          }
+        ]
+      : undefined;
+
     stateEntries.push({
       url: `/states/${code}`,
       changefreq,
       priority,
-      images: [
-        { 
-          loc: `/images/states/${code}-coverage.webp`, 
-          caption: `${meta.name} insurance coverage map`,
-          title: `Insurance options in ${meta.name}`
-        }
-      ]
+      ...(stateImages ? { images: stateImages } : {})
     });
     
     // Add state-specific service pages for licensed states
     if (meta.available) {
       const services = ['health-insurance', 'life-insurance', 'iul-insurance'];
       services.forEach(service => {
+        const serviceImage = resolveStateImagePath(`${code}-${service}.webp`);
+        const images = serviceImage
+          ? [
+              {
+                loc: serviceImage,
+                caption: `${service.replace('-', ' ')} options in ${meta.name}`
+              }
+            ]
+          : undefined;
+
         stateEntries.push({
           url: `/states/${code}/${service}`,
           changefreq: 'weekly',
           priority: 0.85,
-          images: [
-            { 
-              loc: `/images/states/${code}-${service}.webp`,
-              caption: `${service.replace('-', ' ')} options in ${meta.name}`
-            }
-          ]
+          ...(images ? { images } : {})
         });
       });
     }
