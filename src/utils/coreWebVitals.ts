@@ -375,15 +375,122 @@ export class FontOptimizer {
   }
 
   static enableFontDisplay(): void {
-    if (typeof window === 'undefined') return;
+    if (typeof window === 'undefined' || typeof document === 'undefined') return;
+    if (typeof CSSStyleSheet === 'undefined') return;
 
-    const style = document.createElement('style');
-    style.innerHTML = `
-      @font-face {
-        font-display: swap;
+    const processedFontFamilies = new Set<string>();
+    const pendingCrossOriginSheets: HTMLLinkElement[] = [];
+
+    const normalizeFontFamily = (family: string): string => family.replace(/['"]/g, '').trim();
+
+    const updateFontFaceRule = (rule: CSSFontFaceRule) => {
+      const fontDisplay = rule.style.getPropertyValue('font-display').trim().toLowerCase();
+      if (fontDisplay !== 'swap') {
+        rule.style.setProperty('font-display', 'swap');
       }
-    `;
-    document.head.appendChild(style);
+
+      const family = rule.style.getPropertyValue('font-family');
+      if (family) {
+        processedFontFamilies.add(normalizeFontFamily(family));
+      }
+    };
+
+    Array.from(document.styleSheets).forEach((sheet) => {
+      if (!(sheet instanceof CSSStyleSheet)) return;
+
+      let rules: CSSRuleList;
+      try {
+        rules = sheet.cssRules;
+      } catch (error) {
+        const ownerNode = sheet.ownerNode;
+        if (ownerNode instanceof HTMLLinkElement) {
+          pendingCrossOriginSheets.push(ownerNode);
+        }
+        return;
+      }
+
+      Array.from(rules).forEach((rule) => {
+        if (typeof CSSFontFaceRule !== 'undefined' && rule instanceof CSSFontFaceRule) {
+          updateFontFaceRule(rule);
+        }
+      });
+    });
+
+    if (pendingCrossOriginSheets.length === 0) {
+      return;
+    }
+
+    const documentWithFonts = document as Document & { fonts?: FontFaceSet };
+    const detectedFontFamilies = new Set<string>();
+
+    if (documentWithFonts.fonts) {
+      try {
+        documentWithFonts.fonts.forEach((fontFace) => {
+          const family = normalizeFontFamily(fontFace.family);
+          if (!processedFontFamilies.has(family)) {
+            detectedFontFamilies.add(family);
+          }
+        });
+      } catch {
+        // Accessing document.fonts can throw in some environments; ignore if it does.
+      }
+    }
+
+    const processExternalStylesheet = async (link: HTMLLinkElement) => {
+      if (!link.href) return;
+      if (link.dataset.fontDisplayProcessed === 'true') return;
+      link.dataset.fontDisplayProcessed = 'true';
+
+      try {
+        const response = await fetch(link.href);
+        if (!response.ok) return;
+
+        let cssText = await response.text();
+        if (!cssText) return;
+
+        cssText = cssText.replace(/@font-face\s*{[^}]*}/gi, (block) => {
+          if (/font-display\s*:/i.test(block)) {
+            return block.replace(/font-display\s*:[^;]+/i, 'font-display: swap');
+          }
+          return block.replace('{', '{\n  font-display: swap;');
+        });
+
+        const baseHref = link.href;
+        cssText = cssText.replace(/url\(([^)]+)\)/gi, (match, group) => {
+          const value = group.trim().replace(/^['"]|['"]$/g, '');
+          if (!value || /^(data:|https?:|\/?\/)/i.test(value)) {
+            return `url(${group})`;
+          }
+
+          let absoluteUrl: string;
+          try {
+            absoluteUrl = new URL(value, baseHref).toString();
+          } catch {
+            absoluteUrl = value;
+          }
+
+          return `url("${absoluteUrl}")`;
+        });
+
+        if (detectedFontFamilies.size > 0) {
+          const containsRelevantFont = Array.from(detectedFontFamilies).some((family) =>
+            new RegExp(`font-family:\\s*["']?${family}["']?`, 'i').test(cssText)
+          );
+          if (!containsRelevantFont) return;
+        }
+
+        const styleElement = document.createElement('style');
+        styleElement.setAttribute('data-font-display', 'swap');
+        styleElement.appendChild(document.createTextNode(cssText));
+        document.head.appendChild(styleElement);
+      } catch {
+        // Ignore failures to fetch or parse external stylesheets.
+      }
+    };
+
+    pendingCrossOriginSheets.forEach((link) => {
+      void processExternalStylesheet(link);
+    });
   }
 }
 
