@@ -47,22 +47,43 @@ ${urls}
 </urlset>`;
 }
 
+function getHeroImages() {
+  const heroDir = path.join(__dirname, '..', 'public', 'images', 'hero');
+  const allowedExtensions = new Set(['.webp', '.jpg', '.jpeg', '.png']);
+
+  try {
+    const files = fs.readdirSync(heroDir, { withFileTypes: true });
+    return files
+      .filter(file => file.isFile())
+      .map(file => file.name)
+      .filter(file => allowedExtensions.has(path.extname(file).toLowerCase()))
+      .sort();
+  } catch (error) {
+    console.warn('⚠️  Failed to load hero images for sitemap generation:', error);
+    return [];
+  }
+}
+
+function toImageTitle(filename) {
+  const baseName = filename
+    .replace(path.extname(filename), '')
+    .replace(/[-_]+/g, ' ');
+  return baseName.replace(/\b\w/g, char => char.toUpperCase());
+}
+
 function generateSitemapImages() {
-  const heroImages = [
-    'hero-insurance.jpg',
-    'hero-family.jpg',
-    'hero-business.jpg'
-  ];
+  const heroImages = getHeroImages();
+  const lastmod = new Date().toISOString();
 
   const imageUrls = heroImages.map(image => {
     return `  <url>
     <loc>${BASE_URL}/images/hero/${image}</loc>
-    <lastmod>${new Date().toISOString()}</lastmod>
+    <lastmod>${lastmod}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <image:image>
       <image:loc>${BASE_URL}/images/hero/${image}</image:loc>
-      <image:title>Insurance Services - ${image.replace('.jpg', '').replace('-', ' ')}</image:title>
+      <image:title>Insurance Services - ${toImageTitle(image)}</image:title>
       <image:caption>Professional insurance guidance and coverage options</image:caption>
     </image:image>
   </url>`;
