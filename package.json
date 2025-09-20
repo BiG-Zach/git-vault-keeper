@@ -8,6 +8,7 @@
     "build": "vite build",
     "build:dev": "vite build --mode development",
     "preview": "vite preview --port 8080",
+    "test": "vitest run",
     "prerender": "wait-on tcp:8080 && node scripts/prerender-simple.mjs",
     "prerender:all": "concurrently -k -n PREVIEW,PRERENDER -c auto \"npm:preview\" \"npm:prerender\"",
     "tunnel": "node scripts/tunnel.js",
@@ -78,6 +79,7 @@
   },
   "devDependencies": {
     "@tailwindcss/aspect-ratio": "^0.4.2",
+    "@testing-library/react": "^15.0.7",
     "@types/jsonwebtoken": "^9.0.6",
     "@types/node": "^20.12.12",
     "@types/react": "^18.2.79",
@@ -91,11 +93,13 @@
     "postcss": "^8.4.24",
     "puppeteer": "^21.11.0",
     "tailwindcss": "^3.4.1",
+    "vitest": "^1.6.0",
     "topojson-client": "^3.1.0",
     "ts-node": "^10.9.2",
     "typescript": "^5.4.5",
     "vite": "^5.4.19",
-    "wait-on": "^8.0.4"
+    "wait-on": "^8.0.4",
+    "jsdom": "^24.0.0"
   },
   "engines": {
     "node": ">=18.17"
