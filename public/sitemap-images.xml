@@ -2,35 +2,189 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
-    <loc>https://bradfordinformedguidance.com/images/hero/hero-insurance.jpg</loc>
-    <lastmod>2025-09-20T06:19:22.969Z</lastmod>
+    <loc>https://bradfordinformedguidance.com/images/hero/about-hero-desktop.webp</loc>
+    <lastmod>2025-09-20T23:10:01.335Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <image:image>
-      <image:loc>https://bradfordinformedguidance.com/images/hero/hero-insurance.jpg</image:loc>
-      <image:title>Insurance Services - hero insurance</image:title>
+      <image:loc>https://bradfordinformedguidance.com/images/hero/about-hero-desktop.webp</image:loc>
+      <image:title>Insurance Services - About Hero (Desktop)</image:title>
       <image:caption>Professional insurance guidance and coverage options</image:caption>
     </image:image>
   </url>
   <url>
-    <loc>https://bradfordinformedguidance.com/images/hero/hero-family.jpg</loc>
-    <lastmod>2025-09-20T06:19:22.969Z</lastmod>
+    <loc>https://bradfordinformedguidance.com/images/hero/about-hero-mobile.webp</loc>
+    <lastmod>2025-09-20T23:10:01.335Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <image:image>
-      <image:loc>https://bradfordinformedguidance.com/images/hero/hero-family.jpg</image:loc>
-      <image:title>Insurance Services - hero family</image:title>
+      <image:loc>https://bradfordinformedguidance.com/images/hero/about-hero-mobile.webp</image:loc>
+      <image:title>Insurance Services - About Hero (Mobile)</image:title>
       <image:caption>Professional insurance guidance and coverage options</image:caption>
     </image:image>
   </url>
   <url>
-    <loc>https://bradfordinformedguidance.com/images/hero/hero-business.jpg</loc>
-    <lastmod>2025-09-20T06:19:22.969Z</lastmod>
+    <loc>https://bradfordinformedguidance.com/images/hero/about-hero-retina.webp</loc>
+    <lastmod>2025-09-20T23:10:01.335Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <image:image>
-      <image:loc>https://bradfordinformedguidance.com/images/hero/hero-business.jpg</image:loc>
-      <image:title>Insurance Services - hero business</image:title>
+      <image:loc>https://bradfordinformedguidance.com/images/hero/about-hero-retina.webp</image:loc>
+      <image:title>Insurance Services - About Hero (Retina)</image:title>
+      <image:caption>Professional insurance guidance and coverage options</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://bradfordinformedguidance.com/images/hero/carriers-hero-desktop.webp</loc>
+    <lastmod>2025-09-20T23:10:01.335Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://bradfordinformedguidance.com/images/hero/carriers-hero-desktop.webp</image:loc>
+      <image:title>Insurance Services - Carriers Hero (Desktop)</image:title>
+      <image:caption>Professional insurance guidance and coverage options</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://bradfordinformedguidance.com/images/hero/carriers-hero-mobile.webp</loc>
+    <lastmod>2025-09-20T23:10:01.335Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://bradfordinformedguidance.com/images/hero/carriers-hero-mobile.webp</image:loc>
+      <image:title>Insurance Services - Carriers Hero (Mobile)</image:title>
+      <image:caption>Professional insurance guidance and coverage options</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://bradfordinformedguidance.com/images/hero/carriers-hero-retina.webp</loc>
+    <lastmod>2025-09-20T23:10:01.335Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://bradfordinformedguidance.com/images/hero/carriers-hero-retina.webp</image:loc>
+      <image:title>Insurance Services - Carriers Hero (Retina)</image:title>
+      <image:caption>Professional insurance guidance and coverage options</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://bradfordinformedguidance.com/images/hero/contact-hero-desktop.webp</loc>
+    <lastmod>2025-09-20T23:10:01.335Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://bradfordinformedguidance.com/images/hero/contact-hero-desktop.webp</image:loc>
+      <image:title>Insurance Services - Contact Hero (Desktop)</image:title>
+      <image:caption>Professional insurance guidance and coverage options</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://bradfordinformedguidance.com/images/hero/contact-hero-mobile.webp</loc>
+    <lastmod>2025-09-20T23:10:01.335Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://bradfordinformedguidance.com/images/hero/contact-hero-mobile.webp</image:loc>
+      <image:title>Insurance Services - Contact Hero (Mobile)</image:title>
+      <image:caption>Professional insurance guidance and coverage options</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://bradfordinformedguidance.com/images/hero/contact-hero-retina.webp</loc>
+    <lastmod>2025-09-20T23:10:01.335Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://bradfordinformedguidance.com/images/hero/contact-hero-retina.webp</image:loc>
+      <image:title>Insurance Services - Contact Hero (Retina)</image:title>
+      <image:caption>Professional insurance guidance and coverage options</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://bradfordinformedguidance.com/images/hero/family-beach-california-sunset.webp</loc>
+    <lastmod>2025-09-20T23:10:01.335Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://bradfordinformedguidance.com/images/hero/family-beach-california-sunset.webp</image:loc>
+      <image:title>Insurance Services - Family Beach California Sunset</image:title>
+      <image:caption>Professional insurance guidance and coverage options</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://bradfordinformedguidance.com/images/hero/mobile-hero.webp</loc>
+    <lastmod>2025-09-20T23:10:01.335Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://bradfordinformedguidance.com/images/hero/mobile-hero.webp</image:loc>
+      <image:title>Insurance Services - Mobile Hero</image:title>
+      <image:caption>Professional insurance guidance and coverage options</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://bradfordinformedguidance.com/images/hero/our-process-hero-desktop.webp</loc>
+    <lastmod>2025-09-20T23:10:01.335Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://bradfordinformedguidance.com/images/hero/our-process-hero-desktop.webp</image:loc>
+      <image:title>Insurance Services - Our Process Hero (Desktop)</image:title>
+      <image:caption>Professional insurance guidance and coverage options</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://bradfordinformedguidance.com/images/hero/our-process-hero-mobile.webp</loc>
+    <lastmod>2025-09-20T23:10:01.335Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://bradfordinformedguidance.com/images/hero/our-process-hero-mobile.webp</image:loc>
+      <image:title>Insurance Services - Our Process Hero (Mobile)</image:title>
+      <image:caption>Professional insurance guidance and coverage options</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://bradfordinformedguidance.com/images/hero/our-process-hero-retina.webp</loc>
+    <lastmod>2025-09-20T23:10:01.335Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://bradfordinformedguidance.com/images/hero/our-process-hero-retina.webp</image:loc>
+      <image:title>Insurance Services - Our Process Hero (Retina)</image:title>
+      <image:caption>Professional insurance guidance and coverage options</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://bradfordinformedguidance.com/images/hero/resources-hero-desktop.webp</loc>
+    <lastmod>2025-09-20T23:10:01.335Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://bradfordinformedguidance.com/images/hero/resources-hero-desktop.webp</image:loc>
+      <image:title>Insurance Services - Resources Hero (Desktop)</image:title>
+      <image:caption>Professional insurance guidance and coverage options</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://bradfordinformedguidance.com/images/hero/resources-hero-mobile.webp</loc>
+    <lastmod>2025-09-20T23:10:01.335Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://bradfordinformedguidance.com/images/hero/resources-hero-mobile.webp</image:loc>
+      <image:title>Insurance Services - Resources Hero (Mobile)</image:title>
+      <image:caption>Professional insurance guidance and coverage options</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://bradfordinformedguidance.com/images/hero/resources-hero-retina.webp</loc>
+    <lastmod>2025-09-20T23:10:01.335Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://bradfordinformedguidance.com/images/hero/resources-hero-retina.webp</image:loc>
+      <image:title>Insurance Services - Resources Hero (Retina)</image:title>
       <image:caption>Professional insurance guidance and coverage options</image:caption>
     </image:image>
   </url>
