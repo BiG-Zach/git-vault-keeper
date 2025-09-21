@@ -6,6 +6,16 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const BASE_URL = 'https://bradfordinformedguidance.com';
+const HERO_DIR = path.join(__dirname, '..', 'public', 'images', 'hero');
+
+function buildAbsoluteUrl(pathname) {
+  return pathname === '/' ? `${BASE_URL}/` : `${BASE_URL}${pathname}`;
+}
+
+function writeFileWithTrailingNewline(filePath, contents) {
+  const output = contents.endsWith('\n') ? contents : `${contents}\n`;
+  fs.writeFileSync(filePath, output);
+}
 
 function loadRouteMeta() {
   const metaPath = path.join(__dirname, 'route-meta.json');
@@ -29,35 +39,38 @@ function getChangefreq(routePath) {
   return 'monthly';
 }
 
-function generateSitemapPages(routes) {
-  const urls = routes.map(r => {
-    const loc = `${BASE_URL}${r.path}`;
-    const lastmod = r.dateModified || r.datePublished || new Date().toISOString();
-    return `  <url>
-    <loc>${loc}</loc>
-    <lastmod>${lastmod}</lastmod>
-    <changefreq>${getChangefreq(r.path)}</changefreq>
-    <priority>${getPriority(r.path)}</priority>
-  </url>`;
-  }).join('\n');
+function readExistingUrlLastmodMap(filePath) {
+  try {
+    const xml = fs.readFileSync(filePath, 'utf-8');
+    const map = new Map();
+    const regex = /<loc>([^<]+)<\/loc>\s*<lastmod>([^<]+)<\/lastmod>/g;
+    let match;
+    while ((match = regex.exec(xml))) {
+      const loc = match[1].trim();
+      const lastmod = match[2].trim();
+      map.set(loc, lastmod);
+    }
+    return map;
+  } catch (error) {
+    return new Map();
+  }
+}
 
-  return `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${urls}
-</urlset>`;
+function parseLastmod(lastmod) {
+  const value = Date.parse(lastmod);
+  return Number.isNaN(value) ? null : value;
 }
 
 function getHeroImages() {
-  const heroDir = path.join(__dirname, '..', 'public', 'images', 'hero');
   const allowedExtensions = new Set(['.webp', '.jpg', '.jpeg', '.png']);
 
   try {
-    const files = fs.readdirSync(heroDir, { withFileTypes: true });
+    const files = fs.readdirSync(HERO_DIR, { withFileTypes: true });
     return files
       .filter(file => file.isFile())
       .map(file => file.name)
       .filter(file => allowedExtensions.has(path.extname(file).toLowerCase()))
-      .sort();
+      .sort((a, b) => a.localeCompare(b));
   } catch (error) {
     console.warn('⚠️  Failed to load hero images for sitemap generation:', error);
     return [];
@@ -65,48 +78,125 @@ function getHeroImages() {
 }
 
 function toImageTitle(filename) {
-  const baseName = filename
-    .replace(path.extname(filename), '')
-    .replace(/[-_]+/g, ' ');
-  return baseName.replace(/\b\w/g, char => char.toUpperCase());
+  const variantSuffixes = new Set(['desktop', 'mobile', 'retina', 'tablet', 'wide']);
+  const parts = path
+    .basename(filename, path.extname(filename))
+    .split(/[-_]+/)
+    .filter(Boolean);
+
+  if (parts.length === 0) return 'Hero Image';
+
+  const last = parts[parts.length - 1].toLowerCase();
+  let variant = null;
+  if (variantSuffixes.has(last)) {
+    variant = parts.pop();
+  }
+
+  const words = parts.map(word => word.charAt(0).toUpperCase() + word.slice(1));
+  let title = words.join(' ');
+  if (variant) {
+    title = `${title} (${variant.charAt(0).toUpperCase()}${variant.slice(1)})`;
+  }
+  return title || 'Hero Image';
 }
 
-function generateSitemapImages() {
+function getFileLastModified(filePath) {
+  try {
+    return fs.statSync(filePath).mtime.toISOString();
+  } catch (error) {
+    return null;
+  }
+}
+
+function generateSitemapPages(routes, existingLastmodMap) {
+  let latestTimestamp = null;
+  const urls = routes
+    .slice()
+    .sort((a, b) => {
+      if (a.path === '/') return -1;
+      if (b.path === '/') return 1;
+      return a.path.localeCompare(b.path);
+    })
+    .map(r => {
+      const loc = buildAbsoluteUrl(r.path);
+      let lastmod = r.dateModified || r.datePublished || existingLastmodMap.get(loc);
+      if (!lastmod) lastmod = new Date().toISOString();
+
+      const parsed = parseLastmod(lastmod);
+      if (parsed !== null) {
+        latestTimestamp = latestTimestamp === null ? parsed : Math.max(latestTimestamp, parsed);
+      }
+
+      return `  <url>
+    <loc>${loc}</loc>
+    <lastmod>${lastmod}</lastmod>
+    <changefreq>${getChangefreq(r.path)}</changefreq>
+    <priority>${getPriority(r.path)}</priority>
+  </url>`;
+    })
+    .join('\n');
+
+  return {
+    xml: `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${urls}
+</urlset>`,
+    latestLastmod: latestTimestamp ? new Date(latestTimestamp).toISOString() : null,
+  };
+}
+
+function generateSitemapImages(existingLastmodMap) {
   const heroImages = getHeroImages();
-  const lastmod = new Date().toISOString();
+  let latestTimestamp = null;
 
   const imageUrls = heroImages.map(image => {
+    const imagePath = `/images/hero/${image}`;
+    const loc = buildAbsoluteUrl(imagePath);
+    let lastmod = existingLastmodMap.get(loc) || getFileLastModified(path.join(HERO_DIR, image));
+    if (!lastmod) lastmod = new Date().toISOString();
+
+    const parsed = parseLastmod(lastmod);
+    if (parsed !== null) {
+      latestTimestamp = latestTimestamp === null ? parsed : Math.max(latestTimestamp, parsed);
+    }
+
     return `  <url>
-    <loc>${BASE_URL}/images/hero/${image}</loc>
+    <loc>${loc}</loc>
     <lastmod>${lastmod}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <image:image>
-      <image:loc>${BASE_URL}/images/hero/${image}</image:loc>
+      <image:loc>${loc}</image:loc>
       <image:title>Insurance Services - ${toImageTitle(image)}</image:title>
       <image:caption>Professional insurance guidance and coverage options</image:caption>
     </image:image>
   </url>`;
   }).join('\n');
 
-  return `<?xml version="1.0" encoding="UTF-8"?>
+  return {
+    xml: `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
 ${imageUrls}
-</urlset>`;
+</urlset>`,
+    latestLastmod: latestTimestamp ? new Date(latestTimestamp).toISOString() : null,
+  };
 }
 
-function generateSitemapIndex() {
-  const lastmod = new Date().toISOString();
+function generateSitemapIndex(pagesLastmod, imagesLastmod) {
+  const fallback = new Date().toISOString();
+  const sitemapPagesLastmod = pagesLastmod || fallback;
+  const sitemapImagesLastmod = imagesLastmod || fallback;
+
   return `<?xml version="1.0" encoding="UTF-8"?>
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <sitemap>
     <loc>${BASE_URL}/sitemap-pages.xml</loc>
-    <lastmod>${lastmod}</lastmod>
+    <lastmod>${sitemapPagesLastmod}</lastmod>
   </sitemap>
   <sitemap>
     <loc>${BASE_URL}/sitemap-images.xml</loc>
-    <lastmod>${lastmod}</lastmod>
+    <lastmod>${sitemapImagesLastmod}</lastmod>
   </sitemap>
 </sitemapindex>`;
 }
@@ -135,14 +225,17 @@ function main() {
   for (const r of stateRoutes) if (!byPath.has(r.path)) byPath.set(r.path, r);
   const merged = Array.from(byPath.values());
 
-  const sitemapPages = generateSitemapPages(merged);
-  const sitemapImages = generateSitemapImages();
-  const sitemapIndex = generateSitemapIndex();
+  const existingPagesLastmod = readExistingUrlLastmodMap(path.join(publicDir, 'sitemap-pages.xml'));
+  const existingImagesLastmod = readExistingUrlLastmodMap(path.join(publicDir, 'sitemap-images.xml'));
 
-  fs.writeFileSync(path.join(publicDir, 'sitemap-pages.xml'), sitemapPages);
-  fs.writeFileSync(path.join(publicDir, 'sitemap-images.xml'), sitemapImages);
+  const { xml: sitemapPages, latestLastmod: pagesLastmod } = generateSitemapPages(merged, existingPagesLastmod);
+  const { xml: sitemapImages, latestLastmod: imagesLastmod } = generateSitemapImages(existingImagesLastmod);
+  const sitemapIndex = generateSitemapIndex(pagesLastmod, imagesLastmod);
+
+  writeFileWithTrailingNewline(path.join(publicDir, 'sitemap-pages.xml'), sitemapPages);
+  writeFileWithTrailingNewline(path.join(publicDir, 'sitemap-images.xml'), sitemapImages);
   // Per project context, public/sitemap.xml is the sitemap index
-  fs.writeFileSync(path.join(publicDir, 'sitemap.xml'), sitemapIndex);
+  writeFileWithTrailingNewline(path.join(publicDir, 'sitemap.xml'), sitemapIndex);
 
   console.log('✅ Sitemaps generated successfully!');
 }
