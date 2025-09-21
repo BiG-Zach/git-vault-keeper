@@ -61,20 +61,37 @@ function parseLastmod(lastmod) {
   return Number.isNaN(value) ? null : value;
 }
 
-function getHeroImages() {
+function getHeroImages(existingHeroLocs = []) {
   const allowedExtensions = new Set(['.webp', '.jpg', '.jpeg', '.png']);
+  const filenames = new Set();
 
   try {
     const files = fs.readdirSync(HERO_DIR, { withFileTypes: true });
-    return files
-      .filter(file => file.isFile())
-      .map(file => file.name)
-      .filter(file => allowedExtensions.has(path.extname(file).toLowerCase()))
-      .sort((a, b) => a.localeCompare(b));
+    for (const file of files) {
+      if (!file.isFile()) continue;
+      const ext = path.extname(file.name).toLowerCase();
+      if (allowedExtensions.has(ext)) {
+        filenames.add(file.name);
+      }
+    }
   } catch (error) {
     console.warn('⚠️  Failed to load hero images for sitemap generation:', error);
-    return [];
   }
+
+  for (const loc of existingHeroLocs) {
+    try {
+      const url = new URL(loc);
+      const filename = path.basename(url.pathname);
+      const ext = path.extname(filename).toLowerCase();
+      if (filename && allowedExtensions.has(ext)) {
+        filenames.add(filename);
+      }
+    } catch (error) {
+      console.warn('⚠️  Unable to parse existing hero image loc for sitemap generation:', error);
+    }
+  }
+
+  return Array.from(filenames).sort((a, b) => a.localeCompare(b));
 }
 
 function toImageTitle(filename) {
@@ -146,13 +163,22 @@ ${urls}
 }
 
 function generateSitemapImages(existingLastmodMap) {
-  const heroImages = getHeroImages();
+  const existingHeroLocs = Array.from(existingLastmodMap.keys()).filter(loc =>
+    loc.startsWith(`${BASE_URL}/images/hero/`)
+  );
+  const heroImages = getHeroImages(existingHeroLocs);
   let latestTimestamp = null;
 
   const imageUrls = heroImages.map(image => {
     const imagePath = `/images/hero/${image}`;
     const loc = buildAbsoluteUrl(imagePath);
-    let lastmod = existingLastmodMap.get(loc) || getFileLastModified(path.join(HERO_DIR, image));
+    const filePath = path.join(HERO_DIR, image);
+    let lastmod = existingLastmodMap.get(loc);
+
+    if (!lastmod && fs.existsSync(filePath)) {
+      lastmod = getFileLastModified(filePath);
+    }
+
     if (!lastmod) lastmod = new Date().toISOString();
 
     const parsed = parseLastmod(lastmod);
