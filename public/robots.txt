@@ -2,21 +2,9 @@
 # Primary domain: https://bradfordinformedguidance.com
 
 User-agent: *
-Allow: /
-Crawl-delay: 1
-Allow: /images/
-Allow: /css/
-Allow: /js/
-Allow: /states/
-Allow: /services/
-Allow: /guides/
-Allow: /blog/
 Disallow: /admin/
 Disallow: /private/
 Disallow: /test/
-Disallow: /thank-you
-Disallow: /success
-Disallow: /search
 Disallow: /api/
 Disallow: /*?*utm_*
 Disallow: /*?*ref=*
@@ -27,34 +15,4 @@ Disallow: /*?*msclkid=*
 Disallow: /*?*mc_cid=*
 Disallow: /*?*mc_eid=*
 
-User-agent: Googlebot
-Allow: /
-Crawl-delay: 1
-
-User-agent: Bingbot
-Allow: /
-Crawl-delay: 2
-
-User-agent: AhrefsBot
-Disallow: /
-
-User-agent: SemrushBot
-Disallow: /
-
-User-agent: facebookexternalhit
-Allow: /
-
-User-agent: Twitterbot
-Allow: /
-
-User-agent: LinkedInBot
-Allow: /
-
 Sitemap: https://bradfordinformedguidance.com/sitemap_index.xml
-Sitemap: https://bradfordinformedguidance.com/sitemap-pages.xml
-Sitemap: https://bradfordinformedguidance.com/sitemap-images.xml
-
-Host: bradfordinformedguidance.com
-
-# Last updated: 2025-09-22
-# Contact: seo@bradfordinformedguidance.com
