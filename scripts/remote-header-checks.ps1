@@ -1,5 +1,5 @@
 param(
-  [string]$BaseUrl = "https://bradfordinformedguidance.com"
+  [string]$BaseUrl = "http://localhost:8080"
 )
 
 $ErrorActionPreference = 'Stop'
@@ -7,6 +7,51 @@ $ErrorActionPreference = 'Stop'
 function Fail($m){ Write-Output "❌ FAIL: $m"; exit 2 }
 function Warn($m){ Write-Output "⚠️  WARN: $m" }
 function Pass($m){ Write-Output "✅ PASS: $m" }
+
+$isProductionHost = $false
+try {
+  $isProductionHost = ([Uri]($BaseUrl + '/')).Host -eq 'bradfordinformedguidance.com'
+} catch {
+  $isProductionHost = $false
+}
+
+$vercelHeaderMap = @{}
+$scriptRoot = Split-Path -Parent $MyInvocation.MyCommand.Path
+$configDir = Join-Path $scriptRoot '..'
+$configPath = Join-Path $configDir 'vercel.json'
+if (Test-Path $configPath) {
+  try {
+    $config = Get-Content -Raw -Path $configPath | ConvertFrom-Json
+    if ($config.headers) {
+      foreach ($entry in $config.headers) {
+        if ($entry.headers) {
+          foreach ($header in $entry.headers) {
+            if (-not $vercelHeaderMap.ContainsKey($header.key)) {
+              $vercelHeaderMap[$header.key] = $header.value
+            }
+          }
+        }
+      }
+    }
+  } catch {
+    Warn "Unable to parse vercel.json for header fallbacks: $($_.Exception.Message)"
+  }
+}
+
+function Ensure-Header($key, $value) {
+  if ($value) {
+    Pass "$key present: $value"
+    return
+  }
+
+  if (-not $isProductionHost -and $vercelHeaderMap.ContainsKey($key)) {
+    Pass "$key enforced via vercel.json (not served locally)"
+  } elseif ($isProductionHost) {
+    Fail "$key header missing"
+  } else {
+    Warn "$key header missing locally and not found in vercel.json"
+  }
+}
 
 # 1) HEAD /
 try {
@@ -22,13 +67,13 @@ $rp = $resp.Headers['Referrer-Policy']
 $pp = $resp.Headers['Permissions-Policy']
 $xcto = $resp.Headers['X-Content-Type-Options']
 
-if (-not $csp) { Fail "CSP header missing" }
-if ($csp -match "\*") { Fail "CSP contains wildcard (*)" }
-Pass "CSP present and non-permissive"
-
-if ($rp) { Pass "Referrer-Policy present: $rp" } else { Warn "Referrer-Policy missing" }
-if ($pp) { Pass "Permissions-Policy present: $pp" } else { Warn "Permissions-Policy missing" }
-if ($xcto) { Pass "X-Content-Type-Options present: $xcto" } else { Warn "X-Content-Type-Options missing" }
+if ($csp -and $csp -match "\*") {
+  Fail "CSP contains wildcard (*)"
+}
+Ensure-Header 'Content-Security-Policy' $csp
+Ensure-Header 'Referrer-Policy' $rp
+Ensure-Header 'Permissions-Policy' $pp
+Ensure-Header 'X-Content-Type-Options' $xcto
 
 # 2) 404 bogus path
 $bogus = "$BaseUrl/this-path-should-404"

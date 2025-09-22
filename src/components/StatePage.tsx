@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { applyHead } from '../utils/seo';
-import { organizationSchema, localBusinessSchema, faqSchema, professionalServiceSchema } from '../utils/schema';
+import { organizationSchema, stateLocalBusinessSchema, faqSchema, professionalServiceSchema } from '../utils/schema';
 import { trackEvent } from '../utils/gtm';
 
 interface StateInfo {
@@ -54,29 +54,32 @@ export const US_STATES: Record<string, StateInfo> = {
 
 const StatePage: React.FC<StatePageProps> = ({ stateInfo }) => {
   // Map state codes to their URL paths
-  const stateUrlMap: Record<string, string> = {
-    'FL': 'florida',
-    'MI': 'michigan',
-    'NC': 'north-carolina'
-  };
-  
-  const stateUrlPath = stateUrlMap[stateInfo.code] || stateInfo.code.toLowerCase();
+  const slug = stateInfo.code.toLowerCase();
+  const canonicalPath = `/states/${slug}`;
+  const canonicalUrl = `https://bradfordinformedguidance.com${canonicalPath}`;
+  const keywordPhrases = [
+    `${stateInfo.name} health insurance`,
+    `${stateInfo.code} health insurance plans`,
+    `${stateInfo.name} private PPO options`,
+    `${stateInfo.name} insurance quotes`,
+    `${stateInfo.majorCities[0]} health insurance advisors`,
+    `${stateInfo.topCarriers[0]} ${stateInfo.name}`
+  ].join(', ');
   
   useEffect(() => {
     // SEO optimization for state-specific pages
     applyHead({
       title: `${stateInfo.name} Health Insurance Plans & Quotes | Licensed ${stateInfo.code} Agents`,
       description: `Find the best health insurance in ${stateInfo.name}. Compare ${stateInfo.topCarriers.join(', ')} plans. Licensed ${stateInfo.code} agents. Average ${stateInfo.averagePremium}. Get quotes now.`,
-      canonical: `https://bradfordinformedguidance.com/states/${stateUrlPath}`,
-      keywords: `${stateInfo.name} health insurance, health insurance ${stateInfo.name}, ${stateInfo.code} health insurance plans, health insurance quotes ${stateInfo.name}, ${stateInfo.name} insurance agents, health insurance ${stateInfo.majorCities.join(', ')}, ${stateInfo.topCarriers.join(' ')}, health insurance rates ${stateInfo.name}`,
+      canonical: canonicalUrl,
+      keywords: keywordPhrases,
       image: `https://www.bradfordinformedguidance.com/images/states/${stateInfo.code.toLowerCase()}-health-insurance.jpg`,
       imageAlt: `${stateInfo.name} health insurance coverage and plans`,
       section: `${stateInfo.name} Insurance`,
       articleType: 'service',
       breadcrumbs: [
         { name: 'Home', url: '/' },
-        { name: 'States', url: '/states' },
-        { name: stateInfo.name, url: `/states/${stateUrlPath}` }
+        { name: stateInfo.name, url: canonicalPath }
       ],
       scripts: [
         {
@@ -85,13 +88,7 @@ const StatePage: React.FC<StatePageProps> = ({ stateInfo }) => {
         },
         {
           type: 'application/ld+json',
-          innerHTML: localBusinessSchema({
-            address: `Licensed Agent ${stateInfo.name}`,
-            city: stateInfo.majorCities[0],
-            state: stateInfo.name,
-            zipCode: '00000',
-            phone: '+1-800-BRADFORD'
-          })
+          innerHTML: stateLocalBusinessSchema(stateInfo.code)
         },
         {
           type: 'application/ld+json',
@@ -155,7 +152,7 @@ const StatePage: React.FC<StatePageProps> = ({ stateInfo }) => {
               {stateInfo.name} Health Insurance Plans & Expert Guidance
             </h1>
             <p className="text-xl md:text-2xl mb-8 max-w-4xl mx-auto">
-              Licensed {stateInfo.code} agents helping {stateInfo.population} residents find affordable health insurance. 
+              Licensed {stateInfo.name} agents helping {stateInfo.population} residents find affordable health insurance.
               Compare plans from {stateInfo.topCarriers.slice(0, 3).join(', ')} and more. Average premium: {stateInfo.averagePremium}.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -166,7 +163,7 @@ const StatePage: React.FC<StatePageProps> = ({ stateInfo }) => {
                 Get {stateInfo.name} Quote
               </button>
               <button className="bg-white text-blue-600 hover:bg-gray-100 px-8 py-3 rounded-lg text-lg font-semibold transition-colors">
-                Find {stateInfo.code} Doctors
+                Find {stateInfo.name} Doctors
               </button>
             </div>
           </div>
@@ -340,7 +337,7 @@ const StatePage: React.FC<StatePageProps> = ({ stateInfo }) => {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl font-bold mb-6">Ready to Get {stateInfo.name} Health Insurance?</h2>
           <p className="text-xl mb-8">
-            Licensed {stateInfo.code} agents ready to help you find the perfect health insurance plan. 
+            Licensed {stateInfo.name} agents ready to help you find the perfect health insurance plan.
             Compare rates from {stateInfo.topCarriers.slice(0, 3).join(', ')} and more.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -351,14 +348,14 @@ const StatePage: React.FC<StatePageProps> = ({ stateInfo }) => {
               Get Free {stateInfo.name} Quote
             </button>
             <button className="bg-white text-blue-600 hover:bg-gray-100 px-8 py-3 rounded-lg text-lg font-semibold transition-colors">
-              Speak with {stateInfo.code} Agent
+              Speak with {stateInfo.name} Agent
             </button>
           </div>
           
           <div className="mt-8 grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
             <div className="flex items-center justify-center">
               <span className="text-green-400 mr-2">✓</span>
-              Licensed in {stateInfo.code}
+              Licensed in {stateInfo.name}
             </div>
             <div className="flex items-center justify-center">
               <span className="text-green-400 mr-2">✓</span>

@@ -4,7 +4,6 @@ Allow: /
 
 # Disallow low‑value or private paths
 Disallow: /admin/
-Disallow: /thank-you
 Disallow: /success
 Disallow: /search
 

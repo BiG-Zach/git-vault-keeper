@@ -125,76 +125,37 @@
   },
   {
     "path": "/states/fl",
-    "title": "Florida Health & Life Insurance | Local Guidance",
-    "description": "Licensed in Florida – get help choosing health and life insurance in your area.",
-    "keywords": ["Florida","health insurance","life insurance"],
-    "h1": "Florida Insurance Guidance",
+    "title": "Florida Health Insurance Broker | Bradford Informed Guidance",
+    "description": "Licensed Florida health & life insurance broker. Compare private PPO plans, ACA alternatives, and life coverage with a local expert.",
+    "keywords": ["Florida health insurance","FL insurance agent","licensed insurance advisor","Tampa health insurance","Florida life insurance"],
+    "h1": "Florida Health Insurance Guidance",
     "breadcrumbs": [
       {"name": "Home", "url": "/"},
-      {"name": "States", "url": "/states/fl"},
       {"name": "Florida", "url": "/states/fl"}
     ],
     "type": "state"
   },
   {
     "path": "/states/mi",
-    "title": "Michigan Health & Life Insurance | Local Guidance",
-    "description": "Licensed in Michigan – compare health and life insurance options with expert help.",
-    "keywords": ["Michigan","health insurance","life insurance"],
-    "h1": "Michigan Insurance Guidance",
+    "title": "Michigan Health Insurance Broker | Bradford Informed Guidance",
+    "description": "Licensed Michigan health & life insurance broker. Explore private PPO networks, medically underwritten coverage, and family protection options.",
+    "keywords": ["Michigan health insurance","MI insurance agent","Detroit health insurance","private PPO Michigan","Michigan life insurance"],
+    "h1": "Michigan Health Insurance Guidance",
     "breadcrumbs": [
       {"name": "Home", "url": "/"},
-      {"name": "States", "url": "/states/mi"},
       {"name": "Michigan", "url": "/states/mi"}
     ],
     "type": "state"
   },
   {
     "path": "/states/nc",
-    "title": "North Carolina Health & Life Insurance | Local Guidance",
-    "description": "Licensed in North Carolina – get guidance on coverage options and enrollment.",
-    "keywords": ["North Carolina","health insurance","life insurance"],
-    "h1": "North Carolina Insurance Guidance",
+    "title": "North Carolina Health Insurance Broker | Bradford Informed Guidance",
+    "description": "Licensed North Carolina health & life insurance broker. Get expert support comparing PPO plans for Charlotte, Raleigh, and statewide families.",
+    "keywords": ["North Carolina health insurance","NC insurance agent","Charlotte health insurance","Raleigh PPO plans","North Carolina life insurance"],
+    "h1": "North Carolina Health Insurance Guidance",
     "breadcrumbs": [
       {"name": "Home", "url": "/"},
-      {"name": "States", "url": "/states/nc"},
       {"name": "North Carolina", "url": "/states/nc"}
-    ],
-    "type": "state"
-  },
-  {
-    "path": "/florida",
-    "title": "Florida Insurance Guide",
-    "description": "Overview of insurance considerations specific to Florida residents.",
-    "keywords": ["Florida","insurance guide"],
-    "h1": "Florida Insurance Guide",
-    "breadcrumbs": [
-      {"name": "Home", "url": "/"},
-      {"name": "Florida", "url": "/florida"}
-    ],
-    "type": "state"
-  },
-  {
-    "path": "/michigan",
-    "title": "Michigan Insurance Guide",
-    "description": "Overview of insurance considerations for Michigan residents.",
-    "keywords": ["Michigan","insurance guide"],
-    "h1": "Michigan Insurance Guide",
-    "breadcrumbs": [
-      {"name": "Home", "url": "/"},
-      {"name": "Michigan", "url": "/michigan"}
-    ],
-    "type": "state"
-  },
-  {
-    "path": "/north-carolina",
-    "title": "North Carolina Insurance Guide",
-    "description": "Overview of insurance considerations for North Carolina residents.",
-    "keywords": ["North Carolina","insurance guide"],
-    "h1": "North Carolina Insurance Guide",
-    "breadcrumbs": [
-      {"name": "Home", "url": "/"},
-      {"name": "North Carolina", "url": "/north-carolina"}
     ],
     "type": "state"
   },

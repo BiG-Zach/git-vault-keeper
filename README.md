@@ -23,10 +23,14 @@ This project uses a **component-scoped mobile CSS** approach to ensure mobile ch
 npm run build  # Triggers postbuild: prerender + generate sitemaps
 ```
 
-### 🔍 Verify SEO Health
-```bash
-bash scripts/verify-seo.sh
-```
+### 🔍 Verify SEO Health (Local Preview)
+1. Build the production bundle: `npm run build`
+2. Start the static preview server in a separate terminal: `npm run preview`
+3. With the preview running at `http://localhost:8080`, execute:
+   - `npm run verify:seo:local`
+   - `npm run check:headers:local`
+4. On Windows, use `npm run verify:seo:local:win` and `npm run check:headers:local:win`.
+5. When finished, stop the preview server with `Ctrl+C`.
 
 ### 📊 Submit to Google Search Console
 After deployment, submit: `https://bradfordinformedguidance.com/sitemap_index.xml`

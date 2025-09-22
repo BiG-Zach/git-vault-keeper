@@ -3,7 +3,16 @@
 # SEO Verification Script for Bradford Informed Guidance
 # Tests prerendered routes, sitemaps, and SEO elements
 
-BASE_URL="https://bradfordinformedguidance.com"
+DEFAULT_BASE_URL="http://localhost:8080"
+CANONICAL_URL="https://bradfordinformedguidance.com"
+
+if [ -n "$1" ]; then
+  BASE_URL="$1"
+elif [ -n "$BASE_URL" ]; then
+  BASE_URL="$BASE_URL"
+else
+  BASE_URL="$DEFAULT_BASE_URL"
+fi
 USER_AGENT="Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)"
 
 # Routes to test
@@ -82,7 +91,7 @@ check_content_type() {
 
   content_type=$(curl -s -I -H "User-Agent: $USER_AGENT" "$url" | grep -i "content-type" | cut -d: -f2 | tr -d '[:space:]')
 
-  if [[ "$content_type" == *"$expected_type"* ]]; then
+  if [[ "$content_type" =~ $expected_type ]]; then
     print_status "PASS" "Content-Type $content_type for $url"
     return 0
   else
@@ -145,7 +154,7 @@ check_sitemap() {
   check_http_status "$sitemap_url" 200
 
   # Check content type
-  check_content_type "$sitemap_url" "application/xml"
+  check_content_type "$sitemap_url" "application/xml|text/xml"
 
   # Check if sitemap contains expected content
   sitemap_content=$(curl -s "$sitemap_url")
@@ -157,7 +166,7 @@ check_sitemap() {
   fi
 
   # Check if sitemap contains the base URL
-  if echo "$sitemap_content" | grep -q "$BASE_URL"; then
+  if echo "$sitemap_content" | grep -q "$CANONICAL_URL"; then
     print_status "PASS" "$sitemap_name contains correct base URL"
   else
     print_status "FAIL" "$sitemap_name missing correct base URL"
@@ -193,11 +202,15 @@ check_redirects() {
   echo "🔍 Checking redirects..."
 
   # Check www to apex redirect
-  www_response=$(curl -s -o /dev/null -w "%{http_code}" -L "https://www.bradfordinformedguidance.com/")
-  if [ "$www_response" = "200" ]; then
-    print_status "PASS" "www.bradfordinformedguidance.com redirects to apex domain"
+  if [ "$BASE_URL" = "$CANONICAL_URL" ]; then
+    www_response=$(curl -s -o /dev/null -w "%{http_code}" -L "https://www.bradfordinformedguidance.com/")
+    if [ "$www_response" = "200" ]; then
+      print_status "PASS" "www.bradfordinformedguidance.com redirects to apex domain"
+    else
+      print_status "FAIL" "www.bradfordinformedguidance.com redirect failed (status: $www_response)"
+    fi
   else
-    print_status "FAIL" "www.bradfordinformedguidance.com redirect failed (status: $www_response)"
+    print_status "WARN" "Skipping www→apex check for non-production base $BASE_URL"
   fi
 
   # Check trailing slash normalization
