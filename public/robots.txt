@@ -6,6 +6,7 @@ Disallow: /admin/
 Disallow: /private/
 Disallow: /test/
 Disallow: /api/
+Disallow: /thank-you
 Disallow: /*?*utm_*
 Disallow: /*?*ref=*
 Disallow: /*?*source=*
