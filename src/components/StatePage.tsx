@@ -1,5 +1,5 @@
 import type { StateMetadata } from "../utils/stateMetadata";
-import Button from "./Button";
+import { Button } from "./ui/button";
 
 interface StatePageProps {
   metadata: StateMetadata;
@@ -30,11 +30,17 @@ export default function StatePage({ metadata }: StatePageProps) {
             {hero.subtitle}
           </p>
           <div className="mt-4 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <Button as="a" href="/quote" size="lg" variant="primary">
-              Start Your Quote
+            <Button
+              asChild
+              className="rounded-2xl bg-[#005ea2] px-6 py-3 text-base font-semibold text-white shadow-sm transition hover:bg-[#0078c8] focus-visible:ring-[#005ea2]"
+            >
+              <a href="/quote">Start Your Quote</a>
             </Button>
-            <Button as="a" href="tel:+16893256570" size="lg" variant="outline">
-              Call (689) 325-6570
+            <Button
+              asChild
+              className="rounded-2xl border border-white/60 bg-white/5 px-6 py-3 text-base font-semibold text-white transition hover:bg-white/10 focus-visible:ring-white/70"
+            >
+              <a href="tel:+16893256570">Call (689) 325-6570</a>
             </Button>
           </div>
         </div>
@@ -68,8 +74,11 @@ export default function StatePage({ metadata }: StatePageProps) {
                 <h3 className="text-2xl font-semibold text-slate-900">{service.title}</h3>
                 <p className="text-slate-600">{service.description}</p>
                 <div className="mt-auto pt-2">
-                  <Button as="a" href="/quote" variant="accent">
-                    Talk with Bradford
+                  <Button
+                    asChild
+                    className="rounded-2xl bg-[#1DD3B0] px-5 py-2.5 text-sm font-semibold text-slate-900 shadow-sm transition hover:bg-[#17bfa0] focus-visible:ring-[#1DD3B0]"
+                  >
+                    <a href="/quote">Talk with Bradford</a>
                   </Button>
                 </div>
               </article>
@@ -85,17 +94,17 @@ export default function StatePage({ metadata }: StatePageProps) {
             I partner with A+ rated carriers and leverage medically underwritten PPO plans to deliver premium benefits at an affordable price for {name} residents.
           </p>
           <div className="flex flex-col gap-4 sm:flex-row">
-            <Button as="a" href="/quote" size="lg" variant="primary">
-              Schedule a Consultation
+            <Button
+              asChild
+              className="rounded-2xl bg-[#005ea2] px-6 py-3 text-base font-semibold text-white shadow-sm transition hover:bg-[#0078c8] focus-visible:ring-[#005ea2]"
+            >
+              <a href="/quote">Schedule a Consultation</a>
             </Button>
             <Button
-              as="a"
-              href="mailto:hello@bradfordinformedguidance.com"
-              size="lg"
-              variant="outline"
-              className="border-white/40 text-white hover:bg-white/10 hover:text-white"
+              asChild
+              className="rounded-2xl border border-white/60 bg-white/5 px-6 py-3 text-base font-semibold text-white transition hover:bg-white/10 focus-visible:ring-white/70"
             >
-              Email Me Directly
+              <a href="mailto:hello@bradfordinformedguidance.com">Email Me Directly</a>
             </Button>
           </div>
         </div>

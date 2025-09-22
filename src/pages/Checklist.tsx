@@ -1,7 +1,7 @@
 import SEO from '../components/SEO';
 import Section from '../components/Section';
 import Reveal from '../components/Reveal';
-import Button from '../components/Button';
+import { Button } from '../components/ui/button';
 
 export default function Checklist() {
   return (
@@ -46,7 +46,9 @@ export default function Checklist() {
             </div>
           </div>
           <div className="mt-4">
-            <Button>Get the Checklist</Button>
+            <Button className="rounded-2xl bg-[#005ea2] px-6 py-3 text-base font-semibold text-white shadow-sm transition hover:bg-[#0078c8] focus-visible:ring-[#005ea2]">
+              Get the Checklist
+            </Button>
           </div>
           <p className="mt-3 text-xs text-slate-500">
             We’ll email your checklist link and may follow up to ensure you received it.

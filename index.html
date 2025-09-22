@@ -39,6 +39,20 @@
     <link rel="dns-prefetch" href="//fonts.googleapis.com" />
     <link rel="dns-prefetch" href="//www.googletagmanager.com" />
     <link rel="dns-prefetch" href="//www.google-analytics.com" />
+    <!-- Google Tag Manager -->
+    <script>
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        const f = d.getElementsByTagName(s)[0];
+        const j = d.createElement(s);
+        const dl = l !== 'dataLayer' ? `&l=${l}` : '';
+        j.async = true;
+        j.src = `https://www.googletagmanager.com/gtm.js?id=${i}${dl}`;
+        f.parentNode?.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', 'GTM-K26L222');
+    </script>
+    <!-- End Google Tag Manager -->
   </head>
   <body>
     <div id="root"></div>

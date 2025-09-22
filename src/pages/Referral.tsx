@@ -1,7 +1,7 @@
 import SEO from '../components/SEO';
 import Section from '../components/Section';
 import Reveal from '../components/Reveal';
-import Button from '../components/Button';
+import { Button } from '../components/ui/button';
 
 export default function Referral() {
   return (
@@ -48,7 +48,9 @@ export default function Referral() {
             </div>
           </div>
           <div className="mt-4">
-            <Button>Submit Referral</Button>
+            <Button className="rounded-2xl bg-[#005ea2] px-6 py-3 text-base font-semibold text-white shadow-sm transition hover:bg-[#0078c8] focus-visible:ring-[#005ea2]">
+              Submit Referral
+            </Button>
           </div>
           <p className="mt-3 text-xs text-slate-500">
             By submitting, you confirm you have permission to share these details. We will only use them to follow up about coverage options.
