@@ -6,6 +6,7 @@ import CalendlyInline from "../components/CalendlyInline";
 import AboutHero from "../components/about/AboutHero";
 import Magnetic from "../components/ui/Magnetic";
 import SEO from "../components/SEO";
+import { StructuredData } from "../components/StructuredData";
 import Canonical from "../seo/canonical";
 import { organizationSchema, professionalServiceSchema, breadcrumbSchema } from "../utils/schema";
 
@@ -37,7 +38,8 @@ export default function AboutPage() {
           ]) }
         ]}
       />
-    <main className="min-h-screen">
+      <StructuredData schema={{ '@type': 'Person' }} />
+      <main className="min-h-screen">
       {/* ENHANCED HERO SECTION WITH PROFESSIONAL BACKGROUND */}
       <AboutHero />
 
