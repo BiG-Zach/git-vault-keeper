@@ -5,12 +5,34 @@ import PremiumProcessSteps from "../components/process/PremiumProcessSteps";
 import PersonalGuaranteeSection from "../components/process/PersonalGuaranteeSection";
 import EnhancedProcessTrust from "../components/process/EnhancedProcessTrust";
 import PremiumProcessFAQ from "../components/process/PremiumProcessFAQ";
+import { StructuredData } from "../components/StructuredData";
 import { localBusinessSchema, serviceSchema, breadcrumbSchema } from "../utils/schema";
+
+const faqData = {
+  "@type": "FAQPage" as const,
+  mainEntity: [
+    {
+      "@type": "Question" as const,
+      name: "How long does your process take?",
+      acceptedAnswer: {
+        "@type": "Answer" as const,
+        text: "Most clients get their perfect plan within 48 hours. I handle all the research and paperwork, so the process is quick and effortless for you.",
+      },
+    },
+    {
+      "@type": "Question" as const,
+      name: "How do you get paid? Are there any fees for me?",
+      acceptedAnswer: {
+        "@type": "Answer" as const,
+        text: "There are absolutely no fees for my services. As a licensed broker, I am compensated directly by the insurance carriers after I help you enroll. My guidance is always free to you.",
+      },
+    },
+  ],
+};
 
 // This page now uses the premium component structure
 
 export default function HowItWorksPage() {
-
   return (
     <>
       <SEO
@@ -31,6 +53,8 @@ export default function HowItWorksPage() {
           ]) }
         ]}
       />
+
+      <StructuredData schema={faqData} />
 
       <OurProcessHero />
 

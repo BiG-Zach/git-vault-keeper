@@ -20,11 +20,6 @@ const PPONetworks = lazy(() => import('../pages/services/PPONetworks'));
 // Dynamic state page
 const StateDynamic = lazy(() => import('../pages/states/[code]'));
 
-// Individual state pages
-const Florida = lazy(() => import('../pages/states/Florida'));
-const Michigan = lazy(() => import('../pages/states/Michigan'));
-const NorthCarolina = lazy(() => import('../pages/states/NorthCarolina'));
-
 const Referral = lazy(() => import('../pages/Referral'));
 const Checklist = lazy(() => import('../pages/Checklist'));
 const ThankYou = lazy(() => import('../pages/ThankYou'));
@@ -68,11 +63,6 @@ export const routes = [
       { path: 'services/life-insurance', element: <LifeInsurance /> },
       { path: 'services/iul-insurance', element: <IULInsurance /> },
       { path: 'services/ppo-networks', element: <PPONetworks /> },
-      
-      // Individual state routes (for SEO and direct access) — align with canonical /states/:code
-      { path: 'states/fl', element: <Florida /> },
-      { path: 'states/mi', element: <Michigan /> },
-      { path: 'states/nc', element: <NorthCarolina /> },
       
       // Dynamic state route: /states/:code (expects 2-letter code like 'fl')
       { path: 'states/:code', element: <StateDynamic /> },

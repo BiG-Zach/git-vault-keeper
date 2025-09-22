@@ -1,6 +1,15 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 import jwt from 'jsonwebtoken';
 import crypto from 'node:crypto';
+import { applySecurityHeaders } from './_lib/headers';
+import {
+  validateBasics,
+  validateContact,
+  validateHousehold,
+  type QuoteBasics,
+  type QuoteContact,
+  type QuoteHousehold,
+} from '../src/utils/validation';
 
 // Ringy CRM dual-vendor integration - Production ready
 
@@ -23,6 +32,99 @@ function getAllowedOrigins(): Set<string> {
 }
 
 const allowedOrigins: Set<string> = getAllowedOrigins();
+
+function prefixErrors(
+  prefix: string,
+  errors: Partial<Record<string, string>>,
+): Record<string, string> {
+  const result: Record<string, string> = {};
+  for (const [key, value] of Object.entries(errors)) {
+    if (value) {
+      result[`${prefix}.${key}`] = value;
+    }
+  }
+  return result;
+}
+
+function parseState(value: unknown): QuoteBasics['state'] {
+  if (typeof value !== 'string') return 'OTHER';
+  const upper = value.toUpperCase();
+  return upper === 'FL' || upper === 'MI' || upper === 'NC' ? (upper as QuoteBasics['state']) : 'OTHER';
+}
+
+function parseCoverageType(value: unknown): QuoteBasics['coverageType'] {
+  if (typeof value !== 'string') return 'Health';
+  const normalized = value.toLowerCase();
+  if (normalized === 'life') return 'Life';
+  if (normalized === 'both') return 'Both';
+  return 'Health';
+}
+
+function parseAges(value: unknown): number[] {
+  if (Array.isArray(value)) {
+    return value
+      .map((item) => (typeof item === 'number' ? item : Number(item)))
+      .filter((num) => Number.isFinite(num) && num > 0);
+  }
+  if (typeof value === 'string') {
+    const matches = value.match(/\d{1,3}/g);
+    if (!matches) return [];
+    return matches
+      .map((item) => Number(item))
+      .filter((num) => Number.isFinite(num) && num > 0);
+  }
+  return [];
+}
+
+function collectValidationErrors(body: Record<string, any>): Record<string, string> {
+  if (body?.basics && body?.household && body?.contact) {
+    const basicsErrors = validateBasics(body.basics as QuoteBasics);
+    const householdErrors = validateHousehold(body.household as QuoteHousehold);
+    const contactErrors = validateContact(body.contact as QuoteContact);
+
+    return {
+      ...prefixErrors('basics', basicsErrors),
+      ...prefixErrors('household', householdErrors),
+      ...prefixErrors('contact', contactErrors),
+    };
+  }
+
+  const fallbackBasics: QuoteBasics = {
+    zip: typeof body.zipCode === 'string' ? body.zipCode : '',
+    state: parseState(body.state ?? body.stateCode),
+    coverageType: parseCoverageType(body.coverageType),
+  };
+
+  const fallbackContact: QuoteContact = {
+    firstName: typeof body.firstName === 'string' ? body.firstName : '',
+    lastName: typeof body.lastName === 'string' ? body.lastName : '',
+    email: typeof body.email === 'string' ? body.email : '',
+    phone: typeof body.phone === 'string' ? body.phone : '',
+    consent: Boolean(body.consentChecked ?? body.consent),
+  };
+
+  const parsedAges = parseAges(body.ages);
+
+  const fallbackHousehold: QuoteHousehold = {
+    ages: parsedAges,
+    tobacco: Boolean(body.tobacco ?? false),
+    dependents:
+      typeof body.dependents === 'number'
+        ? Math.max(0, body.dependents)
+        : Math.max(parsedAges.length - 1, 0),
+  };
+
+  const basicsErrors = validateBasics(fallbackBasics);
+  const contactErrors = validateContact(fallbackContact);
+  const householdErrors =
+    parsedAges.length > 0 ? validateHousehold(fallbackHousehold) : {};
+
+  return {
+    ...prefixErrors('basics', basicsErrors),
+    ...prefixErrors('household', householdErrors),
+    ...prefixErrors('contact', contactErrors),
+  };
+}
 
 function getClientIP(req: VercelRequest) {
   const xf = (req.headers['x-forwarded-for'] as string) || '';
@@ -91,6 +193,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   res.setHeader('Pragma', 'no-cache');
   res.setHeader('Expires', '0');
 
+  applySecurityHeaders(res);
+
   // Handle preflight requests
   if (req.method === 'OPTIONS') {
     return res.status(204).end();
@@ -99,6 +203,19 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
 
   try {
+    const leadData = (req.body || {}) as Record<string, any>;
+    const validationErrors = collectValidationErrors(leadData);
+
+    if (Object.keys(validationErrors).length > 0) {
+      return res.status(400).json({
+        success: false,
+        message: 'Invalid data provided.',
+        errors: validationErrors,
+        error: 'Invalid data provided.',
+        detail: 'Validation failed',
+      });
+    }
+
     // Environment variables for both vendors
     const JWT_SECRET = requireEnv('JWT_SECRET');
     const LEAD_SOURCE = process.env.LEAD_SOURCE || 'Website - Mobile Hero';
@@ -129,7 +246,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       consentText,
       landingUrl,
       utm = {},
-    } = (req.body || {}) as Record<string, any>;
+    } = leadData;
 
     if (!zipCode || !email || !phone || !consentChecked || !consentText) {
       return res.status(400).json({ error: 'Missing required fields or consent' });
