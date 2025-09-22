@@ -2,7 +2,8 @@ import * as React from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import Section from "../layout/Section";
 
-const HERO_SRC = "/hero-family.webp";
+const HERO_DESKTOP_SRC = "/images/hero/family-beach-california-sunset.webp";
+const HERO_MOBILE_SRC = "/images/hero/mobile-hero.webp";
 
 export default function Hero() {
   const prefersReducedMotion = useReducedMotion();
@@ -46,26 +47,32 @@ export default function Hero() {
           backgroundImage: 'none !important'
         }}
       >
-        {/* Background image - FORCE FULL BRIGHTNESS */}
-        <img 
-          src={HERO_SRC} 
-          alt="" 
-          className="absolute inset-0 z-0 h-full w-full object-cover object-center" 
-          style={{ 
-            filter: 'brightness(1) contrast(1) !important', 
-            opacity: '1 !important'
-          }}
-          loading="eager" 
-          fetchPriority="high" 
-        />
-        
-        {/* FORCE REMOVE ANY OVERLAYS */}
-        <div 
+        {/* Background image optimized for responsive breakpoints */}
+        <picture>
+          <source media="(max-width: 767px)" srcSet={HERO_MOBILE_SRC} />
+          <source media="(min-width: 768px)" srcSet={HERO_DESKTOP_SRC} />
+          <img
+            src={HERO_DESKTOP_SRC}
+            alt="Family enjoying a sunset walk on the beach, representing protected futures"
+            className="absolute inset-0 z-0 h-full w-full object-cover object-center"
+            style={{
+              filter: 'brightness(1) contrast(1) !important',
+              opacity: '1 !important'
+            }}
+            loading="eager"
+            fetchPriority="high"
+            width={1920}
+            height={1280}
+          />
+        </picture>
+
+        {/* Subtle gradient overlay to improve legibility on all devices */}
+        <div
           className="absolute inset-0 z-[1]"
+          aria-hidden="true"
           style={{
-            background: 'none !important',
-            backgroundColor: 'transparent !important',
-            backgroundImage: 'none !important'
+            backgroundImage:
+              'linear-gradient(180deg, rgba(0, 0, 0, 0.55) 10%, rgba(0, 0, 0, 0.25) 40%, rgba(0, 0, 0, 0.15) 100%)'
           }}
         />
 

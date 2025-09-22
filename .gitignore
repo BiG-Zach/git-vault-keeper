@@ -1,3 +1,6 @@
 node_modules
 .vercel
 luxury-mobile-boost/
+
+# Ignore generated sitemap files from the public directory
+/public/sitemap*.xml

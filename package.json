@@ -15,7 +15,7 @@
     "live": "cross-env NGROK_DOMAIN=bradfordinformedguidance.ngrok-free.app concurrently -k -n VITE,NGROK -c auto \"npm:dev\" \"npm:tunnel\"",
     "dev:vercel": "vercel dev",
     "postbuild": "node scripts/generate-sitemaps.mjs && node scripts/generate-route-htmls.cjs",
-    "build:full": "node scripts/build-full.mjs", 
+    "build:full": "node scripts/build-full.mjs",
     "build:vercel": "npm run build",
     "verify:security": "pwsh -File scripts/verify-security.ps1",
     "check:headers": "npm run check:headers:local",
@@ -76,6 +76,7 @@
     "react": "^18.2.0",
     "react-day-picker": "^9.8.1",
     "react-dom": "^18.2.0",
+    "react-helmet-async": "^2.0.5",
     "react-hook-form": "^7.62.0",
     "react-resizable-panels": "^3.0.4",
     "react-router-dom": "^6.22.3",
@@ -98,16 +99,16 @@
     "cross-env": "^7.0.3",
     "d3-geo": "^3.1.1",
     "d3-geo-projection": "^4.0.0",
+    "jsdom": "^24.0.0",
     "postcss": "^8.4.24",
     "puppeteer": "^21.11.0",
     "tailwindcss": "^3.4.1",
-    "vitest": "^1.6.0",
     "topojson-client": "^3.1.0",
     "ts-node": "^10.9.2",
     "typescript": "^5.4.5",
     "vite": "^5.4.19",
-    "wait-on": "^8.0.4",
-    "jsdom": "^24.0.0"
+    "vitest": "^1.6.0",
+    "wait-on": "^8.0.4"
   },
   "engines": {
     "node": ">=18.17"
