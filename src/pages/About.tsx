@@ -26,17 +26,6 @@ export default function AboutPage() {
           { property: 'og:type', content: 'profile' },
           { name: 'robots', content: 'index, follow' },
         ]}
-        scripts={[
-          { type: 'application/ld+json', innerHTML: organizationSchema() },
-          { type: 'application/ld+json', innerHTML: professionalServiceSchema(
-            'Insurance Expert & Family Protection Services',
-            'Expert insurance guidance and family protection services from licensed professional Zachary Bradford, serving families across Florida, Michigan, and North Carolina with comprehensive health, life, and IUL insurance solutions.'
-          ) },
-          { type: 'application/ld+json', innerHTML: breadcrumbSchema([
-            { name: 'Home', item: 'https://bradfordinformedguidance.com/' },
-            { name: 'About', item: 'https://bradfordinformedguidance.com/about' }
-          ]) }
-        ]}
       />
       <StructuredData schema={{ '@type': 'Person' }} />
       <main className="min-h-screen">
