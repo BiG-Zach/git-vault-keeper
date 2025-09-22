@@ -20,6 +20,9 @@ const PPONetworks = lazy(() => import('../pages/services/PPONetworks'));
 // Dynamic state page
 const StateDynamic = lazy(() => import('../pages/states/[code]'));
 
+// Programmatic SEO keyword page
+const KeywordDynamic = lazy(() => import('../pages/keywords/[slug]'));
+
 const Referral = lazy(() => import('../pages/Referral'));
 const Checklist = lazy(() => import('../pages/Checklist'));
 const ThankYou = lazy(() => import('../pages/ThankYou'));
@@ -66,6 +69,10 @@ export const routes = [
       
       // Dynamic state route: /states/:code (expects 2-letter code like 'fl')
       { path: 'states/:code', element: <StateDynamic /> },
+
+      // Dynamic keyword route: /keywords/:slug
+      { path: 'keywords/:slug', element: <KeywordDynamic /> },
+
       { path: 'referral', element: <Referral /> },
       { path: 'checklist', element: <Checklist /> },
       { path: 'thank-you', element: <ThankYou /> },
