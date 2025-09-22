@@ -1,7 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import SEO from '../../components/SEO';
 import Reveal from '../../components/Reveal';
-import { markThankYouAccess } from '../../utils/thankYouAccess';
 import {
   type QuoteBasics,
   type QuoteHousehold,
@@ -103,7 +102,6 @@ export default function QuotePage() {
     try {
       const { submitLead, quoteDataToLeadInput } = await import('../../utils/submitLead');
       await submitLead(quoteDataToLeadInput(data));
-      markThankYouAccess();
       try {
         sessionStorage.removeItem(STORAGE_KEY);
       } catch {}
