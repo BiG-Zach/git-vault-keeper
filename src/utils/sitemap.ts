@@ -368,30 +368,13 @@ ${sitemapElements}
 }
 
 export function generateRobotsTxt(baseUrl: string, additionalDirectives: string[] = []): string {
-  const defaultDirectives = [
-    'User-agent: *',
-    'Allow: /',
-    '',
-    '# SEO-optimized crawling directives',
-    'User-agent: Googlebot',
-    'Allow: /',
-    'Crawl-delay: 1',
-    '',
-    'User-agent: Bingbot', 
-    'Allow: /',
-    'Crawl-delay: 2',
-    '',
-    '# Block non-essential bots to preserve crawl budget',
-    'User-agent: AhrefsBot',
-    'Disallow: /',
-    '',
-    'User-agent: SemrushBot',
-    'Disallow: /',
-    '',
-    '# Allow important directories',
-    'Allow: /images/',
-    'Allow: /css/',
-    'Allow: /js/',
+  const header = [
+    '# robots.txt for Bradford Informed Guidance',
+    `# Primary domain: ${baseUrl}`,
+    ''
+  ];
+
+  const footer = [
     '',
     '# Sitemap locations',
     `Sitemap: ${baseUrl}/sitemap_index.xml`,
@@ -401,8 +384,8 @@ export function generateRobotsTxt(baseUrl: string, additionalDirectives: string[
     '# Host declaration for primary domain',
     `Host: ${baseUrl.replace('https://', '').replace('http://', '')}`
   ];
-  
-  return [...defaultDirectives, ...additionalDirectives].join('\n');
+
+  return `${[...header, ...additionalDirectives, ...footer].join('\n')}\n`;
 }
 
 function escapeXml(text: string): string {
