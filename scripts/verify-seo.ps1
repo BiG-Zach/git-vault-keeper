@@ -1,10 +1,14 @@
 # SEO Verification Script (PowerShell) for Bradford Informed Guidance
-# Usage: pwsh -File scripts/verify-seo.ps1
+# Usage: pwsh -File scripts/verify-seo.ps1 [-BaseUrl http://localhost:8080]
+
+param(
+  [string]$BaseUrl = 'http://localhost:8080'
+)
 
 $ErrorActionPreference = 'Stop'
 
 $UA   = 'Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)'
-$Base = 'https://bradfordinformedguidance.com'
+$Base = $BaseUrl.TrimEnd('/')
 $Routes = @(
   '/', '/about', '/contact', '/quote', '/carriers', '/our-process', '/resources',
   '/services/health-insurance', '/services/life-insurance', '/services/iul-insurance', '/services/ppo-networks',
@@ -79,21 +83,32 @@ Check-Sitemap "$Base/sitemap-images.xml" 'sitemap-images.xml'
 
 # Redirect checks
 Write-Output ""; Write-Output "Checking redirects"
+$baseHost = $null
 try {
-  $wwwResp = iwr -Uri 'https://www.bradfordinformedguidance.com/' -MaximumRedirection 0 -ErrorAction SilentlyContinue
-  if ($wwwResp.StatusCode -ge 300 -and $wwwResp.StatusCode -lt 400) {
-    $loc = $wwwResp.Headers['Location']
-    if ($loc -and $loc -like 'https://bradfordinformedguidance.com/*') { Print-Pass 'www redirects to apex' } else { Print-Fail 'www redirect Location not apex' }
-  } else { Print-Warn "www response not a redirect (status $($wwwResp.StatusCode))" }
-} catch { Print-Warn "www redirect check: $($_.Exception.Message)" }
+  $baseHost = ([Uri]($Base + '/')).Host
+} catch {
+  $baseHost = $null
+}
 
-try {
-  $trail = iwr -Uri "$Base/about/" -MaximumRedirection 0 -ErrorAction SilentlyContinue
-  if ($trail.StatusCode -ge 300 -and $trail.StatusCode -lt 400) {
-    $loc = $trail.Headers['Location']
-    if ($loc -eq 'https://bradfordinformedguidance.com/about') { Print-Pass 'trailing slash normalized' } else { Print-Warn "Trailing slash Location: $loc" }
-  } else { Print-Warn "Trailing slash not redirected (status $($trail.StatusCode))" }
-} catch { Print-Warn "Trailing slash check: $($_.Exception.Message)" }
+if ($baseHost -and $baseHost -eq 'bradfordinformedguidance.com') {
+  try {
+    $wwwResp = iwr -Uri 'https://www.bradfordinformedguidance.com/' -MaximumRedirection 0 -ErrorAction SilentlyContinue
+    if ($wwwResp.StatusCode -ge 300 -and $wwwResp.StatusCode -lt 400) {
+      $loc = $wwwResp.Headers['Location']
+      if ($loc -and $loc -like 'https://bradfordinformedguidance.com/*') { Print-Pass 'www redirects to apex' } else { Print-Fail 'www redirect Location not apex' }
+    } else { Print-Warn "www response not a redirect (status $($wwwResp.StatusCode))" }
+  } catch { Print-Warn "www redirect check: $($_.Exception.Message)" }
+
+  try {
+    $trail = iwr -Uri "$Base/about/" -MaximumRedirection 0 -ErrorAction SilentlyContinue
+    if ($trail.StatusCode -ge 300 -and $trail.StatusCode -lt 400) {
+      $loc = $trail.Headers['Location']
+      if ($loc -eq 'https://bradfordinformedguidance.com/about') { Print-Pass 'trailing slash normalized' } else { Print-Warn "Trailing slash Location: $loc" }
+    } else { Print-Warn "Trailing slash not redirected (status $($trail.StatusCode))" }
+  } catch { Print-Warn "Trailing slash check: $($_.Exception.Message)" }
+} else {
+  Print-Warn "Skipping production redirect checks for base $Base"
+}
 
 # Routes
 Write-Output ""; Write-Output "Checking prerendered routes"

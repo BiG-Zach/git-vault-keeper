@@ -10,7 +10,6 @@ const Quote = lazy(() => import('../pages/quote/Quote'));
 const Carriers = lazy(() => import('../pages/Carriers'));
 const HowItWorks = lazy(() => import('../pages/HowItWorks'));
 const Resources = lazy(() => import('../pages/Resources'));
-const HowItWorksRedirect = () => { window.location.replace('/our-process'); return null; };
 
 // Service pages
 const HealthInsurance = lazy(() => import('../pages/services/HealthInsurance'));
@@ -63,7 +62,6 @@ export const routes = [
       { path: 'carriers', element: <Carriers /> },
       { path: 'our-process', element: <HowItWorks /> },
       { path: 'resources', element: <Resources /> },
-      { path: 'how-it-works', element: <HowItWorksRedirect /> },
       
       // Service routes
       { path: 'services/health-insurance', element: <HealthInsurance /> },
@@ -75,11 +73,6 @@ export const routes = [
       { path: 'states/fl', element: <Florida /> },
       { path: 'states/mi', element: <Michigan /> },
       { path: 'states/nc', element: <NorthCarolina /> },
-      
-      // Direct state name routes (alternative URLs)
-      { path: 'florida', element: <Florida /> },
-      { path: 'michigan', element: <Michigan /> },
-      { path: 'north-carolina', element: <NorthCarolina /> },
       
       // Dynamic state route: /states/:code (expects 2-letter code like 'fl')
       { path: 'states/:code', element: <StateDynamic /> },

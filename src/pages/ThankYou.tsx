@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { Clock, Phone, Mail, Shield, CheckCircle, Calendar, Award } from 'lucide-react';
+import SEO from '../components/SEO';
 
 export default function ThankYouPage() {
   useEffect(() => {
@@ -13,23 +14,31 @@ export default function ThankYouPage() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100">
-      <div className="max-w-4xl mx-auto px-4 py-16">
-        {/* Hero Section */}
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center justify-center w-20 h-20 bg-green-100 rounded-full mb-6">
-            <CheckCircle className="w-10 h-10 text-green-600" />
-          </div>
-          
-          <h1 className="text-5xl font-bold bg-gradient-to-r from-green-700 to-emerald-800 bg-clip-text text-transparent mb-4">
-            Your Quote Request Has Been Received!
-          </h1>
-          
-          <p className="text-xl text-slate-700 max-w-2xl mx-auto leading-relaxed">
-            Thank you for trusting Bradford Informed Guidance with your family's protection. 
-            Here's what happens next:
-          </p>
-        </div>
+    <>
+      <SEO
+        title="Thank You | Bradford Informed Guidance"
+        description="We received your insurance quote request. A licensed expert from Bradford Informed Guidance will reach out soon with tailored coverage options."
+        path="/thank-you"
+        noindex
+      />
+
+        <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100">
+          <div className="max-w-4xl mx-auto px-4 py-16">
+            {/* Hero Section */}
+            <div className="text-center mb-16">
+              <div className="inline-flex items-center justify-center w-20 h-20 bg-green-100 rounded-full mb-6">
+                <CheckCircle className="w-10 h-10 text-green-600" />
+              </div>
+
+              <h1 className="text-5xl font-bold bg-gradient-to-r from-green-700 to-emerald-800 bg-clip-text text-transparent mb-4">
+                Your Quote Request Has Been Received!
+              </h1>
+
+              <p className="text-xl text-slate-700 max-w-2xl mx-auto leading-relaxed">
+                Thank you for trusting Bradford Informed Guidance with your family's protection.
+                Here's what happens next:
+              </p>
+            </div>
 
         {/* What Happens Next Timeline */}
         <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-2xl border border-white/20 p-8 mb-12">
@@ -172,7 +181,8 @@ export default function ThankYouPage() {
             </div>
           </div>
         </div>
+        </div>
       </div>
-    </div>
+    </>
   );
 }

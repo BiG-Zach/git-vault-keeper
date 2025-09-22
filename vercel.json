@@ -118,6 +118,26 @@
       "permanent": true
     },
     {
+      "source": "/how-it-works",
+      "destination": "/our-process",
+      "permanent": true
+    },
+    {
+      "source": "/florida",
+      "destination": "/states/fl",
+      "permanent": true
+    },
+    {
+      "source": "/michigan",
+      "destination": "/states/mi",
+      "permanent": true
+    },
+    {
+      "source": "/north-carolina",
+      "destination": "/states/nc",
+      "permanent": true
+    },
+    {
       "source": "/(.*)/",
       "destination": "https://bradfordinformedguidance.com/$1",
       "permanent": true

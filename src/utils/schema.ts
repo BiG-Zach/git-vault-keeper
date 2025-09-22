@@ -456,52 +456,94 @@ export function localBusinessSchema(
   return JSON.stringify(data);
 }
 
+const FULL_STATE_NAMES: Record<string, string> = {
+  AL: 'Alabama',
+  AK: 'Alaska',
+  AZ: 'Arizona',
+  AR: 'Arkansas',
+  CA: 'California',
+  CO: 'Colorado',
+  CT: 'Connecticut',
+  DE: 'Delaware',
+  FL: 'Florida',
+  GA: 'Georgia',
+  HI: 'Hawaii',
+  ID: 'Idaho',
+  IL: 'Illinois',
+  IN: 'Indiana',
+  IA: 'Iowa',
+  KS: 'Kansas',
+  KY: 'Kentucky',
+  LA: 'Louisiana',
+  ME: 'Maine',
+  MD: 'Maryland',
+  MA: 'Massachusetts',
+  MI: 'Michigan',
+  MN: 'Minnesota',
+  MS: 'Mississippi',
+  MO: 'Missouri',
+  MT: 'Montana',
+  NE: 'Nebraska',
+  NV: 'Nevada',
+  NH: 'New Hampshire',
+  NJ: 'New Jersey',
+  NM: 'New Mexico',
+  NY: 'New York',
+  NC: 'North Carolina',
+  ND: 'North Dakota',
+  OH: 'Ohio',
+  OK: 'Oklahoma',
+  OR: 'Oregon',
+  PA: 'Pennsylvania',
+  RI: 'Rhode Island',
+  SC: 'South Carolina',
+  SD: 'South Dakota',
+  TN: 'Tennessee',
+  TX: 'Texas',
+  UT: 'Utah',
+  VT: 'Vermont',
+  VA: 'Virginia',
+  WA: 'Washington',
+  WV: 'West Virginia',
+  WI: 'Wisconsin',
+  WY: 'Wyoming',
+  DC: 'District of Columbia'
+};
+
 // Helper function to get full state name
 function getStateName(stateCode: string): string {
-  const stateMap: { [key: string]: string } = {
-    'FL': 'Florida',
-    'MI': 'Michigan', 
-    'NC': 'North Carolina'
-  };
-  return stateMap[stateCode] || stateCode;
+  return FULL_STATE_NAMES[stateCode] || stateCode;
 }
 
-// State-specific LocalBusiness schema with real addresses
+// State-specific LocalBusiness schema grounded in the Tampa headquarters while clarifying remote service areas
 export function stateLocalBusinessSchema(stateCode: string) {
-  const stateData: Record<string, any> = {
-    'FL': {
-      address: '4200 W Cypress St',
-      city: 'Tampa',
-      state: 'FL',
-      zipCode: '33607',
-      phone: '+1-689-325-6570'
-    },
-    'MI': {
-      address: 'Licensed Agent - Michigan',
-      city: 'Virtual Office',
-      state: 'MI',
-      zipCode: '00000',
-      phone: '+1-689-325-6570'
-    },
-    'NC': {
-      address: 'Licensed Agent - North Carolina',
-      city: 'Virtual Office',
-      state: 'NC',
-      zipCode: '00000',
-      phone: '+1-689-325-6570'
-    }
+  const normalized = (stateCode || '').toUpperCase();
+  const stateName = getStateName(normalized);
+
+  const baseLocation = {
+    address: ORG.address?.streetAddress || '4200 W Cypress St',
+    city: ORG.address?.addressLocality || 'Tampa',
+    state: ORG.address?.addressRegion || 'FL',
+    zipCode: ORG.address?.postalCode || '33607',
+    phone: ORG.telephone
   };
 
-  // For non-licensed states, use a generic national address
-  const defaultStateData = {
-    address: 'Licensed Insurance Professional',
-    city: 'Virtual Office',
-    state: stateCode.toUpperCase(),
-    zipCode: '00000',
-    phone: '+1-689-325-6570'
+  const parsed = JSON.parse(localBusinessSchema(baseLocation));
+  parsed['@id'] = `${ORG.url}#local-business-${normalized.toLowerCase()}`;
+  parsed.name = `${ORG.name} — ${stateName} Service`;
+  parsed.description = `${ORG.description} Providing licensed guidance and remote consultations for ${stateName} households.`;
+  parsed.areaServed = {
+    '@type': 'State',
+    name: stateName,
+    identifier: normalized
+  };
+  parsed.serviceArea = {
+    '@type': 'AdministrativeArea',
+    name: stateName,
+    identifier: normalized
   };
 
-  return localBusinessSchema(stateData[stateCode] || defaultStateData);
+  return JSON.stringify(parsed);
 }
 
 export function testimonialSchema(testimonials: Array<{ author: string; text: string; rating: number; date: string }>) {
