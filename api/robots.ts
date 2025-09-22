@@ -20,31 +20,49 @@ export const GET = async (req: Request) => {
 
     const baseUrl = 'https://bradfordinformedguidance.com';
     
-    // Additional directives per policy
+    const today = new Date().toISOString().split('T')[0];
+
     const customDirectives = [
-      '',
-      '# Crawl allowances (sections of value)',
-      'Allow: /states/*',
-      'Allow: /services/*',
-      'Allow: /guides/*',
-      'Allow: /blog/*',
-      '',
-      '# Optimize crawl budget for high-value pages',
       'User-agent: *',
+      'Allow: /',
       'Crawl-delay: 1',
-      '',
-      '# Block low-value/private paths and tracking parameters',
+      'Allow: /images/',
+      'Allow: /css/',
+      'Allow: /js/',
+      'Allow: /states/',
+      'Allow: /services/',
+      'Allow: /guides/',
+      'Allow: /blog/',
       'Disallow: /admin/',
       'Disallow: /private/',
       'Disallow: /test/',
       'Disallow: /thank-you',
       'Disallow: /success',
       'Disallow: /search',
+      'Disallow: /api/',
       'Disallow: /*?*utm_*',
       'Disallow: /*?*ref=*',
       'Disallow: /*?*source=*',
+      'Disallow: /*?*fbclid=*',
+      'Disallow: /*?*gclid=*',
+      'Disallow: /*?*msclkid=*',
+      'Disallow: /*?*mc_cid=*',
+      'Disallow: /*?*mc_eid=*',
       '',
-      '# Allow social media crawlers for Open Graph',
+      'User-agent: Googlebot',
+      'Allow: /',
+      'Crawl-delay: 1',
+      '',
+      'User-agent: Bingbot',
+      'Allow: /',
+      'Crawl-delay: 2',
+      '',
+      'User-agent: AhrefsBot',
+      'Disallow: /',
+      '',
+      'User-agent: SemrushBot',
+      'Disallow: /',
+      '',
       'User-agent: facebookexternalhit',
       'Allow: /',
       '',
@@ -54,8 +72,7 @@ export const GET = async (req: Request) => {
       'User-agent: LinkedInBot',
       'Allow: /',
       '',
-      '# Additional metadata',
-      `# Last updated: ${new Date().toISOString().split('T')[0]}`,
+      `# Last updated: ${today}`,
       '# Contact: seo@bradfordinformedguidance.com'
     ];
     
@@ -75,7 +92,16 @@ export const GET = async (req: Request) => {
     console.error('Robots.txt generation error:', error);
     
     // Fallback robots.txt
-    const fallback = `User-agent: *\nAllow: /\n\nSitemap: https://bradfordinformedguidance.com/sitemap_index.xml`;
+    const fallback = [
+      '# robots.txt for Bradford Informed Guidance (fallback)',
+      'User-agent: *',
+      'Allow: /',
+      '',
+      'Sitemap: https://bradfordinformedguidance.com/sitemap_index.xml',
+      'Sitemap: https://bradfordinformedguidance.com/sitemap-pages.xml',
+      'Sitemap: https://bradfordinformedguidance.com/sitemap-images.xml',
+      'Host: bradfordinformedguidance.com'
+    ].join('\n') + '\n';
     
     return new Response(fallback, {
       status: 200,
