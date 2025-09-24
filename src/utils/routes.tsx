@@ -4,7 +4,6 @@ import App from '../App';
 
 // Lazy page stubs (extensionless imports for TS)
 const Home = lazy(() => import('../pages/Home'));
-const HomeVariantB = lazy(() => import('../pages/HomeVariantB'));
 const About = lazy(() => import('../pages/About'));
 const Contact = lazy(() => import('../pages/Contact'));
 const Quote = lazy(() => import('../pages/quote/Quote'));
@@ -55,7 +54,6 @@ export const routes = [
     element: <App />,
     children: [
       { index: true, element: <Home /> },
-      { path: 'home-variant-b', element: <HomeVariantB /> },
       { path: 'about', element: <About /> },
       { path: 'contact', element: <Contact /> },
       { path: 'quote', element: <Quote /> },
