@@ -15,6 +15,7 @@ export default function HomePage() {
         path="/"
       />
       <main id="content">
+        {/* Force redeploy at new timestamp */}
         <Hero
             title="Secure Your Tomorrow, Starting Today"
             subtitle="Instant quotes, next-day protection, ongoing expert guidance—so your family's future is never left to chance."
