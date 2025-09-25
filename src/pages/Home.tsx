@@ -1,10 +1,11 @@
+import Header from '../components/Header';
+import Hero from '../components/Hero';
+import Footer from '../components/Footer';
 import SEO from '../components/SEO';
-import Hero from '../components/marketing/Hero';
-import WhyChooseUs from '../components/marketing/WhyChooseUs';
-import HowItWorks from '../components/marketing/HowItWorks';
-import TestimonialsReel from '../components/marketing/TestimonialsReel';
-import USAvailability from '../components/marketing/USAvailability';
-import { trackConversion } from '../lib/analytics';
+import Testimonials from '../components/social/Testimonials';
+import Team from '../components/about/Team';
+import CarrierLogos from '../components/carriers/CarrierLogos';
+import ExpansionTracker from '../components/ExpansionTracker/ExpansionTracker';
 
 export default function HomePage() {
   return (
@@ -14,21 +15,15 @@ export default function HomePage() {
         description="Licensed insurance broker in FL, MI, & NC. Get instant health & life insurance quotes from top carriers. Expert guidance since 2016."
         path="/"
       />
+      <Header />
       <main id="content">
-        {/* Force redeploy at new timestamp */}
-        <Hero
-            title="Secure Your Tomorrow, Starting Today"
-            subtitle="Instant quotes, next-day protection, ongoing expert guidance—so your family's future is never left to chance."
-            primaryCtaText="Schedule Free Consultation"
-            primaryCtaLink="/contact"
-            // The analytics call remains for the main CTA, but without any A/B variant data.
-            onPrimaryCtaClick={() => trackConversion({ eventName: 'hero_cta_click' })}
-        />
-        <WhyChooseUs />
-        <HowItWorks />
-        <TestimonialsReel />
-        <USAvailability />
+        <Hero />
+        <Testimonials />
+        <Team />
+        <CarrierLogos />
+        <ExpansionTracker />
       </main>
+      <Footer />
     </>
   );
 }
