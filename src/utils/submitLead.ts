@@ -20,6 +20,7 @@ export interface LeadSubmissionInput {
   consentText?: string;
   landingUrl?: string;
   utm?: Record<string, string>;
+  coverageType?: string;
 }
 
 export interface SubmitResult {
@@ -93,6 +94,7 @@ export async function submitLead(input: LeadSubmissionInput): Promise<SubmitResu
 
   if (landingUrl) body.landingUrl = landingUrl;
   if (utm) body.utm = utm;
+  if (input.coverageType) body.coverageType = input.coverageType;
 
   const resp = await fetch('/api/lead', {
     method: 'POST',

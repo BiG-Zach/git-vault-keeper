@@ -1,0 +1,16 @@
+[
+  {
+    "id": 1,
+    "name": "John D.",
+    "location": "Tampa, FL",
+    "quote": "This is a placeholder testimonial...",
+    "rating": 5
+  },
+  {
+    "id": 2,
+    "name": "Jane S.",
+    "location": "Miami, FL",
+    "quote": "Another placeholder testimonial...",
+    "rating": 5
+  }
+]
