@@ -1,4 +1,44 @@
-{
-  "available": ["FL", "MI", "NC", "AZ", "GA", "TX"],
-  "comingSoon": ["OH"]
-}
+[
+  {
+    "name": "Florida",
+    "code": "FL",
+    "slug": "florida",
+    "metaDescription": "Find the best health and life insurance plans in Florida with Bradford Informed Guidance. Expert advice and personalized quotes.",
+    "svgPath": "M770,420 l 130,0 l 0,40 l -120,0 l -10,-40 z"
+  },
+  {
+    "name": "Michigan",
+    "code": "MI",
+    "slug": "michigan",
+    "metaDescription": "Your guide to Michigan's top health and life insurance options. Bradford Informed Guidance offers concierge-level service.",
+    "svgPath": "M520,120 l 60,0 l 40,40 l -20,60 l -80,0 l 0,-100 z"
+  },
+  {
+    "name": "North Carolina",
+    "code": "NC",
+    "slug": "north-carolina",
+    "metaDescription": "Navigate health and life insurance in North Carolina. Get personalized strategies from Bradford Informed Guidance.",
+    "svgPath": "M620,320 l 200,0 l 60,20 l -40,20 l -220,0 l 0,-40 z"
+  },
+  {
+    "name": "Arizona",
+    "code": "AZ",
+    "slug": "arizona",
+    "metaDescription": "Now serving Arizona! Get expert guidance on health and life insurance plans tailored for you.",
+    "svgPath": "M220,320 l 100,-100 l 100,100 l -100,100 z"
+  },
+  {
+    "name": "Georgia",
+    "code": "GA",
+    "slug": "georgia",
+    "metaDescription": "Bradford Informed Guidance is now licensed in Georgia. Discover smarter insurance coverage today.",
+    "svgPath": "M650,400 l 100,0 l 20,50 l -120,0 z"
+  },
+  {
+    "name": "Texas",
+    "code": "TX",
+    "slug": "texas",
+    "metaDescription": "Health and life insurance guidance for Texans. Bradford Informed Guidance is proud to serve the Lone Star State.",
+    "svgPath": "M350,400 l 200,0 l 0,150 l-200,0 z"
+  }
+]

@@ -78,18 +78,20 @@ export default function HeroForm() {
     >
       <div className="text-center mb-4 sm:mb-6">
         <h2
-          className="font-bold text-gray-900 leading-tight"
+          className="font-display font-semibold text-brand-dark leading-tight"
           style={{ fontSize: 'clamp(20px, 4vw, 24px)', marginBottom: '4px' }}
         >
-          Premium Health & Life Coverage
+          Premium Health &amp; Life Coverage
         </h2>
         <p
-          className="text-emerald-600 font-semibold"
+          className="font-semibold text-brand-secondary"
           style={{ fontSize: 'clamp(16px, 3.5vw, 18px)' }}
         >
           Clear. Fast. Year-Round.
         </p>
-        <div className="text-sm text-gray-600 mt-2">Licensed FL - MI - NC - Expanding Nationwide</div>
+        <div className="mt-2 text-sm font-medium text-brand-gray">
+          Licensed in FL, MI, NC, AZ, GA &amp; TX
+        </div>
       </div>
       <form onSubmit={onSubmit} id="mobileQuoteForm" className="space-y-4">
         <div className="grid grid-cols-2 gap-3">

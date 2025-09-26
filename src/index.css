@@ -1,73 +1,52 @@
-/* Custom imports (must appear before any other rules per CSS spec) */
-@import "./styles/accents.css";
-@import "./styles/mobile-header.css";
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
 
-/* Tailwind layers */
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+:root {
+  --primary-green: #00a651;
+  --primary-blue: #003d7a;
+  --accent-teal: #17a2b8;
+  --text-dark: #1a1a2e;
+  --text-gray: #6c757d;
+  --bg-light: #f8f9fa;
+  --white: #ffffff;
 
-/* Base layer: tokens + typography */
-@layer base {
-  :root {
-    /* Luxury Brand Colors */
-    --color-primary: hsl(224, 100%, 32%);       /* premium navy */
-    --color-primary-hover: hsl(215, 88%, 39%);
-    --color-accent: hsl(157, 72%, 43%);         /* luxury teal/green */
-    --color-gold: hsl(43, 74%, 66%);           /* luxury gold */
-    --color-platinum: hsl(210, 20%, 85%);      /* premium gray */
-    
-    /* Surface Colors */
-    --surface-luxury: hsl(220, 26%, 14%);      /* deep luxury background */
-    --surface-glass: hsla(0, 0%, 100%, 0.08);  /* glass morphism */
-    --surface-elevation: hsl(0, 0%, 100%);     /* elevated cards */
-    
-    /* Typography */
-    --font-luxury-serif: "Playfair Display", serif;
-    --font-luxury-sans: "Inter", system-ui, sans-serif;
-    
-    /* Luxury Gradients */
-    --gradient-luxury: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
-    --gradient-gold: linear-gradient(135deg, hsl(43, 74%, 66%) 0%, hsl(43, 84%, 56%) 100%);
-    --gradient-glass: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
-    
-    /* Shadows */
-    --shadow-luxury: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-    --shadow-premium: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-    --shadow-glow: 0 0 0px rgba(34, 197, 94, 0);
-  }
-
-  html {
-    font-family: var(--font-luxury-sans);
-    scroll-behavior: smooth;
-  }
-  
-  /* Luxury typography classes */
-  .font-luxury-serif {
-    font-family: var(--font-luxury-serif);
-  }
-  
-  .gradient-text-luxury {
-    background: var(--gradient-luxury);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-  
-  .gradient-text-gold {
-    background: var(--gradient-gold);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
+  --gradient-primary: linear-gradient(135deg, #003d7a 0%, #00a651 100%);
+  --gradient-hero: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
 }
 
-/* Components layer */
-@layer components {
-  /* Utility container used in header */
-  .container-default {
-    @apply mx-auto max-w-7xl px-4 sm:px-6 lg:px-8;
-  }
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  color: var(--text-gray);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Poppins', sans-serif;
+  color: var(--text-dark);
+  font-weight: 600;
+}
 
+.section {
+  @apply py-16 sm:py-24;
+}
+
+.container-default {
+    @apply container mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+.btn-primary {
+    @apply inline-block bg-brand-secondary text-white font-semibold px-8 py-3 rounded-md transition-all duration-300 ease-in-out;
+}
+.btn-primary:hover {
+    @apply bg-green-700 -translate-y-0.5 shadow-lg;
+}
+
+.btn-secondary {
+    @apply inline-flex items-center justify-center bg-transparent border border-white/50 text-white font-semibold px-8 py-3 rounded-md transition-all duration-300 ease-in-out;
+}
+.btn-secondary:hover {
+    @apply bg-white/10 border-white;
+}

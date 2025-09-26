@@ -1,29 +1,23 @@
-import Header from '../components/Header';
-import Hero from '../components/Hero';
-import Footer from '../components/Footer';
 import SEO from '../components/SEO';
-import Testimonials from '../components/social/Testimonials';
-import Team from '../components/about/Team';
-import CarrierLogos from '../components/carriers/CarrierLogos';
-import ExpansionTracker from '../components/ExpansionTracker/ExpansionTracker';
+import Hero from '../components/Hero';
+import HowItWorks from '../components/HowItWorks';
+import TestimonialsCarousel from '../components/TestimonialsCarousel';
+import CoverageMap from '../components/CoverageMap';
+import OurCarriers from '../components/OurCarriers';
 
-export default function HomePage() {
+export default function Home() {
   return (
     <>
       <SEO
-        title="Health & Life Insurance FL MI NC | Licensed Broker Zach Bradford"
-        description="Licensed insurance broker in FL, MI, & NC. Get instant health & life insurance quotes from top carriers. Expert guidance since 2016."
+        title="Concierge Health & Life Insurance | Bradford Informed Guidance"
+        description="Smarter insurance coverage across FL, MI, NC, AZ, GA, & TX. Custom PPO health and life strategies for professionals, families, and early retirees."
         path="/"
       />
-      <Header />
-      <main id="content">
-        <Hero />
-        <Testimonials />
-        <Team />
-        <CarrierLogos />
-        <ExpansionTracker />
-      </main>
-      <Footer />
+      <Hero />
+      <OurCarriers />
+      <HowItWorks />
+      <TestimonialsCarousel />
+      <CoverageMap />
     </>
   );
 }
