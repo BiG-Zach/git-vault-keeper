@@ -1,1 +1,0 @@
-{"version":3,"file":"Terms-47vFAkJq.js","sources":["../../src/pages/Terms.tsx"],"sourcesContent":["import { makePage } from './_stubs';\r\n\r\nexport default makePage('Terms — Bradford Informed Guidance', '/terms');"],"names":["Terms","makePage"],"mappings":"gKAEA,MAAAA,EAAeC,EAAS,qCAAsC,QAAQ"}

@@ -159,7 +159,6 @@ const PremiumCarriers = () => {
                     alt={carrier.alt}
                     className="max-w-full max-h-full object-contain opacity-80 group-hover:opacity-100 transition-opacity duration-300"
                     loading="lazy"
-                    decoding="async"
                   />
                 </div>
                 

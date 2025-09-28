@@ -10,19 +10,9 @@ const Quote = lazy(() => import('../pages/quote/Quote'));
 const Carriers = lazy(() => import('../pages/Carriers'));
 const HowItWorks = lazy(() => import('../pages/HowItWorks'));
 const Resources = lazy(() => import('../pages/Resources'));
-
-// Service pages
-const HealthInsurance = lazy(() => import('../pages/services/HealthInsurance'));
-const LifeInsurance = lazy(() => import('../pages/services/LifeInsurance'));
-const IULInsurance = lazy(() => import('../pages/services/IULInsurance'));
-const PPONetworks = lazy(() => import('../pages/services/PPONetworks'));
-
+const HowItWorksRedirect = () => { window.location.replace('/our-process'); return null; };
 // Dynamic state page
 const StateDynamic = lazy(() => import('../pages/states/[code]'));
-
-// Programmatic SEO keyword page
-const KeywordDynamic = lazy(() => import('../pages/keywords/[slug]'));
-
 const Referral = lazy(() => import('../pages/Referral'));
 const Checklist = lazy(() => import('../pages/Checklist'));
 const ThankYou = lazy(() => import('../pages/ThankYou'));
@@ -46,7 +36,6 @@ const AetnaCignaUnitedComparison = lazy(() => import('../pages/blog/AetnaCignaUn
 const AMBestInsuranceRatingsExplained = lazy(() => import('../pages/blog/AMBestInsuranceRatingsExplained'));
 const FloridaSmallBusinessHealthInsurance = lazy(() => import('../pages/blog/FloridaSmallBusinessHealthInsurance'));
 const LifeInsuranceCompaniesFinancialStrength = lazy(() => import('../pages/blog/LifeInsuranceCompaniesFinancialStrength'));
-const NotFound = lazy(() => import('../pages/NotFound'));
 
 export const routes = [
   {
@@ -60,19 +49,9 @@ export const routes = [
       { path: 'carriers', element: <Carriers /> },
       { path: 'our-process', element: <HowItWorks /> },
       { path: 'resources', element: <Resources /> },
-      
-      // Service routes
-      { path: 'services/health-insurance', element: <HealthInsurance /> },
-      { path: 'services/life-insurance', element: <LifeInsurance /> },
-      { path: 'services/iul-insurance', element: <IULInsurance /> },
-      { path: 'services/ppo-networks', element: <PPONetworks /> },
-      
+      { path: 'how-it-works', element: <HowItWorksRedirect /> },
       // Dynamic state route: /states/:code (expects 2-letter code like 'fl')
       { path: 'states/:code', element: <StateDynamic /> },
-
-      // Dynamic keyword route: /keywords/:slug
-      { path: 'keywords/:slug', element: <KeywordDynamic /> },
-
       { path: 'referral', element: <Referral /> },
       { path: 'checklist', element: <Checklist /> },
       { path: 'thank-you', element: <ThankYou /> },
@@ -95,7 +74,6 @@ export const routes = [
       { path: 'blog/am-best-insurance-ratings-explained', element: <AMBestInsuranceRatingsExplained /> },
       { path: 'blog/florida-small-business-health-insurance', element: <FloridaSmallBusinessHealthInsurance /> },
       { path: 'blog/life-insurance-companies-financial-strength', element: <LifeInsuranceCompaniesFinancialStrength /> },
-      { path: '*', element: <NotFound /> },
     ],
   },
 ];

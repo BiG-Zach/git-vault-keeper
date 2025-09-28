@@ -1,20 +1,25 @@
-import { Suspense } from 'react';
+import React, { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 import Header from './components/Header';
+import MobileHeader from './components/MobileHeader';
 import Footer from './components/Footer';
+import PageProgressBar from './components/chrome/PageProgressBar';
+import './styles/mobile-header.css';
 
-function App() {
+export default function App() {
   return (
-    <div className="min-h-screen flex flex-col bg-brand-light">
+    <>
+      <PageProgressBar />
+      <MobileHeader />
       <Header />
-      <Suspense fallback={<div className="flex-1 flex items-center justify-center"><p>Loading...</p></div>}>
-        <main className="flex-1">
-          <Outlet />
-        </main>
+      <Suspense fallback={
+        <div className="min-h-screen flex items-center justify-center">
+          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-brand-jade-500"></div>
+        </div>
+      }>
+        <Outlet />
       </Suspense>
       <Footer />
-    </div>
+    </>
   );
 }
-
-export default App;

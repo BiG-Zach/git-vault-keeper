@@ -7,7 +7,6 @@ type SEOProps = Omit<SEOConfig, 'canonical' | 'themeColor' | 'titleTemplate'> & 
   title?: string;
   template?: string;
   themeColor?: string;
-  disableCanonical?: boolean;
 };
 
 export default function SEO({
@@ -17,21 +16,17 @@ export default function SEO({
   template = '%s — Bradford Informed Guidance',
   themeColor = SITE.themeColor,
   lang = 'en',
-  meta = [],
+  meta,
   links,
-  scripts = [],
+  scripts,
   noindex,
-  disableCanonical,
 }: SEOProps) {
-  // Ensure description is always provided
-  const finalDescription = description || SITE.defaultDescription;
-  
   useEffect(() => {
     applyHead({
       title,
       titleTemplate: template,
-      description: finalDescription,
-      canonical: disableCanonical ? undefined : canonicalFor(path),
+      description,
+      canonical: canonicalFor(path),
       lang,
       meta,
       links,
@@ -39,7 +34,7 @@ export default function SEO({
       noindex,
       themeColor,
     });
-  }, [title, finalDescription, path, template, themeColor, lang, meta, links, scripts, noindex]);
+  }, [title, description, path, template, themeColor, lang, meta, links, scripts, noindex]);
 
   return null;
 }

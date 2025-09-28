@@ -98,8 +98,8 @@ const blogPosts: { [key: string]: BlogPost[] } = {
   'local-market': [
     {
       slug: 'tampa-bay-insurance-broker-guide',
-      title: 'Tampa Bay Insurance: Research-Based Market Analysis',
-      preview: 'Educational research on Tampa Bay insurance markets and coverage considerations.',
+      title: 'Tampa Bay Insurance: Local Broker\'s Insider Market Guide',
+      preview: 'Why Tampa Bay families choose local brokers over online quotes. Exclusive market insights.',
       wordCount: '2,400 words',
       category: 'Local Market',
       readTime: '12 min read',

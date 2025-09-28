@@ -8,6 +8,3 @@ export const COMPANY = {
   npnLabel: "NPN",
   npn: "18181266",
 };
-export const COMPANY_NAME = COMPANY.brand;
-export const FOUNDER_NAME = "Zachary Bradford";
-export const SITE_URL = "https://bradfordinformedguidance.com";

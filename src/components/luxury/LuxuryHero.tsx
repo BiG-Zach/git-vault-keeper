@@ -18,25 +18,13 @@ const LuxuryHero = () => {
     <section className="relative min-h-[90vh] lg:min-h-[85vh] flex items-center overflow-hidden">
       {/* Premium Background with Vignette */}
       <div className="absolute inset-0">
-        <picture>
-          <source
-            media="(min-width: 1024px)"
-            srcSet="/hero-family.webp 1x, /hero-family.webp 2x"
-            type="image/webp"
-          />
-          <source
-            media="(max-width: 1023px)"
-            srcSet="/hero-family-tablet.webp 1x, /hero-family-tablet.webp 2x"
-            type="image/webp"
-          />
-          <img
-            src="/hero-family.webp"
-            alt=""
-            className="w-full h-full object-cover"
-            loading="eager"
-            fetchPriority="high"
-          />
-        </picture>
+        <img
+          src="/hero-family.webp"
+          alt=""
+          className="w-full h-full object-cover"
+          loading="eager"
+          fetchPriority="high"
+        />
         {/* Subtle radial gradient overlay for natural vignetting */}
         <div className="absolute inset-0 bg-gradient-radial from-black/10 via-black/20 to-black/40"></div>
       </div>
@@ -56,10 +44,10 @@ const LuxuryHero = () => {
                 transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
                 className="space-y-6"
               >
-                <h2 className="text-6xl lg:text-7xl xl:text-8xl font-luxury-serif font-bold leading-[0.95] tracking-[-0.02em]">
+                <h1 className="text-6xl lg:text-7xl xl:text-8xl font-luxury-serif font-bold leading-[0.95] tracking-[-0.02em]">
                   <span className="block mb-4 bg-gradient-to-br from-white to-gray-50 bg-clip-text text-transparent">Affordable Health &</span>
                   <span className="block gradient-text-luxury font-luxury-serif">Life Insurance</span>
-                </h2>
+                </h1>
               </motion.div>
 
               <motion.div

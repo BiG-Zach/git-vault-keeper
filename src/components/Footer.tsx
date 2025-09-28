@@ -53,12 +53,6 @@ export default function Footer() {
           >
             <h4 className="font-semibold text-white mb-4">Quick Links</h4>
             <nav className="space-y-2">
-              <Link to="/services/health-insurance" className="block text-slate-300 hover:text-white transition-colors duration-200 text-sm">
-                Health Insurance (FL • MI • NC)
-              </Link>
-              <Link to="/services/life-insurance" className="block text-slate-300 hover:text-white transition-colors duration-200 text-sm">
-                Life Insurance (FL • MI • NC)
-              </Link>
               <Link to="/about" className="block text-slate-300 hover:text-white transition-colors duration-200 text-sm">
                 About
               </Link>

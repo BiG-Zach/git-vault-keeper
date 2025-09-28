@@ -1,80 +1,113 @@
-import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Shield, Users, Star, TrendingUp } from 'lucide-react';
-import Section from '../layout/Section';
+import { motion, useReducedMotion } from "framer-motion";
+import React from "react";
+import {
+  NetworkIcon,
+  ClockIcon,
+  ShieldStarIcon,
+  HandHeartIcon,
+  WalletCheckIcon,
+  SparkleCheckIcon,
+} from "../ui/CustomIcons";
 
-const features = [
+type Item = {
+  title: string;
+  body: string;
+  icon: React.ReactNode;
+  aria: string;
+};
+
+const items: Item[] = [
   {
-    name: 'Licensed Expertise',
-    description: 'As a multi-state licensed professional, I provide compliant, expert guidance tailored to your specific needs, ensuring you get the right coverage every time.',
-    icon: Shield,
+    title: "Your Licensed Insurance Expert",
+    body: "Exclusive A+ carrier partnerships.",
+    icon: <ShieldStarIcon aria-hidden={true} className="h-6 w-6" />,
+    aria: "Your Licensed Insurance Expert",
   },
   {
-    name: 'Personalized Guidance',
-    description: 'I take the time to understand your unique situation. You get a dedicated advocate who finds the perfect plan for your family, not a one-size-fits-all solution.',
-    icon: Users,
+    title: "Exclusive PPO Access",
+    body: "Nationwide provider freedom. Your doctors, better benefits.",
+    icon: <NetworkIcon aria-hidden={true} className="h-6 w-6" />,
+    aria: "Exclusive PPO Access",
   },
   {
-    name: 'Top-Rated Carriers',
-    description: 'Gain exclusive access to A+ rated insurance carriers and PPO networks that are often unavailable to the public, ensuring quality and reliability.',
-    icon: Star,
+    title: "Fast Decisions",
+    body: "Same-day underwriting decisions. No waiting, no uncertainty.",
+    icon: <ClockIcon aria-hidden={true} className="h-6 w-6" />,
+    aria: "Fast Decisions",
   },
   {
-    name: 'Long-Term Support',
-    description: 'My commitment doesn’t end at enrollment. I am your lifelong partner for any questions, claims, or life changes, providing continuous support.',
-    icon: TrendingUp,
+    title: "Personal Guidance",
+    body: "End-to-end support. From quote to claim, I've got you covered.",
+    icon: <HandHeartIcon aria-hidden={true} className="h-6 w-6" />,
+    aria: "Personal Guidance",
   },
 ];
 
 export default function WhyChooseUs() {
-  const [selectedTab, setSelectedTab] = useState(features[0]);
+  const prefersReducedMotion = useReducedMotion();
 
   return (
-    <Section className="w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-        <div className="flex flex-col gap-4">
-          <h2 className="text-3xl sm:text-4xl font-bold text-slate-900">
-            The Bradford Informed Guidance Difference
-          </h2>
-          <p className="text-lg text-slate-600">
-            Tired of call centers and confusing advice? Experience a better way to get insurance.
-          </p>
-          <div className="mt-4 flex flex-col space-y-2">
-            {features.map((item) => (
-              <button
-                key={item.name}
-                className={`flex items-center gap-4 p-4 rounded-lg text-left transition-colors duration-200 ${
-                  selectedTab.name === item.name
-                    ? 'bg-emerald-50 text-emerald-800'
-                    : 'bg-transparent text-slate-700 hover:bg-slate-100'
-                }`}
-                onClick={() => setSelectedTab(item)}
-              >
-                <item.icon className="w-6 h-6 flex-shrink-0" />
-                <span className="font-semibold">{item.name}</span>
-              </button>
-            ))}
-          </div>
-        </div>
-        <div className="relative h-80 lg:h-96">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={selectedTab ? selectedTab.name : 'empty'}
-              initial={{ y: 10, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              exit={{ y: -10, opacity: 0 }}
-              transition={{ duration: 0.2 }}
-              className="w-full h-full bg-slate-50 rounded-2xl p-8 flex flex-col justify-center items-center text-center shadow-lg border border-slate-200"
-            >
-              <div className="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center mb-6">
-                <selectedTab.icon className="w-8 h-8 text-emerald-600" />
-              </div>
-              <h3 className="text-2xl font-bold text-slate-900 mb-3">{selectedTab.name}</h3>
-              <p className="text-slate-600">{selectedTab.description}</p>
-            </motion.div>
-          </AnimatePresence>
-        </div>
+    <div aria-labelledby="why-choose-us">
+      <div className="text-center mb-8 md:mb-10">
+        <motion.h2
+          id="why-choose-us"
+          className="text-2xl md:text-3xl font-semibold tracking-tight text-slate-900 leading-tight mb-2 md:mb-3"
+          initial={{ opacity: 0, y: prefersReducedMotion ? 0 : 14 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.25 }}
+          transition={{ duration: 0.45, ease: "easeOut" }}
+        >
+          Why Choose Bradford Informed Guidance
+        </motion.h2>
+        <motion.p
+          className="text-slate-600 max-w-2xl mx-auto"
+          initial={{ opacity: 0, y: prefersReducedMotion ? 0 : 14 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.25 }}
+          transition={{ duration: 0.45, ease: "easeOut", delay: 0.1 }}
+        >
+          Clear options, trusted carriers, and a team that makes enrollment easy.
+        </motion.p>
       </div>
-    </Section>
+
+      <div className="grid grid-cols-1 gap-4 md:gap-6 sm:grid-cols-2 xl:grid-cols-3">
+        {items.map((item, index) => (
+          <motion.article
+            key={item.title}
+            aria-label={item.aria}
+            className="group rounded-2xl ring-1 ring-slate-200/70 bg-white hover:shadow-lg/20 hover:ring-slate-300 transition-all duration-300 p-5 md:p-6 cursor-pointer"
+            initial={{ opacity: 0, y: prefersReducedMotion ? 0 : 14 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.25 }}
+            transition={{ 
+              duration: 0.45, 
+              ease: "easeOut",
+              delay: prefersReducedMotion ? 0 : index * 0.06 
+            }}
+            whileHover={prefersReducedMotion ? {} : { y: -2 }}
+          >
+            <div className="flex items-start gap-3">
+              <div className="size-9 md:size-10 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center group-hover:bg-emerald-100 group-hover:text-emerald-700 transition-colors duration-300">
+                {item.icon}
+              </div>
+              <div className="flex-1">
+                <h3 
+                  className="text-base md:text-lg font-semibold text-slate-900 group-hover:text-emerald-900 transition-colors duration-300 leading-tight mb-1"
+                  aria-describedby={`${item.title.replace(/\s+/g, '-').toLowerCase()}-desc`}
+                >
+                  {item.title}
+                </h3>
+                <p 
+                  id={`${item.title.replace(/\s+/g, '-').toLowerCase()}-desc`}
+                  className="text-sm leading-6 text-slate-600 group-hover:text-slate-700 transition-colors duration-300"
+                >
+                  {item.body}
+                </p>
+              </div>
+            </div>
+          </motion.article>
+        ))}
+      </div>
+    </div>
   );
 }

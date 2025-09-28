@@ -1,162 +1,10 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 import jwt from 'jsonwebtoken';
 import crypto from 'node:crypto';
-import { applySecurityHeaders } from './_lib/headers';
-import {
-  validateBasics,
-  validateContact,
-  validateHousehold,
-  type QuoteBasics,
-  type QuoteContact,
-  type QuoteHousehold,
-} from '../src/utils/validation';
-
-// Ringy CRM dual-vendor integration - Production ready
-
-const requireEnv = (key: string) => {
-  const value = process.env[key];
-  if (!value) throw new Error(`${key} must be configured`);
-  return value;
-};
-
-const DEFAULT_ALLOWED_ORIGINS = ['https://bradfordinformedguidance.com'];
-
-function getAllowedOrigins(): Set<string> {
-  const raw = process.env.LEAD_ALLOWED_ORIGINS || process.env.CORS_ALLOWED_ORIGINS;
-  if (!raw) return new Set(DEFAULT_ALLOWED_ORIGINS);
-  const origins = raw
-    .split(',')
-    .map((item) => item.trim())
-    .filter(Boolean);
-  return new Set<string>(origins.length ? origins : DEFAULT_ALLOWED_ORIGINS);
-}
-
-const allowedOrigins: Set<string> = getAllowedOrigins();
-
-function prefixErrors(
-  prefix: string,
-  errors: Partial<Record<string, string>>,
-): Record<string, string> {
-  const result: Record<string, string> = {};
-  for (const [key, value] of Object.entries(errors)) {
-    if (value) {
-      result[`${prefix}.${key}`] = value;
-    }
-  }
-  return result;
-}
-
-function parseState(value: unknown): QuoteBasics['state'] {
-  if (typeof value !== 'string') return 'OTHER';
-  const upper = value.toUpperCase();
-  return upper === 'FL' || upper === 'MI' || upper === 'NC' ? (upper as QuoteBasics['state']) : 'OTHER';
-}
-
-function parseCoverageType(value: unknown): QuoteBasics['coverageType'] {
-  if (typeof value !== 'string') return 'Health';
-  const normalized = value.toLowerCase();
-  if (normalized === 'life') return 'Life';
-  if (normalized === 'both') return 'Both';
-  return 'Health';
-}
-
-function parseAges(value: unknown): number[] {
-  if (Array.isArray(value)) {
-    return value
-      .map((item) => (typeof item === 'number' ? item : Number(item)))
-      .filter((num) => Number.isFinite(num) && num > 0);
-  }
-  if (typeof value === 'string') {
-    const matches = value.match(/\d{1,3}/g);
-    if (!matches) return [];
-    return matches
-      .map((item) => Number(item))
-      .filter((num) => Number.isFinite(num) && num > 0);
-  }
-  return [];
-}
-
-function collectValidationErrors(body: Record<string, any>): Record<string, string> {
-  if (body?.basics && body?.household && body?.contact) {
-    const basicsErrors = validateBasics(body.basics as QuoteBasics);
-    const householdErrors = validateHousehold(body.household as QuoteHousehold);
-    const contactErrors = validateContact(body.contact as QuoteContact);
-
-    return {
-      ...prefixErrors('basics', basicsErrors),
-      ...prefixErrors('household', householdErrors),
-      ...prefixErrors('contact', contactErrors),
-    };
-  }
-
-  const fallbackBasics: QuoteBasics = {
-    zip: typeof body.zipCode === 'string' ? body.zipCode : '',
-    state: parseState(body.state ?? body.stateCode),
-    coverageType: parseCoverageType(body.coverageType),
-  };
-
-  const fallbackContact: QuoteContact = {
-    firstName: typeof body.firstName === 'string' ? body.firstName : '',
-    lastName: typeof body.lastName === 'string' ? body.lastName : '',
-    email: typeof body.email === 'string' ? body.email : '',
-    phone: typeof body.phone === 'string' ? body.phone : '',
-    consent: Boolean(body.consentChecked ?? body.consent),
-  };
-
-  const parsedAges = parseAges(body.ages);
-
-  const fallbackHousehold: QuoteHousehold = {
-    ages: parsedAges,
-    tobacco: Boolean(body.tobacco ?? false),
-    dependents:
-      typeof body.dependents === 'number'
-        ? Math.max(0, body.dependents)
-        : Math.max(parsedAges.length - 1, 0),
-  };
-
-  const basicsErrors = validateBasics(fallbackBasics);
-  const contactErrors = validateContact(fallbackContact);
-  const householdErrors =
-    parsedAges.length > 0 ? validateHousehold(fallbackHousehold) : {};
-
-  return {
-    ...prefixErrors('basics', basicsErrors),
-    ...prefixErrors('household', householdErrors),
-    ...prefixErrors('contact', contactErrors),
-  };
-}
 
 function getClientIP(req: VercelRequest) {
   const xf = (req.headers['x-forwarded-for'] as string) || '';
   return xf.split(',')[0].trim() || (req.socket?.remoteAddress ?? 'unknown');
-}
-
-function maskIp(ip: string) {
-  if (!ip || ip === 'unknown') return 'unknown';
-  if (ip.includes(':')) {
-    const segments = ip.split(':');
-    return `${segments.slice(0, 3).join(':')}::`;
-  }
-  const parts = ip.split('.');
-  if (parts.length !== 4) return 'unknown';
-  return `${parts.slice(0, 3).join('.')}.0`;
-}
-
-interface VendorConfig {
-  endpoint: string;
-  sid: string;
-  authToken: string;
-  type: 'auto-text' | 'manual';
-}
-
-function determineVendor(preferredContact: string): 'auto' | 'manual' {
-  // Route based on preferred contact method
-  if (preferredContact === 'text') {
-    return 'auto'; // Auto-text vendor for immediate SMS
-  }
-
-  // Default to manual follow-up for email and phone
-  return 'manual';
 }
 
 function buildNotes(params: {
@@ -164,75 +12,26 @@ function buildNotes(params: {
   landingUrl?: string;
   utm?: Record<string, string>;
   consentTimestamp: string;
-  vendorType: string;
-  consentHash?: string;
+  ip: string;
 }) {
   const utmStr = params.utm ? JSON.stringify(params.utm) : '{}';
   return [
     `Ages: ${params.ages || 'n/a'}`,
     `Landing: ${params.landingUrl || 'n/a'}`,
     `UTM: ${utmStr}`,
-    `Vendor: ${params.vendorType}`,
-    `Consent: ${params.consentTimestamp}`,
-    `ConsentHash: ${params.consentHash || 'n/a'}`,
+    `Consent: ${params.consentTimestamp} • ${params.ip}`,
   ].join(' | ');
 }
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
-  // CORS: restrict to configured allowlist
-  const origin = (req.headers.origin as string) ?? '';
-  if (allowedOrigins.has(origin)) {
-    res.setHeader('Access-Control-Allow-Origin', origin);
-  }
-  res.setHeader('Vary', 'Origin');
-  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-
-  // Cache-busting headers
-  res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
-  res.setHeader('Pragma', 'no-cache');
-  res.setHeader('Expires', '0');
-
-  applySecurityHeaders(res);
-
-  // Handle preflight requests
-  if (req.method === 'OPTIONS') {
-    return res.status(204).end();
-  }
-
   if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
 
   try {
-    const leadData = (req.body || {}) as Record<string, any>;
-    const validationErrors = collectValidationErrors(leadData);
-
-    if (Object.keys(validationErrors).length > 0) {
-      return res.status(400).json({
-        success: false,
-        message: 'Invalid data provided.',
-        errors: validationErrors,
-        error: 'Invalid data provided.',
-        detail: 'Validation failed',
-      });
-    }
-
-    // Environment variables for both vendors
-    const JWT_SECRET = requireEnv('JWT_SECRET');
-    const LEAD_SOURCE = process.env.LEAD_SOURCE || 'Website - Mobile Hero';
-
-    const autoConfig: VendorConfig = {
-      endpoint: requireEnv('RINGY_AUTO_ENDPOINT'),
-      sid: requireEnv('RINGY_AUTO_SID'),
-      authToken: requireEnv('RINGY_AUTO_AUTH_TOKEN'),
-      type: 'auto-text',
-    };
-
-    const manualConfig: VendorConfig = {
-      endpoint: requireEnv('RINGY_MANUAL_ENDPOINT'),
-      sid: requireEnv('RINGY_MANUAL_SID'),
-      authToken: requireEnv('RINGY_MANUAL_AUTH_TOKEN'),
-      type: 'manual',
-    };
+    const RINGY_ENDPOINT = process.env.RINGY_ENDPOINT!;
+    const RINGY_SID = process.env.RINGY_SID!;
+    const RINGY_AUTH_TOKEN = process.env.RINGY_AUTH_TOKEN!;
+    const JWT_SECRET = process.env.JWT_SECRET!;
+    const LEAD_SOURCE = process.env.LEAD_SOURCE || 'Website – Mobile Hero';
 
     const {
       zipCode,
@@ -241,84 +40,51 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       phone,
       firstName = '',
       lastName = '',
-      preferredContact = 'email',
       consentChecked,
       consentText,
       landingUrl,
-      utm = {},
-    } = leadData;
+      utm = {}
+    } = (req.body || {}) as Record<string, any>;
 
     if (!zipCode || !email || !phone || !consentChecked || !consentText) {
       return res.status(400).json({ error: 'Missing required fields or consent' });
     }
 
     const ip = getClientIP(req);
-    const maskedIp = maskIp(ip);
-    const ipHash = ip === 'unknown'
-      ? undefined
-      : crypto.createHash('sha256').update(`${JWT_SECRET}:${ip}`).digest('hex');
     const consentTimestamp = new Date().toISOString();
     const vendorRefId = crypto.randomUUID();
 
-    // Determine which vendor to use based on preferred contact method
-    const vendorChoice = determineVendor(preferredContact);
-    const vendorConfig = vendorChoice === 'auto' ? autoConfig : manualConfig;
-
-    // Stateless consent receipt (JWT) with minimal, non-PII payload and short TTL
-    const tokenPayload: Record<string, string | number> = {
-      method: 'checkbox',
-      consentTimestamp,
-      vendorRefId,
-      v: 1,
-    };
-
-    if (ipHash) {
-      tokenPayload.ipHash = ipHash;
-    }
-
-    const token = jwt.sign(tokenPayload, JWT_SECRET, { expiresIn: '24h' });
+    // Stateless consent receipt (JWT) valid ~10 years
+    const token = jwt.sign(
+      { consentText, method: 'checkbox', consentTimestamp, ip, landingUrl, utm },
+      JWT_SECRET,
+      { expiresIn: '3650d' }
+    );
 
     const proto = (req.headers['x-forwarded-proto'] as string) || 'https';
     const host = req.headers.host;
     const proofLink = `${proto}://${host}/api/consent/${token}`;
 
-    const notes = buildNotes({
-      ages,
-      landingUrl,
-      utm,
-      consentTimestamp,
-      consentHash: ipHash,
-      vendorType: `${vendorConfig.type} (${preferredContact} preference)`,
-    });
-
-    console.log('lead:audit', {
-      vendorRefId,
-      consentTimestamp,
-      ipHash,
-      maskedIp,
-      origin,
-    });
+    const notes = buildNotes({ ages, landingUrl, utm, consentTimestamp, ip });
 
     const payload = {
-      sid: vendorConfig.sid,
-      authToken: vendorConfig.authToken,
+      sid: RINGY_SID,
+      authToken: RINGY_AUTH_TOKEN,
       phone_number: phone,
       first_name: firstName,
       last_name: lastName,
       email,
       zip_code: String(zipCode),
-      lead_source: `${LEAD_SOURCE} (${vendorConfig.type})`,
+      lead_source: LEAD_SOURCE,
       notes,
       vendor_reference_id: vendorRefId,
-      proof_of_sms_opt_in_link: proofLink,
+      proof_of_sms_opt_in_link: proofLink
     };
 
-    console.log(`Routing lead to ${vendorConfig.type} vendor for ${preferredContact} preference`);
-
-    const resp = await fetch(vendorConfig.endpoint, {
+    const resp = await fetch(RINGY_ENDPOINT, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload),
+      body: JSON.stringify(payload)
     });
 
     const text = await resp.text();
@@ -328,18 +94,9 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     }
 
     let vendorResponse: any;
-    try {
-      vendorResponse = JSON.parse(text);
-    } catch {
-      vendorResponse = { raw: text };
-    }
+    try { vendorResponse = JSON.parse(text); } catch { vendorResponse = { raw: text }; }
 
-    return res.status(200).json({
-      ok: true,
-      vendorResponse,
-      vendorUsed: vendorConfig.type,
-      vendorChoice,
-    });
+    return res.status(200).json({ ok: true, vendorResponse });
   } catch (err: any) {
     return res.status(500).json({ error: 'Server error', detail: err?.message || String(err) });
   }

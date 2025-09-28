@@ -33,88 +33,38 @@ export const useImageLuminance = (imagePath: string, threshold: number = 128): L
         img.src = path;
       });
 
-      const createCanvasContext = (width: number, height: number) => {
-        if (typeof OffscreenCanvas === 'function') {
-          const offscreenCanvas = new OffscreenCanvas(width, height);
-          const offscreenContext = offscreenCanvas.getContext('2d');
-
-          if (!offscreenContext) {
-            throw new Error('Failed to get canvas context');
-          }
-
-          return {
-            ctx: offscreenContext,
-            cleanup: () => {}
-          };
-        }
-
-        if (typeof document === 'undefined') {
-          throw new Error('Canvas not available in this environment');
-        }
-
-        const canvas = document.createElement('canvas');
-        canvas.width = width;
-        canvas.height = height;
-        canvas.style.position = 'fixed';
-        canvas.style.pointerEvents = 'none';
-        canvas.style.opacity = '0';
-        canvas.style.left = '-9999px';
-        canvas.style.top = '-9999px';
-
-        const parent = document.body ?? document.documentElement;
-
-        if (!parent) {
-          throw new Error('No document body to attach canvas to');
-        }
-
-        parent.appendChild(canvas);
-
-        const context = canvas.getContext('2d');
-
-        if (!context) {
-          canvas.remove();
-          throw new Error('Failed to get canvas context');
-        }
-
-        return {
-          ctx: context,
-          cleanup: () => {
-            canvas.remove();
-          }
-        };
-      };
-
-      const { ctx, cleanup } = createCanvasContext(img.width, img.height);
-      let averageLuminance = 0;
-
-      try {
-        // Draw image to canvas
-        ctx.drawImage(img, 0, 0);
-
-        // Get image data
-        const imageData = ctx.getImageData(0, 0, img.width, img.height);
-        const data = imageData.data;
-
-        // Calculate average luminance using relative luminance formula
-        // Y = 0.299*R + 0.587*G + 0.114*B
-        let totalLuminance = 0;
-        const pixelCount = data.length / 4; // 4 values per pixel (RGBA)
-
-        for (let i = 0; i < data.length; i += 4) {
-          const r = data[i];
-          const g = data[i + 1];
-          const b = data[i + 2];
-          // Skip alpha channel (data[i + 3])
-
-          const luminance = 0.299 * r + 0.587 * g + 0.114 * b;
-          totalLuminance += luminance;
-        }
-
-        averageLuminance = totalLuminance / pixelCount;
-      } finally {
-        cleanup();
+      // Create offscreen canvas
+      const canvas = new OffscreenCanvas(img.width, img.height);
+      const ctx = canvas.getContext('2d');
+      
+      if (!ctx) {
+        throw new Error('Failed to get canvas context');
       }
 
+      // Draw image to canvas
+      ctx.drawImage(img, 0, 0);
+
+      // Get image data
+      const imageData = ctx.getImageData(0, 0, img.width, img.height);
+      const data = imageData.data;
+
+      // Calculate average luminance using relative luminance formula
+      // Y = 0.299*R + 0.587*G + 0.114*B
+      let totalLuminance = 0;
+      const pixelCount = data.length / 4; // 4 values per pixel (RGBA)
+
+      for (let i = 0; i < data.length; i += 4) {
+        const r = data[i];
+        const g = data[i + 1];
+        const b = data[i + 2];
+        // Skip alpha channel (data[i + 3])
+        
+        const luminance = 0.299 * r + 0.587 * g + 0.114 * b;
+        totalLuminance += luminance;
+      }
+
+      const averageLuminance = totalLuminance / pixelCount;
+      
       setLuminance(averageLuminance);
       setReady(true);
       

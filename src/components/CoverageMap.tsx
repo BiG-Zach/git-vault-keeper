@@ -1,71 +1,47 @@
-import states from '../data/states.json';
+type StateKey = 'FL' | 'MI' | 'NC';
 
-type State = (typeof states)[number];
-
-const LICENSED_CODES = ['FL', 'MI', 'NC', 'AZ', 'GA', 'TX'] as const;
-const ESTABLISHED_CODES = ['FL', 'MI', 'NC'] as const;
-const NEW_CODES = ['AZ', 'GA', 'TX'] as const;
-
-type LicensedCode = (typeof LICENSED_CODES)[number];
-type EstablishedCode = (typeof ESTABLISHED_CODES)[number];
-type NewCode = (typeof NEW_CODES)[number];
-
-const badgeClass = 'inline-flex items-center rounded-full px-3 py-1 text-sm font-medium text-white';
+const STATES: Record<StateKey, { name: string; path: string; href: string }> = {
+  FL: { name: 'Florida', path: '/states/florida', href: '/states/florida' },
+  MI: { name: 'Michigan', path: '/states/michigan', href: '/states/michigan' },
+  NC: { name: 'North Carolina', path: '/states/north-carolina', href: '/states/north-carolina' },
+};
 
 export default function CoverageMap() {
-  const licensedStates: State[] = states.filter((state) => LICENSED_CODES.includes(state.code as LicensedCode));
-  const establishedStates = licensedStates.filter((state) => ESTABLISHED_CODES.includes(state.code as EstablishedCode));
-  const newStates = licensedStates.filter((state) => NEW_CODES.includes(state.code as NewCode));
-
   return (
-    <section className="section bg-brand-light" aria-label="Coverage states">
+    <section className="section bg-white" aria-label="Coverage states">
       <div className="container-default">
-        <div className="grid gap-12 md:grid-cols-2 md:items-center">
-          <div>
-            <h2 className="text-3xl font-display font-bold text-brand-dark">Licensed to Serve You in 6 States</h2>
-            <p className="mt-4 text-brand-gray">
-              We provide expert, personalized insurance guidance in our core markets and are excited to bring our concierge service to new locations.
-            </p>
-            <div className="mt-8 space-y-6">
-              <div>
-                <h3 className="font-semibold text-brand-dark">Established Markets</h3>
-                <div className="mt-3 flex flex-wrap gap-2">
-                  {establishedStates.map((state) => (
-                    <span key={state.code} className={`${badgeClass} bg-brand-primary`}>
-                      {state.name}
-                    </span>
-                  ))}
-                </div>
-              </div>
-              <div>
-                <h3 className="font-semibold text-brand-dark">Newly Licensed &amp; Accepting Clients!</h3>
-                <div className="mt-3 flex flex-wrap gap-2">
-                  {newStates.map((state) => (
-                    <span key={state.code} className={`${badgeClass} bg-brand-secondary`}>
-                      {state.name}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="rounded-xl border border-slate-200 bg-white p-6 shadow-md">
-            <svg
-              viewBox="0 0 960 600"
-              role="img"
-              aria-label="Map highlighting licensed states"
-              className="h-auto w-full"
-            >
-              <title>Licensed states map</title>
-              {licensedStates.map((state) => (
-                <a key={state.code} href={`/states/${state.slug}`} aria-label={state.name}>
-                  <path
-                    d={state.svgPath}
-                    className="cursor-pointer fill-brand-primary/20 stroke-brand-primary transition-colors hover:fill-brand-primary/40"
-                  />
-                </a>
-              ))}
-            </svg>
+        <h2 className="h2 mb-4">Coverage Areas</h2>
+        <p className="lead mb-6">Currently licensed in Florida, Michigan, and North Carolina — with more states coming soon.</p>
+
+        <div className="rounded-lg border border-slate-200 p-4 overflow-x-auto">
+          <svg
+            viewBox="0 0 960 600"
+            role="img"
+            aria-label="Map highlighting Florida, Michigan, and North Carolina"
+            className="w-full h-auto"
+          >
+            {/* Simplified shapes (not geographically precise). Replace with precise SVG later if desired */}
+            <a href={STATES.FL.href} aria-label="Florida">
+              <path d="M770,420 l 130,0 l 0,40 l -120,0 l -10,-40 z" className="fill-sky-200 stroke-sky-600 hover:fill-sky-300" />
+            </a>
+            <a href={STATES.MI.href} aria-label="Michigan">
+              <path d="M520,120 l 60,0 l 40,40 l -20,60 l -80,0 l 0,-100 z" className="fill-sky-200 stroke-sky-600 hover:fill-sky-300" />
+            </a>
+            <a href={STATES.NC.href} aria-label="North Carolina">
+              <path d="M620,320 l 200,0 l 60,20 l -40,20 l -220,0 l 0,-40 z" className="fill-sky-200 stroke-sky-600 hover:fill-sky-300" />
+            </a>
+          </svg>
+          <div className="mt-4 grid grid-cols-1 sm:grid-cols-3 gap-3 text-sm">
+            {Object.entries(STATES).map(([code, s]) => (
+              <a
+                key={code}
+                href={s.href}
+                className="rounded-lg border border-slate-200 p-3 hover:bg-slate-50 flex items-center justify-between"
+              >
+                <span>{s.name}</span>
+                <span aria-hidden="true" className="text-slate-400">&rarr;</span>
+              </a>
+            ))}
           </div>
         </div>
       </div>

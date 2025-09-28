@@ -1,5 +1,5 @@
 import * as React from 'react';
-import styles from '../../mobile/carriers.module.css';
+import styles from '../../mobile/Carriers.module.css';
 import gridMobile from './CarriersGrid.mobile.module.css';
 
 type Carrier = { name: string; src: string };
@@ -45,11 +45,11 @@ export default function CarriersGrid() {
         />
       </div>
 
-      <div className={`grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 sm:gap-6 ${gridMobile.mobileGrid}`}>
+      <div className={`grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 sm:gap-6 ${styles.badgeRow} ${gridMobile.mobileGrid}`}>
         {filtered.map(({name, src}) => (
           <div
             key={name}
-            className="rounded-2xl border border-slate-200 bg-white/70 backdrop-blur-sm p-3 shadow-sm"
+            className={`rounded-2xl border border-slate-200 bg-white/70 backdrop-blur-sm p-3 shadow-sm ${styles.badge}`}
           >
             {/* Mobile: CLS-safe wider ratio; Desktop: unchanged */}
             <div className="relative w-full aspect-[3/1] md:aspect-[2/1]">

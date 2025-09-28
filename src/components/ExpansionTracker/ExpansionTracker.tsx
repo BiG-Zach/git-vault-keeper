@@ -2,83 +2,27 @@ import React, { useMemo, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Reveal from '../Reveal';
 import USMap from './USMap';
+import { STATE_STATUS, statusClasses, statusLabel, legend, type StateCode } from './data';
 import { trackEvent, GTM_EVENTS } from '../../utils/gtm';
-import {
-  STATE_STATUS,
-  statusLabel,
-  statusClasses,
-  type StateCode,
-} from './data';
-
-const LEGEND_ITEMS = [
-  {
-    key: 'available',
-    label: 'Available now',
-    dotClass: 'bg-emerald-500 shadow-[0_0_0_2px_rgba(16,185,129,0.25)]',
-  },
-  {
-    key: 'comingSoon',
-    label: 'Coming soon',
-    dotClass: 'bg-sky-500 shadow-[0_0_0_2px_rgba(14,165,233,0.25)] animate-pulse',
-  },
-  {
-    key: 'notAvailable',
-    label: 'Not available',
-    dotClass: 'bg-slate-300 shadow-[0_0_0_2px_rgba(203,213,225,0.6)]',
-  },
-] as const;
-
-const STATE_DETAILS: Partial<Record<StateCode, { name: string; plans: string; benefits: string[] }>> = {
-  FL: {
-    name: 'Florida',
-    plans: '15+ Plans Available',
-    benefits: ['PPO Networks', 'Year-Round Enrollment', 'Same-Day Coverage'],
-  },
-  MI: {
-    name: 'Michigan',
-    plans: '12+ Plans Available',
-    benefits: ['Top Carriers', 'Flexible Options', 'Local Support'],
-  },
-  NC: {
-    name: 'North Carolina',
-    plans: '18+ Plans Available',
-    benefits: ['Comprehensive Coverage', 'Affordable Rates', 'Quick Enrollment'],
-  },
-  AZ: {
-    name: 'Arizona',
-    plans: 'Launching 2024',
-    benefits: ['Heat-Ready Plans', 'Travel-Friendly Coverage', 'Family Protection'],
-  },
-  GA: {
-    name: 'Georgia',
-    plans: 'Launching 2024',
-    benefits: ['Atlanta & Coastal Networks', 'Business Owner Solutions', 'Local Expertise'],
-  },
-  TX: {
-    name: 'Texas',
-    plans: 'Launching 2024',
-    benefits: ['Statewide PPO Access', 'Independent Contractor Support', 'High Deductible Alternatives'],
-  },
-  OH: {
-    name: 'Ohio',
-    plans: 'Coming Soon',
-    benefits: ['Stay Tuned', 'Join the Waitlist', 'Be the First to Know'],
-  },
-};
-
-function getStateDetails(code: StateCode) {
-  return (
-    STATE_DETAILS[code] || {
-      name: code,
-      plans: statusLabel(code),
-      benefits: ['Expanding Coverage', 'Stay Tuned', 'Notify Me'],
-    }
-  );
-}
 
 export default function ExpansionTracker() {
   const [hovered, setHovered] = useState<StateCode | null>(null);
   const [tooltipPosition, setTooltipPosition] = useState({ x: 0, y: 0 });
+
+  // State information for tooltips
+  const getStateInfo = (code: StateCode) => {
+    const stateData = {
+      FL: { name: 'Florida', plans: '15+ Plans Available', benefits: ['PPO Networks', 'Year-Round Enrollment', 'Same-Day Coverage'] },
+      MI: { name: 'Michigan', plans: '12+ Plans Available', benefits: ['Top Carriers', 'Flexible Options', 'Local Support'] },
+      NC: { name: 'North Carolina', plans: '18+ Plans Available', benefits: ['Comprehensive Coverage', 'Affordable Rates', 'Quick Enrollment'] },
+    };
+    
+    return stateData[code as keyof typeof stateData] || {
+      name: code,
+      plans: 'Coming Soon',
+      benefits: ['Expanding Coverage', 'Stay Tuned', 'Notify Me']
+    };
+  };
 
   const getStateAttrs = useMemo(() => {
     return (code: StateCode) => {
@@ -129,7 +73,7 @@ export default function ExpansionTracker() {
     setHovered(null);
   };
 
-  const hoveredInfo = hovered ? getStateDetails(hovered) : null;
+  const activeLabel = hovered ? `${hovered} — ${statusLabel(hovered)}` : 'Hover or focus a state';
 
   return (
     <section aria-labelledby="expansion-tracker-title" className="py-12 sm:py-16 bg-white">
@@ -148,7 +92,7 @@ export default function ExpansionTracker() {
         {/* Legend */}
         <Reveal delay={0.1}>
           <ul className="mt-6 mb-6 sm:mb-8 flex flex-wrap items-center justify-center gap-3 text-sm">
-            {LEGEND_ITEMS.map((item) => (
+            {legend().map((item) => (
               <li key={item.key} className="inline-flex items-center gap-2">
                 <span
                   aria-hidden="true"
@@ -182,7 +126,7 @@ export default function ExpansionTracker() {
             <div className="relative">
               {/* Enhanced tooltip with state information */}
               <AnimatePresence>
-                {hovered && hoveredInfo && (
+                {hovered && (
                   <motion.div
                     initial={{ opacity: 0, scale: 0.9, y: 10 }}
                     animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -196,18 +140,24 @@ export default function ExpansionTracker() {
                     }}
                   >
                     <div className="bg-slate-900/95 backdrop-blur-sm rounded-lg px-4 py-3 text-white shadow-lg ring-1 ring-black/10 min-w-[200px]">
-                      <div className="mb-1 text-sm font-semibold">{hoveredInfo.name}</div>
-                      <div className="mb-2 text-xs text-emerald-400">{hoveredInfo.plans}</div>
-                      <ul className="space-y-1 text-xs text-slate-300">
-                        {hoveredInfo.benefits.map((benefit, index) => (
+                      <div className="text-sm font-semibold mb-1">
+                        {getStateInfo(hovered).name}
+                      </div>
+                      <div className="text-xs text-emerald-400 mb-2">
+                        {getStateInfo(hovered).plans}
+                      </div>
+                      <ul className="text-xs text-slate-300 space-y-1">
+                        {getStateInfo(hovered).benefits.map((benefit, index) => (
                           <li key={index} className="flex items-center gap-2">
-                            <span className="inline-block h-1 w-1 flex-shrink-0 rounded-full bg-emerald-400" />
+                            <span className="w-1 h-1 bg-emerald-400 rounded-full flex-shrink-0" />
                             {benefit}
                           </li>
                         ))}
                       </ul>
                       {STATE_STATUS[hovered] === 'available' && (
-                        <div className="mt-2 text-xs font-medium text-sky-400">Click to view details →</div>
+                        <div className="text-xs text-sky-400 mt-2 font-medium">
+                          Click to view details →
+                        </div>
                       )}
                     </div>
                     {/* Tooltip arrow */}
@@ -231,7 +181,7 @@ export default function ExpansionTracker() {
 
             {/* Mobile help text row acts as tooltip stand-in */}
             <div className="mt-3 flex items-center justify-center text-[11px] text-slate-500 md:hidden" role="status" aria-live="polite">
-              {hoveredInfo ? `${hoveredInfo.name} — ${hoveredInfo.plans}` : 'Tap a state for details'}
+              {hovered ? `${getStateInfo(hovered).name} — ${getStateInfo(hovered).plans}` : 'Tap a state for details'}
             </div>
           </div>
         </Reveal>

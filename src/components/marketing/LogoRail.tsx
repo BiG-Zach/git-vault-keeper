@@ -11,7 +11,6 @@ export default function LogoRail({ logos, className="" }: { logos: Logo[]; class
               alt={l.alt}
               width={l.width ?? 160}
               height={l.height ?? 80}
-              // Ensure carrier logos are lazy-loaded to improve initial render
               loading="lazy"
               decoding="async"
               className="absolute inset-0 h-full w-full object-contain"

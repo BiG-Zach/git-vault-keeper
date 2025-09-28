@@ -8,6 +8,7 @@ import {
   validateBasics,
   validateHousehold,
   validateContact,
+  normalizePhone,
 } from '../../utils/validation';
 
 type Step = 0 | 1 | 2 | 3;
@@ -100,11 +101,35 @@ export default function QuotePage() {
 
   async function submit() {
     try {
-      const { submitLead, quoteDataToLeadInput } = await import('../../utils/submitLead');
-      await submitLead(quoteDataToLeadInput(data));
-      try {
-        sessionStorage.removeItem(STORAGE_KEY);
-      } catch {}
+      const payload = {
+        ...data,
+        contact: {
+          ...data.contact,
+          phone: normalizePhone(data.contact.phone),
+          consentAt: new Date().toISOString(),
+        },
+        meta: { source: 'web', path: location.pathname },
+        timestamp: new Date().toISOString(),
+      };
+      
+      // Submit to email API
+      const response = await fetch('/api/lead', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          ...payload,
+          subject: `New Quote Request - ${data.contact.firstName} ${data.contact.lastName} - ${data.basics.coverageType}`,
+          email: 'zbradford@bradfordinformedguidance.com'
+        })
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to submit quote');
+      }
+      
+      // Redirect to thank you page
       location.assign('/thank-you');
     } catch (error) {
       console.error('Submission error:', error);
@@ -385,28 +410,20 @@ function HouseholdStep({
         <FieldError msg={errors.ages} />
       </div>
 
-      <div>
-        <label
-          htmlFor="tobacco"
-          className="inline-flex items-center gap-2 text-sm text-slate-700 cursor-pointer"
-        >
-          <input
-            id="tobacco"
-            type="checkbox"
-            checked={data.tobacco}
-            onChange={(e) => onChange({ ...data, tobacco: e.target.checked })}
-            className="h-4 w-4 rounded border-slate-300 text-sky-600 focus:ring-sky-500"
-          />
-          <span>Tobacco user</span>
-        </label>
+      <div className="flex items-center gap-2">
+        <input
+          id="tobacco"
+          type="checkbox"
+          checked={data.tobacco}
+          onChange={(e) => onChange({ ...data, tobacco: e.target.checked })}
+          className="h-4 w-4 rounded border-slate-300 text-sky-600 focus:ring-sky-500"
+        />
+        <label htmlFor="tobacco" className="text-sm text-slate-700">Tobacco user</label>
       </div>
 
       <div>
-        <label htmlFor="dependents" className="block text-sm font-medium text-slate-700">
-          Dependents
-        </label>
+        <label className="block text-sm font-medium text-slate-700">Dependents</label>
         <input
-          id="dependents"
           value={data.dependents}
           onChange={(e) => onChange({ ...data, dependents: Math.max(0, Number(e.target.value) || 0) })}
           className="mt-1 block w-full rounded-md border-slate-300 focus:border-sky-500 focus:ring-sky-500"

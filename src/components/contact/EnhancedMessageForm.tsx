@@ -26,17 +26,26 @@ export default function EnhancedMessageForm() {
     setErrorMessage('');
     
     try {
-      // Create payload for contact message API
+      // Split name into first and last name
+      const nameParts = formData.name.trim().split(' ');
+      const firstName = nameParts[0] || '';
+      const lastName = nameParts.slice(1).join(' ') || '';
+      
+      // Create payload matching the lead API format
       const payload = {
-        name: formData.name,
+        firstName,
+        lastName,
         email: formData.email,
         phone: formData.phone,
-        state: formData.state,
-        insuranceType: formData.insuranceType,
-        message: formData.message
+        zipCode: '00000', // Default as it's required by API
+        ages: 'Contact Form',
+        consentChecked: true,
+        consentText: `I consent to be contacted about insurance services. Message: ${formData.message}. State: ${formData.state}. Insurance Type: ${formData.insuranceType}.`,
+        landingUrl: window.location.href,
+        utm: {}
       };
       
-      const response = await fetch('/api/contact-message', {
+      const response = await fetch('/api/lead', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

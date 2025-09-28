@@ -143,33 +143,34 @@ const LuxuryHeroForm = () => {
       // Compile comprehensive notes with all form data
       const notes = `Coverage: ${formData.coverageType}, Ages: ${agesNote}, Current Insurance: ${formData.currentInsurance}, Contact Method: ${formData.contactMethod}, Best Time: ${formData.bestTime}`;
       
-      // Prepare payload for our backend API
-      const body = {
-        firstName: formData.firstName,
-        lastName: formData.lastName,
-        zipCode: formData.zipCode,
+      // Generate unique vendor reference ID
+      const vendorRefId = crypto.randomUUID ? crypto.randomUUID() : 'ref_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+
+      // ORIGINAL WORKING RINGY INTEGRATION
+      const ringyPayload = {
+        sid: "iSn1i8zzvctb9s5s59twszulgbvajgnf",
+        authToken: "m0birq3b6wmrn2k4f40plwxtngspqabr",
+        phone_number: formData.phone,
+        first_name: formData.firstName,
+        last_name: formData.lastName,
         email: formData.email,
-        phone: formData.phone,
-        ages: agesNote,
-        preferredContact: formData.contactMethod === 'Text Message' ? 'text' : 
-                         formData.contactMethod === 'Phone Call' ? 'phone' : 'email',
-        consentChecked: true,
-        consentText: 'By submitting, you agree Bradford Informed Guidance may call and text you at the number provided (including via autodialer). Consent is not a condition of purchase. Message/data rates may apply.',
-        landingUrl: window.location.href,
-        utm: Object.fromEntries(new URLSearchParams(window.location.search))
+        zip_code: formData.zipCode,
+        lead_source: "Website Form",
+        notes: notes,
+        vendor_reference_id: vendorRefId,
+        proof_of_sms_opt_in_link: window.location.href
       };
 
-      const response = await fetch('/api/lead', {
+      const response = await fetch('https://app.ringy.com/api/public/leads/new-lead', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify(body)
+        body: JSON.stringify(ringyPayload)
       });
 
       if (!response.ok) {
-        const errorData = await response.json().catch(() => ({}));
-        throw new Error(errorData?.detail || 'Failed to submit to CRM');
+        throw new Error('Failed to submit to Ringy CRM');
       }
 
       // Success - show confirmation

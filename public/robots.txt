@@ -1,19 +1,4 @@
-# robots.txt for Bradford Informed Guidance
-# Primary domain: https://bradfordinformedguidance.com
-
 User-agent: *
-Disallow: /admin/
-Disallow: /private/
-Disallow: /test/
-Disallow: /api/
-Disallow: /thank-you
-Disallow: /*?*utm_*
-Disallow: /*?*ref=*
-Disallow: /*?*source=*
-Disallow: /*?*fbclid=*
-Disallow: /*?*gclid=*
-Disallow: /*?*msclkid=*
-Disallow: /*?*mc_cid=*
-Disallow: /*?*mc_eid=*
+Allow: /
 
-Sitemap: https://bradfordinformedguidance.com/sitemap_index.xml
+Sitemap: https://www.bradfordinformedguidance.com/sitemap.xml

@@ -5,30 +5,10 @@ import Reveal from "../components/Reveal";
 import CalendlyInline from "../components/CalendlyInline";
 import AboutHero from "../components/about/AboutHero";
 import Magnetic from "../components/ui/Magnetic";
-import SEO from "../components/SEO";
-import { StructuredData } from "../components/StructuredData";
-import Canonical from "../seo/canonical";
-import { organizationSchema, professionalServiceSchema, breadcrumbSchema } from "../utils/schema";
 
 export default function AboutPage() {
   return (
-    <>
-      <Canonical pathname="/about" />
-      <SEO
-        title="About Zachary Bradford | Licensed Insurance Expert & Family Protection Advocate"
-        description="Meet Zachary Bradford, your trusted insurance advocate with 8+ years protecting 1,000+ families across FL, MI, NC. Expert guidance on health, life & IUL insurance."
-        path="/about"
-        disableCanonical={true}
-        meta={[
-          { name: 'keywords', content: 'Zachary Bradford, insurance expert, licensed insurance agent, family protection advocate, insurance guidance, Florida Michigan North Carolina insurance' },
-          { property: 'og:image', content: 'https://bradfordinformedguidance.com/about/portrait.jpg' },
-          { property: 'og:image:alt', content: 'Zachary Bradford - Licensed Insurance Expert and Family Protection Advocate' },
-          { property: 'og:type', content: 'profile' },
-          { name: 'robots', content: 'index, follow' },
-        ]}
-      />
-      <StructuredData schema={{ '@type': 'Person' }} />
-      <main className="min-h-screen">
+    <main className="min-h-screen">
       {/* ENHANCED HERO SECTION WITH PROFESSIONAL BACKGROUND */}
       <AboutHero />
 
@@ -827,6 +807,5 @@ export default function AboutPage() {
       </section>
 
     </main>
-    </>
   );
 }
