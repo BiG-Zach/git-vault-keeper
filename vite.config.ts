@@ -127,8 +127,7 @@ export default defineConfig(({ mode }) => ({
     // Enable production optimizations
     __DEV__: mode === 'development',
     __PROD__: mode === 'production'
-  }
+  },
+
+  assetsInclude: ['**/*.webp'],
 }));
-
-
-

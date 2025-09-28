@@ -9,10 +9,6 @@
     {
       "source": "/api/(.*)",
       "destination": "/api/$1"
-    },
-    {
-      "source": "/((?!api|.*\\..*|this-path-should-404$).*)",
-      "destination": "/index.html"
     }
   ],
   "headers": [
