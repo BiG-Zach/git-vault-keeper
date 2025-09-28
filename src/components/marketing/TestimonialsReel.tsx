@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 import { StarRating } from '../ui/CustomIcons';
 import { trackEvent } from '../../utils/gtm';
+import Section from '../layout/Section';
 
 type Testimonial = {
   name: string;
@@ -65,7 +66,7 @@ export default function TestimonialsReel() {
 
   useEffect(() => {
     if (prefersReducedMotion || isPaused) return;
-    
+
     timer.current = window.setInterval(() => {
       setDirection(1);
       setIndex((i) => {
@@ -80,7 +81,7 @@ export default function TestimonialsReel() {
         return newIndex;
       });
     }, 6000);
-    
+
     return () => {
       if (timer.current) window.clearInterval(timer.current);
     };
@@ -130,7 +131,7 @@ export default function TestimonialsReel() {
   };
 
   return (
-    <div className="bg-slate-50 border-y border-slate-200" aria-label="Client testimonials">
+    <Section className="bg-slate-50 border-y border-slate-200" aria-label="Client testimonials">
       {/* Header */}
       <div className="text-center mb-6 md:mb-8">
         <motion.h2
@@ -155,7 +156,7 @@ export default function TestimonialsReel() {
 
       {/* Testimonial carousel */}
       <div className="relative max-w-3xl mx-auto">
-        <div 
+        <div
           className="relative h-56 sm:h-44 overflow-hidden rounded-2xl bg-white ring-1 ring-slate-200 shadow-sm"
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
@@ -180,9 +181,9 @@ export default function TestimonialsReel() {
             >
               {/* Star rating */}
               <div className="mb-3">
-                <StarRating 
-                  rating={currentTestimonial.rating} 
-                  className="flex items-center gap-0.5 justify-center sm:justify-start" 
+                <StarRating
+                  rating={currentTestimonial.rating}
+                  className="flex items-center gap-0.5 justify-center sm:justify-start"
                 />
               </div>
 
@@ -271,6 +272,6 @@ export default function TestimonialsReel() {
           Join hundreds of satisfied clients across FL, MI, and NC
         </p>
       </motion.div>
-    </div>
+    </Section>
   );
 }

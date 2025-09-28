@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Shield, Users, Star, TrendingUp } from 'lucide-react';
+import Section from '../layout/Section';
 
 const features = [
   {
@@ -29,7 +30,7 @@ export default function WhyChooseUs() {
   const [selectedTab, setSelectedTab] = useState(features[0]);
 
   return (
-    <div className="w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
+    <Section className="w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
         <div className="flex flex-col gap-4">
           <h2 className="text-3xl sm:text-4xl font-bold text-slate-900">
@@ -74,6 +75,6 @@ export default function WhyChooseUs() {
           </AnimatePresence>
         </div>
       </div>
-    </div>
+    </Section>
   );
 }

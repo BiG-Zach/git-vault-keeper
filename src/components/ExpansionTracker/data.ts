@@ -20,7 +20,10 @@ const ALL_STATES: StateCode[] = [
   'SD','TN','TX','UT','VT','VA','WA','WV','WI','WY','DC'
 ];
 
-const parsedStates = statesDataset as StatesData;
+const parsedStates: StatesData = {
+    available: [ 'FL', 'MI', 'NC', 'AZ', 'GA', 'TX' ],
+    comingSoon: [ 'OR', 'UT', 'NV', 'IA', 'SC', 'VA', 'OH' ]
+};
 const availableStates = new Set<StateCode>(parsedStates.available);
 const comingSoonStates = new Set<StateCode>(parsedStates.comingSoon);
 

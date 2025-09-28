@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 import { trackEvent } from '../../utils/gtm';
+import Section from '../layout/Section';
 
 const steps = [
   {
@@ -34,7 +35,7 @@ export default function HowItWorks() {
   };
 
   return (
-    <div className="bg-white" aria-labelledby="how-it-works-title">
+    <Section className="bg-white" aria-labelledby="how-it-works-title">
       <div className="text-center mb-8 md:mb-10">
         <motion.h2
           id="how-it-works-title"
@@ -74,7 +75,7 @@ export default function HowItWorks() {
             />
           </div>
         </div>
-        
+
         {/* Steps grid */}
         <div className="relative z-10 grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
           {steps.map((step, index) => (
@@ -84,10 +85,10 @@ export default function HowItWorks() {
               initial={{ opacity: 0, y: prefersReducedMotion ? 0 : 14 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.25 }}
-              transition={{ 
-                duration: 0.45, 
+              transition={{
+                duration: 0.45,
                 ease: "easeOut",
-                delay: prefersReducedMotion ? 0 : index * 0.15 
+                delay: prefersReducedMotion ? 0 : index * 0.15
               }}
             >
               {/* Numbered circle */}
@@ -143,6 +144,6 @@ export default function HowItWorks() {
           Free consultation • No obligation • Licensed advisors
         </p>
       </motion.div>
-    </div>
+    </Section>
   );
 }
