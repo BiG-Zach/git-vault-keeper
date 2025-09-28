@@ -30,7 +30,7 @@ function loadStates() {
 
 function readBuildAssets() {
   // Extract built asset tags from dist/index.html to ensure hydration works
-  const indexPath = path.join(process.cwd(), 'dist', 'index.html');
+  const indexPath = path.join(__dirname, '..', 'dist', 'index.html');
   if (!fs.existsSync(indexPath)) return { scripts: '', styles: '' };
   const html = fs.readFileSync(indexPath, 'utf-8');
   const headAssets = [];
@@ -151,7 +151,8 @@ ${assets.scripts}
 
 function generateRouteHTMLFiles() {
   console.log('🔧 Generating SEO-complete static HTML for indexable routes...');
-  if (!fs.existsSync('dist')) {
+  const distDir = path.join(__dirname, '..', 'dist');
+  if (!fs.existsSync(distDir)) {
     console.log('❌ dist directory not found. Run npm run build first.');
     process.exit(1);
   }
@@ -188,7 +189,7 @@ function generateRouteHTMLFiles() {
     const rawPath = route.path || '';
     const isRoot = rawPath === '/' || rawPath === '';
     const routePath = rawPath.replace(/^\//, '');
-    const outDir = isRoot ? path.join('dist') : path.join('dist', routePath);
+    const outDir = isRoot ? distDir : path.join(distDir, routePath);
     const outFile = path.join(outDir, 'index.html');
     fs.mkdirSync(outDir, { recursive: true });
 
