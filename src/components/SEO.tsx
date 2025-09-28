@@ -17,9 +17,9 @@ export default function SEO({
   template = '%s — Bradford Informed Guidance',
   themeColor = SITE.themeColor,
   lang = 'en',
-  meta,
+  meta = [],
   links,
-  scripts,
+  scripts = [],
   noindex,
   disableCanonical,
 }: SEOProps) {
