@@ -126,7 +126,6 @@ export default function AboutHero() {
                 alt=""
                 className="block h-full w-full object-cover"
                 loading="eager"
-                fetchPriority="high"
                 onError={() => setImgError(true)}
                 style={LQIP ? { backgroundImage: `url(${LQIP})`, backgroundSize: "cover", backgroundPosition: "50% 50%" } : undefined}
               />
@@ -137,7 +136,6 @@ export default function AboutHero() {
               alt=""
               className="block h-full w-full object-cover"
               loading="eager"
-              fetchPriority="high"
               onError={() => setImgError(true)}
               style={LQIP ? { backgroundImage: `url(${LQIP})`, backgroundSize: "cover", backgroundPosition: "50% 50%" } : undefined}
             />
