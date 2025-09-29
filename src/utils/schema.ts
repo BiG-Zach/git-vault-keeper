@@ -1,3 +1,5 @@
+import { stateMetadata, type StateCodeSlug } from './stateMetadata';
+
 /**
  * JSON-LD schema builders for SEO. These utilities return stringified
  * JSON-LD blocks to inject via the SEO component's scripts prop.
@@ -35,26 +37,39 @@ export function organizationSchema() {
   return JSON.stringify(data);
 }
 
-export function localBusinessSchema(state: 'FL' | 'MI' | 'NC', address?: Address, phone?: string) {
-  const stateName =
-    state === 'FL' ? 'Florida' : state === 'MI' ? 'Michigan' : 'North Carolina';
+type SupportedStateCode = StateCodeSlug | Uppercase<StateCodeSlug>;
+
+export function localBusinessSchema(state: SupportedStateCode, address?: Address, phone?: string) {
+  const slug = state.toLowerCase() as StateCodeSlug;
+  const entry = stateMetadata[slug];
+  const stateName = entry?.name ?? slug.toUpperCase();
+  const canonical = `${ORG.url.replace(/\/$/, '')}/states/${slug}`;
 
   const data: Record<string, any> = {
     '@context': 'https://schema.org',
     '@type': 'LocalBusiness',
-    name: ORG.name,
-    url: ORG.url,
+    name: `${ORG.name} – ${stateName} Insurance Office`,
+    url: canonical,
+    image: ORG.logo,
+    sameAs: ORG.sameAs,
     areaServed: stateName,
+    parentOrganization: {
+      '@type': 'Organization',
+      name: ORG.name,
+      url: ORG.url,
+    },
   };
 
-  if (address) {
-    data.address = {
-      '@type': 'PostalAddress',
-      ...address,
-      addressRegion: address.addressRegion ?? state,
-      addressCountry: address.addressCountry ?? 'US',
-    };
-  }
+  const regionCode = slug.toUpperCase();
+
+  data.address = {
+    '@type': 'PostalAddress',
+    addressRegion: address?.addressRegion ?? regionCode,
+    addressLocality: address?.addressLocality,
+    streetAddress: address?.streetAddress,
+    postalCode: address?.postalCode,
+    addressCountry: address?.addressCountry ?? 'US',
+  };
 
   if (phone) {
     data.telephone = phone;

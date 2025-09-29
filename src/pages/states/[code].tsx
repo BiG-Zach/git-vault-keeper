@@ -58,7 +58,11 @@ function HeroVisual({ codeUC, stateName }: { codeUC: string; stateName: string }
 
 // Template for Licensed States (Active)
 function ActiveStateTemplate({ entry, codeUC, slug }: { entry: any; codeUC: string; slug: string }) {
-  const licenseDate = codeUC === 'FL' ? '2021' : codeUC === 'MI' ? '2022' : '2023';
+  const licenseDate =
+    codeUC === 'FL' ? '2021'
+      : codeUC === 'MI' ? '2022'
+      : codeUC === 'NC' ? '2023'
+      : '2024';
   
   return (
     <>
@@ -567,14 +571,14 @@ export default function StateDynamicPage() {
 
   const seo = useMemo(() => {
     const baseTitle = entry.seo?.title ?? `Private Health Insurance in ${entry.name}`;
-    const title = isActive 
-      ? `${entry.name} Health & Life Insurance - Licensed & Ready to Serve`
+    const title = isActive
+      ? `${entry.name} Health & Life Insurance – Licensed & Ready to Serve`
       : `Coming to ${entry.name} Soon - Join the Waitlist!`;
-    
+
     const description = isActive
       ? `Licensed in ${entry.name} and ready to serve. Get instant quotes, next-day protection, and expert guidance from local advisors.`
       : `Be first to access exclusive health insurance rates when Bradford launches in ${entry.name}. Join the waitlist today!`;
-    
+
     const path = `/states/${slug}`;
     const keywords = entry.seo?.keywords ?? 
       `private health insurance, ${entry.name}, medically underwritten plans, PPO, affordable coverage`;
@@ -596,7 +600,7 @@ export default function StateDynamicPage() {
           { name: 'robots', content: 'index, follow' },
         ]}
         scripts={[
-          { innerHTML: localBusinessSchema(codeUC as 'FL' | 'MI' | 'NC') },
+          ...(isActive ? [{ innerHTML: localBusinessSchema(slug) }] : []),
           {
             innerHTML: JSON.stringify({
               "@context": "https://schema.org",
@@ -606,7 +610,7 @@ export default function StateDynamicPage() {
               "url": `https://bradfordinsurance.com${seo.path}`,
               "about": {
                 "@type": "Service",
-                "name": "Health Insurance",
+                "name": "Health & Life Insurance Services",
                 "provider": {
                   "@type": "Organization",
                   "name": "Bradford Informed Guidance"

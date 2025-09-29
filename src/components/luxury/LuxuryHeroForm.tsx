@@ -146,31 +146,27 @@ const LuxuryHeroForm = () => {
       // Generate unique vendor reference ID
       const vendorRefId = crypto.randomUUID ? crypto.randomUUID() : 'ref_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
 
-      // ORIGINAL WORKING RINGY INTEGRATION
-      const ringyPayload = {
-        sid: "iSn1i8zzvctb9s5s59twszulgbvajgnf",
-        authToken: "m0birq3b6wmrn2k4f40plwxtngspqabr",
-        phone_number: formData.phone,
-        first_name: formData.firstName,
-        last_name: formData.lastName,
-        email: formData.email,
-        zip_code: formData.zipCode,
-        lead_source: "Website Form",
-        notes: notes,
-        vendor_reference_id: vendorRefId,
-        proof_of_sms_opt_in_link: window.location.href
-      };
-
-      const response = await fetch('https://app.ringy.com/api/public/leads/new-lead', {
+      const response = await fetch('/api/ringy-proxy', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify(ringyPayload)
+        body: JSON.stringify({
+          firstName: formData.firstName,
+          lastName: formData.lastName,
+          email: formData.email,
+          phone: formData.phone,
+          zipCode: formData.zipCode,
+          leadSource: 'Website – Luxury Hero',
+          notes,
+          proofOfSmsOptInLink: window.location.href,
+          vendorReferenceId: vendorRefId,
+        })
       });
 
       if (!response.ok) {
-        throw new Error('Failed to submit to Ringy CRM');
+        const detail = await response.json().catch(() => ({}));
+        throw new Error(detail?.detail || 'Failed to submit to Ringy CRM');
       }
 
       // Success - show confirmation

@@ -8,7 +8,7 @@ import ExpertAuthoritySection from '../components/resources/ExpertAuthoritySecti
 import PremiumBlogGrid from '../components/resources/PremiumBlogGrid';
 import ResourcesAuthorCTA from '../components/resources/ResourcesAuthorCTA';
 
-interface BlogPost {
+export interface BlogPost {
   slug: string;
   title: string;
   preview: string;
@@ -18,7 +18,7 @@ interface BlogPost {
   updated: string;
 }
 
-const blogPosts: { [key: string]: BlogPost[] } = {
+export const blogPosts: { [key: string]: BlogPost[] } = {
   'life-insurance': [
     {
       slug: 'term-vs-whole-life-insurance-2024',

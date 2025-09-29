@@ -5,10 +5,35 @@ import Reveal from "../components/Reveal";
 import CalendlyInline from "../components/CalendlyInline";
 import AboutHero from "../components/about/AboutHero";
 import Magnetic from "../components/ui/Magnetic";
+import SEO from "../components/SEO";
+import { organizationSchema, serviceSchema } from "../utils/schema";
 
 export default function AboutPage() {
+  const structuredData = [
+    organizationSchema(),
+    serviceSchema(['Health Insurance Advisory', 'Life Insurance Planning', 'Insurance Broker Services'])
+  ];
+
   return (
     <main className="min-h-screen">
+      <SEO
+        title="About Bradford Informed Guidance | Licensed Health & Life Insurance Broker"
+        description="Meet Zach Bradford, licensed health and life insurance broker guiding 1,000+ families with PPO health plans, life insurance layering, and concierge support across FL, MI, NC, AZ, TX, and GA."
+        path="/about"
+        meta={[
+          {
+            name: 'keywords',
+            content: 'about bradford informed guidance, licensed insurance broker, Zach Bradford, health insurance expert, life insurance advisor, PPO broker'
+          },
+          { property: 'og:title', content: 'About Bradford Informed Guidance | Licensed Health & Life Insurance Broker' },
+          {
+            property: 'og:description',
+            content: 'Learn about Zach Bradford and his concierge approach to health & life insurance planning across FL, MI, NC, AZ, TX, and GA.'
+          }
+        ]}
+        scripts={structuredData.map(innerHTML => ({ innerHTML }))}
+      />
+
       {/* ENHANCED HERO SECTION WITH PROFESSIONAL BACKGROUND */}
       <AboutHero />
 
