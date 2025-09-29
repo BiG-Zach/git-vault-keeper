@@ -1,179 +1,115 @@
 import React, { useState } from 'react';
 
-export default function HeroForm() {
-  const [firstName, setFirst] = useState('');
-  const [lastName, setLast] = useState('');
-  const [zipCode, setZip] = useState('');
-  const [ages, setAges] = useState('');
-  const [email, setEmail] = useState('');
-  const [phone, setPhone] = useState('');
-  const [consent, setConsent] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState('');
-  const [ok, setOk] = useState(false);
+const HeroForm = () => {
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    phone: '',
+    email: '',
+    state: '',
+    consentToText: false,
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState({ message: '', type: '' });
 
-  const onSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setError('');
-    if (!firstName || !lastName || !zipCode || !email || !phone) {
-      setError('First, Last, ZIP, Email, and Phone are required.');
-      return;
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+    const { name, value, type } = e.target;
+
+    if (type === 'checkbox') {
+      const { checked } = e.target as HTMLInputElement;
+      setFormData(prev => ({ ...prev, [name]: checked }));
+    } else {
+      setFormData(prev => ({ ...prev, [name]: value }));
     }
-    if (!consent) { setError('Please agree to the consent to continue.'); return; }
-    setLoading(true);
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus({ message: '', type: '' });
+
     try {
-      const utm = Object.fromEntries(new URLSearchParams(window.location.search));
-      const consentText =
-        'By submitting, you agree Bradford Informed Guidance may call and text you at the number provided (including via autodialer). Consent is not a condition of purchase. Message/data rates may apply.';
-      const body = {
-        firstName, lastName, zipCode, ages, email, phone,
-        consentChecked: true, consentText,
-        landingUrl: window.location.href, utm
-      };
-      const resp = await fetch('/api/lead', {
-        method: 'POST', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(body)
+      const response = await fetch('/api/ringy-proxy', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
       });
-      if (!resp.ok) {
-        const j = await resp.json().catch(() => ({}));
-        throw new Error(j?.detail || 'Submission failed. Please call (689) 325-6570.');
+
+      if (response.ok) {
+        setSubmitStatus({ message: 'Thank you for your submission!', type: 'success' });
+        setFormData({
+          firstName: '',
+          lastName: '',
+          phone: '',
+          email: '',
+          state: '',
+          consentToText: false,
+        });
+      } else {
+        const errorData = await response.json();
+        setSubmitStatus({ message: `Submission failed: ${errorData.message || 'Please try again.'}`, type: 'error' });
       }
-      setOk(true);
-    } catch (err: any) { setError(err.message || 'Something went wrong. Please call (689) 325-6570.'); }
-    finally { setLoading(false); }
+    } catch (error) {
+      console.error('Form submission error:', error);
+      setSubmitStatus({ message: 'An error occurred. Please try again later.', type: 'error' });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
-    <div
-      className="max-w-md mx-auto bg-white/95 backdrop-blur-sm p-4 sm:p-6 rounded-2xl shadow-2xl border border-white/20 relative z-10"
-      style={{
-        position: 'relative',
-        zIndex: 2,
-        marginTop: '12px'
-      }}
-    >
-      <div className="text-center mb-4 sm:mb-6">
-        <h1
-          className="font-bold text-gray-900 leading-tight"
-          style={{
-            fontSize: 'clamp(20px, 4vw, 24px)',
-            marginBottom: '4px'
-          }}
-        >
-          Premium Health & Life Coverage
-        </h1>
-        <p
-          className="text-emerald-600 font-semibold"
-          style={{ fontSize: 'clamp(16px, 3.5vw, 18px)' }}
-        >
-          Clear. Fast. Year-Round.
-        </p>
-        <div className="text-sm text-gray-600 mt-2">Licensed FL • MI • NC • Expanding Nationwide</div>
-      </div>
-      <form onSubmit={onSubmit} id="mobileQuoteForm" className="space-y-4">
-        <div className="grid grid-cols-2 gap-3">
-          <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-2">First name</label>
-            <input
-              value={firstName}
-              onChange={e => setFirst(e.target.value)}
-              className="w-full p-4 border-2 rounded-xl focus:border-emerald-500 focus:outline-none"
-              style={{ fontSize: '16px', minHeight: '44px' }}
-              required
-            />
-          </div>
-          <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-2">Last name</label>
-            <input
-              value={lastName}
-              onChange={e => setLast(e.target.value)}
-              className="w-full p-4 border-2 rounded-xl focus:border-emerald-500 focus:outline-none"
-              style={{ fontSize: '16px', minHeight: '44px' }}
-              required
-            />
-          </div>
+    <div className="bg-white p-8 rounded-lg shadow-lg max-w-md w-full">
+      <h2 className="text-2xl font-bold mb-6 text-center text-gray-800">Get a Free Quote</h2>
+      <form onSubmit={handleSubmit}>
+        <div className="mb-4">
+          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="firstName">First Name</label>
+          <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="firstName" name="firstName" type="text" placeholder="John" value={formData.firstName} onChange={handleChange} required />
         </div>
-        <div>
-          <label className="block text-sm font-semibold text-gray-700 mb-2">ZIP Code</label>
-          <input
-            value={zipCode}
-            onChange={e => setZip(e.target.value.replace(/\D/g, '').slice(0,5))}
-            inputMode="numeric"
-            className="w-full p-4 border-2 rounded-xl focus:border-emerald-500 focus:outline-none"
-            style={{ fontSize: '16px', minHeight: '44px' }}
-            required
-          />
+        <div className="mb-4">
+          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="lastName">Last Name</label>
+          <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="lastName" name="lastName" type="text" placeholder="Doe" value={formData.lastName} onChange={handleChange} required />
         </div>
-        <div>
-          <label className="block text-sm font-semibold text-gray-700 mb-2">Ages (comma-separated)</label>
-          <input
-            value={ages}
-            onChange={e => setAges(e.target.value)}
-            className="w-full p-4 border-2 rounded-xl focus:border-emerald-500 focus:outline-none"
-            style={{ fontSize: '16px', minHeight: '44px' }}
-            placeholder="39, 37, 12"
-          />
+        <div className="mb-4">
+          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">Email</label>
+          <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" name="email" type="email" placeholder="you@example.com" value={formData.email} onChange={handleChange} required />
         </div>
-        <div>
-          <label className="block text-sm font-semibold text-gray-700 mb-2">Email</label>
-          <input
-            type="email"
-            value={email}
-            onChange={e => setEmail(e.target.value)}
-            className="w-full p-4 border-2 rounded-xl focus:border-emerald-500 focus:outline-none"
-            style={{ fontSize: '16px', minHeight: '44px' }}
-            required
-          />
+        <div className="mb-4">
+          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="phone">Phone</label>
+          <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="phone" name="phone" type="tel" placeholder="(555) 555-5555" value={formData.phone} onChange={handleChange} required />
         </div>
-        <div>
-          <label className="block text-sm font-semibold text-gray-700 mb-2">Phone</label>
-          <input
-            type="tel"
-            value={phone}
-            onChange={e => setPhone(e.target.value)}
-            className="w-full p-4 border-2 rounded-xl focus:border-emerald-500 focus:outline-none"
-            style={{ fontSize: '16px', minHeight: '44px' }}
-            required
-          />
+        <div className="mb-4">
+          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="state">State</label>
+          <select id="state" name="state" className="shadow border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" value={formData.state} onChange={handleChange} required>
+            <option value="">Select a State</option>
+            <option value="AZ">Arizona</option>
+            <option value="FL">Florida</option>
+            <option value="GA">Georgia</option>
+            <option value="MI">Michigan</option>
+            <option value="NC">North Carolina</option>
+            <option value="TX">Texas</option>
+          </select>
         </div>
-        <div className="flex items-start space-x-3">
-          <input
-            id="consent"
-            type="checkbox"
-            checked={consent}
-            onChange={e => setConsent(e.target.checked)}
-            className="mt-1 h-5 w-5 flex-shrink-0"
-            style={{ minWidth: '20px', minHeight: '20px' }}
-          />
-          <label htmlFor="consent" className="text-sm text-gray-600 leading-relaxed">
-            By submitting, you agree Bradford Informed Guidance may call and text you at the number provided (including via autodialer).
-            Consent is not a condition of purchase. Message/data rates may apply.
+        <div className="mb-6">
+          <label className="flex items-center">
+            <input type="checkbox" name="consentToText" className="form-checkbox" checked={formData.consentToText} onChange={handleChange} />
+            <span className="ml-2 text-sm text-gray-600">I agree to receive text messages for quotes.</span>
           </label>
         </div>
-        {error && <div className="text-red-600 text-sm bg-red-50 p-3 rounded-lg">{error}</div>}
-        {ok ? (
-          <div className="text-emerald-600 font-semibold bg-emerald-50 p-4 rounded-lg text-center">
-            Thanks! We'll send your options within 45–90 minutes.
-          </div>
-        ) : (
-          <button
-            disabled={loading}
-            type="submit"
-            className="w-full bg-emerald-600 text-white py-4 rounded-xl font-bold hover:bg-emerald-700 disabled:opacity-50 transition-colors"
-            style={{ fontSize: '16px', minHeight: '48px' }}
-          >
-            {loading ? 'Processing…' : 'Get My Custom Quote'}
+        <div className="flex items-center justify-center">
+          <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit" disabled={isSubmitting}>
+            {isSubmitting ? 'Submitting...' : 'Get My Quote'}
           </button>
+        </div>
+        {submitStatus.message && (
+          <p className={`text-center mt-4 text-sm ${submitStatus.type === 'error' ? 'text-red-500' : 'text-green-500'}`}>
+            {submitStatus.message}
+          </p>
         )}
-        <a
-          href="tel:+16893256570"
-          className="block w-full bg-gray-800 text-white mt-3 py-4 rounded-xl text-center font-bold hover:bg-gray-900 transition-colors"
-          style={{ fontSize: '16px', minHeight: '48px', textDecoration: 'none' }}
-        >
-          Call Now — (689) 325-6570
-        </a>
-        <div className="text-xs text-gray-500 mt-3 text-center">⚡ First options in 30-45 minutes • Mon–Sun 8AM–8PM EST</div>
       </form>
     </div>
   );
-}
+};
+
+export default HeroForm;
