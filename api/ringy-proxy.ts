@@ -5,10 +5,28 @@ export const config = {
 
 const DEFAULT_LEAD_SOURCE = process.env.LEAD_SOURCE ?? 'Website - Mobile Hero';
 
+const TEXT_KEYS = [
+  'RINGY_URL_TEXT',
+  'RINGY_SID_TEXT',
+  'RINGY_AUTH_TOKEN_TEXT',
+  'RINGY_API_KEY_TEXT',
+  'RINGY_CAMPAIGN_ID_TEXT',
+] as const;
+
+const EMAIL_PHONE_KEYS = [
+  'RINGY_URL_EMAIL_PHONE',
+  'RINGY_SID_EMAIL_PHONE',
+  'RINGY_AUTH_TOKEN_EMAIL_PHONE',
+  'RINGY_API_KEY_EMAIL_PHONE',
+  'RINGY_CAMPAIGN_ID_EMAIL_PHONE',
+] as const;
+
 type LeadBody = {
   consentToText?: boolean;
   [key: string]: unknown;
 };
+
+type EnvKey = typeof TEXT_KEYS[number] | typeof EMAIL_PHONE_KEYS[number];
 
 function resolveLeadSource(data: Record<string, unknown>): string {
   const camel = typeof data['leadSource'] === 'string' ? (data['leadSource'] as string).trim() : '';
@@ -24,6 +42,12 @@ function resolveLeadSource(data: Record<string, unknown>): string {
   return DEFAULT_LEAD_SOURCE;
 }
 
+function loadEnv(keys: readonly EnvKey[]) {
+  const entries = keys.map(key => [key, process.env[key] ?? ''] as const);
+  const missing = entries.filter(([, value]) => !value).map(([key]) => key);
+  return { entries, missing };
+}
+
 export default async function handler(req: Request) {
   if (req.method !== 'POST') {
     return new Response(JSON.stringify({ message: 'Method Not Allowed' }), {
@@ -36,33 +60,30 @@ export default async function handler(req: Request) {
     const leadData = (await req.json()) as LeadBody;
     const { consentToText, ...restOfLeadData } = leadData ?? {};
 
-    let apiUrl: string | undefined;
-    let sid: string | undefined;
-    let authToken: string | undefined;
-    let apiKey: string | undefined;
-    let campaignId: string | undefined;
+    const keys = consentToText ? TEXT_KEYS : EMAIL_PHONE_KEYS;
+    const { entries, missing } = loadEnv(keys);
 
-    if (consentToText) {
-      apiUrl = process.env.RINGY_URL_TEXT;
-      sid = process.env.RINGY_SID_TEXT;
-      authToken = process.env.RINGY_AUTH_TOKEN_TEXT;
-      apiKey = process.env.RINGY_API_KEY_TEXT;
-      campaignId = process.env.RINGY_CAMPAIGN_ID_TEXT;
-    } else {
-      apiUrl = process.env.RINGY_URL_EMAIL_PHONE;
-      sid = process.env.RINGY_SID_EMAIL_PHONE;
-      authToken = process.env.RINGY_AUTH_TOKEN_EMAIL_PHONE;
-      apiKey = process.env.RINGY_API_KEY_EMAIL_PHONE;
-      campaignId = process.env.RINGY_CAMPAIGN_ID_EMAIL_PHONE;
+    if (missing.length > 0) {
+      console.error('Ringy proxy missing env vars:', missing.join(', '));
+      return new Response(
+        JSON.stringify({
+          message: 'Server configuration error.',
+          missing,
+        }),
+        {
+          status: 500,
+          headers: { 'Content-Type': 'application/json' },
+        },
+      );
     }
 
-    if (!apiUrl || !sid || !authToken || !apiKey || !campaignId) {
-      console.error('One or more Ringy integration variables are not configured.');
-      return new Response(JSON.stringify({ message: 'Server configuration error.' }), {
-        status: 500,
-        headers: { 'Content-Type': 'application/json' },
-      });
-    }
+    const envMap = Object.fromEntries(entries) as Record<EnvKey, string>;
+
+    const apiUrl = envMap[keys[0]];
+    const sid = envMap[keys[1]];
+    const authToken = envMap[keys[2]];
+    const apiKey = envMap[keys[3]];
+    const campaignId = envMap[keys[4]];
 
     const headers = {
       'Content-Type': 'application/json',
