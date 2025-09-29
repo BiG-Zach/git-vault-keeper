@@ -42,10 +42,11 @@ export const stateMetadata: Record<StateCodeSlug, StateMetaEntry> = {
   },
   az: {
     name: 'Arizona',
+    available: true,
     seo: {
-      title: 'Private Health Insurance in Arizona',
-      description: 'Find Arizona private health plans with personalized support. Learn how medically underwritten options can reduce costs while maintaining strong benefits.',
-      keywords: kw(['Arizona private health insurance', 'AZ health plans', 'PPO options', 'medically underwritten', 'affordable premiums', 'individual and family']),
+      title: 'Arizona Health & Life Insurance Broker | Bradford Informed Guidance',
+      description: 'Licensed Arizona health and life insurance broker delivering PPO health plans, custom life insurance strategies, and instant quotes with local advisors in Phoenix, Scottsdale, and statewide.',
+      keywords: kw(['Arizona health insurance broker', 'Arizona life insurance broker', 'AZ PPO plans', 'Arizona life insurance quotes', 'Phoenix insurance advisor', 'Scottsdale health and life coverage']),
     },
   },
   ar: {
@@ -107,10 +108,11 @@ export const stateMetadata: Record<StateCodeSlug, StateMetaEntry> = {
   },
   ga: {
     name: 'Georgia',
+    available: true,
     seo: {
-      title: 'Private Health Insurance in Georgia',
-      description: 'Review private health plans in Georgia. Understand medically underwritten coverage, eligibility, and potential savings with personalized support.',
-      keywords: kw(['Georgia private health insurance', 'GA health plans', 'PPO coverage', 'underwritten options', 'lower premiums', 'family insurance']),
+      title: 'Georgia Health & Life Insurance Broker | Bradford Informed Guidance',
+      description: 'Georgia health & life insurance guidance with instant quotes, PPO coverage, and local advisors serving Atlanta, Savannah, and statewide families seeking comprehensive protection.',
+      keywords: kw(['Georgia life insurance quotes', 'Georgia health insurance broker', 'Atlanta insurance advisor', 'GA PPO health plans', 'Georgia life insurance broker', 'Savannah insurance expert']),
     },
   },
   hi: {
@@ -373,10 +375,11 @@ export const stateMetadata: Record<StateCodeSlug, StateMetaEntry> = {
   },
   tx: {
     name: 'Texas',
+    available: true,
     seo: {
-      title: 'Private Health Insurance in Texas',
-      description: 'Compare private health plans in Texas. Understand medically underwritten coverage, PPO networks, and options to reduce monthly costs.',
-      keywords: kw(['Texas private health insurance', 'TX PPO plans', 'underwritten coverage', 'affordable premiums', 'individual plans', 'family insurance']),
+      title: 'Texas Health & Life Insurance Broker | Bradford Informed Guidance',
+      description: 'Trusted Texas health & life insurance broker delivering PPO medical plans, custom term & whole life coverage, and rapid quotes for Dallas, Austin, Houston, and statewide clients.',
+      keywords: kw(['Texas health insurance broker', 'Texas life insurance broker', 'Dallas life insurance quotes', 'Austin PPO health plans', 'Houston insurance advisor', 'TX family insurance expert']),
     },
   },
   ut: {

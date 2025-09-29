@@ -1,5 +1,4 @@
 import HeroForm from "../components/HeroForm";
-import QuoteQuickstart from "../components/forms/QuoteQuickstart";
 import LogoRail from "../components/marketing/LogoRail";
 import TestimonialsGrid from "../components/social/TestimonialsGrid";
 import USAvailability from "../components/marketing/USAvailability";
@@ -10,6 +9,8 @@ import MobileTrust from "../mobile/MobileTrust";
 import MobileCarriers from "../mobile/MobileCarriers";
 import MobileHowItWorks from "../mobile/MobileHowItWorks";
 import MobileTestimonials from "../mobile/MobileTestimonials";
+import SEO from "../components/SEO";
+import { organizationSchema, serviceSchema, websiteSchema } from "../utils/schema";
 
 // Luxury Desktop Components
 import LuxuryHero from "../components/luxury/LuxuryHero";
@@ -37,8 +38,33 @@ const logos = [
 ];
 
 export default function Home() {
+  const structuredData = [
+    organizationSchema(),
+    websiteSchema(),
+    serviceSchema(['Health Insurance', 'Life Insurance', 'Insurance Broker Services'])
+  ];
+
   return (
     <>
+      <SEO
+        title="Health & Life Insurance Broker | Bradford Informed Guidance"
+        description="Private health and life insurance guidance for families, entrepreneurs, and retirees. Licensed in FL, MI, NC, AZ, TX, and GA with concierge support and instant quotes."
+        path="/"
+        meta={[
+          {
+            name: 'keywords',
+            content: 'health insurance broker, life insurance broker, PPO plans, private health insurance, Florida insurance broker, Texas insurance broker, Arizona health insurance, Georgia life insurance'
+          },
+          { property: 'og:title', content: 'Health & Life Insurance Broker | Bradford Informed Guidance' },
+          {
+            property: 'og:description',
+            content: 'Concierge health and life insurance guidance with PPO networks, custom life insurance layering, and rapid quotes across FL, MI, NC, AZ, TX, and GA.'
+          },
+          { property: 'og:type', content: 'website' }
+        ]}
+        scripts={structuredData.map(innerHTML => ({ innerHTML }))}
+      />
+
       {/* Desktop Luxury Experience (1024px+) */}
       <div className="hidden lg:block">
         <main className="relative">
@@ -73,8 +99,7 @@ export default function Home() {
             {/* BACKGROUND IMAGE — ONLY LAYER */}
             <img
               src="/hero-family.webp"
-              alt=""
-              aria-hidden="true"
+              alt="Family relaxing outdoors together representing personalized insurance guidance"
               loading="eager"
               fetchPriority="high"
               className="absolute inset-0 -z-10 h-full w-full object-cover"

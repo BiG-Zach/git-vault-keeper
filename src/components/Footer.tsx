@@ -92,8 +92,17 @@ export default function Footer() {
               <Link to="/states/north-carolina" className="block text-slate-300 hover:text-white transition-colors duration-200 text-sm">
                 North Carolina
               </Link>
+              <Link to="/states/arizona" className="block text-slate-300 hover:text-white transition-colors duration-200 text-sm">
+                Arizona
+              </Link>
+              <Link to="/states/texas" className="block text-slate-300 hover:text-white transition-colors duration-200 text-sm">
+                Texas
+              </Link>
+              <Link to="/states/georgia" className="block text-slate-300 hover:text-white transition-colors duration-200 text-sm">
+                Georgia
+              </Link>
               <span className="block text-slate-400 text-sm">
-                More states coming soon
+                Now serving six licensed states
               </span>
             </nav>
           </motion.div>

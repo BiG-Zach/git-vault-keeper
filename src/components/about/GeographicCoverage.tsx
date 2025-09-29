@@ -8,16 +8,34 @@ const serviceAreas = [
     highlight: "Home Market"
   },
   {
-    state: "Michigan", 
+    state: "Michigan",
     subtitle: "Comprehensive Statewide Coverage",
     description: "Full state licensed service with deep understanding of Michigan healthcare needs",
     highlight: "Full Coverage"
   },
   {
     state: "North Carolina",
-    subtitle: "Full State Licensed Service", 
+    subtitle: "Full State Licensed Service",
     description: "Complete North Carolina market access with personalized local service",
-    highlight: "Statewide"
+    highlight: "Full Coverage"
+  },
+  {
+    state: "Arizona",
+    subtitle: "Phoenix, Scottsdale & statewide guidance",
+    description: "Licensed for on-exchange alternatives, PPO networks, and life insurance layering throughout Arizona.",
+    highlight: "Full Coverage"
+  },
+  {
+    state: "Texas",
+    subtitle: "Dallas, Austin, Houston and beyond",
+    description: "Comprehensive health and life insurance strategies for families, entrepreneurs, and physicians across Texas.",
+    highlight: "Full Coverage"
+  },
+  {
+    state: "Georgia",
+    subtitle: "Atlanta Metro & Coastal Communities",
+    description: "Dedicated concierge service delivering PPO health plans and custom life insurance strategies across Georgia.",
+    highlight: "Full Coverage"
   }
 ];
 
@@ -28,10 +46,10 @@ export default function GeographicCoverage() {
         <Reveal>
           <div className="text-center mb-12">
             <h2 className="text-[2.25rem] md:text-[2.25rem] font-[700] mb-4 text-white">Geographic Service Excellence</h2>
-            <p className="text-[1.25rem] font-[400] text-white/90">Licensed expertise across three key markets</p>
+            <p className="text-[1.25rem] font-[400] text-white/90">Licensed expertise across six key markets</p>
           </div>
         </Reveal>
-        
+
         <div className="grid md:grid-cols-3 gap-8">
           {serviceAreas.map((area, index) => (
             <Reveal key={area.state} delay={index * 0.2}>
@@ -53,8 +71,8 @@ export default function GeographicCoverage() {
           <div className="text-center mt-12 p-8 bg-white/5 backdrop-blur-sm rounded-lg border border-white/10">
             <h3 className="text-[1.5rem] font-[700] text-white mb-4">Expanding Nationwide</h3>
             <p className="text-[1.125rem] text-white/90 leading-[1.7]">
-              Currently pursuing additional state licenses to serve families across America. 
-              Contact us to learn about coverage options in your state.
+              Now licensed in Florida, Michigan, North Carolina, Arizona, Texas, and Georgia — with additional states underway.
+              Contact us to learn about coverage options in your market.
             </p>
           </div>
         </Reveal>

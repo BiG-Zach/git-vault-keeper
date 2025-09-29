@@ -20,6 +20,8 @@ export default function Header() {
           <Link to="/carriers" className={`font-medium hover:text-emerald-600 transition-all duration-300 relative after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-0.5 after:bottom-0 after:left-0 after:bg-emerald-600 after:origin-bottom-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-bottom-left ${styles.navItem}`}>Carriers</Link>
           <Link to="/our-process" className={`font-medium hover:text-emerald-600 transition-all duration-300 relative after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-0.5 after:bottom-0 after:left-0 after:bg-emerald-600 after:origin-bottom-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-bottom-left ${styles.navItem}`}>Our Process</Link>
           <Link to="/resources" className={`font-medium hover:text-emerald-600 transition-all duration-300 relative after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-0.5 after:bottom-0 after:left-0 after:bg-emerald-600 after:origin-bottom-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-bottom-left ${styles.navItem}`}>Resources</Link>
+          <Link to="/health-insurance" className={`font-medium hover:text-emerald-600 transition-all duration-300 relative after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-0.5 after:bottom-0 after:left-0 after:bg-emerald-600 after:origin-bottom-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-bottom-left ${styles.navItem}`}>Health&nbsp;Insurance</Link>
+          <Link to="/life-insurance" className={`font-medium hover:text-emerald-600 transition-all duration-300 relative after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-0.5 after:bottom-0 after:left-0 after:bg-emerald-600 after:origin-bottom-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-bottom-left ${styles.navItem}`}>Life&nbsp;Insurance</Link>
           <Link to="/contact" className={`font-medium hover:text-emerald-600 transition-all duration-300 relative after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-0.5 after:bottom-0 after:left-0 after:bg-emerald-600 after:origin-bottom-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-bottom-left ${styles.navItem}`}>Contact</Link>
           <a
             href="https://calendly.com/bradfordinformedguidance"
@@ -38,6 +40,19 @@ export default function Header() {
           Schedule
         </a>
       </div>
+      {/* Mobile nav */}
+      <nav className="md:hidden bg-white/95 border-t border-slate-200/60">
+        <div className="container-default flex flex-wrap items-center justify-start gap-x-6 gap-y-3 py-3 text-sm font-medium text-slate-700">
+          <Link to="/about" className="hover:text-emerald-600 transition-colors">About</Link>
+          <Link to="/carriers" className="hover:text-emerald-600 transition-colors">Carriers</Link>
+          <Link to="/our-process" className="hover:text-emerald-600 transition-colors">Our Process</Link>
+          <Link to="/resources" className="hover:text-emerald-600 transition-colors">Resources</Link>
+          <Link to="/health-insurance" className="hover:text-emerald-600 transition-colors">Health&nbsp;Insurance</Link>
+          <Link to="/life-insurance" className="hover:text-emerald-600 transition-colors">Life&nbsp;Insurance</Link>
+          <Link to="/contact" className="hover:text-emerald-600 transition-colors">Contact</Link>
+        </div>
+      </nav>
+
       {/* Premium brand bar accent */}
       <div className="h-1 bg-gradient-to-r from-emerald-500 via-emerald-600 to-emerald-500" />
     </header>

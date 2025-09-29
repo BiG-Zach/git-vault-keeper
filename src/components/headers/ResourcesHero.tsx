@@ -6,7 +6,7 @@ import { TypeAnimation } from 'react-type-animation';
 import { useParallax } from "../../lib/useParallax";
 
 const HAS_MULTI = false;
-const SINGLE_FALLBACK = "/lovable-uploads/f5b6b0de-192c-40c8-8fb2-35eaa4905195.png";
+const SINGLE_FALLBACK = "/images/hero/resources-hero-retina.webp";
 const LQIP = "";
 
 export default function ResourcesHero() {
