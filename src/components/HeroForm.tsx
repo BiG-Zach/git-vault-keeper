@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 
+const DEFAULT_LEAD_SOURCE = 'Website - Mobile Hero';
+
 const HeroForm = () => {
   const [formData, setFormData] = useState({
     firstName: '',
@@ -29,12 +31,21 @@ const HeroForm = () => {
     setSubmitStatus({ message: '', type: '' });
 
     try {
+      const searchParams = new URLSearchParams(window.location.search);
+      const utm = Object.fromEntries(searchParams.entries());
+      const payload = {
+        ...formData,
+        leadSource: DEFAULT_LEAD_SOURCE,
+        landingUrl: window.location.href,
+        utm,
+      };
+
       const response = await fetch('/api/ringy-proxy', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(payload),
       });
 
       if (response.ok) {

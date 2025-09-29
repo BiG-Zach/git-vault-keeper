@@ -3,6 +3,27 @@ export const config = {
   runtime: 'edge',
 };
 
+const DEFAULT_LEAD_SOURCE = process.env.LEAD_SOURCE ?? 'Website - Mobile Hero';
+
+type LeadBody = {
+  consentToText?: boolean;
+  [key: string]: unknown;
+};
+
+function resolveLeadSource(data: Record<string, unknown>): string {
+  const camel = typeof data['leadSource'] === 'string' ? (data['leadSource'] as string).trim() : '';
+  if (camel) {
+    return camel;
+  }
+
+  const snake = typeof data['lead_source'] === 'string' ? (data['lead_source'] as string).trim() : '';
+  if (snake) {
+    return snake;
+  }
+
+  return DEFAULT_LEAD_SOURCE;
+}
+
 export default async function handler(req: Request) {
   if (req.method !== 'POST') {
     return new Response(JSON.stringify({ message: 'Method Not Allowed' }), {
@@ -12,11 +33,8 @@ export default async function handler(req: Request) {
   }
 
   try {
-    const leadData = await req.json();
-    const { consentToText, ...restOfLeadData } = leadData as {
-      consentToText?: boolean;
-      [key: string]: unknown;
-    };
+    const leadData = (await req.json()) as LeadBody;
+    const { consentToText, ...restOfLeadData } = leadData ?? {};
 
     let apiUrl: string | undefined;
     let sid: string | undefined;
@@ -53,9 +71,16 @@ export default async function handler(req: Request) {
       'X-API-KEY': apiKey,
     } as Record<string, string>;
 
-    const ringyPayload = {
+    const leadSource = resolveLeadSource(restOfLeadData as Record<string, unknown>);
+
+    const ringyPayload: Record<string, unknown> = {
       ...restOfLeadData,
+      leadSource,
+      lead_source: leadSource,
+      sid,
+      authToken,
       campaignId,
+      campaign_id: campaignId,
     };
 
     const ringyResponse = await fetch(apiUrl, {
@@ -68,7 +93,11 @@ export default async function handler(req: Request) {
       const errorBody = await ringyResponse.text();
       console.error('Ringy API Error:', ringyResponse.status, errorBody);
       return new Response(
-        JSON.stringify({ message: 'Failed to submit lead to CRM.', details: errorBody }),
+        JSON.stringify({
+          message: 'Failed to submit lead to CRM.',
+          status: ringyResponse.status,
+          details: errorBody,
+        }),
         {
           status: ringyResponse.status,
           headers: { 'Content-Type': 'application/json' },
