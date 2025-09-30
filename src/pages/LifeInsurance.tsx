@@ -172,12 +172,18 @@ export default function LifeInsurance() {
               Let our team deliver life insurance options with living benefits, accelerated underwriting, and portable coverage for multi-state households.
             </p>
             <div className="mt-6 flex flex-col gap-4 sm:flex-row">
-              <Button as="a" href="/contact" variant="secondary" size="lg" className="bg-white text-emerald-700 hover:bg-emerald-100">
+              <a 
+                href="/contact" 
+                className="inline-flex items-center justify-center h-11 rounded-md px-8 bg-white text-emerald-700 hover:bg-emerald-100 font-medium transition-colors"
+              >
                 Request a Custom Proposal
-              </Button>
-              <Button as="a" href="https://calendly.com/bradfordinformedguidance" variant="outline" size="lg" className="border-white text-white hover:bg-white/10">
+              </a>
+              <a 
+                href="https://calendly.com/bradfordinformedguidance" 
+                className="inline-flex items-center justify-center h-11 rounded-md px-8 border border-white text-white hover:bg-white/10 font-medium transition-colors"
+              >
                 Book a 20-Minute Strategy Call
-              </Button>
+              </a>
             </div>
           </div>
           <div className="grid gap-4 rounded-3xl bg-white/10 p-6 text-sm shadow-xl backdrop-blur">

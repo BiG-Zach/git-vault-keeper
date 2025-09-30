@@ -45,8 +45,8 @@ const LuxuryHero = () => {
                 className="space-y-6"
               >
                 <h1 className="text-6xl lg:text-7xl xl:text-8xl font-luxury-serif font-bold leading-[0.95] tracking-[-0.02em]">
-                  <span className="block mb-4 bg-gradient-to-br from-white to-gray-50 bg-clip-text text-transparent">Affordable Health &</span>
-                  <span className="block gradient-text-luxury font-luxury-serif">Life Insurance</span>
+                  <span className="block mb-4 bg-gradient-to-br from-white to-gray-50 bg-clip-text text-transparent">Professional Health &</span>
+                  <span className="block gradient-text-luxury font-luxury-serif">Life Insurance Guidance</span>
                 </h1>
               </motion.div>
 
@@ -57,7 +57,7 @@ const LuxuryHero = () => {
                 className="space-y-6"
               >
                 <h2 className="text-2xl lg:text-3xl xl:text-4xl font-luxury-sans font-normal text-white/95 leading-relaxed">
-                  Compare Today's Top-Rated Plans in 60 Seconds - No Medical Exams
+                  Licensed Broker | PPO Options | Multi-State Coverage
                 </h2>
               </motion.div>
 
@@ -68,7 +68,7 @@ const LuxuryHero = () => {
                 className="space-y-6"
               >
                 <p className="text-lg lg:text-xl font-luxury-sans text-white/90 leading-relaxed max-w-2xl lg:max-w-xl antialiased">
-                  Stop overpaying for health insurance. As a licensed broker, I've helped thousands of families find premium PPO coverage with $0 deductibles and next-day approval. Get your personalized quote now and discover why families save an average of $2,400 annually.
+                  Independent insurance brokerage specializing in PPO health plans with $0 deductible options. Licensed professionals provide personalized quotes in FL, MI, NC, AZ, TX, and GA. Average client savings: $2,400 annually.
                 </p>
 
               </motion.div>

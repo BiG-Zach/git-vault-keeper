@@ -111,16 +111,16 @@ export default function Home() {
               <div className="container mx-auto px-4 grid md:grid-cols-[1.1fr_0.9fr] gap-6 items-center">
                 <div className="max-w-2xl">
                   <h1 className="text-[clamp(26px,5vw,34px)] md:text-5xl lg:text-6xl leading-[1.15] tracking-[-0.01em] mb-[10px] font-bold text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.6)]">
-                    Private Health & Life Guidance. Clear. Fast. Year-Round.
+                    Professional Health & Life Insurance Guidance
                   </h1>
                   <p className="mt-3 text-white/90 text-lg">
-                    Licensed in {BRAND.licensed} • NPN {BRAND.npn} • Medically underwritten options with PPO networks.
+                    Licensed in {BRAND.licensed} • NPN {BRAND.npn} • PPO network options available.
                   </p>
                   <div className="mt-5 flex gap-3">
-                    <a href="/lead" className="btn-primary" data-gtm={`${BRAND.gtm.quote}_home`}>Get My Quote</a>
-                    <a href={BRAND.phoneTel} className="btn-secondary" data-gtm={`${BRAND.gtm.call}_home`}>Call Now</a>
+                    <a href="/lead" className="btn-primary" data-gtm={`${BRAND.gtm.quote}_home`}>Request Quote</a>
+                    <a href={BRAND.phoneTel} className="btn-secondary" data-gtm={`${BRAND.gtm.call}_home`}>Contact</a>
                   </div>
-                  <div className="mt-5 text-white/85 text-sm">Avg first options in 45–90 mins • {BRAND.hours}</div>
+                  <div className="mt-5 text-white/85 text-sm">Licensed professionals • {BRAND.hours}</div>
                 </div>
 
                 <div className="hidden md:block">

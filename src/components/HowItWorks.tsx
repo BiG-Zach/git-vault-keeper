@@ -7,18 +7,18 @@ import Section from './layout/Section';
 const steps = [
   {
     number: 1,
-    title: "Understand",
-    description: "We learn about your needs, network preferences, and budget.",
+    title: "Assessment",
+    description: "Evaluate coverage needs, budget parameters, and network preferences.",
   },
   {
     number: 2,
-    title: "Compare",
-    description: "We compare plans from top carriers and PPO networks.",
+    title: "Analysis",
+    description: "Compare available plans from A-rated carriers and PPO networks.",
   },
   {
     number: 3,
-    title: "Enroll",
-    description: "Choose confidently and get help with enrollment and next steps.",
+    title: "Enrollment",
+    description: "Professional enrollment support and policy activation assistance.",
   },
 ];
 
@@ -41,7 +41,7 @@ export default function HowItWorks() {
           viewport={{ once: true, amount: 0.25 }}
           transition={{ duration: 0.45, ease: "easeOut" }}
         >
-          How It Works
+          Enrollment Process
         </motion.h2>
         <motion.p
           className="text-slate-600 max-w-2xl mx-auto"
@@ -50,7 +50,7 @@ export default function HowItWorks() {
           viewport={{ once: true, amount: 0.25 }}
           transition={{ duration: 0.45, ease: "easeOut", delay: 0.1 }}
         >
-          Getting the right insurance coverage shouldn't be complicated. Our simple 3-step process makes it easy.
+          Three-step consultation and enrollment process with licensed insurance professionals.
         </motion.p>
       </div>
 
@@ -119,10 +119,10 @@ export default function HowItWorks() {
           whileHover={prefersReducedMotion ? {} : { scale: 1.01 }}
           transition={{ type: "spring", stiffness: 240, damping: 22 }}
         >
-          Start Step 1 Now
+          Request Consultation
         </motion.button>
         <p className="text-sm text-slate-500 mt-3">
-          Free consultation • No obligation • Licensed advisors
+          Licensed professionals • Multi-state coverage • Year-round enrollment
         </p>
       </motion.div>
     </Section>

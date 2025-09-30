@@ -5,12 +5,12 @@ import { trackEvent, GTM_EVENTS } from '../utils/gtm';
 type QA = { q: string; a: string };
 
 const ITEMS: QA[] = [
-  { q: 'Which states do you currently serve?', a: 'Florida, Michigan, and North Carolina — with more coming soon as we expand nationwide.' },
-  { q: 'Do you work with PPO networks?', a: 'Yes — Aetna, Cigna, First Health, Multiplan, and United (availability varies by plan and location).' },
-  { q: 'What makes Bradford Informed Guidance different?', a: 'We combine personalized service with A-rated carriers, year-round enrollment, and transparent pricing. No hidden fees, no pressure — just honest guidance from licensed professionals who truly understand your needs.' },
-  { q: 'Can I really enroll any time of year?', a: 'Absolutely! Unlike ACA marketplace plans, our private health insurance options allow year-round enrollment with coverage starting as soon as the next month. No waiting for open enrollment periods.' },
-  { q: 'What types of coverage can you help with?', a: 'Health and life insurance for individuals, families, and small businesses. We specialize in solutions for self-employed, early retirees, and those between jobs.' },
-  { q: 'How much does a consultation cost?', a: 'It\'s completely free. We\'ll discuss your needs, compare options, and present plans that fit your budget — no obligation.' },
+  { q: 'Which states are currently served?', a: 'Licensed in Florida, Michigan, North Carolina, Arizona, Texas, and Georgia.' },
+  { q: 'Which PPO networks are available?', a: 'Aetna, Cigna, First Health, Multiplan, and United (availability varies by plan and state).' },
+  { q: 'What distinguishes Bradford Informed Guidance?', a: 'A-rated carrier partnerships, year-round enrollment options, transparent pricing structure, and licensed professional guidance.' },
+  { q: 'Is year-round enrollment available?', a: 'Yes. Private health insurance plans offer year-round enrollment with coverage effective the following month, independent of ACA marketplace enrollment periods.' },
+  { q: 'What coverage types are offered?', a: 'Individual, family, and small business health insurance. Life insurance solutions for estate planning and income protection.' },
+  { q: 'What is the consultation cost?', a: 'No-cost consultation services. Licensed broker compensation provided by carrier partnerships.' },
 ];
 
 export default function FAQ() {
@@ -37,7 +37,7 @@ export default function FAQ() {
           viewport={{ once: true, amount: 0.25 }}
           transition={{ duration: 0.45, ease: "easeOut" }}
         >
-          Frequently Asked Questions
+          Common Questions
         </motion.h2>
         <motion.p
           className="text-slate-600 max-w-2xl mx-auto"
@@ -46,7 +46,7 @@ export default function FAQ() {
           viewport={{ once: true, amount: 0.25 }}
           transition={{ duration: 0.45, ease: "easeOut", delay: 0.1 }}
         >
-          Get answers to common questions about our services and coverage options
+          Coverage options, licensing, and enrollment process information.
         </motion.p>
       </div>
 
@@ -120,10 +120,10 @@ export default function FAQ() {
       >
         <div className="bg-slate-50 rounded-2xl p-6 md:p-8 max-w-2xl mx-auto ring-1 ring-slate-200">
           <h3 className="text-xl font-semibold text-slate-900 leading-tight mb-3">
-            Still have questions?
+            Additional Questions?
           </h3>
           <p className="text-slate-600 mb-6">
-            Our licensed advisors are here to help. Schedule a free consultation to get personalized answers.
+            Licensed insurance professionals available for consultation.
           </p>
           <motion.button
             onClick={handleCTAClick}
@@ -132,7 +132,7 @@ export default function FAQ() {
             whileHover={prefersReducedMotion ? {} : { scale: 1.01 }}
             transition={{ type: "spring", stiffness: 240, damping: 22 }}
           >
-            Let's Talk
+            Schedule Consultation
           </motion.button>
         </div>
       </motion.div>

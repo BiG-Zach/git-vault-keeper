@@ -97,7 +97,7 @@ const Hero = ({
                 aria-label="Schedule a free consultation"
                 data-gtm="hero-cta-schedule"
               >
-                Schedule Free Consultation
+                Request Consultation
               </button>
 
               <button
@@ -107,7 +107,7 @@ const Hero = ({
                 aria-label="See your insurance options"
                 data-gtm="hero-cta-options"
               >
-                See Your Options
+                View Coverage Options
               </button>
             </motion.div>
           </div>

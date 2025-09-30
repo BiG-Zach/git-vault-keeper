@@ -6,26 +6,26 @@ import { BRAND } from '../../lib/brand';
 const RiskReversalSection = () => {
   const prefersReducedMotion = useReducedMotion();
 
-  const guarantees = [
-    {
-      icon: Shield,
-      title: "My Personal Guarantee",
-      description: "Not happy with your coverage? I'll make it right or get your money back. Period.",
-      badge: "30-Day Promise"
-    },
-    {
-      icon: Clock,
-      title: "Always Free to You",
-      description: "Professional broker services at no cost. I work for you, not the insurance companies.",
-      badge: "Always Free"
-    },
-    {
-      icon: CheckCircle,
-      title: "Your Personal Advocate",
-      description: "Dedicated licensed professional fighting for your best interests every step of the way.",
-      badge: "Licensed Pros"
-    }
-  ];
+const guarantees = [
+  {
+    icon: Shield,
+    title: "Service Commitment",
+    description: "Licensed professionals provide ongoing policy support and carrier advocacy throughout coverage duration.",
+    badge: "Year-Round Support"
+  },
+  {
+    icon: Clock,
+    title: "No-Cost Consultation",
+    description: "Broker services provided at no charge to clients. Compensation received through carrier partnerships.",
+    badge: "No Client Fees"
+  },
+  {
+    icon: CheckCircle,
+    title: "Professional Guidance",
+    description: "Licensed insurance professionals represent client interests in carrier negotiations and policy servicing.",
+    badge: "Licensed Advisors"
+  }
+];
 
   const trustSignals = [
     { icon: Star, text: "A+ BBB Rating" },
@@ -58,12 +58,12 @@ const RiskReversalSection = () => {
           </div>
           
           <h2 className="text-3xl lg:text-5xl font-bold text-white mb-6 font-luxury-serif">
-            Your Peace of Mind is
-            <span className="block gradient-text-luxury">Guaranteed</span>
+            Professional Service
+            <span className="block gradient-text-luxury">Standards</span>
           </h2>
           
           <p className="text-lg text-slate-300 max-w-3xl mx-auto leading-relaxed">
-            As your independent broker, I stake my reputation on finding you better coverage. That's why I guarantee your complete satisfaction with zero risk.
+            Independent brokerage committed to comprehensive carrier comparison, transparent pricing disclosure, and ongoing policy support.
           </p>
         </motion.div>
 
@@ -112,12 +112,11 @@ const RiskReversalSection = () => {
         >
           <div className="bg-gradient-to-r from-white/10 to-white/5 backdrop-blur-md rounded-2xl p-8 lg:p-12 border border-white/20 max-w-3xl mx-auto">
             <h3 className="text-2xl lg:text-3xl font-bold text-white mb-6 font-luxury-serif">
-              Ready to Experience the Difference?
+              Request Coverage Analysis
             </h3>
             
             <p className="text-slate-300 mb-8 leading-relaxed">
-              Join thousands of satisfied families who've discovered better coverage, significant savings, and exceptional service. 
-              Your journey to better health insurance starts with a simple, no-obligation quote.
+              Licensed professionals serving clients across six states with A-rated carrier partnerships and year-round enrollment options.
             </p>
 
             {/* CTA Buttons */}
