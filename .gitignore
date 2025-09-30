@@ -1,3 +1,4 @@
 node_modules
 .vercel
 luxury-mobile-boost/
+dist/
