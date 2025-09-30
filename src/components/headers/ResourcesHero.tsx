@@ -106,7 +106,6 @@ export default function ResourcesHero() {
           )}
           
           {/* Luxury Executive Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-r from-blue-900/70 via-blue-800/60 to-blue-900/70" />
         </div>
 
         {/* Animated Visual Masterpiece Elements */}
