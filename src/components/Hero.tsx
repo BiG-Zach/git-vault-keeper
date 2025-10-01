@@ -11,8 +11,8 @@ type HeroProps = {
 };
 
 const Hero = ({
-  title = 'Smarter Health & Life Insurance — Protection That Moves With You',
-  subtitle = 'Clear, affordable options for self-employed, families, and early retirees. Licensed in FL, MI, and NC — expanding nationwide.'
+  title = 'Health & Life Insurance Solutions',
+  subtitle = 'Licensed broker serving individuals, families, and small businesses in FL, MI, NC, AZ, TX, and GA.'
 }: HeroProps) => {
   const prefersReducedMotion = useReducedMotion();
 
@@ -94,7 +94,7 @@ const Hero = ({
                 onClick={handleScheduleClick}
                 className="rounded-xl bg-emerald-600 px-4 py-3 text-white font-medium shadow-lg shadow-emerald-900/25 hover:bg-emerald-500 active:scale-[.99] transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70"
                 style={{ minHeight: '48px', fontSize: '14px' }}
-                aria-label="Schedule a free consultation"
+                aria-label="Request a consultation"
                 data-gtm="hero-cta-schedule"
               >
                 Request Consultation
@@ -104,7 +104,7 @@ const Hero = ({
                 onClick={handleSeeOptionsClick}
                 className="rounded-xl px-4 py-3 font-medium text-white/95 ring-1 ring-white/35 hover:bg-white/10 active:scale-[.99] transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70"
                 style={{ minHeight: '48px', fontSize: '14px' }}
-                aria-label="See your insurance options"
+                aria-label="View available coverage options"
                 data-gtm="hero-cta-options"
               >
                 View Coverage Options
@@ -118,3 +118,4 @@ const Hero = ({
 };
 
 export default Hero;
+

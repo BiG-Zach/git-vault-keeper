@@ -115,14 +115,14 @@ export default function HowItWorks() {
         <motion.button
           onClick={handleCTAClick}
           className="bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-200 shadow-lg hover:shadow-xl focus-ring-emerald"
-          aria-label="Start step 1 now - begin your insurance journey"
+          aria-label="Request consultation with licensed insurance professionals"
           whileHover={prefersReducedMotion ? {} : { scale: 1.01 }}
           transition={{ type: "spring", stiffness: 240, damping: 22 }}
         >
           Request Consultation
         </motion.button>
         <p className="text-sm text-slate-500 mt-3">
-          Licensed professionals • Multi-state coverage • Year-round enrollment
+          Licensed professionals &bull; Multi-state coverage &bull; Year-round enrollment
         </p>
       </motion.div>
     </Section>

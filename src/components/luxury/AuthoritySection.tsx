@@ -6,46 +6,46 @@ import { BRAND } from '../../lib/brand';
 const AuthoritySection = () => {
   const prefersReducedMotion = useReducedMotion();
 
-const achievements = [
-  {
-    icon: Award,
-    number: "15+",
-    label: "Years Licensed",
-    description: "Insurance professionals since 2008"
-  },
-  {
-    icon: Users,
-    number: "5,000+",
-    label: "Clients Served",
-    description: "Multi-state client base"
-  },
-  {
-    icon: TrendingUp,
-    number: "$2.5B",
-    label: "Coverage Volume",
-    description: "Total policy face amounts"
-  },
-  {
-    icon: Calendar,
-    number: "6",
-    label: "Licensed States",
-    description: "FL, MI, NC, AZ, TX, GA"
-  }
-];
+  const achievements = [
+    {
+      icon: Award,
+      number: "15+",
+      label: "Years Licensed",
+      description: "Insurance professionals since 2008"
+    },
+    {
+      icon: Users,
+      number: "5,000+",
+      label: "Clients Served",
+      description: "Multi-state client base"
+    },
+    {
+      icon: TrendingUp,
+      number: "$2.5B",
+      label: "Coverage Volume",
+      description: "Total policy face amounts"
+    },
+    {
+      icon: Calendar,
+      number: "6",
+      label: "Licensed States",
+      description: "FL, MI, NC, AZ, TX, GA"
+    }
+  ];
 
-const certifications = [
-  { name: "Licensed Insurance Professional", code: `NPN ${BRAND.npn}` },
-  { name: "Health Insurance Appointments", code: "Multi-Carrier" },
-  { name: "Life Insurance Appointments", code: "Multi-Carrier" },
-  { name: "A-Rated Carrier Partnerships", code: "Direct Appointments" }
-];
+  const certifications = [
+    { name: "Licensed Insurance Professional", code: `NPN ${BRAND.npn}` },
+    { name: "Health Insurance Appointments", code: "Multi-Carrier" },
+    { name: "Life Insurance Appointments", code: "Multi-Carrier" },
+    { name: "A-Rated Carrier Partnerships", code: "Direct Appointments" }
+  ];
 
-const awards = [
-  "BBB A+ Rating",
-  "Licensed in Six States",
-  "A-Rated Carrier Partnerships",
-  "Year-Round Enrollment Support"
-];
+  const awards = [
+    "BBB A+ Rating",
+    "Licensed in Six States",
+    "A-Rated Carrier Partnerships",
+    "Year-Round Enrollment Support"
+  ];
 
   return (
     <section className="py-16 lg:py-24 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 relative overflow-hidden">
@@ -71,3 +71,4 @@ const awards = [
 };
 
 export default AuthoritySection;
+

@@ -6,26 +6,26 @@ import { BRAND } from '../../lib/brand';
 const RiskReversalSection = () => {
   const prefersReducedMotion = useReducedMotion();
 
-const guarantees = [
-  {
-    icon: Shield,
-    title: "Service Commitment",
-    description: "Licensed professionals provide ongoing policy support and carrier advocacy throughout coverage duration.",
-    badge: "Year-Round Support"
-  },
-  {
-    icon: Clock,
-    title: "No-Cost Consultation",
-    description: "Broker services provided at no charge to clients. Compensation received through carrier partnerships.",
-    badge: "No Client Fees"
-  },
-  {
-    icon: CheckCircle,
-    title: "Professional Guidance",
-    description: "Licensed insurance professionals represent client interests in carrier negotiations and policy servicing.",
-    badge: "Licensed Advisors"
-  }
-];
+  const guarantees = [
+    {
+      icon: Shield,
+      title: "Service Commitment",
+      description: "Licensed professionals provide ongoing policy support and carrier advocacy throughout coverage duration.",
+      badge: "Year-Round Support"
+    },
+    {
+      icon: Clock,
+      title: "No-Cost Consultation",
+      description: "Broker services provided at no charge to clients. Compensation received through carrier partnerships.",
+      badge: "No Client Fees"
+    },
+    {
+      icon: CheckCircle,
+      title: "Professional Guidance",
+      description: "Licensed insurance professionals represent client interests in carrier negotiations and policy servicing.",
+      badge: "Licensed Advisors"
+    }
+  ];
 
   const trustSignals = [
     { icon: Star, text: "A+ BBB Rating" },
@@ -54,7 +54,7 @@ const guarantees = [
         >
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/20 border border-emerald-500/30 text-emerald-300 text-sm font-medium mb-6">
             <Shield className="w-4 h-4" />
-            <span>Risk-Free Promise</span>
+            <span>Service Standards</span>
           </div>
           
           <h2 className="text-3xl lg:text-5xl font-bold text-white mb-6 font-luxury-serif">
@@ -126,7 +126,7 @@ const guarantees = [
                 className="inline-flex items-center justify-center px-8 py-4 bg-emerald-600 hover:bg-emerald-500 text-white font-semibold rounded-xl transition-all duration-300 transform hover:scale-105 hover:shadow-glow"
                 data-gtm={`${BRAND.gtm.quote}_risk_reversal`}
               >
-                Get Your Risk-Free Quote
+                Request Quote
               </a>
               
               <a
@@ -156,3 +156,4 @@ const guarantees = [
 };
 
 export default RiskReversalSection;
+
