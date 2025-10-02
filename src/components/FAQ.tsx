@@ -128,7 +128,7 @@ export default function FAQ() {
           <motion.button
             onClick={handleCTAClick}
             className="bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-3 rounded-lg font-semibold transition-all duration-200 shadow-lg hover:shadow-xl focus-ring-emerald"
-            aria-label="Schedule consultation with licensed insurance professionals"
+            aria-label="Schedule consultation"
             whileHover={prefersReducedMotion ? {} : { scale: 1.01 }}
             transition={{ type: "spring", stiffness: 240, damping: 22 }}
           >
