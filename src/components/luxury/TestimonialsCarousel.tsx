@@ -26,7 +26,7 @@ const TestimonialsCarousel = () => {
       name: "Sarah Martinez",
       title: "Working Mother",
       location: "Tampa, FL",
-      quote: "Bradford found us coverage that actually fits our budget and keeps our pediatrician. The process was so smooth and transparent - exactly what we needed as busy parents.",
+      quote: "Bradford Informed Guidance aligned our pediatric network requirements with a compliant PPO plan and reduced monthly premiums.",
       rating: 5,
       avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face",
       verified: true,
@@ -38,7 +38,7 @@ const TestimonialsCarousel = () => {
       name: "Michael Thompson",
       title: "Self-Employed",
       location: "Detroit, MI",
-      quote: "As someone who's self-employed, finding affordable health insurance was always stressful. Bradford made it simple and found me better coverage for less money. No pressure, just results.",
+      quote: "Bradford Informed Guidance evaluated carrier options for my self-employed coverage and delivered broader benefits with lower premiums.",
       rating: 5,
       avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face",
       verified: true,
@@ -50,7 +50,7 @@ const TestimonialsCarousel = () => {
       name: "Jennifer & David Chen",
       title: "Young Professionals",
       location: "Raleigh, NC",
-      quote: "We were overwhelmed by all the insurance options until we found Bradford. They explained everything clearly and enrollment took just 15 minutes. Best decision we made this year.",
+      quote: "Bradford Informed Guidance presented side-by-side PPO comparisons and completed enrollment in fifteen minutes without disrupting provider access.",
       rating: 5,
       avatar: "https://images.unsplash.com/photo-1515496281361-241a540151a5?w=150&h=150&fit=crop&crop=face",
       verified: true,
@@ -62,7 +62,7 @@ const TestimonialsCarousel = () => {
       name: "Linda Rodriguez",
       title: "Registered Nurse",
       location: "Orlando, FL",
-      quote: "Working in healthcare, I know good coverage when I see it. Bradford understood our specific needs and found a plan that covers all our doctors and prescriptions perfectly.",
+      quote: "Bradford Informed Guidance recommended coverage that matches our hospital network, medication list, and budget expectations.",
       rating: 5,
       avatar: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=150&h=150&fit=crop&crop=face",
       verified: true,
@@ -74,7 +74,7 @@ const TestimonialsCarousel = () => {
       name: "Robert Wilson",
       title: "Retiree",
       location: "Sarasota, FL",
-      quote: "After retirement, navigating Medicare supplements was confusing. Bradford's team provided real help from real people - not just a website. They made everything clear and simple.",
+      quote: "Bradford Informed Guidance clarified Medicare supplement structures and confirmed projected out-of-pocket costs before enrollment.",
       rating: 5,
       avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face",
       verified: true,
@@ -86,7 +86,7 @@ const TestimonialsCarousel = () => {
       name: "Carlos Hernandez",
       title: "Contractor",
       location: "Miami, FL",
-      quote: "I was paying way too much for basic coverage. Bradford didn't just find me a lower premium - they found lower total costs with better benefits. That's the difference.",
+      quote: "Bradford Informed Guidance restructured my coverage to lower total costs while expanding benefits for my contracting work.",
       rating: 5,
       avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop&crop=face",
       verified: true,
@@ -155,15 +155,15 @@ const TestimonialsCarousel = () => {
         >
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/20 text-emerald-300 text-sm font-medium mb-6 backdrop-blur-sm border border-emerald-500/20">
             <Star className="w-4 h-4" />
-            <span>Real Stories, Real Savings</span>
+            <span>Client Outcomes Summary</span>
           </div>
           
           <h2 className="text-3xl lg:text-5xl font-bold text-white mb-6 font-luxury-serif">
-            What <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400">Families</span> Say
+            Client <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400">Outcomes</span>
           </h2>
           
           <p className="text-lg text-white/80 max-w-3xl mx-auto leading-relaxed">
-            Don't just take our word for it. Hear from real families across Florida, Michigan, and North Carolina who've found better coverage and significant savings.
+            Client case summaries from Florida, Michigan, and North Carolina highlighting coverage alignment and measured premium reductions.
           </p>
         </motion.div>
 

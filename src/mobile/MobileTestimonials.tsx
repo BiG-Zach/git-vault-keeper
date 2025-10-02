@@ -8,21 +8,21 @@ const testimonials = [
     name: 'Sarah M.',
     location: 'Tampa, FL',
     rating: 5,
-    text: 'Kept our doctors and cut our costs by $210 per month. The whole process was seamless and Bradford made it so easy to understand our options.',
+    text: 'Bradford Informed Guidance aligned our pediatric network requirements with a compliant PPO plan and reduced monthly costs by $210.',
     verified: true
   },
   {
     name: 'Mike R.',
     location: 'Detroit, MI',
     rating: 5,
-    text: 'Quick, clear, and zero pressure. I was dreading insurance shopping but Bradford made it actually pleasant. Got coverage that fits my budget perfectly.',
+    text: 'Bradford Informed Guidance reviewed options for my self-employed coverage and secured broader benefits with lower premiums.',
     verified: true
   },
   {
     name: 'Jennifer & Tom K.',
     location: 'Raleigh, NC',
     rating: 5,
-    text: 'Enrollment was simple from start to finish. Having a real person guide us through everything made all the difference. Highly recommend Bradford.',
+    text: 'Bradford Informed Guidance delivered side-by-side PPO comparisons and completed enrollment in fifteen minutes without disrupting provider access.',
     verified: true
   }
 ];
@@ -72,7 +72,7 @@ export default function MobileTestimonials() {
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
         >
-          Real Results From Real Families
+          Documented Client Outcomes
         </motion.h2>
 
         <div className={styles.testimonialsCarousel}>
