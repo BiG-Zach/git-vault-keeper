@@ -10,7 +10,7 @@ const OurCarriers = () => {
       <div className="max-w-6xl mx-auto px-4 text-center bg-black/60 p-8 rounded-xl">
         <h2 className="text-3xl md:text-4xl font-bold mb-6">Carrier Partnerships</h2>
         <p className="text-lg">
-          Direct appointments with A-rated carriers including Aetna, Cigna, UnitedHealthcare, Blue Cross Blue Shield, and additional regional providers.
+          All partner carriers maintain A+, A, A-, or B++ financial strength ratings from AM Best.
         </p>
       </div>
     </section>
