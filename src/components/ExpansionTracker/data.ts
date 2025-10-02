@@ -6,10 +6,10 @@ export type StateCode =
   | 'SD'|'TN'|'TX'|'UT'|'VT'|'VA'|'WA'|'WV'|'WI'|'WY'|'DC';
 
 export type Status = 'available'|'comingSoon'|'notAvailable';
-export const AVAILABLE_NOW: StateCode[] = ['FL','MI','NC'];
+export const AVAILABLE_NOW: StateCode[] = ['FL','MI','NC','AZ','TX','GA'];
 export const COMING_SOON: StateCode[] = [
-  'WA','OR','NV','UT','AZ','NE','KS','OK','TX','AR','IA','LA','MS',
-  'IL','WI','IN','KY','TN','AL','GA','SC','PA'
+  'WA','OR','NV','UT','NE','KS','OK','AR','IA','LA','MS',
+  'IL','WI','IN','KY','TN','AL','SC','PA'
 ];
 const ALL: StateCode[] = [
   'AL','AK','AZ','AR','CA','CO','CT','DE','FL','GA','HI','ID','IL','IN','IA','KS','KY','LA','ME','MD',

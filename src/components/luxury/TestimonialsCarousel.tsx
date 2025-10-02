@@ -1,326 +1,87 @@
 import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
-import { ChevronLeft, ChevronRight, Star, MapPin, CheckCircle } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 
-interface Testimonial {
-  id: number;
-  name: string;
-  title?: string;
-  location: string;
-  quote: string;
-  rating: number;
-  avatar: string;
-  verified: boolean;
-  savings?: string;
-  state: 'FL' | 'MI' | 'NC';
-}
+// --- DATA (Matches the final version from our plan) ---
+const testimonials = [
+  { name: "Sarah P.", title: "Freelance Designer", location: "Austin, TX", testimonial: "As a freelancer, finding good health insurance felt impossible. They cut through the noise, explained my PPO options clearly, and found a plan that was actually affordable. A total lifesaver.", avatar: "/avatars/sarah-p.png", savings: 125, verified: "Verified TX Customer" },
+  { name: "The Garcia Family", title: "Family of Four", location: "Tampa, FL", testimonial: "We were so overwhelmed trying to find the right plan for our kids. They took the time to understand our family's needs and budget. We finally feel confident in our coverage. Can't recommend them enough.", avatar: "/avatars/garcia-family.png", savings: 210, verified: "Verified FL Customer" },
+  { name: "Mark S.", title: "Early Retiree", location: "Phoenix, AZ", testimonial: "Taking early retirement was exciting, but figuring out health coverage before I was 65 was stressful. They found me a fantastic private plan to bridge the gap. The peace of mind is priceless.", avatar: "/avatars/mark-s.png", savings: 180, verified: "Verified AZ Customer" },
+  { name: "Emily and Tom", title: "Small Business Owners", location: "Raleigh, NC", testimonial: "We needed a solid plan for ourselves and our two employees. They handled everything, making the small business enrollment process incredibly simple and finding a great PPO network for our team.", avatar: "/avatars/emily-and-tom.png", savings: 250, verified: "Verified NC Customer" },
+  { name: "Michael B.", title: "Recent Graduate", location: "Atlanta, GA", testimonial: "Coming off my parents' insurance was daunting. I didn't know where to start. They were patient and found me a simple, catastrophic plan that fit my budget perfectly. So grateful for the clear guidance.", avatar: "/avatars/michael-b.png", savings: 80, verified: "Verified GA Customer" },
+  { name: "Jennifer R.", title: "Realtor", location: "Grand Rapids, MI", testimonial: "My income fluctuates, so finding a flexible plan was key. They understood the challenges of being self-employed and found a policy that gives me great coverage without breaking the bank during slower months.", avatar: "/avatars/jennifer-r.png", savings: 155, verified: "Verified MI Customer" }
+];
 
+// --- HELPER FUNCTION to group testimonials into threes ---
+const chunkArray = (array, size) => {
+  const chunkedArr = [];
+  for (let i = 0; i < array.length; i += size) {
+    chunkedArr.push(array.slice(i, i + size));
+  }
+  return chunkedArr;
+};
+
+// --- THE NEW CAROUSEL COMPONENT ---
 const TestimonialsCarousel = () => {
-  const prefersReducedMotion = useReducedMotion();
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [direction, setDirection] = useState(0);
+  const [page, setPage] = useState(0);
+  const testimonialChunks = chunkArray(testimonials, 3);
+  const numPages = testimonialChunks.length;
 
-  const testimonials: Testimonial[] = [
-    {
-      id: 1,
-      name: "Sarah Martinez",
-      title: "Working Mother",
-      location: "Tampa, FL",
-      quote: "Bradford Informed Guidance aligned our pediatric network requirements with a compliant PPO plan and reduced monthly premiums.",
-      rating: 5,
-      avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face",
-      verified: true,
-      savings: "$210/month",
-      state: "FL"
-    },
-    {
-      id: 2,
-      name: "Michael Thompson",
-      title: "Self-Employed",
-      location: "Detroit, MI",
-      quote: "Bradford Informed Guidance evaluated carrier options for my self-employed coverage and delivered broader benefits with lower premiums.",
-      rating: 5,
-      avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face",
-      verified: true,
-      savings: "$185/month",
-      state: "MI"
-    },
-    {
-      id: 3,
-      name: "Jennifer & David Chen",
-      title: "Young Professionals",
-      location: "Raleigh, NC",
-      quote: "Bradford Informed Guidance presented side-by-side PPO comparisons and completed enrollment in fifteen minutes without disrupting provider access.",
-      rating: 5,
-      avatar: "https://images.unsplash.com/photo-1515496281361-241a540151a5?w=150&h=150&fit=crop&crop=face",
-      verified: true,
-      savings: "$156/month",
-      state: "NC"
-    },
-    {
-      id: 4,
-      name: "Linda Rodriguez",
-      title: "Registered Nurse",
-      location: "Orlando, FL",
-      quote: "Bradford Informed Guidance recommended coverage that matches our hospital network, medication list, and budget expectations.",
-      rating: 5,
-      avatar: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=150&h=150&fit=crop&crop=face",
-      verified: true,
-      savings: "$198/month",
-      state: "FL"
-    },
-    {
-      id: 5,
-      name: "Robert Wilson",
-      title: "Retiree",
-      location: "Sarasota, FL",
-      quote: "Bradford Informed Guidance clarified Medicare supplement structures and confirmed projected out-of-pocket costs before enrollment.",
-      rating: 5,
-      avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face",
-      verified: true,
-      savings: "$145/month",
-      state: "FL"
-    },
-    {
-      id: 6,
-      name: "Carlos Hernandez",
-      title: "Contractor",
-      location: "Miami, FL",
-      quote: "Bradford Informed Guidance restructured my coverage to lower total costs while expanding benefits for my contracting work.",
-      rating: 5,
-      avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop&crop=face",
-      verified: true,
-      savings: "$234/month",
-      state: "FL"
-    }
-  ];
-
-  const nextTestimonial = () => {
-    setDirection(1);
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % testimonials.length);
-  };
-
-  const prevTestimonial = () => {
-    setDirection(-1);
-    setCurrentIndex((prevIndex) => (prevIndex - 1 + testimonials.length) % testimonials.length);
-  };
-
-  const goToTestimonial = (index: number) => {
-    setDirection(index > currentIndex ? 1 : -1);
-    setCurrentIndex(index);
-  };
-
-  // Auto-advance carousel
+  // Effect to handle the slow, automatic rotation
   useEffect(() => {
-    const timer = setInterval(nextTestimonial, 6000);
+    const timer = setInterval(() => {
+      setPage((prevPage) => (prevPage + 1) % numPages);
+    }, 8000); // Set to a comfortable 8 seconds
+
     return () => clearInterval(timer);
-  }, []);
+  }, [numPages]);
 
-  const slideVariants = {
-    enter: (direction: number) => ({
-      x: direction > 0 ? 1000 : -1000,
-      opacity: 0
-    }),
-    center: {
-      zIndex: 1,
-      x: 0,
-      opacity: 1
-    },
-    exit: (direction: number) => ({
-      zIndex: 0,
-      x: direction < 0 ? 1000 : -1000,
-      opacity: 0
-    })
+  const paginate = (newPage) => {
+    setPage(newPage);
   };
-
-  const current = testimonials[currentIndex];
 
   return (
-    <section className="relative py-20 lg:py-24 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 overflow-hidden">
-      {/* Background Effects - Matching AuthoritySection */}
-      <div className="absolute inset-0">
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute bottom-1/4 right-1/3 w-64 h-64 bg-blue-500/10 rounded-full blur-2xl" />
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle_at_center,_rgba(16,185,129,0.1)_1px,_transparent_1px)] bg-[length:40px_40px]" />
-      </div>
-
-      <div className="container mx-auto px-4 lg:px-6 relative z-10">
-        {/* Header */}
+    <div className="relative w-full max-w-6xl mx-auto overflow-hidden">
+      <AnimatePresence initial={false} mode="wait">
         <motion.div
-          initial={{ opacity: 0, y: prefersReducedMotion ? 0 : 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="text-center mb-12 lg:mb-16"
+          key={page}
+          className="grid grid-cols-1 md:grid-cols-3 gap-6"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.8 }}
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/20 text-emerald-300 text-sm font-medium mb-6 backdrop-blur-sm border border-emerald-500/20">
-            <Star className="w-4 h-4" />
-            <span>Client Outcomes Summary</span>
-          </div>
-          
-          <h2 className="text-3xl lg:text-5xl font-bold text-white mb-6 font-luxury-serif">
-            Client <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400">Outcomes</span>
-          </h2>
-          
-          <p className="text-lg text-white/80 max-w-3xl mx-auto leading-relaxed">
-            Client case summaries from Florida, Michigan, and North Carolina highlighting coverage alignment and measured premium reductions.
-          </p>
-        </motion.div>
-
-        {/* Carousel Container */}
-        <motion.div
-          initial={{ opacity: 0, y: prefersReducedMotion ? 0 : 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-          className="relative max-w-4xl mx-auto"
-        >
-          <div className="bg-white/5 backdrop-blur-md rounded-3xl border border-white/10 overflow-hidden shadow-2xl">
-            {/* Testimonial Content */}
-            <div className="relative h-[400px] lg:h-[350px]">
-              <AnimatePresence mode="wait" custom={direction}>
-                <motion.div
-                  key={currentIndex}
-                  custom={direction}
-                  variants={slideVariants}
-                  initial="enter"
-                  animate="center"
-                  exit="exit"
-                  transition={{
-                    x: { type: "spring", stiffness: 300, damping: 30 },
-                    opacity: { duration: 0.2 }
-                  }}
-                  className="absolute inset-0 p-8 lg:p-12"
-                >
-                  <div className="flex flex-col lg:flex-row items-center lg:items-start gap-8 h-full">
-                    {/* Avatar and Info */}
-                    <div className="flex-shrink-0 text-center lg:text-left">
-                      <div className="relative inline-block mb-4">
-                        <img
-                          src={current.avatar}
-                          alt={current.name}
-                          className="w-20 h-20 lg:w-24 lg:h-24 rounded-full object-cover shadow-premium"
-                        />
-                        {current.verified && (
-                          <div className="absolute -bottom-1 -right-1 w-8 h-8 bg-emerald-500 rounded-full flex items-center justify-center shadow-lg">
-                            <CheckCircle className="w-5 h-5 text-white" />
-                          </div>
-                        )}
-                      </div>
-                      
-                      <h3 className="text-xl font-bold text-white mb-1">
-                        {current.name}
-                      </h3>
-                      
-                      {current.title && (
-                        <p className="text-sm text-white/70 mb-2">
-                          {current.title}
-                        </p>
-                      )}
-                      
-                      <div className="flex items-center justify-center lg:justify-start gap-1 text-sm text-white/60 mb-3">
-                        <MapPin className="w-4 h-4" />
-                        <span>{current.location}</span>
-                      </div>
-                      
-                      {current.savings && (
-                        <div className="inline-flex items-center gap-1 px-3 py-1 bg-emerald-500/20 text-emerald-300 rounded-full text-sm font-semibold border border-emerald-500/30 backdrop-blur-sm">
-                          <span>Saved {current.savings}</span>
-                        </div>
-                      )}
-                    </div>
-
-                    {/* Quote Content */}
-                    <div className="flex-1 flex flex-col justify-center">
-                      {/* Rating */}
-                      <div className="flex items-center gap-1 mb-4 justify-center lg:justify-start">
-                        {[...Array(current.rating)].map((_, i) => (
-                          <Star key={i} className="w-5 h-5 text-emerald-400 fill-current" />
-                        ))}
-                      </div>
-                      
-                      {/* Quote */}
-                      <blockquote className="text-lg lg:text-xl text-white leading-relaxed text-center lg:text-left font-medium">
-                        "{current.quote}"
-                      </blockquote>
-                      
-                      {/* State Badge */}
-                      <div className="mt-6 flex justify-center lg:justify-start">
-                        <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/10 rounded-full text-sm text-white/80 backdrop-blur-sm border border-white/20">
-                          <div className="w-2 h-2 bg-emerald-400 rounded-full" />
-                          <span>Verified {current.state} Customer</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </motion.div>
-              </AnimatePresence>
-            </div>
-
-            {/* Navigation Controls */}
-            <div className="flex items-center justify-between p-6 bg-white/5 border-t border-white/10 backdrop-blur-sm">
-              {/* Previous Button */}
-              <button
-                onClick={prevTestimonial}
-                className="flex items-center justify-center w-12 h-12 bg-white/10 hover:bg-emerald-500/20 border border-white/20 hover:border-emerald-500/30 rounded-xl transition-all duration-300 group backdrop-blur-sm"
-                aria-label="Previous testimonial"
-              >
-                <ChevronLeft className="w-5 h-5 text-white/70 group-hover:text-emerald-300" />
-              </button>
-
-              {/* Dots Indicator */}
-              <div className="flex items-center gap-2">
-                {testimonials.map((_, index) => (
-                  <button
-                    key={index}
-                    onClick={() => goToTestimonial(index)}
-                    className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                      index === currentIndex
-                        ? 'bg-emerald-400 scale-125'
-                        : 'bg-white/30 hover:bg-white/50'
-                    }`}
-                    aria-label={`Go to testimonial ${index + 1}`}
-                  />
-                ))}
+          {testimonialChunks[page]?.map((testimonial, index) => (
+            <div key={index} className="bg-slate-800/50 rounded-xl p-6 flex flex-col h-full">
+              <div className="flex items-center mb-4">
+                <img src={testimonial.avatar} alt={`Avatar of ${testimonial.name}`} className="w-16 h-16 rounded-full mr-4 border-2 border-slate-600" />
+                <div>
+                  <p className="font-bold text-white text-lg">{testimonial.name}</p>
+                  <p className="text-sm text-slate-400">{testimonial.title} • {testimonial.location}</p>
+                </div>
               </div>
-
-              {/* Next Button */}
-              <button
-                onClick={nextTestimonial}
-                className="flex items-center justify-center w-12 h-12 bg-white/10 hover:bg-emerald-500/20 border border-white/20 hover:border-emerald-500/30 rounded-xl transition-all duration-300 group backdrop-blur-sm"
-                aria-label="Next testimonial"
-              >
-                <ChevronRight className="w-5 h-5 text-white/70 group-hover:text-emerald-300" />
-              </button>
+              
+              <p className="text-slate-300 text-base italic flex-grow">"{testimonial.testimonial}"</p>
+              
+              <div className="mt-4 flex justify-between items-center">
+                <span className="text-xs font-medium px-2.5 py-1 rounded-full bg-green-500/10 text-green-400">{testimonial.verified}</span>
+                {testimonial.savings && <p className="text-green-400 font-semibold">Saved ${testimonial.savings}/month</p>}
+              </div>
             </div>
-          </div>
+          ))}
         </motion.div>
-
-        {/* Social Proof Stats */}
-        <motion.div
-          initial={{ opacity: 0, y: prefersReducedMotion ? 0 : 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
-          className="mt-12 lg:mt-16 text-center"
-        >
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-3xl mx-auto">
-            <div className="bg-white/5 backdrop-blur-md rounded-xl p-6 border border-white/10 hover:bg-white/10 transition-all duration-300">
-              <div className="text-3xl font-bold text-emerald-400 mb-2">4.9/5</div>
-              <div className="text-sm text-white/70">Average Rating</div>
-            </div>
-            <div className="bg-white/5 backdrop-blur-md rounded-xl p-6 border border-white/10 hover:bg-white/10 transition-all duration-300">
-              <div className="text-3xl font-bold text-emerald-400 mb-2">98%</div>
-              <div className="text-sm text-white/70">Satisfaction Rate</div>
-            </div>
-            <div className="bg-white/5 backdrop-blur-md rounded-xl p-6 border border-white/10 hover:bg-white/10 transition-all duration-300">
-              <div className="text-3xl font-bold text-emerald-400 mb-2">$195</div>
-              <div className="text-sm text-white/70">Avg Monthly Savings</div>
-            </div>
-          </div>
-        </motion.div>
+      </AnimatePresence>
+      
+      <div className="flex justify-center mt-8">
+        {Array.from({ length: numPages }).map((_, i) => (
+          <button
+            key={i}
+            onClick={() => paginate(i)}
+            className={`w-2.5 h-2.5 rounded-full mx-1.5 transition-colors duration-300 ${i === page ? 'bg-white' : 'bg-slate-600 hover:bg-slate-500'}`}
+            aria-label={`Go to slide ${i + 1}`}
+          />
+        ))}
       </div>
-    </section>
+    </div>
   );
 };
 

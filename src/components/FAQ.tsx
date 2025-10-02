@@ -27,11 +27,11 @@ export default function FAQ() {
   };
 
   return (
-    <div className="bg-white" aria-labelledby="faq-title">
+    <div className="bg-white" aria-labelledby="faq">
       <div className="text-center mb-8 md:mb-10">
         <motion.h2
-          id="faq-title"
-          className="text-2xl md:text-3xl font-semibold tracking-tight text-slate-900 leading-tight mb-2 md:mb-3"
+          id="faq"
+          className="text-4xl font-bold mb-4"
           initial={{ opacity: 0, y: prefersReducedMotion ? 0 : 14 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.25 }}
@@ -40,7 +40,7 @@ export default function FAQ() {
           Common Questions
         </motion.h2>
         <motion.p
-          className="text-slate-600 max-w-2xl mx-auto"
+          className="text-slate-600 max-w-2xl mx-auto text-lg"
           initial={{ opacity: 0, y: prefersReducedMotion ? 0 : 14 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.25 }}

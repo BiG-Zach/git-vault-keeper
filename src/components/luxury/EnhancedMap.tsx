@@ -19,16 +19,17 @@ export default function EnhancedMap() {
   // Enhanced state information for tooltips
   const getStateInfo = (code: StateCode): { name: string; status: Status; benefit?: string } => {
     const stateData = {
-      FL: { name: 'Florida', status: 'Available' as Status, benefit: '✅ ACTIVE - Get quote today!' },
-      MI: { name: 'Michigan', status: 'Available' as Status, benefit: '✅ ACTIVE - Get quote today!' },
-      NC: { name: 'North Carolina', status: 'Available' as Status, benefit: '✅ ACTIVE - Get quote today!' },
-      TX: { name: 'Texas', status: 'Coming Soon' as Status, benefit: '⏰ LAUNCHING SOON - Join waitlist!' },
-      CA: { name: 'California', status: 'Coming Soon' as Status, benefit: '⏰ LAUNCHING SOON - Join waitlist!' },
-      NY: { name: 'New York', status: 'Coming Soon' as Status, benefit: '⏰ LAUNCHING SOON - Join waitlist!' },
-      GA: { name: 'Georgia', status: 'Coming Soon' as Status, benefit: '⏰ LAUNCHING SOON - Join waitlist!' },
-      OH: { name: 'Ohio', status: 'Coming Soon' as Status, benefit: '⏰ LAUNCHING SOON - Join waitlist!' },
-      PA: { name: 'Pennsylvania', status: 'Coming Soon' as Status, benefit: '⏰ LAUNCHING SOON - Join waitlist!' },
-      IL: { name: 'Illinois', status: 'Coming Soon' as Status, benefit: '⏰ LAUNCHING SOON - Join waitlist!' }
+      FL: { name: 'Florida', status: 'Available' as Status, benefit: 'Active state - request a quote today.' },
+      MI: { name: 'Michigan', status: 'Available' as Status, benefit: 'Active state - request a quote today.' },
+      NC: { name: 'North Carolina', status: 'Available' as Status, benefit: 'Active state - request a quote today.' },
+      AZ: { name: 'Arizona', status: 'Available' as Status, benefit: 'Active state - request a quote today.' },
+      TX: { name: 'Texas', status: 'Available' as Status, benefit: 'Active state - request a quote today.' },
+      GA: { name: 'Georgia', status: 'Available' as Status, benefit: 'Active state - request a quote today.' },
+      CA: { name: 'California', status: 'Coming Soon' as Status, benefit: 'Launching soon - join the waitlist.' },
+      NY: { name: 'New York', status: 'Coming Soon' as Status, benefit: 'Launching soon - join the waitlist.' },
+      OH: { name: 'Ohio', status: 'Coming Soon' as Status, benefit: 'Launching soon - join the waitlist.' },
+      PA: { name: 'Pennsylvania', status: 'Coming Soon' as Status, benefit: 'Launching soon - join the waitlist.' },
+      IL: { name: 'Illinois', status: 'Coming Soon' as Status, benefit: 'Launching soon - join the waitlist.' }
     };
     
     const defaultInfo = { name: code, status: 'Not Available' as Status, benefit: undefined };
@@ -110,9 +111,9 @@ export default function EnhancedMap() {
   };
 
   const stats = [
-    { icon: MapPin, number: "3", label: "Active States", sublabel: "FL, MI, NC" },
+    { icon: MapPin, number: "6", label: "Active States", sublabel: "FL, MI, NC, AZ, TX, & GA" },
     { icon: TrendingUp, number: "25+", label: "Expanding To", sublabel: "by 2025" },
-    { icon: Users, number: "5,000+", label: "Families Served", sublabel: "and growing" },
+    { icon: Users, number: "1,000+", label: "Families Served", sublabel: "and growing" },
     { icon: Clock, number: "45min", label: "Avg Quote Time", sublabel: "industry leading" }
   ];
 
@@ -183,7 +184,7 @@ export default function EnhancedMap() {
           <div className="flex items-center gap-3 bg-white rounded-xl px-4 py-3 shadow-sm border border-slate-200">
             <span className="h-4 w-4 rounded-full bg-emerald-500 animate-pulse" />
             <span className="text-sm font-semibold text-slate-700">Active Now</span>
-            <span className="text-xs text-slate-500 bg-emerald-100 px-2 py-1 rounded-full">3 states</span>
+            <span className="text-xs text-slate-500 bg-emerald-100 px-2 py-1 rounded-full">6 states</span>
           </div>
           <div className="flex items-center gap-3 bg-white rounded-xl px-4 py-3 shadow-sm border border-slate-200">
             <span className="h-4 w-4 rounded-full bg-blue-500" />
@@ -324,7 +325,7 @@ export default function EnhancedMap() {
               Don't See Your State?
             </h3>
             <p className="text-slate-600 mb-6 leading-relaxed">
-              We're expanding rapidly across America. Join our priority waitlist to be among the first to access exclusive rates and coverage options when we launch in your area.
+              Licensed professionals providing coverage solutions across six states.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a 

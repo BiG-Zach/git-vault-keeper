@@ -121,10 +121,11 @@ export default function HowItWorks() {
         >
           Request Consultation
         </motion.button>
-        <p className="text-sm text-slate-500 mt-3">
-          Licensed professionals &bull; Multi-state coverage &bull; Year-round enrollment
+        <p className="mt-4 text-sm text-slate-600">
+          Licensed professionals • Multi-state coverage • Year-round enrollment
         </p>
       </motion.div>
     </Section>
   );
 }
+

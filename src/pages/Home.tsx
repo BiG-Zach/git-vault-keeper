@@ -114,13 +114,13 @@ export default function Home() {
                     Professional Health & Life Insurance Guidance
                   </h1>
                   <p className="mt-3 text-white/90 text-lg">
-                    Licensed in {BRAND.licensed} &bull; NPN {BRAND.npn} &bull; PPO network options available.
+                    Licensed in {BRAND.licensed} • NPN {BRAND.npn} • PPO network options available.
                   </p>
                   <div className="mt-5 flex gap-3">
                     <a href="/lead" className="btn-primary" data-gtm={`${BRAND.gtm.quote}_home`}>Request Quote</a>
                     <a href={BRAND.phoneTel} className="btn-secondary" data-gtm={`${BRAND.gtm.call}_home`}>Contact</a>
                   </div>
-                  <div className="mt-5 text-white/85 text-sm">Licensed professionals &bull; {BRAND.hours}</div>
+                  <div className="mt-5 text-white/85 text-sm">Licensed professionals • {BRAND.hours}</div>
                 </div>
 
                 <div className="hidden md:block">
