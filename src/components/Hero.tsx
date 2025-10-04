@@ -11,8 +11,8 @@ type HeroProps = {
 };
 
 const Hero = ({
-  title = 'Clarity in Health Insurance.',
-  subtitle = 'Expert guidance, personalized plans, and the power of a national partnership. We turn confusion into confidence.'
+  title = 'Independent Broker. Enterprise Resources.',
+  subtitle = "Personal guidance with Best Insurance Group's exclusive carrier access. Licensed in FL, MI, NC, AZ, TX, and GA."
 }: HeroProps) => {
   const prefersReducedMotion = useReducedMotion();
 

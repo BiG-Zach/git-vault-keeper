@@ -45,8 +45,8 @@ const LuxuryHero = () => {
                 className="space-y-6"
               >
                 <h1 className="text-6xl lg:text-7xl xl:text-8xl font-luxury-serif font-bold leading-[0.95] tracking-[-0.02em]">
-                  <span className="block mb-4 bg-gradient-to-br from-white to-gray-50 bg-clip-text text-transparent">Clarity in</span>
-                  <span className="block gradient-text-luxury font-luxury-serif">Health Insurance.</span>
+                  <span className="block mb-4 bg-gradient-to-br from-white to-gray-50 bg-clip-text text-transparent">Independent Broker with</span>
+                  <span className="block gradient-text-luxury font-luxury-serif">Enterprise Resources</span>
                 </h1>
               </motion.div>
 
@@ -57,7 +57,7 @@ const LuxuryHero = () => {
                 className="space-y-6"
               >
                 <h2 className="text-2xl lg:text-3xl xl:text-4xl font-luxury-sans font-normal text-white/95 leading-relaxed">
-                  Expert guidance, personalized plans, and the power of a national partnership.
+                  Best Insurance Group Partner | Licensed Expert | Exclusive Carrier Access
                 </h2>
               </motion.div>
 
@@ -68,7 +68,7 @@ const LuxuryHero = () => {
                 className="space-y-6"
               >
                 <p className="text-lg lg:text-xl font-luxury-sans text-white/90 leading-relaxed max-w-2xl lg:max-w-xl antialiased">
-                  Independent insurance brokerage specializing in PPO health plans with $0 deductible options. Licensed professionals provide personalized quotes in FL, MI, NC, AZ, TX, and GA. Average client savings: $2,400 annually.
+                  Partnering with Best Insurance Group since 2019 to deliver exclusive carrier access and enterprise resources with personal, local guidance. Serving families in FL, MI, NC, AZ, TX, and GA with transparent recommendations and no-pressure consultations.
                 </p>
 
               </motion.div>

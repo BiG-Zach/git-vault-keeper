@@ -111,10 +111,10 @@ export default function Home() {
               <div className="container mx-auto px-4 grid md:grid-cols-[1.1fr_0.9fr] gap-6 items-center">
                 <div className="max-w-2xl">
                   <h1 className="text-[clamp(26px,5vw,34px)] md:text-5xl lg:text-6xl leading-[1.15] tracking-[-0.01em] mb-[10px] font-bold text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.6)]">
-                    Clarity in Health Insurance.
+                    Independent Insurance Broker with Enterprise Resources
                   </h1>
                   <p className="mt-3 text-white/90 text-lg">
-                    Expert guidance, personalized plans, and the power of a national partnership. We turn confusion into confidence.
+                    Partnering with Best Insurance Group since 2019 • Licensed in {BRAND.licensed} • NPN {BRAND.npn}
                   </p>
                   <div className="mt-5 flex gap-3">
                     <a href="/lead" className="btn-primary" data-gtm={`${BRAND.gtm.quote}_home`}>Start Your Consultation</a>

@@ -77,9 +77,9 @@ export default function AboutPage() {
                 <div>
                   
                   <h1 className="font-luxury-serif text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mb-6 text-slate-900">
-                    Meet Your Insurance Advocate & 
+                    Independent Insurance Broker & 
                     <span className="block bg-gradient-to-r from-[hsl(157,72%,43%)] via-[hsl(157,72%,53%)] to-[hsl(224,100%,32%)] bg-clip-text text-transparent">
-                      Family Protection Expert
+                      Trusted Family Advocate
                     </span>
                   </h1>
                 </div>
@@ -102,8 +102,8 @@ export default function AboutPage() {
                 
                 {/* Professional Description */}
                 <p className="text-lg md:text-xl text-slate-700 leading-relaxed">
-                  Turning insurance confusion into family confidence across 
-                  <span className="text-slate-900 font-medium"> Florida, Michigan, and North Carolina.</span>
+                  Simplifying health and life insurance with Best Insurance Group's resources and 
+                  <span className="text-slate-900 font-medium">8 years of personal, transparent guidance.</span>
                 </p>
                 
                 {/* Professional CTA Buttons */}
