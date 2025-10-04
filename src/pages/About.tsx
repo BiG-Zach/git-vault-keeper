@@ -5,6 +5,7 @@ import Reveal from "../components/Reveal";
 import CalendlyInline from "../components/CalendlyInline";
 import AboutHero from "../components/about/AboutHero";
 import Magnetic from "../components/ui/Magnetic";
+import VerificationBadge from "../components/trust/VerificationBadge";
 import SEO from "../components/SEO";
 import { organizationSchema, serviceSchema } from "../utils/schema";
 
@@ -134,6 +135,21 @@ export default function AboutPage() {
         </div>
       </section>
 
+      <section className="py-16 md:py-20 bg-white">
+        <div className="container mx-auto max-w-5xl px-6">
+          <div className="rounded-3xl border border-emerald-200/70 bg-emerald-50/40 p-8 md:p-12 text-center shadow-sm">
+            <h2 className="font-luxury-serif text-3xl md:text-4xl font-semibold text-slate-900">
+              Independently Verified Credentials
+            </h2>
+            <p className="mt-4 text-base md:text-lg text-slate-600">
+              Bradford Informed Guidance is independently listed on TrustMyProducer so you can confirm licensing and standing before we speak.
+            </p>
+            <div className="mt-6 flex justify-center">
+              <VerificationBadge variant="full" />
+            </div>
+          </div>
+        </div>
+      </section>
       {/* PERSONAL STORY SECTION - LUXURY WORLD CLASS */}
       <section className="relative py-24 md:py-32 overflow-hidden bg-[hsl(220,26%,14%)]">
         {/* Premium Dark Background */}

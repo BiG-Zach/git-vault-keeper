@@ -3,6 +3,7 @@ import { motion, useReducedMotion } from 'framer-motion';
 import { COMPANY } from '../config/company';
 import styles from '../mobile/Footer.module.css';
 import footerMobile from './Footer.mobile.module.css';
+import VerificationBadge from './trust/VerificationBadge';
 
 export default function Footer() {
   const prefersReducedMotion = useReducedMotion();
@@ -164,14 +165,17 @@ export default function Footer() {
         >
           <div className={`flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-slate-400 ${footerMobile.mobileFinePrint}`}>
             <p>&copy; {currentYear} Bradford Informed Guidance. All rights reserved.</p>
-            <nav className={`flex items-center gap-6 ${styles.links}`}>
-              <Link to="/privacy-policy" className="hover:text-white transition-colors duration-200">
-                Privacy Policy
-              </Link>
-              <Link to="/terms" className="hover:text-white transition-colors duration-200">
-                Terms of Service
-              </Link>
-            </nav>
+            <div className="flex flex-col items-center gap-4 sm:flex-row">
+              <VerificationBadge />
+              <nav className={`flex items-center gap-6 ${styles.links}`}>
+                <Link to="/privacy-policy" className="hover:text-white transition-colors duration-200">
+                  Privacy Policy
+                </Link>
+                <Link to="/terms" className="hover:text-white transition-colors duration-200">
+                  Terms of Service
+                </Link>
+              </nav>
+            </div>
           </div>
         </motion.div>
       </div>

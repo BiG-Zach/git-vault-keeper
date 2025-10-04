@@ -10,6 +10,7 @@ export const ORG = {
   url: 'https://www.bradfordinformedguidance.com',
   logo: 'https://www.bradfordinformedguidance.com/logo.png', // update to real path
   sameAs: [
+    'https://bradfordinformedguidance.trustmyproducer.com',
     // Add real profiles when available
     'https://www.facebook.com/',
     'https://www.linkedin.com/',

@@ -1,6 +1,7 @@
 import * as React from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { Phone, Calendar, Mail, CheckCircle } from "lucide-react";
+import VerificationBadge from "../trust/VerificationBadge";
 import Section from "../layout/Section";
 
 interface ContactCardProps {
@@ -162,6 +163,7 @@ export default function PremiumContactMethods() {
                 <span className="text-slate-700">Text for after-hours questions - I'll respond quickly</span>
               </div>
             </div>
+            <VerificationBadge className="mb-6" />
             <a
               href="tel:(689) 325-6570"
               className="group/btn inline-flex items-center justify-center w-full px-6 py-4 bg-gradient-to-r from-teal-600 to-teal-500 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
@@ -248,3 +250,4 @@ export default function PremiumContactMethods() {
     </Section>
   );
 }
+
