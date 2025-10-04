@@ -12,7 +12,7 @@ type CallAttrs = {
  * - Observes: [data-hero-sentinel]
  * - Fail-closed: if neither target exists, component renders null (no sticky shown).
  * - Strategic CTA positioning:
- *    - Get Quote: Opens premium modal for immediate intent prospects
+ *    - Request Guidance: Opens premium modal for immediate intent prospects
  *    - NO CALL NOW: Replaced with floating consultation button to avoid decision paralysis
  * - Sets <html data-sticky-cta-visible="true|false"> based on visibility
  */
@@ -105,7 +105,7 @@ export default function MobileStickyCTA() {
   // If not mobile or no targets to observe, do not render the sticky
   if (!ready || !isMobile) return null;
 
-  const onGetQuote = (e: React.MouseEvent) => {
+  const onRequestGuidance = (e: React.MouseEvent) => {
     e.preventDefault();
     // Trigger modal opening
     window.dispatchEvent(new CustomEvent('openHeroModal'));
@@ -132,15 +132,15 @@ export default function MobileStickyCTA() {
         </a>
         <button
           type="button"
-          onClick={onGetQuote}
+          onClick={onRequestGuidance}
           className={styles.stickyQuoteButton}
-          aria-label="Get instant quote - same-day decisions"
+          aria-label="Request guidance - same-day responses"
           data-gtm="sticky-quote-premium"
         >
           <svg className={styles.stickyIcon} fill="currentColor" viewBox="0 0 20 20">
             <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.293l-3-3a1 1 0 00-1.414 1.414L10.586 9H7a1 1 0 100 2h3.586l-1.293 1.293a1 1 0 101.414 1.414l3-3a1 1 0 000-1.414z" clipRule="evenodd" />
           </svg>
-          Get Quote
+          Request Guidance
         </button>
       </div>
     </div>

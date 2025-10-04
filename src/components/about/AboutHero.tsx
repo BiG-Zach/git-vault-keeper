@@ -59,15 +59,15 @@ export default function AboutHero() {
             textShadow: '0 2px 8px rgba(0,0,0,0.3), 0 0 40px rgba(255,255,255,0.1)'
           }}
         >
-          Expert Guidance<br />
-          <span className="text-white/95 font-playfair italic">You Can Trust</span>
+          Your Trusted Guide<br />
+          <span className="text-white/95 font-playfair italic">in a Complex Industry</span>
         </h1>
 
         <h2 
           className="font-sans text-[1.5rem] md:text-[2rem] font-medium text-white/90 mb-8 leading-tight"
           style={{ textShadow: '0 2px 6px rgba(0,0,0,0.4)' }}
         >
-          Comprehensive Protection You Can Count On
+          Over a decade of experience dedicated to helping families navigate their health insurance options with clarity and confidence.
         </h2>
 
         {/* Enhanced Body Text */}
@@ -96,12 +96,12 @@ export default function AboutHero() {
         {/* Call-to-Action */}
         <div className="mt-10 flex flex-col sm:flex-row gap-4">
           <button className="group bg-white text-gray-900 px-8 py-4 rounded-full font-semibold text-lg hover:bg-white/90 transition-all duration-300 hover:scale-105 hover:shadow-2xl">
-            Get Your Free Quote
-            <span className="ml-2 group-hover:translate-x-1 transition-transform duration-300">→</span>
+            Start Your Consultation
+            <span className="ml-2 group-hover:translate-x-1 transition-transform duration-300">&gt;</span>
           </button>
           <button className="group bg-white/10 backdrop-blur-sm border-2 border-white/30 text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-white/20 transition-all duration-300 hover:scale-105">
-            Schedule Consultation
-            <span className="ml-2 group-hover:translate-x-1 transition-transform duration-300">→</span>
+            Schedule a Conversation
+            <span className="ml-2 group-hover:translate-x-1 transition-transform duration-300">&gt;</span>
           </button>
         </div>
       </div>
@@ -170,3 +170,4 @@ export default function AboutHero() {
     </header>
   );
 }
+

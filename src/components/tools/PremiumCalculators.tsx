@@ -244,7 +244,7 @@ export default function PremiumCalculators() {
     {
       id: 'comparison',
       title: 'Premium Comparison Tool',
-      description: 'Compare quotes from multiple carriers side-by-side',
+      description: 'Compare curated carrier options side-by-side',
       icon: <Calculator className="w-6 h-6" />,
       color: 'bg-gradient-to-r from-purple-500 to-purple-600'
     },
@@ -312,14 +312,14 @@ export default function PremiumCalculators() {
               <div className="text-center py-12">
                 <Calculator className="w-16 h-16 text-purple-500 mx-auto mb-4" />
                 <h3 className="text-2xl font-bold mb-4 text-slate-800">Premium Comparison Tool</h3>
-                <p className="text-slate-600 mb-6">Compare quotes from Aetna, Cigna, UnitedHealthcare, and more</p>
+                <p className="text-slate-600 mb-6">Compare tailored options from Aetna, Cigna, UnitedHealthcare, and more</p>
                 <a
                   href="https://calendly.com/bradfordinformedguidance"
                   className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-500 to-purple-600 text-white px-6 py-3 rounded-lg font-medium hover:shadow-lg transition-all duration-300"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  Get Personalized Quotes <ChevronRight className="w-4 h-4" />
+                  Request Personalized Guidance <ChevronRight className="w-4 h-4" />
                 </a>
               </div>
             )}

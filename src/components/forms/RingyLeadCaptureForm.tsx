@@ -53,8 +53,11 @@ export default function RingyLeadCaptureForm({ onSubmit, className }: RingyLeadC
           onChange={handleChange}
           required
         />
+        <p className="text-xs text-slate-500 text-center">
+          Your privacy is important to us. The information you provide helps us prepare for our consultation. We will not share your data or subject you to high-pressure sales calls.
+        </p>
         <Button type="submit" className="w-full">
-          Get Quote
+          Request Guidance
         </Button>
       </div>
     </form>

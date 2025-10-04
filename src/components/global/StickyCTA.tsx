@@ -70,7 +70,7 @@ export default function StickyCTA() {
           className={`flex-1 inline-flex items-center justify-center rounded-xl bg-emerald-600 text-white px-4 py-3 font-semibold shadow hover:bg-emerald-500 ${stickyMobile.mobileCTAButton}`}
           style={{ minHeight: '48px' }}
         >
-          Get Quote
+          Request Guidance
         </button>
 
         {/* Mirror header CTA action/attributes for CRM consistency */}
@@ -86,3 +86,4 @@ export default function StickyCTA() {
     </div>
   );
 }
+

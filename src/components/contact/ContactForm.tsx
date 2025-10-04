@@ -24,15 +24,18 @@ export default function ContactForm() {
         <textarea id="message" name="message" rows={4} className="rounded-xl ring-1 ring-slate-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-500/60" />
       </div>
       <div className="md:col-span-2">
+        <p className="text-xs text-slate-500 mb-3">
+          Your privacy is important to us. The information you provide helps us prepare for our consultation. We will not share your data or subject you to high-pressure sales calls.
+        </p>
         <button
           type="submit"
           data-gtm="contact-submit"
           className="w-full md:w-auto rounded-xl bg-emerald-600 px-5 py-3 text-white font-medium shadow-lg hover:bg-emerald-500 active:scale-[.99] transition"
         >
-          Send Message
+          Request Guidance
         </button>
       </div>
-      <p className="md:col-span-2 text-slate-500 text-sm">Secure form • We never sell your data</p>
+      <p className="md:col-span-2 text-slate-500 text-sm">Secure form - we never sell your data</p>
     </form>
   );
 }

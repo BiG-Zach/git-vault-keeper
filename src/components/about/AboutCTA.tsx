@@ -17,7 +17,7 @@ export default function AboutCTA() {
                 data-gtm="about-cta-quote"
                 className="inline-flex items-center justify-center rounded-xl bg-white px-5 py-3 text-emerald-700 font-medium shadow-lg hover:shadow-xl transition active:scale-[.99]"
               >
-                Get a Free Quote
+                Request Guidance
               </a>
             </Magnetic>
             <Magnetic strength={10}>

@@ -314,6 +314,10 @@ export default function EnhancedMessageForm() {
                 />
               </div>
 
+              <p className="text-xs text-slate-500 text-center">
+                Your privacy is important to us. The information you provide helps us prepare for our consultation. We will not share your data or subject you to high-pressure sales calls.
+              </p>
+
               <button
                 type="submit"
                 disabled={isSubmitting}
@@ -339,7 +343,7 @@ export default function EnhancedMessageForm() {
                   ) : (
                     <>
                       <Send className="w-5 h-5 group-hover:scale-110 transition-transform duration-300" />
-                      <span>Send Message to Zach</span>
+                      <span>Request Guidance</span>
                     </>
                   )}
                 </div>

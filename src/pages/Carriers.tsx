@@ -368,6 +368,15 @@ export default function CarriersPage() {
             </div>
           </div>
           
+          <div className="max-w-3xl mx-auto text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900">
+              Access to the Nation's Top Carriers
+            </h2>
+            <p className="mt-4 text-lg md:text-xl text-slate-600 leading-relaxed">
+              Navigating the landscape of insurance carriers can be overwhelming. As your advocate, we provide access to a wide range of trusted national and regional providers. Our partnership with Best Insurance Group unlocks exclusive networks, giving you more high-quality options to choose from. We'll help you compare these carriers to find the perfect fit for your budget and healthcare needs.
+            </p>
+          </div>
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
             {NETWORKS.map((network, index) => (
               <PremiumNetworkCard key={network.name} network={network} index={index} />

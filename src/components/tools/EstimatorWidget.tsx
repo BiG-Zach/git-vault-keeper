@@ -23,12 +23,13 @@ export default function EstimatorWidget() {
             <option value="great">Great</option><option value="good">Good</option><option value="mixed">Mixed</option>
           </select>
         </label>
-        <button className="btn-primary sm:col-span-3" type="submit">Check Fit</button>
+        <p className="text-xs text-slate-500 text-center sm:col-span-3">Your privacy is important to us. The information you provide helps us prepare for our consultation. We will not share your data or subject you to high-pressure sales calls.</p>
+        <button className="btn-primary sm:col-span-3" type="submit">Request Guidance</button>
       </form>
       {result && (
         <div className="mt-4 p-3 rounded-xl border bg-white/70">
-          <p className="text-sm"><strong>{result.fit}</strong> • Confidence ~{result.confidence}%</p>
-          <a href="/lead" className="btn-primary mt-3 inline-flex" data-gtm="cta_quote_estimator">Start Pre-Check</a>
+          <p className="text-sm"><strong>{result.fit}</strong> - Confidence ~{result.confidence}%</p>
+          <a href="/lead" className="btn-primary mt-3 inline-flex" data-gtm="cta_quote_estimator">Request Guidance</a>
         </div>
       )}
       <p className="text-xs text-ink-1/70 mt-2">This is an estimate, not a guarantee. A short pre-check confirms eligibility.</p>

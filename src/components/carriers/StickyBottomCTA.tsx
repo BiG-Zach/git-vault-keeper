@@ -39,10 +39,10 @@ export default function StickyBottomCTA() {
             href="/quote"
             className="hidden sm:inline-flex items-center gap-2 rounded-xl border border-brand-sky-500/30 bg-brand-sky-500/10 px-4 py-3 text-sm font-medium text-brand-sky-600 hover:bg-brand-sky-500/20 transition-colors"
             data-gtm="carriers_footer_cta"
-            data-action="quote"
+            data-action="guidance"
           >
             <FileText className="h-4 w-4" />
-            Get Quote
+            Request Guidance
           </a>
         </div>
       </div>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
-const bg = '/hero-family.webp';
+const bg = '/assets/backgrounds/happy-family-beach-hero.webp';
 import { trackEvent, GTM_EVENTS } from '../utils/gtm';
 import styles from '../mobile/MobileHero.module.css';
 import heroMobile from './Hero.mobile.module.css';
@@ -11,8 +11,8 @@ type HeroProps = {
 };
 
 const Hero = ({
-  title = 'Health & Life Insurance Solutions',
-  subtitle = 'Licensed broker serving individuals, families, and small businesses in FL, MI, NC, AZ, TX, and GA.'
+  title = 'Clarity in Health Insurance.',
+  subtitle = 'Expert guidance, personalized plans, and the power of a national partnership. We turn confusion into confidence.'
 }: HeroProps) => {
   const prefersReducedMotion = useReducedMotion();
 
@@ -94,10 +94,10 @@ const Hero = ({
                 onClick={handleScheduleClick}
                 className="rounded-xl bg-emerald-600 px-4 py-3 text-white font-medium shadow-lg shadow-emerald-900/25 hover:bg-emerald-500 active:scale-[.99] transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70"
                 style={{ minHeight: '48px', fontSize: '14px' }}
-                aria-label="Request a consultation"
+                aria-label="Start your consultation"
                 data-gtm="hero-cta-schedule"
               >
-                Request Consultation
+                Start Your Consultation
               </button>
 
               <button
@@ -118,4 +118,5 @@ const Hero = ({
 };
 
 export default Hero;
+
 

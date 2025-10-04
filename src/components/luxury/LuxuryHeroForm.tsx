@@ -43,7 +43,7 @@ const LuxuryHeroForm = () => {
   });
 
   const benefits = [
-    { icon: Clock, text: "Average quotes in 45-90 minutes" },
+    { icon: Clock, text: "Guidance delivered in 45-90 minutes" },
     { icon: Shield, text: "Licensed & bonded professionals" },
     { icon: Award, text: "A+ rated carrier partners" },
     { icon: Users, text: "Dedicated personal guidance" }
@@ -230,7 +230,7 @@ const LuxuryHeroForm = () => {
         <div className="absolute bottom-4 right-4 w-6 h-6 border-r-2 border-b-2 border-[hsl(224,100%,32%)]/30 rounded-br-lg"></div>
         
         <div className="text-center mb-5">
-          <h3 className="text-lg font-bold text-slate-900 mb-1">Get Your Premium Quote</h3>
+          <h3 className="text-lg font-bold text-slate-900 mb-1">Share Your Details</h3>
           <p className="text-sm text-slate-600">{getStepMessage()}</p>
         </div>
         
@@ -358,7 +358,7 @@ const LuxuryHeroForm = () => {
                 className="space-y-4"
               >
                 <div className="text-sm text-slate-600 bg-blue-50 p-3 rounded-lg mb-4">
-                  Insurance rates are age-based - this ensures your most accurate quote
+                  Insurance rates are age-based - this ensures the most tailored guidance
                 </div>
                 
                 <div>
@@ -500,6 +500,9 @@ const LuxuryHeroForm = () => {
           </AnimatePresence>
 
           {/* Navigation Buttons */}
+          <p className="text-xs text-slate-500 text-center mb-4">
+            Your privacy is important to us. The information you provide helps us prepare for our consultation. We will not share your data or subject you to high-pressure sales calls.
+          </p>
           <div className="flex gap-3 mt-6">
             {currentStep > 1 && (
               <button 
@@ -527,7 +530,7 @@ const LuxuryHeroForm = () => {
                 disabled={!validateStep(3) || isSubmitting}
                 className="flex-1 bg-emerald-600 hover:bg-emerald-700 disabled:bg-slate-300 disabled:cursor-not-allowed text-white font-semibold py-3 rounded-lg transition-all transform hover:scale-[1.02] active:scale-[0.98]"
               >
-                {isSubmitting ? 'Submitting...' : 'Get My Quote'}
+                {isSubmitting ? 'Submitting...' : 'Start My Consultation'}
               </button>
             )}
           </div>

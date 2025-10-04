@@ -72,7 +72,7 @@ const HeroForm = () => {
 
   return (
     <div className="bg-white p-8 rounded-lg shadow-lg max-w-md w-full">
-      <h2 className="text-2xl font-bold mb-6 text-center text-gray-800">Get a Free Quote</h2>
+      <h2 className="text-2xl font-bold mb-6 text-center text-gray-800">Let's Start the Conversation</h2>
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
           <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="firstName">First Name</label>
@@ -105,12 +105,15 @@ const HeroForm = () => {
         <div className="mb-6">
           <label className="flex items-center">
             <input type="checkbox" name="consentToText" className="form-checkbox" checked={formData.consentToText} onChange={handleChange} />
-            <span className="ml-2 text-sm text-gray-600">I agree to receive text messages for quotes.</span>
+            <span className="ml-2 text-sm text-gray-600">I agree to receive text messages that support our consultation.</span>
           </label>
         </div>
+        <p className="text-xs text-gray-500 text-center mb-4">
+          Your privacy is important to us. The information you provide helps us prepare for our consultation. We will not share your data or subject you to high-pressure sales calls.
+        </p>
         <div className="flex items-center justify-center">
           <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit" disabled={isSubmitting}>
-            {isSubmitting ? 'Submitting...' : 'Get My Quote'}
+            {isSubmitting ? 'Submitting...' : 'Start My Consultation'}
           </button>
         </div>
         {submitStatus.message && (

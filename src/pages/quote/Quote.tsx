@@ -120,29 +120,29 @@ export default function QuotePage() {
         },
         body: JSON.stringify({
           ...payload,
-          subject: `New Quote Request - ${data.contact.firstName} ${data.contact.lastName} - ${data.basics.coverageType}`,
+          subject: `New Consultation Request - ${data.contact.firstName} ${data.contact.lastName} - ${data.basics.coverageType}`,
           email: 'zbradford@bradfordinformedguidance.com'
         })
       });
 
       if (!response.ok) {
-        throw new Error('Failed to submit quote');
+        throw new Error('Failed to submit consultation request');
       }
       
       // Redirect to thank you page
       location.assign('/thank-you');
     } catch (error) {
       console.error('Submission error:', error);
-      alert('There was an error submitting your quote. Please try again or call (689) 325-6570 for immediate assistance.');
+      alert('There was an error submitting your consultation request. Please try again or call (689) 325-6570 for personal assistance.');
     }
   }
 
   return (
     <main id="content" className="has-sticky-cta">
       <SEO
-        title="Get a Quote"
+        title="Let's Start the Conversation"
         path="/quote"
-        description="Start your personalized quote. Answer a few quick questions and we'll match options from top carriers."
+        description="Share a few details so we can prepare thoughtful recommendations backed by our Best Insurance Group partnership."
       />
 
       <section className="section">
@@ -151,12 +151,12 @@ export default function QuotePage() {
           <div className="text-center mb-12">
             <Reveal>
               <h1 className="text-5xl font-bold bg-gradient-to-r from-blue-800 to-indigo-900 bg-clip-text text-transparent mb-4">
-                Get Your Personalized Quote in 60 Seconds
+                Let's Start the Conversation
               </h1>
             </Reveal>
             <Reveal delay={0.08}>
               <p className="text-xl text-slate-700 max-w-2xl mx-auto leading-relaxed mb-8">
-                Complete the steps below. I'll review your details and present premium options tailored specifically for your needs.
+                Tell me what matters most, and I'll prepare clear options tailored to your goals.
               </p>
             </Reveal>
             
@@ -177,7 +177,7 @@ export default function QuotePage() {
                       <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                     </svg>
                   </div>
-                  <span>Instant results</span>
+                  <span>Personal follow-up within 24 hours</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <div className="w-5 h-5 bg-green-500 rounded-full flex items-center justify-center">
@@ -185,7 +185,7 @@ export default function QuotePage() {
                       <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                     </svg>
                   </div>
-                  <span>Licensed professional review</span>
+                  <span>Transparent, expert guidance</span>
                 </div>
               </div>
             </Reveal>
@@ -340,6 +340,10 @@ function BasicsStep({
         <FieldError msg={errors.coverageType} />
       </div>
 
+      <p className="text-sm text-slate-500 text-center">
+        Your privacy is important to us. The information you provide helps us prepare for our consultation. We will not share your data or subject you to high-pressure sales calls.
+      </p>
+
       <div className="flex items-center gap-3">
         <button type="submit" className="btn btn-primary">Continue</button>
         <a href="/" className="btn btn-ghost">Cancel</a>
@@ -431,6 +435,10 @@ function HouseholdStep({
         />
         <FieldError msg={errors.dependents} />
       </div>
+
+      <p className="text-sm text-slate-500 text-center">
+        Your privacy is important to us. The information you provide helps us prepare for our consultation. We will not share your data or subject you to high-pressure sales calls.
+      </p>
 
       <div className="flex items-center gap-3">
         <button type="button" onClick={onPrev} className="btn btn-ghost">Back</button>
@@ -557,6 +565,10 @@ function ContactStep({
       </div>
       <FieldError msg={errors.consent} />
 
+      <p className="text-sm text-slate-500 text-center">
+        Your privacy is important to us. The information you provide helps us prepare for our consultation. We will not share your data or subject you to high-pressure sales calls.
+      </p>
+
       <div className="flex items-center gap-3">
         <button type="button" onClick={onPrev} className="btn btn-ghost">Back</button>
         <button type="submit" className="btn btn-primary">Continue</button>
@@ -601,12 +613,17 @@ function ReviewStep({ data, onPrev, onSubmit }: { data: QuoteData; onPrev: () =>
         </div>
       </div>
 
+      <p className="text-sm text-slate-500 text-center">
+        Your privacy is important to us. The information you provide helps us prepare for our consultation. We will not share your data or subject you to high-pressure sales calls.
+      </p>
+
       <div className="flex items-center gap-3">
         <button type="button" onClick={onPrev} className="flex-1 px-6 py-3 border-2 border-slate-300 rounded-xl text-slate-700 hover:bg-slate-50 font-medium transition-all duration-200">Back</button>
         <button type="button" onClick={onSubmit} className="flex-1 px-6 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-xl hover:from-blue-700 hover:to-indigo-700 font-semibold shadow-lg hover:shadow-xl transition-all duration-200">
-          Submit Quote Request
+          Request Guidance
         </button>
       </div>
     </div>
   );
 }
+

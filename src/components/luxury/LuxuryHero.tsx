@@ -19,7 +19,7 @@ const LuxuryHero = () => {
       {/* Premium Background with Vignette */}
       <div className="absolute inset-0">
         <img
-          src="/hero-family.webp"
+          src="/assets/backgrounds/happy-family-beach-hero.webp"
           alt=""
           className="w-full h-full object-cover"
           loading="eager"
@@ -45,8 +45,8 @@ const LuxuryHero = () => {
                 className="space-y-6"
               >
                 <h1 className="text-6xl lg:text-7xl xl:text-8xl font-luxury-serif font-bold leading-[0.95] tracking-[-0.02em]">
-                  <span className="block mb-4 bg-gradient-to-br from-white to-gray-50 bg-clip-text text-transparent">Professional Health &</span>
-                  <span className="block gradient-text-luxury font-luxury-serif">Life Insurance Guidance</span>
+                  <span className="block mb-4 bg-gradient-to-br from-white to-gray-50 bg-clip-text text-transparent">Clarity in</span>
+                  <span className="block gradient-text-luxury font-luxury-serif">Health Insurance.</span>
                 </h1>
               </motion.div>
 
@@ -57,7 +57,7 @@ const LuxuryHero = () => {
                 className="space-y-6"
               >
                 <h2 className="text-2xl lg:text-3xl xl:text-4xl font-luxury-sans font-normal text-white/95 leading-relaxed">
-                  Licensed Broker | PPO Options | Multi-State Coverage
+                  Expert guidance, personalized plans, and the power of a national partnership.
                 </h2>
               </motion.div>
 
@@ -109,3 +109,4 @@ const LuxuryHero = () => {
 };
 
 export default LuxuryHero;
+

@@ -130,7 +130,7 @@ export default function PremiumProcessSteps() {
     {
       number: 3,
       icon: <Handshake className="w-10 h-10" />,
-      title: "Get My Professional Recommendations",
+      title: "Request Professional Recommendations",
       content: "As your licensed broker, I explain each option in plain English, helping you understand exactly what you're getting. No insurance jargon, no pressure - just my honest professional guidance.",
       bulletPoints: [
         "Licensed & bonded broker since 2016",

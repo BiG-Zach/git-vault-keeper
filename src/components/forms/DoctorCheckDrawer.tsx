@@ -22,7 +22,8 @@ export default function DoctorCheckDrawer() {
               <label className="flex flex-col gap-1"><span className="text-sm font-medium">City or ZIP</span>
                 <input value={city} onChange={e=>setCity(e.target.value)} className="rounded-xl border px-3 py-2 focus:ring-2 focus:ring-brand-sky-500" required/>
               </label>
-              <button className="btn-primary" type="submit">Quick check</button>
+              <p className="text-xs text-slate-500 text-center">Your privacy is important to us. The information you provide helps us prepare for our consultation. We will not share your data or subject you to high-pressure sales calls.</p>
+              <button className="btn-primary" type="submit">Request Guidance</button>
             </form>
             {note && (
               <div className="mt-4 p-3 rounded-xl border bg-white/70">
@@ -30,7 +31,7 @@ export default function DoctorCheckDrawer() {
                   Result: <strong>{note === "likely" ? "Likely In" : note === "verify" ? "Need to verify" : "Out of network"}</strong>.
                   We'll confirm and text you updates within business hours.
                 </p>
-                <a href="/lead" className="btn-primary mt-3 inline-flex" data-gtm={`${BRAND.gtm.quote}_doctor`}>Start Pre-Check</a>
+                <a href="/lead" className="btn-primary mt-3 inline-flex" data-gtm={`${BRAND.gtm.quote}_doctor`}>Request Guidance</a>
               </div>
             )}
             <p className="mt-3 text-xs text-ink-1/70">Disclaimer: Preliminary indication only; final network status depends on carrier/provider data at time of enrollment.</p>

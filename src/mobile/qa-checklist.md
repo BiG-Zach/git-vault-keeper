@@ -4,7 +4,7 @@
 
 ### Hero Section
 - [x] Hero section fills viewport appropriately - Clean hero with proper spacing
-- [x] Single prominent CTA button is visible and centered - Two CTAs: Get Quote (primary) + Call (secondary)
+- [x] Single prominent CTA button is visible and centered - Two CTAs: Request Guidance (primary) + Call (secondary)
 - [x] Typography scales properly (28-36px headline) - Responsive clamp sizing
 - [x] Background gradient displays correctly - Beautiful subtle gradient background
 - [x] Safe area insets respected at top - Proper padding for notched devices

@@ -98,7 +98,7 @@ export default function Home() {
           >
             {/* BACKGROUND IMAGE - ONLY LAYER */}
             <img
-              src="/hero-family.webp"
+              src="/assets/backgrounds/happy-family-beach-hero.webp"
               alt="Family relaxing outdoors together representing personalized insurance guidance"
               loading="eager"
               fetchPriority="high"
@@ -111,13 +111,13 @@ export default function Home() {
               <div className="container mx-auto px-4 grid md:grid-cols-[1.1fr_0.9fr] gap-6 items-center">
                 <div className="max-w-2xl">
                   <h1 className="text-[clamp(26px,5vw,34px)] md:text-5xl lg:text-6xl leading-[1.15] tracking-[-0.01em] mb-[10px] font-bold text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.6)]">
-                    Professional Health & Life Insurance Guidance
+                    Clarity in Health Insurance.
                   </h1>
                   <p className="mt-3 text-white/90 text-lg">
-                    Licensed in {BRAND.licensed} • NPN {BRAND.npn} • PPO network options available.
+                    Expert guidance, personalized plans, and the power of a national partnership. We turn confusion into confidence.
                   </p>
                   <div className="mt-5 flex gap-3">
-                    <a href="/lead" className="btn-primary" data-gtm={`${BRAND.gtm.quote}_home`}>Request Quote</a>
+                    <a href="/lead" className="btn-primary" data-gtm={`${BRAND.gtm.quote}_home`}>Start Your Consultation</a>
                     <a href={BRAND.phoneTel} className="btn-secondary" data-gtm={`${BRAND.gtm.call}_home`}>Contact</a>
                   </div>
                   <div className="mt-5 text-white/85 text-sm">Licensed professionals • {BRAND.hours}</div>
@@ -162,3 +162,7 @@ export default function Home() {
     </>
   );
 }
+
+
+
+
