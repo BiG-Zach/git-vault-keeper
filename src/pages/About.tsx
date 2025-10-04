@@ -515,8 +515,8 @@ export default function AboutPage() {
                     </span>
                   </h2>
                   <p className="text-xl md:text-2xl text-white/80 max-w-3xl mx-auto leading-relaxed font-light">
-                    5 years of trusted collaboration serving families nationwide with 
-                    <span className="text-white font-medium"> enterprise-level resources.</span>
+                    5 years of trusted collaboration delivering 
+                    <span className="text-white font-medium"> affordable, personal, transparent, and simple</span> insurance solutions with enterprise resources.
                   </p>
                 </div>
                 
@@ -602,11 +602,11 @@ export default function AboutPage() {
                   <div className="text-center space-y-6">
                     <h3 className="font-luxury-serif text-3xl font-bold text-white mb-6">The Perfect Partnership</h3>
                     <p className="text-lg text-white/80 leading-relaxed max-w-4xl mx-auto">
-                      Bradford Informed Guidance combines <span className="font-semibold text-[hsl(157,72%,53%)]">local expertise and personal touch</span> with 
-                      <span className="font-semibold text-[hsl(224,100%,50%)]"> Best Insurance Group's enterprise-level resources</span> and carrier relationships.
+                      Bradford Informed Guidance delivers <span className="font-semibold text-[hsl(224,100%,50%)]">Best Insurance Group's affordability, simplicity, and exclusive carrier access</span> with 
+                      <span className="font-semibold text-[hsl(157,72%,53%)]"> personalized local guidance you won't find at a call center.</span>
                     </p>
                     <p className="text-xl font-semibold text-[hsl(157,72%,53%)]">
-                      Your local agent with national group strength.
+                      Enterprise resources. Personal relationships.
                     </p>
                   </div>
                 </div>
@@ -616,7 +616,7 @@ export default function AboutPage() {
                   <h3 className="font-luxury-serif text-3xl font-bold text-center text-white mb-12">Partnership Milestones</h3>
                   <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
                     <div className="text-center p-8 bg-gradient-to-br from-[hsl(157,72%,43%)]/15 to-[hsl(157,72%,43%)]/5 rounded-3xl border border-white/10 hover:bg-gradient-to-br hover:from-[hsl(157,72%,43%)]/20 hover:to-[hsl(157,72%,43%)]/10 transition-all duration-500 backdrop-blur-sm">
-                      <div className="text-4xl font-bold text-[hsl(157,72%,53%)] mb-3">2019</div>
+                      <div className="text-4xl font-bold text-[hsl(157,72%,53%)] mb-3">2020</div>
                       <div className="text-sm font-semibold text-white/80">Partnership Begins</div>
                     </div>
                     <div className="text-center p-8 bg-gradient-to-br from-[hsl(224,100%,32%)]/15 to-[hsl(224,100%,32%)]/5 rounded-3xl border border-white/10 hover:bg-gradient-to-br hover:from-[hsl(224,100%,32%)]/20 hover:to-[hsl(224,100%,32%)]/10 transition-all duration-500 backdrop-blur-sm">

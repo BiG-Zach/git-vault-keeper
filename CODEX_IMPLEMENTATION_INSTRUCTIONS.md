@@ -82,7 +82,7 @@ Local expertise + Best Insurance Group's exclusive carrier access
 **Replace With:**
 ```typescript
 <p className="mt-3 text-white/90 text-lg">
-  Partnering with Best Insurance Group since 2019 • Licensed in {BRAND.licensed} • NPN {BRAND.npn}
+  Partnering with Best Insurance Group since 2020 • Licensed in {BRAND.licensed} • NPN {BRAND.npn}
 </p>
 ```
 
@@ -211,7 +211,7 @@ subtitle = 'Personal guidance with Best Insurance Group's exclusive carrier acce
 **Replace With:**
 ```typescript
 <p className="text-lg lg:text-xl font-luxury-sans text-white/90 leading-relaxed max-w-2xl lg:max-w-xl antialiased">
-  Partnering with Best Insurance Group since 2019 to deliver exclusive carrier access and enterprise resources with personal, local guidance. Serving families in FL, MI, NC, AZ, TX, and GA with transparent recommendations and no-pressure consultations.
+  Partnering with Best Insurance Group since 2020 to deliver exclusive carrier access and enterprise resources with personal, local guidance. Serving families in FL, MI, NC, AZ, TX, and GA with transparent recommendations and no-pressure consultations.
 </p>
 ```
 
