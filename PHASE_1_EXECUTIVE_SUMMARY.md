@@ -91,9 +91,9 @@ The strategy includes detailed OLD_CODE → NEW_CODE transformations for:
 
 ### 2. Partnership Emphasis
 **Before:** Generic broker messaging  
-**After:** "Partnering with Best Insurance Group since 2019"
+**After:** "Partnering with Best Insurance Group since 2020"
 
-**Why:** Immediate credibility through established industry leader association.
+**Why:** Immediate credibility through established industry leader association (5-year partnership).
 
 ### 3. Value Alignment
 **Before:** Generic service descriptions  

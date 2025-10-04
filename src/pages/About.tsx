@@ -600,7 +600,7 @@ export default function AboutPage() {
                   <h3 className="font-luxury-serif text-3xl font-bold text-center text-white mb-12">Partnership Milestones</h3>
                   <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
                     <div className="text-center p-8 bg-gradient-to-br from-[hsl(157,72%,43%)]/15 to-[hsl(157,72%,43%)]/5 rounded-3xl border border-white/10 hover:bg-gradient-to-br hover:from-[hsl(157,72%,43%)]/20 hover:to-[hsl(157,72%,43%)]/10 transition-all duration-500 backdrop-blur-sm">
-                      <div className="text-4xl font-bold text-[hsl(157,72%,53%)] mb-3">2019</div>
+                      <div className="text-4xl font-bold text-[hsl(157,72%,53%)] mb-3">2020</div>
                       <div className="text-sm font-semibold text-white/80">Partnership Begins</div>
                     </div>
                     <div className="text-center p-8 bg-gradient-to-br from-[hsl(224,100%,32%)]/15 to-[hsl(224,100%,32%)]/5 rounded-3xl border border-white/10 hover:bg-gradient-to-br hover:from-[hsl(224,100%,32%)]/20 hover:to-[hsl(224,100%,32%)]/10 transition-all duration-500 backdrop-blur-sm">

@@ -29,7 +29,7 @@ Bradford's existing About page (lines 430-616) already positions the BiG partner
 - ✅ "Strategic Partnership" framing
 - ✅ "Enterprise-level resources" with local expertise
 - ✅ Clear benefits: Exclusive carrier networks, industry leadership, enhanced buying power
-- ✅ Timeline showing partnership evolution (2019-2025)
+- ✅ Timeline showing partnership evolution (2020-2025)
 
 **Alignment Opportunity:** Bradford should mirror BiG's core values (Affordable, Personal, Transparent, Simple) throughout the site while adding his unique differentiators.
 
@@ -172,7 +172,7 @@ Bradford's existing About page (lines 430-616) already positions the BiG partner
 **NEW_CODE:**
 ```typescript
 <p className="mt-3 text-white/90 text-lg">
-  Partnering with Best Insurance Group since 2019 • Licensed in {BRAND.licensed} • NPN {BRAND.npn}
+  Partnering with Best Insurance Group since 2020 • Licensed in {BRAND.licensed} • NPN {BRAND.npn}
 </p>
 ```
 
@@ -301,7 +301,7 @@ subtitle = 'Personal guidance with Best Insurance Group's exclusive carrier acce
 **NEW_CODE:**
 ```typescript
 <p className="text-lg lg:text-xl font-luxury-sans text-white/90 leading-relaxed max-w-2xl lg:max-w-xl antialiased">
-  Partnering with Best Insurance Group since 2019 to deliver exclusive carrier access and enterprise resources with personal, local guidance. Serving families in FL, MI, NC, AZ, TX, and GA with transparent recommendations and no-pressure consultations.
+  Partnering with Best Insurance Group since 2020 to deliver exclusive carrier access and enterprise resources with personal, local guidance. Serving families in FL, MI, NC, AZ, TX, and GA with transparent recommendations and no-pressure consultations.
 </p>
 ```
 
