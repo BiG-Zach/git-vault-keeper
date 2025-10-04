@@ -7,4 +7,9 @@ export const COMPANY = {
   hours: "Mon – Sun, 8:00 AM – 8:00 PM EST",
   npnLabel: "NPN",
   npn: "18181266",
+  verification: {
+    url: "https://bradfordinformedguidance.trustmyproducer.com",
+    label: "Verify All Licenses"
+  },
+  licensed: "FL, MI, NC, AZ, TX, GA",
 };

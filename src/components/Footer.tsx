@@ -151,6 +151,31 @@ export default function Footer() {
                   Schedule Consultation
                 </a>
               </div>
+
+              {/* License Verification */}
+              <div className="pt-4 mt-4 border-t border-slate-700">
+                <h5 className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">
+                  Licensed & Verified
+                </h5>
+                <div className="space-y-2">
+                  <div className="text-sm text-slate-300">
+                    <div className="font-medium">NPN: {COMPANY.npn}</div>
+                    <div className="text-xs text-slate-400">{COMPANY.licensed}</div>
+                  </div>
+                  <a
+                    href={COMPANY.verification.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-sm font-medium text-emerald-400 hover:text-emerald-300 transition-colors duration-200"
+                    data-gtm="footer-verify-licenses"
+                  >
+                    <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                    </svg>
+                    {COMPANY.verification.label}
+                  </a>
+                </div>
+              </div>
             </div>
           </motion.div>
         </div>
