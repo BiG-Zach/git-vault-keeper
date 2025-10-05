@@ -3,7 +3,6 @@ import { motion, useReducedMotion } from 'framer-motion';
 import { COMPANY } from '../config/company';
 import styles from '../mobile/Footer.module.css';
 import footerMobile from './Footer.mobile.module.css';
-import VerificationBadge from './trust/VerificationBadge';
 
 export default function Footer() {
   const prefersReducedMotion = useReducedMotion();
@@ -151,58 +150,65 @@ export default function Footer() {
                   Schedule Consultation
                 </a>
               </div>
-
+              
               {/* License Verification - Dual Third-Party Sources */}
               <div className="pt-4 mt-4 border-t border-slate-700">
-                <h5 className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">
-                  Licensed & Verified
+                <h5 className="flex items-center gap-2 text-sm font-semibold text-white tracking-wide">
+                  <svg className="w-4 h-4 text-emerald-400" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10.22 2.223a.75.75 0 00-.44 0l-6.5 2.167A.75.75 0 003 5.107v4.513c0 4.18 2.718 7.924 6.774 9.112a.75.75 0 00.452 0C14.282 17.544 17 13.8 17 9.62V5.107a.75.75 0 00-.28-.717l-6.5-2.167zM9 11.75l-2-2 1.06-1.06L9 9.627l2.94-2.937L13 7.75l-4 4z" clipRule="evenodd" />
+                  </svg>
+                  Dual Third-Party Verification
                 </h5>
-                <div className="space-y-3">
-                  <div className="text-sm text-slate-300">
-                    <div className="font-medium">NPN: {COMPANY.npn}</div>
-                    <div className="text-xs text-slate-400">{COMPANY.licensed}</div>
+                <div className="space-y-4 mt-3">
+                  <div className="text-sm text-slate-300 font-medium">
+                    NPN: {COMPANY.npn} &bull; {COMPANY.licensed}
                   </div>
 
-                  {/* Desktop: Stack vertically | Mobile: Optimized layout */}
-                  <div className="flex flex-col gap-2">
-                    {/* TrustMyProducer Verification */}
+                  {/* Enhanced Verification Links - Desktop: Stack vertically | Mobile: Optimized layout */}
+                  <div className="flex flex-col gap-2.5">
+                    {/* TrustMyProducer Verification - Enhanced */}
                     <a
                       href={COMPANY.verification.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 text-sm font-medium text-emerald-400 hover:text-emerald-300 transition-colors duration-200 group"
+                      className="group inline-flex items-center gap-2 px-3 py-2 rounded-lg border border-emerald-500/30 bg-emerald-500/10 text-sm font-semibold text-emerald-200 transition-all duration-200 hover:bg-emerald-500/20 hover:border-emerald-400/60 hover:-translate-y-0.5 hover:shadow-[0_0_18px_rgba(16,185,129,0.35)]"
                       data-gtm="footer-verify-trustmyproducer"
                     >
-                      <svg className="w-4 h-4 shrink-0 group-hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 20 20">
+                      <svg className="w-4 h-4 shrink-0 text-emerald-300 transition-transform duration-200 group-hover:scale-110" fill="currentColor" viewBox="0 0 20 20">
                         <path fillRule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                       </svg>
                       <span className="flex-1">{COMPANY.verification.label}</span>
-                      <svg className="w-3 h-3 shrink-0 opacity-0 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="w-3 h-3 shrink-0 opacity-70 transition-all duration-200 group-hover:opacity-100 group-hover:translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                       </svg>
                     </a>
 
-                    {/* NIPR Verification */}
+                    {/* NIPR Verification - Enhanced */}
                     <a
                       href={COMPANY.verification.nipr}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 text-sm font-medium text-blue-400 hover:text-blue-300 transition-colors duration-200 group"
+                      className="group inline-flex items-center gap-2 px-3 py-2 rounded-lg border border-blue-500/30 bg-blue-500/10 text-sm font-semibold text-blue-200 transition-all duration-200 hover:bg-blue-500/20 hover:border-blue-400/60 hover:-translate-y-0.5 hover:shadow-[0_0_18px_rgba(59,130,246,0.35)]"
                       data-gtm="footer-verify-nipr"
                     >
-                      <svg className="w-4 h-4 shrink-0 group-hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 20 20">
+                      <svg className="w-4 h-4 shrink-0 text-blue-300 transition-transform duration-200 group-hover:scale-110" fill="currentColor" viewBox="0 0 20 20">
                         <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z" />
                         <path fillRule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clipRule="evenodd" />
                       </svg>
                       <span className="flex-1">{COMPANY.verification.labelNIPR}</span>
-                      <svg className="w-3 h-3 shrink-0 opacity-0 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="w-3 h-3 shrink-0 opacity-70 transition-all duration-200 group-hover:opacity-100 group-hover:translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                       </svg>
                     </a>
                   </div>
 
-                  <div className="text-xs text-slate-500 mt-2 italic">
-                    Independently verified by two sources
+                  <div className="text-xs text-slate-400 mt-2">
+                    <span className="inline-flex items-center gap-1.5">
+                      <svg className="w-3 h-3 text-emerald-400" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                      </svg>
+                      Two independent verification sources
+                    </span>
                   </div>
                 </div>
               </div>
@@ -220,17 +226,14 @@ export default function Footer() {
         >
           <div className={`flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-slate-400 ${footerMobile.mobileFinePrint}`}>
             <p>&copy; {currentYear} Bradford Informed Guidance. All rights reserved.</p>
-            <div className="flex flex-col items-center gap-4 sm:flex-row">
-              <VerificationBadge />
-              <nav className={`flex items-center gap-6 ${styles.links}`}>
-                <Link to="/privacy-policy" className="hover:text-white transition-colors duration-200">
-                  Privacy Policy
-                </Link>
-                <Link to="/terms" className="hover:text-white transition-colors duration-200">
-                  Terms of Service
-                </Link>
-              </nav>
-            </div>
+            <nav className={`flex items-center gap-6 ${styles.links}`}>
+              <Link to="/privacy-policy" className="hover:text-white transition-colors duration-200">
+                Privacy Policy
+              </Link>
+              <Link to="/terms" className="hover:text-white transition-colors duration-200">
+                Terms of Service
+              </Link>
+            </nav>
           </div>
         </motion.div>
       </div>
