@@ -386,28 +386,52 @@ export default function AboutPage() {
                 <div className="group p-10 bg-white rounded-3xl border border-slate-200 hover:border-[hsl(157,72%,43%)]/30 hover:shadow-xl transition-all duration-500 shadow-lg relative overflow-hidden">
                   <div className="absolute inset-0 bg-gradient-to-br from-[hsl(157,72%,43%)]/5 via-transparent to-transparent rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                   <div className="relative z-10">
-                    <div className="flex items-start gap-6">
+                    <div className="flex flex-col sm:flex-row items-start gap-6">
                       <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[hsl(157,72%,43%)] to-[hsl(157,72%,38%)] flex items-center justify-center shadow-lg shrink-0">
                         <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
                           <path fillRule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                         </svg>
                       </div>
-                      <div className="flex-1">
-                        <h3 className="text-xl font-bold text-[hsl(157,72%,43%)] mb-2">Third-Party Verified</h3>
-                        <div className="text-sm font-semibold text-slate-500 mb-3">Independent Verification</div>
-                        <p className="text-slate-600 leading-relaxed mb-4">All licenses verified and monitored by TrustMyProducer</p>
-                        <a 
-                          href={BRAND.verification.trustMyProducer}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center gap-2 text-sm font-semibold text-[hsl(157,72%,43%)] hover:text-[hsl(157,72%,38%)] transition-colors"
-                          data-gtm="about-verify-licenses"
-                        >
-                          View Real-Time License Status
-                          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                          </svg>
-                        </a>
+                      <div className="flex-1 w-full">
+                        <h3 className="text-xl font-bold text-[hsl(157,72%,43%)] mb-2">Dual Third-Party Verification</h3>
+                        <div className="text-sm font-semibold text-slate-500 mb-3">Independently Verified by Two Sources</div>
+                        <p className="text-slate-600 leading-relaxed mb-4">All licenses verified and monitored by TrustMyProducer plus searchable on NIPR (National Insurance Producer Registry)</p>
+
+                        {/* Verification Links - Mobile Optimized */}
+                        <div className="flex flex-col sm:flex-row sm:flex-wrap gap-3">
+                          <a 
+                            href={BRAND.verification.trustMyProducer}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-2 text-sm font-semibold text-[hsl(157,72%,43%)] hover:text-[hsl(157,72%,38%)] transition-colors group"
+                            data-gtm="about-verify-trustmyproducer"
+                          >
+                            <svg className="w-4 h-4 shrink-0 group-hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 20 20">
+                              <path fillRule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                            </svg>
+                            <span>View Real-Time License Status</span>
+                            <svg className="w-4 h-4 shrink-0 opacity-70 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                            </svg>
+                          </a>
+                          
+                          <a 
+                            href={BRAND.verification.nipr}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-2 text-sm font-semibold text-blue-600 hover:text-blue-700 transition-colors group"
+                            data-gtm="about-verify-nipr"
+                          >
+                            <svg className="w-4 h-4 shrink-0 group-hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 20 20">
+                              <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z" />
+                              <path fillRule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clipRule="evenodd" />
+                            </svg>
+                            <span>Look Up NPN on NIPR</span>
+                            <svg className="w-4 h-4 shrink-0 opacity-70 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                            </svg>
+                          </a>
+                        </div>
                       </div>
                     </div>
                   </div>

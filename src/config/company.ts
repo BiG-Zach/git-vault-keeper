@@ -9,7 +9,9 @@ export const COMPANY = {
   npn: "18181266",
   verification: {
     url: "https://bradfordinformedguidance.trustmyproducer.com",
-    label: "Verify All Licenses"
+    nipr: "https://nipr.com/licensing-center/look-up-a-national-producer-number",
+    label: "Verify All Licenses",
+    labelNIPR: "Look Up NPN on NIPR"
   },
   licensed: "FL, MI, NC, AZ, TX, GA",
 };
