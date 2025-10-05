@@ -2,6 +2,7 @@ import SEO from "../components/SEO";
 import ContactHero from "../components/headers/ContactHero";
 import ContactStatisticsSection from "../components/contact/ContactStatisticsSection";
 import PremiumContactMethods from "../components/contact/PremiumContactMethods";
+import ContactTrustSignals from "../components/contact/ContactTrustSignals";
 import EnhancedMessageForm from "../components/contact/EnhancedMessageForm";
 import OfficeLocationLuxury from "../components/contact/OfficeLocationLuxury";
 import PersonalGuaranteeSection from "../components/contact/PersonalGuaranteeSection";
@@ -37,6 +38,9 @@ export default function ContactPage() {
 
         {/* Premium Contact Methods (Light) */}
         <PremiumContactMethods />
+
+        {/* Trust Signals Section (Light) - Reduces form friction */}
+        <ContactTrustSignals />
 
         {/* Enhanced Message Form (Light) */}
         <EnhancedMessageForm />
