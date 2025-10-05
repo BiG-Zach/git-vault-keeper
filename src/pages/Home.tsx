@@ -161,7 +161,7 @@ export default function Home() {
                     Independent Insurance Broker with Enterprise Resources
                   </h1>
                   <p className="mt-3 text-white/90 text-lg">
-                    Partnering with Best Insurance Group since 2019 • Licensed in {BRAND.licensed} • NPN {BRAND.npn}
+                    Partnering with Best Insurance Group since 2020 • Licensed in {BRAND.licensed} • NPN {BRAND.npn}
                   </p>
                   <div className="mt-5 flex gap-3">
                     <a href="/lead" className="btn-primary" data-gtm={`${BRAND.gtm.quote}_home`}>Start Your Consultation</a>

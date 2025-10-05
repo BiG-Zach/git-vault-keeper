@@ -68,7 +68,7 @@ const LuxuryHero = () => {
                 className="space-y-6"
               >
                 <p className="text-lg lg:text-xl font-luxury-sans text-white/90 leading-relaxed max-w-2xl lg:max-w-xl antialiased">
-                  Partnering with Best Insurance Group since 2019 to deliver exclusive carrier access and enterprise resources with personal, local guidance. Serving families in FL, MI, NC, AZ, TX, and GA with transparent recommendations and no-pressure consultations.
+                  Partnering with Best Insurance Group since 2020 to deliver exclusive carrier access and enterprise resources with personal, local guidance. Serving families in FL, MI, NC, AZ, TX, and GA with transparent recommendations and no-pressure consultations.
                 </p>
 
               </motion.div>
