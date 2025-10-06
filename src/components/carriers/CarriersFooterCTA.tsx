@@ -114,7 +114,7 @@ export default function CarriersFooterCTA() {
                     data-action="schedule"
                   >
                     <Calendar className="h-6 w-6 mr-3" />
-                    Schedule Free Consultation
+                    Get Personalized Carrier Recommendations
                   </a>
                 </Button>
                 
@@ -130,7 +130,7 @@ export default function CarriersFooterCTA() {
                     data-action="quote"
                   >
                     <FileText className="h-6 w-6 mr-3" />
-                    Request Guidance
+                    Preview Carrier Options
                   </a>
                 </Button>
               </motion.div>
@@ -153,3 +153,4 @@ export default function CarriersFooterCTA() {
     </section>
   );
 }
+

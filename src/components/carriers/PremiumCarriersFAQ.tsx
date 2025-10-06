@@ -8,27 +8,35 @@ import { BRAND } from '../../lib/brand';
 const faqs = [
   {
     question: "What is a PPO network and how does it benefit me?",
-    answer: "A PPO (Preferred Provider Organization) network gives you the flexibility to see any healthcare provider, but offers significant cost savings when you choose in-network providers. You don't need referrals to see specialists, and you have access to a vast network of doctors, hospitals, and healthcare facilities across Florida, Michigan, and North Carolina."
+    answer: "A PPO (Preferred Provider Organization) network gives you the flexibility to see any healthcare provider, but offers significant cost savings when you choose in-network providers. You do not need referrals to see specialists, and you have access to a vast network of doctors, hospitals, and healthcare facilities across Florida, Georgia, South Carolina, Tennessee, Alabama, and Texas."
   },
   {
     question: "Can I keep my current doctor with these PPO networks?",
-    answer: "Most likely, yes! Our PPO networks include over 1.3 million healthcare providers nationwide. Use the 'Find Your Doctor' links on each network card above to verify if your current physician is in-network. We'll also verify your doctor's network status during your consultation to ensure continuity of care."
+    answer: "Most likely, yes. Our PPO networks include over 1.3 million healthcare providers nationwide. Use the Find Your Doctor links on each network card above to verify if your current physician is in-network. We also verify your doctor's network status during your consultation so you feel confident before you enroll."
   },
   {
     question: "How do I choose between different PPO networks?",
-    answer: "Each PPO network has unique strengths. Aetna and UnitedHealthcare offer the largest networks, Cigna focuses on wellness programs, First Health provides reliable nationwide coverage, MultiPlan offers cost-effective solutions, and Blue Cross Blue Shield has strong local community connections. We'll help you compare options based on your specific needs and preferred providers."
+    answer: "Each PPO network has unique strengths. Aetna and UnitedHealthcare offer the largest networks, Cigna focuses on wellness programs, First Health provides reliable nationwide coverage, MultiPlan offers cost-effective solutions, and Blue Cross Blue Shield has strong regional expertise. We compare your doctors, prescriptions, and budget to match you with the best fit in your state."
+  },
+  {
+    question: "Why work with a multi-carrier broker instead of a single carrier agent?",
+    answer: "As a multi-carrier broker, I compare 15+ A-rated carriers across Florida, Georgia, South Carolina, Tennessee, Alabama, and Texas. You see every competitive option in one consultation without pressure from a single insurer, and you receive unbiased guidance tailored to your household's priorities."
+  },
+  {
+    question: "How do you secure the best rate across all these carriers?",
+    answer: "My Best Insurance Group partnership gives me direct underwriting access. I request simultaneous quotes, verify subsidy or employer credits, and negotiate exceptions when health history or budget needs extra attention. Every recommendation arrives with a transparent side-by-side comparison."
   },
   {
     question: "What's the difference between your carriers?",
     answer: "Our carriers specialize in different areas: Allstate Health and UnitedHealthcare excel in comprehensive health coverage, Mutual of Omaha and Americo focus on life insurance solutions, while Aflac provides supplemental benefits. All carriers are A-rated or higher by AM Best, ensuring financial stability and reliable claim payments."
   },
   {
-    question: "How quickly can I get coverage?",
-    answer: "Most of our health plans can be approved within 24-48 hours, and some carriers offer same-day approval for qualified applicants. Life insurance applications typically take 2-4 weeks depending on coverage amount and underwriting requirements. We'll guide you through the fastest path to coverage based on your specific situation."
+    question: "What does the Best Insurance Group partnership mean for me?",
+    answer: "It unlocks enterprise-level resources normally reserved for large agencies - priority underwriters, exclusive carrier programs, and escalation paths that keep approvals and claims moving quickly in every state we serve."
   },
   {
-    question: "Do you serve all of Florida, Michigan, and North Carolina?",
-    answer: "Yes! We're licensed and bonded to serve all residents of Florida, Michigan, and North Carolina. Our carriers provide comprehensive coverage throughout all three states, with some offering nationwide benefits. We understand the unique insurance regulations and healthcare landscapes in each state."
+    question: "Do you serve all six states you are licensed in?",
+    answer: "Absolutely. We are licensed and bonded to support clients in Florida, Georgia, South Carolina, Tennessee, Alabama, and Texas. Each consultation includes state-specific carrier guidance, compliance updates, and virtual support tailored to where you live."
   }
 ];
 
@@ -72,7 +80,7 @@ export default function PremiumCarriersFAQ() {
           </h2>
           
           <p className="text-xl text-slate-300 max-w-2xl mx-auto">
-            Get answers to common questions about PPO networks, insurance carriers, and our services across FL, MI, and NC.
+            Get answers to common questions about PPO networks, insurance carriers, and our services across FL, GA, SC, TN, AL, and TX.
           </p>
         </motion.div>
 

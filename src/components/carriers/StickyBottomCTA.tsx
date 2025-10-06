@@ -20,8 +20,8 @@ export default function StickyBottomCTA() {
     <div className="fixed bottom-0 left-0 right-0 z-40 border-t border-surface-glassLine/20 bg-surface-glass/95 backdrop-blur-md p-4 shadow-luxury">
       <div className="container mx-auto flex items-center justify-between gap-4">
         <div className="hidden sm:block">
-          <p className="text-sm font-medium text-ink-900">Ready to confirm your network?</p>
-          <p className="text-xs text-ink-900/70">Get personalized guidance from Bradford</p>
+          <p className="text-sm font-medium text-ink-900">Ready to compare carriers across six states?</p>
+          <p className="text-xs text-ink-900/70">See your personalized carrier recommendations</p>
         </div>
         
         <div className="flex items-center gap-3 flex-1 sm:flex-none">
@@ -32,7 +32,7 @@ export default function StickyBottomCTA() {
             data-action="schedule"
           >
             <Calendar className="h-4 w-4" />
-            Schedule Consultation
+            Get Personalized Carrier Recommendations
           </a>
           
           <a
@@ -42,10 +42,11 @@ export default function StickyBottomCTA() {
             data-action="guidance"
           >
             <FileText className="h-4 w-4" />
-            Request Guidance
+            Preview Carrier Options
           </a>
         </div>
       </div>
     </div>
   );
 }
+

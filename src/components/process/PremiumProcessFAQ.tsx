@@ -10,7 +10,7 @@ interface FAQItem {
 const faqs: FAQItem[] = [
   {
     question: "How long does your process take?",
-    answer: "Most clients get their perfect plan within 48 hours, with coverage starting next day when needed. My streamlined process eliminates the typical back-and-forth delays."
+    answer: "Most clients get their perfect plan within 48 hours, with coverage starting next day when needed. My streamlined process works seamlessly across every state I serve."
   },
   {
     question: "Can you help if I already have insurance?",
@@ -18,7 +18,7 @@ const faqs: FAQItem[] = [
   },
   {
     question: "Will you be available if I need help later?",
-    answer: "Yes - I provide ongoing personal support for all my clients throughout their coverage. You'll have my direct contact information and I respond within 4 hours during business days."
+    answer: "Yes - I provide ongoing personal support for all my clients throughout their coverage. You will have my direct contact information and I respond within 4 business hours."
   },
   {
     question: "How do you get paid? Are there any fees for me?",
@@ -137,8 +137,7 @@ export default function PremiumProcessFAQ() {
               Ready to Get Started?
             </h3>
             <p className="text-emerald-100 mb-8 text-lg leading-relaxed max-w-2xl mx-auto">
-              Most clients get their perfect plan within 48 hours. Let's find yours with a free, 
-              no-obligation consultation.
+              Most clients get their perfect plan within 48 hours across the six states we serve. Let's find yours with a free, no-pressure consultation.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -151,7 +150,7 @@ export default function PremiumProcessFAQ() {
                 transition={{ type: "spring", stiffness: 300, damping: 20 }}
               >
                 <Calendar className="w-5 h-5 mr-2 group-hover:scale-110 transition-transform duration-200" />
-                Schedule Free Consultation
+                Schedule Your No-Pressure Consultation
               </motion.a>
               
               <motion.a

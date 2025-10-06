@@ -20,17 +20,17 @@ export default function HealthInsurance() {
     <main id="content" className="has-sticky-cta">
       <SEO
         title="Affordable Health Insurance Broker | Bradford Informed Guidance"
-        description="Compare affordable health insurance with PPO and nationwide coverage options. Work with a licensed broker for self-employed, families, and early retirees across FL, AZ, TX, GA, MI, and NC."
+        description="Compare affordable health insurance with PPO and multi-state coverage options. Work with a licensed broker serving families across Florida, Georgia, South Carolina, Tennessee, Alabama, and Texas."
         path="/health-insurance"
         meta={[
           {
             name: 'keywords',
-            content: 'affordable health insurance, health insurance broker, PPO plans, family health coverage, Florida health insurance, Arizona health insurance, Texas health insurance, Georgia health insurance'
+            content: 'affordable health insurance, multi-state insurance broker, Florida health insurance, Georgia health insurance, South Carolina health plans, Tennessee insurance guidance, Alabama health insurance, Texas PPO'
           },
           { property: 'og:title', content: 'Affordable Health Insurance Broker | Bradford Informed Guidance' },
           {
             property: 'og:description',
-            content: 'Explore affordable PPO and custom health insurance options with a licensed broker serving FL, AZ, TX, GA, MI, and NC.'
+            content: 'Explore affordable PPO and custom health insurance options with a licensed broker serving Florida, Georgia, South Carolina, Tennessee, Alabama, and Texas.'
           },
           { property: 'og:type', content: 'website' }
         ]}
@@ -39,7 +39,7 @@ export default function HealthInsurance() {
 
       <PageHero
         title="Affordable Health Insurance Guidance"
-        subtitle="Licensed experts helping families, entrepreneurs, and early retirees secure comprehensive health coverage in FL, AZ, TX, GA, MI, and NC."
+        subtitle="Licensed experts helping families, entrepreneurs, and early retirees secure comprehensive health coverage in Florida, Georgia, South Carolina, Tennessee, Alabama, and Texas."
       >
         <div className="hidden md:block">
           <div className="rounded-2xl bg-white/90 p-6 shadow-lg ring-1 ring-black/5">
@@ -91,9 +91,19 @@ export default function HealthInsurance() {
                 </p>
               </div>
             </div>
+            <div className="rounded-2xl border border-slate-200 bg-slate-50 p-6">
+              <h3 className="text-lg font-semibold text-slate-900">Plan types we navigate</h3>
+              <p className="mt-2 text-sm text-slate-600">Individual, family, group, and short-term coverage options with ACA compliance and subsidy optimization across every state we serve.</p>
+              <ul className="mt-4 space-y-3 text-sm text-slate-600">
+                <li><span className="font-semibold text-slate-900">Individual plans:</span> Tailored benefits with subsidy checks and statewide carrier access.</li>
+                <li><span className="font-semibold text-slate-900">Family plans:</span> Coordinated networks that keep pediatric and specialist care in-network.</li>
+                <li><span className="font-semibold text-slate-900">Group coverage:</span> Solutions for entrepreneurs and small teams needing multi-state portability.</li>
+                <li><span className="font-semibold text-slate-900">Short-term and bridge options:</span> Gap coverage with clear renewal and conversion timelines.</li>
+              </ul>
+            </div>
             <div className="flex flex-col gap-4 sm:flex-row">
               <Button as="a" href="https://calendly.com/bradfordinformedguidance" variant="primary" size="lg">
-                Schedule a Consultation
+                Get Your Free Health Plan Analysis
               </Button>
               <Button as="a" href="tel:+16893256570" variant="outline" size="lg">
                 Call (689) 325-6570
@@ -106,15 +116,22 @@ export default function HealthInsurance() {
               <li className="flex items-start gap-3">
                 <Users className="mt-1 h-6 w-6 text-emerald-300" />
                 <div>
-                  <p className="font-semibold">1,000+ families guided</p>
-                  <p className="text-sm text-slate-300">Individual, family, and small business plans customized for real budgets.</p>
+                  <p className="font-semibold">1,000+ families guided across six states</p>
+                  <p className="text-sm text-slate-300">Personalized recommendations for individuals, families, and small employers in every market we serve.</p>
+                </div>
+              </li>
+              <li className="flex items-start gap-3">
+                <CheckCircle2 className="mt-1 h-6 w-6 text-emerald-300" />
+                <div>
+                  <p className="font-semibold">Transparent pricing guaranteed</p>
+                  <p className="text-sm text-slate-300">No enrollment fees, free plan comparisons, and carrier-direct pricing with zero hidden costs.</p>
                 </div>
               </li>
               <li className="flex items-start gap-3">
                 <Stethoscope className="mt-1 h-6 w-6 text-emerald-300" />
                 <div>
-                  <p className="font-semibold">Carrier-neutral advice</p>
-                  <p className="text-sm text-slate-300">Access 15+ A-rated health carriers with unbiased recommendations.</p>
+                  <p className="font-semibold">15+ A-rated carriers</p>
+                  <p className="text-sm text-slate-300">Best Insurance Group partnership unlocks multi-state PPO networks and exclusive programs.</p>
                 </div>
               </li>
               <li className="flex items-start gap-3">
@@ -164,6 +181,41 @@ export default function HealthInsurance() {
         </div>
       </section>
 
+      <section className="section bg-white">
+        <div className="container-default grid gap-10 lg:grid-cols-[1.1fr_0.9fr] items-start">
+          <div className="space-y-4">
+            <span className="inline-flex items-center gap-2 rounded-full bg-emerald-100 px-4 py-1.5 text-sm font-semibold text-emerald-700">
+              <ShieldCheck className="h-4 w-4" />
+              State-specific compliance expertise
+            </span>
+            <h2 className="text-3xl font-bold text-slate-900 md:text-4xl">Multi-state regulation guidance before you enroll</h2>
+            <p className="text-lg text-slate-600">Every consultation includes ACA compliance checks, carrier availability, and subsidy optimization tailored to Florida, Georgia, South Carolina, Tennessee, Alabama, and Texas.</p>
+            <ul className="space-y-4 text-slate-600">
+              <li className="flex items-start gap-3">
+                <ShieldCheck className="mt-1 h-5 w-5 text-emerald-500" />
+                <span>State-specific underwriting and documentation handled for you with no guesswork or re-submissions.</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <Clock3 className="mt-1 h-5 w-5 text-emerald-500" />
+                <span>Enrollment deadlines and special enrollment windows monitored across all six states.</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <Users className="mt-1 h-5 w-5 text-emerald-500" />
+                <span>Regional carrier relationships ensure your physicians, specialists, and hospitals stay in-network.</span>
+              </li>
+            </ul>
+          </div>
+          <div className="rounded-3xl border border-emerald-100 bg-emerald-50 p-6 shadow-sm space-y-4">
+            <h3 className="text-xl font-semibold text-emerald-900">What to expect after you book</h3>
+            <ul className="space-y-3 text-sm text-emerald-900/80">
+              <li><span className="font-semibold text-emerald-900">Pre-call briefing:</span> Summary of available carriers, subsidy estimates, and doctor network checks.</li>
+              <li><span className="font-semibold text-emerald-900">Compliance packet:</span> Personalized documentation checklist for your state delivered within 24 hours.</li>
+              <li><span className="font-semibold text-emerald-900">Virtual or in-person:</span> Flexible consultations that fit your schedule across all licensed markets.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
       <section className="section bg-gradient-to-r from-emerald-600 to-sky-600 text-white">
         <div className="container-default grid gap-8 md:grid-cols-[1.2fr_0.8fr] items-center">
           <div>
@@ -173,23 +225,23 @@ export default function HealthInsurance() {
             </p>
             <div className="mt-6 flex flex-col gap-4 sm:flex-row">
               <a 
-                href="/contact" 
+                href="https://calendly.com/bradfordinformedguidance" 
                 className="inline-flex items-center justify-center h-11 rounded-md px-8 bg-white text-emerald-700 hover:bg-emerald-100 font-medium transition-colors"
               >
-                Contact Our Team
+                Get Your Free Health Plan Analysis
               </a>
               <a 
-                href="https://calendly.com/bradfordinformedguidance" 
+                href="tel:+16893256570" 
                 className="inline-flex items-center justify-center h-11 rounded-md px-8 border border-white text-white hover:bg-white/10 font-medium transition-colors"
               >
-                Book a 15-Minute Call
+                Call (689) 325-6570
               </a>
             </div>
           </div>
           <div className="grid gap-4 rounded-3xl bg-white/10 p-6 text-sm shadow-xl backdrop-blur">
             <div className="flex items-start gap-3">
               <ShieldCheck className="mt-1 h-6 w-6 text-white" />
-              <p>Licensed in Florida, Michigan, North Carolina, Arizona, Texas, and Georgia.</p>
+              <p>Licensed in Florida, Georgia, South Carolina, Tennessee, Alabama, and Texas.</p>
             </div>
             <div className="flex items-start gap-3">
               <Clock3 className="mt-1 h-6 w-6 text-white" />
@@ -205,4 +257,9 @@ export default function HealthInsurance() {
     </main>
   );
 }
+
+
+
+
+
 

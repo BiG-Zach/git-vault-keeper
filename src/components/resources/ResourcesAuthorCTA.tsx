@@ -27,10 +27,10 @@ export default function ResourcesAuthorCTA() {
           className="text-center mb-12"
         >
           <h2 className="text-4xl md:text-5xl font-luxury-serif text-white mb-6">
-            Ready to Secure Your Family's Future?
+            Stay Ahead with State-Specific Guidance
           </h2>
           <p className="text-xl text-slate-300 max-w-2xl mx-auto leading-relaxed">
-            Get personalized insurance guidance from Zach Bradford, your trusted Florida-licensed advisor
+            Receive multi-state insurance insights from Zach Bradford, your trusted broker licensed across FL, GA, SC, TN, AL, and TX
           </p>
         </motion.div>
 
@@ -57,8 +57,8 @@ export default function ResourcesAuthorCTA() {
               <div className="w-12 h-12 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-xl flex items-center justify-center mx-auto mb-3">
                 <Shield className="w-6 h-6 text-white" />
               </div>
-              <div className="text-white font-semibold">Licensed & Bonded</div>
-              <div className="text-slate-400 text-sm">Professional protection</div>
+              <div className="text-white font-semibold">Licensed in Six States</div>
+              <div className="text-slate-400 text-sm">FL | GA | SC | TN | AL | TX</div>
             </div>
             <div className="text-center">
               <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center mx-auto mb-3">
@@ -76,6 +76,24 @@ export default function ResourcesAuthorCTA() {
             </div>
           </div>
 
+          <div className="bg-white/5 rounded-2xl p-6 mb-8 text-left">
+            <h4 className="text-white font-semibold mb-3">Why subscribers stay ahead:</h4>
+            <ul className="space-y-3 text-slate-300 text-sm">
+              <li className="flex items-start gap-3">
+                <Shield className="w-5 h-5 text-emerald-400 flex-shrink-0" />
+                <span>State-specific insurance updates for Florida, Georgia, South Carolina, Tennessee, Alabama, and Texas.</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <Users className="w-5 h-5 text-emerald-400 flex-shrink-0" />
+                <span>Exclusive multi-state carrier insights and rate change alerts before they go public.</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <Calendar className="w-5 h-5 text-emerald-400 flex-shrink-0" />
+                <span>Free consultation invite for subscribers with personalized recommendations.</span>
+              </li>
+            </ul>
+          </div>
+
           {/* Personal message */}
           <motion.div
             initial={{ opacity: 0 }}
@@ -88,10 +106,10 @@ export default function ResourcesAuthorCTA() {
               <MessageCircle className="w-6 h-6 text-emerald-400 flex-shrink-0 mt-1" />
               <div>
                 <p className="text-white italic font-luxury-serif leading-relaxed">
-                  "I believe every family deserves honest, expert guidance when it comes to protecting their financial future. My goal is to simplify the complex world of insurance and help you make confident decisions that serve your family's best interests."
+                  "I believe every family deserves honest, expert guidance when it comes to protecting their financial future. My goal is to simplify the complex world of insurance across every state I serve so you can make confident decisions that serve your family's best interests."
                 </p>
                 <div className="text-emerald-300 font-semibold mt-3">
-                  — Zach Bradford
+                  - Zach Bradford
                 </div>
               </div>
             </div>
@@ -136,17 +154,17 @@ export default function ResourcesAuthorCTA() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6 text-slate-400 text-sm">
             <div className="flex items-center gap-2">
               <Shield className="w-4 h-4" />
-              <span>Licensed & Bonded Professional</span>
+              <span>Licensed in FL, GA, SC, TN, AL, TX</span>
             </div>
             <div className="hidden sm:block w-1 h-1 bg-slate-400 rounded-full" />
             <div className="flex items-center gap-2">
               <Award className="w-4 h-4" />
-              <span>A-Rated Carriers Only</span>
+              <span>Best Insurance Group Partner</span>
             </div>
             <div className="hidden sm:block w-1 h-1 bg-slate-400 rounded-full" />
             <div className="flex items-center gap-2">
               <Users className="w-4 h-4" />
-              <span>No-Pressure Consultations</span>
+              <span>No-pressure, education-first consultations</span>
             </div>
           </div>
         </motion.div>
@@ -154,3 +172,4 @@ export default function ResourcesAuthorCTA() {
     </section>
   );
 }
+
