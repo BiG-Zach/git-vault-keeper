@@ -19,18 +19,18 @@ export default function HealthInsurance() {
   return (
     <main id="content" className="has-sticky-cta">
       <SEO
-        title="Affordable Health Insurance Broker | Bradford Informed Guidance"
-        description="Compare affordable health insurance with PPO and multi-state coverage options. Work with a licensed broker serving families across Florida, Georgia, South Carolina, Tennessee, Alabama, and Texas."
+        title="Affordable Health Insurance Broker - 6 States Licensed | No Enrollment Fees"
+        description="Compare affordable health insurance across FL, GA, SC, TN, AL, TX. Licensed broker with 15+ A-rated carriers, no enrollment fees, 24-hour response guarantee."
         path="/health-insurance"
         meta={[
           {
             name: 'keywords',
-            content: 'affordable health insurance, multi-state insurance broker, Florida health insurance, Georgia health insurance, South Carolina health plans, Tennessee insurance guidance, Alabama health insurance, Texas PPO'
+            content: 'affordable health insurance, health insurance broker, 6 states licensed, no enrollment fees, FL GA SC TN AL TX, Best Insurance Group partner, A-rated carriers'
           },
-          { property: 'og:title', content: 'Affordable Health Insurance Broker | Bradford Informed Guidance' },
+          { property: 'og:title', content: 'Affordable Health Insurance Broker - 6 States Licensed | No Enrollment Fees | Bradford Informed Guidance' },
           {
             property: 'og:description',
-            content: 'Explore affordable PPO and custom health insurance options with a licensed broker serving Florida, Georgia, South Carolina, Tennessee, Alabama, and Texas.'
+            content: 'Compare affordable health insurance across FL, GA, SC, TN, AL, TX with no enrollment fees and 24-hour response guarantee.'
           },
           { property: 'og:type', content: 'website' }
         ]}
@@ -257,6 +257,7 @@ export default function HealthInsurance() {
     </main>
   );
 }
+
 
 
 

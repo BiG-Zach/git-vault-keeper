@@ -13,8 +13,8 @@ export default function ContactPage() {
   return (
     <>
       <SEO
-        title="Contact Zach Bradford - Licensed Insurance Broker FL GA SC TN AL TX | (689) 325-6570"
-        description="Contact licensed insurance broker Zach Bradford directly. Serving Florida, Georgia, South Carolina, Tennessee, Alabama, and Texas. Call (689) 325-6570 or schedule a no-pressure consultation today."
+        title="Contact Zach Bradford - Licensed Insurance Broker 6 States | (689) 325-6570 | 24-Hour Response"
+        description="Contact licensed insurance broker Zach Bradford directly. Serving FL, GA, SC, TN, AL, TX with 24-hour response guarantee. Call (689) 325-6570 or schedule free consultation."
         path="/contact"
         scripts={[
           { innerHTML: localBusinessSchema('FL', {
@@ -149,6 +149,7 @@ export default function ContactPage() {
     </>
   );
 }
+
 
 
 

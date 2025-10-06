@@ -152,6 +152,10 @@ export default function PremiumContactMethods() {
             <div className="space-y-4 mb-6">
               <div className="flex items-center gap-3">
                 <CheckCircle className="w-5 h-5 text-teal-500 flex-shrink-0" />
+                <span className="text-slate-700">Immediate response during business hours - 24-hour callback guarantee</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <CheckCircle className="w-5 h-5 text-teal-500 flex-shrink-0" />
                 <span className="text-slate-700">Speak with me personally, not a call center</span>
               </div>
               <div className="flex items-center gap-3">
@@ -184,15 +188,15 @@ export default function PremiumContactMethods() {
             <div className="space-y-4 mb-6">
               <div className="flex items-center gap-3">
                 <CheckCircle className="w-5 h-5 text-teal-500 flex-shrink-0" />
-                <span className="text-slate-700">Phone consultations available</span>
+                <span className="text-slate-700">Same-day availability - evening and weekend slots available</span>
               </div>
               <div className="flex items-center gap-3">
                 <CheckCircle className="w-5 h-5 text-teal-500 flex-shrink-0" />
-                <span className="text-slate-700">Evenings and weekends by appointment</span>
+                <span className="text-slate-700">Phone or virtual consultations tailored to you</span>
               </div>
               <div className="flex items-center gap-3">
                 <CheckCircle className="w-5 h-5 text-teal-500 flex-shrink-0" />
-                <span className="text-slate-700">Usually available within 24 hours</span>
+                <span className="text-slate-700">Follow-up within 24 hours to confirm details</span>
               </div>
               <div className="flex items-center gap-3">
                 <CheckCircle className="w-5 h-5 text-teal-500 flex-shrink-0" />
@@ -225,7 +229,7 @@ export default function PremiumContactMethods() {
               </div>
               <div className="flex items-center gap-3">
                 <CheckCircle className="w-5 h-5 text-teal-500 flex-shrink-0" />
-                <span className="text-slate-700">Personal response within 4 business hours</span>
+                <span className="text-slate-700">24-hour response guarantee - no obligation consultation</span>
               </div>
               <div className="flex items-center gap-3">
                 <CheckCircle className="w-5 h-5 text-teal-500 flex-shrink-0" />
@@ -250,4 +254,3 @@ export default function PremiumContactMethods() {
     </Section>
   );
 }
-

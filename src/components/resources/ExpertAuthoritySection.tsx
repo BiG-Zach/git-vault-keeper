@@ -5,23 +5,23 @@ import { Award, Shield, Users, Clock, Star, CheckCircle } from 'lucide-react';
 const authorityPoints = [
   {
     icon: <Shield className="w-6 h-6" />,
-    title: "Multi-State Licensed & Bonded",
-    description: "Serving families across FL, GA, SC, TN, AL, and TX with full compliance expertise"
+    title: "Licensed Across FL, GA, SC, TN, AL & TX",
+    description: "Regional regulation expertise with local carrier relationships in every market we serve"
   },
   {
     icon: <Clock className="w-6 h-6" />,
-    title: "8+ Years Experience",
-    description: "Guiding 1,000+ multi-state households since 2016"
+    title: "8 Years Experience Since 2017",
+    description: "Guiding 1,000+ families with personalized coverage strategies across six states"
   },
   {
     icon: <Users className="w-6 h-6" />,
-    title: "1,000+ Families Served",
-    description: "Consultations backed by Best Insurance Group partnership"
+    title: "Dual Verification: TrustMyProducer + NIPR",
+    description: "Active credentials verified for every state license and carrier appointment"
   },
   {
     icon: <Award className="w-6 h-6" />,
-    title: "A-Rated Carrier Access",
-    description: "15+ A-rated carriers with exclusive programs"
+    title: "Best Insurance Group Partner Since 2020",
+    description: "Enterprise underwriting access and exclusive A-rated carrier programs"
   }
 ];
 
@@ -29,20 +29,20 @@ const credentials = [
   {
     icon: <Award className="w-8 h-8" />,
     label: "TrustMyProducer",
-    value: "Verified",
-    description: "NIPR and state licensing confirmed"
+    value: "Dual Verification",
+    description: "TrustMyProducer + NIPR credentials active across all 6 states"
   },
   {
     icon: <Star className="w-8 h-8" />,
-    label: "Best Insurance",
-    value: "Group Partner",
-    description: "Enterprise underwriting access since 2020"
+    label: "Best Insurance Group",
+    value: "Partner Since 2020",
+    description: "Enterprise underwriting access with exclusive carrier programs"
   },
   {
     icon: <CheckCircle className="w-8 h-8" />,
-    label: "Six-State",
-    value: "Licensing",
-    description: "FL | GA | SC | TN | AL | TX"
+    label: "Licensed States",
+    value: "FL | GA | SC | TN | AL | TX",
+    description: "Serving families with regional expertise since 2017"
   }
 ];
 
@@ -74,7 +74,7 @@ export default function ExpertAuthoritySection() {
             Insurance Expertise You Can Trust Across Six States
           </h2>
           <p className="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
-            Zach Bradford brings 8+ years of licensed experience helping families secure coverage across six states
+            Zach Bradford brings 8 years of licensed expertise since 2017, helping families secure coverage across six states
           </p>
         </motion.div>
 
@@ -174,4 +174,5 @@ export default function ExpertAuthoritySection() {
     </section>
   );
 }
+
 

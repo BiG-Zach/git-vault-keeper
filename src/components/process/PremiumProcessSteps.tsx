@@ -106,52 +106,56 @@ export default function PremiumProcessSteps() {
     {
       number: 1,
       icon: <Calendar className="w-10 h-10" />,
-      title: "Schedule Your Free Personal Consultation",
-      content: "We start with a no-pressure conversation guaranteed within 24 hours of your request. I learn about your household, budget, and the state-specific requirements that apply to you.",
+      title: "Schedule Your Free Personal Consultation with Me",
+      content: "I start with a no-obligation consultation to understand your unique needs, budget, and coverage goals. 24-hour response guarantee for all inquiries.",
       bulletPoints: [
-        "Response guarantee: 24 hours or less",
-        "Licensed in FL, GA, SC, TN, AL, and TX",
-        "Virtual and evening consultations available",
-        "Education-first conversation with zero sales pressure"
+        "24-hour response guarantee for all consultations",
+        "Duration: 15-30 minutes with me personally",
+        "No cost, no obligation",
+        "Licensed broker in FL, GA, SC, TN, AL, TX",
+        "Evening and weekend appointments available"
       ]
     },
     {
       number: 2,
       icon: <BarChart3 className="w-10 h-10" />,
-      title: "Receive Multi-Carrier Comparisons Within 48 Hours",
-      content: "Through my Best Insurance Group partnership I build curated comparisons featuring 15+ A-rated carriers across all six states so you see the strongest options side-by-side.",
+      title: "I Compare All Your Options Personally",
+      content: "Using my Best Insurance Group partnership and relationships with 15+ A-rated carriers, I create your personalized comparison within 48 hours showing costs, benefits, and network coverage across all 6 licensed states.",
       bulletPoints: [
-        "Personalized recommendations delivered within 48 hours",
-        "Carrier lineups tailored to your state's regulations",
-        "Transparent pricing with subsidy or employer credit verification",
-        "Doctor and prescription matching completed before we reconnect"
+        "Access to 15+ A-rated carriers through Best Insurance Group partnership",
+        "Multi-carrier comparison within 48 hours",
+        "Transparent pricing - no hidden fees or enrollment costs",
+        "State-specific carrier availability across all 6 licensed states",
+        "I verify your doctors are covered in your state"
       ]
     },
     {
       number: 3,
       icon: <Handshake className="w-10 h-10" />,
-      title: "Review Recommendations at Your Pace",
-      content: "We walk through every option together in plain English. I focus on education so you understand coverage, pricing, and trade-offs before you make a decision.",
+      title: "Receive Professional Recommendations",
+      content: "As your licensed broker with dual verification (TrustMyProducer + NIPR), I explain each option in plain English, helping you understand exactly what you're getting. No insurance jargon, no pressure - just my honest professional guidance backed by 8 years of experience.",
       bulletPoints: [
-        "Education-first reviews with me personally",
-        "Side-by-side comparisons without sales pressure",
-        "You control the timing and next steps",
-        "Best Insurance Group resources ready for complex cases"
+        "Dual verification: TrustMyProducer + NIPR credentials",
+        "Licensed & bonded broker since 2017 (8 years experience)",
+        "Multi-state expertise across FL, GA, SC, TN, AL, TX",
+        "No pressure approach - transparent recommendations only",
+        "Plain English explanations of all options"
       ]
     },
     {
       number: 4,
       icon: <CheckCircle className="w-10 h-10" />,
-      title: "Experience Same-Day Enrollment Support",
-      content: "Once you are ready, I complete every application, coordinate underwriting, and stay with you long after enrollment with proactive follow-ups.",
+      title: "I Handle Same-Day Enrollment Assistance",
+      content: "Once you choose your plan, I handle all the paperwork and enrollment details personally. Through my Best Insurance Group partnership, I get most approvals within 24 hours, with same-day enrollment assistance and coverage starting as soon as next day.",
       bulletPoints: [
-        "Same-day enrollment assistance when available",
-        "Compliance handled for all six licensed states",
-        "Claims, renewals, and escalations managed for you",
-        "Ongoing check-ins every renewal cycle"
+        "Same-day enrollment assistance when requested",
+        "24-hour approval turnaround through Best Insurance Group partnership",
+        "I handle all your paperwork across all 6 states",
+        "Direct carrier relationships streamline your enrollment",
+        "Year-round advocacy and ongoing personal support"
       ]
     }
-];
+  ];
 
   return (
     <section className="py-20 bg-gradient-to-br from-slate-50 to-white relative overflow-hidden">
@@ -192,3 +196,4 @@ export default function PremiumProcessSteps() {
     </section>
   );
 }
+
