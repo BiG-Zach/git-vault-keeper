@@ -19,18 +19,18 @@ export default function LifeInsurance() {
   return (
     <main id="content" className="has-sticky-cta">
       <SEO
-        title="Life Insurance Broker in FL, AZ, TX, GA | Bradford Informed Guidance"
-        description="Licensed life insurance broker delivering custom term, whole, and final expense coverage in Florida, Arizona, Texas, Georgia, Michigan, and North Carolina."
+        title="Life Insurance Broker Across Six States | Bradford Informed Guidance"
+        description="Licensed life insurance broker delivering custom term, whole, and final expense coverage in Florida, Georgia, South Carolina, Tennessee, Alabama, and Texas."
         path="/life-insurance"
         meta={[
           {
             name: 'keywords',
-            content: 'life insurance broker Florida, life insurance broker Arizona, Texas life insurance quotes, Georgia life insurance advisor, whole life insurance, term life insurance, family protection plans'
+            content: 'life insurance broker Florida, Georgia life insurance advisor, South Carolina life insurance, Tennessee legacy planning, Alabama life insurance specialist, Texas life insurance broker, whole life insurance, term life insurance'
           },
-          { property: 'og:title', content: 'Life Insurance Broker in FL, AZ, TX, GA | Bradford Informed Guidance' },
+          { property: 'og:title', content: 'Life Insurance Broker Across Six States | Bradford Informed Guidance' },
           {
             property: 'og:description',
-            content: 'Compare term, whole, and universal life insurance with a licensed broker serving FL, AZ, TX, GA, MI, and NC.'
+            content: 'Compare term, whole, and universal life insurance with a licensed broker serving Florida, Georgia, South Carolina, Tennessee, Alabama, and Texas.'
           },
           { property: 'og:type', content: 'website' }
         ]}
@@ -91,9 +91,18 @@ export default function LifeInsurance() {
                 </p>
               </div>
             </div>
+            <div className="rounded-2xl border border-slate-200 bg-slate-50 p-6">
+              <h3 className="text-lg font-semibold text-slate-900">When to choose each policy type</h3>
+              <ul className="mt-4 space-y-3 text-sm text-slate-600">
+                <li><span className="font-semibold text-slate-900">Term Life:</span> Young families, mortgage protection, or income replacement for 10-30 year goals.</li>
+                <li><span className="font-semibold text-slate-900">Whole Life:</span> Permanent coverage, cash value accumulation, and legacy planning with guaranteed growth.</li>
+                <li><span className="font-semibold text-slate-900">Indexed Universal Life:</span> Flexible premiums with market-linked growth for business owners and high-income earners.</li>
+                <li><span className="font-semibold text-slate-900">Final Expense:</span> Seniors 50+ needing simplified underwriting for burial costs and small estate settlement.</li>
+              </ul>
+            </div>
             <div className="flex flex-col gap-4 sm:flex-row">
               <Button as="a" href="https://calendly.com/bradfordinformedguidance" variant="primary" size="lg">
-                Plan My Coverage
+                Get Your Personalized Life Insurance Analysis
               </Button>
               <Button as="a" href="tel:+16893256570" variant="outline" size="lg">
                 Speak with an Advisor
@@ -104,24 +113,24 @@ export default function LifeInsurance() {
             <h3 className="text-2xl font-semibold">Licensed Experts for Life Insurance</h3>
             <ul className="space-y-4 text-slate-200">
               <li className="flex items-start gap-3">
-                <FileSignature className="mt-1 h-6 w-6 text-emerald-300" />
+                <HeartHandshake className="mt-1 h-6 w-6 text-emerald-300" />
                 <div>
-                  <p className="font-semibold">Underwriting Advocates</p>
-                  <p className="text-sm text-slate-300">We package medical and financial documents to secure favorable approvals and living benefit riders.</p>
+                  <p className="font-semibold">Personalized policy design</p>
+                  <p className="text-sm text-slate-300">Every plan is built around your family's goals, business obligations, and legacy priorities.</p>
                 </div>
               </li>
               <li className="flex items-start gap-3">
-                <Users className="mt-1 h-6 w-6 text-emerald-300" />
+                <FileSignature className="mt-1 h-6 w-6 text-emerald-300" />
                 <div>
-                  <p className="font-semibold">Families, Founders &amp; Physicians</p>
-                  <p className="text-sm text-slate-300">Strategies for complex incomes, buy-sell agreements, and high-net-worth households.</p>
+                  <p className="font-semibold">Multi-carrier comparisons</p>
+                  <p className="text-sm text-slate-300">Best Insurance Group partnership unlocks 15+ A-rated carriers for optimal coverage, riders, and pricing.</p>
                 </div>
               </li>
               <li className="flex items-start gap-3">
                 <ShieldCheck className="mt-1 h-6 w-6 text-emerald-300" />
                 <div>
-                  <p className="font-semibold">Six-State Licensing</p>
-                  <p className="text-sm text-slate-300">Fully licensed in Florida, Michigan, North Carolina, Arizona, Texas, and Georgia with multi-state carrier access.</p>
+                  <p className="font-semibold">Estate planning coordination</p>
+                  <p className="text-sm text-slate-300">Licensed across Florida, Georgia, South Carolina, Tennessee, Alabama, and Texas with attorney and CPA partnerships.</p>
                 </div>
               </li>
             </ul>
@@ -171,18 +180,32 @@ export default function LifeInsurance() {
             <p className="mt-4 text-lg text-emerald-100">
               Let our team deliver life insurance options with living benefits, accelerated underwriting, and portable coverage for multi-state households.
             </p>
+            <ul className="mt-4 space-y-2 text-sm text-emerald-100">
+              <li className="flex items-start gap-2">
+                <CheckCircle2 className="mt-0.5 h-4 w-4" />
+                <span>Helped families save an average of $200 per month while increasing coverage safeguards.</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <CheckCircle2 className="mt-0.5 h-4 w-4" />
+                <span>Coordinated legacy strategies with estate attorneys and CPAs for high-net-worth households.</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <CheckCircle2 className="mt-0.5 h-4 w-4" />
+                <span>Simplified life insurance decisions for clients across Florida, Georgia, South Carolina, Tennessee, Alabama, and Texas.</span>
+              </li>
+            </ul>
             <div className="mt-6 flex flex-col gap-4 sm:flex-row">
               <a 
-                href="/contact" 
+                href="https://calendly.com/bradfordinformedguidance" 
                 className="inline-flex items-center justify-center h-11 rounded-md px-8 bg-white text-emerald-700 hover:bg-emerald-100 font-medium transition-colors"
               >
-                Request a Custom Proposal
+                Get Your Personalized Life Insurance Analysis
               </a>
               <a 
-                href="https://calendly.com/bradfordinformedguidance" 
+                href="tel:+16893256570" 
                 className="inline-flex items-center justify-center h-11 rounded-md px-8 border border-white text-white hover:bg-white/10 font-medium transition-colors"
               >
-                Book a 20-Minute Strategy Call
+                Call (689) 325-6570
               </a>
             </div>
           </div>
@@ -205,4 +228,5 @@ export default function LifeInsurance() {
     </main>
   );
 }
+
 
