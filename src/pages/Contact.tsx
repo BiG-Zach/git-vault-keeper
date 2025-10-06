@@ -1,4 +1,5 @@
-import { Phone, Calendar, MessageCircle, Mail, ShieldCheck, Lock, Clock } from 'lucide-react';\r\nimport SEO from "../components/SEO";
+import { Phone, Calendar, MessageCircle, Mail, ShieldCheck, Lock, Clock } from 'lucide-react';
+import SEO from "../components/SEO";
 import ContactHero from "../components/headers/ContactHero";
 import ContactStatisticsSection from "../components/contact/ContactStatisticsSection";
 import PremiumContactMethods from "../components/contact/PremiumContactMethods";

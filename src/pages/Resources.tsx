@@ -119,7 +119,7 @@ export const blogPosts: { [key: string]: BlogPost[] } = {
     {
       slug: 'georgia-insurance-laws',
       title: 'Georgia Insurance Laws: What Every Resident Must Know',
-      preview: 'Stay compliant and protected. Georgia's latest insurance requirements explained simply.',
+      preview: 'Stay compliant and protected. Georgia\'s latest insurance requirements explained simply.',
       wordCount: '2,000 words',
       category: 'Local Market',
       readTime: '10 min read',
@@ -128,8 +128,8 @@ export const blogPosts: { [key: string]: BlogPost[] } = {
     },
     {
       slug: 'south-carolina-best-health-insurance',
-      title: 'South Carolina's Best Health Insurance Plans: 2024 Rankings',
-      preview: 'Independent analysis of South Carolina's top health plans based on coverage, cost, and satisfaction.',
+      title: 'South Carolina\'s Best Health Insurance Plans: 2024 Rankings',
+      preview: 'Independent analysis of South Carolina\'s top health plans based on coverage, cost, and satisfaction.',
       wordCount: '2,300 words',
       category: 'Local Market',
       readTime: '12 min read',
@@ -139,7 +139,7 @@ export const blogPosts: { [key: string]: BlogPost[] } = {
     {
       slug: 'tennessee-health-insurance-market-guide',
       title: 'Tennessee Health Insurance: Market Trends for 2024',
-      preview: 'Understand Tennessee's evolving health insurance landscape and the carriers leading the market.',
+      preview: 'Understand Tennessee\'s evolving health insurance landscape and the carriers leading the market.',
       wordCount: '2,100 words',
       category: 'Local Market',
       readTime: '11 min read',
@@ -325,4 +325,6 @@ export default function Resources() {
     </main>
   );
 }
+
+
 
