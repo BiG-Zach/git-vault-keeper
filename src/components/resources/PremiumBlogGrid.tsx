@@ -11,6 +11,7 @@ interface BlogPost {
   category: string;
   readTime: string;
   updated: string;
+  states?: string[];
 }
 
 interface PremiumBlogGridProps {
@@ -196,7 +197,20 @@ export default function PremiumBlogGrid({ posts, selectedCategory, categories }:
                     <p className="text-slate-600 mb-4 leading-relaxed text-sm">
                       {post.preview}
                     </p>
-                    
+
+                    {post.states && post.states.length > 0 && (
+                      <div className="flex flex-wrap gap-2 mb-4">
+                        {post.states.map((state) => (
+                          <span
+                            key={state}
+                            className="inline-flex items-center rounded-full bg-emerald-50 px-3 py-1 text-xs font-semibold text-emerald-700 border border-emerald-100"
+                          >
+                            {state === 'All' ? 'Multi-state' : state}
+                          </span>
+                        ))}
+                      </div>
+                    )}
+
                     <div className="flex items-center justify-between">
                       <div className="text-xs text-slate-500 font-medium">
                         {post.wordCount}

@@ -5,44 +5,44 @@ import { Award, Shield, Users, Clock, Star, CheckCircle } from 'lucide-react';
 const authorityPoints = [
   {
     icon: <Shield className="w-6 h-6" />,
-    title: "Licensed & Bonded Professional",
-    description: "FL License W347851 with full bonding protection"
+    title: "Multi-State Licensed & Bonded",
+    description: "Serving families across FL, GA, SC, TN, AL, and TX with full compliance expertise"
   },
   {
     icon: <Clock className="w-6 h-6" />,
     title: "8+ Years Experience",
-    description: "Serving families professionally since 2016"
+    description: "Guiding 1,000+ multi-state households since 2016"
   },
   {
     icon: <Users className="w-6 h-6" />,
     title: "1,000+ Families Served",
-    description: "Trusted advisor for Florida families"
+    description: "Consultations backed by Best Insurance Group partnership"
   },
   {
     icon: <Award className="w-6 h-6" />,
-    title: "Top-Rated Carriers Only",
-    description: "I only recommend A-rated insurance companies"
+    title: "A-Rated Carrier Access",
+    description: "15+ A-rated carriers with exclusive programs"
   }
 ];
 
 const credentials = [
   {
     icon: <Award className="w-8 h-8" />,
-    label: "Licensed",
-    value: "FL W347851",
-    description: "Fully licensed & bonded"
+    label: "TrustMyProducer",
+    value: "Verified",
+    description: "NIPR and state licensing confirmed"
   },
   {
     icon: <Star className="w-8 h-8" />,
-    label: "5-Star",
-    value: "Reviews",
-    description: "Client satisfaction rating"
+    label: "Best Insurance",
+    value: "Group Partner",
+    description: "Enterprise underwriting access since 2020"
   },
   {
     icon: <CheckCircle className="w-8 h-8" />,
-    label: "50+ Guides",
-    value: "Published",
-    description: "Expert articles & resources"
+    label: "Six-State",
+    value: "Licensing",
+    description: "FL | GA | SC | TN | AL | TX"
   }
 ];
 
@@ -71,10 +71,10 @@ export default function ExpertAuthoritySection() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-luxury-serif text-white mb-6">
-            Professional Insurance Expertise You Can Trust
+            Insurance Expertise You Can Trust Across Six States
           </h2>
           <p className="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
-            Zach Bradford brings 8+ years of licensed experience helping families secure their financial future
+            Zach Bradford brings 8+ years of licensed experience helping families secure coverage across six states
           </p>
         </motion.div>
 
@@ -162,10 +162,10 @@ export default function ExpertAuthoritySection() {
               className="mt-12 pt-8 border-t border-white/20"
             >
               <blockquote className="text-white text-lg font-luxury-serif italic max-w-2xl mx-auto">
-                "Zach's expertise saved our family thousands on life insurance while ensuring we had the right coverage. His knowledge of the Florida market is unmatched."
+                "Zach's expertise saved our family thousands while securing the right coverage across state lines. His multi-state knowledge made the process effortless."
               </blockquote>
               <div className="mt-4 text-slate-300 text-sm">
-                — Sarah M., Tampa Bay Family
+                - Sarah M., Texas Family
               </div>
             </motion.div>
           </div>
@@ -174,3 +174,4 @@ export default function ExpertAuthoritySection() {
     </section>
   );
 }
+
