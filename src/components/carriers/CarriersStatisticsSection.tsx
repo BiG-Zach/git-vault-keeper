@@ -1,31 +1,31 @@
 import { motion } from 'framer-motion';
 import { useReducedMotion } from 'framer-motion';
-import { Shield, Users, DollarSign, TrendingUp } from 'lucide-react';
+import { Shield, Users, DollarSign, Clock } from 'lucide-react';
 
 const stats = [
   {
-    number: '8',
-    label: 'Premium Carriers',
-    description: 'A+ rated insurance companies',
+    number: '15+',
+    label: 'A-rated Carriers',
+    description: 'Exclusive access across Florida, Georgia, South Carolina, Tennessee, Alabama, and Texas',
     icon: Shield
   },
   {
-    number: '1.3M+',
-    label: 'Healthcare Providers',
-    description: 'Nationwide PPO network access',
+    number: '6',
+    label: 'State Licenses',
+    description: 'Regulation and underwriting expertise in every market we serve',
     icon: Users
   },
   {
-    number: '$2,400',
-    label: 'Average Annual Savings',
-    description: 'Typical family savings with optimized coverage',
+    number: '2020',
+    label: 'Best Insurance Group Partner',
+    description: 'Enterprise-level underwriting access and exclusive carrier programs',
     icon: DollarSign
   },
   {
-    number: '98%',
-    label: 'Client Satisfaction',
-    description: 'Same-day approval rate',
-    icon: TrendingUp
+    number: '24 hr',
+    label: 'Response Guarantee',
+    description: 'Personalized carrier recommendations delivered within one business day',
+    icon: Clock
   }
 ];
 
@@ -74,7 +74,7 @@ export default function CarriersStatisticsSection() {
             viewport={{ once: true }}
           >
             <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse shadow-glow" />
-            <span className="text-sm font-semibold text-emerald-300 tracking-wide">LICENSED & BONDED PROFESSIONAL</span>
+            <span className="text-sm font-semibold text-emerald-300 tracking-wide">BEST INSURANCE GROUP PARTNER SINCE 2020</span>
             <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse shadow-glow" />
           </motion.div>
 
@@ -89,14 +89,14 @@ export default function CarriersStatisticsSection() {
             <span className="inline-block">Trusted by </span>
             <span className="relative inline-block">
               <span className="bg-gradient-to-r from-emerald-400 via-emerald-300 to-cyan-400 bg-clip-text text-transparent font-black">
-                Thousands of Families
+                1,000+ Families
               </span>
               <div className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-emerald-500/60 to-cyan-500/60 rounded-full opacity-80" />
             </span>
             <span className="block mt-2">Across </span>
             <span className="relative inline-block">
               <span className="bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent font-black">
-                Three States
+                Six States
               </span>
               <div className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-emerald-500/60 to-cyan-500/60 rounded-full opacity-80" />
             </span>
@@ -199,7 +199,7 @@ export default function CarriersStatisticsSection() {
               href="/quote" 
               className="text-emerald-400 hover:text-emerald-300 underline decoration-emerald-400 underline-offset-4 transition-colors duration-300"
             >
-              Get your quote today
+              Get personalized recommendations
             </a>
           </p>
         </motion.div>
@@ -207,3 +207,5 @@ export default function CarriersStatisticsSection() {
     </section>
   );
 }
+
+
