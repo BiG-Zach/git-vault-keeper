@@ -5,18 +5,18 @@ import { Quote, Shield, Heart, Clock } from 'lucide-react';
 const guarantees = [
   {
     icon: <Heart className="w-8 h-8" />,
-    title: "Personal Commitment",
-    guarantee: "I personally review every recommendation to ensure it's truly the best fit for your family's needs and budget."
+    title: "Education-First Promise",
+    guarantee: "Every recommendation starts with education and zero sales pressure so you feel confident before you choose a plan."
   },
   {
     icon: <Shield className="w-8 h-8" />,
-    title: "Transparency Promise",
-    guarantee: "I provide complete transparency in pricing and coverage details - no hidden fees, no surprises, no fine print."
+    title: "Six-State Compliance Expertise",
+    guarantee: "Licensed in FL, GA, SC, TN, AL, and TX with Best Insurance Group resources to navigate state-specific regulations and underwriting."
   },
   {
     icon: <Clock className="w-8 h-8" />,
-    title: "Response Guarantee",
-    guarantee: "I respond to all client questions within 4 hours during business days, because your time and peace of mind matter."
+    title: "24-Hour Response Guarantee",
+    guarantee: "Every question receives a personal response within one business day, including virtual consultations for every state we serve."
   }
 ];
 
@@ -56,8 +56,7 @@ export default function PersonalGuaranteeSection() {
           
           <div className="max-w-4xl mx-auto">
             <blockquote className="text-2xl md:text-3xl font-luxury-serif text-slate-200 leading-relaxed mb-8">
-              "As your licensed broker, I stake my professional reputation on providing you with honest, 
-              transparent guidance that puts your family's needs first - not my commission."
+              "As your licensed broker, I stake my professional reputation on providing honest, transparent guidance that puts your family's needs first across every market we serve."
             </blockquote>
             <cite className="text-emerald-300 text-xl font-semibold">
               — Zach Bradford, Licensed Insurance Broker

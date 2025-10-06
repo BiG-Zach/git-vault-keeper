@@ -5,54 +5,54 @@ import { Shield, Award, Clock, Users, MapPin, CheckCircle } from 'lucide-react';
 const trustPoints = [
   {
     icon: <Shield className="w-6 h-6" />,
-    title: "Licensed & Bonded",
-    description: "Personally licensed & bonded in all markets I serve"
+    title: "Licensed in Six States",
+    description: "Fully licensed across FL, GA, SC, TN, AL, and TX with local regulatory insight"
   },
   {
     icon: <Award className="w-6 h-6" />,
-    title: "Top-Rated Carriers",
-    description: "I only work with A-rated insurance companies"
+    title: "15+ A-Rated Carriers",
+    description: "Access to elite carrier lineups through Best Insurance Group partnership"
   },
   {
     icon: <Users className="w-6 h-6" />,
-    title: "Personal Support",
-    description: "I provide ongoing personal support for all clients"
+    title: "Education-First Approach",
+    description: "No-pressure consultations focused on clarity before commitment"
   },
   {
     icon: <MapPin className="w-6 h-6" />,
-    title: "Local Expertise",
-    description: "Local expertise with national carrier access"
+    title: "State-Specific Guidance",
+    description: "Customized recommendations that respect each state's regulations"
   },
   {
     icon: <Clock className="w-6 h-6" />,
-    title: "Next-Day Approval",
-    description: "Next-day approval available for qualified applicants"
+    title: "24-Hour Response Promise",
+    description: "Guaranteed follow-up on consultations and carrier questions"
   },
   {
     icon: <CheckCircle className="w-6 h-6" />,
-    title: "Proven Process",
-    description: "My proven 4-step process gets results quickly"
+    title: "Ongoing Advocacy",
+    description: "Claims, renewals, and escalations handled personally after enrollment"
   }
 ];
 
 const credentials = [
   {
     icon: <Award className="w-10 h-10" />,
-    label: "Licensed",
-    value: "& Bonded",
-    description: "Professional credentials verified"
+    label: "TrustMyProducer",
+    value: "& NIPR Verified",
+    description: "Dual verification for professional credibility"
   },
   {
     icon: <Clock className="w-10 h-10" />,
     label: "8+ Years",
     value: "Experience",
-    description: "Serving families since 2016"
+    description: "Serving multi-state families since 2016"
   },
   {
     icon: <Users className="w-10 h-10" />,
-    label: "6+ Networks",
-    value: "Access",
-    description: "Major carrier relationships"
+    label: "Best Insurance",
+    value: "Group Partner",
+    description: "Enterprise underwriting access and exclusive programs"
   }
 ];
 
@@ -81,10 +81,10 @@ export default function EnhancedProcessTrust() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-luxury-serif text-white mb-6">
-            Why Florida, Michigan & North Carolina Families Choose Me
+            Why Families Across Six States Choose Me
           </h2>
           <p className="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
-            Professional credentials, proven results, and personalized service you can trust
+            Multi-state credentials, no-pressure guidance, and enterprise-level support you can trust
           </p>
         </motion.div>
 
@@ -173,7 +173,7 @@ export default function EnhancedProcessTrust() {
             >
               <div className="inline-flex items-center gap-3 bg-gradient-to-r from-emerald-600 to-cyan-600 rounded-full px-6 py-3 text-white font-semibold shadow-lg">
                 <Shield className="w-5 h-5" />
-                <span>NPN: 18181266</span>
+                <span>NPN: 18181266 - Best Insurance Group Partner</span>
               </div>
             </motion.div>
           </div>

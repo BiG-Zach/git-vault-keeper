@@ -106,52 +106,52 @@ export default function PremiumProcessSteps() {
     {
       number: 1,
       icon: <Calendar className="w-10 h-10" />,
-      title: "Schedule Your Free Personal Consultation with Me",
-      content: "I start with a no-obligation consultation to understand your unique needs, budget, and coverage goals.",
+      title: "Schedule Your Free Personal Consultation",
+      content: "We start with a no-pressure conversation guaranteed within 24 hours of your request. I learn about your household, budget, and the state-specific requirements that apply to you.",
       bulletPoints: [
-        "Duration: 15-30 minutes with me personally",
-        "No cost, no obligation",
-        "Licensed broker in FL, MI, NC",
-        "Evening and weekend appointments available"
+        "Response guarantee: 24 hours or less",
+        "Licensed in FL, GA, SC, TN, AL, and TX",
+        "Virtual and evening consultations available",
+        "Education-first conversation with zero sales pressure"
       ]
     },
     {
       number: 2,
       icon: <BarChart3 className="w-10 h-10" />,
-      title: "I Compare All Your Options Personally",
-      content: "Using my relationships with top-rated carriers (Aetna, Cigna, UnitedHealthcare, Blue Cross Blue Shield), I create your personalized comparison showing costs, benefits, and network coverage.",
+      title: "Receive Multi-Carrier Comparisons Within 48 Hours",
+      content: "Through my Best Insurance Group partnership I build curated comparisons featuring 15+ A-rated carriers across all six states so you see the strongest options side-by-side.",
       bulletPoints: [
-        "I access 6+ major networks for you",
-        "My personal side-by-side analysis",
-        "Transparent pricing comparisons",
-        "I verify your doctors are covered"
+        "Personalized recommendations delivered within 48 hours",
+        "Carrier lineups tailored to your state's regulations",
+        "Transparent pricing with subsidy or employer credit verification",
+        "Doctor and prescription matching completed before we reconnect"
       ]
     },
     {
       number: 3,
       icon: <Handshake className="w-10 h-10" />,
-      title: "Request Professional Recommendations",
-      content: "As your licensed broker, I explain each option in plain English, helping you understand exactly what you're getting. No insurance jargon, no pressure - just my honest professional guidance.",
+      title: "Review Recommendations at Your Pace",
+      content: "We walk through every option together in plain English. I focus on education so you understand coverage, pricing, and trade-offs before you make a decision.",
       bulletPoints: [
-        "Licensed & bonded broker since 2016",
-        "8+ years experience in insurance",
-        "My plain English explanations",
-        "My unbiased recommendations"
+        "Education-first reviews with me personally",
+        "Side-by-side comparisons without sales pressure",
+        "You control the timing and next steps",
+        "Best Insurance Group resources ready for complex cases"
       ]
     },
     {
       number: 4,
       icon: <CheckCircle className="w-10 h-10" />,
-      title: "I Handle Quick & Easy Enrollment",
-      content: "Once you choose your plan, I handle all the paperwork and enrollment details personally. I get most approvals within 24 hours, with coverage starting as soon as next day.",
+      title: "Experience Same-Day Enrollment Support",
+      content: "Once you are ready, I complete every application, coordinate underwriting, and stay with you long after enrollment with proactive follow-ups.",
       bulletPoints: [
-        "I get next-day approval when possible",
-        "I handle all your paperwork",
-        "My direct carrier relationships work for you",
-        "I provide ongoing personal support"
+        "Same-day enrollment assistance when available",
+        "Compliance handled for all six licensed states",
+        "Claims, renewals, and escalations managed for you",
+        "Ongoing check-ins every renewal cycle"
       ]
     }
-  ];
+];
 
   return (
     <section className="py-20 bg-gradient-to-br from-slate-50 to-white relative overflow-hidden">
