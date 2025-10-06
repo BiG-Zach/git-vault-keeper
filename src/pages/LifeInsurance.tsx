@@ -19,18 +19,18 @@ export default function LifeInsurance() {
   return (
     <main id="content" className="has-sticky-cta">
       <SEO
-        title="Life Insurance Broker Across Six States | Bradford Informed Guidance"
-        description="Licensed life insurance broker delivering custom term, whole, and final expense coverage in Florida, Georgia, South Carolina, Tennessee, Alabama, and Texas."
+        title="Life Insurance Broker - 6 States Licensed | Personalized Coverage & 24-Hour Response"
+        description="Customize term, whole, universal, and final expense coverage across FL, GA, SC, TN, AL, TX. Multi-carrier comparisons with 24-hour response guarantee and 8 years expertise."
         path="/life-insurance"
         meta={[
           {
             name: 'keywords',
-            content: 'life insurance broker Florida, Georgia life insurance advisor, South Carolina life insurance, Tennessee legacy planning, Alabama life insurance specialist, Texas life insurance broker, whole life insurance, term life insurance'
+            content: 'life insurance broker, multi-state life insurance, FL GA SC TN AL TX, personalized policy design, 24-hour response guarantee, Best Insurance Group partner, term life, whole life'
           },
-          { property: 'og:title', content: 'Life Insurance Broker Across Six States | Bradford Informed Guidance' },
+          { property: 'og:title', content: 'Life Insurance Broker - 6 States Licensed | Personalized Coverage & 24-Hour Response | Bradford Informed Guidance' },
           {
             property: 'og:description',
-            content: 'Compare term, whole, and universal life insurance with a licensed broker serving Florida, Georgia, South Carolina, Tennessee, Alabama, and Texas.'
+            content: 'Customize term, whole, universal, and final expense coverage across FL, GA, SC, TN, AL, TX with 24-hour response guarantee and multi-carrier comparisons.'
           },
           { property: 'og:type', content: 'website' }
         ]}
@@ -228,5 +228,6 @@ export default function LifeInsurance() {
     </main>
   );
 }
+
 
 

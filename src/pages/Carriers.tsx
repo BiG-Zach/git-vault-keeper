@@ -139,17 +139,17 @@ export default function CarriersPage() {
   return (
     <>
       <SEO 
-        title="PPO Insurance Networks Across Six States | Licensed Broker"
-        description="Compare top PPO networks: Aetna, Cigna, UnitedHealthcare, Blue Cross. Licensed broker serving Florida, Georgia, South Carolina, Tennessee, Alabama, and Texas. Next-day approval available."
+        title="PPO Insurance Networks - 6 States Licensed Broker | 15+ A-Rated Carriers"
+        description="Compare 15+ A-rated carriers across FL, GA, SC, TN, AL, TX. Best Insurance Group partner with 24-hour response guarantee. Licensed broker since 2017."
         path="/carriers"
         scripts={structuredData.map(data => ({ type: 'application/ld+json', innerHTML: data }))}
         meta={[
-          { name: 'keywords', content: 'PPO insurance networks, multi-state insurance broker, Florida health insurance, Georgia insurance broker, South Carolina PPO, Tennessee insurance advisor, Alabama insurance guidance, Texas insurance carriers' },
+          { name: 'keywords', content: 'PPO insurance networks, multi-state insurance broker, Florida Georgia South Carolina Tennessee Alabama Texas, Best Insurance Group partner, A-rated carriers, licensed broker' },
           { property: 'og:type', content: 'website' },
-          { property: 'og:title', content: 'PPO Insurance Networks Across Six States | Licensed Broker | Bradford Informed Guidance' },
-          { property: 'og:description', content: 'Compare top PPO networks: Aetna, Cigna, UnitedHealthcare, Blue Cross. Licensed broker serving Florida, Georgia, South Carolina, Tennessee, Alabama, and Texas. Next-day approval available.' },
-          { name: 'twitter:title', content: 'PPO Insurance Networks Across Six States | Licensed Broker' },
-          { name: 'twitter:description', content: 'Compare top PPO networks: Aetna, Cigna, UnitedHealthcare, Blue Cross. Licensed broker serving Florida, Georgia, South Carolina, Tennessee, Alabama, and Texas.' }
+          { property: 'og:title', content: 'PPO Insurance Networks - 6 States Licensed Broker | 15+ A-Rated Carriers | Bradford Informed Guidance' },
+          { property: 'og:description', content: 'Compare 15+ A-rated carriers across FL, GA, SC, TN, AL, TX. Best Insurance Group partner with 24-hour response guarantee. Licensed broker since 2017.' },
+          { name: 'twitter:title', content: 'PPO Insurance Networks - 6 States Licensed Broker | 15+ A-Rated Carriers' },
+          { name: 'twitter:description', content: 'Compare 15+ A-rated carriers across FL, GA, SC, TN, AL, TX with 24-hour response guarantee.' }
         ]}
       />
 
@@ -210,7 +210,7 @@ export default function CarriersPage() {
                 </span>
                 <span className="block text-3xl md:text-4xl lg:text-5xl font-semibold opacity-95 mt-4"
                       style={{ animation: 'fade-in 1.2s ease-out 0.4s both' }}>
-                  Serving Florida, Georgia, South Carolina, Tennessee, Alabama & Texas
+                  Licensed in Florida, Georgia, South Carolina, Tennessee, Alabama & Texas
                 </span>
               </h1>
               
@@ -237,7 +237,7 @@ export default function CarriersPage() {
                        boxShadow: '0 12px 32px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.3)',
                        transition: 'all 0.3s ease'
                      }}>
-                    Instant access to 15+ A-rated PPO networks - A+ financial strength carriers - Same-day approval options - Licensed and bonded across Florida, Georgia, South Carolina, Tennessee, Alabama, and Texas through Best Insurance Group
+                    Access to 15+ A-rated carriers across 6 states - Best Insurance Group partnership since 2020 - 24-hour response guarantee - Licensed & bonded professional serving FL, GA, SC, TN, AL, TX
                   </p>
                   
                   {/* Decorative corner elements */}
@@ -449,3 +449,4 @@ export default function CarriersPage() {
     </>
   );
 }
+

@@ -14,8 +14,8 @@ export default function HowItWorksPage() {
   return (
     <>
       <SEO
-        title="How I Help You Get Insurance Coverage Across Six States | Licensed Broker Zach Bradford"
-        description="Licensed insurance broker Zach Bradford's proven 4-step process for families across Florida, Georgia, South Carolina, Tennessee, Alabama, and Texas. Free consultation, next-day approval available."
+        title="How I Help You Get Insurance Coverage - 6 States Licensed | 24-Hour Response Guarantee"
+        description="Licensed insurance broker's proven 4-step process across FL, GA, SC, TN, AL, TX. 24-hour response guarantee, same-day enrollment assistance. 8 years experience."
         path="/our-process"
         scripts={[
           { innerHTML: localBusinessSchema('FL', {
