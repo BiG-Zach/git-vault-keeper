@@ -1,5 +1,5 @@
-import { Link } from 'react-router-dom';
-import { HeartPulse, ShieldCheck, Users, Clock3, Stethoscope, CheckCircle2 } from 'lucide-react';
+﻿import { Link } from 'react-router-dom';
+import { HeartPulse, ShieldCheck, Users, Clock3, Stethoscope, CheckCircle2, BookOpen, Shield, DollarSign, Heart, Zap, TrendingUp, Clock, ArrowRight } from 'lucide-react';
 import SEO from '../components/SEO';
 import PageHero from '../components/headers/PageHero';
 import Button from '../components/Button';
@@ -85,7 +85,7 @@ export default function HealthInsurance() {
               </div>
               <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
                 <Clock3 className="h-10 w-10 text-slate-600" aria-hidden="true" />
-                <h3 className="mt-4 text-xl font-semibold text-slate-900">Quotes in 45–90 Minutes</h3>
+                <h3 className="mt-4 text-xl font-semibold text-slate-900">Quotes in 45â€“90 Minutes</h3>
                 <p className="mt-2 text-sm text-slate-600">
                   Receive tailored health plan comparisons the same day, complete with cost projections and concierge enrollment support.
                 </p>
@@ -145,6 +145,155 @@ export default function HealthInsurance() {
           </div>
         </div>
       </section>
+
+      {/* What to Look for in Health Insurance - Educational Enhancement */}
+      <section className="section bg-slate-50">
+        <div className="container-default">
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center gap-2 bg-emerald-100 rounded-full px-6 py-3 mb-8">
+              <BookOpen className="w-4 h-4 text-emerald-600" />
+              <span className="text-emerald-700 font-bold text-sm">EDUCATIONAL GUIDE</span>
+            </div>
+            
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6">
+              What to Look for in Health Insurance: A Professional Guide
+            </h2>
+            <p className="text-xl text-slate-600 max-w-4xl mx-auto leading-relaxed">
+              After 8 years of helping families choose health insurance across 6 states, here are the key factors I evaluate for every client to ensure you get the best coverage for your situation.
+            </p>
+          </div>
+
+          <div className="grid lg:grid-cols-3 gap-8 mb-12">
+            {/* Coverage Essentials */}
+            <div className="bg-white rounded-2xl p-8 shadow-sm border border-slate-200">
+              <div className="w-12 h-12 bg-emerald-100 rounded-xl flex items-center justify-center mb-6">
+                <Shield className="w-6 h-6 text-emerald-600" />
+              </div>
+              <h3 className="text-xl font-semibold text-slate-900 mb-4">Coverage Essentials</h3>
+              
+              <div className="space-y-4 text-sm text-slate-600">
+                <div>
+                  <p className="font-semibold text-slate-900 mb-1">Essential Health Benefits</p>
+                  <p>All ACA-compliant plans must cover 10 essential categories. I verify each plan meets requirements and explain what's included.</p>
+                </div>
+                <div>
+                  <p className="font-semibold text-slate-900 mb-1">Preventive Care Coverage</p>
+                  <p>100% covered services include annual checkups, screenings, and immunizations. I ensure you understand what's covered.</p>
+                </div>
+                <div>
+                  <p className="font-semibold text-slate-900 mb-1">Prescription Drug Coverage</p>
+                  <p>I check that your medications are covered and help you understand formulary tiers and copay structures.</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Cost Considerations */}
+            <div className="bg-white rounded-2xl p-8 shadow-sm border border-slate-200">
+              <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mb-6">
+                <DollarSign className="w-6 h-6 text-blue-600" />
+              </div>
+              <h3 className="text-xl font-semibold text-slate-900 mb-4">Cost Structure Analysis</h3>
+              
+              <div className="space-y-4 text-sm text-slate-600">
+                <div>
+                  <p className="font-semibold text-slate-900 mb-1">Total Cost of Ownership</p>
+                  <p>I calculate premiums + estimated out-of-pocket costs based on your health usage patterns, not just the monthly premium.</p>
+                </div>
+                <div>
+                  <p className="font-semibold text-slate-900 mb-1">Subsidy Optimization</p>
+                  <p>For FL, GA, SC, TN, AL, TX residents, I verify subsidy eligibility and ensure you're getting maximum savings available.</p>
+                </div>
+                <div>
+                  <p className="font-semibold text-slate-900 mb-1">Hidden Costs Identification</p>
+                  <p>I identify potential surprise costs like separate deductibles for prescription drugs or higher emergency room fees.</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Network & Access */}
+            <div className="bg-white rounded-2xl p-8 shadow-sm border border-slate-200">
+              <div className="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center mb-6">
+                <Users className="w-6 h-6 text-purple-600" />
+              </div>
+              <h3 className="text-xl font-semibold text-slate-900 mb-4">Network Adequacy</h3>
+              
+              <div className="space-y-4 text-sm text-slate-600">
+                <div>
+                  <p className="font-semibold text-slate-900 mb-1">Provider Network Size</p>
+                  <p>I verify that networks have adequate provider density in your area, especially for specialists you may need.</p>
+                </div>
+                <div>
+                  <p className="font-semibold text-slate-900 mb-1">Hospital Quality & Access</p>
+                  <p>I check that high-quality hospitals are in-network and accessible for both routine and emergency care.</p>
+                </div>
+                <div>
+                  <p className="font-semibold text-slate-900 mb-1">Multi-State Coverage</p>
+                  <p>If you travel or have family across our licensed states, I ensure network coverage follows you.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Plan Type Guide */}
+          <div className="bg-white rounded-2xl p-8 shadow-sm border border-slate-200">
+            <h3 className="text-2xl font-semibold text-slate-900 mb-8 text-center">
+              Health Insurance Plan Types: Real-World Use Cases
+            </h3>
+            
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+              <div className="text-center">
+                <div className="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Heart className="w-8 h-8 text-emerald-600" />
+                </div>
+                <h4 className="font-semibold text-slate-900 mb-2">HMO Plans</h4>
+                <p className="text-sm text-slate-600 mb-3">Best for families who want lower costs and don't mind using a primary care physician for referrals.</p>
+                <p className="text-xs text-emerald-600 font-semibold">Ideal: Predictable healthcare needs</p>
+              </div>
+              
+              <div className="text-center">
+                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Zap className="w-8 h-8 text-blue-600" />
+                </div>
+                <h4 className="font-semibold text-slate-900 mb-2">PPO Plans</h4>
+                <p className="text-sm text-slate-600 mb-3">Perfect for those who want flexibility to see specialists without referrals and travel frequently.</p>
+                <p className="text-xs text-blue-600 font-semibold">Ideal: Flexibility & choice</p>
+              </div>
+              
+              <div className="text-center">
+                <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <TrendingUp className="w-8 h-8 text-purple-600" />
+                </div>
+                <h4 className="font-semibold text-slate-900 mb-2">HDHP/HSA</h4>
+                <p className="text-sm text-slate-600 mb-3">Excellent for healthy individuals who want to save for future healthcare costs with tax advantages.</p>
+                <p className="text-xs text-purple-600 font-semibold">Ideal: Long-term savers</p>
+              </div>
+              
+              <div className="text-center">
+                <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Clock className="w-8 h-8 text-orange-600" />
+                </div>
+                <h4 className="font-semibold text-slate-900 mb-2">Short-Term</h4>
+                <p className="text-sm text-slate-600 mb-3">Temporary coverage for gaps between jobs, COBRA alternatives, or waiting for open enrollment.</p>
+                <p className="text-xs text-orange-600 font-semibold">Ideal: Temporary needs</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div className="mt-8 p-6 bg-slate-100 rounded-xl">
+        <h4 className="font-semibold text-slate-900 mb-3">Learn More</h4>
+        <div className="grid sm:grid-cols-2 gap-4 text-sm">
+          <Link to="/carriers" className="text-blue-600 hover:text-blue-700 font-medium flex items-center gap-2">
+            <ArrowRight className="w-4 h-4" />
+            View PPO Networks & Carriers
+          </Link>
+          <Link to="/process" className="text-blue-600 hover:text-blue-700 font-medium flex items-center gap-2">
+            <ArrowRight className="w-4 h-4" />
+            How My Process Works
+          </Link>
+        </div>
+      </div>
 
       <section className="section bg-slate-50" aria-labelledby="health-articles-heading">
         <div className="container-default">
@@ -257,6 +406,14 @@ export default function HealthInsurance() {
     </main>
   );
 }
+
+
+
+
+
+
+
+
 
 
 

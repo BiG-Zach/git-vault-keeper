@@ -11,9 +11,9 @@ export default function MobileHeader() {
           </div>
           <div className="mobile-branding">
             <div className="mobile-logo">Bradford Informed Guidance</div>
-            <div className="mobile-tagline">Licensed 6 States â€¢ 24-Hour Response</div>
+            <div className="mobile-tagline">Licensed 6 States • 24-Hour Response</div>
             <div className="mobile-credentials">
-              <span className="mobile-trust-pill">FL, GA, SC, TN, AL, TX â€¢ Best Insurance Group Partner</span>
+              <span className="mobile-trust-pill">FL, GA, SC, TN, AL, TX • Best Insurance Group Partner</span>
             </div>
           </div>
         </div>

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useReducedMotion } from 'framer-motion';
 import { ChevronDown, HelpCircle, Phone } from 'lucide-react';
@@ -37,6 +37,38 @@ const faqs = [
   {
     question: "Do you serve all six states you are licensed in?",
     answer: "Absolutely. We are licensed and bonded to support clients in Florida, Georgia, South Carolina, Tennessee, Alabama, and Texas. Each consultation includes state-specific carrier guidance, compliance updates, and virtual support tailored to where you live."
+  },
+  {
+    question: "What's the difference between working with a broker vs. buying direct from insurance companies?",
+    answer: "When you work with me as your broker, you get access to multiple carriers and can compare options side-by-side without bias. Insurance companies only show you their products. I provide ongoing support for claims, renewals, and changes at no extra cost - my compensation comes from the carriers, not your pocket. Plus, with my Best Insurance Group partnership, I often have access to exclusive plans and faster underwriting that aren't available to the public."
+  },
+  {
+    question: "How do you ensure I get the best rate available?",
+    answer: "I have access to 15+ A-rated carriers through my Best Insurance Group partnership, which means I can compare rates across the entire market, not just one company. I also verify subsidy eligibility for ACA plans and check for any available discounts or wellness program benefits. My 8 years of experience helps me identify the best value - sometimes the lowest premium isn't actually the best deal when you factor in deductibles, networks, and coverage."
+  },
+  {
+    question: "What if I need to file a claim - how does that work with a broker?",
+    answer: "This is where working with a broker really pays off. I act as your advocate throughout the claims process. While you'll still file claims directly with your insurance carrier, I help resolve any issues that arise, understand claim denials, and ensure you're getting the benefits you're entitled to. I've helped clients navigate everything from routine claim questions to complex appeals across all 6 states I serve."
+  },
+  {
+    question: "How does coverage work when I travel to other states?",
+    answer: "Most PPO networks I recommend provide nationwide coverage, which is perfect for travel. Emergency care is always covered regardless of location. For routine care while traveling, I ensure your plan includes out-of-network benefits or has reciprocal agreements with providers in other states. Since I'm licensed in FL, GA, SC, TN, AL, and TX, I can help coordinate coverage if you're moving between these states."
+  },
+  {
+    question: "What happens if I need to make changes to my plan?",
+    answer: "I handle all plan changes for you - whether it's adding family members during special enrollment periods, updating your address if you move, or switching plans during open enrollment. Changes outside of open enrollment require qualifying life events, and I help you understand what qualifies and ensure you don't lose coverage during transitions."
+  },
+  {
+    question: "Do I pay extra fees for broker services?",
+    answer: "No, my services are completely free to you. I'm compensated directly by the insurance carriers when you enroll, so there are no broker fees, enrollment fees, or service charges. You pay the same premium whether you buy direct from the carrier or work with me - but with me, you get ongoing support, multiple carrier access, and advocacy at no additional cost."
+  },
+  {
+    question: "How quickly can I get coverage if I need it urgently?",
+    answer: "For qualifying urgent situations, I can often get same-day coverage decisions through my Best Insurance Group partnership. Most applications are processed within 24-48 hours. For immediate needs like job loss or birth of a child, I help you understand your options including COBRA, short-term plans, or special enrollment periods. I prioritize urgent cases and provide same-day enrollment assistance when time is critical."
+  },
+  {
+    question: "What if my doctor isn't in the network I choose?",
+    answer: "Before you enroll, I verify your current doctors are in-network using the most current provider directories. If your doctor isn't included, I help you find comparable specialists in the network or discuss out-of-network benefits if keeping your current doctor is essential. I also monitor for network changes throughout the year and alert you to any updates that might affect your care."
   }
 ];
 
@@ -168,3 +200,4 @@ export default function PremiumCarriersFAQ() {
     </section>
   );
 }
+
