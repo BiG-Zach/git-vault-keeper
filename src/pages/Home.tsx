@@ -1,8 +1,9 @@
 import HeroForm from "../components/HeroForm";
 import LogoRail from "../components/marketing/LogoRail";
 import TestimonialsGrid from "../components/social/TestimonialsGrid";
+import TestimonialsCarousel from "../components/TestimonialsCarousel";
 import USAvailability from "../components/marketing/USAvailability";
-import StickyCTA from "../components/global/StickyCTA";
+
 import { BRAND } from "../lib/brand";
 // Removed separate mobile components - now using unified responsive design
 import SEO from "../components/SEO";
@@ -124,10 +125,8 @@ export default function Home() {
           <AuthoritySection />
           
           <RiskReversalSection />
-
-          <StickyCTA/>
           
-          {/* Social Proof Ticker */}
+          {/* Social Proof Ticker */
           <SocialProofTicker />
         </main>
       </div>
@@ -190,8 +189,6 @@ export default function Home() {
           <USAvailability />
 
           <TestimonialsGrid />
-
-          <StickyCTA/>
         </main>
       </div>
 
@@ -447,96 +444,11 @@ export default function Home() {
             </div>
           </section>
 
-          {/* PREMIUM TESTIMONIALS SECTION */}
-          <section className="bg-slate-900 py-16">
-            <div className="container mx-auto px-6">
-              <div className="mx-auto max-w-md text-center">
-                
-                <h2 className="mb-4 text-2xl font-bold text-white">
-                  What Our Clients Say
-                </h2>
-                <p className="mb-8 text-slate-300">
-                  Real stories from families and businesses we've helped secure better insurance coverage.
-                </p>
-                
-                {/* PREMIUM TESTIMONIAL CARD */}
-                <div className="rounded-3xl bg-white p-8 shadow-2xl">
-                  <div className="mb-6 flex justify-center text-yellow-400">
-                    {[...Array(5)].map((_, i) => (
-                      <svg key={i} className="h-6 w-6 fill-current" viewBox="0 0 20 20">
-                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                      </svg>
-                    ))}
-                  </div>
-                  
-                  <blockquote className="mb-6 text-lg leading-relaxed text-slate-700">
-                    "Bradford made the complex world of insurance simple. His expertise and personalized approach saved us both time and money while getting us better coverage."
-                  </blockquote>
-                  
-                  <div className="border-t border-slate-200 pt-6">
-                    <div className="font-bold text-slate-900">Sarah Johnson</div>
-                    <div className="text-sm text-slate-500">Small Business Owner • Florida</div>
-                  </div>
-                </div>
-                
-                <div className="mt-8">
-                  <a 
-                    href="#testimonials" 
-                    className="inline-flex items-center gap-2 text-emerald-400 font-semibold transition-colors hover:text-emerald-300"
-                  >
-                    Read More Success Stories
-                    <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                    </svg>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </section>
+          {/* MOBILE TESTIMONIALS - DESKTOP CAROUSEL */}
+          <div className="bg-slate-50 py-8">
+            <TestimonialsCarousel />
+          </div>
 
-          {/* MOBILE VERIFICATION SECTION - SAME AS DESKTOP */}
-          <section className="py-6 bg-gradient-to-r from-slate-800 to-slate-900">
-            <div className="container mx-auto px-4">
-              <div className="text-center">
-                <div className="flex items-center justify-center gap-2 text-white/80 mb-3">
-                  <svg className="w-5 h-5 text-emerald-400" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                  </svg>
-                  <span className="text-sm font-medium">Independently Verified</span>
-                </div>
-                
-                <div className="flex flex-col space-y-3">
-                  <a
-                    href="https://www.trustmyproducer.com/agent/21078/bradford-j-bradford"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center gap-2 px-4 py-2 bg-white/10 border border-white/20 rounded-full text-white/90 hover:bg-white/20 transition-all duration-300 text-sm"
-                  >
-                    <svg className="w-4 h-4 text-emerald-400" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                    </svg>
-                    TrustMyProducer
-                  </a>
-                  
-                  <a
-                    href="https://www.nipr.com/verify"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center gap-2 px-4 py-2 bg-white/10 border border-white/20 rounded-full text-white/90 hover:bg-white/20 transition-all duration-300 text-sm"
-                  >
-                    <svg className="w-4 h-4 text-blue-400" fill="currentColor" viewBox="0 0 20 20">
-                      <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z" />
-                      <path fillRule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clipRule="evenodd" />
-                    </svg>
-                    NIPR Registry
-                  </a>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          {/* MOBILE STICKY CTA */}
-          <StickyCTA />
         </main>
       </div>
     </>
