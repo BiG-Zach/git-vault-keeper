@@ -42,14 +42,18 @@ export default function Header() {
             <div className="flex flex-col justify-center min-w-0 flex-1">
               <Link
                 to="/"
-                className="font-serif text-lg md:text-xl lg:text-2xl font-bold text-slate-900 hover:text-emerald-600 transition-colors duration-300 leading-tight truncate focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-emerald-500 rounded-md"
+                className="font-serif text-base sm:text-lg md:text-xl lg:text-2xl font-bold text-slate-900 hover:text-emerald-600 transition-colors duration-300 leading-tight focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-emerald-500 rounded-md overflow-visible"
               >
-                Bradford Informed Guidance
+                <span className="block sm:inline whitespace-nowrap overflow-hidden text-ellipsis">
+                  Bradford Informed Guidance
+                </span>
               </Link>
               
               {/* MOBILE TAGLINE - TRUST BUILDING */}
-              <div className="md:hidden text-xs font-medium text-slate-600 leading-tight truncate">
-                Best Insurance Group Partner • Expert Guidance
+              <div className="md:hidden text-xs font-medium text-slate-600 leading-tight">
+                <span className="block whitespace-nowrap overflow-hidden text-ellipsis">
+                  Best Insurance Group Partner • Expert Guidance
+                </span>
               </div>
             </div>
           </div>
@@ -113,18 +117,7 @@ export default function Header() {
           {/* MOBILE ACTION BUTTONS - THUMB FRIENDLY DESIGN */}
           <div className="md:hidden flex items-center gap-2">
             
-            {/* MOBILE CTA - 44PX MINIMUM TOUCH TARGET */}
-            <a
-              href="https://calendly.com/bradfordinformedguidance"
-              className="inline-flex items-center justify-center rounded-xl font-semibold transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-emerald-500 active:scale-95 px-4 py-2.5 text-sm bg-gradient-to-r from-emerald-600 to-emerald-700 text-white shadow-lg min-h-[44px] hover:shadow-xl"
-              aria-label="Schedule consultation"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Schedule
-            </a>
-            
-            {/* HAMBURGER MENU TOGGLE - ACCESSIBILITY OPTIMIZED */}
+            {/* HAMBURGER MENU TOGGLE - ACCESSIBILITY OPTIMIZED */
             <button
               onClick={toggleMobileMenu}
               className="inline-flex items-center justify-center rounded-lg p-2.5 text-slate-600 hover:bg-slate-100 hover:text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500 transition-colors min-h-[44px] min-w-[44px]"

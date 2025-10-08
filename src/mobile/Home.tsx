@@ -5,7 +5,6 @@ import MobileCarriers from './MobileCarriers';
 import MobileHowItWorks from './MobileHowItWorks';
 import MobileTestimonials from './MobileTestimonials';
 import MobileFooter from './MobileFooter';
-import MobileStickyCTA from './MobileStickyCTA';
 import styles from './home.module.css';
 
 export default function MobileHome() {
@@ -17,7 +16,6 @@ export default function MobileHome() {
       <MobileHowItWorks />
       <MobileTestimonials />
       <MobileFooter />
-      <MobileStickyCTA />
     </main>
   );
 }

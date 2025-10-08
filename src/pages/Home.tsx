@@ -266,7 +266,7 @@ export default function Home() {
                   </a>
                   
                   <a 
-                    href="tel:+19047621775" 
+                    href="tel:+16893256570" 
                     className="group flex w-full items-center justify-center gap-3 rounded-2xl border-2 border-white/30 bg-white/10 px-8 py-5 font-semibold text-white backdrop-blur-md transition-all duration-300 hover:border-emerald-400/50 hover:bg-emerald-500/20 active:scale-[0.98]"
                     data-gtm="premium_mobile_call"
                   >
@@ -274,7 +274,7 @@ export default function Home() {
                       <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
                     </svg>
                     <div className="text-center">
-                      <div className="text-base font-bold">(904) 762-1775</div>
+                      <div className="text-base font-bold">(689) 325-6570</div>
                       <div className="text-sm opacity-90">Call Now - Licensed Professional</div>
                     </div>
                   </a>
@@ -315,15 +315,7 @@ export default function Home() {
                 </div>
               </div>
 
-              {/* SCROLL INDICATOR */}
-              <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-                <div className="flex flex-col items-center gap-2 text-white/60">
-                  <span className="text-xs font-medium">Learn More</span>
-                  <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-                  </svg>
-                </div>
-              </div>
+
             </div>
           </section>
 
@@ -402,7 +394,7 @@ export default function Home() {
                   href="/carriers" 
                   className="inline-flex items-center gap-2 rounded-xl bg-emerald-600 px-6 py-3 font-semibold text-white shadow-lg transition-all hover:bg-emerald-700 hover:shadow-xl active:scale-95"
                 >
-                  View All 50+ Carriers
+                  View All Carriers
                   <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                   </svg>
@@ -448,7 +440,7 @@ export default function Home() {
                     <span className="font-semibold">Licensed Professional</span>
                   </div>
                   <div className="text-sm text-emerald-200">
-                    NPN 19337279 • Best Insurance Group Partner since 2020
+                    NPN 18181266 • Best Insurance Group Partner since 2020
                   </div>
                 </div>
               </div>
