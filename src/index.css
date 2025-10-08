@@ -1,11 +1,9 @@
+﻿@import "./styles/accents.css";
+
 /* Tailwind layers (must come before any custom imports/styles for correct layering) */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-/* Custom imports */
-@import "./styles/accents.css";
-@import "./styles/mobile-header.css";
 
 /* Base layer: tokens + typography */
 @layer base {
@@ -69,5 +67,6 @@
     @apply mx-auto max-w-7xl px-4 sm:px-6 lg:px-8;
   }
 }
+
 
 
