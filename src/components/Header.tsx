@@ -117,7 +117,7 @@ export default function Header() {
           {/* MOBILE ACTION BUTTONS - THUMB FRIENDLY DESIGN */}
           <div className="md:hidden flex items-center gap-2">
             
-            {/* HAMBURGER MENU TOGGLE - ACCESSIBILITY OPTIMIZED */
+            {/* HAMBURGER MENU TOGGLE - ACCESSIBILITY OPTIMIZED */}
             <button
               onClick={toggleMobileMenu}
               className="inline-flex items-center justify-center rounded-lg p-2.5 text-slate-600 hover:bg-slate-100 hover:text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500 transition-colors min-h-[44px] min-w-[44px]"
