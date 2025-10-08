@@ -288,7 +288,7 @@ export default function Home() {
                   
                   <div className="grid grid-cols-2 gap-3">
                     <a
-                      href="{BRAND.verification.trustMyProducer}"
+                      href={BRAND.verification.trustMyProducer}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="flex items-center justify-center gap-2 rounded-xl bg-white/10 px-3 py-3 text-xs font-medium text-white transition-all hover:bg-white/20"
@@ -300,7 +300,7 @@ export default function Home() {
                     </a>
                     
                     <a
-                      href="{BRAND.verification.nipr}"
+                      href={BRAND.verification.nipr}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="flex items-center justify-center gap-2 rounded-xl bg-white/10 px-3 py-3 text-xs font-medium text-white transition-all hover:bg-white/20"
@@ -550,7 +550,6 @@ export default function Home() {
     </>
   );
 }
-
 
 
 
