@@ -1,6 +1,10 @@
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 
+// BIG Monogram Assets
+import bigMonogramSvg from '../assets/logos/big-monogram.svg';
+import bigMonogramPng from '../assets/logos/big-monogram.png';
+
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -30,35 +34,66 @@ export default function Header() {
         {/* MAIN HEADER CONTENT - RESPONSIVE DESIGN */}
         <div className="container mx-auto max-w-7xl flex h-14 md:h-16 lg:h-20 items-center justify-between px-4 lg:px-6">
           
-          {/* LOGO SECTION - MOBILE OPTIMIZED */}
-          <div className="flex items-center gap-3 md:gap-4 flex-1 min-w-0">
+          {/* LUXURY LOGO SECTION - BIG MONOGRAM */}
+          <div className="flex items-center gap-4 md:gap-6">
             
-            {/* MOBILE MONOGRAM - BIG BRANDING */}
-            <div className="md:hidden flex-shrink-0 w-10 h-10 bg-gradient-to-br from-emerald-600 to-emerald-700 rounded-xl flex items-center justify-center shadow-lg transform hover:scale-105 transition-transform duration-200">
-              <span className="text-white font-bold text-sm tracking-wider">BIG</span>
-            </div>
-            
-            {/* COMPANY NAME - RESPONSIVE TYPOGRAPHY */}
-            <div className="flex flex-col justify-center min-w-0 flex-1">
-              <Link
-                to="/"
-                className="font-serif text-base sm:text-lg md:text-xl lg:text-2xl font-bold text-slate-900 hover:text-emerald-600 transition-colors duration-300 leading-tight focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-emerald-500 rounded-md overflow-visible"
-              >
-                <span className="block sm:inline whitespace-nowrap overflow-hidden text-ellipsis">
-                  Bradford Informed Guidance
-                </span>
-              </Link>
-              
-              {/* MOBILE TAGLINE - TRUST BUILDING */}
-              <div className="md:hidden text-xs font-medium text-slate-600 leading-tight">
-                <span className="block">
-                  Best Insurance Group Partner
-                </span>
-                <span className="block text-emerald-600 font-semibold">
-                  Expert Guidance
-                </span>
+            {/* BIG MONOGRAM - LUXURY BRANDING (UNIFIED APPROACH) */}
+            <Link 
+              to="/"
+              className="group flex items-center gap-3 md:gap-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-emerald-500 rounded-xl"
+            >
+              {/* MONOGRAM IMAGE WITH MOBILE FALLBACK */}
+              <div className="relative">
+                {/* Mobile: Compact BIG badge if image fails to load */}
+                <div className="md:hidden flex-shrink-0 w-10 h-10 bg-gradient-to-br from-emerald-600 to-emerald-700 rounded-xl flex items-center justify-center shadow-lg transform group-hover:scale-105 transition-transform duration-200">
+                  <span className="text-white font-bold text-sm tracking-wider">BIG</span>
+                </div>
+                
+                {/* Desktop & Tablet: Full Monogram */}
+                <img 
+                  src={bigMonogramSvg}
+                  alt="BIG - Bradford Informed Guidance"
+                  className="hidden md:block h-12 md:h-14 lg:h-16 w-auto transition-all duration-300 group-hover:scale-105 drop-shadow-lg"
+                  onError={(e) => {
+                    // Fallback to PNG if SVG fails
+                    const target = e.currentTarget as HTMLImageElement;
+                    target.src = bigMonogramPng;
+                  }}
+                />
+                {/* LUXURY GLOW EFFECT */}
+                <div className="absolute inset-0 bg-gradient-to-r from-emerald-400/20 to-emerald-600/20 rounded-xl blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"></div>
               </div>
-            </div>
+              
+              {/* RESPONSIVE COMPANY NAME */}
+              <div className="flex flex-col justify-center min-w-0 flex-1">
+                {/* MOBILE: Compact Name */}
+                <div className="md:hidden">
+                  <span className="font-serif text-base font-bold text-slate-900 group-hover:text-emerald-600 transition-colors duration-300 leading-tight whitespace-nowrap overflow-hidden text-ellipsis">
+                    Bradford Informed Guidance
+                  </span>
+                  <div className="text-xs font-medium text-slate-600 leading-tight">
+                    <span className="block text-emerald-600 font-semibold">
+                      Expert Insurance Guidance
+                    </span>
+                  </div>
+                </div>
+                
+                {/* DESKTOP: Full Luxury Text */}
+                <div className="hidden lg:flex flex-col justify-center">
+                  <div className="font-serif text-xl xl:text-2xl font-bold text-slate-900 group-hover:text-emerald-600 transition-colors duration-300 leading-tight">
+                    Bradford Informed Guidance
+                  </div>
+                  <div className="text-sm font-medium text-slate-600 group-hover:text-emerald-700 transition-colors duration-300 mt-0.5">
+                    <span className="inline-flex items-center gap-1">
+                      <svg className="w-3 h-3 text-emerald-500" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                      </svg>
+                      Premier Insurance Guidance
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </Link>
           </div>
 
           {/* DESKTOP NAVIGATION - FULL FEATURE SET */}
