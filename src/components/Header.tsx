@@ -1,6 +1,10 @@
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 
+// BIG Monogram Assets
+import bigMonogramSvg from '../assets/logos/big-monogram.svg';
+import bigMonogramPng from '../assets/logos/big-monogram.png';
+
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -47,13 +51,13 @@ export default function Header() {
                 
                 {/* Desktop & Tablet: Full Monogram */}
                 <img 
-                  src="/logos/big-monogram.svg"
+                  src={bigMonogramSvg}
                   alt="BIG - Bradford Informed Guidance"
                   className="hidden md:block h-12 md:h-14 lg:h-16 w-auto transition-all duration-300 group-hover:scale-105 drop-shadow-lg"
                   onError={(e) => {
                     // Fallback to PNG if SVG fails
                     const target = e.currentTarget as HTMLImageElement;
-                    target.src = '/logos/big-monogram.png';
+                    target.src = bigMonogramPng;
                   }}
                 />
                 {/* LUXURY GLOW EFFECT */}
