@@ -12,8 +12,8 @@ const testimonials = [
 ];
 
 // --- HELPER FUNCTION to group testimonials into threes ---
-const chunkArray = (array, size) => {
-  const chunkedArr = [];
+const chunkArray = <T,>(array: T[], size: number): T[][] => {
+  const chunkedArr: T[][] = [];
   for (let i = 0; i < array.length; i += size) {
     chunkedArr.push(array.slice(i, i + size));
   }
@@ -35,7 +35,7 @@ const TestimonialsCarousel = () => {
     return () => clearInterval(timer);
   }, [numPages]);
 
-  const paginate = (newPage) => {
+  const paginate = (newPage: number) => {
     setPage(newPage);
   };
 
@@ -50,7 +50,7 @@ const TestimonialsCarousel = () => {
           exit={{ opacity: 0 }}
           transition={{ duration: 0.8 }}
         >
-          {testimonialChunks[page]?.map((testimonial, index) => (
+          {testimonialChunks[page]?.map((testimonial: typeof testimonials[0], index: number) => (
             <div key={index} className="bg-slate-800/50 rounded-xl p-6 flex flex-col h-full">
               <div className="flex items-center mb-4">
                 <img src={testimonial.avatar} alt={`Avatar of ${testimonial.name}`} className="w-16 h-16 rounded-full mr-4 border-2 border-slate-600" />
