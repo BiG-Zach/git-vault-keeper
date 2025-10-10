@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { useMemo, useState } from 'react';
 import { useParams, Navigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { CheckCircle, Clock, Users, Shield, Star, TrendingUp } from 'lucide-react';
@@ -226,7 +226,7 @@ function ActiveStateTemplate({ entry, codeUC, slug }: { entry: any; codeUC: stri
 // Template for Coming Soon States (Waitlist)
 function ComingSoonTemplate({ entry, codeUC, slug }: { entry: any; codeUC: string; slug: string }) {
   const estimatedLaunch = "Q2 2024"; // This would be dynamic based on expansion timeline
-  const waitlistCount = Math.floor(Math.random() * 500) + 200; // Simulated waitlist count
+  const [waitlistCount] = useState(() => Math.floor(Math.random() * 500) + 200); // Simulated waitlist count
   
   return (
     <>
@@ -561,15 +561,15 @@ export default function StateDynamicPage() {
   const raw = params.code ?? '';
   const slug = normalizeSlug(raw);
 
-  if (!slug) {
-    return <Navigate to="/not-found" replace />;
-  }
-
-  const entry = stateMetadata[slug];
-  const codeUC = slug.toUpperCase();
-  const isActive = entry.available;
+  // Must call hooks before any early returns
+  const entry = slug ? stateMetadata[slug] : null;
+  const codeUC = slug ? slug.toUpperCase() : '';
+  const isActive = entry?.available ?? false;
 
   const seo = useMemo(() => {
+    if (!entry || !slug) return { title: '', description: '', path: '', keywords: '' };
+
+
     const baseTitle = entry.seo?.title ?? `Private Health Insurance in ${entry.name}`;
     const title = isActive
       ? `${entry.name} Health & Life Insurance – Licensed & Ready to Serve`
@@ -585,6 +585,10 @@ export default function StateDynamicPage() {
     
     return { title, description, path, keywords };
   }, [entry, slug, isActive]);
+
+  if (!slug || !entry) {
+    return <Navigate to="/not-found" replace />;
+  }
 
   return (
     <main id="content" className="has-sticky-cta">

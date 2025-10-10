@@ -16,21 +16,22 @@ const Item: React.FC<{ title: string; desc: string; icon?: React.ReactNode }> = 
   </div>
 );
 
+const Wrap: React.FC<{ children: React.ReactNode; delay?: number; prefersReducedMotion: boolean }> = ({ children, delay = 0, prefersReducedMotion }) =>
+  prefersReducedMotion ? (
+    <div>{children}</div>
+  ) : (
+    <motion.div
+      initial={{ opacity: 0, y: 14 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ duration: 0.45, ease: "easeOut", delay }}
+    >
+      {children}
+    </motion.div>
+  );
+
 export default function LicensingAndNetworks() {
   const prefersReducedMotion = useReducedMotion();
-  const Wrap: React.FC<{ children: React.ReactNode; delay?: number }> = ({ children, delay = 0 }) =>
-    prefersReducedMotion ? (
-      <div>{children}</div>
-    ) : (
-      <motion.div
-        initial={{ opacity: 0, y: 14 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.2 }}
-        transition={{ duration: 0.45, ease: "easeOut", delay }}
-      >
-        {children}
-      </motion.div>
-    );
 
   return (
     <Section className="bg-slate-50/50">
@@ -40,25 +41,25 @@ export default function LicensingAndNetworks() {
       </div>
       
       <div className="grid md:grid-cols-3 gap-6">
-        <Wrap>
-          <Item 
-            title="Licensing" 
+        <Wrap prefersReducedMotion={prefersReducedMotion}>
+          <Item
+            title="Licensing"
             desc="Florida • Michigan • North Carolina"
             icon={<span className="text-sm font-bold">📍</span>}
           />
         </Wrap>
-        
-        <Wrap delay={0.1}>
-          <Item 
-            title="Carriers" 
+
+        <Wrap delay={0.1} prefersReducedMotion={prefersReducedMotion}>
+          <Item
+            title="Carriers"
             desc="Allstate Health Solutions, UnitedHealthcare, PAL, Southern Guaranty (SGIC), Mutual of Omaha, Americo"
             icon={<span className="text-sm font-bold">🏢</span>}
           />
         </Wrap>
-        
-        <Wrap delay={0.2}>
-          <Item 
-            title="PPO Networks" 
+
+        <Wrap delay={0.2} prefersReducedMotion={prefersReducedMotion}>
+          <Item
+            title="PPO Networks"
             desc="Aetna • Cigna • First Health • Multiplan • United"
             icon={<span className="text-sm font-bold">🌐</span>}
           />

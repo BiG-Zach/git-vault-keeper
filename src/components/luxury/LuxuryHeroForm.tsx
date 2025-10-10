@@ -63,20 +63,20 @@ const LuxuryHeroForm = () => {
       case 1:
         return formData.firstName.trim() !== '' && formData.email.trim() !== '';
       case 2:
-        return formData.lastName.trim() !== '' && 
-               formData.phone.trim() !== '' && 
-               formData.zipCode.trim() !== '' && 
+        return formData.lastName.trim() !== '' &&
+               formData.phone.trim() !== '' &&
+               formData.zipCode.trim() !== '' &&
                formData.coverageType !== '';
-      case 3:
-        const baseValid = formData.yourAge !== '' && 
-                         formData.currentInsurance !== '' && 
-                         formData.contactMethod !== '' && 
+      case 3: {
+        const baseValid = formData.yourAge !== '' &&
+                         formData.currentInsurance !== '' &&
+                         formData.contactMethod !== '' &&
                          formData.bestTime !== '';
-        
+
         if (formData.coverageType === 'couple' || formData.coverageType === 'family') {
           if (formData.spouseAge === '') return false;
         }
-        
+
         if (formData.coverageType === 'family') {
           if (formData.numChildren === '' || parseInt(formData.numChildren) === 0) return false;
           const numKids = parseInt(formData.numChildren);
@@ -84,8 +84,9 @@ const LuxuryHeroForm = () => {
             if (!formData.childAges[i] || formData.childAges[i] === '') return false;
           }
         }
-        
+
         return baseValid;
+      }
       default:
         return false;
     }

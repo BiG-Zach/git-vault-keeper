@@ -1,4 +1,4 @@
-import React, { useMemo, useState, useRef } from 'react';
+import React, { useMemo, useState, useRef, useEffect } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import USMap from '../ExpansionTracker/USMap';
@@ -13,6 +13,7 @@ export default function InteractiveMap() {
   const navigate = useNavigate();
   const prefersReducedMotion = useReducedMotion();
   const [hover, setHover] = useState<HoverInfo | null>(null);
+  const [containerDimensions, setContainerDimensions] = useState({ width: 0, height: 0 });
   const mapContainerRef = useRef<HTMLDivElement>(null);
 
   // Enhanced state information for tooltips
@@ -162,6 +163,16 @@ export default function InteractiveMap() {
     }
   };
 
+  // Update container dimensions when hovering
+  useEffect(() => {
+    if (hover && mapContainerRef.current) {
+      setContainerDimensions({
+        width: mapContainerRef.current.offsetWidth,
+        height: mapContainerRef.current.offsetHeight
+      });
+    }
+  }, [hover]);
+
   return (
     <div className="bg-slate-50 border-y border-slate-200" aria-labelledby="interactive-map-title">
       <div className="text-center mb-8">
@@ -218,7 +229,7 @@ export default function InteractiveMap() {
           className="bg-white rounded-2xl p-4 md:p-6 ring-1 ring-slate-200 shadow-sm relative overflow-hidden"
         >
           {/* Single world-class tooltip */}
-          {hover && mapContainerRef.current && (
+          {hover && containerDimensions.width > 0 && (
             <MapTooltip
               isVisible={true}
               stateName={hover.name}
@@ -226,8 +237,8 @@ export default function InteractiveMap() {
               benefit={getStateInfo(hover.code).benefit}
               x={hover.x}
               y={hover.y}
-              containerWidth={mapContainerRef.current.offsetWidth}
-              containerHeight={mapContainerRef.current.offsetHeight}
+              containerWidth={containerDimensions.width}
+              containerHeight={containerDimensions.height}
             />
           )}
 

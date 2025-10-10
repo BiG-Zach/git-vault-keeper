@@ -25,7 +25,9 @@ function loadInitial(): QuoteData {
   try {
     const raw = sessionStorage.getItem(STORAGE_KEY);
     if (raw) return JSON.parse(raw) as QuoteData;
-  } catch {}
+  } catch {
+    // Silently fail if sessionStorage is not available or data is corrupted
+  }
   return {
     basics: { zip: '', state: 'FL', coverageType: 'Health' },
     household: { ages: [], tobacco: false, dependents: 0 },
@@ -36,7 +38,9 @@ function loadInitial(): QuoteData {
 function saveState(data: QuoteData) {
   try {
     sessionStorage.setItem(STORAGE_KEY, JSON.stringify(data));
-  } catch {}
+  } catch {
+    // Silently fail if sessionStorage is not available
+  }
 }
 
 function FieldError({ msg }: { msg?: string }) {

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useLayoutEffect, useRef, useState } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 
 type Status = 'Available' | 'Coming Soon' | 'Not Available';
@@ -43,7 +43,9 @@ export default function MapTooltip({
   const [position, setPosition] = useState({ x: 0, y: 0, arrowSide: 'bottom' as 'bottom' | 'top' | 'left' | 'right' });
   const prefersReducedMotion = useReducedMotion();
 
-  useEffect(() => {
+  // Use useLayoutEffect to avoid cascading renders - this runs synchronously after DOM mutations
+   
+  useLayoutEffect(() => {
     if (!isVisible || !tooltipRef.current) return;
 
     const tooltip = tooltipRef.current;
@@ -60,25 +62,25 @@ export default function MapTooltip({
 
     // Edge detection and flipping
     const padding = 8;
-    
+
     // Check right edge
     if (desiredX + tooltipWidth > containerWidth - padding) {
       desiredX = x - tooltipWidth - offsetX;
       arrowSide = 'right';
     }
-    
+
     // Check left edge
     if (desiredX < padding) {
       desiredX = padding;
       arrowSide = 'bottom';
     }
-    
+
     // Check top edge
     if (desiredY < padding) {
       desiredY = y + offsetY;
       arrowSide = 'top';
     }
-    
+
     // Check bottom edge
     if (desiredY + tooltipHeight > containerHeight - padding) {
       desiredY = containerHeight - tooltipHeight - padding;
@@ -89,6 +91,7 @@ export default function MapTooltip({
     const clampedX = Math.max(padding, Math.min(desiredX, containerWidth - tooltipWidth - padding));
     const clampedY = Math.max(padding, Math.min(desiredY, containerHeight - tooltipHeight - padding));
 
+    // This is intentionally in useLayoutEffect to avoid flash of incorrectly positioned tooltip
     setPosition({ x: clampedX, y: clampedY, arrowSide });
   }, [isVisible, x, y, containerWidth, containerHeight]);
 

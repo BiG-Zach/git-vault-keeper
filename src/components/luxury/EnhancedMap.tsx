@@ -1,4 +1,4 @@
-import React, { useMemo, useState, useRef } from 'react';
+import React, { useMemo, useState, useRef, useEffect } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import { MapPin, TrendingUp, Users, Clock } from 'lucide-react';
@@ -14,6 +14,7 @@ export default function EnhancedMap() {
   const navigate = useNavigate();
   const prefersReducedMotion = useReducedMotion();
   const [hover, setHover] = useState<HoverInfo | null>(null);
+  const [containerDimensions, setContainerDimensions] = useState({ width: 0, height: 0 });
   const mapContainerRef = useRef<HTMLDivElement>(null);
 
   // Enhanced state information for tooltips
@@ -109,6 +110,16 @@ export default function EnhancedMap() {
       }
     }
   };
+
+  // Update container dimensions when hovering
+  useEffect(() => {
+    if (hover && mapContainerRef.current) {
+      setContainerDimensions({
+        width: mapContainerRef.current.offsetWidth,
+        height: mapContainerRef.current.offsetHeight
+      });
+    }
+  }, [hover]);
 
   const stats = [
     { icon: MapPin, number: "6", label: "Active States", sublabel: "FL, MI, NC, AZ, TX, & GA" },
@@ -279,7 +290,7 @@ export default function EnhancedMap() {
             </div>
 
             {/* Enhanced tooltip */}
-            {hover && mapContainerRef.current && (
+            {hover && containerDimensions.width > 0 && (
               <MapTooltip
                 isVisible={true}
                 stateName={hover.name}
@@ -287,8 +298,8 @@ export default function EnhancedMap() {
                 benefit={getStateInfo(hover.code).benefit}
                 x={hover.x}
                 y={hover.y}
-                containerWidth={mapContainerRef.current.offsetWidth}
-                containerHeight={mapContainerRef.current.offsetHeight}
+                containerWidth={containerDimensions.width}
+                containerHeight={containerDimensions.height}
               />
             )}
 

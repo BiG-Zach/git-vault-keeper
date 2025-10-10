@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { MapPin, DollarSign, Clock, Users } from 'lucide-react';
 
@@ -164,7 +164,11 @@ const SocialProofTicker = () => {
   };
 
   const current = proofItems[currentProof];
-  const Icon = getIcon(current.type);
+
+  const renderIcon = (type: string, textColor: string) => {
+    const IconComponent = getIcon(type);
+    return <IconComponent className={`w-5 h-5 ${textColor}`} />;
+  };
 
   return (
     <div className="fixed bottom-6 left-6 z-50 hidden lg:block">
@@ -175,11 +179,11 @@ const SocialProofTicker = () => {
             initial={{ opacity: 0, x: -100, scale: 0.8 }}
             animate={{ opacity: 1, x: 0, scale: 1 }}
             exit={{ opacity: 0, x: -100, scale: 0.8 }}
-            transition={{ 
-              type: "spring", 
-              stiffness: 300, 
+            transition={{
+              type: "spring",
+              stiffness: 300,
               damping: 25,
-              duration: 0.5 
+              duration: 0.5
             }}
             className={`bg-gradient-to-r ${getBackgroundColor(current.type)} backdrop-blur-md rounded-xl border p-4 max-w-sm shadow-2xl`}
           >
@@ -187,7 +191,7 @@ const SocialProofTicker = () => {
               {/* Icon */}
               <div className="flex-shrink-0">
                 <div className="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center">
-                  <Icon className={`w-5 h-5 ${getTextColor(current.type)}`} />
+                  {renderIcon(current.type, getTextColor(current.type))}
                 </div>
               </div>
 

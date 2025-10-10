@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { MessageCircle, X, Calendar, Shield, ChevronRight, User } from 'lucide-react';
 
 interface ChatMessage {
@@ -19,7 +19,7 @@ const preloadedQuestions = [
 
 export default function AskZachWidget() {
   const [isOpen, setIsOpen] = useState(false);
-  const [messages, setMessages] = useState<ChatMessage[]>([
+  const [messages, setMessages] = useState<ChatMessage[]>(() => [
     {
       id: '1',
       text: "Hi! I'm Zach Bradford, your licensed insurance broker. I'm here to answer your insurance questions and help you find the right coverage. What would you like to know?",
@@ -29,13 +29,18 @@ export default function AskZachWidget() {
   ]);
   const [currentMessage, setCurrentMessage] = useState('');
   const [isTyping, setIsTyping] = useState(false);
+  const messageIdRef = useRef(2);
 
+  // Event handler - not called during render
+   
   const sendMessage = (text: string) => {
+    const timestamp = new Date();
+    const userId = String(messageIdRef.current++);
     const userMessage: ChatMessage = {
-      id: Date.now().toString(),
+      id: userId,
       text,
       isBot: false,
-      timestamp: new Date()
+      timestamp
     };
 
     setMessages(prev => [...prev, userMessage]);
@@ -45,7 +50,7 @@ export default function AskZachWidget() {
     // Simulate bot response
     setTimeout(() => {
       const botResponse: ChatMessage = {
-        id: (Date.now() + 1).toString(),
+        id: String(messageIdRef.current++),
         text: getBotResponse(text),
         isBot: true,
         timestamp: new Date()
@@ -54,6 +59,7 @@ export default function AskZachWidget() {
       setIsTyping(false);
     }, 1500);
   };
+   
 
   const getBotResponse = (userText: string): string => {
     const lowerText = userText.toLowerCase();
