@@ -16,7 +16,7 @@ const Item: React.FC<{ title: string; desc: string; icon?: React.ReactNode }> = 
   </div>
 );
 
-const Wrap: React.FC<{ children: React.ReactNode; delay?: number; prefersReducedMotion: boolean }> = ({ children, delay = 0, prefersReducedMotion }) =>
+const Wrap: React.FC<{ children: React.ReactNode; delay?: number; prefersReducedMotion: boolean | null }> = ({ children, delay = 0, prefersReducedMotion }) =>
   prefersReducedMotion ? (
     <div>{children}</div>
   ) : (
