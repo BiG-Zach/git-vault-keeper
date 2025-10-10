@@ -1,0 +1,8 @@
+dist
+node_modules
+.vercel
+luxury-mobile-boost
+coverage
+*.min.js
+*.min.css
+package-lock.json

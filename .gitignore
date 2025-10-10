@@ -1,4 +1,33 @@
+# Dependencies
 node_modules
-.vercel
-luxury-mobile-boost/
+
+# Build outputs
 dist/
+.vercel
+
+# Test coverage
+coverage
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Temporary files
+*.log
+*.backup.*
+.backup.*
+
+# Project-specific
+luxury-mobile-boost/
