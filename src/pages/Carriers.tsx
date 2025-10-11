@@ -6,7 +6,6 @@ import PremiumNetworkCard, { type Network } from "../components/carriers/Premium
 
 import LuxuryCarrierCard, { type Carrier } from "../components/carriers/LuxuryCarrierCard";
 
-import CarriersStatisticsSection from "../components/carriers/CarriersStatisticsSection";
 
 import PremiumCarriersFAQ from "../components/carriers/PremiumCarriersFAQ";
 
@@ -947,7 +946,6 @@ export default function CarriersPage() {
 
       {/* Statistics Section - Dark Theme (15%) */}
 
-      <CarriersStatisticsSection />
 
 
 
