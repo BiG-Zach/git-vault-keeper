@@ -65,7 +65,7 @@ export default function Footer() {
               <Link to="/contact" className="block text-slate-300 hover:text-white transition-colors duration-200 text-sm">
                 Contact
               </Link>
-              <Link to="#faq-title" className="block text-slate-300 hover:text-white transition-colors duration-200 text-sm">
+              <Link to="/our-process#process-faq" className="block text-slate-300 hover:text-white transition-colors duration-200 text-sm">
                 FAQs
               </Link>
               <Link to="/terms" className="block text-slate-300 hover:text-white transition-colors duration-200 text-sm">

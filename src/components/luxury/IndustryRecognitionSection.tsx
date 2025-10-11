@@ -8,9 +8,9 @@ const IndustryRecognitionSection = () => {
   const recognitions = [
     { 
       icon: Shield, 
-      title: "Multi-State Licensed Professional", 
-      subtitle: "Nationwide Coverage Authority",
-      description: "Licensed insurance broker with multi-state authority delivering personalized protection solutions",
+      title: "Independent Broker Advantage", 
+      subtitle: "Best Insurance Group Partner",
+      description: "Independent brokerage partnered with Best Insurance Group to combine enterprise carrier access with personal advocacy.",
       accent: "text-blue-400"
     },
     { 
@@ -29,9 +29,9 @@ const IndustryRecognitionSection = () => {
     },
     { 
       icon: TrendingUp, 
-      title: "Health Insurance Expert", 
-      subtitle: "Industry Leader",
-      description: "Specialized expertise in medically underwritten health insurance with verified outcomes",
+      title: "Strategic Coverage Architect", 
+      subtitle: "Enterprise-Level Guidance",
+      description: "Licensed independent broker delivering layered coverage strategies with measurable premium savings.",
       accent: "text-emerald-400"
     },
     { 
@@ -50,9 +50,9 @@ const IndustryRecognitionSection = () => {
     },
     { 
       icon: CheckCircle, 
-      title: "Licensed Professional", 
-      subtitle: "Trusted Authority",
-      description: "State-licensed insurance professional with nationwide authority and proven expertise",
+      title: "Independent Broker Credentials", 
+      subtitle: "Licensed Across Six States",
+      description: "Serving FL, MI, NC, AZ, TX, and GA with transparent guidance and carrier-exclusive solutions.",
       accent: "text-green-400"
     },
     { 
@@ -84,11 +84,11 @@ const IndustryRecognitionSection = () => {
         >
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/20 text-emerald-300 text-sm font-medium mb-6 backdrop-blur-sm border border-emerald-500/20">
             <Shield className="w-4 h-4" />
-            <span>Licensed Professional</span>
+            <span>Independent Broker</span>
           </div>
           
           <h2 className="text-3xl lg:text-5xl font-bold text-white mb-6 font-luxury-serif">
-            Licensed Professional - <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400">Proven Results</span>
+            Independent Broker - <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400">Enterprise Resources</span>
           </h2>
           
           <p className="text-lg text-white/80 max-w-3xl mx-auto leading-relaxed">

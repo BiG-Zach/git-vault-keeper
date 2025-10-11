@@ -3,7 +3,6 @@ import { useState } from 'react';
 
 // BIG Monogram Assets
 import bigMonogramSvg from '../assets/logos/big-monogram.svg';
-import bigMonogramPng from '../assets/logos/big-monogram.png';
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -25,7 +24,7 @@ export default function Header() {
                 <svg className="w-3 h-3 text-emerald-600 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                 </svg>
-                <span className="text-center">Licensed Professional - 24-Hour Response Guarantee</span>
+                <span className="text-center">Independent Broker • Best Insurance Group Partner</span>
               </span>
             </div>
           </div>
@@ -46,14 +45,10 @@ export default function Header() {
               {/* UNIFIED MONOGRAM - ALL DEVICES */}
               <img
                 src={bigMonogramSvg}
-                alt="BIG - Bradford Informed Guidance"
+                alt="Bradford Informed Guidance monogram"
                 className="h-14 md:h-16 lg:h-20 w-auto transition-all duration-300 group-hover:scale-110 group-hover:drop-shadow-xl"
                 loading="lazy"
-                onError={(e) => {
-                  // Fallback to PNG if SVG fails
-                  const target = e.currentTarget as HTMLImageElement;
-                  target.src = bigMonogramPng;
-                }}
+                decoding="async"
               />
               
               {/* SUBTLE HOVER GLOW EFFECT */}
@@ -74,7 +69,7 @@ export default function Header() {
                     <svg className="w-3 h-3 text-emerald-500" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                     </svg>
-                    Premier Insurance Guidance
+                    Independent Broker • Enterprise Resources
                   </span>
                 </div>
               </Link>

@@ -229,7 +229,7 @@ export default function TestimonialsCarousel() {
         className="text-center mt-8"
       >
         <p className="text-sm text-slate-500">
-          Join hundreds of satisfied clients across FL, MI, and NC
+          Join hundreds of satisfied clients across FL, MI, NC, AZ, TX, and GA
         </p>
       </motion.div>
     </Section>

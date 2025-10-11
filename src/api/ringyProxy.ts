@@ -20,6 +20,99 @@ function allowOrigin(req: VercelRequest, res: VercelResponse) {
   res.setHeader('Vary', 'Origin');
 }
 
+const sanitizePhone = (value: string | undefined) => {
+  if (!value) return '';
+  return String(value).replace(/\D/g, '');
+};
+
+const toPlainObject = (value: unknown): Record<string, unknown> => {
+  if (!value || typeof value !== 'object') return {};
+  return value as Record<string, unknown>;
+};
+
+const toStringRecord = (input: Record<string, unknown>) => {
+  const result: Record<string, string> = {};
+
+  Object.entries(input).forEach(([key, rawValue]) => {
+    if (rawValue === undefined || rawValue === null) return;
+
+    if (typeof rawValue === 'string') {
+      if (rawValue.trim()) result[key] = rawValue.trim();
+      return;
+    }
+
+    if (typeof rawValue === 'number' || typeof rawValue === 'boolean') {
+      result[key] = String(rawValue);
+      return;
+    }
+
+    if (Array.isArray(rawValue)) {
+      const flattened = rawValue
+        .map(item => (item === undefined || item === null ? '' : String(item)))
+        .filter(Boolean)
+        .join(', ');
+      if (flattened) result[key] = flattened;
+      return;
+    }
+
+    if (rawValue instanceof Date) {
+      result[key] = rawValue.toISOString();
+      return;
+    }
+
+    try {
+      const serialized = JSON.stringify(rawValue);
+      if (serialized && serialized !== '{}') {
+        result[key] = serialized;
+      }
+    } catch {
+      // fallback to generic string representation
+      result[key] = String(rawValue);
+    }
+  });
+
+  return result;
+};
+
+const prefixRecord = (record: Record<string, string>, prefix: string) => {
+  const result: Record<string, string> = {};
+  Object.entries(record).forEach(([key, value]) => {
+    if (!value) return;
+    result[`${prefix}${key}`] = value;
+  });
+  return result;
+};
+
+const buildSupplementalNotes = (metadata: Record<string, string>, custom: Record<string, string>) => {
+  const sections: string[] = [];
+
+  const metadataLines = Object.entries(metadata).map(([key, value]) => `${key}: ${value}`);
+  if (metadataLines.length) {
+    sections.push(['Metadata', ...metadataLines].join('\n'));
+  }
+
+  const customLines = Object.entries(custom).map(([key, value]) => `${key}: ${value}`);
+  if (customLines.length) {
+    sections.push(['Custom', ...customLines].join('\n'));
+  }
+
+  return sections.join('\n\n');
+};
+
+const composeNotes = (base: string, metadata: Record<string, string>, custom: Record<string, string>) => {
+  const segments: string[] = [];
+  if (base && base.trim()) {
+    segments.push(base.trim());
+  }
+
+  const supplemental = buildSupplementalNotes(metadata, custom);
+  if (supplemental) {
+    segments.push(supplemental);
+  }
+
+  return segments.join('\n\n');
+};
+
 export default async function ringyProxy(req: VercelRequest, res: VercelResponse) {
   allowOrigin(req, res);
 
@@ -66,28 +159,43 @@ export default async function ringyProxy(req: VercelRequest, res: VercelResponse
       notes = '',
       proofOfSmsOptInLink,
       vendorReferenceId,
-      metadata = {},
-      custom = {},
+      metadata: incomingMetadata = {},
+      custom: incomingCustom = {},
     } = body;
 
-    if (!email || !phone) {
+    const normalizedPhone = sanitizePhone(phone);
+
+    if (!email || !normalizedPhone) {
       return res.status(400).json({ error: 'Missing required email or phone' });
     }
+
+    const metadataObject = toPlainObject(incomingMetadata);
+    const customObject = toPlainObject(incomingCustom);
+    const metadata = toStringRecord(metadataObject);
+    const custom = toStringRecord(customObject);
+    const prefixedCustom = prefixRecord(custom, 'custom_');
+
+    const payloadNotes = composeNotes(notes, metadata, custom);
 
     const payload: Record<string, unknown> = {
       sid,
       authToken,
-      phone_number: phone,
+      phone_number: normalizedPhone,
       first_name: firstName,
       last_name: lastName,
       email,
       zip_code: String(zipCode ?? ''),
       lead_source: leadSource || defaultLeadSource,
-      notes,
+      notes: payloadNotes,
       vendor_reference_id: vendorReferenceId || crypto.randomUUID(),
-      proof_of_sms_opt_in_link: proofOfSmsOptInLink || (typeof metadata.proofOfSmsOptInLink === 'string' ? metadata.proofOfSmsOptInLink : '') || '',
-      ...custom,
+      proof_of_sms_opt_in_link:
+        proofOfSmsOptInLink || (typeof metadataObject['proofOfSmsOptInLink'] === 'string' ? metadataObject['proofOfSmsOptInLink'] : '') || '',
+      ...prefixedCustom,
     };
+
+    if (Object.keys(metadata).length > 0) {
+      payload.metadata_summary = JSON.stringify(metadata);
+    }
 
     const response = await fetch(endpoint, {
       method: 'POST',

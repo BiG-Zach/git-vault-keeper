@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 const bg = '/assets/backgrounds/happy-family-beach-hero.webp';
 import { trackEvent, GTM_EVENTS } from '../utils/gtm';
 import styles from '../mobile/MobileHero.module.css';
@@ -15,14 +16,15 @@ const Hero = ({
   subtitle = "Personal guidance with Best Insurance Group's exclusive carrier access. Licensed in FL, MI, NC, AZ, TX, and GA."
 }: HeroProps) => {
   const prefersReducedMotion = useReducedMotion();
+  const navigate = useNavigate();
 
   const handleScheduleClick = () => {
     trackEvent(GTM_EVENTS.HERO_SCHEDULE_CLICK);
-    window.location.href = '/contact';
+    navigate('/contact');
   };
   const handleSeeOptionsClick = () => {
     trackEvent(GTM_EVENTS.HERO_SEE_OPTIONS_CLICK);
-    window.location.href = '/quote';
+    navigate('/quote');
   };
 
   return (

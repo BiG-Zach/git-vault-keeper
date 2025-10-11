@@ -8,7 +8,7 @@ import { stateMetadata, type StateCodeSlug } from './stateMetadata';
 export const ORG = {
   name: 'Bradford Informed Guidance',
   url: 'https://www.bradfordinformedguidance.com',
-  logo: 'https://www.bradfordinformedguidance.com/logo.png', // update to real path
+  logo: 'https://www.bradfordinformedguidance.com/logos/brand-mark.svg',
   sameAs: [
     'https://bradfordinformedguidance.trustmyproducer.com',
     // Add real profiles when available

@@ -352,7 +352,7 @@ export default function LifeInsuranceYoungAdultsGuide() {
                   Helping families protect their financial future since 2016.
                 </p>
                 <div className="text-sm text-slate-500">
-                  Licensed in FL, MI, NC • 1,000+ families served • A+ BBB Rating
+                  Licensed in FL, MI, NC, AZ, TX & GA • 1,000+ families served • A+ BBB Rating
                 </div>
               </div>
             </div>

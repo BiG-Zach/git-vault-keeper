@@ -1,21 +1,110 @@
 import React, { useState } from 'react';
 
-const DEFAULT_LEAD_SOURCE = 'Website - Mobile Hero';
+const DEFAULT_LEAD_SOURCE = 'Website — Hero Form';
+
+interface SubmitStatus {
+  message: string;
+  type: 'success' | 'error' | '';
+}
+
+interface FormState {
+  firstName: string;
+  lastName: string;
+  phone: string;
+  email: string;
+  state: string;
+  consentToText: boolean;
+}
+
+interface NoteContext {
+  leadSource: string;
+  state: string;
+  consentToText: boolean;
+  landingUrl: string;
+  utm: Record<string, string>;
+}
+
+const initialFormState: FormState = {
+  firstName: '',
+  lastName: '',
+  phone: '',
+  email: '',
+  state: '',
+  consentToText: false,
+};
+
+const sanitizePhone = (value: string) => value.replace(/\D/g, '');
+
+const buildNotes = ({ leadSource, state, consentToText, landingUrl, utm }: NoteContext) => {
+  const lines = [
+    `Lead Source: ${leadSource}`,
+    `State: ${state}`,
+    `Consent to Text: ${consentToText ? 'Yes' : 'No'}`,
+  ];
+
+  if (landingUrl) {
+    lines.push(`Landing URL: ${landingUrl}`);
+  }
+
+  Object.entries(utm)
+    .filter(([, value]) => Boolean(value))
+    .forEach(([key, value]) => {
+      lines.push(`UTM ${key}: ${value}`);
+    });
+
+  return lines.join('\n');
+};
+
+const buildCustomFields = (state: string, consentToText: boolean, landingUrl: string, utm: Record<string, string>) => {
+  const custom: Record<string, string> = {
+    state,
+    consent_to_text: consentToText ? 'Yes' : 'No',
+  };
+
+  if (landingUrl) {
+    custom.landing_url = landingUrl;
+  }
+
+  Object.entries(utm)
+    .filter(([, value]) => Boolean(value))
+    .forEach(([key, value]) => {
+      const normalizedKey = key.startsWith('utm_') ? key.slice(4) : key;
+      custom[`utm_${normalizedKey}`] = value;
+    });
+
+  return custom;
+};
+
+const parseErrorResponse = async (response: Response) => {
+  const contentType = response.headers.get('content-type') ?? '';
+
+  try {
+    if (contentType.includes('application/json')) {
+      const data = (await response.json()) as Record<string, unknown>;
+      const messageCandidate = [data.error, data.message].find(
+        (value): value is string => typeof value === 'string' && value.trim().length > 0,
+      );
+      return messageCandidate || response.statusText || 'Please try again.';
+    }
+
+    const text = (await response.text()).trim();
+    return text || response.statusText || 'Please try again.';
+  } catch {
+    return response.statusText || 'Please try again.';
+  }
+};
 
 const HeroForm = () => {
-  const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    phone: '',
-    email: '',
-    state: '',
-    consentToText: false,
-  });
+  const [formData, setFormData] = useState<FormState>(initialFormState);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState({ message: '', type: '' });
+  const [submitStatus, setSubmitStatus] = useState<SubmitStatus>({ message: '', type: '' });
+
+  const resetStatus = () => setSubmitStatus({ message: '', type: '' });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value, type } = e.target;
+
+    resetStatus();
 
     if (type === 'checkbox') {
       const { checked } = e.target as HTMLInputElement;
@@ -27,19 +116,61 @@ const HeroForm = () => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    resetStatus();
     setIsSubmitting(true);
-    setSubmitStatus({ message: '', type: '' });
+
+    const sanitizedPhone = sanitizePhone(formData.phone);
+
+    if (sanitizedPhone.length < 10) {
+      setSubmitStatus({ message: 'Please enter a valid phone number.', type: 'error' });
+      setIsSubmitting(false);
+      return;
+    }
+
+    const hasWindow = typeof window !== 'undefined';
+    const landingUrl = hasWindow ? window.location.href : '';
+    const searchParams = hasWindow ? new URLSearchParams(window.location.search) : new URLSearchParams();
+    const utm = Object.fromEntries(searchParams.entries());
+
+    const notes = buildNotes({
+      leadSource: DEFAULT_LEAD_SOURCE,
+      state: formData.state,
+      consentToText: formData.consentToText,
+      landingUrl,
+      utm,
+    });
+
+    const metadata = hasWindow
+      ? {
+          landingUrl,
+          submittedAt: new Date().toISOString(),
+          utm,
+          form: 'Hero',
+        }
+      : undefined;
+
+    const custom = buildCustomFields(formData.state, formData.consentToText, landingUrl, utm);
+
+    const payload: Record<string, unknown> = {
+      firstName: formData.firstName.trim(),
+      lastName: formData.lastName.trim(),
+      phone: sanitizedPhone,
+      email: formData.email.trim(),
+      state: formData.state,
+      consentToText: formData.consentToText,
+      leadSource: DEFAULT_LEAD_SOURCE,
+      notes,
+    };
+
+    if (metadata) {
+      payload.metadata = metadata;
+    }
+
+    if (Object.values(custom).some(Boolean)) {
+      payload.custom = custom;
+    }
 
     try {
-      const searchParams = new URLSearchParams(window.location.search);
-      const utm = Object.fromEntries(searchParams.entries());
-      const payload = {
-        ...formData,
-        leadSource: DEFAULT_LEAD_SOURCE,
-        landingUrl: window.location.href,
-        utm,
-      };
-
       const response = await fetch('/api/ringy-proxy', {
         method: 'POST',
         headers: {
@@ -50,17 +181,10 @@ const HeroForm = () => {
 
       if (response.ok) {
         setSubmitStatus({ message: 'Thank you for your submission!', type: 'success' });
-        setFormData({
-          firstName: '',
-          lastName: '',
-          phone: '',
-          email: '',
-          state: '',
-          consentToText: false,
-        });
+        setFormData(initialFormState);
       } else {
-        const errorData = await response.json();
-        setSubmitStatus({ message: `Submission failed: ${errorData.message || 'Please try again.'}`, type: 'error' });
+        const detail = await parseErrorResponse(response);
+        setSubmitStatus({ message: `Submission failed: ${detail}`, type: 'error' });
       }
     } catch (error) {
       console.error('Form submission error:', error);
@@ -73,7 +197,7 @@ const HeroForm = () => {
   return (
     <div className="bg-white p-8 rounded-lg shadow-lg max-w-md w-full">
       <h2 className="text-2xl font-bold mb-6 text-center text-gray-800">Let's Start the Conversation</h2>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} noValidate>
         <div className="mb-4">
           <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="firstName">First Name</label>
           <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="firstName" name="firstName" type="text" placeholder="John" value={formData.firstName} onChange={handleChange} required />
@@ -88,7 +212,8 @@ const HeroForm = () => {
         </div>
         <div className="mb-4">
           <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="phone">Phone</label>
-          <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="phone" name="phone" type="tel" placeholder="(555) 555-5555" value={formData.phone} onChange={handleChange} required />
+          <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="phone" name="phone" type="tel" placeholder="(555) 555-5555" value={formData.phone} onChange={handleChange} required aria-describedby="phone-help" />
+          <p id="phone-help" className="mt-1 text-xs text-gray-500">Numbers only; we'll format it for the submission.</p>
         </div>
         <div className="mb-4">
           <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="state">State</label>
@@ -112,7 +237,7 @@ const HeroForm = () => {
           Your privacy is important to us. The information you provide helps us prepare for our consultation. We will not share your data or subject you to high-pressure sales calls.
         </p>
         <div className="flex items-center justify-center">
-          <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit" disabled={isSubmitting}>
+          <button className="bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline disabled:opacity-60 disabled:cursor-not-allowed" type="submit" disabled={isSubmitting}>
             {isSubmitting ? 'Submitting...' : 'Start My Consultation'}
           </button>
         </div>

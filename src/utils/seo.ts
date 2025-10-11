@@ -22,7 +22,7 @@ export const SITE = {
   name: 'Bradford Informed Guidance',
   url: 'https://www.bradfordinformedguidance.com',
   defaultDescription:
-    'Health & life insurance guidance for self-employed, families, and early retirees in FL, MI, and NC. Schedule a free consultation today.',
+    'Independent insurance broker partnered with Best Insurance Group delivering enterprise-level carrier access across FL, MI, NC, AZ, TX, and GA.',
   themeColor: '#0ea5e9',
   twitter: '@', // update when available
 };

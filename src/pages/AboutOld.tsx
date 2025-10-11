@@ -133,7 +133,7 @@ export default function AboutPage() {
               <div className="text-center p-6 bg-background rounded-2xl border shadow-sm">
                 <Shield className="w-12 h-12 text-primary mx-auto mb-4" />
                 <h3 className="font-semibold mb-2">Multi-State Authority</h3>
-                <p className="text-sm text-muted-foreground">FL, MI, NC Licensed</p>
+                <p className="text-sm text-muted-foreground">Licensed in FL, MI, NC, AZ, TX & GA</p>
               </div>
             </Reveal>
             

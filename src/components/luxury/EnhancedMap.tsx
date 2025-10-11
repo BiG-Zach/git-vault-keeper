@@ -67,7 +67,7 @@ export default function EnhancedMap() {
         title: `${stateInfo.name} — ${stateInfo.status}`
       };
     };
-  }, []);
+  }, [getStateInfo]);
 
   function onActivate(code: StateCode) {
     const status = STATE_STATUS[code];

@@ -11,9 +11,9 @@ const statistics = [
   },
   {
     icon: <MapPin className="w-8 h-8" />,
-    value: "3 States",
+    value: "6 States",
     label: "Coverage Area",
-    description: "FL, MI, NC expanding nationwide"
+    description: "Independent broker coverage in FL, MI, NC, AZ, TX & GA"
   },
   {
     icon: <Clock className="w-8 h-8" />,

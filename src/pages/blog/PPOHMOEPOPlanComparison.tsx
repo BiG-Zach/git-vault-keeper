@@ -589,7 +589,7 @@ export default function PPOHMOEPOPlanComparison() {
                   Helping families choose the right coverage since 2016.
                 </p>
                 <div className="text-sm text-slate-500">
-                  Licensed in FL, MI, NC • 1,000+ families served • A+ BBB Rating
+                  Licensed in FL, MI, NC, AZ, TX & GA • 1,000+ families served • A+ BBB Rating
                 </div>
               </div>
             </div>

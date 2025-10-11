@@ -36,6 +36,11 @@ interface FormData {
   bestTime: string;
 }
 
+type SubmissionStatus = {
+  type: 'idle' | 'submitting' | 'success' | 'error';
+  message: string;
+};
+
 const LuxuryHeroForm = () => {
   const [currentStep, setCurrentStep] = useState(1);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -54,12 +59,13 @@ const LuxuryHeroForm = () => {
     contactMethod: '',
     bestTime: ''
   });
+  const [status, setStatus] = useState<SubmissionStatus>({ type: 'idle', message: '' });
 
   const updateFormData = useCallback((field: keyof FormData, value: string | string[]) => {
     setFormData(prev => ({ ...prev, [field]: value }));
   }, []);
 
-  const validateStep = (step: number): boolean => {
+  const validateStep = useCallback((step: number): boolean => {
     switch (step) {
       case 1:
         return formData.firstName.trim() !== '' && formData.email.trim() !== '';
@@ -91,24 +97,44 @@ const LuxuryHeroForm = () => {
       default:
         return false;
     }
-  };
+  }, [formData]);
 
   const handleNext = useCallback(() => {
     if (validateStep(currentStep) && currentStep < 3) {
+      setStatus({ type: 'idle', message: '' });
       setCurrentStep(prev => prev + 1);
     }
-  }, [currentStep, formData]);
+  }, [currentStep, validateStep]);
 
   const handleBack = useCallback(() => {
-    if (currentStep > 1) {
-      setCurrentStep(prev => prev - 1);
-    }
+    setStatus({ type: 'idle', message: '' });
+    setCurrentStep(prev => (prev > 1 ? prev - 1 : prev));
   }, []);
 
-  const handleSubmit = useCallback(async () => {
+  const resetForm = useCallback(() => {
+    setFormData({
+      firstName: '',
+      email: '',
+      lastName: '',
+      phone: '',
+      zipCode: '',
+      coverageType: '',
+      yourAge: '',
+      spouseAge: '',
+      numChildren: '',
+      childAges: [],
+      currentInsurance: '',
+      contactMethod: '',
+      bestTime: ''
+    });
+    setCurrentStep(1);
+  }, []);
+
+  const submitForm = useCallback(async () => {
     if (!validateStep(3)) return;
 
     setIsSubmitting(true);
+    setStatus({ type: 'submitting', message: 'Submitting your information…' });
 
     try {
       // Compile all ages for comprehensive notes
@@ -149,34 +175,21 @@ const LuxuryHeroForm = () => {
         throw new Error(detail?.detail || 'Failed to submit to Ringy CRM');
       }
 
-      // Success - show confirmation
-      alert('Thank you! Bradford is preparing your custom recommendations. We\'ll be in touch soon.');
-      
-      // Reset form
-      setFormData({
-        firstName: '',
-        email: '',
-        lastName: '',
-        phone: '',
-        zipCode: '',
-        coverageType: '',
-        yourAge: '',
-        spouseAge: '',
-        numChildren: '',
-        childAges: [],
-        currentInsurance: '',
-        contactMethod: '',
-        bestTime: ''
+      resetForm();
+      setStatus({
+        type: 'success',
+        message: 'Thank you! Bradford is preparing your tailored recommendations and will reach out shortly.',
       });
-      setCurrentStep(1);
-
     } catch (error) {
       console.error('Form submission error:', error);
-      alert('There was an error submitting your information. Please try again or call us directly.');
+      setStatus({
+        type: 'error',
+        message: 'We could not submit your details. Please try again or call us directly at (689) 325-6570.',
+      });
     } finally {
       setIsSubmitting(false);
     }
-  }, [formData]);
+  }, [formData, resetForm, validateStep]);
 
   const getProgressWidth = useMemo(() => {
     switch (currentStep) {
@@ -196,6 +209,20 @@ const LuxuryHeroForm = () => {
     }
   };
 
+  const handleFormSubmit = useCallback(async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    if (currentStep < 3) {
+      handleNext();
+      return;
+    }
+
+    if (isSubmitting || !validateStep(3)) {
+      return;
+    }
+
+    await submitForm();
+  }, [currentStep, handleNext, isSubmitting, submitForm, validateStep]);
+
   return (
     <div className="relative">
       {/* Premium Glow Effect */}
@@ -212,20 +239,20 @@ const LuxuryHeroForm = () => {
         <div className="text-center mb-5">
           <h3 className="text-lg font-bold text-slate-900 mb-1">Share Your Details</h3>
           <p className="text-sm text-slate-600">{getStepMessage()}</p>
-        </div>
-        
-        {/* Progress Bar */}
-        <div className="mb-4">
-          <div className="flex justify-between items-center mb-2">
-            <span className="text-xs text-slate-500">Step {currentStep} of 3</span>
-            <span className="text-xs text-slate-500">{Math.round((currentStep / 3) * 100)}% Complete</span>
           </div>
-          <div className="w-full bg-slate-200 rounded-full h-2">
-            <div className={`bg-gradient-to-r from-emerald-500 to-emerald-600 h-2 rounded-full ${getProgressWidth} transition-all duration-300`}></div>
-          </div>
-        </div>
 
-        <form className="space-y-3">
+          {/* Progress Bar */}
+          <div className="mb-4">
+            <div className="flex justify-between items-center mb-2">
+              <span className="text-xs text-slate-500">Step {currentStep} of 3</span>
+              <span className="text-xs text-slate-500">{Math.round((currentStep / 3) * 100)}% Complete</span>
+            </div>
+            <div className="w-full bg-slate-200 rounded-full h-2">
+              <div className={`bg-gradient-to-r from-emerald-500 to-emerald-600 h-2 rounded-full ${getProgressWidth} transition-all duration-300`}></div>
+            </div>
+          </div>
+
+        <form className="space-y-3" onSubmit={handleFormSubmit} noValidate>
           <AnimatePresence mode="wait">
             {/* Step 1 */}
             {currentStep === 1 && (
@@ -505,13 +532,28 @@ const LuxuryHeroForm = () => {
               </button>
             ) : (
               <button 
-                type="button"
-                onClick={handleSubmit}
+                type="submit"
                 disabled={!validateStep(3) || isSubmitting}
                 className="flex-1 bg-emerald-600 hover:bg-emerald-700 disabled:bg-slate-300 disabled:cursor-not-allowed text-white font-semibold py-3 rounded-lg transition-all transform hover:scale-[1.02] active:scale-[0.98]"
               >
-                {isSubmitting ? 'Submitting...' : 'Start My Consultation'}
+                {isSubmitting ? 'Submitting…' : 'Start My Consultation'}
               </button>
+            )}
+          </div>
+
+          <div aria-live="polite" className="mt-4 text-center">
+            {status.message && (
+              <p
+                className={`text-sm ${
+                  status.type === 'error'
+                    ? 'text-red-500'
+                    : status.type === 'success'
+                    ? 'text-emerald-500'
+                    : 'text-slate-500'
+                }`}
+              >
+                {status.message}
+              </p>
             )}
           </div>
         </form>

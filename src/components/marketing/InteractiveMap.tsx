@@ -77,7 +77,7 @@ export default function InteractiveMap() {
         title: `${stateInfo.name} — ${stateInfo.status}`
       };
     };
-  }, []);
+  }, [getStateInfo]);
 
   function onActivate(code: StateCode) {
     const status = STATE_STATUS[code];

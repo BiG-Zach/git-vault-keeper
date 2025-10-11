@@ -92,7 +92,7 @@ export default function PremiumProcessFAQ() {
   const prefersReducedMotion = useReducedMotion();
 
   return (
-    <section className="py-20 bg-gradient-to-br from-slate-50 to-white relative overflow-hidden">
+    <section id="process-faq" className="py-20 bg-gradient-to-br from-slate-50 to-white relative overflow-hidden">
       {/* Subtle background pattern */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute inset-0" style={{

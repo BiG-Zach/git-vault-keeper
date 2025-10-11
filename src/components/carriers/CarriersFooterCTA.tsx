@@ -6,7 +6,7 @@ import { Button } from '../ui/button';
 const features = [
   {
     icon: Shield,
-    text: 'Licensed & Bonded in FL, MI, NC'
+    text: 'Licensed & Bonded in FL, MI, NC, AZ, TX & GA'
   },
   {
     icon: Award,

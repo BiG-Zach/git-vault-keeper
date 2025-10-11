@@ -1,6 +1,6 @@
 # Bradford Informed Guidance
 
-> Professional insurance broker website built with React, TypeScript, and Vite
+> Independent insurance broker platform built with React, TypeScript, and Vite
 
 [![License](https://img.shields.io/badge/license-Private-blue.svg)](LICENSE)
 [![Node](https://img.shields.io/badge/node-%3E%3D18.17-brightgreen.svg)](https://nodejs.org)
@@ -22,7 +22,7 @@
 
 ## 🎯 Overview
 
-Bradford Informed Guidance is a multi-state licensed insurance broker platform serving clients across FL, GA, SC, TN, AL, and TX. The website features a luxury design system with enterprise-grade React components and comprehensive SEO optimization.
+Bradford Informed Guidance is an independent insurance brokerage serving clients across FL, MI, NC, AZ, TX, and GA with enterprise-level carrier access through Best Insurance Group. The website features a luxury design system with enterprise-grade React components and comprehensive SEO optimization.
 
 **Key Highlights:**
 - 🏆 85/100 Quality Score (comprehensive audit)
@@ -33,12 +33,12 @@ Bradford Informed Guidance is a multi-state licensed insurance broker platform s
 
 ## ✨ Features
 
-- **Multi-State Coverage**: Licensed broker services across 6 southeastern states
+- **Multi-State Coverage**: Licensed independent broker services across FL, MI, NC, AZ, TX, and GA
 - **Luxury UX**: Premium design with aurora gradients, glass effects, and smooth animations
 - **SEO Optimized**: Comprehensive schema markup, meta tags, and structured data
 - **Lead Generation**: Integrated forms with Calendly scheduling
 - **Responsive Design**: Component-scoped mobile CSS for pixel-perfect layouts
-- **Trust Signals**: Dual verification (TrustMyProducer + NIPR), carrier partnerships
+- **Trust Signals**: Dual verification (TrustMyProducer + NIPR) plus Best Insurance Group partnership
 - **Interactive Maps**: State coverage visualization with D3.js
 - **Performance**: WebP images, lazy loading, code splitting
 
