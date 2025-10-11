@@ -1,6 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Shield, Award, Clock, Users, Phone, MessageSquare, Mail } from 'lucide-react';
+
+// Static constants - calculated once
+const FORM_BENEFITS = [
+  { icon: Clock, text: "Guidance delivered in 45-90 minutes" },
+  { icon: Shield, text: "Licensed & bonded professionals" },
+  { icon: Award, text: "A+ rated carrier partners" },
+  { icon: Users, text: "Dedicated personal guidance" }
+];
+
+const AGE_OPTIONS = Array.from({ length: 63 }, (_, i) => ({
+  value: (i + 18).toString(),
+  label: i === 62 ? '80+' : (i + 18).toString()
+}));
 
 interface FormData {
   // Step 1
@@ -42,21 +55,9 @@ const LuxuryHeroForm = () => {
     bestTime: ''
   });
 
-  const benefits = [
-    { icon: Clock, text: "Guidance delivered in 45-90 minutes" },
-    { icon: Shield, text: "Licensed & bonded professionals" },
-    { icon: Award, text: "A+ rated carrier partners" },
-    { icon: Users, text: "Dedicated personal guidance" }
-  ];
-
-  const ageOptions = Array.from({ length: 63 }, (_, i) => ({
-    value: (i + 18).toString(),
-    label: i === 62 ? '80+' : (i + 18).toString()
-  }));
-
-  const updateFormData = (field: keyof FormData, value: string | string[]) => {
+  const updateFormData = useCallback((field: keyof FormData, value: string | string[]) => {
     setFormData(prev => ({ ...prev, [field]: value }));
-  };
+  }, []);
 
   const validateStep = (step: number): boolean => {
     switch (step) {
@@ -92,19 +93,19 @@ const LuxuryHeroForm = () => {
     }
   };
 
-  const handleNext = () => {
+  const handleNext = useCallback(() => {
     if (validateStep(currentStep) && currentStep < 3) {
       setCurrentStep(prev => prev + 1);
     }
-  };
+  }, [currentStep, formData]);
 
-  const handleBack = () => {
+  const handleBack = useCallback(() => {
     if (currentStep > 1) {
       setCurrentStep(prev => prev - 1);
     }
-  };
+  }, []);
 
-  const handleSubmit = async () => {
+  const handleSubmit = useCallback(async () => {
     if (!validateStep(3)) return;
 
     setIsSubmitting(true);
@@ -175,16 +176,16 @@ const LuxuryHeroForm = () => {
     } finally {
       setIsSubmitting(false);
     }
-  };
+  }, [formData]);
 
-  const getProgressWidth = () => {
+  const getProgressWidth = useMemo(() => {
     switch (currentStep) {
       case 1: return 'w-1/3';
       case 2: return 'w-2/3';
       case 3: return 'w-full';
       default: return 'w-1/3';
     }
-  };
+  }, [currentStep]);
 
   const getStepMessage = () => {
     switch (currentStep) {
@@ -220,7 +221,7 @@ const LuxuryHeroForm = () => {
             <span className="text-xs text-slate-500">{Math.round((currentStep / 3) * 100)}% Complete</span>
           </div>
           <div className="w-full bg-slate-200 rounded-full h-2">
-            <div className={`bg-gradient-to-r from-emerald-500 to-emerald-600 h-2 rounded-full ${getProgressWidth()} transition-all duration-300`}></div>
+            <div className={`bg-gradient-to-r from-emerald-500 to-emerald-600 h-2 rounded-full ${getProgressWidth} transition-all duration-300`}></div>
           </div>
         </div>
 
@@ -349,7 +350,7 @@ const LuxuryHeroForm = () => {
                     className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all"
                   >
                     <option value="">Select your age</option>
-                    {ageOptions.map(option => (
+                    {AGE_OPTIONS.map(option => (
                       <option key={option.value} value={option.value}>{option.label}</option>
                     ))}
                   </select>
@@ -365,7 +366,7 @@ const LuxuryHeroForm = () => {
                       className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all"
                     >
                       <option value="">Select spouse age</option>
-                      {ageOptions.map(option => (
+                      {AGE_OPTIONS.map(option => (
                         <option key={option.value} value={option.value}>{option.label}</option>
                       ))}
                     </select>
@@ -518,7 +519,7 @@ const LuxuryHeroForm = () => {
         {/* Benefits sidebar */}
         <div className="mt-6 pt-6 border-t border-slate-200">
           <div className="space-y-3">
-            {benefits.map((benefit, index) => (
+            {FORM_BENEFITS.map((benefit, index) => (
               <div key={index} className="flex items-center gap-3 text-sm text-slate-600">
                 <benefit.icon className="w-4 h-4 text-emerald-500" />
                 <span>{benefit.text}</span>

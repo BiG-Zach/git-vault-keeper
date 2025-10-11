@@ -227,40 +227,40 @@ function HealthSavingsCalculator() {
   );
 }
 
+const CALCULATOR_CONFIGS = [
+  {
+    id: 'life',
+    title: 'Life Insurance Needs Calculator',
+    description: 'Determine the right coverage amount for your family',
+    icon: <Heart className="w-6 h-6" />,
+    color: 'bg-gradient-to-r from-emerald-500 to-emerald-600'
+  },
+  {
+    id: 'health',
+    title: 'Health Insurance Savings Calculator',
+    description: 'Find potential savings on your health insurance',
+    icon: <Shield className="w-6 h-6" />,
+    color: 'bg-gradient-to-r from-blue-500 to-blue-600'
+  },
+  {
+    id: 'comparison',
+    title: 'Premium Comparison Tool',
+    description: 'Compare curated carrier options side-by-side',
+    icon: <Calculator className="w-6 h-6" />,
+    color: 'bg-gradient-to-r from-purple-500 to-purple-600'
+  },
+  {
+    id: 'retirement',
+    title: 'Retirement Planning Calculator',
+    description: 'Plan your retirement with life insurance investments',
+    icon: <TrendingUp className="w-6 h-6" />,
+    color: 'bg-gradient-to-r from-amber-500 to-amber-600'
+  }
+];
+
 export default function PremiumCalculators() {
   const [activeCalculator, setActiveCalculator] = useState<string | null>(null);
   const [emailCaptured, setEmailCaptured] = useState(false);
-
-  const calculators = [
-    {
-      id: 'life',
-      title: 'Life Insurance Needs Calculator',
-      description: 'Determine the right coverage amount for your family',
-      icon: <Heart className="w-6 h-6" />,
-      color: 'bg-gradient-to-r from-emerald-500 to-emerald-600'
-    },
-    {
-      id: 'health',
-      title: 'Health Insurance Savings Calculator',
-      description: 'Find potential savings on your health insurance',
-      icon: <Shield className="w-6 h-6" />,
-      color: 'bg-gradient-to-r from-blue-500 to-blue-600'
-    },
-    {
-      id: 'comparison',
-      title: 'Premium Comparison Tool',
-      description: 'Compare curated carrier options side-by-side',
-      icon: <Calculator className="w-6 h-6" />,
-      color: 'bg-gradient-to-r from-purple-500 to-purple-600'
-    },
-    {
-      id: 'retirement',
-      title: 'Retirement Planning Calculator',
-      description: 'Plan your retirement with life insurance investments',
-      icon: <TrendingUp className="w-6 h-6" />,
-      color: 'bg-gradient-to-r from-amber-500 to-amber-600'
-    }
-  ];
 
   const handleEmailCapture = (_email: string, _result: number) => {
     // In a real app, this would send to your backend
@@ -284,7 +284,7 @@ export default function PremiumCalculators() {
 
         {/* Calculator Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-          {calculators.map((calc) => (
+          {CALCULATOR_CONFIGS.map((calc) => (
             <CalculatorCard
               key={calc.id}
               title={calc.title}

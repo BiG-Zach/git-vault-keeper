@@ -1,4 +1,4 @@
-import React, { useMemo, useState, useRef, useEffect } from 'react';
+import React, { useMemo, useState, useRef, useEffect, useCallback } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import USMap from '../ExpansionTracker/USMap';
@@ -9,6 +9,39 @@ import { trackEvent, GTM_EVENTS } from '../../utils/gtm';
 type Status = 'Available' | 'Coming Soon' | 'Not Available';
 type HoverInfo = { code: StateCode; name: string; status: Status; x: number; y: number };
 
+const STATE_INFO_MAP = {
+  FL: {
+    name: 'Florida',
+    status: 'Available' as Status,
+    benefit: 'Full coverage options available'
+  },
+  MI: {
+    name: 'Michigan',
+    status: 'Available' as Status,
+    benefit: 'Comprehensive plans with top networks'
+  },
+  NC: {
+    name: 'North Carolina',
+    status: 'Available' as Status,
+    benefit: 'Quality coverage with preferred providers'
+  },
+  TX: {
+    name: 'Texas',
+    status: 'Coming Soon' as Status,
+    benefit: 'Launching Q2 2025'
+  },
+  CA: {
+    name: 'California',
+    status: 'Coming Soon' as Status,
+    benefit: 'Expanding soon'
+  },
+  NY: {
+    name: 'New York',
+    status: 'Coming Soon' as Status,
+    benefit: 'Coming in 2025'
+  }
+} as const;
+
 export default function InteractiveMap() {
   const navigate = useNavigate();
   const prefersReducedMotion = useReducedMotion();
@@ -17,48 +50,15 @@ export default function InteractiveMap() {
   const mapContainerRef = useRef<HTMLDivElement>(null);
 
   // Enhanced state information for tooltips
-  const getStateInfo = (code: StateCode): { name: string; status: Status; benefit?: string } => {
-    const stateData = {
-      FL: {
-        name: 'Florida',
-        status: 'Available' as Status,
-        benefit: 'Full coverage options available'
-      },
-      MI: {
-        name: 'Michigan',
-        status: 'Available' as Status,
-        benefit: 'Comprehensive plans with top networks'
-      },
-      NC: {
-        name: 'North Carolina',
-        status: 'Available' as Status,
-        benefit: 'Quality coverage with preferred providers'
-      },
-      TX: {
-        name: 'Texas',
-        status: 'Coming Soon' as Status,
-        benefit: 'Launching Q2 2025'
-      },
-      CA: {
-        name: 'California',
-        status: 'Coming Soon' as Status,
-        benefit: 'Expanding soon'
-      },
-      NY: {
-        name: 'New York',
-        status: 'Coming Soon' as Status,
-        benefit: 'Coming in 2025'
-      }
-    };
-    
+  const getStateInfo = useCallback((code: StateCode): { name: string; status: Status; benefit?: string } => {
     const defaultInfo = {
       name: code,
       status: 'Not Available' as Status,
       benefit: undefined
     };
-    
-    return stateData[code as keyof typeof stateData] || defaultInfo;
-  };
+
+    return STATE_INFO_MAP[code as keyof typeof STATE_INFO_MAP] || defaultInfo;
+  }, []);
 
   const getStateAttrs = useMemo(() => {
     return (code: StateCode) => {

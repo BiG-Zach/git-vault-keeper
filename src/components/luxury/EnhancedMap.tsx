@@ -1,4 +1,4 @@
-import React, { useMemo, useState, useRef, useEffect } from 'react';
+import React, { useMemo, useState, useRef, useEffect, useCallback } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import { MapPin, TrendingUp, Users, Clock } from 'lucide-react';
@@ -10,6 +10,27 @@ import { trackEvent, GTM_EVENTS } from '../../utils/gtm';
 type Status = 'Available' | 'Coming Soon' | 'Not Available';
 type HoverInfo = { code: StateCode; name: string; status: Status; x: number; y: number };
 
+const STATE_INFO_MAP = {
+  FL: { name: 'Florida', status: 'Available' as Status, benefit: 'Active state - request a quote today.' },
+  MI: { name: 'Michigan', status: 'Available' as Status, benefit: 'Active state - request a quote today.' },
+  NC: { name: 'North Carolina', status: 'Available' as Status, benefit: 'Active state - request a quote today.' },
+  AZ: { name: 'Arizona', status: 'Available' as Status, benefit: 'Active state - request a quote today.' },
+  TX: { name: 'Texas', status: 'Available' as Status, benefit: 'Active state - request a quote today.' },
+  GA: { name: 'Georgia', status: 'Available' as Status, benefit: 'Active state - request a quote today.' },
+  CA: { name: 'California', status: 'Coming Soon' as Status, benefit: 'Launching soon - join the waitlist.' },
+  NY: { name: 'New York', status: 'Coming Soon' as Status, benefit: 'Launching soon - join the waitlist.' },
+  OH: { name: 'Ohio', status: 'Coming Soon' as Status, benefit: 'Launching soon - join the waitlist.' },
+  PA: { name: 'Pennsylvania', status: 'Coming Soon' as Status, benefit: 'Launching soon - join the waitlist.' },
+  IL: { name: 'Illinois', status: 'Coming Soon' as Status, benefit: 'Launching soon - join the waitlist.' }
+} as const;
+
+const MAP_STATS = [
+  { icon: MapPin, number: "6", label: "Active States", sublabel: "FL, MI, NC, AZ, TX, & GA" },
+  { icon: TrendingUp, number: "25+", label: "Expanding To", sublabel: "by 2025" },
+  { icon: Users, number: "1,000+", label: "Families Served", sublabel: "and growing" },
+  { icon: Clock, number: "45min", label: "Avg Quote Time", sublabel: "industry leading" }
+] as const;
+
 export default function EnhancedMap() {
   const navigate = useNavigate();
   const prefersReducedMotion = useReducedMotion();
@@ -18,24 +39,10 @@ export default function EnhancedMap() {
   const mapContainerRef = useRef<HTMLDivElement>(null);
 
   // Enhanced state information for tooltips
-  const getStateInfo = (code: StateCode): { name: string; status: Status; benefit?: string } => {
-    const stateData = {
-      FL: { name: 'Florida', status: 'Available' as Status, benefit: 'Active state - request a quote today.' },
-      MI: { name: 'Michigan', status: 'Available' as Status, benefit: 'Active state - request a quote today.' },
-      NC: { name: 'North Carolina', status: 'Available' as Status, benefit: 'Active state - request a quote today.' },
-      AZ: { name: 'Arizona', status: 'Available' as Status, benefit: 'Active state - request a quote today.' },
-      TX: { name: 'Texas', status: 'Available' as Status, benefit: 'Active state - request a quote today.' },
-      GA: { name: 'Georgia', status: 'Available' as Status, benefit: 'Active state - request a quote today.' },
-      CA: { name: 'California', status: 'Coming Soon' as Status, benefit: 'Launching soon - join the waitlist.' },
-      NY: { name: 'New York', status: 'Coming Soon' as Status, benefit: 'Launching soon - join the waitlist.' },
-      OH: { name: 'Ohio', status: 'Coming Soon' as Status, benefit: 'Launching soon - join the waitlist.' },
-      PA: { name: 'Pennsylvania', status: 'Coming Soon' as Status, benefit: 'Launching soon - join the waitlist.' },
-      IL: { name: 'Illinois', status: 'Coming Soon' as Status, benefit: 'Launching soon - join the waitlist.' }
-    };
-    
+  const getStateInfo = useCallback((code: StateCode): { name: string; status: Status; benefit?: string } => {
     const defaultInfo = { name: code, status: 'Not Available' as Status, benefit: undefined };
-    return stateData[code as keyof typeof stateData] || defaultInfo;
-  };
+    return STATE_INFO_MAP[code as keyof typeof STATE_INFO_MAP] || defaultInfo;
+  }, []);
 
   const getStateAttrs = useMemo(() => {
     return (code: StateCode) => {
@@ -121,13 +128,6 @@ export default function EnhancedMap() {
     }
   }, [hover]);
 
-  const stats = [
-    { icon: MapPin, number: "6", label: "Active States", sublabel: "FL, MI, NC, AZ, TX, & GA" },
-    { icon: TrendingUp, number: "25+", label: "Expanding To", sublabel: "by 2025" },
-    { icon: Users, number: "1,000+", label: "Families Served", sublabel: "and growing" },
-    { icon: Clock, number: "45min", label: "Avg Quote Time", sublabel: "industry leading" }
-  ];
-
   return (
     <section className="py-16 lg:py-24 bg-gradient-to-b from-white via-slate-50 to-white relative overflow-hidden">
       {/* Premium background effects */}
@@ -162,7 +162,7 @@ export default function EnhancedMap() {
 
           {/* Statistics Grid */}
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 max-w-4xl mx-auto">
-            {stats.map((stat, index) => (
+            {MAP_STATS.map((stat, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: prefersReducedMotion ? 0 : 20 }}

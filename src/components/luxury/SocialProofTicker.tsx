@@ -11,108 +11,147 @@ interface SocialProofItem {
   timeAgo: string;
 }
 
+const PROOF_ITEMS: SocialProofItem[] = [
+  {
+    type: 'savings',
+    name: 'Sarah M.',
+    location: 'Tampa, FL',
+    action: 'saved on their health plan',
+    value: '$142/month',
+    timeAgo: '23 minutes ago'
+  },
+  {
+    type: 'enrollment',
+    name: 'Michael T.',
+    location: 'Detroit, MI',
+    action: 'enrolled in PPO coverage',
+    timeAgo: '1 hour ago'
+  },
+  {
+    type: 'quote',
+    name: 'Jennifer C.',
+    location: 'Charlotte, NC',
+    action: 'received their personalized quote',
+    timeAgo: '2 hours ago'
+  },
+  {
+    type: 'savings',
+    name: 'Robert W.',
+    location: 'Orlando, FL',
+    action: 'reduced their premium by',
+    value: '$89/month',
+    timeAgo: '3 hours ago'
+  },
+  {
+    type: 'enrollment',
+    name: 'Lisa R.',
+    location: 'Miami, FL',
+    action: 'secured life insurance',
+    timeAgo: '4 hours ago'
+  },
+  {
+    type: 'enrollment',
+    name: 'David H.',
+    location: 'Grand Rapids, MI',
+    action: 'completed their application',
+    timeAgo: '5 hours ago'
+  },
+  {
+    type: 'savings',
+    name: 'Maria G.',
+    location: 'Raleigh, NC',
+    action: 'lowered their costs by',
+    value: '$67/month',
+    timeAgo: '6 hours ago'
+  },
+  {
+    type: 'quote',
+    name: 'James P.',
+    location: 'St. Petersburg, FL',
+    action: 'compared plans and chose coverage',
+    timeAgo: '7 hours ago'
+  },
+  {
+    type: 'enrollment',
+    name: 'Amanda K.',
+    location: 'Ann Arbor, MI',
+    action: 'enrolled their family',
+    timeAgo: '8 hours ago'
+  },
+  {
+    type: 'savings',
+    name: 'Carlos R.',
+    location: 'Jacksonville, FL',
+    action: 'saved on prescription coverage',
+    value: '$34/month',
+    timeAgo: '9 hours ago'
+  }
+];
+
+const getIcon = (type: string) => {
+  switch (type) {
+    case 'savings':
+      return DollarSign;
+    case 'quote':
+      return Clock;
+    case 'enrollment':
+      return Users;
+    default:
+      return MapPin;
+  }
+};
+
+const getBackgroundColor = (type: string) => {
+  switch (type) {
+    case 'savings':
+      return 'from-emerald-500/20 to-emerald-600/20 border-emerald-500/30';
+    case 'quote':
+      return 'from-blue-500/20 to-blue-600/20 border-blue-500/30';
+    case 'enrollment':
+      return 'from-purple-500/20 to-purple-600/20 border-purple-500/30';
+    default:
+      return 'from-slate-500/20 to-slate-600/20 border-slate-500/30';
+  }
+};
+
+const getTextColor = (type: string) => {
+  switch (type) {
+    case 'savings':
+      return 'text-emerald-300';
+    case 'quote':
+      return 'text-blue-300';
+    case 'enrollment':
+      return 'text-purple-300';
+    default:
+      return 'text-slate-300';
+  }
+};
+
 const SocialProofTicker = () => {
   const [currentProof, setCurrentProof] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
 
-  const proofItems: SocialProofItem[] = [
-    {
-      type: 'savings',
-      name: 'Sarah M.',
-      location: 'Tampa, FL',
-      action: 'saved on their health plan',
-      value: '$142/month',
-      timeAgo: '23 minutes ago'
-    },
-    {
-      type: 'enrollment',
-      name: 'Michael T.',
-      location: 'Detroit, MI', 
-      action: 'enrolled in PPO coverage',
-      timeAgo: '1 hour ago'
-    },
-    {
-      type: 'quote',
-      name: 'Jennifer C.',
-      location: 'Charlotte, NC',
-      action: 'received their personalized quote',
-      timeAgo: '2 hours ago'
-    },
-    {
-      type: 'savings',
-      name: 'Robert W.',
-      location: 'Orlando, FL',
-      action: 'reduced their premium by',
-      value: '$89/month',
-      timeAgo: '3 hours ago'
-    },
-    {
-      type: 'enrollment', 
-      name: 'Lisa R.',
-      location: 'Miami, FL',
-      action: 'secured life insurance',
-      timeAgo: '4 hours ago'
-    },
-    {
-      type: 'enrollment',
-      name: 'David H.',
-      location: 'Grand Rapids, MI',
-      action: 'completed their application',
-      timeAgo: '5 hours ago'
-    },
-    {
-      type: 'savings',
-      name: 'Maria G.',
-      location: 'Raleigh, NC',
-      action: 'lowered their costs by',
-      value: '$67/month',
-      timeAgo: '6 hours ago'
-    },
-    {
-      type: 'quote',
-      name: 'James P.',
-      location: 'St. Petersburg, FL',
-      action: 'compared plans and chose coverage',
-      timeAgo: '7 hours ago'
-    },
-    {
-      type: 'enrollment',
-      name: 'Amanda K.',
-      location: 'Ann Arbor, MI',
-      action: 'enrolled their family',
-      timeAgo: '8 hours ago'
-    },
-    {
-      type: 'savings',
-      name: 'Carlos R.',
-      location: 'Jacksonville, FL',
-      action: 'saved on prescription coverage',
-      value: '$34/month',
-      timeAgo: '9 hours ago'
-    }
-  ];
-
   useEffect(() => {
     const getRandomDisplayTime = () => Math.floor(Math.random() * (10000 - 5000 + 1)) + 5000; // 5-10 seconds
     const getRandomWaitTime = () => Math.floor(Math.random() * (60000 - 45000 + 1)) + 45000; // 45-60 seconds
-    
+
     const scheduleNext = () => {
       // Show the notification
       setIsVisible(true);
-      
+
       // Hide it after 5-10 seconds
       const hideTimeout = setTimeout(() => {
         setIsVisible(false);
-        
+
         // Wait 45-60 seconds before showing the next one
         const nextTimeout = setTimeout(() => {
-          setCurrentProof((prev) => (prev + 1) % proofItems.length);
+          setCurrentProof((prev) => (prev + 1) % PROOF_ITEMS.length);
           scheduleNext(); // Schedule the next cycle
         }, getRandomWaitTime());
-        
+
         return nextTimeout;
       }, getRandomDisplayTime());
-      
+
       return hideTimeout;
     };
 
@@ -120,50 +159,11 @@ const SocialProofTicker = () => {
     const initialTimeout = setTimeout(() => {
       scheduleNext();
     }, 2000);
-    
+
     return () => clearTimeout(initialTimeout);
-  }, [proofItems.length]);
+  }, []);
 
-  const getIcon = (type: string) => {
-    switch (type) {
-      case 'savings':
-        return DollarSign;
-      case 'quote':
-        return Clock;
-      case 'enrollment':
-        return Users;
-      default:
-        return MapPin;
-    }
-  };
-
-  const getBackgroundColor = (type: string) => {
-    switch (type) {
-      case 'savings':
-        return 'from-emerald-500/20 to-emerald-600/20 border-emerald-500/30';
-      case 'quote':
-        return 'from-blue-500/20 to-blue-600/20 border-blue-500/30';
-      case 'enrollment':
-        return 'from-purple-500/20 to-purple-600/20 border-purple-500/30';
-      default:
-        return 'from-slate-500/20 to-slate-600/20 border-slate-500/30';
-    }
-  };
-
-  const getTextColor = (type: string) => {
-    switch (type) {
-      case 'savings':
-        return 'text-emerald-300';
-      case 'quote':
-        return 'text-blue-300';
-      case 'enrollment':
-        return 'text-purple-300';
-      default:
-        return 'text-slate-300';
-    }
-  };
-
-  const current = proofItems[currentProof];
+  const current = PROOF_ITEMS[currentProof];
 
   const renderIcon = (type: string, textColor: string) => {
     const IconComponent = getIcon(type);
