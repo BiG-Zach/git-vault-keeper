@@ -1,4 +1,4 @@
-import { describe, it, expect, beforeEach, afterEach, vi, type Mock } from 'vitest';
+import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 import ringyProxy from '../ringyProxy';
 import fetch from 'node-fetch';
@@ -7,7 +7,20 @@ vi.mock('node-fetch', () => ({
   default: vi.fn(),
 }));
 
-const mockedFetch = fetch as unknown as Mock;
+const mockedFetch = fetch as unknown as ReturnType<typeof vi.fn>;
+
+type MockFn = ReturnType<typeof vi.fn>;
+
+type ResponseStub = {
+  statusCode: number;
+  statusMessage: string;
+  headers: Map<string, string>;
+  payload?: unknown;
+  setHeader: MockFn;
+  status: MockFn;
+  json: MockFn;
+  end: MockFn;
+};
 
 const createRequest = (overrides: Partial<VercelRequest> = {}): VercelRequest => {
   return {
@@ -18,35 +31,26 @@ const createRequest = (overrides: Partial<VercelRequest> = {}): VercelRequest =>
   } as VercelRequest;
 };
 
-type ResponseStub = Partial<VercelResponse> & {
-  statusCode: number;
-  headers: Map<string, string>;
-  payload?: unknown;
-  setHeader: Mock<[string, string], void>;
-  status: Mock<[number], ResponseStub>;
-  json: Mock<[unknown], ResponseStub>;
-  end: Mock<[], void>;
-};
-
 const createResponse = (): ResponseStub => {
-  const response = {
+  const response: ResponseStub = {
     statusCode: 200,
+    statusMessage: '',
     headers: new Map<string, string>(),
     setHeader: vi.fn((key: string, value: string) => {
       response.headers.set(key, value);
     }),
     status: vi.fn((code: number) => {
       response.statusCode = code;
-      return response as ResponseStub;
+      return response;
     }),
     json: vi.fn((payload: unknown) => {
       response.payload = payload;
-      return response as ResponseStub;
+      return response;
     }),
     end: vi.fn(),
-  } as ResponseStub;
+  };
 
-  return response as VercelResponse & ResponseStub;
+  return response;
 };
 
 describe('ringyProxy', () => {
@@ -67,7 +71,7 @@ describe('ringyProxy', () => {
     const req = createRequest({ method: 'GET' });
     const res = createResponse();
 
-    await ringyProxy(req, res);
+    await ringyProxy(req, res as unknown as VercelResponse);
 
     expect(res.status).toHaveBeenCalledWith(405);
     expect(res.json).toHaveBeenCalledWith({ error: 'Method not allowed' });
@@ -80,7 +84,7 @@ describe('ringyProxy', () => {
     const req = createRequest();
     const res = createResponse();
 
-    await ringyProxy(req, res);
+    await ringyProxy(req, res as unknown as VercelResponse);
 
     expect(res.status).toHaveBeenCalledWith(500);
     expect(res.json).toHaveBeenCalledWith({ error: 'Ringy credentials missing' });
@@ -115,7 +119,7 @@ describe('ringyProxy', () => {
 
     const res = createResponse();
 
-    await ringyProxy(req, res);
+    await ringyProxy(req, res as unknown as VercelResponse);
 
     expect(mockedFetch).toHaveBeenCalledTimes(1);
     const [, init] = mockedFetch.mock.calls[0];
@@ -152,7 +156,7 @@ describe('ringyProxy', () => {
 
     const res = createResponse();
 
-    await ringyProxy(req, res);
+    await ringyProxy(req, res as unknown as VercelResponse);
 
     expect(res.status).toHaveBeenCalledWith(expect.any(Number));
     expect(res.json).toHaveBeenCalledWith({ error: 'Ringy error', detail: 'Bad Request' });

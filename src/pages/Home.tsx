@@ -15,7 +15,9 @@ import AuthoritySection from "../components/luxury/AuthoritySection";
 import SocialProofTicker from "../components/luxury/SocialProofTicker";
 import TestimonialsCarousel from "../components/TestimonialsCarousel";
 
-const logos = [
+type LogoItem = { src: string; alt: string; width?: number; height?: number };
+
+const logos: LogoItem[] = [
   { src: "/logos/carriers/aetna.webp", alt: "Aetna health insurance carrier" },
   { src: "/logos/carriers/cigna.webp", alt: "Cigna health insurance carrier" },
   { src: "/logos/carriers/americo.webp", alt: "Americo life insurance carrier" },
@@ -28,7 +30,7 @@ const logos = [
   { src: "/logos/carriers/mutualofomaha.webp", alt: "Mutual of Omaha life insurance" },
   { src: "/logos/carriers/pal.webp", alt: "Philadelphia American Life (PAL)" },
   { src: "/logos/carriers/aflac.webp", alt: "Aflac supplemental" },
-] as const;
+];
 
 const licensedStates = BRAND.licensed.split(",").map((state) => state.trim());
 const licensedStatesDisplay = licensedStates.join(" • ");
@@ -314,7 +316,7 @@ function MobileHeroExperience({ licensedStatesDisplay }: { licensedStatesDisplay
   );
 }
 
-function MobileCarriersSection({ logos }: { logos: typeof logos }) {
+function MobileCarriersSection({ logos }: { logos: LogoItem[] }) {
   return (
     <section className="bg-slate-50 py-16">
       <div className="container mx-auto px-6">
