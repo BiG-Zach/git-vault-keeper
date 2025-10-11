@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Calendar, Phone, ArrowLeft, Star, TrendingUp } from "lucide-react";
+import { Calendar, Phone, ArrowLeft, Star } from "lucide-react";
 import SEO from "../../components/SEO";
 
 export default function NorthCarolinaBestHealthInsurance() {

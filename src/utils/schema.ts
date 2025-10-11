@@ -46,7 +46,7 @@ export function localBusinessSchema(state: SupportedStateCode, address?: Address
   const stateName = entry?.name ?? slug.toUpperCase();
   const canonical = `${ORG.url.replace(/\/$/, '')}/states/${slug}`;
 
-  const data: Record<string, any> = {
+  const data: Record<string, unknown> = {
     '@context': 'https://schema.org',
     '@type': 'LocalBusiness',
     name: `${ORG.name} – ${stateName} Insurance Office`,
@@ -63,6 +63,15 @@ export function localBusinessSchema(state: SupportedStateCode, address?: Address
 
   const regionCode = slug.toUpperCase();
 
+  interface PostalAddress {
+    '@type': 'PostalAddress';
+    addressRegion: string;
+    addressLocality?: string;
+    streetAddress?: string;
+    postalCode?: string;
+    addressCountry: string;
+  }
+
   data.address = {
     '@type': 'PostalAddress',
     addressRegion: address?.addressRegion ?? regionCode,
@@ -70,7 +79,7 @@ export function localBusinessSchema(state: SupportedStateCode, address?: Address
     streetAddress: address?.streetAddress,
     postalCode: address?.postalCode,
     addressCountry: address?.addressCountry ?? 'US',
-  };
+  } as PostalAddress;
 
   if (phone) {
     data.telephone = phone;

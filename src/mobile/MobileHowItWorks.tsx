@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { MessageSquare, Search, CheckCircle, Clock, Zap } from 'lucide-react';
+import { Zap } from 'lucide-react';
 import styles from './MobileHowItWorksLuxury.module.css';
 import './tokens.module.css';
 

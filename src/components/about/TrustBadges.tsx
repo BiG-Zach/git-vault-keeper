@@ -1,6 +1,5 @@
 import { Shield, CheckCircle, Users, Star, Award, TrendingUp } from "lucide-react";
 import Reveal from "../Reveal";
-import { BRAND } from "../../lib/brand";
 
 const trustBadges = [
   {

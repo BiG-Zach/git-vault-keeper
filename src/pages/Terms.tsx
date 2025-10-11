@@ -1,3 +1,4 @@
 import { makePage } from './_stubs';
 
-export default makePage('Terms — Bradford Informed Guidance', '/terms');
+const Terms = makePage('Terms — Bradford Informed Guidance', '/terms');
+export default Terms;

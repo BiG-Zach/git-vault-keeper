@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Clock, User, Calendar, Share2, ArrowLeft, CheckCircle, DollarSign, Shield, Users, TrendingUp, AlertTriangle } from 'lucide-react';
+import { Clock, User, Calendar, Share2, ArrowLeft, CheckCircle, Shield, Users, TrendingUp, AlertTriangle } from 'lucide-react';
 import SEO from '../../components/SEO';
 
 export default function LifeInsuranceYoungAdultsGuide() {

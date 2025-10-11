@@ -46,11 +46,11 @@ export default function Magnetic({ children, strength = 12, radius = 80, classNa
     >
       {React.cloneElement(children, {
         style: {
-          ...((children.props as any)?.style || {}),
+          ...(children.props.style || {}),
           ...style,
           transition: reduce ? undefined : "transform 160ms ease"
-        },
-      } as any)}
+        } as React.CSSProperties,
+      })}
     </div>
   );
 }

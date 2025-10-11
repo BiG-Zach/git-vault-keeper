@@ -111,9 +111,6 @@ export default function MobileStickyCTA() {
     window.dispatchEvent(new CustomEvent('openHeroModal'));
   };
 
-  const callHref = callAttrs.current.href;
-  const callData = callAttrs.current.data;
-
   return (
     <div className={`${styles.stickyContainer} ${visible ? styles.stickyVisible : ''}`}>
       <div className={styles.stickyContent}>

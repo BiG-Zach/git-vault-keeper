@@ -1,8 +1,6 @@
 import { BRAND } from "../lib/brand";
-import TestimonialReel from "../components/social/TestimonialReel";
 import { Shield, Award, Users, TrendingUp, Phone, Mail, Calendar, Star, CheckCircle } from "lucide-react";
 import Reveal from "../components/Reveal";
-import CalendlyInline from "../components/CalendlyInline";
 import AboutHero from "../components/about/AboutHero";
 import Magnetic from "../components/ui/Magnetic";
 import VerificationBadge from "../components/trust/VerificationBadge";

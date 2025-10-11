@@ -3,7 +3,7 @@ import { motion, useReducedMotion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import USMap from '../ExpansionTracker/USMap';
 import MapTooltip from '../ui/MapTooltip';
-import { STATE_STATUS, statusClasses, statusLabel, legend, type StateCode } from '../ExpansionTracker/data';
+import { STATE_STATUS, statusClasses, type StateCode } from '../ExpansionTracker/data';
 import { trackEvent, GTM_EVENTS } from '../../utils/gtm';
 
 type Status = 'Available' | 'Coming Soon' | 'Not Available';
@@ -156,12 +156,6 @@ export default function InteractiveMap() {
     setHover(null);
   };
 
-  const handleKeyUp = (event: React.KeyboardEvent, code: StateCode) => {
-    if (event.key === 'Enter' || event.key === ' ') {
-      event.preventDefault();
-      onActivate(code);
-    }
-  };
 
   // Update container dimensions when hovering
   useEffect(() => {

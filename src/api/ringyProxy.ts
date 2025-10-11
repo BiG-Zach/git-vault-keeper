@@ -41,7 +41,21 @@ export default async function ringyProxy(req: VercelRequest, res: VercelResponse
       return res.status(500).json({ error: 'Ringy credentials missing' });
     }
 
-    const body = (req.body || {}) as Record<string, any>;
+    interface RingyProxyRequestBody {
+      firstName?: string;
+      lastName?: string;
+      email?: string;
+      phone?: string;
+      zipCode?: string;
+      leadSource?: string;
+      notes?: string;
+      proofOfSmsOptInLink?: string;
+      vendorReferenceId?: string;
+      metadata?: Record<string, unknown>;
+      custom?: Record<string, unknown>;
+    }
+
+    const body = (req.body || {}) as RingyProxyRequestBody;
     const {
       firstName = '',
       lastName = '',
@@ -60,7 +74,7 @@ export default async function ringyProxy(req: VercelRequest, res: VercelResponse
       return res.status(400).json({ error: 'Missing required email or phone' });
     }
 
-    const payload: Record<string, any> = {
+    const payload: Record<string, unknown> = {
       sid,
       authToken,
       phone_number: phone,
@@ -71,7 +85,7 @@ export default async function ringyProxy(req: VercelRequest, res: VercelResponse
       lead_source: leadSource || defaultLeadSource,
       notes,
       vendor_reference_id: vendorReferenceId || crypto.randomUUID(),
-      proof_of_sms_opt_in_link: proofOfSmsOptInLink || metadata.proofOfSmsOptInLink || '',
+      proof_of_sms_opt_in_link: proofOfSmsOptInLink || (typeof metadata.proofOfSmsOptInLink === 'string' ? metadata.proofOfSmsOptInLink : '') || '',
       ...custom,
     };
 
@@ -93,8 +107,9 @@ export default async function ringyProxy(req: VercelRequest, res: VercelResponse
     } catch {
       return res.status(200).json({ ok: true, raw: text });
     }
-  } catch (err: any) {
-    return res.status(500).json({ error: 'Ringy proxy failure', detail: err?.message || String(err) });
+  } catch (err: unknown) {
+    const errorMessage = err instanceof Error ? err.message : String(err);
+    return res.status(500).json({ error: 'Ringy proxy failure', detail: errorMessage });
   }
 }
 

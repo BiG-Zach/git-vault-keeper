@@ -2,7 +2,6 @@ import { motion } from 'framer-motion';
 import { useReducedMotion } from 'framer-motion';
 import { Calendar, FileText, Shield, Award, Clock } from 'lucide-react';
 import { Button } from '../ui/button';
-import { BRAND } from '../../lib/brand';
 
 const features = [
   {

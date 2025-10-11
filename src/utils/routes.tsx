@@ -39,6 +39,7 @@ const AMBestInsuranceRatingsExplained = lazy(() => import('../pages/blog/AMBestI
 const FloridaSmallBusinessHealthInsurance = lazy(() => import('../pages/blog/FloridaSmallBusinessHealthInsurance'));
 const LifeInsuranceCompaniesFinancialStrength = lazy(() => import('../pages/blog/LifeInsuranceCompaniesFinancialStrength'));
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const routes = [
   {
     path: '/',
@@ -82,6 +83,7 @@ export const routes = [
   },
 ];
 
+// eslint-disable-next-line react-refresh/only-export-components
 export function makeRouter() {
   return createBrowserRouter(routes);
 }

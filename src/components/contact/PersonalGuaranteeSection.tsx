@@ -1,6 +1,6 @@
 import * as React from "react";
 import { motion, useReducedMotion } from "framer-motion";
-import { Shield, Clock, CheckCircle, Heart, Star, Users } from "lucide-react";
+import { Shield, Clock, Heart, Star, Users } from "lucide-react";
 import Section from "../layout/Section";
 
 const guarantees = [

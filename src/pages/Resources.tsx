@@ -19,7 +19,7 @@ export interface BlogPost {
   states?: string[];
 }
 
-
+// eslint-disable-next-line react-refresh/only-export-components
 export const blogPosts: { [key: string]: BlogPost[] } = {
   'life-insurance': [
     {

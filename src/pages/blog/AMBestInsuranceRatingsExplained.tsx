@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { ChevronRight, Shield, TrendingUp, AlertTriangle, CheckCircle, Star, Award, BarChart3, DollarSign } from 'lucide-react';
+import { ChevronRight, Shield, TrendingUp, AlertTriangle, CheckCircle, Award, BarChart3 } from 'lucide-react';
 import SEO from '../../components/SEO';
 
 export default function AMBestInsuranceRatingsExplained() {

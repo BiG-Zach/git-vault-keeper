@@ -19,7 +19,7 @@ export default function GradientHueBand() {
       <div
         aria-hidden="true"
         className="rounded-3xl hue-band ring-1 ring-slate-200/60 shadow-sm"
-        style={{ ["--band-h" as any]: `${hue}` }}
+        style={{ "--band-h": `${hue}` } as React.CSSProperties}
       >
         {/* Spacer for the visual band */}
         <div className="h-24 md:h-28" />

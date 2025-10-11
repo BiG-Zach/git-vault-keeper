@@ -1,5 +1,5 @@
 // scripts/tunnel.js
-/* eslint-disable no-console */
+ 
 import waitOn from 'wait-on';
 import { spawn } from 'node:child_process';
 import os from 'node:os';

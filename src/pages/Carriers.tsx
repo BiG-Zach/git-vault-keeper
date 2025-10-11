@@ -1,8 +1,6 @@
-﻿import { Calendar, FileText, CheckCircle, BarChart3, Search, Shield, Phone } from 'lucide-react';
+﻿import { CheckCircle, BarChart3, Search, Shield, Phone } from 'lucide-react';
 
 import { Link } from 'react-router-dom';
-
-import { Button } from '../components/ui/button';
 
 import PremiumNetworkCard, { type Network } from "../components/carriers/PremiumNetworkCard";
 
@@ -13,8 +11,6 @@ import CarriersStatisticsSection from "../components/carriers/CarriersStatistics
 import PremiumCarriersFAQ from "../components/carriers/PremiumCarriersFAQ";
 
 import CarriersFooterCTA from "../components/carriers/CarriersFooterCTA";
-
-import StickyBottomCTA from "../components/carriers/StickyBottomCTA";
 
 import SEO from "../components/SEO";
 

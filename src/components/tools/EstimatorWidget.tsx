@@ -19,7 +19,7 @@ export default function EstimatorWidget() {
           <input value={age} onChange={e=>setAge(e.target.value)} required className="rounded-xl border px-3 py-2 focus:ring-2 focus:ring-brand-sky-500"/>
         </label>
         <label className="flex flex-col gap-1"><span className="text-sm font-medium">Health snapshot</span>
-          <select value={health} onChange={e=>setHealth(e.target.value as any)} className="rounded-xl border px-3 py-2 focus:ring-2 focus:ring-brand-sky-500">
+          <select value={health} onChange={e=>setHealth(e.target.value as "great"|"good"|"mixed")} className="rounded-xl border px-3 py-2 focus:ring-2 focus:ring-brand-sky-500">
             <option value="great">Great</option><option value="good">Good</option><option value="mixed">Mixed</option>
           </select>
         </label>

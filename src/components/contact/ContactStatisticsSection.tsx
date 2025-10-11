@@ -2,7 +2,6 @@ import * as React from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { Shield, Users, Clock, Award } from "lucide-react";
 import Section from "../layout/Section";
-import { useParallax } from "../../lib/useParallax";
 
 const stats = [
   {

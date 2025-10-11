@@ -56,8 +56,16 @@ function HeroVisual({ codeUC, stateName }: { codeUC: string; stateName: string }
   );
 }
 
+interface StateEntry {
+  name: string;
+  available?: boolean;
+  seo?: {
+    keywords?: string;
+  };
+}
+
 // Template for Licensed States (Active)
-function ActiveStateTemplate({ entry, codeUC, slug }: { entry: any; codeUC: string; slug: string }) {
+function ActiveStateTemplate({ entry, codeUC, slug: _slug }: { entry: StateEntry; codeUC: string; slug: string }) {
   const licenseDate =
     codeUC === 'FL' ? '2021'
       : codeUC === 'MI' ? '2022'
@@ -224,7 +232,7 @@ function ActiveStateTemplate({ entry, codeUC, slug }: { entry: any; codeUC: stri
 }
 
 // Template for Coming Soon States (Waitlist)
-function ComingSoonTemplate({ entry, codeUC, slug }: { entry: any; codeUC: string; slug: string }) {
+function ComingSoonTemplate({ entry, codeUC: _codeUC, slug: _slug }: { entry: StateEntry; codeUC: string; slug: string }) {
   const estimatedLaunch = "Q2 2024"; // This would be dynamic based on expansion timeline
   const [waitlistCount] = useState(() => Math.floor(Math.random() * 500) + 200); // Simulated waitlist count
   
@@ -569,8 +577,6 @@ export default function StateDynamicPage() {
   const seo = useMemo(() => {
     if (!entry || !slug) return { title: '', description: '', path: '', keywords: '' };
 
-
-    const baseTitle = entry.seo?.title ?? `Private Health Insurance in ${entry.name}`;
     const title = isActive
       ? `${entry.name} Health & Life Insurance – Licensed & Ready to Serve`
       : `Coming to ${entry.name} Soon - Join the Waitlist!`;

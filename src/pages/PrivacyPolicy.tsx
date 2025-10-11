@@ -1,3 +1,4 @@
 import { makePage } from './_stubs';
 
-export default makePage('Privacy Policy — Bradford Informed Guidance', '/privacy-policy');
+const PrivacyPolicy = makePage('Privacy Policy — Bradford Informed Guidance', '/privacy-policy');
+export default PrivacyPolicy;

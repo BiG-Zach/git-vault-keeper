@@ -1,6 +1,5 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { CheckCircle, Users } from 'lucide-react';
 import styles from './MobileCarriersLuxury.module.css';
 import './tokens.module.css';
 

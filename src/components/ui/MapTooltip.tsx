@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useRef, useState } from 'react';
+import React, { useMemo } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 
 type Status = 'Available' | 'Coming Soon' | 'Not Available';
@@ -39,19 +39,12 @@ export default function MapTooltip({
   containerWidth,
   containerHeight
 }: TooltipProps) {
-  const tooltipRef = useRef<HTMLDivElement>(null);
-  const [position, setPosition] = useState({ x: 0, y: 0, arrowSide: 'bottom' as 'bottom' | 'top' | 'left' | 'right' });
   const prefersReducedMotion = useReducedMotion();
 
-  // Use useLayoutEffect to avoid cascading renders - this runs synchronously after DOM mutations
-   
-  useLayoutEffect(() => {
-    if (!isVisible || !tooltipRef.current) return;
-
-    const tooltip = tooltipRef.current;
-    const tooltipRect = tooltip.getBoundingClientRect();
+  // Calculate position using useMemo to avoid recalculating on every render
+  const position = useMemo(() => {
     const tooltipWidth = 220; // min-w-[220px]
-    const tooltipHeight = tooltipRect.height || 80; // estimated height
+    const tooltipHeight = 80; // estimated height
 
     // Calculate desired position with offset so tooltip doesn't cover cursor
     const offsetX = 12;
@@ -91,9 +84,8 @@ export default function MapTooltip({
     const clampedX = Math.max(padding, Math.min(desiredX, containerWidth - tooltipWidth - padding));
     const clampedY = Math.max(padding, Math.min(desiredY, containerHeight - tooltipHeight - padding));
 
-    // This is intentionally in useLayoutEffect to avoid flash of incorrectly positioned tooltip
-    setPosition({ x: clampedX, y: clampedY, arrowSide });
-  }, [isVisible, x, y, containerWidth, containerHeight]);
+    return { x: clampedX, y: clampedY, arrowSide };
+  }, [x, y, containerWidth, containerHeight]);
 
   if (!isVisible) return null;
 
@@ -108,7 +100,6 @@ export default function MapTooltip({
 
   return (
     <motion.div
-      ref={tooltipRef}
       initial={prefersReducedMotion ? { opacity: 1 } : { opacity: 0, y: 8 }}
       animate={{ opacity: 1, y: 0 }}
       transition={prefersReducedMotion ? undefined : { duration: 0.18, ease: "easeOut" }}

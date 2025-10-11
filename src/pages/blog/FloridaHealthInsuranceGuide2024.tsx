@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Clock, User, Calendar, Share2, ArrowLeft, MapPin, DollarSign, Shield, Users, AlertTriangle } from 'lucide-react';
+import { Clock, User, Calendar, ArrowLeft, MapPin, DollarSign, Shield, Users, AlertTriangle } from 'lucide-react';
 import SEO from '../../components/SEO';
 
 export default function FloridaHealthInsuranceGuide2024() {

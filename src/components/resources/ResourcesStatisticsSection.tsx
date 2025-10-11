@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
-import { BookOpen, Users, Clock, Award, Shield, TrendingUp } from 'lucide-react';
+import { BookOpen, Users, Clock, Award, Shield } from 'lucide-react';
 
 const statistics = [
   {

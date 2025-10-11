@@ -1,11 +1,9 @@
 import * as React from "react";
 import { motion, useReducedMotion } from "framer-motion";
-import { Calendar, Search, Users, Shield } from "lucide-react";
-import { TypeAnimation } from 'react-type-animation';
+import { Calendar, Search } from "lucide-react";
 // Removed Section import for full-width design
 import { useParallax } from "../../lib/useParallax";
 
-const HAS_MULTI = false;
 const SINGLE_FALLBACK = "/images/hero/resources-hero-retina.webp";
 const LQIP = "";
 

@@ -1,11 +1,17 @@
 import { useEffect } from 'react';
 import { Clock, Phone, Mail, Shield, CheckCircle, Calendar, Award } from 'lucide-react';
 
+declare global {
+  interface Window {
+    gtag?: (...args: unknown[]) => void;
+  }
+}
+
 export default function ThankYouPage() {
   useEffect(() => {
     // Track page view
-    if (typeof window !== 'undefined' && (window as any).gtag) {
-      (window as any).gtag('event', 'page_view', {
+    if (typeof window !== 'undefined' && window.gtag) {
+      window.gtag('event', 'page_view', {
         page_title: 'Thank You - Quote Submitted',
         page_location: window.location.href,
       });

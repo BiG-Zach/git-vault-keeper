@@ -1,4 +1,3 @@
-import { STATE_STATUS, type StateCode } from "../ExpansionTracker/data";
 export default function MapLegend() {
   const items = [
     { key:'available', label:'Available now', dot:'bg-emerald-500 ring-emerald-300' },

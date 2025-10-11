@@ -136,11 +136,16 @@ function LifeInsuranceCalculator({ onEmailCapture }: LifeInsuranceCalculatorProp
   );
 }
 
+interface HealthSavingsResult {
+  savings: number;
+  recommendation: string;
+}
+
 function HealthSavingsCalculator() {
   const [currentPremium, setCurrentPremium] = useState('');
   const [deductible, setDeductible] = useState('');
   const [usage, setUsage] = useState('low');
-  const [result, setResult] = useState<any>(null);
+  const [result, setResult] = useState<HealthSavingsResult | null>(null);
 
   const calculate = () => {
     const premium = parseInt(currentPremium) || 0;
@@ -257,9 +262,8 @@ export default function PremiumCalculators() {
     }
   ];
 
-  const handleEmailCapture = (email: string, result: number) => {
+  const handleEmailCapture = (_email: string, _result: number) => {
     // In a real app, this would send to your backend
-    console.log('Email captured:', email, 'Result:', result);
     setEmailCaptured(true);
     setTimeout(() => setEmailCaptured(false), 3000);
   };

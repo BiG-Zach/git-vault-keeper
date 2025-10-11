@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Calendar, Phone, ArrowLeft, TrendingUp } from "lucide-react";
+import { Calendar, Phone, ArrowLeft } from "lucide-react";
 import SEO from "../../components/SEO";
 
 export default function AetnaCignaUnitedComparison() {

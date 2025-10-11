@@ -8,7 +8,7 @@
 import fs from 'fs';
 import path from 'path';
 import topojsonClient from 'topojson-client';
-const { feature, FeatureCollection } = topojsonClient;
+const { feature } = topojsonClient;
 import type { Topology, Objects } from 'topojson-specification';
 import { geoPath, geoAlbersUsa } from 'd3-geo';
 import type { GeoProjection } from 'd3-geo';
@@ -38,7 +38,7 @@ function main() {
   }
 
   const raw = fs.readFileSync(topoPath, 'utf-8');
-  const topo = JSON.parse(raw) as Topology<Objects<any>>;
+  const topo = JSON.parse(raw) as Topology<Objects<Record<string, unknown>>>;
 
   if (!topo.objects || !('states' in topo.objects)) {
     console.error('TopoJSON does not contain an "objects.states" collection');
@@ -54,11 +54,11 @@ function main() {
   const codeToPath: Record<string, string> = {};
 
   for (const f of statesFc.features) {
-    const id = String((f as any).id);
+    const id = String((f as { id?: string | number }).id);
     const code = FIPS_TO_USPS[id];
     if (!code) continue;
 
-    const d = pathGen(f as any);
+    const d = pathGen(f as Parameters<typeof pathGen>[0]);
     if (!d) continue;
 
     codeToPath[code] = d;
@@ -68,9 +68,9 @@ function main() {
   if (!codeToPath['DC']) {
     // District may be tiny or omitted in some projections; attempt to find by name
     for (const f of statesFc.features) {
-      const props = (f.properties || {}) as any;
+      const props = (f.properties || {}) as Record<string, unknown>;
       if (props && typeof props.name === 'string' && props.name.toLowerCase().includes('district')) {
-        const d = pathGen(f as any);
+        const d = pathGen(f as Parameters<typeof pathGen>[0]);
         if (d) codeToPath['DC'] = d;
       }
     }
@@ -103,14 +103,14 @@ function main() {
     const d = codeToPath[code] ?? '';
     // Escape backticks if any (unlikely)
     const safe = d.replace(/`/g, '\\`');
-    lines.push(`  ${JSON.stringify(code as any)}: \`${safe}\`,`);
+    lines.push(`  ${JSON.stringify(code)}: \`${safe}\`,`);
   }
 
   lines.push('};');
   lines.push('');
 
   fs.writeFileSync(outPath, lines.join('\n'), 'utf-8');
-  console.log(`Wrote ${outPath} with ${Object.keys(codeToPath).length} paths.`);
+  console.error(`Wrote ${outPath} with ${Object.keys(codeToPath).length} paths.`);
 }
 
 main();

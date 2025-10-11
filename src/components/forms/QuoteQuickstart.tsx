@@ -5,7 +5,6 @@ export default function QuoteQuickstart() {
   const [zip, setZip] = useState(""); const [ages, setAges] = useState(""); const [email, setEmail] = useState("");
   const submit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("LeadQuickstart", { zip, ages, email });
     localStorage.setItem("lead:quickstart", JSON.stringify({ zip, ages, email, ts: Date.now() }));
     window.location.href = "/thanks?lead=1";
   };

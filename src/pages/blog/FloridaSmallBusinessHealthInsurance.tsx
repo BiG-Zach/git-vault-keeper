@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { ChevronRight, Building2, Users, DollarSign, Shield, CheckCircle, AlertTriangle, TrendingUp, Award } from 'lucide-react';
+import { ChevronRight, Building2, DollarSign, Shield, CheckCircle, AlertTriangle, TrendingUp } from 'lucide-react';
 import SEO from '../../components/SEO';
 
 export default function FloridaSmallBusinessHealthInsurance() {

@@ -1,7 +1,6 @@
 import React from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 import { Shield, Award, Clock, Users } from 'lucide-react';
-import { BRAND } from '../../lib/brand';
 import LuxuryHeroForm from './LuxuryHeroForm';
 
 const LuxuryHero = () => {

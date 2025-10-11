@@ -2,7 +2,6 @@ import { BRAND } from "../lib/brand";
 import TestimonialReel from "../components/social/TestimonialReel";
 import { Shield, Award, Users, TrendingUp, Phone, Mail, Calendar, Star, CheckCircle } from "lucide-react";
 import Reveal from "../components/Reveal";
-import CalendlyInline from "../components/CalendlyInline";
 
 export default function AboutPage() {
   return (

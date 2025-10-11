@@ -1,6 +1,5 @@
 import React from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
-import { NumberedIcon } from './ui/CustomIcons';
 import { trackEvent, GTM_EVENTS } from '../utils/gtm';
 import Section from './layout/Section';
 

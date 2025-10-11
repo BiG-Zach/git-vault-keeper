@@ -1,9 +1,6 @@
 import * as React from "react";
 import { motion, useReducedMotion } from "framer-motion";
-import Section from "../layout/Section";
-import BrandGrade from "../media/BrandGrade";
 import { useParallax } from "../../lib/useParallax";
-import { useScrollProgress } from "../../lib/useScrollProgress";
 import { Star, Shield, Award } from "lucide-react";
 
 const HAS_MULTI = true; // set to true when you add @1x/@2x webp/jpg
@@ -19,7 +16,6 @@ const WEBP2X = "/images/hero/about-hero-retina.webp";
 export default function AboutHero() {
   const prefersReducedMotion = useReducedMotion();
   const { ref, y } = useParallax(0.2, 48);
-  const page = useScrollProgress(); // 0..1 over the whole page
   const [imgError, setImgError] = React.useState(false);
 
   const Content = (

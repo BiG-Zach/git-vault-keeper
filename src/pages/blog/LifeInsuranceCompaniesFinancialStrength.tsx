@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { ChevronRight, Shield, Star, TrendingUp, Award, AlertTriangle, CheckCircle, DollarSign, BarChart3 } from 'lucide-react';
+import { ChevronRight, Shield, TrendingUp, Award, AlertTriangle, CheckCircle, BarChart3 } from 'lucide-react';
 import SEO from '../../components/SEO';
 
 export default function LifeInsuranceCompaniesFinancialStrength() {

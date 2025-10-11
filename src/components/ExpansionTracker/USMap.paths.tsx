@@ -277,6 +277,7 @@ export function StateDC(props: StatePathProps) {
 /**
  * Registry of state components used by the map.
  */
+// eslint-disable-next-line react-refresh/only-export-components
 export const STATE_COMPONENTS: Partial<Record<StateCode, (p: StatePathProps) => React.ReactElement>> = {
   FL: StateFL,
   MI: StateMI,

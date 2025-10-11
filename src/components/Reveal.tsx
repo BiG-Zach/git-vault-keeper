@@ -15,7 +15,7 @@ export default function Reveal({
   delay = 0,
 }: RevealProps) {
   const prefersReducedMotion = useReducedMotion();
-  const Tag = as as any;
+  const Tag = as as keyof React.JSX.IntrinsicElements;
 
   if (prefersReducedMotion) {
     return <Tag className={className}>{children}</Tag>;

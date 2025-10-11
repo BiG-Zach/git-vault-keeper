@@ -73,8 +73,6 @@ export default function ExpansionTracker() {
     setHovered(null);
   };
 
-  const activeLabel = hovered ? `${hovered} — ${statusLabel(hovered)}` : 'Hover or focus a state';
-
   return (
     <section aria-labelledby="expansion-tracker-title" className="py-12 sm:py-16 bg-white">
       <div className="container-default">

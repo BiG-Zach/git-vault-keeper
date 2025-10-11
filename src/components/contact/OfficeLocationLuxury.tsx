@@ -1,6 +1,6 @@
 import * as React from "react";
 import { motion, useReducedMotion } from "framer-motion";
-import { MapPin, Shield, Clock, Building } from "lucide-react";
+import { MapPin, Shield, Clock } from "lucide-react";
 import Section from "../layout/Section";
 
 export default function OfficeLocationLuxury() {

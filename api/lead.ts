@@ -33,6 +33,19 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     const JWT_SECRET = process.env.JWT_SECRET!;
     const LEAD_SOURCE = process.env.LEAD_SOURCE || 'Website – Mobile Hero';
 
+    interface LeadRequestBody {
+      zipCode?: string;
+      ages?: string;
+      email?: string;
+      phone?: string;
+      firstName?: string;
+      lastName?: string;
+      consentChecked?: boolean;
+      consentText?: string;
+      landingUrl?: string;
+      utm?: Record<string, string>;
+    }
+
     const {
       zipCode,
       ages,
@@ -44,7 +57,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       consentText,
       landingUrl,
       utm = {}
-    } = (req.body || {}) as Record<string, any>;
+    } = (req.body || {}) as LeadRequestBody;
 
     if (!zipCode || !email || !phone || !consentChecked || !consentText) {
       return res.status(400).json({ error: 'Missing required fields or consent' });
@@ -93,11 +106,12 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       return res.status(resp.status).json({ error: 'Ringy error', detail: text });
     }
 
-    let vendorResponse: any;
+    let vendorResponse: unknown;
     try { vendorResponse = JSON.parse(text); } catch { vendorResponse = { raw: text }; }
 
     return res.status(200).json({ ok: true, vendorResponse });
-  } catch (err: any) {
-    return res.status(500).json({ error: 'Server error', detail: err?.message || String(err) });
+  } catch (err: unknown) {
+    const errorMessage = err instanceof Error ? err.message : String(err);
+    return res.status(500).json({ error: 'Server error', detail: errorMessage });
   }
 }

@@ -53,7 +53,6 @@ export default function Button(props: Props) {
     size = 'md',
     loading = false,
     fullWidth,
-    ...rest
   } = props as (Props & { variant: Variant; size: Size });
 
   const base =
@@ -69,6 +68,7 @@ export default function Button(props: Props) {
   );
 
   if ((props as AnchorProps).as === 'a') {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { as: _as, ...anchorRest } = props as AnchorProps;
     return (
       <a className={commonClass} {...anchorRest}>
@@ -77,7 +77,8 @@ export default function Button(props: Props) {
     );
   }
 
-  const { as: _as, ...buttonRest } = props as ButtonProps;
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const { as: _asButton, ...buttonRest } = props as ButtonProps;
   const disabled = (buttonRest as ButtonProps).disabled || loading;
 
   return (

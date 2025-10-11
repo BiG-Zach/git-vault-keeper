@@ -54,7 +54,7 @@ const LuxuryHeroForm = () => {
     label: i === 62 ? '80+' : (i + 18).toString()
   }));
 
-  const updateFormData = (field: keyof FormData, value: any) => {
+  const updateFormData = (field: keyof FormData, value: string | string[]) => {
     setFormData(prev => ({ ...prev, [field]: value }));
   };
 
@@ -102,28 +102,6 @@ const LuxuryHeroForm = () => {
     if (currentStep > 1) {
       setCurrentStep(prev => prev - 1);
     }
-  };
-
-  const deriveLocationFromZip = (zip: string) => {
-    // Simple ZIP to state mapping (expand as needed)
-    const zipToState: { [key: string]: { city: string; state: string } } = {
-      '33': { city: 'Miami', state: 'FL' },
-      '32': { city: 'Jacksonville', state: 'FL' },
-      '34': { city: 'Tampa', state: 'FL' },
-      '48': { city: 'Detroit', state: 'MI' },
-      '49': { city: 'Grand Rapids', state: 'MI' },
-      '27': { city: 'Charlotte', state: 'NC' },
-      '28': { city: 'Raleigh', state: 'NC' },
-    };
-
-    const prefix = zip.substring(0, 2);
-    return zipToState[prefix] || { city: 'Unknown', state: 'Unknown' };
-  };
-
-  const calculateBirthYear = (age: string) => {
-    const currentYear = new Date().getFullYear();
-    const ageNum = parseInt(age);
-    return (currentYear - ageNum).toString();
   };
 
   const handleSubmit = async () => {
