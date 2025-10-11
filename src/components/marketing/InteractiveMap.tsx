@@ -156,6 +156,11 @@ export default function InteractiveMap() {
     setHover(null);
   };
 
+  const legend = () => [
+    { key: 'available', label: 'Available now', dotClass: 'bg-emerald-500 ring-emerald-300' },
+    { key: 'comingSoon', label: 'Coming soon', dotClass: 'bg-sky-500 ring-sky-300' },
+    { key: 'notAvailable', label: 'Not available', dotClass: 'bg-slate-300 ring-slate-200' },
+  ];
 
   // Update container dimensions when hovering
   useEffect(() => {
