@@ -3,7 +3,7 @@ import jwt from 'jsonwebtoken';
 import crypto from 'node:crypto';
 
 function getClientIP(req: VercelRequest) {
-  const xf = (req.headers['x-forwarded-for'] as string) || '';
+  const xf = String(req.headers['x-forwarded-for'] || '');
   return xf.split(',')[0].trim() || (req.socket?.remoteAddress ?? 'unknown');
 }
 
@@ -23,14 +23,22 @@ function buildNotes(params: {
   ].join(' | ');
 }
 
+function getRequiredEnv(key: string): string {
+  const value = process.env[key];
+  if (!value) {
+    throw new Error(`Missing required environment variable: ${key}`);
+  }
+  return value;
+}
+
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
 
   try {
-    const RINGY_ENDPOINT = process.env.RINGY_ENDPOINT!;
-    const RINGY_SID = process.env.RINGY_SID!;
-    const RINGY_AUTH_TOKEN = process.env.RINGY_AUTH_TOKEN!;
-    const JWT_SECRET = process.env.JWT_SECRET!;
+    const RINGY_ENDPOINT = getRequiredEnv('RINGY_ENDPOINT');
+    const RINGY_SID = getRequiredEnv('RINGY_SID');
+    const RINGY_AUTH_TOKEN = getRequiredEnv('RINGY_AUTH_TOKEN');
+    const JWT_SECRET = getRequiredEnv('JWT_SECRET');
     const LEAD_SOURCE = process.env.LEAD_SOURCE || 'Website – Mobile Hero';
 
     interface LeadRequestBody {
@@ -74,7 +82,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       { expiresIn: '3650d' }
     );
 
-    const proto = (req.headers['x-forwarded-proto'] as string) || 'https';
+    const proto = String(req.headers['x-forwarded-proto'] || 'https');
     const host = req.headers.host;
     const proofLink = `${proto}://${host}/api/consent/${token}`;
 

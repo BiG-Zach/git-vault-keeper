@@ -29,7 +29,7 @@ const statusVariants = {
   }
 };
 
-export default function MapTooltip({
+const MapTooltip = React.memo(function MapTooltip({
   isVisible,
   stateName,
   status,
@@ -156,4 +156,6 @@ export default function MapTooltip({
       />
     </motion.div>
   );
-}
+});
+
+export default MapTooltip;

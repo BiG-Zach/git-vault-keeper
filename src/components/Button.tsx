@@ -1,4 +1,4 @@
-import type { AnchorHTMLAttributes, ButtonHTMLAttributes, ReactNode } from 'react';
+import React, { type AnchorHTMLAttributes, type ButtonHTMLAttributes, type ReactNode } from 'react';
 import { clsx } from 'clsx';
 
 type Variant = 'primary' | 'accent' | 'ghost' | 'outline';
@@ -45,7 +45,7 @@ const variantClasses: Record<Variant, string> = {
     'border border-slate-300 text-slate-800 hover:bg-slate-50 active:bg-slate-100 focus-visible:ring-slate-300',
 };
 
-export default function Button(props: Props) {
+const Button = React.memo(function Button(props: Props) {
   const {
     children,
     className,
@@ -93,7 +93,9 @@ export default function Button(props: Props) {
       )}
     </button>
   );
-}
+});
+
+export default Button;
 
 function Spinner() {
   return (

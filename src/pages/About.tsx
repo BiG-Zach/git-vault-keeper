@@ -47,13 +47,13 @@ export default function AboutPage() {
                 <div className="relative">
                   {/* Professional Frame */}
                   <div className="relative bg-white p-4 rounded-3xl border border-slate-200 shadow-xl">
-                    <img 
-                      src="/about/portrait.jpg" 
-                      alt="Zachary Bradford - Insurance Expert" 
-                      width="500" 
-                      height="600" 
-                      className="w-full h-auto rounded-2xl" 
-                      loading="eager"
+                    <img
+                      src="/about/portrait.jpg"
+                      alt="Zachary Bradford - Insurance Expert"
+                      width="500"
+                      height="600"
+                      className="w-full h-auto rounded-2xl"
+                      loading="lazy"
                     />
                     
                     {/* Professional Badge */}

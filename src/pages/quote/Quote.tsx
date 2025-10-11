@@ -21,12 +21,48 @@ type QuoteData = {
 
 const STORAGE_KEY = 'big-quote-form-v1';
 
+function isQuoteData(data: unknown): data is QuoteData {
+  if (!data || typeof data !== 'object') return false;
+  const d = data as Record<string, unknown>;
+
+  // Check basics
+  if (!d.basics || typeof d.basics !== 'object') return false;
+  const basics = d.basics as Record<string, unknown>;
+  if (typeof basics.zip !== 'string') return false;
+  if (typeof basics.state !== 'string') return false;
+  if (typeof basics.coverageType !== 'string') return false;
+
+  // Check household
+  if (!d.household || typeof d.household !== 'object') return false;
+  const household = d.household as Record<string, unknown>;
+  if (!Array.isArray(household.ages)) return false;
+  if (typeof household.tobacco !== 'boolean') return false;
+  if (typeof household.dependents !== 'number') return false;
+
+  // Check contact
+  if (!d.contact || typeof d.contact !== 'object') return false;
+  const contact = d.contact as Record<string, unknown>;
+  if (typeof contact.firstName !== 'string') return false;
+  if (typeof contact.lastName !== 'string') return false;
+  if (typeof contact.email !== 'string') return false;
+  if (typeof contact.phone !== 'string') return false;
+  if (typeof contact.consent !== 'boolean') return false;
+
+  return true;
+}
+
 function loadInitial(): QuoteData {
   try {
     const raw = sessionStorage.getItem(STORAGE_KEY);
-    if (raw) return JSON.parse(raw) as QuoteData;
-  } catch {
-    // Silently fail if sessionStorage is not available or data is corrupted
+    if (raw) {
+      const parsed: unknown = JSON.parse(raw);
+      if (isQuoteData(parsed)) {
+        return parsed;
+      }
+      console.warn('Stored quote data has invalid structure, using defaults');
+    }
+  } catch (error) {
+    console.warn('Failed to load stored quote data:', error);
   }
   return {
     basics: { zip: '', state: 'FL', coverageType: 'Health' },

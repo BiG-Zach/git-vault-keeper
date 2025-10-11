@@ -44,10 +44,11 @@ export default function Header() {
               aria-label="Bradford Informed Guidance - Home"
             >
               {/* UNIFIED MONOGRAM - ALL DEVICES */}
-              <img 
+              <img
                 src={bigMonogramSvg}
                 alt="BIG - Bradford Informed Guidance"
                 className="h-14 md:h-16 lg:h-20 w-auto transition-all duration-300 group-hover:scale-110 group-hover:drop-shadow-xl"
+                loading="lazy"
                 onError={(e) => {
                   // Fallback to PNG if SVG fails
                   const target = e.currentTarget as HTMLImageElement;

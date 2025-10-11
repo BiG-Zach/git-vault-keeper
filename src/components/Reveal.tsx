@@ -8,7 +8,7 @@ type RevealProps = {
   delay?: number;
 };
 
-export default function Reveal({
+const Reveal = React.memo(function Reveal({
   as = "div",
   className,
   children,
@@ -32,4 +32,6 @@ export default function Reveal({
       {children}
     </motion.div>
   );
-}
+});
+
+export default Reveal;

@@ -67,12 +67,12 @@ const EMAIL_PHONE_DESCRIPTOR: ConfigDescriptor = {
 };
 
 function resolveLeadSource(data: Record<string, unknown>): string {
-  const camel = typeof data['leadSource'] === 'string' ? (data['leadSource'] as string).trim() : '';
+  const camel = typeof data['leadSource'] === 'string' ? data['leadSource'].trim() : '';
   if (camel) {
     return camel;
   }
 
-  const snake = typeof data['lead_source'] === 'string' ? (data['lead_source'] as string).trim() : '';
+  const snake = typeof data['lead_source'] === 'string' ? data['lead_source'].trim() : '';
   if (snake) {
     return snake;
   }
@@ -165,11 +165,12 @@ export default async function handler(req: Request) {
       );
     }
 
+    // At this point, config fields are validated to exist (lines 147-166)
     const headers = {
       'Content-Type': 'application/json',
-      SID: config.sid!,
-      'Auth-Token': config.authToken!,
-      'X-API-KEY': config.apiKey!,
+      SID: config.sid,
+      'Auth-Token': config.authToken,
+      'X-API-KEY': config.apiKey,
     } as Record<string, string>;
 
     const leadSource = resolveLeadSource(restOfLeadData as Record<string, unknown>);
@@ -184,7 +185,7 @@ export default async function handler(req: Request) {
       campaign_id: config.campaignId,
     };
 
-    const ringyResponse = await fetch(config.apiUrl!, {
+    const ringyResponse = await fetch(config.apiUrl as string, {
       method: 'POST',
       headers,
       body: JSON.stringify(ringyPayload),

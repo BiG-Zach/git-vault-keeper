@@ -12,13 +12,13 @@ export default function AboutPage() {
           <div className="grid lg:grid-cols-[1fr_1.2fr] gap-12 items-center max-w-6xl mx-auto">
             <Reveal>
               <div className="relative">
-                <img 
-                  src="/about/portrait.jpg" 
-                  alt="Zachary Bradford - Insurance Expert" 
-                  width="500" 
-                  height="600" 
-                  className="w-full h-auto rounded-2xl shadow-2xl" 
-                  loading="eager"
+                <img
+                  src="/about/portrait.jpg"
+                  alt="Zachary Bradford - Insurance Expert"
+                  width="500"
+                  height="600"
+                  className="w-full h-auto rounded-2xl shadow-2xl"
+                  loading="lazy"
                 />
                 <div className="absolute -bottom-4 -right-4 bg-primary text-primary-foreground px-4 py-2 rounded-xl shadow-lg">
                   <div className="flex items-center gap-2">

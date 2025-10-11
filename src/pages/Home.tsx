@@ -376,8 +376,8 @@ export default function Home() {
                 <div className="mb-8 grid grid-cols-3 gap-4">
                   {logos.slice(0, 6).map((logo, index) => (
                     <div key={index} className="group aspect-square rounded-2xl bg-white p-4 shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-105">
-                      <img 
-                        src={logo.src} 
+                      <img
+                        src={logo.src}
                         alt={logo.alt}
                         className="h-full w-full object-contain opacity-80 transition-opacity group-hover:opacity-100"
                         loading="lazy"

@@ -1,3 +1,4 @@
+import React from 'react';
 import { ExternalLink, CheckCircle2, Star } from 'lucide-react';
 import { Button } from '../ui/button';
 import { motion } from 'framer-motion';
@@ -17,7 +18,7 @@ interface PremiumNetworkCardProps {
   index: number;
 }
 
-export default function PremiumNetworkCard({ network, index }: PremiumNetworkCardProps) {
+const PremiumNetworkCard = React.memo(function PremiumNetworkCard({ network, index }: PremiumNetworkCardProps) {
   const shouldReduceMotion = useReducedMotion();
 
   return (
@@ -117,4 +118,6 @@ export default function PremiumNetworkCard({ network, index }: PremiumNetworkCar
       </div>
     </motion.div>
   );
-}
+});
+
+export default PremiumNetworkCard;

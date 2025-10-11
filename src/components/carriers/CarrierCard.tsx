@@ -1,3 +1,4 @@
+import React from 'react';
 import { Shield } from 'lucide-react';
 
 export type Carrier = {
@@ -12,7 +13,7 @@ interface CarrierCardProps {
   carrier: Carrier;
 }
 
-export default function CarrierCard({ carrier }: CarrierCardProps) {
+const CarrierCard = React.memo(function CarrierCard({ carrier }: CarrierCardProps) {
   return (
     <div className="group relative overflow-hidden rounded-2xl border border-slate-200 bg-white/90 backdrop-blur-md p-6 transition-all duration-500 hover:shadow-xl hover:border-slate-300 hover:bg-white hover:scale-[1.02] hover:-translate-y-1">
       {/* Premium glass background with gradient */}
@@ -76,4 +77,6 @@ export default function CarrierCard({ carrier }: CarrierCardProps) {
       <div className="absolute inset-0 rounded-2xl border border-gradient-to-r from-brand-sky-500/30 to-brand-jade-500/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
     </div>
   );
-}
+});
+
+export default CarrierCard;

@@ -1,3 +1,4 @@
+import React from 'react';
 import { ExternalLink, CheckCircle2 } from 'lucide-react';
 import { Button } from '../ui/button';
 
@@ -14,7 +15,7 @@ interface NetworkCardProps {
   network: Network;
 }
 
-export default function NetworkCard({ network }: NetworkCardProps) {
+const NetworkCard = React.memo(function NetworkCard({ network }: NetworkCardProps) {
   return (
     <div className="h-full flex flex-col rounded-2xl shadow-sm border border-slate-200 bg-white/90 backdrop-blur-md transition-all duration-500 hover:shadow-xl hover:border-slate-300 hover:bg-white hover:scale-[1.02] hover:-translate-y-1 group relative">
       {/* Background effects behind content */}
@@ -84,4 +85,6 @@ export default function NetworkCard({ network }: NetworkCardProps) {
       </div>
     </div>
   );
-}
+});
+
+export default NetworkCard;

@@ -1,3 +1,4 @@
+import React from 'react';
 import { Star, Shield, Award } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useReducedMotion } from 'framer-motion';
@@ -15,7 +16,7 @@ interface LuxuryCarrierCardProps {
   index: number;
 }
 
-export default function LuxuryCarrierCard({ carrier, index }: LuxuryCarrierCardProps) {
+const LuxuryCarrierCard = React.memo(function LuxuryCarrierCard({ carrier, index }: LuxuryCarrierCardProps) {
   const shouldReduceMotion = useReducedMotion();
 
   const getSpecialtyIcon = (specialty: string) => {
@@ -122,4 +123,6 @@ export default function LuxuryCarrierCard({ carrier, index }: LuxuryCarrierCardP
       </div>
     </motion.div>
   );
-}
+});
+
+export default LuxuryCarrierCard;
