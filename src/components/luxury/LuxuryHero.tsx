@@ -22,7 +22,9 @@ const LuxuryHero = () => {
           alt=""
           className="w-full h-full object-cover"
           loading="eager"
-          fetchPriority="high"
+          fetchpriority="high"
+          width={2400}
+          height={1600}
         />
         {/* Subtle radial gradient overlay for natural vignetting */}
         <div className="absolute inset-0 bg-gradient-radial from-black/10 via-black/20 to-black/40"></div>
@@ -108,4 +110,3 @@ const LuxuryHero = () => {
 };
 
 export default LuxuryHero;
-

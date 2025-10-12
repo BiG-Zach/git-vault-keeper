@@ -10,7 +10,11 @@ import { organizationSchema, serviceSchema, personSchema, breadcrumbSchema } fro
 export default function AboutPage() {
   const structuredData = [
     organizationSchema(),
-    serviceSchema(['Health Insurance Advisory', 'Life Insurance Planning', 'Insurance Broker Services']),
+    serviceSchema([
+      'Health Insurance Advisory',
+      'Life Insurance Planning',
+      'Insurance Broker Services'
+    ], '/images/hero/about-hero-retina.webp'),
     personSchema(
       'Zachary Bradford',
       'Licensed Insurance Broker',
@@ -29,6 +33,7 @@ export default function AboutPage() {
         title="About Bradford Informed Guidance | Licensed Health & Life Insurance Broker"
         description="Meet Zach Bradford, licensed health and life insurance broker guiding 1,000+ families with PPO health plans, life insurance layering, and concierge support across FL, MI, NC, AZ, TX, and GA."
         path="/about"
+        image="/images/hero/about-hero-retina.webp"
         meta={[
           {
             name: 'keywords',
@@ -38,6 +43,14 @@ export default function AboutPage() {
           {
             property: 'og:description',
             content: 'Learn about Zach Bradford and his concierge approach to health & life insurance planning across FL, MI, NC, AZ, TX, and GA.'
+          },
+          {
+            property: 'og:image:alt',
+            content: 'Portrait of Zach Bradford, licensed insurance broker at Bradford Informed Guidance'
+          },
+          {
+            name: 'twitter:image:alt',
+            content: 'Portrait of Zach Bradford, licensed insurance broker at Bradford Informed Guidance'
           }
         ]}
         scripts={structuredData.map(innerHTML => ({ innerHTML }))}

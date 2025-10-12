@@ -9,6 +9,7 @@ export const ORG = {
   name: 'Bradford Informed Guidance',
   url: 'https://www.bradfordinformedguidance.com',
   logo: 'https://www.bradfordinformedguidance.com/logos/brand-mark.svg',
+  image: 'https://www.bradfordinformedguidance.com/assets/backgrounds/happy-family-beach-hero.webp',
   sameAs: [
     'https://bradfordinformedguidance.trustmyproducer.com',
     // Add real profiles when available
@@ -33,6 +34,7 @@ export function organizationSchema() {
     name: ORG.name,
     url: ORG.url,
     logo: ORG.logo,
+    image: ORG.image,
     sameAs: ORG.sameAs,
   };
   return JSON.stringify(data);
@@ -88,14 +90,18 @@ export function localBusinessSchema(state: SupportedStateCode, address?: Address
   return JSON.stringify(data);
 }
 
-export function serviceSchema(services: string[] = ['Health Insurance', 'Life Insurance']) {
+export function serviceSchema(services: string[] = ['Health Insurance', 'Life Insurance'], image?: string) {
+  const imageUrl = absoluteUrl(image ?? ORG.image);
   const data = {
     '@context': 'https://schema.org',
     '@type': 'Service',
+    image: imageUrl,
     provider: {
       '@type': 'Organization',
       name: ORG.name,
       url: ORG.url,
+      logo: ORG.logo,
+      image: imageUrl,
     },
     serviceType: services,
   };
@@ -154,4 +160,11 @@ export function personSchema(name: string, jobTitle: string, description: string
     ],
   };
   return JSON.stringify(data);
+}
+
+function absoluteUrl(path: string) {
+  if (!path) return ORG.image;
+  if (/^https?:\/\//i.test(path)) return path;
+  const normalized = path.startsWith('/') ? path : `/${path}`;
+  return `${ORG.url.replace(/\/$/, '')}${normalized}`;
 }

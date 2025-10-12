@@ -55,7 +55,9 @@ export default function Hero() {
             opacity: '1 !important'
           }}
           loading="eager" 
-          fetchPriority="high" 
+          fetchpriority="high" 
+          width={2400}
+          height={1600}
         />
         
         {/* FORCE REMOVE ANY OVERLAYS */}
@@ -89,5 +91,4 @@ export default function Hero() {
     </Section>
   );
 }
-
 

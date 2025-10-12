@@ -41,7 +41,9 @@ const Hero = ({
           alt=""
           className={`absolute inset-0 z-0 w-full h-full object-cover ${heroMobile.mobileHeroImage}`}
           loading="eager"
-          fetchPriority="high"
+          fetchpriority="high"
+          width={2400}
+          height={1600}
         />
 
         {/* Luxury scrims (ensure readability on any image) */}
@@ -120,5 +122,4 @@ const Hero = ({
 };
 
 export default Hero;
-
 

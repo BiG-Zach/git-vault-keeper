@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { Clock, Phone, Mail, Shield, CheckCircle, Calendar, Award } from 'lucide-react';
+import SEO from '../components/SEO';
 
 declare global {
   interface Window {
@@ -19,7 +20,14 @@ export default function ThankYouPage() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100">
+    <>
+      <SEO
+        title="Thank You — Quote Submitted"
+        description="We received your insurance quote request and will follow up within one business day with personalized coverage options."
+        path="/thank-you"
+        noindex
+      />
+      <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100">
       <div className="max-w-4xl mx-auto px-4 py-16">
         {/* Hero Section */}
         <div className="text-center mb-16">
@@ -179,6 +187,7 @@ export default function ThankYouPage() {
           </div>
         </div>
       </div>
-    </div>
+      </div>
+    </>
   );
 }

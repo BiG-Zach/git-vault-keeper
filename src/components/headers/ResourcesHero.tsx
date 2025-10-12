@@ -75,7 +75,9 @@ export default function ResourcesHero() {
               alt="Executive library office with sophisticated bookshelves representing complete insurance knowledge center"
               className="block h-full w-full object-cover"
               loading="eager"
-              fetchPriority="high"
+              fetchpriority="high"
+              width={2400}
+              height={1600}
               onError={() => setImgError(true)}
               style={LQIP ? { backgroundImage: `url(${LQIP})`, backgroundSize: "cover", backgroundPosition: "50% 50%" } : undefined}
             />

@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { CheckCircle, Clock, Users, Shield, Star, TrendingUp } from 'lucide-react';
 import SEO from '../../components/SEO';
 import { localBusinessSchema } from '../../utils/schema';
+import { SITE } from '../../utils/seo';
 import { stateMetadata, type StateCodeSlug } from '../../utils/stateMetadata';
 import Button from '../../components/Button';
 import { getStateVisual } from '../../utils/stateVisuals';
@@ -617,7 +618,7 @@ export default function StateDynamicPage() {
               "@type": "WebPage",
               "name": seo.title,
               "description": seo.description,
-              "url": `https://bradfordinsurance.com${seo.path}`,
+              "url": `${SITE.url.replace(/\/$/, '')}${seo.path}`,
               "about": {
                 "@type": "Service",
                 "name": "Health & Life Insurance Services",

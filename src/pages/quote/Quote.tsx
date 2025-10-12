@@ -51,9 +51,20 @@ function isQuoteData(data: unknown): data is QuoteData {
   return true;
 }
 
+function hasSessionStorage() {
+  return typeof window !== 'undefined' && typeof window.sessionStorage !== 'undefined';
+}
+
 function loadInitial(): QuoteData {
+  if (!hasSessionStorage()) {
+    return {
+      basics: { zip: '', state: 'FL', coverageType: 'Health' },
+      household: { ages: [], tobacco: false, dependents: 0 },
+      contact: { firstName: '', lastName: '', email: '', phone: '', consent: false },
+    };
+  }
   try {
-    const raw = sessionStorage.getItem(STORAGE_KEY);
+    const raw = window.sessionStorage.getItem(STORAGE_KEY);
     if (raw) {
       const parsed: unknown = JSON.parse(raw);
       if (isQuoteData(parsed)) {
@@ -72,8 +83,9 @@ function loadInitial(): QuoteData {
 }
 
 function saveState(data: QuoteData) {
+  if (!hasSessionStorage()) return;
   try {
-    sessionStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+    window.sessionStorage.setItem(STORAGE_KEY, JSON.stringify(data));
   } catch {
     // Silently fail if sessionStorage is not available
   }
@@ -666,4 +678,3 @@ function ReviewStep({ data, onPrev, onSubmit }: { data: QuoteData; onPrev: () =>
     </div>
   );
 }
-

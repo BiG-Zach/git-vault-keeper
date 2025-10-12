@@ -239,6 +239,17 @@ export default function Resources() {
         title="Your Complete Insurance Knowledge Center | Bradford Informed Guidance"
         description="Expert insurance guidance from Zach Bradford, licensed across FL, GA, SC, TN, AL, and TX. Life, health, and carrier insights for 1,000+ families since 2016."
         path="/resources"
+        image="/images/hero/resources-hero-retina.webp"
+        meta={[
+          {
+            property: 'og:image:alt',
+            content: 'Open laptop and insurance resources curated by Bradford Informed Guidance'
+          },
+          {
+            name: 'twitter:image:alt',
+            content: 'Open laptop and insurance resources curated by Bradford Informed Guidance'
+          }
+        ]}
       />
       
       {/* Enhanced Hero Section (Light) */}
@@ -325,6 +336,5 @@ export default function Resources() {
     </main>
   );
 }
-
 
 

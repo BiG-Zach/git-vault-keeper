@@ -16,6 +16,17 @@ export default function ContactPage() {
         title="Contact Zach Bradford - Licensed Insurance Broker 6 States | (689) 325-6570 | 24-Hour Response"
         description="Contact licensed insurance broker Zach Bradford directly. Serving FL, GA, SC, TN, AL, TX with 24-hour response guarantee. Call (689) 325-6570 or schedule free consultation."
         path="/contact"
+        image="/images/hero/contact-hero-retina.webp"
+        meta={[
+          {
+            property: 'og:image:alt',
+            content: 'Bradford Informed Guidance contact desk ready to assist clients'
+          },
+          {
+            name: 'twitter:image:alt',
+            content: 'Bradford Informed Guidance contact desk ready to assist clients'
+          }
+        ]}
         scripts={[
           { innerHTML: localBusinessSchema('FL', {
             streetAddress: '4200 W Cypress St',
@@ -23,7 +34,7 @@ export default function ContactPage() {
             addressRegion: 'FL',
             postalCode: '33607'
           }, '(689) 325-6570') },
-          { innerHTML: serviceSchema(['Health Insurance', 'Life Insurance', 'Insurance Consultation']) },
+          { innerHTML: serviceSchema(['Health Insurance', 'Life Insurance', 'Insurance Consultation'], '/images/hero/contact-hero-retina.webp') },
           { innerHTML: breadcrumbSchema([
             { name: 'Home', item: 'https://www.bradfordinformedguidance.com/' },
             { name: 'Contact', item: 'https://www.bradfordinformedguidance.com/contact' }
@@ -149,7 +160,5 @@ export default function ContactPage() {
     </>
   );
 }
-
-
 
 

@@ -18,7 +18,7 @@ export default function Home() {
   const structuredData = [
     organizationSchema(),
     websiteSchema(),
-    serviceSchema(["Health Insurance", "Life Insurance", "Insurance Broker Services"]),
+    serviceSchema(["Health Insurance", "Life Insurance", "Insurance Broker Services"], '/assets/backgrounds/happy-family-beach-hero.webp'),
   ];
 
   return (
@@ -27,6 +27,7 @@ export default function Home() {
         title="Independent Insurance Broker with Enterprise Resources"
         description="Independent insurance broker partnering with Best Insurance Group to deliver enterprise-level carrier access and personal advocacy across FL, MI, NC, AZ, TX, and GA."
         path="/"
+        image="/assets/backgrounds/happy-family-beach-hero.webp"
         meta={[
           {
             name: "keywords",
@@ -40,6 +41,22 @@ export default function Home() {
               "Independent insurance broker partnered with Best Insurance Group for exclusive carrier access and personalized guidance in FL, MI, NC, AZ, TX, and GA.",
           },
           { property: "og:type", content: "website" },
+          {
+            property: "og:image:alt",
+            content: "Family relaxing outdoors with guidance from Bradford Informed Guidance"
+          },
+          {
+            name: "twitter:image:alt",
+            content: "Family relaxing outdoors with guidance from Bradford Informed Guidance"
+          },
+        ]}
+        links={[
+          {
+            rel: "preload",
+            href: "/assets/backgrounds/happy-family-beach-hero.webp",
+            as: "image",
+            crossOrigin: "anonymous"
+          }
         ]}
         scripts={structuredData.map((innerHTML) => ({ innerHTML }))}
       />
@@ -136,10 +153,12 @@ function TabletHeroExperience({ licensedStatesDisplay }: { licensedStatesDisplay
         <img
           src="/assets/backgrounds/happy-family-beach-hero.webp"
           alt="Family relaxing outdoors together representing personalized insurance guidance"
-          loading="eager"
-          fetchPriority="high"
+          loading="lazy"
+          decoding="async"
           className="absolute inset-0 -z-10 h-full w-full object-cover"
           style={{ objectPosition: "center center" }}
+          width={2400}
+          height={1600}
         />
 
         <div className="relative z-10 flex h-full items-center">
@@ -182,9 +201,12 @@ function MobileHeroExperience({ licensedStatesDisplay }: { licensedStatesDisplay
             src="/assets/backgrounds/happy-family-beach-hero.webp"
             alt="Family relaxing outdoors together representing personalized insurance guidance"
             loading="eager"
-            fetchPriority="high"
+            fetchpriority="high"
             className="absolute inset-0 h-full w-full object-cover"
             style={{ objectPosition: "center center" }}
+            decoding="async"
+            width={2400}
+            height={1600}
           />
           <div className="absolute inset-0 bg-gradient-to-b from-slate-900/70 via-slate-800/60 to-slate-900/80" />
           <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-transparent to-transparent" />

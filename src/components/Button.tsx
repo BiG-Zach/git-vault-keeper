@@ -71,7 +71,12 @@ const Button = React.memo(function Button(props: Props) {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { as: _as, ...anchorRest } = props as AnchorProps;
     return (
-      <a className={commonClass} {...anchorRest}>
+      <a
+        className={commonClass}
+        {...anchorRest}
+        role="button"
+        aria-busy={loading || undefined}
+      >
         {children}
       </a>
     );
@@ -82,7 +87,12 @@ const Button = React.memo(function Button(props: Props) {
   const disabled = (buttonRest as ButtonProps).disabled || loading;
 
   return (
-    <button className={commonClass} disabled={disabled} {...(buttonRest as ButtonProps)}>
+    <button
+      className={commonClass}
+      disabled={disabled}
+      aria-busy={loading || undefined}
+      {...(buttonRest as ButtonProps)}
+    >
       {loading ? (
         <span className="inline-flex items-center gap-2">
           <Spinner />

@@ -17,6 +17,17 @@ export default function HowItWorksPage() {
         title="How I Help You Get Insurance Coverage - 6 States Licensed | 24-Hour Response Guarantee"
         description="Licensed insurance broker's proven 4-step process across FL, GA, SC, TN, AL, TX. 24-hour response guarantee, same-day enrollment assistance. 8 years experience."
         path="/our-process"
+        image="/images/hero/our-process-hero-retina.webp"
+        meta={[
+          {
+            property: 'og:image:alt',
+            content: 'Bradford Informed Guidance insurance process overview with client meeting'
+          },
+          {
+            name: 'twitter:image:alt',
+            content: 'Bradford Informed Guidance insurance process overview with client meeting'
+          }
+        ]}
         scripts={[
           { innerHTML: localBusinessSchema('FL', {
             streetAddress: '4200 W Cypress St',
@@ -24,7 +35,7 @@ export default function HowItWorksPage() {
             addressRegion: 'FL',
             postalCode: '33607'
           }, '(689) 325-6570') },
-          { innerHTML: serviceSchema(['Health Insurance', 'Life Insurance', 'Insurance Consultation']) },
+          { innerHTML: serviceSchema(['Health Insurance', 'Life Insurance', 'Insurance Consultation'], '/images/hero/our-process-hero-retina.webp') },
           { innerHTML: breadcrumbSchema([
             { name: 'Home', item: 'https://www.bradfordinformedguidance.com/' },
             { name: 'Our Process', item: 'https://www.bradfordinformedguidance.com/our-process' }

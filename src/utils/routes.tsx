@@ -20,6 +20,7 @@ const Checklist = lazy(() => import('../pages/Checklist'));
 const ThankYou = lazy(() => import('../pages/ThankYou'));
 const PrivacyPolicy = lazy(() => import('../pages/PrivacyPolicy'));
 const Terms = lazy(() => import('../pages/Terms'));
+const NotFound = lazy(() => import('../pages/NotFound'));
 
 // Blog posts
 const TermVsWholeLifeInsurance2024 = lazy(() => import('../pages/blog/TermVsWholeLifeInsurance2024'));
@@ -79,6 +80,7 @@ export const routes = [
       { path: 'blog/am-best-insurance-ratings-explained', element: <AMBestInsuranceRatingsExplained /> },
       { path: 'blog/florida-small-business-health-insurance', element: <FloridaSmallBusinessHealthInsurance /> },
       { path: 'blog/life-insurance-companies-financial-strength', element: <LifeInsuranceCompaniesFinancialStrength /> },
+      { path: '*', element: <NotFound /> },
     ],
   },
 ];

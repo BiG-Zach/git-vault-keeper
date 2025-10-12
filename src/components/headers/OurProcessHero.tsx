@@ -96,8 +96,10 @@ export default function OurProcessHero() {
                 alt=""
                 className="block h-full w-full object-cover"
                 loading="eager"
-                fetchPriority="high"
+                fetchpriority="high"
                 onError={() => setImgError(true)}
+                width={2400}
+                height={1600}
                 style={LQIP ? { backgroundImage: `url(${LQIP})`, backgroundSize: "cover", backgroundPosition: "50% 50%" } : undefined}
               />
             </picture>
@@ -107,8 +109,10 @@ export default function OurProcessHero() {
               alt=""
               className="block h-full w-full object-cover"
               loading="eager"
-              fetchPriority="high"
+              fetchpriority="high"
               onError={() => setImgError(true)}
+              width={2400}
+              height={1600}
               style={LQIP ? { backgroundImage: `url(${LQIP})`, backgroundSize: "cover", backgroundPosition: "50% 50%" } : undefined}
             />
           ) : (
