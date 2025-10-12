@@ -55,7 +55,6 @@ export default function Hero() {
             opacity: '1 !important'
           }}
           loading="eager" 
-          fetchpriority="high" 
           width={2400}
           height={1600}
         />

@@ -201,7 +201,6 @@ function MobileHeroExperience({ licensedStatesDisplay }: { licensedStatesDisplay
             src="/assets/backgrounds/happy-family-beach-hero.webp"
             alt="Family relaxing outdoors together representing personalized insurance guidance"
             loading="eager"
-            fetchpriority="high"
             className="absolute inset-0 h-full w-full object-cover"
             style={{ objectPosition: "center center" }}
             decoding="async"

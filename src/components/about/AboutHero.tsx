@@ -122,7 +122,6 @@ export default function AboutHero() {
                 alt="Professional insurance broker consultation environment"
                 className="block h-full w-full object-cover"
                 loading="eager"
-                fetchpriority="high"
                 onError={() => setImgError(true)}
                 width={2400}
                 height={1600}
@@ -135,7 +134,6 @@ export default function AboutHero() {
               alt="Professional insurance broker consultation environment"
               className="block h-full w-full object-cover"
               loading="eager"
-              fetchpriority="high"
               onError={() => setImgError(true)}
               width={2400}
               height={1600}

@@ -96,7 +96,6 @@ export default function OurProcessHero() {
                 alt=""
                 className="block h-full w-full object-cover"
                 loading="eager"
-                fetchpriority="high"
                 onError={() => setImgError(true)}
                 width={2400}
                 height={1600}
@@ -109,7 +108,6 @@ export default function OurProcessHero() {
               alt=""
               className="block h-full w-full object-cover"
               loading="eager"
-              fetchpriority="high"
               onError={() => setImgError(true)}
               width={2400}
               height={1600}

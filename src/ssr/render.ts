@@ -1,10 +1,10 @@
 import React from 'react';
 import { renderToString } from 'react-dom/server';
-import { StaticRouter } from 'react-router-dom/server.js';
-import StaticRoutes from './StaticRoutes.ts';
+import { StaticRouter } from 'react-router-dom/server';
+import StaticRoutes from './StaticRoutes';
 import type { SeoCollector } from '../components/SeoProvider';
-import type { ResolvedSEO } from '../utils/seo.ts';
-import { canonicalFor, resolveSEO } from '../utils/seo.ts';
+import type { ResolvedSEO } from '../utils/seo';
+import { canonicalFor, resolveSEO } from '../utils/seo';
 
 class Collector implements SeoCollector {
   public latest: ResolvedSEO | null = null;

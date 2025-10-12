@@ -41,7 +41,6 @@ const Hero = ({
           alt=""
           className={`absolute inset-0 z-0 w-full h-full object-cover ${heroMobile.mobileHeroImage}`}
           loading="eager"
-          fetchpriority="high"
           width={2400}
           height={1600}
         />

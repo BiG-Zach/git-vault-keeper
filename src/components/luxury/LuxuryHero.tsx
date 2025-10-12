@@ -22,7 +22,6 @@ const LuxuryHero = () => {
           alt=""
           className="w-full h-full object-cover"
           loading="eager"
-          fetchpriority="high"
           width={2400}
           height={1600}
         />
