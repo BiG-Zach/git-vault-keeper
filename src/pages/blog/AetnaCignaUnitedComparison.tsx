@@ -2,13 +2,25 @@ import { Link } from "react-router-dom";
 import { Calendar, Phone, ArrowLeft } from "lucide-react";
 import SEO from "../../components/SEO";
 import { buildArticleSEO } from "../../utils/seoHelpers";
+import RelatedPosts from "../../components/blog/RelatedPosts";
 
 export default function AetnaCignaUnitedComparison() {
   const title = "Aetna vs Cigna vs UnitedHealthcare: 2024 Independent Analysis";
   const description = "Which major insurer offers the best value? Our comprehensive comparison reveals the winner based on coverage, cost, and customer satisfaction.";
   const path = "/blog/aetna-cigna-united-comparison-2024";
   const datePublished = "2024-01-22";
-  const articleSEO = buildArticleSEO({ title, description, path, datePublished });
+  const articleSEO = buildArticleSEO({
+    title,
+    description,
+    path,
+    datePublished,
+    articleSection: 'Carrier Comparison',
+    keywords: [
+      'Aetna vs Cigna vs UnitedHealthcare',
+      'health insurance carrier comparison',
+      'best health insurance companies',
+    ],
+  });
 
   return (
     <main className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
@@ -214,6 +226,14 @@ export default function AetnaCignaUnitedComparison() {
             </a>
           </div>
         </section>
+
+        <RelatedPosts
+          slugs={[
+            '/blog/health-insurance-deductibles-guide',
+            '/blog/ppo-hmo-epo-plan-comparison',
+            '/health-insurance',
+          ]}
+        />
       </article>
     </main>
   );

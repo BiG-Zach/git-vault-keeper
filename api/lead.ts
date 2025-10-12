@@ -40,6 +40,9 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     const RINGY_AUTH_TOKEN = getRequiredEnv('RINGY_AUTH_TOKEN');
     const JWT_SECRET = getRequiredEnv('JWT_SECRET');
     const LEAD_SOURCE = process.env.LEAD_SOURCE || 'Website – Mobile Hero';
+    const HCAPTCHA_SECRET = process.env.HCAPTCHA_SECRET;
+    const HCAPTCHA_VERIFY_ENDPOINT =
+      process.env.HCAPTCHA_VERIFY_ENDPOINT || 'https://hcaptcha.com/siteverify';
 
     interface LeadRequestBody {
       zipCode?: string;
@@ -52,6 +55,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       consentText?: string;
       landingUrl?: string;
       utm?: Record<string, string>;
+      hcaptchaToken?: string;
     }
 
     const {
@@ -64,14 +68,40 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       consentChecked,
       consentText,
       landingUrl,
-      utm = {}
+      utm = {},
+      hcaptchaToken,
     } = (req.body || {}) as LeadRequestBody;
+
+    const ip = getClientIP(req);
 
     if (!zipCode || !email || !phone || !consentChecked || !consentText) {
       return res.status(400).json({ error: 'Missing required fields or consent' });
     }
 
-    const ip = getClientIP(req);
+    if (HCAPTCHA_SECRET) {
+      if (!hcaptchaToken) {
+        return res.status(400).json({ error: 'Captcha verification required' });
+      }
+
+      const verifyResponse = await fetch(HCAPTCHA_VERIFY_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams({
+          secret: HCAPTCHA_SECRET,
+          response: hcaptchaToken,
+          remoteip: ip,
+        }),
+      });
+
+      const verification = await verifyResponse.json();
+      if (!verification.success) {
+        return res.status(400).json({
+          error: 'Captcha verification failed',
+          detail: verification['error-codes'],
+        });
+      }
+    }
+
     const consentTimestamp = new Date().toISOString();
     const vendorRefId = crypto.randomUUID();
 

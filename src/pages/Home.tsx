@@ -62,6 +62,7 @@ export default function Home() {
       />
 
       <main className="relative">
+        <h1 className="sr-only">Independent Insurance Broker with Enterprise Resources</h1>
         <section className="relative">
           <div className="hidden lg:block">
             <DesktopHeroExperience licensedStatesDisplay={licensedStatesDisplay} />
@@ -164,9 +165,9 @@ function TabletHeroExperience({ licensedStatesDisplay }: { licensedStatesDisplay
         <div className="relative z-10 flex h-full items-center">
           <div className="container mx-auto grid items-center gap-6 px-4 md:grid-cols-[1.1fr_0.9fr]">
             <div className="max-w-2xl text-white">
-              <h1 className="mb-3 text-[clamp(26px,5vw,34px)] leading-[1.15] tracking-[-0.01em] md:text-5xl lg:text-6xl">
+              <h2 className="mb-3 text-[clamp(26px,5vw,34px)] leading-[1.15] tracking-[-0.01em] md:text-5xl lg:text-6xl">
                 Independent Insurance Broker with Enterprise Resources
-              </h1>
+              </h2>
               <p className="text-lg text-white/90">
                 Partnering with Best Insurance Group since 2020 • Licensed in {licensedStatesDisplay} • NPN {BRAND.npn}
               </p>
@@ -213,10 +214,10 @@ function MobileHeroExperience({ licensedStatesDisplay }: { licensedStatesDisplay
 
         <div className="relative z-10 flex min-h-screen flex-col justify-center px-6 py-20">
           <div className="mx-auto max-w-sm text-center text-white">
-            <h1 className="mb-4 text-4xl font-bold leading-tight">
+            <h2 className="mb-4 text-4xl font-bold leading-tight">
               Independent Insurance Broker with
               <span className="block text-emerald-400">Enterprise Resources</span>
-            </h1>
+            </h2>
 
             <div className="space-y-3">
               <div className="flex items-center justify-center gap-2 text-emerald-300">

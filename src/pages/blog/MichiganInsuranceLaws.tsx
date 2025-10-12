@@ -2,13 +2,25 @@ import { Link } from "react-router-dom";
 import { Calendar, Phone, ArrowLeft, Scale } from "lucide-react";
 import SEO from "../../components/SEO";
 import { buildArticleSEO } from "../../utils/seoHelpers";
+import RelatedPosts from "../../components/blog/RelatedPosts";
 
 export default function MichiganInsuranceLaws() {
   const title = "Michigan Insurance Laws: What Every Resident Must Know";
   const description = "Stay compliant and protected. Michigan's latest insurance requirements explained simply by a licensed broker with 8+ years experience.";
   const path = "/blog/michigan-insurance-laws";
   const datePublished = "2024-01-19";
-  const articleSEO = buildArticleSEO({ title, description, path, datePublished });
+  const articleSEO = buildArticleSEO({
+    title,
+    description,
+    path,
+    datePublished,
+    articleSection: 'State Insurance Compliance',
+    keywords: [
+      'Michigan insurance laws',
+      'Michigan no-fault requirements',
+      'Michigan workers compensation rules',
+    ],
+  });
 
   return (
     <main className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
@@ -479,33 +491,13 @@ export default function MichiganInsuranceLaws() {
           </div>
         </section>
 
-        {/* Related Articles */}
-        <section>
-          <h2 className="text-2xl font-bold text-slate-900 mb-6">Related Articles</h2>
-          <div className="grid md:grid-cols-2 gap-6">
-            <Link to="/blog/north-carolina-best-health-insurance" className="group">
-              <div className="bg-white border border-slate-200 rounded-lg p-6 hover:shadow-md transition-shadow">
-                <h3 className="text-lg font-semibold text-slate-900 mb-2 group-hover:text-blue-600 transition-colors">
-                  North Carolina's Best Health Insurance Plans: 2024 Rankings
-                </h3>
-                <p className="text-slate-600 text-sm">
-                  Independent analysis of NC's top health plans based on coverage and value.
-                </p>
-              </div>
-            </Link>
-            
-            <Link to="/blog/florida-health-insurance-guide-2024" className="group">
-              <div className="bg-white border border-slate-200 rounded-lg p-6 hover:shadow-md transition-shadow">
-                <h3 className="text-lg font-semibold text-slate-900 mb-2 group-hover:text-blue-600 transition-colors">
-                  Florida Health Insurance: Complete 2024 Market Guide
-                </h3>
-                <p className="text-slate-600 text-sm">
-                  Comprehensive guide to Florida's health insurance marketplace and options.
-                </p>
-              </div>
-            </Link>
-          </div>
-        </section>
+        <RelatedPosts
+          slugs={[
+            '/blog/north-carolina-best-health-insurance',
+            '/blog/florida-health-insurance-guide-2024',
+            '/quote',
+          ]}
+        />
       </article>
     </main>
   );

@@ -175,6 +175,9 @@ export function articleSchema(params: {
   datePublished: string;
   dateModified?: string;
   author?: string;
+  articleSection?: string;
+  keywords?: string[];
+  type?: 'Article' | 'BlogPosting';
 }) {
   const {
     title,
@@ -184,11 +187,14 @@ export function articleSchema(params: {
     datePublished,
     dateModified,
     author = 'Zachary Bradford',
+    articleSection,
+    keywords,
+    type = 'BlogPosting',
   } = params;
 
   const data = {
     '@context': 'https://schema.org',
-    '@type': 'Article',
+    '@type': type,
     headline: title,
     description,
     mainEntityOfPage: {
@@ -213,6 +219,14 @@ export function articleSchema(params: {
       },
     },
   };
+
+  if (articleSection) {
+    (data as Record<string, unknown>).articleSection = articleSection;
+  }
+
+  if (keywords?.length) {
+    (data as Record<string, unknown>).keywords = keywords;
+  }
 
   return JSON.stringify(data);
 }

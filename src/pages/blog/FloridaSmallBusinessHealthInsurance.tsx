@@ -2,13 +2,25 @@ import { Link } from 'react-router-dom';
 import { ChevronRight, Building2, DollarSign, Shield, CheckCircle, AlertTriangle, TrendingUp } from 'lucide-react';
 import SEO from '../../components/SEO';
 import { buildArticleSEO } from '../../utils/seoHelpers';
+import RelatedPosts from '../../components/blog/RelatedPosts';
 
 export default function FloridaSmallBusinessHealthInsurance() {
   const title = 'Small Business Health Insurance Florida: Top 10 Best Options | Bradford Informed Guidance';
   const description = 'Attract and retain top talent with competitive health benefits. Complete guide to Florida small business health insurance with carrier comparisons and cost analysis.';
   const path = '/blog/florida-small-business-health-insurance';
   const datePublished = '2024-01-24';
-  const articleSEO = buildArticleSEO({ title, description, path, datePublished });
+  const articleSEO = buildArticleSEO({
+    title,
+    description,
+    path,
+    datePublished,
+    articleSection: 'Florida Small Business Insurance',
+    keywords: [
+      'Florida small business health insurance',
+      'Florida group health plans',
+      'ICHRA Florida benefits',
+    ],
+  });
 
   return (
     <main>
@@ -467,24 +479,13 @@ export default function FloridaSmallBusinessHealthInsurance() {
             </div>
           </section>
 
-          {/* Related Articles */}
-          <section>
-            <h2 className="text-2xl font-bold text-slate-900 mb-6">Related Articles</h2>
-            <div className="grid md:grid-cols-2 gap-6">
-              <Link to="/blog/florida-health-insurance-guide-2024" className="group bg-white border border-slate-200 rounded-lg p-6 hover:shadow-lg transition-all">
-                <h3 className="font-semibold text-slate-900 group-hover:text-blue-600 mb-2">
-                  Florida Health Insurance Complete Guide 2024
-                </h3>
-                <p className="text-slate-600 text-sm">Comprehensive guide to individual and family health insurance in Florida</p>
-              </Link>
-              <Link to="/blog/ppo-hmo-epo-plan-comparison" className="group bg-white border border-slate-200 rounded-lg p-6 hover:shadow-lg transition-all">
-                <h3 className="font-semibold text-slate-900 group-hover:text-blue-600 mb-2">
-                  PPO vs HMO vs EPO Plan Comparison
-                </h3>
-                <p className="text-slate-600 text-sm">Choose the right plan type for your small business health insurance</p>
-              </Link>
-            </div>
-          </section>
+          <RelatedPosts
+            slugs={[
+              '/blog/florida-health-insurance-guide-2024',
+              '/blog/tampa-bay-insurance-broker-guide',
+              '/health-insurance',
+            ]}
+          />
         </div>
       </article>
     </main>

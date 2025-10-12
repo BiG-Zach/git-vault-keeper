@@ -93,6 +93,38 @@ const faqs = [
   {
     question: "What if my doctor isn't in the network I choose?",
     answer: "Before you enroll, I verify your current doctors are in-network using the most current provider directories. If your doctor isn't included, I help you find comparable specialists in the network or discuss out-of-network benefits if keeping your current doctor is essential. I also monitor for network changes throughout the year and alert you to any updates that might affect your care."
+  },
+  {
+    question: "I'm a Florida snowbird - how does coverage work when I'm up North?",
+    answer: "This is a common scenario I handle regularly. Most PPO networks I recommend (UnitedHealthcare, Aetna, Cigna) provide nationwide coverage, so you're protected whether you're in Florida or visiting family in Michigan, New York, or other states. For snowbirds who split time between two specific locations, I verify network adequacy in both areas before enrollment. Some carriers offer special 'traveling retiree' programs with no referrals needed for out-of-state care. I also coordinate with Medicare supplement plans if you're 65+ and need bridge coverage. The key is disclosing both locations during your consultation so I can verify provider access in each area."
+  },
+  {
+    question: "I live in rural Georgia - will I have enough doctors in my network?",
+    answer: "Network adequacy varies significantly between urban and rural Georgia. In rural counties (especially South Georgia), I typically recommend UnitedHealthcare or Blue Cross Blue Shield of Georgia because they maintain the broadest rural provider networks. Atlanta metro residents have more flexibility with carriers like Aetna and Cigna also providing strong coverage. During your consultation, I research provider directories for your specific county to verify sufficient access to primary care physicians, specialists, and nearby hospitals. My 8+ years of experience in Georgia helps me know which carriers maintain strong rural networks versus those concentrated in Atlanta metro. If rural provider options are limited, I discuss out-of-network benefits to ensure you're not trapped with only 1-2 in-network doctors."
+  },
+  {
+    question: "I work remotely and travel frequently between Texas, Arizona, and Florida - which network is best?",
+    answer: "For frequent interstate travelers, you need a national PPO network with strong coverage in all three states. UnitedHealthcare PPO is my top recommendation - they have the largest network (1.3M+ providers) and excellent coverage in all three states, including Mayo Clinic Arizona, MD Anderson in Houston, and Cleveland Clinic Florida. Aetna PPO is a close second with slightly lower premiums but comparable access. I verify that your plan includes 'nationwide roaming' benefits with no penalties for seeking care outside your home state. For digital nomads or remote workers, I also ensure telehealth is included for routine consultations regardless of your location. Since you're licensed in all three states, your policy can be issued from whichever state offers the best rates (often Texas for healthy applicants)."
+  },
+  {
+    question: "My child has complex medical needs and sees multiple specialists in Michigan - how do I ensure continuity of care?",
+    answer: "Specialty care access is critical for complex conditions. In Michigan, I first verify that all your child's current specialists (pediatric cardiologists, neurologists, therapists, etc.) are in-network before recommending any plan. Blue Cross Blue Shield of Michigan typically has the strongest relationships with Children's Hospital of Michigan, Helen DeVos Children's Hospital, and Mott Children's Hospital at U of M. I also review each plan's specialist copay structure, annual out-of-pocket maximums, and whether prior authorizations are required for ongoing specialist visits. For children with chronic conditions, I often recommend lower-deductible plans even if premiums are higher - the math works out better when you're hitting deductibles early each year. I can also help coordinate between your health plan and any therapies or DME (durable medical equipment) your child needs."
+  },
+  {
+    question: "I have a high-deductible health plan through work but it doesn't cover much - can I get supplemental coverage?",
+    answer: "Absolutely. This is where supplemental insurance shines. Aflac offers hospital indemnity plans that pay you cash directly when you're hospitalized, helping cover your high deductible. These plans pay regardless of your primary insurance and have no network restrictions. For example, if you have a $5,000 deductible but need surgery, an Aflac hospital plan might pay $1,500-$2,000 directly to you based on your length of stay. I also recommend critical illness plans that provide lump-sum cash payments if you're diagnosed with cancer, heart attack, or stroke - money you can use for deductibles, lost income, or experimental treatments. These supplemental plans are affordable (often $30-80/month) and fill the gaps that high-deductible plans create. This strategy is especially popular with Texas and Arizona residents who have employer coverage but want additional financial protection."
+  },
+  {
+    question: "What's the typical provider network difference between Dallas, Austin, Houston, and San Antonio?",
+    answer: "Texas metro areas each have unique network dynamics. **Dallas/Fort Worth**: UnitedHealthcare and Aetna dominate with excellent coverage of Baylor Scott & White, Methodist, and Texas Health Resources. **Houston**: All major networks (UHC, Aetna, BCBS Texas) provide strong access, including MD Anderson for cancer care. **Austin**: Blue Cross Blue Shield of Texas and UnitedHealthcare have the strongest networks with Ascension Seton and Baylor Scott & White. **San Antonio**: SGIC (regional carrier) offers competitive pricing with good access to Methodist Healthcare and UT Health San Antonio. For tech workers, self-employed professionals, and growing families, I typically recommend starting with UnitedHealthcare or Aetna for statewide flexibility, then comparing regional carriers like SGIC for potential savings. Austin's rapid growth has attracted more carriers, creating competitive pricing - often 20-30% less than what you'd pay in California or New York for identical coverage."
+  },
+  {
+    question: "I'm 62 and need coverage until Medicare starts at 65 - what are my best options?",
+    answer: "Bridge-to-Medicare coverage (ages 60-65) is a specialty area where broker guidance is essential. In Florida and Arizona (popular retirement states), I focus on carriers that accept pre-existing conditions without major rate increases: Philadelphia American Life, Aetna, and UnitedHealthcare. Some carriers offer '3-year rate lock' programs specifically for this demographic. Key considerations: (1) **Pre-existing conditions**: If you have diabetes, heart disease, or other chronic conditions, some carriers will decline you or charge 25-50% more - I know which ones are most lenient. (2) **Prescription coverage**: Medicare Part D works differently than private insurance, so I ensure your current meds are covered during these 3 years. (3) **Premium stability**: I recommend plans with smaller annual increases to avoid sticker shock at renewal. (4) **Network continuity**: Many retirees prefer keeping their same doctors through age 65, so I verify your providers accept both your current plan and will accept Medicare when you transition. This is one scenario where working with a broker really pays off - one wrong choice could cost you thousands annually."
+  },
+  {
+    question: "How do North Carolina's academic medical centers (Duke, UNC, Wake Forest) factor into network selection?",
+    answer: "North Carolina's academic medical centers are often the difference-maker in network selection. **Duke Health**: Included in UnitedHealthcare, Aetna, and Blue Cross Blue Shield of North Carolina networks. If you or family members need Duke physicians (especially for complex conditions like cancer, cardiology, or neurosurgery), verify this before enrollment - some budget carriers exclude Duke due to higher costs. **UNC Health**: Similar story - BCBSNC, UHC, and Aetna all include UNC, but some newer marketplace plans do not. **Wake Forest Baptist**: Strongest with BCBSNC and Cigna. **Atrium Health** (Charlotte): Included in most major networks. For Triangle residents (Raleigh/Durham/Chapel Hill) and Charlotte metro residents, I verify academic medical center access as part of every consultation. If you're healthy and unlikely to need tertiary care, you might save 15-20% by choosing a plan that excludes academic centers. But if you have complex conditions or family history of serious illness, having Duke or UNC access can be invaluable."
   }
 ];
 
@@ -140,22 +172,22 @@ export default function PremiumCarriersFAQ() {
           </p>
         </motion.div>
 
-        {/* FAQ Accordion */}
-        <div className="space-y-4">
+        {/* FAQ Accordion - Optimized for 60fps */}
+        <div className="space-y-4" role="list" aria-label="Frequently Asked Questions">
           {faqs.map((faq, index) => (
-            <motion.div
+            <div
               key={index}
               className="group"
-              initial={shouldReduceMotion ? undefined : { opacity: 0, y: 20 }}
-              whileInView={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              viewport={{ once: true }}
+              role="listitem"
             >
               <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl overflow-hidden group-hover:border-emerald-400/30 transition-colors duration-300">
                 <button
                   className="w-full px-8 py-6 text-left focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-inset"
                   onClick={() => setOpenIndex(openIndex === index ? null : index)}
                   aria-expanded={openIndex === index}
+                  aria-controls={`faq-answer-${index}`}
+                  id={`faq-question-${index}`}
+                  type="button"
                 >
                   <div className="flex items-center justify-between">
                     <h3 className="text-lg md:text-xl font-semibold text-white group-hover:text-emerald-300 transition-colors duration-300 pr-4">
@@ -163,25 +195,32 @@ export default function PremiumCarriersFAQ() {
                     </h3>
                     <motion.div
                       animate={{ rotate: openIndex === index ? 180 : 0 }}
-                      transition={{ duration: 0.2 }}
+                      transition={{ duration: 0.2, ease: "easeInOut" }}
                       className="flex-shrink-0"
+                      style={{ willChange: "transform" }}
+                      aria-hidden="true"
                     >
                       <ChevronDown className="h-6 w-6 text-slate-400 group-hover:text-emerald-400 transition-colors duration-300" />
                     </motion.div>
                   </div>
                 </button>
-                
-                <AnimatePresence>
+
+                <AnimatePresence initial={false} mode="wait">
                   {openIndex === index && (
                     <motion.div
+                      key={`answer-${index}`}
                       initial={shouldReduceMotion ? undefined : { height: 0, opacity: 0 }}
                       animate={shouldReduceMotion ? undefined : { height: 'auto', opacity: 1 }}
                       exit={shouldReduceMotion ? undefined : { height: 0, opacity: 0 }}
-                      transition={{ duration: 0.3 }}
+                      transition={{ duration: 0.25, ease: "easeInOut" }}
                       className="overflow-hidden"
+                      style={{ willChange: "height, opacity" }}
+                      id={`faq-answer-${index}`}
+                      role="region"
+                      aria-labelledby={`faq-question-${index}`}
                     >
                       <div className="px-8 pb-6">
-                        <div className="h-px bg-gradient-to-r from-transparent via-white/20 to-transparent mb-6" />
+                        <div className="h-px bg-gradient-to-r from-transparent via-white/20 to-transparent mb-6" aria-hidden="true" />
                         <p className="text-slate-300 leading-relaxed text-base">
                           {faq.answer}
                         </p>
@@ -190,7 +229,7 @@ export default function PremiumCarriersFAQ() {
                   )}
                 </AnimatePresence>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
 

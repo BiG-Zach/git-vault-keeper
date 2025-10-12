@@ -2,13 +2,25 @@ import { Link } from "react-router-dom";
 import { Calendar, Phone, ArrowLeft, MapPin, Shield } from "lucide-react";
 import SEO from "../../components/SEO";
 import { buildArticleSEO } from "../../utils/seoHelpers";
+import RelatedPosts from "../../components/blog/RelatedPosts";
 
 export default function TampaBayInsuranceBrokerGuide() {
   const title = "Tampa Bay Insurance: Local Broker's Insider Market Guide";
   const description = "Why Tampa Bay families choose local brokers over online quotes. Exclusive market insights and hurricane protection strategies from a licensed Florida broker.";
   const path = "/blog/tampa-bay-insurance-broker-guide";
   const datePublished = "2024-01-18";
-  const articleSEO = buildArticleSEO({ title, description, path, datePublished });
+  const articleSEO = buildArticleSEO({
+    title,
+    description,
+    path,
+    datePublished,
+    articleSection: 'Florida Insurance',
+    keywords: [
+      'Tampa Bay insurance broker',
+      'Florida hurricane coverage',
+      'Tampa insurance market',
+    ],
+  });
 
   return (
     <main className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
@@ -496,33 +508,13 @@ export default function TampaBayInsuranceBrokerGuide() {
           </div>
         </section>
 
-        {/* Related Articles */}
-        <section>
-          <h2 className="text-2xl font-bold text-slate-900 mb-6">Related Articles</h2>
-          <div className="grid md:grid-cols-2 gap-6">
-            <Link to="/blog/florida-hurricane-insurance-protection" className="group">
-              <div className="bg-white border border-slate-200 rounded-lg p-6 hover:shadow-md transition-shadow">
-                <h3 className="text-lg font-semibold text-slate-900 mb-2 group-hover:text-blue-600 transition-colors">
-                  Florida Hurricane Insurance: Complete Protection Strategy
-                </h3>
-                <p className="text-slate-600 text-sm">
-                  Essential hurricane coverage guide for Florida residents during storm season.
-                </p>
-              </div>
-            </Link>
-            
-            <Link to="/blog/florida-health-insurance-guide-2024" className="group">
-              <div className="bg-white border border-slate-200 rounded-lg p-6 hover:shadow-md transition-shadow">
-                <h3 className="text-lg font-semibold text-slate-900 mb-2 group-hover:text-blue-600 transition-colors">
-                  Florida Health Insurance: Complete 2024 Market Guide
-                </h3>
-                <p className="text-slate-600 text-sm">
-                  Comprehensive guide to Florida's health insurance marketplace and options.
-                </p>
-              </div>
-            </Link>
-          </div>
-        </section>
+        <RelatedPosts
+          slugs={[
+            '/blog/florida-health-insurance-guide-2024',
+            '/blog/florida-small-business-health-insurance',
+            '/blog/florida-hurricane-insurance-protection',
+          ]}
+        />
       </article>
     </main>
   );

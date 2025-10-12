@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useState, type ReactNode } from 'react';
 import SEO from '../../components/SEO';
 import Reveal from '../../components/Reveal';
 import {
@@ -10,6 +10,7 @@ import {
   validateContact,
   normalizePhone,
 } from '../../utils/validation';
+import HCaptcha from '../../components/security/HCaptcha';
 
 type Step = 0 | 1 | 2 | 3;
 
@@ -20,6 +21,7 @@ type QuoteData = {
 };
 
 const STORAGE_KEY = 'big-quote-form-v1';
+const HCAPTCHA_SITE_KEY = import.meta.env.VITE_HCAPTCHA_SITEKEY as string | undefined;
 
 function isQuoteData(data: unknown): data is QuoteData {
   if (!data || typeof data !== 'object') return false;
@@ -100,10 +102,20 @@ export default function QuotePage() {
   const [step, setStep] = useState<Step>(0);
   const [data, setData] = useState<QuoteData>(() => loadInitial());
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const captchaEnabled = Boolean(HCAPTCHA_SITE_KEY);
+  const [captchaToken, setCaptchaToken] = useState<string | null>(null);
+  const [captchaError, setCaptchaError] = useState<string | null>(null);
 
   useEffect(() => {
     saveState(data);
   }, [data]);
+
+  useEffect(() => {
+    if (step !== 3) {
+      setCaptchaToken(null);
+      setCaptchaError(null);
+    }
+  }, [step]);
 
   const progress = useMemo(
     () => [
@@ -152,6 +164,11 @@ export default function QuotePage() {
   }
 
   async function submit() {
+    if (captchaEnabled && !captchaToken) {
+      setCaptchaError('Please verify you are not a robot before submitting.');
+      return;
+    }
+
     try {
       const payload = {
         ...data,
@@ -173,8 +190,9 @@ export default function QuotePage() {
         body: JSON.stringify({
           ...payload,
           subject: `New Consultation Request - ${data.contact.firstName} ${data.contact.lastName} - ${data.basics.coverageType}`,
-          email: 'zbradford@bradfordinformedguidance.com'
-        })
+          email: 'zbradford@bradfordinformedguidance.com',
+          ...(captchaEnabled ? { hcaptchaToken: captchaToken } : {}),
+        }),
       });
 
       if (!response.ok) {
@@ -312,7 +330,26 @@ export default function QuotePage() {
 
           {step === 3 && (
             <Reveal>
-              <ReviewStep data={data} onPrev={prev} onSubmit={submit} />
+              <ReviewStep data={data} onPrev={prev} onSubmit={submit}>
+                {captchaEnabled && HCAPTCHA_SITE_KEY && (
+                  <div className="flex flex-col items-center gap-2">
+                    <HCaptcha
+                      key={HCAPTCHA_SITE_KEY}
+                      siteKey={HCAPTCHA_SITE_KEY}
+                      onVerify={(token) => {
+                        setCaptchaToken(token);
+                        setCaptchaError(null);
+                      }}
+                      onExpire={() => setCaptchaToken(null)}
+                      onError={() =>
+                        setCaptchaError('Verification failed. Please refresh the widget and try again.')
+                      }
+                      className="flex justify-center"
+                    />
+                    {captchaError && <p className="text-sm text-red-600">{captchaError}</p>}
+                  </div>
+                )}
+              </ReviewStep>
             </Reveal>
           )}
         </div>
@@ -638,7 +675,17 @@ function Row({ label, value }: { label: string; value: string }) {
   );
 }
 
-function ReviewStep({ data, onPrev, onSubmit }: { data: QuoteData; onPrev: () => void; onSubmit: () => void }) {
+function ReviewStep({
+  data,
+  onPrev,
+  onSubmit,
+  children,
+}: {
+  data: QuoteData;
+  onPrev: () => void;
+  onSubmit: () => void;
+  children?: ReactNode;
+}) {
   const { basics, household, contact } = data;
   return (
     <div className="grid gap-6 max-w-2xl">
@@ -668,6 +715,8 @@ function ReviewStep({ data, onPrev, onSubmit }: { data: QuoteData; onPrev: () =>
       <p className="text-sm text-slate-500 text-center">
         Your privacy is important to us. The information you provide helps us prepare for our consultation. We will not share your data or subject you to high-pressure sales calls.
       </p>
+
+      {children}
 
       <div className="flex items-center gap-3">
         <button type="button" onClick={onPrev} className="flex-1 px-6 py-3 border-2 border-slate-300 rounded-xl text-slate-700 hover:bg-slate-50 font-medium transition-all duration-200">Back</button>

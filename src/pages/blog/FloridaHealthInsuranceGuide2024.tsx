@@ -2,13 +2,25 @@ import { Link } from 'react-router-dom';
 import { Clock, User, Calendar, ArrowLeft, MapPin, DollarSign, Shield, Users, AlertTriangle } from 'lucide-react';
 import SEO from '../../components/SEO';
 import { buildArticleSEO } from '../../utils/seoHelpers';
+import RelatedPosts from '../../components/blog/RelatedPosts';
 
 export default function FloridaHealthInsuranceGuide2024() {
   const title = 'Florida Health Insurance: Complete 2024 Market Guide | Bradford Informed Guidance';
   const description = 'Everything Florida residents need to know about health insurance options, costs, and enrollment. Expert local market insights from licensed FL broker.';
   const path = '/blog/florida-health-insurance-guide-2024';
   const datePublished = '2024-01-11';
-  const articleSEO = buildArticleSEO({ title, description, path, datePublished });
+  const articleSEO = buildArticleSEO({
+    title,
+    description,
+    path,
+    datePublished,
+    articleSection: 'Florida Health Insurance',
+    keywords: [
+      'Florida health insurance guide',
+      'Florida ACA plans',
+      'Florida health insurance costs',
+    ],
+  });
 
   return (
     <main className="min-h-screen bg-white">
@@ -477,36 +489,14 @@ export default function FloridaHealthInsuranceGuide2024() {
             </div>
           </div>
 
-          {/* Related Articles */}
-          <div className="mt-12">
-            <h3 className="text-2xl font-bold text-slate-900 mb-6">Related Florida Insurance Articles</h3>
-            <div className="grid md:grid-cols-3 gap-6">
-              <Link to="/blog/ppo-hmo-epo-plan-comparison" className="group">
-                <div className="bg-white border border-slate-200 rounded-lg p-6 hover:shadow-md transition-shadow">
-                  <h4 className="font-bold text-slate-900 group-hover:text-blue-600 mb-2">
-                    PPO vs HMO vs EPO: Choose the Right Plan Type
-                  </h4>
-                  <p className="text-slate-600 text-sm">11 min read</p>
-                </div>
-              </Link>
-              <Link to="/blog/open-enrollment-checklist-2024" className="group">
-                <div className="bg-white border border-slate-200 rounded-lg p-6 hover:shadow-md transition-shadow">
-                  <h4 className="font-bold text-slate-900 group-hover:text-blue-600 mb-2">
-                    Health Insurance Open Enrollment Checklist
-                  </h4>
-                  <p className="text-slate-600 text-sm">11 min read</p>
-                </div>
-              </Link>
-              <Link to="/blog/florida-hurricane-insurance-protection" className="group">
-                <div className="bg-white border border-slate-200 rounded-lg p-6 hover:shadow-md transition-shadow">
-                  <h4 className="font-bold text-slate-900 group-hover:text-blue-600 mb-2">
-                    Florida Hurricane Insurance Protection
-                  </h4>
-                  <p className="text-slate-600 text-sm">13 min read</p>
-                </div>
-              </Link>
-            </div>
-          </div>
+          <RelatedPosts
+            slugs={[
+              '/blog/florida-small-business-health-insurance',
+              '/blog/tampa-bay-insurance-broker-guide',
+              '/blog/florida-hurricane-insurance-protection',
+            ]}
+            heading="Related Florida Insurance Articles"
+          />
         </div>
       </article>
     </main>

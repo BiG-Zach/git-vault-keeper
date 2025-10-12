@@ -3,6 +3,9 @@ import { motion, useReducedMotion } from "framer-motion";
 import { Send, Shield, Clock, Check, AlertCircle } from "lucide-react";
 import Section from "../layout/Section";
 import { useState } from "react";
+import HCaptcha from "../security/HCaptcha";
+
+const HCAPTCHA_SITE_KEY = import.meta.env.VITE_HCAPTCHA_SITEKEY as string | undefined;
 
 export default function EnhancedMessageForm() {
   const prefersReducedMotion = useReducedMotion();
@@ -18,12 +21,23 @@ export default function EnhancedMessageForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const [errorMessage, setErrorMessage] = useState('');
+  const captchaEnabled = Boolean(HCAPTCHA_SITE_KEY);
+  const [captchaToken, setCaptchaToken] = useState<string | null>(null);
+  const [captchaError, setCaptchaError] = useState<string | null>(null);
+  const [captchaRefresh, setCaptchaRefresh] = useState(0);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitting(true);
     setSubmitStatus('idle');
     setErrorMessage('');
+    
+    if (captchaEnabled && !captchaToken) {
+      setCaptchaError('Please verify you are not a robot.');
+      return;
+    }
+
+    setIsSubmitting(true);
+    setCaptchaError(null);
     
     try {
       // Split name into first and last name
@@ -50,7 +64,10 @@ export default function EnhancedMessageForm() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(payload),
+        body: JSON.stringify({
+          ...payload,
+          ...(captchaEnabled ? { hcaptchaToken: captchaToken } : {}),
+        }),
       });
       
       if (response.ok) {
@@ -63,6 +80,10 @@ export default function EnhancedMessageForm() {
           insuranceType: '',
           message: ''
         });
+        if (captchaEnabled) {
+          setCaptchaToken(null);
+          setCaptchaRefresh((value) => value + 1);
+        }
       } else {
         const errorData = await response.json();
         throw new Error(errorData.error || 'Failed to send message');
@@ -317,6 +338,25 @@ export default function EnhancedMessageForm() {
               <p className="text-xs text-slate-500 text-center">
                 Your privacy is important to us. The information you provide helps us prepare for our consultation. We will not share your data or subject you to high-pressure sales calls.
               </p>
+
+              {captchaEnabled && HCAPTCHA_SITE_KEY && (
+                <div className="flex flex-col items-center gap-2">
+                  <HCaptcha
+                    key={`contact-hcaptcha-${captchaRefresh}`}
+                    siteKey={HCAPTCHA_SITE_KEY}
+                    onVerify={(token) => {
+                      setCaptchaToken(token);
+                      setCaptchaError(null);
+                    }}
+                    onExpire={() => setCaptchaToken(null)}
+                    onError={() =>
+                      setCaptchaError('Verification failed. Please refresh the widget and try again.')
+                    }
+                    className="flex justify-center"
+                  />
+                  {captchaError && <p className="text-sm text-red-600">{captchaError}</p>}
+                </div>
+              )}
 
               <button
                 type="submit"

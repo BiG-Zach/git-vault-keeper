@@ -11,6 +11,7 @@ export type ScriptTag = {
   src?: string;
   defer?: boolean;
   async?: boolean;
+  attributes?: Record<string, string>;
 };
 
 export interface SEOConfig {
@@ -134,11 +135,9 @@ export function applyHead(resolved: ResolvedSEO) {
       if (!el) {
         el = d.createElement('script');
         el.src = s.src;
-        if (s.defer) el.defer = true;
-        if (s.async) el.async = true;
-        if (s.type) el.type = s.type;
         head.appendChild(el);
       }
+      configureScriptElement(el, s);
     } else if (s.innerHTML) {
       const dataHash = String(hash(s.innerHTML));
       const key = `script[data-managed="true"][data-hash="${dataHash}"]`;
@@ -148,13 +147,29 @@ export function applyHead(resolved: ResolvedSEO) {
         el.type = s.type || 'application/ld+json';
         el.dataset.managed = 'true';
         el.dataset.hash = dataHash;
-        el.innerHTML = s.innerHTML;
         head.appendChild(el);
-      } else {
-        el.innerHTML = s.innerHTML;
       }
+      configureScriptElement(el, s);
+      el.innerHTML = s.innerHTML;
     }
   });
+}
+
+function configureScriptElement(el: HTMLScriptElement, spec: ScriptTag) {
+  if (spec.type) {
+    el.type = spec.type;
+  }
+  if (typeof spec.defer === 'boolean') {
+    el.defer = spec.defer;
+  }
+  if (typeof spec.async === 'boolean') {
+    el.async = spec.async;
+  }
+  if (spec.attributes) {
+    for (const [key, value] of Object.entries(spec.attributes)) {
+      el.setAttribute(key, value);
+    }
+  }
 }
 
 function mergeMeta(base: MetaTag[], overrides: MetaTag[]) {

@@ -109,6 +109,23 @@ npm run dev
 
 The application will be available at `http://localhost:8080`
 
+### Environment Variables
+
+| Variable | Scope | Description |
+| --- | --- | --- |
+| `VITE_PLAUSIBLE_DOMAIN` | Client | Domain name used by Plausible (e.g., `bradfordinformedguidance.com`) |
+| `VITE_PLAUSIBLE_SCRIPT` | Client (optional) | Override Plausible script URL (defaults to `https://plausible.io/js/script.js`) |
+| `VITE_PLAUSIBLE_API_HOST` | Client (optional) | Custom Plausible API endpoint (e.g., proxy URL) |
+| `VITE_HCAPTCHA_SITEKEY` | Client | Public hCaptcha site key shown in the forms |
+| `RINGY_ENDPOINT` | Server | Ringy lead endpoint |
+| `RINGY_SID` | Server | Ringy site identifier |
+| `RINGY_AUTH_TOKEN` | Server | Ringy auth token |
+| `JWT_SECRET` | Server | Secret used to sign consent receipts |
+| `HCAPTCHA_SECRET` | Server (optional) | Private hCaptcha verification secret |
+| `HCAPTCHA_VERIFY_ENDPOINT` | Server (optional) | Override hCaptcha verification URL |
+
+Set the `VITE_*` variables in `.env` so Vite can access them at build time. The server-only variables (`RINGY_*`, `JWT_SECRET`, `HCAPTCHA_*`) must be added as Environment Variables in your Vercel project settings and should **not** be committed to source control.
+
 ## 💻 Development
 
 ### Available Scripts

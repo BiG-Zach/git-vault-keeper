@@ -2,13 +2,25 @@ import { Link } from "react-router-dom";
 import { Calendar, Phone, ArrowLeft, Star } from "lucide-react";
 import SEO from "../../components/SEO";
 import { buildArticleSEO } from "../../utils/seoHelpers";
+import RelatedPosts from "../../components/blog/RelatedPosts";
 
 export default function NorthCarolinaBestHealthInsurance() {
   const title = "North Carolina's Best Health Insurance Plans: 2024 Rankings";
   const description = "Independent analysis of NC's top health plans based on coverage, cost, and customer satisfaction. Expert rankings from a licensed broker.";
   const path = "/blog/north-carolina-best-health-insurance";
   const datePublished = "2024-01-20";
-  const articleSEO = buildArticleSEO({ title, description, path, datePublished });
+  const articleSEO = buildArticleSEO({
+    title,
+    description,
+    path,
+    datePublished,
+    articleSection: 'North Carolina Insurance',
+    keywords: [
+      'North Carolina health insurance',
+      'NC ACA plans',
+      'North Carolina insurance rates',
+    ],
+  });
 
   return (
     <main className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
@@ -712,33 +724,13 @@ export default function NorthCarolinaBestHealthInsurance() {
           </div>
         </section>
 
-        {/* Related Articles */}
-        <section>
-          <h2 className="text-2xl font-bold text-slate-900 mb-6">Related Articles</h2>
-          <div className="grid md:grid-cols-2 gap-6">
-            <Link to="/blog/michigan-insurance-laws" className="group">
-              <div className="bg-white border border-slate-200 rounded-lg p-6 hover:shadow-md transition-shadow">
-                <h3 className="text-lg font-semibold text-slate-900 mb-2 group-hover:text-blue-600 transition-colors">
-                  Michigan Insurance Laws: What Every Resident Must Know
-                </h3>
-                <p className="text-slate-600 text-sm">
-                  Stay compliant with Michigan's complex insurance requirements and avoid penalties.
-                </p>
-              </div>
-            </Link>
-            
-            <Link to="/blog/health-insurance-open-enrollment-checklist" className="group">
-              <div className="bg-white border border-slate-200 rounded-lg p-6 hover:shadow-md transition-shadow">
-                <h3 className="text-lg font-semibold text-slate-900 mb-2 group-hover:text-blue-600 transition-colors">
-                  Health Insurance Open Enrollment: Your Complete Success Checklist
-                </h3>
-                <p className="text-slate-600 text-sm">
-                  Don't miss critical deadlines. Step-by-step checklist for successful enrollment.
-                </p>
-              </div>
-            </Link>
-          </div>
-        </section>
+        <RelatedPosts
+          slugs={[
+            '/blog/michigan-insurance-laws',
+            '/blog/florida-health-insurance-guide-2024',
+            '/health-insurance',
+          ]}
+        />
       </article>
     </main>
   );

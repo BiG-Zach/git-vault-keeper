@@ -2,13 +2,25 @@ import { Link } from 'react-router-dom';
 import { Clock, User, Calendar, Share2, ArrowLeft, CheckCircle, Shield, Users, TrendingUp, AlertTriangle } from 'lucide-react';
 import SEO from '../../components/SEO';
 import { buildArticleSEO } from '../../utils/seoHelpers';
+import RelatedPosts from '../../components/blog/RelatedPosts';
 
 export default function LifeInsuranceYoungAdultsGuide() {
   const title = 'Life Insurance for Young Adults: Why Waiting Costs You Thousands | Bradford Informed Guidance';
   const description = 'Every month you wait to get life insurance in your 20s could cost you $500+ over the life of your policy. Learn why smart young adults buy now.';
   const path = '/blog/life-insurance-young-adults-guide';
   const datePublished = '2024-01-12';
-  const articleSEO = buildArticleSEO({ title, description, path, datePublished });
+  const articleSEO = buildArticleSEO({
+    title,
+    description,
+    path,
+    datePublished,
+    articleSection: 'Life Insurance',
+    keywords: [
+      'life insurance for young adults',
+      'buy life insurance early',
+      'millennial life insurance planning',
+    ],
+  });
 
   return (
     <main className="min-h-screen bg-white">
@@ -368,20 +380,13 @@ export default function LifeInsuranceYoungAdultsGuide() {
             </div>
           </div>
 
-          {/* Related Articles */}
-          <div className="mt-12">
-            <h3 className="text-2xl font-bold text-slate-900 mb-6">Related Articles</h3>
-            <div className="grid md:grid-cols-2 gap-6">
-              <Link to="/blog/term-vs-whole-life-insurance-2024" className="block p-6 bg-white border border-slate-200 rounded-lg hover:shadow-md transition-shadow">
-                <h4 className="font-bold text-slate-900 mb-2">Term vs Whole Life Insurance: The $50,000 Decision</h4>
-                <p className="text-slate-600">Compare the two main types of life insurance and see which saves you more money.</p>
-              </Link>
-              <Link to="/blog/how-much-life-insurance-calculator" className="block p-6 bg-white border border-slate-200 rounded-lg hover:shadow-md transition-shadow">
-                <h4 className="font-bold text-slate-900 mb-2">How Much Life Insurance Do You Really Need?</h4>
-                <p className="text-slate-600">Use our professional calculator to determine your exact coverage needs.</p>
-              </Link>
-            </div>
-          </div>
+          <RelatedPosts
+            slugs={[
+              '/blog/term-vs-whole-life-insurance-2024',
+              '/blog/how-much-life-insurance-calculator',
+              '/blog/life-insurance-pre-existing-conditions',
+            ]}
+          />
         </div>
       </article>
     </main>

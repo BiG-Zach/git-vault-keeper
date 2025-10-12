@@ -2,13 +2,25 @@ import { Link } from "react-router-dom";
 import { Calendar, Phone, ArrowLeft, CheckCircle } from "lucide-react";
 import SEO from "../../components/SEO";
 import { buildArticleSEO } from "../../utils/seoHelpers";
+import RelatedPosts from "../../components/blog/RelatedPosts";
 
 export default function HealthInsuranceOpenEnrollmentChecklist() {
   const title = "Health Insurance Open Enrollment: Your Complete Success Checklist";
   const description = "Don't miss critical deadlines. Our step-by-step checklist ensures you get the best coverage and avoid costly mistakes during open enrollment.";
   const path = "/blog/health-insurance-open-enrollment-checklist";
   const datePublished = "2024-01-17";
-  const articleSEO = buildArticleSEO({ title, description, path, datePublished });
+  const articleSEO = buildArticleSEO({
+    title,
+    description,
+    path,
+    datePublished,
+    articleSection: 'Health Insurance',
+    keywords: [
+      'health insurance open enrollment',
+      'ACA enrollment checklist',
+      'health insurance deadlines',
+    ],
+  });
 
   return (
     <main className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
@@ -463,33 +475,13 @@ export default function HealthInsuranceOpenEnrollmentChecklist() {
           </div>
         </section>
 
-        {/* Related Articles */}
-        <section>
-          <h2 className="text-2xl font-bold text-slate-900 mb-6">Related Articles</h2>
-          <div className="grid md:grid-cols-2 gap-6">
-            <Link to="/blog/health-insurance-deductibles-guide" className="group">
-              <div className="bg-white border border-slate-200 rounded-lg p-6 hover:shadow-md transition-shadow">
-                <h3 className="text-lg font-semibold text-slate-900 mb-2 group-hover:text-blue-600 transition-colors">
-                  Health Insurance Deductibles: How to Lower Your Out-of-Pocket Costs
-                </h3>
-                <p className="text-slate-600 text-sm">
-                  Smart strategies to reduce healthcare expenses while maintaining excellent coverage.
-                </p>
-              </div>
-            </Link>
-            
-            <Link to="/blog/florida-health-insurance-guide-2024" className="group">
-              <div className="bg-white border border-slate-200 rounded-lg p-6 hover:shadow-md transition-shadow">
-                <h3 className="text-lg font-semibold text-slate-900 mb-2 group-hover:text-blue-600 transition-colors">
-                  Florida Health Insurance: Complete 2024 Market Guide
-                </h3>
-                <p className="text-slate-600 text-sm">
-                  Comprehensive analysis of Florida's health insurance marketplace and options.
-                </p>
-              </div>
-            </Link>
-          </div>
-        </section>
+        <RelatedPosts
+          slugs={[
+            '/blog/ppo-hmo-epo-plan-comparison',
+            '/blog/health-insurance-deductibles-guide',
+            '/health-insurance',
+          ]}
+        />
       </article>
     </main>
   );

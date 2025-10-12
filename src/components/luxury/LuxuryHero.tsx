@@ -44,10 +44,10 @@ const LuxuryHero = () => {
                 transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
                 className="space-y-6"
               >
-                <h1 className="text-6xl lg:text-7xl xl:text-8xl font-luxury-serif font-bold leading-[0.95] tracking-[-0.02em]">
+                <h2 className="text-6xl lg:text-7xl xl:text-8xl font-luxury-serif font-bold leading-[0.95] tracking-[-0.02em]">
                   <span className="block mb-4 bg-gradient-to-br from-white to-gray-50 bg-clip-text text-transparent">Independent Broker with</span>
                   <span className="block gradient-text-luxury font-luxury-serif">Enterprise Resources</span>
-                </h1>
+                </h2>
               </motion.div>
 
               <motion.div
@@ -56,9 +56,9 @@ const LuxuryHero = () => {
                 transition={{ duration: 0.8, delay: 0.5, ease: "easeOut" }}
                 className="space-y-6"
               >
-                <h2 className="text-2xl lg:text-3xl xl:text-4xl font-luxury-sans font-normal text-white/95 leading-relaxed">
+                <h3 className="text-2xl lg:text-3xl xl:text-4xl font-luxury-sans font-normal text-white/95 leading-relaxed">
                   Best Insurance Group Partner | Licensed Expert | Exclusive Carrier Access
-                </h2>
+                </h3>
               </motion.div>
 
               <motion.div

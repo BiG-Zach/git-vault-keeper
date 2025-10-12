@@ -2,13 +2,25 @@ import { Link } from 'react-router-dom';
 import { ChevronRight, Shield, TrendingUp, Award, AlertTriangle, CheckCircle, BarChart3 } from 'lucide-react';
 import SEO from '../../components/SEO';
 import { buildArticleSEO } from '../../utils/seoHelpers';
+import RelatedPosts from '../../components/blog/RelatedPosts';
 
 export default function LifeInsuranceCompaniesFinancialStrength() {
   const title = 'Life Insurance Companies Ranked by Financial Strength 2024 | Bradford Informed Guidance';
   const description = "Protect your family's future by choosing financially stable insurers. Complete rankings of life insurance companies by AM Best ratings and financial strength analysis.";
   const path = '/blog/life-insurance-companies-financial-strength';
   const datePublished = '2024-01-25';
-  const articleSEO = buildArticleSEO({ title, description, path, datePublished });
+  const articleSEO = buildArticleSEO({
+    title,
+    description,
+    path,
+    datePublished,
+    articleSection: 'Life Insurance',
+    keywords: [
+      'life insurance financial strength',
+      'AM Best life insurance ratings',
+      'top rated life insurance companies',
+    ],
+  });
 
   return (
     <main>
@@ -585,24 +597,13 @@ export default function LifeInsuranceCompaniesFinancialStrength() {
             </div>
           </section>
 
-          {/* Related Articles */}
-          <section>
-            <h2 className="text-2xl font-bold text-slate-900 mb-6">Related Articles</h2>
-            <div className="grid md:grid-cols-2 gap-6">
-              <Link to="/blog/am-best-insurance-ratings-explained" className="group bg-white border border-slate-200 rounded-lg p-6 hover:shadow-lg transition-all">
-                <h3 className="font-semibold text-slate-900 group-hover:text-blue-600 mb-2">
-                  What AM Best Insurance Ratings Really Mean
-                </h3>
-                <p className="text-slate-600 text-sm">Learn how to decode insurance company ratings and what they mean for your protection</p>
-              </Link>
-              <Link to="/blog/term-vs-whole-life-insurance-2024" className="group bg-white border border-slate-200 rounded-lg p-6 hover:shadow-lg transition-all">
-                <h3 className="font-semibold text-slate-900 group-hover:text-blue-600 mb-2">
-                  Term vs Whole Life Insurance Guide
-                </h3>
-                <p className="text-slate-600 text-sm">Compare life insurance types from top-rated companies</p>
-              </Link>
-            </div>
-          </section>
+          <RelatedPosts
+            slugs={[
+              '/blog/am-best-insurance-ratings-explained',
+              '/blog/term-vs-whole-life-insurance-2024',
+              '/blog/life-insurance-pre-existing-conditions',
+            ]}
+          />
         </div>
       </article>
     </main>

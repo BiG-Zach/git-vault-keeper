@@ -1,4 +1,7 @@
 User-agent: *
+Disallow: /api/
+Disallow: /thank-you
+Disallow: /404
 Allow: /
 
 Sitemap: https://www.bradfordinformedguidance.com/sitemap.xml

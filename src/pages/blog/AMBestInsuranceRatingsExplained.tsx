@@ -2,13 +2,25 @@ import { Link } from 'react-router-dom';
 import { ChevronRight, Shield, TrendingUp, AlertTriangle, CheckCircle, Award, BarChart3 } from 'lucide-react';
 import SEO from '../../components/SEO';
 import { buildArticleSEO } from '../../utils/seoHelpers';
+import RelatedPosts from '../../components/blog/RelatedPosts';
 
 export default function AMBestInsuranceRatingsExplained() {
   const title = 'Insurance Company Ratings: What AM Best Scores Really Mean | Bradford Informed Guidance';
   const description = 'Decode insurance company financial strength ratings to choose the most stable carriers. Learn what AM Best A++, A+, A ratings mean for your protection.';
   const path = '/blog/am-best-insurance-ratings-explained';
   const datePublished = '2024-01-23';
-  const articleSEO = buildArticleSEO({ title, description, path, datePublished });
+  const articleSEO = buildArticleSEO({
+    title,
+    description,
+    path,
+    datePublished,
+    articleSection: 'Carrier Financials',
+    keywords: [
+      'AM Best ratings explained',
+      'insurance company financial strength',
+      'insurer stability analysis',
+    ],
+  });
 
   return (
     <main>
@@ -340,24 +352,13 @@ export default function AMBestInsuranceRatingsExplained() {
             </div>
           </section>
 
-          {/* Related Articles */}
-          <section>
-            <h2 className="text-2xl font-bold text-slate-900 mb-6">Related Articles</h2>
-            <div className="grid md:grid-cols-2 gap-6">
-              <Link to="/blog/aetna-cigna-united-comparison" className="group bg-white border border-slate-200 rounded-lg p-6 hover:shadow-lg transition-all">
-                <h3 className="font-semibold text-slate-900 group-hover:text-blue-600 mb-2">
-                  Aetna vs Cigna vs UnitedHealthcare Comparison
-                </h3>
-                <p className="text-slate-600 text-sm">Compare the top three health insurers including their AM Best ratings</p>
-              </Link>
-              <Link to="/blog/life-insurance-companies-financial-strength" className="group bg-white border border-slate-200 rounded-lg p-6 hover:shadow-lg transition-all">
-                <h3 className="font-semibold text-slate-900 group-hover:text-blue-600 mb-2">
-                  Life Insurance Companies by Financial Strength
-                </h3>
-                <p className="text-slate-600 text-sm">Complete rankings of life insurers by AM Best ratings</p>
-              </Link>
-            </div>
-          </section>
+          <RelatedPosts
+            slugs={[
+              '/blog/life-insurance-companies-financial-strength',
+              '/blog/term-vs-whole-life-insurance-2024',
+              '/blog/how-much-life-insurance-calculator',
+            ]}
+          />
         </div>
       </article>
     </main>

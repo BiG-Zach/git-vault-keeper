@@ -2,13 +2,25 @@ import { Link } from 'react-router-dom';
 import { Clock, User, Calendar, Share2, ArrowLeft, CheckCircle, DollarSign, Shield, Users } from 'lucide-react';
 import SEO from '../../components/SEO';
 import { buildArticleSEO } from '../../utils/seoHelpers';
+import RelatedPosts from '../../components/blog/RelatedPosts';
 
 export default function TermVsWholeLifeInsurance2024() {
   const title = 'Term vs Whole Life Insurance: The $50,000 Decision | Bradford Informed Guidance';
   const description = 'Discover which life insurance type could save your family thousands while providing better protection. Expert analysis from licensed FL broker.';
   const path = '/blog/term-vs-whole-life-insurance-2024';
   const datePublished = '2024-01-10';
-  const articleSEO = buildArticleSEO({ title, description, path, datePublished });
+  const articleSEO = buildArticleSEO({
+    title,
+    description,
+    path,
+    datePublished,
+    articleSection: 'Life Insurance',
+    keywords: [
+      'term life insurance',
+      'whole life insurance comparison',
+      'life insurance coverage analysis',
+    ],
+  });
 
   return (
     <main className="min-h-screen bg-white">
@@ -353,36 +365,13 @@ export default function TermVsWholeLifeInsurance2024() {
             </div>
           </div>
 
-          {/* Related Articles */}
-          <div className="mt-12">
-            <h3 className="text-2xl font-bold text-slate-900 mb-6">Related Articles</h3>
-            <div className="grid md:grid-cols-3 gap-6">
-              <Link to="/blog/life-insurance-young-adults-guide" className="group">
-                <div className="bg-white border border-slate-200 rounded-lg p-6 hover:shadow-md transition-shadow">
-                  <h4 className="font-bold text-slate-900 group-hover:text-blue-600 mb-2">
-                    Why Smart 25-Year-Olds Buy Life Insurance Now
-                  </h4>
-                  <p className="text-slate-600 text-sm">9 min read</p>
-                </div>
-              </Link>
-              <Link to="/blog/how-much-life-insurance-calculator" className="group">
-                <div className="bg-white border border-slate-200 rounded-lg p-6 hover:shadow-md transition-shadow">
-                  <h4 className="font-bold text-slate-900 group-hover:text-blue-600 mb-2">
-                    How Much Life Insurance Do You Really Need?
-                  </h4>
-                  <p className="text-slate-600 text-sm">8 min read</p>
-                </div>
-              </Link>
-              <Link to="/blog/life-insurance-pre-existing-conditions" className="group">
-                <div className="bg-white border border-slate-200 rounded-lg p-6 hover:shadow-md transition-shadow">
-                  <h4 className="font-bold text-slate-900 group-hover:text-blue-600 mb-2">
-                    Life Insurance with Health Issues
-                  </h4>
-                  <p className="text-slate-600 text-sm">13 min read</p>
-                </div>
-              </Link>
-            </div>
-          </div>
+          <RelatedPosts
+            slugs={[
+              '/blog/life-insurance-young-adults-guide',
+              '/blog/life-insurance-pre-existing-conditions',
+              '/blog/life-insurance-companies-financial-strength',
+            ]}
+          />
         </div>
       </article>
     </main>

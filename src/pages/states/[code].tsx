@@ -106,10 +106,10 @@ function ActiveStateTemplate({ entry, codeUC, slug: _slug }: { entry: StateEntry
                 Licensed Insurance Broker
               </span>
             </div>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 mb-6">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 mb-6">
               {entry.name} Health & Life Insurance
               <span className="block text-emerald-600">Expert Guidance</span>
-            </h1>
+            </h2>
             <p className="text-xl text-slate-600 mb-8 max-w-3xl mx-auto">
               Navigate health and life insurance options with confidence. Get personalized recommendations, 
               compare top carriers, and secure the right coverage for your family.
@@ -270,10 +270,10 @@ function ComingSoonTemplate({ entry, codeUC: _codeUC, slug: _slug }: { entry: St
                 Coming to {entry.name} Soon
               </span>
             </div>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 mb-6">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 mb-6">
               Coming to {entry.name} Soon
               <span className="block text-sky-600">Join the Waitlist!</span>
-            </h1>
+            </h2>
             <p className="text-xl text-slate-600 mb-8 max-w-3xl mx-auto">
               Be the first to access exclusive rates and personalized health insurance guidance when we launch in {entry.name}.
             </p>
@@ -623,8 +623,13 @@ export default function StateDynamicPage() {
     return <Navigate to="/not-found" replace />;
   }
 
+  const pageHeading = isActive
+    ? `${entry.name} Health & Life Insurance Expert Guidance`
+    : `Coming to ${entry.name} Soon — Join the Waitlist`;
+
   return (
     <main id="content" className="has-sticky-cta">
+      <h1 className="sr-only">{pageHeading}</h1>
       <SEO
         title={seo.title}
         path={seo.path}

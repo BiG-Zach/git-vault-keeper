@@ -11,6 +11,8 @@ interface ArticleSEOParams {
   author?: string;
   imageSrc?: string;
   imageAlt?: string;
+  articleSection?: string;
+  keywords?: string[];
 }
 
 export function buildArticleSEO({
@@ -22,6 +24,8 @@ export function buildArticleSEO({
   author = 'Zachary Bradford',
   imageSrc,
   imageAlt,
+  articleSection,
+  keywords,
 }: ArticleSEOParams) {
   const image = {
     src: imageSrc ?? SEO_IMAGES.blog.src,
@@ -49,6 +53,8 @@ export function buildArticleSEO({
         datePublished,
         dateModified,
         author,
+        articleSection,
+        keywords,
       }),
     },
   ];

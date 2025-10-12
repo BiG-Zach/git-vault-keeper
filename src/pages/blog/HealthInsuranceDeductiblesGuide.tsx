@@ -2,13 +2,25 @@ import { Link } from "react-router-dom";
 import { Calendar, Phone, ArrowLeft } from "lucide-react";
 import SEO from "../../components/SEO";
 import { buildArticleSEO } from "../../utils/seoHelpers";
+import RelatedPosts from "../../components/blog/RelatedPosts";
 
 export default function HealthInsuranceDeductiblesGuide() {
   const title = "Health Insurance Deductibles: How to Lower Your Out-of-Pocket Costs";
   const description = "Smart strategies to reduce your healthcare expenses while maintaining excellent coverage. Expert guide to deductible optimization and cost savings.";
   const path = "/blog/health-insurance-deductibles-guide";
   const datePublished = "2024-01-16";
-  const articleSEO = buildArticleSEO({ title, description, path, datePublished });
+  const articleSEO = buildArticleSEO({
+    title,
+    description,
+    path,
+    datePublished,
+    articleSection: 'Health Insurance',
+    keywords: [
+      'health insurance deductibles',
+      'out-of-pocket costs',
+      'high deductible health plans',
+    ],
+  });
 
   return (
     <main className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
@@ -291,33 +303,13 @@ export default function HealthInsuranceDeductiblesGuide() {
           </div>
         </section>
 
-        {/* Related Articles */}
-        <section>
-          <h2 className="text-2xl font-bold text-slate-900 mb-6">Related Articles</h2>
-          <div className="grid md:grid-cols-2 gap-6">
-            <Link to="/blog/florida-health-insurance-guide-2024" className="group">
-              <div className="bg-white border border-slate-200 rounded-lg p-6 hover:shadow-md transition-shadow">
-                <h3 className="text-lg font-semibold text-slate-900 mb-2 group-hover:text-blue-600 transition-colors">
-                  Florida Health Insurance: Complete 2024 Market Guide
-                </h3>
-                <p className="text-slate-600 text-sm">
-                  Comprehensive guide to Florida's health insurance marketplace, including plan options and cost analysis.
-                </p>
-              </div>
-            </Link>
-            
-            <Link to="/blog/ppo-hmo-epo-plan-comparison" className="group">
-              <div className="bg-white border border-slate-200 rounded-lg p-6 hover:shadow-md transition-shadow">
-                <h3 className="text-lg font-semibold text-slate-900 mb-2 group-hover:text-blue-600 transition-colors">
-                  PPO vs HMO vs EPO: Choose the Right Plan Type
-                </h3>
-                <p className="text-slate-600 text-sm">
-                  Compare plan types to find the best fit for your healthcare needs and budget.
-                </p>
-              </div>
-            </Link>
-          </div>
-        </section>
+        <RelatedPosts
+          slugs={[
+            '/blog/ppo-hmo-epo-plan-comparison',
+            '/blog/health-insurance-open-enrollment-checklist',
+            '/blog/florida-health-insurance-guide-2024',
+          ]}
+        />
       </article>
     </main>
   );

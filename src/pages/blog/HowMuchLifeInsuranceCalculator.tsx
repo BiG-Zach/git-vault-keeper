@@ -2,13 +2,25 @@ import { Link } from 'react-router-dom';
 import { Clock, User, Calendar, Share2, ArrowLeft, CheckCircle, DollarSign, Shield, Users, Calculator, GraduationCap } from 'lucide-react';
 import SEO from '../../components/SEO';
 import { buildArticleSEO } from '../../utils/seoHelpers';
+import RelatedPosts from '../../components/blog/RelatedPosts';
 
 export default function HowMuchLifeInsuranceCalculator() {
   const title = 'How Much Life Insurance Do You Really Need? The 10x Income Rule Debunked | Bradford Informed Guidance';
   const description = 'The "10 times your income" rule could leave your family $200,000 short or waste $5,000 yearly. Use our professional calculator to get it right.';
   const path = '/blog/how-much-life-insurance-calculator';
   const datePublished = '2024-01-13';
-  const articleSEO = buildArticleSEO({ title, description, path, datePublished });
+  const articleSEO = buildArticleSEO({
+    title,
+    description,
+    path,
+    datePublished,
+    articleSection: 'Life Insurance',
+    keywords: [
+      'life insurance calculator',
+      'life insurance needs analysis',
+      'income replacement insurance',
+    ],
+  });
 
   return (
     <main className="min-h-screen bg-white">
@@ -449,20 +461,13 @@ export default function HowMuchLifeInsuranceCalculator() {
             </div>
           </div>
 
-          {/* Related Articles */}
-          <div className="mt-12">
-            <h3 className="text-2xl font-bold text-slate-900 mb-6">Related Articles</h3>
-            <div className="grid md:grid-cols-2 gap-6">
-              <Link to="/blog/term-vs-whole-life-insurance-2024" className="block p-6 bg-white border border-slate-200 rounded-lg hover:shadow-md transition-shadow">
-                <h4 className="font-bold text-slate-900 mb-2">Term vs Whole Life Insurance: The $50,000 Decision</h4>
-                <p className="text-slate-600">Compare the two main types of life insurance and see which saves you more money.</p>
-              </Link>
-              <Link to="/blog/life-insurance-young-adults-guide" className="block p-6 bg-white border border-slate-200 rounded-lg hover:shadow-md transition-shadow">
-                <h4 className="font-bold text-slate-900 mb-2">Life Insurance for Young Adults: Why Waiting Costs You Thousands</h4>
-                <p className="text-slate-600">Learn why the best time to buy life insurance is when you're young and healthy.</p>
-              </Link>
-            </div>
-          </div>
+          <RelatedPosts
+            slugs={[
+              '/blog/term-vs-whole-life-insurance-2024',
+              '/blog/life-insurance-companies-financial-strength',
+              '/blog/life-insurance-pre-existing-conditions',
+            ]}
+          />
         </div>
       </article>
     </main>
