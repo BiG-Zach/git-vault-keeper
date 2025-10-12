@@ -336,7 +336,7 @@ export default function QuotePage() {
                     <HCaptcha
                       key={HCAPTCHA_SITE_KEY}
                       siteKey={HCAPTCHA_SITE_KEY}
-                      onVerify={(token) => {
+                      onVerify={(token: string) => {
                         setCaptchaToken(token);
                         setCaptchaError(null);
                       }}

@@ -692,7 +692,7 @@ export default function CarriersPage() {
 
             loading="eager"
 
-            fetchpriority="high"
+            fetchPriority="high"
 
             decoding="async"
 
@@ -3854,7 +3854,6 @@ export default function CarriersPage() {
   );
 
 }
-
 
 
 

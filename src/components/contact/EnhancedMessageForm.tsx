@@ -344,7 +344,7 @@ export default function EnhancedMessageForm() {
                   <HCaptcha
                     key={`contact-hcaptcha-${captchaRefresh}`}
                     siteKey={HCAPTCHA_SITE_KEY}
-                    onVerify={(token) => {
+                    onVerify={(token: string) => {
                       setCaptchaToken(token);
                       setCaptchaError(null);
                     }}
