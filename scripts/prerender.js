@@ -6,7 +6,7 @@ import { createServer as createViteServer } from 'vite';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const projectRoot = path.resolve(__dirname, '..');
 const distRoot = path.resolve(projectRoot, 'dist');
-const templatePath = path.resolve(projectRoot, 'index.html');
+const templatePath = path.resolve(distRoot, 'index.html');
 
 async function main() {
   console.log('Starting prerender script');
