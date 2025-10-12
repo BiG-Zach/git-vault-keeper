@@ -40,10 +40,9 @@ async function main() {
       const segments = route === '/' ? [] : route.replace(/^\//, '').split('/');
       const targetDir = path.join(distRoot, ...segments);
       const outputPath = path.join(targetDir, 'index.html');
-      if (route !== '/') {
-        await rm(targetDir, { recursive: true, force: true });
-      }
+
       await mkdir(targetDir, { recursive: true });
+      await rm(outputPath, { force: true });
       await writeFile(outputPath, html, 'utf8');
     }
 
