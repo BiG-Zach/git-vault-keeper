@@ -2,14 +2,21 @@ import SEO from '../components/SEO';
 import Section from '../components/Section';
 import Reveal from '../components/Reveal';
 import Button from '../components/Button';
+import { SEO_IMAGES } from '../utils/seoAssets';
 
 export default function Checklist() {
+  const heroImage = SEO_IMAGES.checklist;
   return (
     <main id="content" className="has-sticky-cta">
       <SEO
         title="Checklist"
         path="/checklist"
         description="Download our pre-enrollment checklist to prepare for a smooth plan selection process."
+        image={heroImage.src}
+        meta={[
+          { property: 'og:image:alt', content: heroImage.alt },
+          { name: 'twitter:image:alt', content: heroImage.alt }
+        ]}
       />
 
       <Section bg="gradient">

@@ -5,15 +5,20 @@ import PageHero from '../components/headers/PageHero';
 import Button from '../components/Button';
 import { blogPosts, type BlogPost } from './Resources';
 import { organizationSchema, serviceSchema } from '../utils/schema';
+import { SEO_IMAGES } from '../utils/seoAssets';
 
 const lifeInsuranceArticles: BlogPost[] = Object.values(blogPosts)
   .flat()
   .filter(post => post.category === 'Life Insurance');
 
 export default function LifeInsurance() {
+  const heroImage = SEO_IMAGES.lifeService;
   const structuredData = [
     organizationSchema(),
-    serviceSchema(['Life Insurance Planning', 'Whole Life & Term Insurance', 'Life Insurance Broker'])
+    serviceSchema(
+      ['Life Insurance Planning', 'Whole Life & Term Insurance', 'Life Insurance Broker'],
+      heroImage.src
+    )
   ];
 
   return (
@@ -22,6 +27,7 @@ export default function LifeInsurance() {
         title="Life Insurance Broker - 6 States Licensed | Personalized Coverage & 24-Hour Response"
         description="Customize term, whole, universal, and final expense coverage across FL, GA, SC, TN, AL, TX. Multi-carrier comparisons with 24-hour response guarantee and 8 years expertise."
         path="/life-insurance"
+        image={heroImage.src}
         meta={[
           {
             name: 'keywords',
@@ -32,7 +38,9 @@ export default function LifeInsurance() {
             property: 'og:description',
             content: 'Customize term, whole, universal, and final expense coverage across FL, GA, SC, TN, AL, TX with 24-hour response guarantee and multi-carrier comparisons.'
           },
-          { property: 'og:type', content: 'website' }
+          { property: 'og:type', content: 'website' },
+          { property: 'og:image:alt', content: heroImage.alt },
+          { name: 'twitter:image:alt', content: heroImage.alt }
         ]}
         scripts={structuredData.map(innerHTML => ({ innerHTML }))}
       />
@@ -40,6 +48,7 @@ export default function LifeInsurance() {
       <PageHero
         title="Life Insurance for Generational Security"
         subtitle="From income replacement to legacy planning, our concierge team builds life insurance strategies for growing families, entrepreneurs, and retirees across six licensed states."
+        bgUrl={heroImage.src}
       >
         <div className="hidden md:block">
           <div className="rounded-2xl bg-white/90 p-6 shadow-lg ring-1 ring-black/5">
@@ -228,6 +237,4 @@ export default function LifeInsurance() {
     </main>
   );
 }
-
-
 

@@ -1,14 +1,24 @@
 import { Link } from "react-router-dom";
 import { Calendar, Phone, ArrowLeft, Shield, AlertTriangle } from "lucide-react";
 import SEO from "../../components/SEO";
+import { buildArticleSEO } from "../../utils/seoHelpers";
 
 export default function FloridaHurricaneInsuranceProtection() {
+  const title = "Florida Hurricane Insurance: Complete Protection Strategy";
+  const description = "Protect your property and family during hurricane season. Essential coverage guide for Florida residents from a licensed broker with 8+ years experience.";
+  const path = "/blog/florida-hurricane-insurance-protection";
+  const datePublished = "2024-01-21";
+  const articleSEO = buildArticleSEO({ title, description, path, datePublished });
+
   return (
     <main className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
       <SEO 
-        title="Florida Hurricane Insurance: Complete Protection Strategy"
-        description="Protect your property and family during hurricane season. Essential coverage guide for Florida residents from a licensed broker with 8+ years experience."
-        path="/blog/florida-hurricane-insurance-protection"
+        title={title}
+        description={description}
+        path={path}
+        image={articleSEO.image}
+        meta={articleSEO.meta}
+        scripts={articleSEO.scripts}
       />
       
       <article className="max-w-4xl mx-auto px-4 py-8">

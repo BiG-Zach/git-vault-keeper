@@ -19,6 +19,11 @@ export const ORG = {
   ],
 };
 
+export const SITE = {
+  name: ORG.name,
+  url: ORG.url,
+};
+
 type Address = {
   streetAddress?: string;
   addressLocality?: string;
@@ -159,6 +164,56 @@ export function personSchema(name: string, jobTitle: string, description: string
       'Insurance Brokerage',
     ],
   };
+  return JSON.stringify(data);
+}
+
+export function articleSchema(params: {
+  title: string;
+  description: string;
+  url: string;
+  image?: string;
+  datePublished: string;
+  dateModified?: string;
+  author?: string;
+}) {
+  const {
+    title,
+    description,
+    url,
+    image,
+    datePublished,
+    dateModified,
+    author = 'Zachary Bradford',
+  } = params;
+
+  const data = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: title,
+    description,
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': url,
+    },
+    url,
+    image: absoluteUrl(image ?? ORG.image),
+    datePublished,
+    dateModified: dateModified ?? datePublished,
+    author: {
+      '@type': 'Person',
+      name: author,
+      url: `${ORG.url}/about`,
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: ORG.name,
+      logo: {
+        '@type': 'ImageObject',
+        url: ORG.logo,
+      },
+    },
+  };
+
   return JSON.stringify(data);
 }
 

@@ -1,14 +1,24 @@
 import { Link } from "react-router-dom";
 import { Calendar, Phone, ArrowLeft, Star } from "lucide-react";
 import SEO from "../../components/SEO";
+import { buildArticleSEO } from "../../utils/seoHelpers";
 
 export default function NorthCarolinaBestHealthInsurance() {
+  const title = "North Carolina's Best Health Insurance Plans: 2024 Rankings";
+  const description = "Independent analysis of NC's top health plans based on coverage, cost, and customer satisfaction. Expert rankings from a licensed broker.";
+  const path = "/blog/north-carolina-best-health-insurance";
+  const datePublished = "2024-01-20";
+  const articleSEO = buildArticleSEO({ title, description, path, datePublished });
+
   return (
     <main className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
       <SEO 
-        title="North Carolina's Best Health Insurance Plans: 2024 Rankings"
-        description="Independent analysis of NC's top health plans based on coverage, cost, and customer satisfaction. Expert rankings from a licensed broker."
-        path="/blog/north-carolina-best-health-insurance"
+        title={title}
+        description={description}
+        path={path}
+        image={articleSEO.image}
+        meta={articleSEO.meta}
+        scripts={articleSEO.scripts}
       />
       
       <article className="max-w-4xl mx-auto px-4 py-8">

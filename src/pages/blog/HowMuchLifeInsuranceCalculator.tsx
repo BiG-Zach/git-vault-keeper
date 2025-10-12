@@ -1,14 +1,24 @@
 import { Link } from 'react-router-dom';
 import { Clock, User, Calendar, Share2, ArrowLeft, CheckCircle, DollarSign, Shield, Users, Calculator, GraduationCap } from 'lucide-react';
 import SEO from '../../components/SEO';
+import { buildArticleSEO } from '../../utils/seoHelpers';
 
 export default function HowMuchLifeInsuranceCalculator() {
+  const title = 'How Much Life Insurance Do You Really Need? The 10x Income Rule Debunked | Bradford Informed Guidance';
+  const description = 'The "10 times your income" rule could leave your family $200,000 short or waste $5,000 yearly. Use our professional calculator to get it right.';
+  const path = '/blog/how-much-life-insurance-calculator';
+  const datePublished = '2024-01-13';
+  const articleSEO = buildArticleSEO({ title, description, path, datePublished });
+
   return (
     <main className="min-h-screen bg-white">
       <SEO 
-        title="How Much Life Insurance Do You Really Need? The 10x Income Rule Debunked | Bradford Informed Guidance"
-        description="The '10 times your income' rule could leave your family $200,000 short or waste $5,000 yearly. Use our professional calculator to get it right."
-        path="/blog/how-much-life-insurance-calculator"
+        title={title}
+        description={description}
+        path={path}
+        image={articleSEO.image}
+        meta={articleSEO.meta}
+        scripts={articleSEO.scripts}
       />
 
       {/* Breadcrumb */}

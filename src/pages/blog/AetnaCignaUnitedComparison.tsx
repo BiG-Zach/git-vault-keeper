@@ -1,14 +1,24 @@
 import { Link } from "react-router-dom";
 import { Calendar, Phone, ArrowLeft } from "lucide-react";
 import SEO from "../../components/SEO";
+import { buildArticleSEO } from "../../utils/seoHelpers";
 
 export default function AetnaCignaUnitedComparison() {
+  const title = "Aetna vs Cigna vs UnitedHealthcare: 2024 Independent Analysis";
+  const description = "Which major insurer offers the best value? Our comprehensive comparison reveals the winner based on coverage, cost, and customer satisfaction.";
+  const path = "/blog/aetna-cigna-united-comparison-2024";
+  const datePublished = "2024-01-22";
+  const articleSEO = buildArticleSEO({ title, description, path, datePublished });
+
   return (
     <main className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
       <SEO 
-        title="Aetna vs Cigna vs UnitedHealthcare: 2024 Independent Analysis"
-        description="Which major insurer offers the best value? Our comprehensive comparison reveals the winner based on coverage, cost, and customer satisfaction."
-        path="/blog/aetna-cigna-united-comparison-2024"
+        title={title}
+        description={description}
+        path={path}
+        image={articleSEO.image}
+        meta={articleSEO.meta}
+        scripts={articleSEO.scripts}
       />
       
       <article className="max-w-4xl mx-auto px-4 py-8">

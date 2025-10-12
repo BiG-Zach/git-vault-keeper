@@ -1,14 +1,24 @@
 import { Link } from 'react-router-dom';
 import { Clock, User, Calendar, Share2, ArrowLeft, CheckCircle, Shield, Users, TrendingUp, AlertTriangle } from 'lucide-react';
 import SEO from '../../components/SEO';
+import { buildArticleSEO } from '../../utils/seoHelpers';
 
 export default function LifeInsuranceYoungAdultsGuide() {
+  const title = 'Life Insurance for Young Adults: Why Waiting Costs You Thousands | Bradford Informed Guidance';
+  const description = 'Every month you wait to get life insurance in your 20s could cost you $500+ over the life of your policy. Learn why smart young adults buy now.';
+  const path = '/blog/life-insurance-young-adults-guide';
+  const datePublished = '2024-01-12';
+  const articleSEO = buildArticleSEO({ title, description, path, datePublished });
+
   return (
     <main className="min-h-screen bg-white">
       <SEO 
-        title="Life Insurance for Young Adults: Why Waiting Costs You Thousands | Bradford Informed Guidance"
-        description="Every month you wait to get life insurance in your 20s could cost you $500+ over the life of your policy. Learn why smart young adults buy now."
-        path="/blog/life-insurance-young-adults-guide"
+        title={title}
+        description={description}
+        path={path}
+        image={articleSEO.image}
+        meta={articleSEO.meta}
+        scripts={articleSEO.scripts}
       />
 
       {/* Breadcrumb */}

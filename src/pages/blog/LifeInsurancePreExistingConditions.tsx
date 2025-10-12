@@ -1,14 +1,24 @@
 import { Link } from 'react-router-dom';
 import { Clock, User, Calendar, Share2, ArrowLeft, CheckCircle, AlertTriangle, Shield, Heart, Activity } from 'lucide-react';
 import SEO from '../../components/SEO';
+import { buildArticleSEO } from '../../utils/seoHelpers';
 
 export default function LifeInsurancePreExistingConditions() {
+  const title = 'Life Insurance with Health Issues: Your Complete Options Guide | Bradford Informed Guidance';
+  const description = 'Pre-existing conditions don\'t disqualify you from life insurance, but the wrong application could triple your rates. Learn your options.';
+  const path = '/blog/life-insurance-pre-existing-conditions';
+  const datePublished = '2024-01-14';
+  const articleSEO = buildArticleSEO({ title, description, path, datePublished });
+
   return (
     <main className="min-h-screen bg-white">
       <SEO 
-        title="Life Insurance with Health Issues: Your Complete Options Guide | Bradford Informed Guidance"
-        description="Pre-existing conditions don't disqualify you from life insurance, but the wrong application could triple your rates. Learn your options."
-        path="/blog/life-insurance-pre-existing-conditions"
+        title={title}
+        description={description}
+        path={path}
+        image={articleSEO.image}
+        meta={articleSEO.meta}
+        scripts={articleSEO.scripts}
       />
 
       {/* Breadcrumb */}

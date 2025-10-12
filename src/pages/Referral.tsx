@@ -2,14 +2,21 @@ import SEO from '../components/SEO';
 import Section from '../components/Section';
 import Reveal from '../components/Reveal';
 import Button from '../components/Button';
+import { SEO_IMAGES } from '../utils/seoAssets';
 
 export default function Referral() {
+  const heroImage = SEO_IMAGES.referral;
   return (
     <main id="content" className="has-sticky-cta">
       <SEO
         title="Referral"
         path="/referral"
         description="Refer a friend or client. Provide basic details and we’ll reach out to help them compare options."
+        image={heroImage.src}
+        meta={[
+          { property: 'og:image:alt', content: heroImage.alt },
+          { name: 'twitter:image:alt', content: heroImage.alt }
+        ]}
       />
 
       <Section bg="gradient">

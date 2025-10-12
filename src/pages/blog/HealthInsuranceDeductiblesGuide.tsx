@@ -1,14 +1,24 @@
 import { Link } from "react-router-dom";
 import { Calendar, Phone, ArrowLeft } from "lucide-react";
 import SEO from "../../components/SEO";
+import { buildArticleSEO } from "../../utils/seoHelpers";
 
 export default function HealthInsuranceDeductiblesGuide() {
+  const title = "Health Insurance Deductibles: How to Lower Your Out-of-Pocket Costs";
+  const description = "Smart strategies to reduce your healthcare expenses while maintaining excellent coverage. Expert guide to deductible optimization and cost savings.";
+  const path = "/blog/health-insurance-deductibles-guide";
+  const datePublished = "2024-01-16";
+  const articleSEO = buildArticleSEO({ title, description, path, datePublished });
+
   return (
     <main className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
       <SEO 
-        title="Health Insurance Deductibles: How to Lower Your Out-of-Pocket Costs"
-        description="Smart strategies to reduce your healthcare expenses while maintaining excellent coverage. Expert guide to deductible optimization and cost savings."
-        path="/blog/health-insurance-deductibles-guide"
+        title={title}
+        description={description}
+        path={path}
+        image={articleSEO.image}
+        meta={articleSEO.meta}
+        scripts={articleSEO.scripts}
       />
       
       <article className="max-w-4xl mx-auto px-4 py-8">

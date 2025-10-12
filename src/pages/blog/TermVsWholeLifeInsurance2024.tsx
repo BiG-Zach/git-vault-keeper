@@ -1,14 +1,24 @@
 import { Link } from 'react-router-dom';
 import { Clock, User, Calendar, Share2, ArrowLeft, CheckCircle, DollarSign, Shield, Users } from 'lucide-react';
 import SEO from '../../components/SEO';
+import { buildArticleSEO } from '../../utils/seoHelpers';
 
 export default function TermVsWholeLifeInsurance2024() {
+  const title = 'Term vs Whole Life Insurance: The $50,000 Decision | Bradford Informed Guidance';
+  const description = 'Discover which life insurance type could save your family thousands while providing better protection. Expert analysis from licensed FL broker.';
+  const path = '/blog/term-vs-whole-life-insurance-2024';
+  const datePublished = '2024-01-10';
+  const articleSEO = buildArticleSEO({ title, description, path, datePublished });
+
   return (
     <main className="min-h-screen bg-white">
       <SEO 
-        title="Term vs Whole Life Insurance: The $50,000 Decision | Bradford Informed Guidance"
-        description="Discover which life insurance type could save your family thousands while providing better protection. Expert analysis from licensed FL broker."
-        path="/blog/term-vs-whole-life-insurance-2024"
+        title={title}
+        description={description}
+        path={path}
+        image={articleSEO.image}
+        meta={articleSEO.meta}
+        scripts={articleSEO.scripts}
       />
 
       {/* Breadcrumb */}

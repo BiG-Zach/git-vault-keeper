@@ -1,14 +1,24 @@
 import { Link } from 'react-router-dom';
 import { Clock, User, Calendar, Share2, ArrowLeft, CheckCircle, DollarSign, Shield, Building, MapPin, Stethoscope } from 'lucide-react';
 import SEO from '../../components/SEO';
+import { buildArticleSEO } from '../../utils/seoHelpers';
 
 export default function PPOHMOEPOPlanComparison() {
+  const title = 'PPO vs HMO vs EPO: Choose the Right Plan Type for Your Family | Bradford Informed Guidance';
+  const description = 'Stop overpaying for the wrong plan. Here\'s how to choose the best health insurance option for your needs and save money.';
+  const path = '/blog/ppo-hmo-epo-plan-comparison';
+  const datePublished = '2024-01-15';
+  const articleSEO = buildArticleSEO({ title, description, path, datePublished });
+
   return (
     <main className="min-h-screen bg-white">
       <SEO 
-        title="PPO vs HMO vs EPO: Choose the Right Plan Type for Your Family | Bradford Informed Guidance"
-        description="Stop overpaying for the wrong plan. Here's how to choose the best health insurance option for your needs and save money."
-        path="/blog/ppo-hmo-epo-plan-comparison"
+        title={title}
+        description={description}
+        path={path}
+        image={articleSEO.image}
+        meta={articleSEO.meta}
+        scripts={articleSEO.scripts}
       />
 
       {/* Breadcrumb */}

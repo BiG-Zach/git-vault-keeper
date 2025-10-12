@@ -5,15 +5,20 @@ import PageHero from '../components/headers/PageHero';
 import Button from '../components/Button';
 import { blogPosts, type BlogPost } from './Resources';
 import { organizationSchema, serviceSchema } from '../utils/schema';
+import { SEO_IMAGES } from '../utils/seoAssets';
 
 const healthArticles: BlogPost[] = Object.values(blogPosts)
   .flat()
   .filter(post => post.category === 'Health Insurance');
 
 export default function HealthInsurance() {
+  const heroImage = SEO_IMAGES.healthService;
   const structuredData = [
     organizationSchema(),
-    serviceSchema(['Affordable Health Insurance', 'PPO Health Coverage', 'Health Insurance Broker Services'])
+    serviceSchema(
+      ['Affordable Health Insurance', 'PPO Health Coverage', 'Health Insurance Broker Services'],
+      heroImage.src
+    )
   ];
 
   return (
@@ -22,6 +27,7 @@ export default function HealthInsurance() {
         title="Affordable Health Insurance Broker - 6 States Licensed | No Enrollment Fees"
         description="Compare affordable health insurance across FL, GA, SC, TN, AL, TX. Licensed broker with 15+ A-rated carriers, no enrollment fees, 24-hour response guarantee."
         path="/health-insurance"
+        image={heroImage.src}
         meta={[
           {
             name: 'keywords',
@@ -32,7 +38,9 @@ export default function HealthInsurance() {
             property: 'og:description',
             content: 'Compare affordable health insurance across FL, GA, SC, TN, AL, TX with no enrollment fees and 24-hour response guarantee.'
           },
-          { property: 'og:type', content: 'website' }
+          { property: 'og:type', content: 'website' },
+          { property: 'og:image:alt', content: heroImage.alt },
+          { name: 'twitter:image:alt', content: heroImage.alt }
         ]}
         scripts={structuredData.map(innerHTML => ({ innerHTML }))}
       />
@@ -40,6 +48,7 @@ export default function HealthInsurance() {
       <PageHero
         title="Affordable Health Insurance Guidance"
         subtitle="Licensed experts helping families, entrepreneurs, and early retirees secure comprehensive health coverage in Florida, Georgia, South Carolina, Tennessee, Alabama, and Texas."
+        bgUrl={heroImage.src}
       >
         <div className="hidden md:block">
           <div className="rounded-2xl bg-white/90 p-6 shadow-lg ring-1 ring-black/5">
@@ -406,9 +415,6 @@ export default function HealthInsurance() {
     </main>
   );
 }
-
-
-
 
 
 

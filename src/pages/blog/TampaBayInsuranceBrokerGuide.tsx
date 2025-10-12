@@ -1,14 +1,24 @@
 import { Link } from "react-router-dom";
 import { Calendar, Phone, ArrowLeft, MapPin, Shield } from "lucide-react";
 import SEO from "../../components/SEO";
+import { buildArticleSEO } from "../../utils/seoHelpers";
 
 export default function TampaBayInsuranceBrokerGuide() {
+  const title = "Tampa Bay Insurance: Local Broker's Insider Market Guide";
+  const description = "Why Tampa Bay families choose local brokers over online quotes. Exclusive market insights and hurricane protection strategies from a licensed Florida broker.";
+  const path = "/blog/tampa-bay-insurance-broker-guide";
+  const datePublished = "2024-01-18";
+  const articleSEO = buildArticleSEO({ title, description, path, datePublished });
+
   return (
     <main className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
       <SEO 
-        title="Tampa Bay Insurance: Local Broker's Insider Market Guide"
-        description="Why Tampa Bay families choose local brokers over online quotes. Exclusive market insights and hurricane protection strategies from a licensed Florida broker."
-        path="/blog/tampa-bay-insurance-broker-guide"
+        title={title}
+        description={description}
+        path={path}
+        image={articleSEO.image}
+        meta={articleSEO.meta}
+        scripts={articleSEO.scripts}
       />
       
       <article className="max-w-4xl mx-auto px-4 py-8">

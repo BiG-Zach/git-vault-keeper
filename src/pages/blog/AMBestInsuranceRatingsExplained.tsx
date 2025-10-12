@@ -1,14 +1,24 @@
 import { Link } from 'react-router-dom';
 import { ChevronRight, Shield, TrendingUp, AlertTriangle, CheckCircle, Award, BarChart3 } from 'lucide-react';
 import SEO from '../../components/SEO';
+import { buildArticleSEO } from '../../utils/seoHelpers';
 
 export default function AMBestInsuranceRatingsExplained() {
+  const title = 'Insurance Company Ratings: What AM Best Scores Really Mean | Bradford Informed Guidance';
+  const description = 'Decode insurance company financial strength ratings to choose the most stable carriers. Learn what AM Best A++, A+, A ratings mean for your protection.';
+  const path = '/blog/am-best-insurance-ratings-explained';
+  const datePublished = '2024-01-23';
+  const articleSEO = buildArticleSEO({ title, description, path, datePublished });
+
   return (
     <main>
       <SEO 
-        title="Insurance Company Ratings: What AM Best Scores Really Mean | Bradford Informed Guidance"
-        description="Decode insurance company financial strength ratings to choose the most stable carriers. Learn what AM Best A++, A+, A ratings mean for your protection."
-        path="/blog/am-best-insurance-ratings-explained"
+        title={title}
+        description={description}
+        path={path}
+        image={articleSEO.image}
+        meta={articleSEO.meta}
+        scripts={articleSEO.scripts}
       />
       
       <article className="py-12">

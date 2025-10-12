@@ -1,14 +1,24 @@
 import { Link } from 'react-router-dom';
 import { Clock, User, Calendar, ArrowLeft, MapPin, DollarSign, Shield, Users, AlertTriangle } from 'lucide-react';
 import SEO from '../../components/SEO';
+import { buildArticleSEO } from '../../utils/seoHelpers';
 
 export default function FloridaHealthInsuranceGuide2024() {
+  const title = 'Florida Health Insurance: Complete 2024 Market Guide | Bradford Informed Guidance';
+  const description = 'Everything Florida residents need to know about health insurance options, costs, and enrollment. Expert local market insights from licensed FL broker.';
+  const path = '/blog/florida-health-insurance-guide-2024';
+  const datePublished = '2024-01-11';
+  const articleSEO = buildArticleSEO({ title, description, path, datePublished });
+
   return (
     <main className="min-h-screen bg-white">
       <SEO 
-        title="Florida Health Insurance: Complete 2024 Market Guide | Bradford Informed Guidance"
-        description="Everything Florida residents need to know about health insurance options, costs, and enrollment. Expert local market insights from licensed FL broker."
-        path="/blog/florida-health-insurance-guide-2024"
+        title={title}
+        description={description}
+        path={path}
+        image={articleSEO.image}
+        meta={articleSEO.meta}
+        scripts={articleSEO.scripts}
       />
 
       {/* Breadcrumb */}

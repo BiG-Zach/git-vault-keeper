@@ -1,14 +1,24 @@
 import { Link } from "react-router-dom";
 import { Calendar, Phone, ArrowLeft, CheckCircle } from "lucide-react";
 import SEO from "../../components/SEO";
+import { buildArticleSEO } from "../../utils/seoHelpers";
 
 export default function HealthInsuranceOpenEnrollmentChecklist() {
+  const title = "Health Insurance Open Enrollment: Your Complete Success Checklist";
+  const description = "Don't miss critical deadlines. Our step-by-step checklist ensures you get the best coverage and avoid costly mistakes during open enrollment.";
+  const path = "/blog/health-insurance-open-enrollment-checklist";
+  const datePublished = "2024-01-17";
+  const articleSEO = buildArticleSEO({ title, description, path, datePublished });
+
   return (
     <main className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
       <SEO 
-        title="Health Insurance Open Enrollment: Your Complete Success Checklist"
-        description="Don't miss critical deadlines. Our step-by-step checklist ensures you get the best coverage and avoid costly mistakes during open enrollment."
-        path="/blog/health-insurance-open-enrollment-checklist"
+        title={title}
+        description={description}
+        path={path}
+        image={articleSEO.image}
+        meta={articleSEO.meta}
+        scripts={articleSEO.scripts}
       />
       
       <article className="max-w-4xl mx-auto px-4 py-8">

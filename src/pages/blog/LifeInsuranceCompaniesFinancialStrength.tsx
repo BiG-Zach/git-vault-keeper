@@ -1,14 +1,24 @@
 import { Link } from 'react-router-dom';
 import { ChevronRight, Shield, TrendingUp, Award, AlertTriangle, CheckCircle, BarChart3 } from 'lucide-react';
 import SEO from '../../components/SEO';
+import { buildArticleSEO } from '../../utils/seoHelpers';
 
 export default function LifeInsuranceCompaniesFinancialStrength() {
+  const title = 'Life Insurance Companies Ranked by Financial Strength 2024 | Bradford Informed Guidance';
+  const description = "Protect your family's future by choosing financially stable insurers. Complete rankings of life insurance companies by AM Best ratings and financial strength analysis.";
+  const path = '/blog/life-insurance-companies-financial-strength';
+  const datePublished = '2024-01-25';
+  const articleSEO = buildArticleSEO({ title, description, path, datePublished });
+
   return (
     <main>
       <SEO 
-        title="Life Insurance Companies Ranked by Financial Strength 2024 | Bradford Informed Guidance"
-        description="Protect your family's future by choosing financially stable insurers. Complete rankings of life insurance companies by AM Best ratings and financial strength analysis."
-        path="/blog/life-insurance-companies-financial-strength"
+        title={title}
+        description={description}
+        path={path}
+        image={articleSEO.image}
+        meta={articleSEO.meta}
+        scripts={articleSEO.scripts}
       />
       
       <article className="py-12">

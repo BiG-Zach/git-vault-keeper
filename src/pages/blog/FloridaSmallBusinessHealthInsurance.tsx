@@ -1,14 +1,24 @@
 import { Link } from 'react-router-dom';
 import { ChevronRight, Building2, DollarSign, Shield, CheckCircle, AlertTriangle, TrendingUp } from 'lucide-react';
 import SEO from '../../components/SEO';
+import { buildArticleSEO } from '../../utils/seoHelpers';
 
 export default function FloridaSmallBusinessHealthInsurance() {
+  const title = 'Small Business Health Insurance Florida: Top 10 Best Options | Bradford Informed Guidance';
+  const description = 'Attract and retain top talent with competitive health benefits. Complete guide to Florida small business health insurance with carrier comparisons and cost analysis.';
+  const path = '/blog/florida-small-business-health-insurance';
+  const datePublished = '2024-01-24';
+  const articleSEO = buildArticleSEO({ title, description, path, datePublished });
+
   return (
     <main>
       <SEO 
-        title="Small Business Health Insurance Florida: Top 10 Best Options | Bradford Informed Guidance"
-        description="Attract and retain top talent with competitive health benefits. Complete guide to Florida small business health insurance with carrier comparisons and cost analysis."
-        path="/blog/florida-small-business-health-insurance"
+        title={title}
+        description={description}
+        path={path}
+        image={articleSEO.image}
+        meta={articleSEO.meta}
+        scripts={articleSEO.scripts}
       />
       
       <article className="py-12">

@@ -1,14 +1,24 @@
 import { Link } from "react-router-dom";
 import { Calendar, Phone, ArrowLeft, Scale } from "lucide-react";
 import SEO from "../../components/SEO";
+import { buildArticleSEO } from "../../utils/seoHelpers";
 
 export default function MichiganInsuranceLaws() {
+  const title = "Michigan Insurance Laws: What Every Resident Must Know";
+  const description = "Stay compliant and protected. Michigan's latest insurance requirements explained simply by a licensed broker with 8+ years experience.";
+  const path = "/blog/michigan-insurance-laws";
+  const datePublished = "2024-01-19";
+  const articleSEO = buildArticleSEO({ title, description, path, datePublished });
+
   return (
     <main className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
       <SEO 
-        title="Michigan Insurance Laws: What Every Resident Must Know"
-        description="Stay compliant and protected. Michigan's latest insurance requirements explained simply by a licensed broker with 8+ years experience."
-        path="/blog/michigan-insurance-laws"
+        title={title}
+        description={description}
+        path={path}
+        image={articleSEO.image}
+        meta={articleSEO.meta}
+        scripts={articleSEO.scripts}
       />
       
       <article className="max-w-4xl mx-auto px-4 py-8">

@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { CheckCircle, Clock, Users, Shield, Star, TrendingUp } from 'lucide-react';
 import SEO from '../../components/SEO';
 import { localBusinessSchema } from '../../utils/schema';
+import { SEO_IMAGES } from '../../utils/seoAssets';
 import { SITE } from '../../utils/seo';
 import { stateMetadata, type StateCodeSlug } from '../../utils/stateMetadata';
 import Button from '../../components/Button';
@@ -15,6 +16,21 @@ function normalizeSlug(param?: string): StateCodeSlug | null {
   const slug = param.trim().toLowerCase() as StateCodeSlug;
   return (stateMetadata as Record<string, unknown>)[slug] ? slug : null;
 }
+
+const STATE_SEO_IMAGES: Partial<Record<StateCodeSlug, { src: string; alt: string }>> = {
+  fl: {
+    src: '/images/states/fl.webp',
+    alt: 'Florida coastline at sunrise highlighting Bradford Informed Guidance insurance expertise in Florida.',
+  },
+  mi: {
+    src: '/images/states/mi.webp',
+    alt: 'Detroit skyline illustrating Bradford Informed Guidance support for Michigan residents.',
+  },
+  nc: {
+    src: '/images/states/nc.webp',
+    alt: 'North Carolina mountain overlook representing statewide coverage with Bradford Informed Guidance.',
+  },
+};
 
 function HeroVisual({ codeUC, stateName }: { codeUC: string; stateName: string }) {
   const cfg = getStateVisual(codeUC, stateName);
@@ -593,6 +609,16 @@ export default function StateDynamicPage() {
     return { title, description, path, keywords };
   }, [entry, slug, isActive]);
 
+  const stateImage = useMemo(() => {
+    if (!entry || !slug) {
+      return { src: SEO_IMAGES.healthService.src, alt: SEO_IMAGES.healthService.alt };
+    }
+    return STATE_SEO_IMAGES[slug] ?? {
+      src: SEO_IMAGES.healthService.src,
+      alt: `Bradford Informed Guidance insurance guidance for ${entry.name} residents.`,
+    };
+  }, [entry, slug]);
+
   if (!slug || !entry) {
     return <Navigate to="/not-found" replace />;
   }
@@ -603,12 +629,15 @@ export default function StateDynamicPage() {
         title={seo.title}
         path={seo.path}
         description={seo.description}
+        image={stateImage.src}
         meta={[
           { name: 'keywords', content: seo.keywords },
           { property: 'og:title', content: seo.title },
           { property: 'og:description', content: seo.description },
           { property: 'og:type', content: 'website' },
           { name: 'robots', content: 'index, follow' },
+          { property: 'og:image:alt', content: stateImage.alt },
+          { name: 'twitter:image:alt', content: stateImage.alt },
         ]}
         scripts={[
           ...(isActive ? [{ innerHTML: localBusinessSchema(slug) }] : []),
