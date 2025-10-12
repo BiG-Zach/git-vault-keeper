@@ -1,7 +1,4 @@
 import HeroForm from "../components/HeroForm";
-import LogoRail from "../components/marketing/LogoRail";
-import TestimonialsGrid from "../components/social/TestimonialsGrid";
-import USAvailability from "../components/marketing/USAvailability";
 import { BRAND } from "../lib/brand";
 import SEO from "../components/SEO";
 import { organizationSchema, serviceSchema, websiteSchema } from "../utils/schema";
@@ -13,24 +10,6 @@ import LuxuryTestimonialsCarousel from "../components/luxury/TestimonialsCarouse
 import RiskReversalSection from "../components/luxury/RiskReversalSection";
 import AuthoritySection from "../components/luxury/AuthoritySection";
 import SocialProofTicker from "../components/luxury/SocialProofTicker";
-import TestimonialsCarousel from "../components/TestimonialsCarousel";
-
-type LogoItem = { src: string; alt: string; width?: number; height?: number };
-
-const logos: LogoItem[] = [
-  { src: "/logos/carriers/aetna.webp", alt: "Aetna health insurance carrier" },
-  { src: "/logos/carriers/cigna.webp", alt: "Cigna health insurance carrier" },
-  { src: "/logos/carriers/americo.webp", alt: "Americo life insurance carrier" },
-  { src: "/logos/carriers/multiplan.webp", alt: "MultiPlan PPO network provider" },
-  { src: "/logos/carriers/allstate.webp", alt: "Allstate Health Solutions insurance carrier" },
-  { src: "/logos/carriers/unitedhealthcare.webp", alt: "UnitedHealthcare insurance carrier" },
-  { src: "/logos/carriers/firsthealth.webp", alt: "First Health PPO network provider" },
-  { src: "/logos/carriers/bluecrossblueshield.png", alt: "Blue Cross Blue Shield" },
-  { src: "/logos/carriers/sgic.webp", alt: "Southern Guaranty Insurance Company (SGIC)" },
-  { src: "/logos/carriers/mutualofomaha.webp", alt: "Mutual of Omaha life insurance" },
-  { src: "/logos/carriers/pal.webp", alt: "Philadelphia American Life (PAL)" },
-  { src: "/logos/carriers/aflac.webp", alt: "Aflac supplemental" },
-];
 
 const licensedStates = BRAND.licensed.split(",").map((state) => state.trim());
 const licensedStatesDisplay = licensedStates.join(" • ");
@@ -80,17 +59,6 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="bg-band py-10 md:py-12">
-          <div className="container mx-auto px-4">
-            <p className="mb-3 text-sm text-ink-1/70">Carrier and PPO partners</p>
-            <LogoRail logos={logos} />
-          </div>
-        </section>
-
-        <USAvailability />
-
-        <TestimonialsGrid />
-
         <div className="hidden md:block">
           <PremiumCarriers />
           <IndustryRecognitionSection />
@@ -98,14 +66,6 @@ export default function Home() {
           <LuxuryTestimonialsCarousel />
           <AuthoritySection />
           <RiskReversalSection />
-        </div>
-
-        <div className="md:hidden">
-          <MobileCarriersSection logos={logos} />
-          <MobileStateCoverage states={licensedStates} />
-          <div className="bg-slate-50 py-8">
-            <TestimonialsCarousel />
-          </div>
         </div>
 
         <SocialProofTicker />
@@ -313,89 +273,6 @@ function MobileHeroExperience({ licensedStatesDisplay }: { licensedStatesDisplay
       </section>
 
     </main>
-  );
-}
-
-function MobileCarriersSection({ logos }: { logos: LogoItem[] }) {
-  return (
-    <section className="bg-slate-50 py-16">
-      <div className="container mx-auto px-6">
-        <div className="mx-auto max-w-md text-center">
-          <h2 className="mb-4 text-2xl font-bold text-slate-900">Trusted Insurance Partners</h2>
-          <p className="mb-8 text-slate-600">
-            Access to A-rated carriers and PPO networks to fit private health, life, and supplemental coverage goals.
-          </p>
-          <div className="mb-8 grid grid-cols-3 gap-4">
-            {logos.slice(0, 6).map((logo) => (
-              <div
-                key={logo.alt}
-                className="group aspect-square rounded-2xl bg-white p-4 shadow-lg transition-transform duration-300 hover:scale-105 hover:shadow-xl"
-              >
-                <img
-                  src={logo.src}
-                  alt={logo.alt}
-                  className="h-full w-full object-contain opacity-80 transition-opacity group-hover:opacity-100"
-                  loading="lazy"
-                />
-              </div>
-            ))}
-          </div>
-
-          <a
-            href="/carriers"
-            className="inline-flex items-center gap-2 rounded-xl bg-emerald-600 px-6 py-3 font-semibold text-white shadow-lg transition-colors hover:bg-emerald-700"
-          >
-            View All Carriers
-            <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-            </svg>
-          </a>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function MobileStateCoverage({ states }: { states: string[] }) {
-  return (
-    <section className="bg-white py-16">
-      <div className="container mx-auto px-6">
-        <div className="mx-auto max-w-md text-center">
-          <h2 className="mb-4 text-2xl font-bold text-slate-900">Licensed Across the Country</h2>
-          <p className="mb-8 text-slate-600">
-            Serving families, entrepreneurs, and retirees with concierge guidance in every licensed state.
-          </p>
-
-          <div className="mb-8 grid grid-cols-2 gap-3">
-            {states.map((state) => (
-              <div
-                key={state}
-                className="rounded-2xl border-2 border-emerald-200 bg-emerald-50 p-4 text-emerald-700 transition-colors duration-300 hover:border-emerald-400 hover:bg-emerald-100"
-              >
-                <div className="text-lg font-bold">{state}</div>
-                <div className="text-sm font-medium text-emerald-600">Licensed coverage</div>
-              </div>
-            ))}
-          </div>
-
-          <div className="rounded-2xl bg-emerald-950 p-6 text-white">
-            <div className="mb-2 flex items-center justify-center gap-2">
-              <svg className="h-5 w-5 text-emerald-400" viewBox="0 0 20 20" aria-hidden="true" fill="currentColor">
-                <path
-                  fillRule="evenodd"
-                  d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                  clipRule="evenodd"
-                />
-              </svg>
-              <span className="font-semibold">NPN {BRAND.npn}</span>
-            </div>
-            <p className="text-sm text-emerald-200">
-              Best Insurance Group partner • Mon-Sun, 8:00 AM - 8:00 PM EST concierge support
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
   );
 }
 
