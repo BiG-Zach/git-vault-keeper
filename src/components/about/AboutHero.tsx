@@ -45,9 +45,9 @@ export default function AboutHero() {
         </div>
 
         {/* Headlines with Playfair Display */}
-        <h1 
-          className="font-playfair text-[2.5rem] md:text-[4rem] lg:text-[4.5rem] font-bold tracking-tight leading-[0.9] text-white mb-6"
-          style={{ 
+        <h1
+          className="font-serif text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.1] text-white mb-6"
+          style={{
             background: 'linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%)',
             WebkitBackgroundClip: 'text',
             WebkitTextFillColor: 'transparent',
@@ -56,21 +56,21 @@ export default function AboutHero() {
           }}
         >
           Your Trusted Guide<br />
-          <span className="text-white/95 font-playfair italic">in a Complex Industry</span>
+          <span className="text-white/95 font-serif italic font-semibold">in a Complex Industry</span>
         </h1>
 
-        <h2 
-          className="font-sans text-[1.5rem] md:text-[2rem] font-medium text-white/90 mb-8 leading-tight"
+        <h2
+          className="font-sans text-lg md:text-xl lg:text-2xl font-normal text-white/90 mb-8 leading-relaxed"
           style={{ textShadow: '0 2px 6px rgba(0,0,0,0.4)' }}
         >
-          Over a decade of experience dedicated to helping families navigate their health insurance options with clarity and confidence.
+          8+ years of experience dedicated to helping families navigate their health insurance options with clarity and confidence.
         </h2>
 
         {/* Enhanced Body Text */}
         <div className="max-w-2xl">
-          <p className="text-[1.1rem] md:text-[1.3rem] font-light text-white/95 leading-[1.6] mb-8" 
+          <p className="text-base md:text-lg font-normal text-white/95 leading-relaxed mb-8"
              style={{ textShadow: '0 1px 4px rgba(0,0,0,0.3)' }}>
-            I'm your dedicated insurance broker, specializing in <em className="font-medium text-white">health and life coverage</em> for self-employed professionals, families, and those planning retirement.
+            I'm your dedicated insurance broker, specializing in <em className="font-semibold text-white">health and life coverage</em> for self-employed professionals, families, and those planning retirement.
           </p>
           
           <div className="flex flex-wrap gap-6 text-white/90 text-sm">
@@ -105,8 +105,8 @@ export default function AboutHero() {
   );
 
   return (
-    <header className="relative isolate w-full">
-      <div ref={ref} className="relative w-full min-h-[52vh] md:min-h-[58vh] overflow-hidden">
+    <header className="relative isolate w-full" role="banner" aria-label="About page hero section">
+      <div ref={ref} className="relative w-full min-h-[50vh] sm:min-h-[52vh] md:min-h-[58vh] overflow-hidden">
         {/* Parallax layer */}
         <div
           className="absolute inset-0 z-0 will-change-transform"
@@ -115,13 +115,14 @@ export default function AboutHero() {
           {/* If multi-source assets exist and no error, use <picture>. Otherwise, use single fallback or just let BrandGrade carry the visual. */}
           {!imgError && HAS_MULTI ? (
             <picture>
-              <source type="image/webp" srcSet={`${WEBP1X} 1600w, ${WEBP2X} 2400w`} sizes="100vw" />
-              <source type="image/jpeg" srcSet={`${JPG1X} 1600w, ${JPG2X} 2400w`} sizes="100vw" />
+              <source type="image/webp" srcSet={`${WEBP1X} 1600w, ${WEBP2X} 2400w`} sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1600px" />
+              <source type="image/jpeg" srcSet={`${JPG1X} 1600w, ${JPG2X} 2400w`} sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1600px" />
               <img
                 src={JPG1X}
-                alt=""
+                alt="Professional insurance broker consultation environment"
                 className="block h-full w-full object-cover"
                 loading="eager"
+                fetchPriority="high"
                 onError={() => setImgError(true)}
                 style={LQIP ? { backgroundImage: `url(${LQIP})`, backgroundSize: "cover", backgroundPosition: "50% 50%" } : undefined}
               />
@@ -129,9 +130,10 @@ export default function AboutHero() {
           ) : SINGLE_FALLBACK && !imgError ? (
             <img
               src={SINGLE_FALLBACK}
-              alt=""
+              alt="Professional insurance broker consultation environment"
               className="block h-full w-full object-cover"
               loading="eager"
+              fetchPriority="high"
               onError={() => setImgError(true)}
               style={LQIP ? { backgroundImage: `url(${LQIP})`, backgroundSize: "cover", backgroundPosition: "50% 50%" } : undefined}
             />

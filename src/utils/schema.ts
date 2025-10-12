@@ -130,3 +130,28 @@ export function breadcrumbSchema(crumbs: Array<{ name: string; item: string }>) 
   };
   return JSON.stringify(data);
 }
+
+export function personSchema(name: string, jobTitle: string, description: string, image?: string) {
+  const data = {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    name: name,
+    jobTitle: jobTitle,
+    description: description,
+    image: image,
+    worksFor: {
+      '@type': 'Organization',
+      name: ORG.name,
+      url: ORG.url,
+    },
+    url: `${ORG.url}/about`,
+    knowsAbout: [
+      'Health Insurance',
+      'Life Insurance',
+      'Medicare',
+      'PPO Plans',
+      'Insurance Brokerage',
+    ],
+  };
+  return JSON.stringify(data);
+}
