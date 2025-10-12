@@ -8,7 +8,7 @@ import { BRAND } from '../../lib/brand';
 const faqs = [
   {
     question: "What is a PPO network and how does it benefit me?",
-    answer: "A PPO (Preferred Provider Organization) network gives you the flexibility to see any healthcare provider, but offers significant cost savings when you choose in-network providers. You do not need referrals to see specialists, and you have access to a vast network of doctors, hospitals, and healthcare facilities across Florida, Georgia, South Carolina, Tennessee, Alabama, and Texas."
+    answer: "A PPO (Preferred Provider Organization) network gives you the flexibility to see any healthcare provider, but offers significant cost savings when you choose in-network providers. You do not need referrals to see specialists, and you have access to a vast network of doctors, hospitals, and healthcare facilities across Florida, Michigan, North Carolina, Arizona, Texas, and Georgia."
   },
   {
     question: "Can I keep my current doctor with these PPO networks?",
@@ -19,8 +19,12 @@ const faqs = [
     answer: "Each PPO network has unique strengths. Aetna and UnitedHealthcare offer the largest networks, Cigna focuses on wellness programs, First Health provides reliable nationwide coverage, MultiPlan offers cost-effective solutions, and Blue Cross Blue Shield has strong regional expertise. We compare your doctors, prescriptions, and budget to match you with the best fit in your state."
   },
   {
+    question: "I'm in Florida - which PPO networks have the best hospital coverage in my area?",
+    answer: "Florida has excellent PPO network depth. In South Florida (Miami/Ft. Lauderdale), UnitedHealthcare and Aetna dominate with comprehensive hospital networks including Baptist Health, Memorial Healthcare, and Cleveland Clinic Florida. In Central Florida (Tampa/Orlando), Blue Cross Blue Shield has strong relationships with AdventHealth, BayCare, and Orlando Health systems. North Florida (Jacksonville/Tallahassee) sees strong coverage from Cigna and First Health with Mayo Clinic and UF Health access. I analyze your specific zip code and preferred hospitals to recommend the optimal network."
+  },
+  {
     question: "Why work with a multi-carrier broker instead of a single carrier agent?",
-    answer: "As a multi-carrier broker, I compare 15+ A-rated carriers across Florida, Georgia, South Carolina, Tennessee, Alabama, and Texas. You see every competitive option in one consultation without pressure from a single insurer, and you receive unbiased guidance tailored to your household's priorities."
+    answer: "As a multi-carrier broker, I compare 15+ A-rated carriers across Florida, Michigan, North Carolina, Arizona, Texas, and Georgia. You see every competitive option in one consultation without pressure from a single insurer, and you receive unbiased guidance tailored to your household's priorities."
   },
   {
     question: "How do you secure the best rate across all these carriers?",
@@ -31,12 +35,20 @@ const faqs = [
     answer: "Our carriers specialize in different areas: Allstate Health and UnitedHealthcare excel in comprehensive health coverage, Mutual of Omaha and Americo focus on life insurance solutions, while Aflac provides supplemental benefits. All carriers are A-rated or higher by AM Best, ensuring financial stability and reliable claim payments."
   },
   {
+    question: "I'm in Texas - which carriers offer the best rates for self-employed individuals?",
+    answer: "Texas has a competitive health insurance market with several strong options for self-employed professionals. Allstate Health typically offers the most aggressive pricing in Dallas/Fort Worth and Houston for healthy applicants under 50. SGIC provides budget-friendly major medical with solid networks in San Antonio and Austin. UnitedHealthcare dominates the premium segment with the largest provider network. For those not qualifying for ACA subsidies, I'll compare private health plans that often save 40-50% versus marketplace rates. Each consultation includes a side-by-side rate comparison specific to your county and age."
+  },
+  {
     question: "What does the Best Insurance Group partnership mean for me?",
     answer: "It unlocks enterprise-level resources normally reserved for large agencies - priority underwriters, exclusive carrier programs, and escalation paths that keep approvals and claims moving quickly in every state we serve."
   },
   {
     question: "Do you serve all six states you are licensed in?",
-    answer: "Absolutely. We are licensed and bonded to support clients in Florida, Georgia, South Carolina, Tennessee, Alabama, and Texas. Each consultation includes state-specific carrier guidance, compliance updates, and virtual support tailored to where you live."
+    answer: "Absolutely. I am licensed and bonded to support clients in Florida, Michigan, North Carolina, Arizona, Texas, and Georgia. Each consultation includes state-specific carrier guidance, compliance updates, and virtual support tailored to where you live."
+  },
+  {
+    question: "How does Michigan's health insurance market differ from other states?",
+    answer: "Michigan has unique market dynamics. Blue Cross Blue Shield of Michigan holds the strongest provider relationships, especially with major systems like Henry Ford, Beaumont, and U of M Health. Priority Health (not available in all our states) dominates West Michigan. For Metro Detroit residents, I typically recommend UnitedHealthcare or Aetna PPO for maximum flexibility. Michigan also has strong ACA marketplace competition, so I always compare both private plans and subsidized marketplace options. Retirees under 65 should know Michigan allows COBRA continuation longer than federal requirements - I help navigate these options during our consultation."
   },
   {
     question: "What's the difference between working with a broker vs. buying direct from insurance companies?",
@@ -51,8 +63,16 @@ const faqs = [
     answer: "This is where working with a broker really pays off. I act as your advocate throughout the claims process. While you'll still file claims directly with your insurance carrier, I help resolve any issues that arise, understand claim denials, and ensure you're getting the benefits you're entitled to. I've helped clients navigate everything from routine claim questions to complex appeals across all 6 states I serve."
   },
   {
+    question: "I live in North Carolina - what should I know about Blue Cross Blue Shield's dominance here?",
+    answer: "North Carolina has unique market dynamics where Blue Cross Blue Shield of North Carolina (BCBSNC) historically held near-monopoly status. While competition has increased, BCBSNC still maintains the strongest relationships with major systems like Duke Health, UNC Health, Atrium Health (formerly Carolinas HealthCare), and Wake Forest Baptist. However, UnitedHealthcare and Aetna have expanded aggressively in Charlotte, Raleigh-Durham, and Greensboro with competitive pricing. For Western NC (Asheville/mountain regions), I often recommend BCBSNC for provider depth. Triangle and Charlotte residents have more carrier flexibility - I compare all options to ensure you're not overpaying for the Blue Cross name when equally strong networks exist."
+  },
+  {
+    question: "I'm relocating from Arizona to Georgia - how do I maintain coverage?",
+    answer: "State-to-state moves require careful planning. Most national PPO networks (UnitedHealthcare, Aetna, Cigna) offer coverage in both Arizona and Georgia, but your specific plan must be rewritten in your new state. I handle this transition by: (1) verifying your move qualifies for Special Enrollment Period, (2) comparing networks in your new Georgia location before you move, (3) coordinating the cancellation date in Arizona with the start date in Georgia to avoid coverage gaps, and (4) ensuring any ongoing treatments transfer smoothly. Since I'm licensed in both states, I manage the entire transition - you won't need to find a new broker."
+  },
+  {
     question: "How does coverage work when I travel to other states?",
-    answer: "Most PPO networks I recommend provide nationwide coverage, which is perfect for travel. Emergency care is always covered regardless of location. For routine care while traveling, I ensure your plan includes out-of-network benefits or has reciprocal agreements with providers in other states. Since I'm licensed in FL, GA, SC, TN, AL, and TX, I can help coordinate coverage if you're moving between these states."
+    answer: "Most PPO networks I recommend provide nationwide coverage, which is perfect for travel. Emergency care is always covered regardless of location. For routine care while traveling, I ensure your plan includes out-of-network benefits or has reciprocal agreements with providers in other states. Since I'm licensed in FL, MI, NC, AZ, TX, and GA, I can help coordinate coverage if you're moving between these states."
   },
   {
     question: "What happens if I need to make changes to my plan?",
@@ -61,6 +81,10 @@ const faqs = [
   {
     question: "Do I pay extra fees for broker services?",
     answer: "No, my services are completely free to you. I'm compensated directly by the insurance carriers when you enroll, so there are no broker fees, enrollment fees, or service charges. You pay the same premium whether you buy direct from the carrier or work with me - but with me, you get ongoing support, multiple carrier access, and advocacy at no additional cost."
+  },
+  {
+    question: "I'm in Arizona/Georgia - are there regional carriers I should consider?",
+    answer: "Yes! While national carriers like UnitedHealthcare and Aetna dominate, regional options offer competitive pricing. In Arizona (Phoenix/Tucson), Blue Cross Blue Shield of Arizona has deep relationships with Banner Health, Dignity Health, and HonorHealth systems. In Georgia (Atlanta metro), Ambetter (Peach State Health Plan) offers budget-friendly marketplace options, though network adequacy varies by county. SGIC, while less known nationally, provides strong coverage in both Atlanta and Georgia's rural counties at 15-20% below national carrier rates. I evaluate regional vs. national carrier trade-offs based on your specific doctors and budget."
   },
   {
     question: "How quickly can I get coverage if I need it urgently?",
@@ -112,7 +136,7 @@ export default function PremiumCarriersFAQ() {
           </h2>
           
           <p className="text-xl text-slate-300 max-w-2xl mx-auto">
-            Get answers to common questions about PPO networks, insurance carriers, and our services across FL, GA, SC, TN, AL, and TX.
+            Get answers to common questions about PPO networks, insurance carriers, and state-specific guidance across FL, MI, NC, AZ, TX, and GA.
           </p>
         </motion.div>
 
