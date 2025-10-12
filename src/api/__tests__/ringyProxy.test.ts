@@ -67,14 +67,14 @@ describe('ringyProxy', () => {
     process.env = { ...originalEnv };
   });
 
-  it('rejects non-POST requests', async () => {
+  it('returns readiness message for GET requests', async () => {
     const req = createRequest({ method: 'GET' });
     const res = createResponse();
 
     await ringyProxy(req, res as unknown as VercelResponse);
 
-    expect(res.status).toHaveBeenCalledWith(405);
-    expect(res.json).toHaveBeenCalledWith({ error: 'Method not allowed' });
+    expect(res.status).toHaveBeenCalledWith(200);
+    expect(res.json).toHaveBeenCalledWith({ message: 'Ringy proxy ready' });
   });
 
   it('fails fast when credentials are missing', async () => {

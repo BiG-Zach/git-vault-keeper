@@ -91,6 +91,7 @@ const Button = React.memo(function Button(props: Props) {
       className={commonClass}
       disabled={disabled}
       aria-busy={loading || undefined}
+      data-loading={loading ? 'true' : undefined}
       {...(buttonRest as ButtonProps)}
     >
       {loading ? (
