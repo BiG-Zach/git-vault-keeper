@@ -124,6 +124,22 @@ function ensureApiKey(config: Partial<ResolvedConfig>, missing: MissingField[]):
 }
 
 export default async function handler(req: Request) {
+  if (req.method === 'OPTIONS' || req.method === 'HEAD') {
+    return new Response(null, {
+      status: 204,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+  }
+
+  if (req.method === 'GET') {
+    return new Response(JSON.stringify({ message: 'Ringy proxy ready' }), {
+      status: 200,
+      headers: { 'Content-Type': 'application/json' },
+    });
+  }
+
   if (req.method !== 'POST') {
     return new Response(JSON.stringify({ message: 'Method Not Allowed' }), {
       status: 405,

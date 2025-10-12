@@ -120,6 +120,10 @@ export default async function ringyProxy(req: VercelRequest, res: VercelResponse
     return res.status(204).end();
   }
 
+  if (req.method === 'GET') {
+    return res.status(200).json({ message: 'Ringy proxy ready' });
+  }
+
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
   }
@@ -220,4 +224,3 @@ export default async function ringyProxy(req: VercelRequest, res: VercelResponse
     return res.status(500).json({ error: 'Ringy proxy failure', detail: errorMessage });
   }
 }
-
