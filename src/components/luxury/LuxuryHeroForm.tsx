@@ -1,6 +1,7 @@
 import React, { useState, useCallback, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Shield, Award, Clock, Users, Phone, MessageSquare, Mail } from 'lucide-react';
+import HCaptcha from '../security/HCaptcha';
 
 // Static constants - calculated once
 const FORM_BENEFITS = [
@@ -41,6 +42,8 @@ type SubmissionStatus = {
   message: string;
 };
 
+const HCAPTCHA_SITE_KEY = import.meta.env.VITE_HCAPTCHA_SITEKEY as string | undefined;
+
 const LuxuryHeroForm = () => {
   const [currentStep, setCurrentStep] = useState(1);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -60,6 +63,10 @@ const LuxuryHeroForm = () => {
     bestTime: ''
   });
   const [status, setStatus] = useState<SubmissionStatus>({ type: 'idle', message: '' });
+  const captchaEnabled = Boolean(HCAPTCHA_SITE_KEY);
+  const [captchaToken, setCaptchaToken] = useState<string | null>(null);
+  const [captchaError, setCaptchaError] = useState<string | null>(null);
+  const [captchaRefresh, setCaptchaRefresh] = useState(0);
 
   const updateFormData = useCallback((field: keyof FormData, value: string | string[]) => {
     setFormData(prev => ({ ...prev, [field]: value }));
@@ -133,8 +140,14 @@ const LuxuryHeroForm = () => {
   const submitForm = useCallback(async () => {
     if (!validateStep(3)) return;
 
+    if (captchaEnabled && !captchaToken) {
+      setCaptchaError('Please verify you are not a robot.');
+      return;
+    }
+
     setIsSubmitting(true);
     setStatus({ type: 'submitting', message: 'Submitting your information…' });
+    setCaptchaError(null);
 
     try {
       // Compile all ages for comprehensive notes
@@ -167,6 +180,7 @@ const LuxuryHeroForm = () => {
           notes,
           proofOfSmsOptInLink: window.location.href,
           vendorReferenceId: vendorRefId,
+          ...(captchaEnabled && captchaToken ? { hcaptchaToken: captchaToken } : {}),
         })
       });
 
@@ -176,6 +190,10 @@ const LuxuryHeroForm = () => {
       }
 
       resetForm();
+      if (captchaEnabled) {
+        setCaptchaToken(null);
+        setCaptchaRefresh(value => value + 1);
+      }
       setStatus({
         type: 'success',
         message: 'Thank you! Bradford is preparing your tailored recommendations and will reach out shortly.',
@@ -447,6 +465,26 @@ const LuxuryHeroForm = () => {
                       </div>
                     )}
                   </>
+                )}
+
+                {captchaEnabled && HCAPTCHA_SITE_KEY && (
+                  <div className="space-y-2">
+                    <HCaptcha
+                      key={`luxury-hcaptcha-${captchaRefresh}`}
+                      siteKey={HCAPTCHA_SITE_KEY}
+                      onVerify={(token: string) => {
+                        setCaptchaToken(token);
+                        setCaptchaError(null);
+                      }}
+                      onExpire={() => setCaptchaToken(null)}
+                      onError={() =>
+                        setCaptchaError('Verification failed. Please refresh the widget and try again.')
+                      }
+                    />
+                    {captchaError && (
+                      <p className="text-sm text-red-600 text-center">{captchaError}</p>
+                    )}
+                  </div>
                 )}
 
                 <div>
