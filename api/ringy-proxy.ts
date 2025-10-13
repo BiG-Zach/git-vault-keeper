@@ -15,6 +15,7 @@ const DEFAULT_ALLOWED_ORIGINS = [
 
 type LeadBody = {
   consentToText?: boolean;
+  hcaptchaToken?: string;
   [key: string]: unknown;
 };
 
@@ -132,6 +133,9 @@ function ensureApiKey(config: Partial<ResolvedConfig>, missing: MissingField[]):
 export default async function handler(req: Request) {
   const method = (req.method || 'GET').toUpperCase();
   const corsHeaders = buildCorsHeaders(req);
+  const hcaptchaSecret = process.env.HCAPTCHA_SECRET;
+  const hcaptchaVerifyEndpoint =
+    process.env.HCAPTCHA_VERIFY_ENDPOINT || 'https://hcaptcha.com/siteverify';
 
   if (method === 'OPTIONS') {
     return new Response(null, {
@@ -169,7 +173,55 @@ export default async function handler(req: Request) {
 
   try {
     const leadData = (await req.json()) as LeadBody;
-    const { consentToText, ...restOfLeadData } = leadData ?? {};
+    const { consentToText, hcaptchaToken, ...restOfLeadData } = leadData ?? {};
+
+    if (hcaptchaSecret) {
+      if (!hcaptchaToken || typeof hcaptchaToken !== 'string') {
+        return new Response(
+          JSON.stringify({ message: 'Captcha verification required.' }),
+          {
+            status: 400,
+            headers: {
+              ...corsHeaders,
+              'Content-Type': 'application/json',
+            },
+          },
+        );
+      }
+
+      const verifyResponse = await fetch(hcaptchaVerifyEndpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams({
+          secret: hcaptchaSecret,
+          response: hcaptchaToken,
+          remoteip: getClientIp(req) ?? '',
+        }),
+      });
+
+      let verification: { success?: boolean; ['error-codes']?: unknown } = {};
+      try {
+        verification = await verifyResponse.json();
+      } catch {
+        verification = {};
+      }
+
+      if (!verification.success) {
+        return new Response(
+          JSON.stringify({
+            message: 'Captcha verification failed.',
+            details: verification['error-codes'] ?? null,
+          }),
+          {
+            status: 400,
+            headers: {
+              ...corsHeaders,
+              'Content-Type': 'application/json',
+            },
+          },
+        );
+      }
+    }
 
     const descriptor = consentToText ? TEXT_DESCRIPTOR : EMAIL_PHONE_DESCRIPTOR;
     const pathLabel = consentToText ? 'text' : 'email_phone';
@@ -293,4 +345,11 @@ function buildCorsHeaders(req: Request): Record<string, string> {
     'Access-Control-Max-Age': '86400',
     Vary: 'Origin',
   };
+}
+
+function getClientIp(req: Request): string | null {
+  const forwardedFor = req.headers.get('x-forwarded-for');
+  if (!forwardedFor) return null;
+  const [first] = forwardedFor.split(',').map(part => part.trim()).filter(Boolean);
+  return first ?? null;
 }

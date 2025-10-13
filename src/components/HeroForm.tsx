@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import HCaptcha from './security/HCaptcha';
 
 const DEFAULT_LEAD_SOURCE = 'Website — Hero Form';
 
@@ -94,10 +95,16 @@ const parseErrorResponse = async (response: Response) => {
   }
 };
 
+const HCAPTCHA_SITE_KEY = import.meta.env.VITE_HCAPTCHA_SITEKEY as string | undefined;
+
 const HeroForm = () => {
   const [formData, setFormData] = useState<FormState>(initialFormState);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<SubmitStatus>({ message: '', type: '' });
+  const captchaEnabled = Boolean(HCAPTCHA_SITE_KEY);
+  const [captchaToken, setCaptchaToken] = useState<string | null>(null);
+  const [captchaError, setCaptchaError] = useState<string | null>(null);
+  const [captchaRefresh, setCaptchaRefresh] = useState(0);
 
   const resetStatus = () => setSubmitStatus({ message: '', type: '' });
 
@@ -117,6 +124,12 @@ const HeroForm = () => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     resetStatus();
+    if (captchaEnabled && !captchaToken) {
+      setCaptchaError('Please verify you are not a robot.');
+      return;
+    }
+
+    setCaptchaError(null);
     setIsSubmitting(true);
 
     const sanitizedPhone = sanitizePhone(formData.phone);
@@ -170,6 +183,10 @@ const HeroForm = () => {
       payload.custom = custom;
     }
 
+    if (captchaEnabled && captchaToken) {
+      payload.hcaptchaToken = captchaToken;
+    }
+
     try {
       const response = await fetch('/api/ringy-proxy', {
         method: 'POST',
@@ -182,6 +199,10 @@ const HeroForm = () => {
       if (response.ok) {
         setSubmitStatus({ message: 'Thank you for your submission!', type: 'success' });
         setFormData(initialFormState);
+        if (captchaEnabled) {
+          setCaptchaToken(null);
+          setCaptchaRefresh(value => value + 1);
+        }
       } else {
         const detail = await parseErrorResponse(response);
         setSubmitStatus({ message: `Submission failed: ${detail}`, type: 'error' });
@@ -233,6 +254,24 @@ const HeroForm = () => {
             <span className="ml-2 text-sm text-gray-600">I agree to receive text messages that support our consultation.</span>
           </label>
         </div>
+        {captchaEnabled && HCAPTCHA_SITE_KEY && (
+          <div className="mb-6 flex flex-col items-center gap-2">
+            <HCaptcha
+              key={`hero-hcaptcha-${captchaRefresh}`}
+              siteKey={HCAPTCHA_SITE_KEY}
+              onVerify={(token: string) => {
+                setCaptchaToken(token);
+                setCaptchaError(null);
+              }}
+              onExpire={() => setCaptchaToken(null)}
+              onError={() =>
+                setCaptchaError('Verification failed. Please refresh the widget and try again.')
+              }
+              className="flex justify-center"
+            />
+            {captchaError && <p className="text-sm text-red-600 text-center">{captchaError}</p>}
+          </div>
+        )}
         <p className="text-xs text-gray-500 text-center mb-4">
           Your privacy is important to us. The information you provide helps us prepare for our consultation. We will not share your data or subject you to high-pressure sales calls.
         </p>
