@@ -50,6 +50,11 @@ describe('HeroForm', () => {
     fireEvent.change(screen.getByLabelText(/state/i), { target: { value: 'FL' } });
     fireEvent.click(screen.getByLabelText(/agree to receive text messages/i));
 
+    await waitFor(() => {
+      const hcaptcha = (window as typeof window & { hcaptcha?: { getResponse?: () => string } }).hcaptcha;
+      expect(hcaptcha?.getResponse?.()).toBeTruthy();
+    });
+
     fireEvent.click(screen.getByRole('button', { name: /start my consultation/i }));
 
     await waitFor(() => expect(
