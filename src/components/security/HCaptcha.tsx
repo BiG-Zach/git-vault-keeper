@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 
 const SCRIPT_SRC = 'https://js.hcaptcha.com/1/api.js?render=explicit';
+const CALLBACK_NAME = '__hcaptchaOnLoadCallback';
 
 let hcaptchaScriptPromise: Promise<void> | null = null;
 
@@ -23,6 +24,18 @@ function waitForHCaptchaReady(resolve: () => void, reject: (reason?: unknown) =>
   setTimeout(() => waitForHCaptchaReady(resolve, reject, attempt + 1), 50);
 }
 
+declare global {
+  interface Window {
+    hcaptcha?: {
+      render: (container: HTMLElement, params: Record<string, unknown>) => number | string;
+      remove: (id: number | string) => void;
+      reset: (id?: number | string) => void;
+      getResponse: (id?: number | string) => string;
+    };
+    [CALLBACK_NAME]?: () => void;
+  }
+}
+
 function ensureHCaptchaScript(): Promise<void> {
   if (typeof window === 'undefined') {
     return Promise.resolve();
@@ -34,35 +47,34 @@ function ensureHCaptchaScript(): Promise<void> {
 
   if (!hcaptchaScriptPromise) {
     hcaptchaScriptPromise = new Promise((resolve, reject) => {
-      const existing = document.querySelector<HTMLScriptElement>(`script[src="${SCRIPT_SRC}"]`);
+      const scriptSelector = `script[src^="${SCRIPT_SRC}"]`;
+      const existing = document.querySelector<HTMLScriptElement>(scriptSelector);
       if (existing) {
-        const handleLoad = () => {
-          existing.dataset.hcaptchaLoader = 'loaded';
-          waitForHCaptchaReady(resolve, reject);
-        };
-
         if (existing.dataset.hcaptchaLoader === 'loaded' || existing.getAttribute('data-hcaptcha-loaded') === 'true') {
           waitForHCaptchaReady(resolve, reject);
         } else {
+          const handleLoad = () => {
+            existing.dataset.hcaptchaLoader = 'loaded';
+            waitForHCaptchaReady(resolve, reject);
+          };
           existing.addEventListener('load', handleLoad, { once: true });
+          existing.addEventListener(
+            'error',
+            (event) => {
+              hcaptchaScriptPromise = null;
+              reject(event);
+            },
+            { once: true },
+          );
         }
-
-        existing.addEventListener(
-          'error',
-          (event) => {
-            hcaptchaScriptPromise = null;
-            reject(event);
-          },
-          { once: true },
-        );
         return;
       }
 
       const script = document.createElement('script');
-      script.src = SCRIPT_SRC;
+      script.src = `${SCRIPT_SRC}&onload=${CALLBACK_NAME}`;
       script.async = true;
       script.defer = true;
-      script.onload = () => {
+      window[CALLBACK_NAME] = () => {
         script.dataset.hcaptchaLoader = 'loaded';
         waitForHCaptchaReady(resolve, reject);
       };
