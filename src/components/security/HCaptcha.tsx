@@ -3,7 +3,20 @@ import { useEffect, useRef, useState } from 'react';
 const SCRIPT_SRC = 'https://js.hcaptcha.com/1/api.js?render=explicit';
 const CALLBACK_NAME = '__hcaptchaOnLoadCallback';
 const TEST_HCAPTCHA_TOKEN = 'test-hcaptcha-token';
-const isTestEnvironment = import.meta.env?.MODE === 'test';
+
+declare const process:
+  | undefined
+  | {
+      env?: Record<string, string | undefined>;
+    };
+
+const isTestEnvironment =
+  (typeof import.meta !== 'undefined' && import.meta.env?.MODE === 'test') ||
+  (typeof process !== 'undefined' &&
+    !!process.env &&
+    (process.env.VITEST === 'true' ||
+      process.env.VITEST === '1' ||
+      process.env.NODE_ENV === 'test'));
 
 function installTestHCaptcha() {
   if (typeof window === 'undefined' || window.hcaptcha) {
