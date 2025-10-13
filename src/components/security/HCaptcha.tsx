@@ -10,13 +10,26 @@ declare const process:
       env?: Record<string, string | undefined>;
     };
 
+type VitestGlobal = typeof globalThis & {
+  __vitest_worker__?: unknown;
+};
+
+const isVitestGlobal = (): boolean => {
+  if (typeof globalThis === 'undefined') {
+    return false;
+  }
+  const candidate = globalThis as VitestGlobal;
+  return typeof candidate.__vitest_worker__ !== 'undefined';
+};
+
 const isTestEnvironment =
   (typeof import.meta !== 'undefined' && import.meta.env?.MODE === 'test') ||
   (typeof process !== 'undefined' &&
     !!process.env &&
     (process.env.VITEST === 'true' ||
       process.env.VITEST === '1' ||
-      process.env.NODE_ENV === 'test'));
+      process.env.NODE_ENV === 'test')) ||
+  isVitestGlobal();
 
 function installTestHCaptcha() {
   if (typeof window === 'undefined' || window.hcaptcha) {
