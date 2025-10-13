@@ -2,10 +2,8 @@ import * as React from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { Send, Shield, Clock, Check, AlertCircle } from "lucide-react";
 import Section from "../layout/Section";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import HCaptcha from "../security/HCaptcha";
-
-const HCAPTCHA_SITE_KEY = import.meta.env.VITE_HCAPTCHA_SITEKEY as string | undefined;
 
 export default function EnhancedMessageForm() {
   const prefersReducedMotion = useReducedMotion();
@@ -21,17 +19,48 @@ export default function EnhancedMessageForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const [errorMessage, setErrorMessage] = useState('');
-  const captchaEnabled = Boolean(HCAPTCHA_SITE_KEY);
+  const [siteKey, setSiteKey] = useState<string>("");
+  const [captchaLoaded, setCaptchaLoaded] = useState(false);
+  const captchaEnabled = Boolean(siteKey);
   const [captchaToken, setCaptchaToken] = useState<string | null>(null);
   const [captchaError, setCaptchaError] = useState<string | null>(null);
   const [captchaRefresh, setCaptchaRefresh] = useState(0);
+
+  useEffect(() => {
+    let cancelled = false;
+
+    async function loadSiteKey() {
+      try {
+        const response = await fetch('/api/hcaptcha-sitekey');
+        const data: { siteKey: string | null } = await response.json();
+        if (!cancelled) {
+          setSiteKey(data.siteKey ?? '');
+        }
+      } catch (error) {
+        console.error('Failed to load hCaptcha site key:', error);
+        if (!cancelled) {
+          setSiteKey('');
+        }
+      } finally {
+        if (!cancelled) {
+          setCaptchaLoaded(true);
+        }
+      }
+    }
+
+    loadSiteKey();
+
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitStatus('idle');
     setErrorMessage('');
     
-    if (captchaEnabled && !captchaToken) {
+    if (captchaEnabled && captchaLoaded && !captchaToken) {
       setCaptchaError('Please verify you are not a robot.');
       return;
     }
@@ -339,11 +368,11 @@ export default function EnhancedMessageForm() {
                 Your privacy is important to us. The information you provide helps us prepare for our consultation. We will not share your data or subject you to high-pressure sales calls.
               </p>
 
-              {captchaEnabled && HCAPTCHA_SITE_KEY && (
+              {captchaEnabled && captchaLoaded && (
                 <div className="flex flex-col items-center gap-2">
                   <HCaptcha
                     key={`contact-hcaptcha-${captchaRefresh}`}
-                    siteKey={HCAPTCHA_SITE_KEY}
+                    siteKey={siteKey}
                     onVerify={(token: string) => {
                       setCaptchaToken(token);
                       setCaptchaError(null);
@@ -356,6 +385,11 @@ export default function EnhancedMessageForm() {
                   />
                   {captchaError && <p className="text-sm text-red-600">{captchaError}</p>}
                 </div>
+              )}
+              {!captchaEnabled && captchaLoaded && (
+                <p className="text-sm text-red-600 text-center">
+                  Verification service is unavailable. Please try again later.
+                </p>
               )}
 
               <button

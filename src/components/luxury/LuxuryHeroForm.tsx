@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useMemo } from 'react';
+import React, { useState, useCallback, useMemo, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Shield, Award, Clock, Users, Phone, MessageSquare, Mail } from 'lucide-react';
 import HCaptcha from '../security/HCaptcha';
@@ -42,8 +42,6 @@ type SubmissionStatus = {
   message: string;
 };
 
-const HCAPTCHA_SITE_KEY = import.meta.env.VITE_HCAPTCHA_SITEKEY as string | undefined;
-
 const LuxuryHeroForm = () => {
   const [currentStep, setCurrentStep] = useState(1);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -63,10 +61,41 @@ const LuxuryHeroForm = () => {
     bestTime: ''
   });
   const [status, setStatus] = useState<SubmissionStatus>({ type: 'idle', message: '' });
-  const captchaEnabled = Boolean(HCAPTCHA_SITE_KEY);
+  const [siteKey, setSiteKey] = useState<string>('');
+  const [captchaLoaded, setCaptchaLoaded] = useState(false);
+  const captchaEnabled = Boolean(siteKey);
   const [captchaToken, setCaptchaToken] = useState<string | null>(null);
   const [captchaError, setCaptchaError] = useState<string | null>(null);
   const [captchaRefresh, setCaptchaRefresh] = useState(0);
+
+  useEffect(() => {
+    let cancelled = false;
+
+    async function loadSiteKey() {
+      try {
+        const response = await fetch('/api/hcaptcha-sitekey');
+        const data: { siteKey: string | null } = await response.json();
+        if (!cancelled) {
+          setSiteKey(data.siteKey ?? '');
+        }
+      } catch (error) {
+        console.error('Failed to load hCaptcha site key:', error);
+        if (!cancelled) {
+          setSiteKey('');
+        }
+      } finally {
+        if (!cancelled) {
+          setCaptchaLoaded(true);
+        }
+      }
+    }
+
+    loadSiteKey();
+
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
   const updateFormData = useCallback((field: keyof FormData, value: string | string[]) => {
     setFormData(prev => ({ ...prev, [field]: value }));
@@ -140,7 +169,7 @@ const LuxuryHeroForm = () => {
   const submitForm = useCallback(async () => {
     if (!validateStep(3)) return;
 
-    if (captchaEnabled && !captchaToken) {
+    if (captchaEnabled && captchaLoaded && !captchaToken) {
       setCaptchaError('Please verify you are not a robot.');
       return;
     }
@@ -467,11 +496,11 @@ const LuxuryHeroForm = () => {
                   </>
                 )}
 
-                {captchaEnabled && HCAPTCHA_SITE_KEY && (
+                {captchaEnabled && captchaLoaded && (
                   <div className="space-y-2">
                     <HCaptcha
                       key={`luxury-hcaptcha-${captchaRefresh}`}
-                      siteKey={HCAPTCHA_SITE_KEY}
+                      siteKey={siteKey}
                       onVerify={(token: string) => {
                         setCaptchaToken(token);
                         setCaptchaError(null);
@@ -485,6 +514,11 @@ const LuxuryHeroForm = () => {
                       <p className="text-sm text-red-600 text-center">{captchaError}</p>
                     )}
                   </div>
+                )}
+                {!captchaEnabled && captchaLoaded && (
+                  <p className="text-sm text-red-600 text-center">
+                    Verification service is unavailable. Please try again later.
+                  </p>
                 )}
 
                 <div>

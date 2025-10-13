@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import HCaptcha from './security/HCaptcha';
 
 const DEFAULT_LEAD_SOURCE = 'Website — Hero Form';
@@ -95,16 +95,44 @@ const parseErrorResponse = async (response: Response) => {
   }
 };
 
-const HCAPTCHA_SITE_KEY = import.meta.env.VITE_HCAPTCHA_SITEKEY as string | undefined;
-
 const HeroForm = () => {
   const [formData, setFormData] = useState<FormState>(initialFormState);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<SubmitStatus>({ message: '', type: '' });
-  const captchaEnabled = Boolean(HCAPTCHA_SITE_KEY);
+  const [siteKey, setSiteKey] = useState<string>('');
+  const [captchaLoaded, setCaptchaLoaded] = useState(false);
+  const captchaEnabled = Boolean(siteKey);
   const [captchaToken, setCaptchaToken] = useState<string | null>(null);
   const [captchaError, setCaptchaError] = useState<string | null>(null);
   const [captchaRefresh, setCaptchaRefresh] = useState(0);
+
+  useEffect(() => {
+    let cancelled = false;
+    async function loadSiteKey() {
+      try {
+        const response = await fetch('/api/hcaptcha-sitekey');
+        const data: { siteKey: string | null } = await response.json();
+        if (!cancelled) {
+          setSiteKey(data.siteKey ?? '');
+        }
+      } catch (error) {
+        console.error('Failed to load hCaptcha site key:', error);
+        if (!cancelled) {
+          setSiteKey('');
+        }
+      } finally {
+        if (!cancelled) {
+          setCaptchaLoaded(true);
+        }
+      }
+    }
+
+    loadSiteKey();
+
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
   const resetStatus = () => setSubmitStatus({ message: '', type: '' });
 
@@ -124,7 +152,7 @@ const HeroForm = () => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     resetStatus();
-    if (captchaEnabled && !captchaToken) {
+    if (captchaEnabled && captchaLoaded && !captchaToken) {
       setCaptchaError('Please verify you are not a robot.');
       return;
     }
@@ -254,14 +282,14 @@ const HeroForm = () => {
             <span className="ml-2 text-sm text-gray-600">I agree to receive text messages that support our consultation.</span>
           </label>
         </div>
-        {captchaEnabled && HCAPTCHA_SITE_KEY && (
-          <div className="mb-6 flex flex-col items-center gap-2">
-            <HCaptcha
-              key={`hero-hcaptcha-${captchaRefresh}`}
-              siteKey={HCAPTCHA_SITE_KEY}
-              onVerify={(token: string) => {
-                setCaptchaToken(token);
-                setCaptchaError(null);
+      {captchaEnabled && captchaLoaded && (
+        <div className="mb-6 flex flex-col items-center gap-2">
+          <HCaptcha
+            key={`hero-hcaptcha-${captchaRefresh}`}
+            siteKey={siteKey}
+            onVerify={(token: string) => {
+              setCaptchaToken(token);
+              setCaptchaError(null);
               }}
               onExpire={() => setCaptchaToken(null)}
               onError={() =>
@@ -270,9 +298,14 @@ const HeroForm = () => {
               className="flex justify-center"
             />
             {captchaError && <p className="text-sm text-red-600 text-center">{captchaError}</p>}
-          </div>
-        )}
-        <p className="text-xs text-gray-500 text-center mb-4">
+        </div>
+      )}
+      {!captchaEnabled && captchaLoaded && (
+        <p className="mb-6 text-sm text-center text-red-600">
+          Verification service is unavailable. Please try again later.
+        </p>
+      )}
+      <p className="text-xs text-gray-500 text-center mb-4">
           Your privacy is important to us. The information you provide helps us prepare for our consultation. We will not share your data or subject you to high-pressure sales calls.
         </p>
         <div className="flex items-center justify-center">
