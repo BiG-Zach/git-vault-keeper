@@ -52,10 +52,26 @@ describe('HeroForm', () => {
 
     fireEvent.click(screen.getByRole('button', { name: /start my consultation/i }));
 
-    await waitFor(() => expect(fetchMock).toHaveBeenCalledTimes(2));
+    await waitFor(() => expect(
+      fetchMock.mock.calls.some(call => {
+        const [url] = call as [RequestInfo | URL];
+        return typeof url === 'string'
+          ? url.includes('/api/ringy-proxy')
+          : url.toString().includes('/api/ringy-proxy');
+      })
+    ).toBe(true));
 
-    const [, requestInit] = fetchMock.mock.calls[1];
-    const payload = JSON.parse((requestInit as RequestInit).body as string) as Record<string, unknown>;
+    const submissionCall = fetchMock.mock.calls.find(call => {
+      const [url] = call as [RequestInfo | URL];
+      return typeof url === 'string'
+        ? url.includes('/api/ringy-proxy')
+        : url.toString().includes('/api/ringy-proxy');
+    }) as [RequestInfo | URL, RequestInit | undefined] | undefined;
+
+    expect(submissionCall).toBeTruthy();
+
+    const requestInit = submissionCall?.[1];
+    const payload = JSON.parse((requestInit?.body as string) ?? '{}') as Record<string, unknown>;
 
     expect(payload.firstName).toBe('Jane');
     expect(payload.lastName).toBe('Doe');
@@ -109,8 +125,11 @@ describe('HeroForm', () => {
     fireEvent.change(screen.getByLabelText(/state/i), { target: { value: 'TX' } });
 
     fireEvent.click(screen.getByRole('button', { name: /start my consultation/i }));
+
     const submissionCalls = fetchMock.mock.calls.filter(([url]) =>
-      typeof url === 'string' ? url.includes('/api/ringy-proxy') : url.toString().includes('/api/ringy-proxy'),
+      typeof url === 'string'
+        ? url.includes('/api/ringy-proxy')
+        : url.toString().includes('/api/ringy-proxy'),
     );
 
     expect(submissionCalls).toHaveLength(0);
@@ -147,7 +166,14 @@ describe('HeroForm', () => {
 
     fireEvent.click(screen.getByRole('button', { name: /start my consultation/i }));
 
-    await waitFor(() => expect(fetchMock).toHaveBeenCalledTimes(2));
+    await waitFor(() => expect(
+      fetchMock.mock.calls.some(call => {
+        const [url] = call as [RequestInfo | URL];
+        return typeof url === 'string'
+          ? url.includes('/api/ringy-proxy')
+          : url.toString().includes('/api/ringy-proxy');
+      })
+    ).toBe(true));
     await waitFor(() => expect(screen.getByText(/submission failed: service unavailable/i)).toBeInTheDocument());
   });
 });

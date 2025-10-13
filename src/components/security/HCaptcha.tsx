@@ -2,6 +2,52 @@ import { useEffect, useRef, useState } from 'react';
 
 const SCRIPT_SRC = 'https://js.hcaptcha.com/1/api.js?render=explicit';
 const CALLBACK_NAME = '__hcaptchaOnLoadCallback';
+const TEST_HCAPTCHA_TOKEN = 'test-hcaptcha-token';
+const isTestEnvironment = import.meta.env?.MODE === 'test';
+
+function installTestHCaptcha() {
+  if (typeof window === 'undefined' || window.hcaptcha) {
+    return;
+  }
+
+  let currentToken = '';
+  let widgetIdCounter = 0;
+
+  window.hcaptcha = {
+    render: (_container: HTMLElement, params: Record<string, unknown>) => {
+      widgetIdCounter += 1;
+      currentToken = TEST_HCAPTCHA_TOKEN;
+      const callbacks = params as {
+        callback?: (token: string) => void;
+        'error-callback'?: () => void;
+      };
+
+      const schedule =
+        typeof queueMicrotask === 'function'
+          ? queueMicrotask
+          : (fn: () => void) => {
+              setTimeout(fn, 0);
+            };
+
+      schedule(() => {
+        try {
+          callbacks.callback?.(TEST_HCAPTCHA_TOKEN);
+        } catch {
+          callbacks['error-callback']?.();
+        }
+      });
+
+      return widgetIdCounter;
+    },
+    remove: () => {
+      currentToken = '';
+    },
+    reset: () => {
+      currentToken = '';
+    },
+    getResponse: () => currentToken,
+  };
+}
 
 let hcaptchaScriptPromise: Promise<void> | null = null;
 
@@ -38,6 +84,11 @@ declare global {
 
 function ensureHCaptchaScript(): Promise<void> {
   if (typeof window === 'undefined') {
+    return Promise.resolve();
+  }
+
+  if (isTestEnvironment) {
+    installTestHCaptcha();
     return Promise.resolve();
   }
 

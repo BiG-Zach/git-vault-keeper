@@ -69,7 +69,7 @@ const Button = React.memo(function Button(props: Props) {
 
   if ((props as AnchorProps).as === 'a') {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const { as: _as, ...anchorRest } = props as AnchorProps;
+    const { as: _as, loading: _loading, ...anchorRest } = props as AnchorProps;
     return (
       <a
         className={commonClass}
@@ -83,7 +83,7 @@ const Button = React.memo(function Button(props: Props) {
   }
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const { as: _asButton, ...buttonRest } = props as ButtonProps;
+  const { as: _asButton, loading: _loadingButton, ...buttonRest } = props as ButtonProps;
   const disabled = (buttonRest as ButtonProps).disabled || loading;
 
   return (
