@@ -1,9 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 
-// BIG Monogram Assets
-import bigMonogramSvg from '../assets/logos/big-monogram.svg';
-
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -44,7 +41,7 @@ export default function Header() {
             >
               {/* UNIFIED MONOGRAM - ALL DEVICES */}
               <img
-                src={bigMonogramSvg}
+                src="/logos/big-monogram.svg"
                 alt="Bradford Informed Guidance monogram"
                 className="h-14 md:h-16 lg:h-20 w-auto transition-all duration-300 group-hover:scale-110 group-hover:drop-shadow-xl"
                 loading="lazy"

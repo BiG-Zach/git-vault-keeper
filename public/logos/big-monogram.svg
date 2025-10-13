@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="160" height="160" viewBox="0 0 160 160" role="img" aria-labelledby="title desc">
+  <title id="title">Bradford Informed Guidance Monogram</title>
+  <desc id="desc">Circular monogram with the letters B I G set on a teal gradient background.</desc>
+  <defs>
+    <linearGradient id="mark-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f766e"/>
+      <stop offset="100%" stop-color="#0ea5e9"/>
+    </linearGradient>
+    <linearGradient id="gloss" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="rgba(255,255,255,0.65)"/>
+      <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
+    </linearGradient>
+  </defs>
+  <circle cx="80" cy="80" r="76" fill="url(#mark-gradient)"/>
+  <circle cx="80" cy="68" r="64" fill="url(#gloss)" opacity="0.35"/>
+  <circle cx="80" cy="80" r="70" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="4"/>
+  <text x="80" y="102" text-anchor="middle" font-size="64" font-weight="700" font-family="'Playfair Display','Times New Roman',serif" fill="#ffffff" letter-spacing="4">
+    BIG
+  </text>
+  <text x="80" y="124" text-anchor="middle" font-size="12" font-family="'Inter','Helvetica Neue',Arial,sans-serif" fill="rgba(255,255,255,0.85)" letter-spacing="2">
+    INFORMED GUIDANCE
+  </text>
+</svg>

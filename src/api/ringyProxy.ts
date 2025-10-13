@@ -3,7 +3,12 @@ import fetch from 'node-fetch';
 import crypto from 'node:crypto';
 
 const DEFAULT_ENDPOINT = 'https://app.ringy.com/api/public/leads/new-lead';
-const DEFAULT_ALLOWED = ['https://www.bradfordinformedguidance.com', 'http://localhost:8080'];
+const DEFAULT_ALLOWED = [
+  'https://bradfordinformedguidance.com',
+  'https://www.bradfordinformedguidance.com',
+  'http://localhost:8080',
+  'http://localhost:5173',
+];
 
 function allowOrigin(req: VercelRequest, res: VercelResponse) {
   const allowedEnv = process.env.RINGY_PROXY_ALLOW_ORIGINS;
@@ -15,8 +20,9 @@ function allowOrigin(req: VercelRequest, res: VercelResponse) {
   const allowedOrigin = origin && allowList.includes(origin) ? origin : allowList[0] || '*';
 
   res.setHeader('Access-Control-Allow-Origin', allowedOrigin);
-  res.setHeader('Access-Control-Allow-Methods', 'POST,OPTIONS');
+  res.setHeader('Access-Control-Allow-Methods', 'GET,POST,OPTIONS,HEAD');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type,Authorization');
+  res.setHeader('Access-Control-Max-Age', '86400');
   res.setHeader('Vary', 'Origin');
 }
 
@@ -116,15 +122,21 @@ const composeNotes = (base: string, metadata: Record<string, string>, custom: Re
 export default async function ringyProxy(req: VercelRequest, res: VercelResponse) {
   allowOrigin(req, res);
 
-  if (req.method === 'OPTIONS') {
+  const method = (req.method || 'GET').toUpperCase();
+
+  if (method === 'OPTIONS') {
     return res.status(204).end();
   }
 
-  if (req.method === 'GET') {
+  if (method === 'HEAD') {
+    return res.status(204).end();
+  }
+
+  if (method === 'GET') {
     return res.status(200).json({ message: 'Ringy proxy ready' });
   }
 
-  if (req.method !== 'POST') {
+  if (method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 

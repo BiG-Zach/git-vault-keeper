@@ -54,8 +54,7 @@ export default function Home() {
           {
             rel: "preload",
             href: "/assets/backgrounds/happy-family-beach-hero.webp",
-            as: "image",
-            crossOrigin: "anonymous"
+            as: "image"
           }
         ]}
         scripts={structuredData.map((innerHTML) => ({ innerHTML }))}
