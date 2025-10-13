@@ -6,6 +6,12 @@ export const config = {
 const DEFAULT_LEAD_SOURCE = process.env.LEAD_SOURCE ?? 'Website - Mobile Hero';
 const DEFAULT_TEXT_CAMPAIGN = 'Bradford Informed Guidance';
 const DEFAULT_EMAIL_PHONE_CAMPAIGN = 'Website - Manual Follow-Up';
+const DEFAULT_ALLOWED_ORIGINS = [
+  'https://bradfordinformedguidance.com',
+  'https://www.bradfordinformedguidance.com',
+  'http://localhost:8080',
+  'http://localhost:5173',
+];
 
 type LeadBody = {
   consentToText?: boolean;
@@ -124,26 +130,40 @@ function ensureApiKey(config: Partial<ResolvedConfig>, missing: MissingField[]):
 }
 
 export default async function handler(req: Request) {
-  if (req.method === 'OPTIONS' || req.method === 'HEAD') {
+  const method = (req.method || 'GET').toUpperCase();
+  const corsHeaders = buildCorsHeaders(req);
+
+  if (method === 'OPTIONS') {
     return new Response(null, {
       status: 204,
+      headers: corsHeaders,
+    });
+  }
+
+  if (method === 'HEAD') {
+    return new Response(null, {
+      status: 204,
+      headers: corsHeaders,
+    });
+  }
+
+  if (method === 'GET') {
+    return new Response(JSON.stringify({ message: 'Ringy proxy ready' }), {
+      status: 200,
       headers: {
+        ...corsHeaders,
         'Content-Type': 'application/json',
       },
     });
   }
 
-  if (req.method === 'GET') {
-    return new Response(JSON.stringify({ message: 'Ringy proxy ready' }), {
-      status: 200,
-      headers: { 'Content-Type': 'application/json' },
-    });
-  }
-
-  if (req.method !== 'POST') {
+  if (method !== 'POST') {
     return new Response(JSON.stringify({ message: 'Method Not Allowed' }), {
       status: 405,
-      headers: { 'Content-Type': 'application/json' },
+      headers: {
+        ...corsHeaders,
+        'Content-Type': 'application/json',
+      },
     });
   }
 
@@ -176,7 +196,10 @@ export default async function handler(req: Request) {
         }),
         {
           status: 500,
-          headers: { 'Content-Type': 'application/json' },
+          headers: {
+            ...corsHeaders,
+            'Content-Type': 'application/json',
+          },
         },
       );
     }
@@ -218,7 +241,10 @@ export default async function handler(req: Request) {
         }),
         {
           status: ringyResponse.status,
-          headers: { 'Content-Type': 'application/json' },
+          headers: {
+            ...corsHeaders,
+            'Content-Type': 'application/json',
+          },
         },
       );
     }
@@ -227,7 +253,10 @@ export default async function handler(req: Request) {
 
     return new Response(JSON.stringify(responseData), {
       status: 200,
-      headers: { 'Content-Type': 'application/json' },
+      headers: {
+        ...corsHeaders,
+        'Content-Type': 'application/json',
+      },
     });
   } catch (error) {
     console.error('An unexpected error occurred:', error);
@@ -236,8 +265,32 @@ export default async function handler(req: Request) {
       JSON.stringify({ message: 'An internal server error occurred.', details: errorMessage }),
       {
         status: 500,
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          ...corsHeaders,
+          'Content-Type': 'application/json',
+        },
       },
     );
   }
+}
+
+function buildCorsHeaders(req: Request): Record<string, string> {
+  const allowedOriginsEnv = process.env.RINGY_PROXY_ALLOW_ORIGINS;
+  const allowList = allowedOriginsEnv
+    ? allowedOriginsEnv
+        .split(',')
+        .map(origin => origin.trim())
+        .filter(Boolean)
+    : DEFAULT_ALLOWED_ORIGINS;
+
+  const origin = req.headers.get('origin') ?? '';
+  const allowedOrigin = origin && allowList.includes(origin) ? origin : allowList[0] ?? '*';
+
+  return {
+    'Access-Control-Allow-Origin': allowedOrigin,
+    'Access-Control-Allow-Methods': 'GET,POST,OPTIONS,HEAD',
+    'Access-Control-Allow-Headers': 'Content-Type,Authorization',
+    'Access-Control-Max-Age': '86400',
+    Vary: 'Origin',
+  };
 }
