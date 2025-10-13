@@ -14,22 +14,36 @@ type VitestGlobal = typeof globalThis & {
   __vitest_worker__?: unknown;
 };
 
-const isVitestGlobal = (): boolean => {
+function isVitestGlobal(): boolean {
   if (typeof globalThis === 'undefined') {
     return false;
   }
   const candidate = globalThis as VitestGlobal;
   return typeof candidate.__vitest_worker__ !== 'undefined';
-};
+}
 
-const isTestEnvironment =
-  (typeof import.meta !== 'undefined' && import.meta.env?.MODE === 'test') ||
-  (typeof process !== 'undefined' &&
-    !!process.env &&
-    (process.env.VITEST === 'true' ||
-      process.env.VITEST === '1' ||
-      process.env.NODE_ENV === 'test')) ||
-  isVitestGlobal();
+function isHappyDomEnvironment(): boolean {
+  if (typeof window === 'undefined' || typeof window.navigator === 'undefined') {
+    return false;
+  }
+  const userAgent = window.navigator.userAgent ?? '';
+  return /happy[-\s]?dom/i.test(userAgent);
+}
+
+function isTestEnvironment(): boolean {
+  if (typeof import.meta !== 'undefined' && import.meta.env?.MODE === 'test') {
+    return true;
+  }
+
+  if (typeof process !== 'undefined' && process.env) {
+    const { VITEST, NODE_ENV } = process.env;
+    if (VITEST === 'true' || VITEST === '1' || NODE_ENV === 'test') {
+      return true;
+    }
+  }
+
+  return isVitestGlobal() || isHappyDomEnvironment();
+}
 
 function installTestHCaptcha() {
   if (typeof window === 'undefined' || window.hcaptcha) {
@@ -113,7 +127,7 @@ function ensureHCaptchaScript(): Promise<void> {
     return Promise.resolve();
   }
 
-  if (isTestEnvironment) {
+  if (isTestEnvironment()) {
     installTestHCaptcha();
     return Promise.resolve();
   }
