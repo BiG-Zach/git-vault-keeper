@@ -1,26 +1,5 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "builds": [
-    {
-      "src": "api/ringy-proxy.ts",
-      "use": "@vercel/edge-functions"
-    },
-    {
-      "src": "api/lead.ts",
-      "use": "@vercel/node"
-    },
-    {
-      "src": "api/consent/[token].ts",
-      "use": "@vercel/node"
-    },
-    {
-      "src": "package.json",
-      "use": "@vercel/static-build",
-      "config": {
-        "distDir": "dist"
-      }
-    }
-  ],
   "routes": [
     {
       "src": "/(.*)",
