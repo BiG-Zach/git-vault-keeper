@@ -4,6 +4,25 @@ const SCRIPT_SRC = 'https://js.hcaptcha.com/1/api.js?render=explicit';
 
 let hcaptchaScriptPromise: Promise<void> | null = null;
 
+function waitForHCaptchaReady(resolve: () => void, reject: (reason?: unknown) => void, attempt = 0) {
+  if (typeof window === 'undefined') {
+    resolve();
+    return;
+  }
+
+  if (window.hcaptcha && typeof window.hcaptcha.render === 'function') {
+    resolve();
+    return;
+  }
+
+  if (attempt >= 200) {
+    reject(new Error('Timed out waiting for hCaptcha to load'));
+    return;
+  }
+
+  setTimeout(() => waitForHCaptchaReady(resolve, reject, attempt + 1), 50);
+}
+
 function ensureHCaptchaScript(): Promise<void> {
   if (typeof window === 'undefined') {
     return Promise.resolve();
@@ -17,7 +36,17 @@ function ensureHCaptchaScript(): Promise<void> {
     hcaptchaScriptPromise = new Promise((resolve, reject) => {
       const existing = document.querySelector<HTMLScriptElement>(`script[src="${SCRIPT_SRC}"]`);
       if (existing) {
-        existing.addEventListener('load', () => resolve(), { once: true });
+        const handleLoad = () => {
+          existing.dataset.hcaptchaLoader = 'loaded';
+          waitForHCaptchaReady(resolve, reject);
+        };
+
+        if (existing.dataset.hcaptchaLoader === 'loaded' || existing.getAttribute('data-hcaptcha-loaded') === 'true') {
+          waitForHCaptchaReady(resolve, reject);
+        } else {
+          existing.addEventListener('load', handleLoad, { once: true });
+        }
+
         existing.addEventListener(
           'error',
           (event) => {
@@ -33,7 +62,10 @@ function ensureHCaptchaScript(): Promise<void> {
       script.src = SCRIPT_SRC;
       script.async = true;
       script.defer = true;
-      script.onload = () => resolve();
+      script.onload = () => {
+        script.dataset.hcaptchaLoader = 'loaded';
+        waitForHCaptchaReady(resolve, reject);
+      };
       script.onerror = (event) => {
         hcaptchaScriptPromise = null;
         reject(event);
