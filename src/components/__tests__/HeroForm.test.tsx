@@ -21,16 +21,27 @@ describe('HeroForm', () => {
   });
 
   it('submits a sanitized payload with metadata and custom fields', async () => {
-    const fetchMock = vi.fn().mockResolvedValue({
-      ok: true,
-      headers: createHeaders('application/json'),
-      text: async () => '{}',
-      json: async () => ({}),
+    const fetchMock = vi.fn((input: RequestInfo | URL) => {
+      const url = typeof input === 'string' ? input : input.toString();
+      if (url.includes('/api/hcaptcha-sitekey')) {
+        return Promise.resolve({
+          ok: true,
+          json: async () => ({ siteKey: 'test-site-key' }),
+        });
+      }
+      return Promise.resolve({
+        ok: true,
+        headers: createHeaders('application/json'),
+        text: async () => '{}',
+        json: async () => ({}),
+      });
     });
 
     global.fetch = fetchMock as unknown as typeof fetch;
 
     render(<HeroForm />);
+
+    await waitFor(() => expect(fetchMock).toHaveBeenCalledWith('/api/hcaptcha-sitekey'));
 
     fireEvent.change(screen.getByLabelText(/first name/i), { target: { value: ' Jane ' } });
     fireEvent.change(screen.getByLabelText(/last name/i), { target: { value: ' Doe ' } });
@@ -41,9 +52,9 @@ describe('HeroForm', () => {
 
     fireEvent.click(screen.getByRole('button', { name: /start my consultation/i }));
 
-    await waitFor(() => expect(fetchMock).toHaveBeenCalledTimes(1));
+    await waitFor(() => expect(fetchMock).toHaveBeenCalledTimes(2));
 
-    const [, requestInit] = fetchMock.mock.calls[0];
+    const [, requestInit] = fetchMock.mock.calls[1];
     const payload = JSON.parse((requestInit as RequestInit).body as string) as Record<string, unknown>;
 
     expect(payload.firstName).toBe('Jane');
@@ -75,10 +86,21 @@ describe('HeroForm', () => {
   });
 
   it('prevents submission when the phone number is invalid', async () => {
-    const fetchMock = vi.fn();
+    const fetchMock = vi.fn((input: RequestInfo | URL) => {
+      const url = typeof input === 'string' ? input : input.toString();
+      if (url.includes('/api/hcaptcha-sitekey')) {
+        return Promise.resolve({
+          ok: true,
+          json: async () => ({ siteKey: 'test-site-key' }),
+        });
+      }
+      return Promise.resolve({ ok: true, json: async () => ({}) });
+    });
     global.fetch = fetchMock as unknown as typeof fetch;
 
     render(<HeroForm />);
+
+    await waitFor(() => expect(fetchMock).toHaveBeenCalledWith('/api/hcaptcha-sitekey'));
 
     fireEvent.change(screen.getByLabelText(/first name/i), { target: { value: 'Test' } });
     fireEvent.change(screen.getByLabelText(/last name/i), { target: { value: 'User' } });
@@ -87,21 +109,35 @@ describe('HeroForm', () => {
     fireEvent.change(screen.getByLabelText(/state/i), { target: { value: 'TX' } });
 
     fireEvent.click(screen.getByRole('button', { name: /start my consultation/i }));
+    const submissionCalls = fetchMock.mock.calls.filter(([url]) =>
+      typeof url === 'string' ? url.includes('/api/ringy-proxy') : url.toString().includes('/api/ringy-proxy'),
+    );
 
-    expect(fetchMock).not.toHaveBeenCalled();
+    expect(submissionCalls).toHaveLength(0);
     await waitFor(() => expect(screen.getByText(/please enter a valid phone number/i)).toBeInTheDocument());
   });
 
   it('surfaces plain-text server errors gracefully', async () => {
-    const fetchMock = vi.fn().mockResolvedValue({
-      ok: false,
-      headers: createHeaders('text/plain'),
-      text: async () => 'Service unavailable',
+    const fetchMock = vi.fn((input: RequestInfo | URL) => {
+      const url = typeof input === 'string' ? input : input.toString();
+      if (url.includes('/api/hcaptcha-sitekey')) {
+        return Promise.resolve({
+          ok: true,
+          json: async () => ({ siteKey: 'test-site-key' }),
+        });
+      }
+      return Promise.resolve({
+        ok: false,
+        headers: createHeaders('text/plain'),
+        text: async () => 'Service unavailable',
+      });
     });
 
     global.fetch = fetchMock as unknown as typeof fetch;
 
     render(<HeroForm />);
+
+    await waitFor(() => expect(fetchMock).toHaveBeenCalledWith('/api/hcaptcha-sitekey'));
 
     fireEvent.change(screen.getByLabelText(/first name/i), { target: { value: 'Ava' } });
     fireEvent.change(screen.getByLabelText(/last name/i), { target: { value: 'Lee' } });
@@ -111,7 +147,7 @@ describe('HeroForm', () => {
 
     fireEvent.click(screen.getByRole('button', { name: /start my consultation/i }));
 
-    await waitFor(() => expect(fetchMock).toHaveBeenCalledTimes(1));
+    await waitFor(() => expect(fetchMock).toHaveBeenCalledTimes(2));
     await waitFor(() => expect(screen.getByText(/submission failed: service unavailable/i)).toBeInTheDocument());
   });
 });
