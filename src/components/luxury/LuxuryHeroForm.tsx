@@ -496,31 +496,6 @@ const LuxuryHeroForm = () => {
                   </>
                 )}
 
-                {captchaEnabled && captchaLoaded && (
-                  <div className="space-y-2">
-                    <HCaptcha
-                      key={`luxury-hcaptcha-${captchaRefresh}`}
-                      siteKey={siteKey}
-                      onVerify={(token: string) => {
-                        setCaptchaToken(token);
-                        setCaptchaError(null);
-                      }}
-                      onExpire={() => setCaptchaToken(null)}
-                      onError={() =>
-                        setCaptchaError('Verification failed. Please refresh the widget and try again.')
-                      }
-                    />
-                    {captchaError && (
-                      <p className="text-sm text-red-600 text-center">{captchaError}</p>
-                    )}
-                  </div>
-                )}
-                {!captchaEnabled && captchaLoaded && (
-                  <p className="text-sm text-red-600 text-center">
-                    Verification service is unavailable. Please try again later.
-                  </p>
-                )}
-
                 <div>
                   <label className="block text-sm font-medium text-slate-700 mb-2">Current Insurance Status *</label>
                   <select 
@@ -612,6 +587,36 @@ const LuxuryHeroForm = () => {
               </button>
             )}
           </div>
+
+          {currentStep === 3 && (
+            <div className="mt-6">
+              {captchaEnabled && captchaLoaded ? (
+                <div className="flex justify-center">
+                  <div className="space-y-2">
+                    <HCaptcha
+                      key={`luxury-hcaptcha-${captchaRefresh}`}
+                      siteKey={siteKey}
+                      onVerify={(token: string) => {
+                        setCaptchaToken(token);
+                        setCaptchaError(null);
+                      }}
+                      onExpire={() => setCaptchaToken(null)}
+                      onError={() =>
+                        setCaptchaError('Verification failed. Please refresh the widget and try again.')
+                      }
+                    />
+                    {captchaError && (
+                      <p className="text-sm text-red-600 text-center">{captchaError}</p>
+                    )}
+                  </div>
+                </div>
+              ) : captchaLoaded ? (
+                <p className="text-sm text-red-600 text-center">
+                  Verification service is unavailable. Please try again later.
+                </p>
+              ) : null}
+            </div>
+          )}
 
           <div aria-live="polite" className="mt-4 text-center">
             {status.message && (
