@@ -28,7 +28,7 @@ export default function RingyLeadCaptureForm({ className }: RingyLeadCaptureForm
 
   const [formData, setFormData] = useState<FormState>(initialFormState);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string>('');
   const [success, setSuccess] = useState(false);
   const [hCaptchaToken, setHCaptchaToken] = useState<string | null>(null);
   // Track whether the active hCaptcha challenge has been solved so we can surface visual feedback.
@@ -47,14 +47,14 @@ export default function RingyLeadCaptureForm({ className }: RingyLeadCaptureForm
     const { name, value } = event.target;
     setFormData(prev => ({ ...prev, [name]: value }));
     setSuccess(false);
-    setError(null);
+    setError('');
   };
 
   // When hCaptcha provides a token, persist it and mark the widget as verified.
   const handleCaptchaVerify = (token: string) => {
     setHCaptchaToken(token);
     setIsCaptchaVerified(true);
-    setError(null);
+    setError('');
   };
 
   // Reset verification when the widget expires or encounters an error.
@@ -67,11 +67,28 @@ export default function RingyLeadCaptureForm({ className }: RingyLeadCaptureForm
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setSuccess(false);
-    setError(null);
+    setError('');
 
-    if (!isCaptchaVerified || !hCaptchaToken) {
-      setError('Please complete the CAPTCHA before submitting.');
+    const trimmedFirstName = formData.firstName.trim();
+    const trimmedLastName = formData.lastName.trim();
+    const trimmedEmail = formData.email.trim();
+    const trimmedPhone = formData.phone.trim();
+
+    // Basic guard to prevent empty required fields from slipping through before contacting the API.
+    if (!trimmedFirstName || !trimmedLastName || !trimmedEmail || !trimmedPhone) {
+      setError('Please complete all required fields before submitting.');
       return;
+    }
+
+    // Ensure we validate against the same state the verifier updates so a solved challenge can submit.
+    if (!isCaptchaVerified || !hCaptchaToken) {
+      setError('Please verify you are not a robot.');
+      return;
+    }
+
+    if (import.meta.env.DEV) {
+      console.log('Form submit - hCaptchaToken:', hCaptchaToken);
+      console.log('Form submit - isCaptchaVerified:', isCaptchaVerified);
     }
 
     setIsSubmitting(true);
@@ -82,7 +99,12 @@ export default function RingyLeadCaptureForm({ className }: RingyLeadCaptureForm
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           ...formData,
-          captchaToken: hCaptchaToken,
+          firstName: trimmedFirstName,
+          lastName: trimmedLastName,
+          email: trimmedEmail,
+          phone: trimmedPhone,
+          // Pass the token using the same key the API expects so the verification succeeds.
+          hcaptchaToken: hCaptchaToken,
         }),
       });
 
@@ -92,14 +114,14 @@ export default function RingyLeadCaptureForm({ className }: RingyLeadCaptureForm
 
       setSuccess(true);
       setFormData(initialFormState);
+      setHCaptchaToken(null);
+      setIsCaptchaVerified(false);
+      setCaptchaRefresh(value => value + 1);
     } catch (submitError) {
       console.error('Ringy lead capture submission error:', submitError);
       setError('An unexpected error occurred. Please try again.');
     } finally {
       setIsSubmitting(false);
-      setHCaptchaToken(null);
-      setIsCaptchaVerified(false);
-      setCaptchaRefresh(value => value + 1);
     }
   };
 
@@ -178,7 +200,7 @@ export default function RingyLeadCaptureForm({ className }: RingyLeadCaptureForm
           {isSubmitting ? 'Submitting…' : 'Get My Free Quote'}
         </Button>
 
-        {(error || success) && (
+        {(Boolean(error) || success) && (
           <div
             className={cn(
               'mt-4 rounded-lg px-4 py-3 text-sm',
@@ -187,7 +209,7 @@ export default function RingyLeadCaptureForm({ className }: RingyLeadCaptureForm
             role="alert"
             aria-live="polite"
           >
-            {error ?? 'Thank you for your submission!'}
+            {error || 'Thank you for your submission!'}
           </div>
         )}
       </div>
