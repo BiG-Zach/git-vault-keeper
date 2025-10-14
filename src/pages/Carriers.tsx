@@ -2,7 +2,7 @@
 
 import { Link } from 'react-router-dom';
 
-import { lazy, Suspense, useState } from 'react';
+import { lazy, Suspense, useState, useEffect } from 'react';
 
 import PremiumNetworkCard, { type Network } from "../components/carriers/PremiumNetworkCard";
 
@@ -380,6 +380,37 @@ export default function CarriersPage() {
 
   ];
 
+  // Tabbed Interface State Management
+  const [activeTab, setActiveTab] = useState<'networks' | 'carriers' | 'guidance' | 'faq'>('networks');
+  const [showAllNetworks, setShowAllNetworks] = useState(false);
+  const [showAllCarriers, setShowAllCarriers] = useState(false);
+  const [accordionState, setAccordionState] = useState({
+    criteria: true,
+    framework: true
+  });
+  const [showQuiz, setShowQuiz] = useState(false);
+
+  // URL Hash Routing for tabs
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const hash = window.location.hash.replace('#', '');
+      if (['networks', 'carriers', 'guidance', 'faq'].includes(hash)) {
+        setActiveTab(hash as typeof activeTab);
+      }
+
+      const handleHashChange = () => {
+        const newHash = window.location.hash.replace('#', '');
+        if (['networks', 'carriers', 'guidance', 'faq'].includes(newHash)) {
+          setActiveTab(newHash as typeof activeTab);
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+      };
+
+      window.addEventListener('hashchange', handleHashChange);
+      return () => window.removeEventListener('hashchange', handleHashChange);
+    }
+  }, []);
+
   // Smart Filtering State Management
   const [filterState, setFilterState] = useState({
     searchTerm: '',
@@ -568,11 +599,11 @@ export default function CarriersPage() {
 
     <>
 
-      <SEO 
+      <SEO
 
-        title="PPO Insurance Networks - 6 States Licensed Broker | 15+ A-Rated Carriers"
+        title="Independent Insurance Broker | Compare 15+ A-Rated Carriers - 6 States"
 
-        description="Compare 15+ A-rated carriers across FL, MI, NC, AZ, TX, GA. Best Insurance Group partner with 24-hour response guarantee. Licensed broker since 2017."
+        description="Expert independent broker serving Florida, Michigan, North Carolina, Arizona, Texas & Georgia. I work for you—not insurance companies. Most families save 30-50% with personalized service you can trust."
 
         path="/carriers"
 
@@ -584,53 +615,17 @@ export default function CarriersPage() {
 
           { property: 'og:type', content: 'website' },
 
-          { property: 'og:title', content: 'PPO Insurance Networks - 6 States Licensed Broker | 15+ A-Rated Carriers | Bradford Informed Guidance' },
+          { property: 'og:title', content: 'Independent Insurance Broker | Compare 15+ A-Rated Carriers - 6 States | Bradford Informed Guidance' },
 
-          { property: 'og:description', content: 'Compare 15+ A-rated carriers across FL, MI, NC, AZ, TX, GA. Best Insurance Group partner with 24-hour response guarantee. Licensed broker since 2017.' },
+          { property: 'og:description', content: 'Expert independent broker serving FL, MI, NC, AZ, TX & GA. I work for you—not insurance companies. Most families save 30-50% with personalized service.' },
 
-          { name: 'twitter:title', content: 'PPO Insurance Networks - 6 States Licensed Broker | 15+ A-Rated Carriers' },
+          { name: 'twitter:title', content: 'Independent Insurance Broker | Compare 15+ A-Rated Carriers - 6 States' },
 
-          { name: 'twitter:description', content: 'Compare 15+ A-rated carriers across FL, MI, NC, AZ, TX, GA with 24-hour response guarantee.' }
+          { name: 'twitter:description', content: 'Expert independent broker. I work for you—not insurance companies. Most families save 30-50% compared to going direct.' }
 
         ]}
 
       />
-
-      {/* Sticky Section Navigation */}
-
-      <nav className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm hidden lg:block" aria-label="Page sections navigation">
-
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
-          <div className="flex items-center justify-center gap-8 py-3" role="menubar">
-
-            <a href="#ppo-networks" className="text-sm font-semibold text-slate-700 hover:text-emerald-600 transition-colors duration-200 flex items-center gap-2" role="menuitem" aria-label="Jump to PPO Networks section">
-
-              <div className="w-2 h-2 bg-emerald-500 rounded-full" aria-hidden="true"></div>
-
-              PPO Networks
-
-            </a>
-
-            <a href="#insurance-carriers" className="text-sm font-semibold text-slate-700 hover:text-cyan-600 transition-colors duration-200 flex items-center gap-2" role="menuitem" aria-label="Jump to Insurance Carriers section">
-
-              <div className="w-2 h-2 bg-cyan-500 rounded-full" aria-hidden="true"></div>
-
-              Insurance Carriers
-
-            </a>
-
-            <a href="/contact" className="text-sm font-semibold bg-gradient-to-r from-emerald-500 to-cyan-500 text-white px-4 py-2 rounded-full hover:shadow-lg transition-all duration-200" role="menuitem" aria-label="Contact us to get started">
-
-              Get Started
-
-            </a>
-
-          </div>
-
-        </div>
-
-      </nav>
 
       {/* Hero Section - Optimized for Core Web Vitals */}
 
@@ -766,7 +761,7 @@ export default function CarriersPage() {
 
                   }}>
 
-                Professional guidance across FL, MI, NC, AZ, TX & GA
+                Expert guidance across Florida, Michigan, North Carolina, Arizona, Texas & Georgia
 
               </h2>
 
@@ -784,7 +779,7 @@ export default function CarriersPage() {
 
                    }}>
 
-                  Licensed analysis shows qualified applicants typically save up to 50% compared to marketplace rates when properly matched. Access to 15+ A-rated carriers with independent, unbiased recommendations.
+                  As an independent broker, I work for you—not the insurance companies. I compare 15+ A-rated carriers to find better coverage at lower costs, with personalized service you can trust. Most families save 30-50% compared to going direct.
 
                 </p>
 
@@ -892,8 +887,258 @@ export default function CarriersPage() {
         </div>
       </section>
 
-      {/* PPO Networks Section - Light Theme */}
+      {/* 30-Second Entry Quiz Modal */}
+      {showQuiz && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm" onClick={() => setShowQuiz(false)}>
+          <div className="bg-white rounded-2xl shadow-2xl max-w-2xl w-full p-8 animate-fadeIn" onClick={(e) => e.stopPropagation()}>
+            <div className="text-center mb-6">
+              <div className="inline-flex items-center gap-2 bg-emerald-100 rounded-full px-6 py-3 mb-4">
+                <div className="w-2 h-2 bg-emerald-500 rounded-full" />
+                <span className="text-emerald-700 font-bold text-sm">QUICK START QUIZ</span>
+              </div>
+              <h3 className="text-3xl font-bold text-slate-900 mb-2">How Can I Help You Today?</h3>
+              <p className="text-slate-600">Choose the option that best describes your needs</p>
+            </div>
 
+            <div className="space-y-3">
+              <button
+                onClick={() => {
+                  setShowQuiz(false);
+                  window.location.hash = 'networks';
+                }}
+                className="w-full text-left p-6 bg-gradient-to-r from-emerald-50 to-cyan-50 hover:from-emerald-100 hover:to-cyan-100 border-2 border-emerald-200 hover:border-emerald-400 rounded-xl transition-all duration-200 group"
+              >
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 bg-emerald-500 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform">
+                    <Search className="w-6 h-6 text-white" />
+                  </div>
+                  <div className="flex-1">
+                    <h4 className="font-bold text-slate-900 mb-1">I have specific doctors I want to keep</h4>
+                    <p className="text-sm text-slate-600">Search our PPO networks to verify your providers</p>
+                  </div>
+                </div>
+              </button>
+
+              <button
+                onClick={() => {
+                  setShowQuiz(false);
+                  window.location.hash = 'carriers';
+                }}
+                className="w-full text-left p-6 bg-gradient-to-r from-cyan-50 to-blue-50 hover:from-cyan-100 hover:to-blue-100 border-2 border-cyan-200 hover:border-cyan-400 rounded-xl transition-all duration-200 group"
+              >
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 bg-cyan-500 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform">
+                    <BarChart3 className="w-6 h-6 text-white" />
+                  </div>
+                  <div className="flex-1">
+                    <h4 className="font-bold text-slate-900 mb-1">I want to compare insurance companies</h4>
+                    <p className="text-sm text-slate-600">Browse our A-rated carriers and their specialties</p>
+                  </div>
+                </div>
+              </button>
+
+              <button
+                onClick={() => {
+                  setShowQuiz(false);
+                  window.location.hash = 'guidance';
+                }}
+                className="w-full text-left p-6 bg-gradient-to-r from-indigo-50 to-purple-50 hover:from-indigo-100 hover:to-purple-100 border-2 border-indigo-200 hover:border-indigo-400 rounded-xl transition-all duration-200 group"
+              >
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 bg-indigo-500 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform">
+                    <Shield className="w-6 h-6 text-white" />
+                  </div>
+                  <div className="flex-1">
+                    <h4 className="font-bold text-slate-900 mb-1">I need guidance on choosing coverage</h4>
+                    <p className="text-sm text-slate-600">Learn my decision framework and expert tips</p>
+                  </div>
+                </div>
+              </button>
+
+              <button
+                onClick={() => {
+                  setShowQuiz(false);
+                  window.location.hash = 'faq';
+                }}
+                className="w-full text-left p-6 bg-gradient-to-r from-amber-50 to-orange-50 hover:from-amber-100 hover:to-orange-100 border-2 border-amber-200 hover:border-amber-400 rounded-xl transition-all duration-200 group"
+              >
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 bg-amber-500 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform">
+                    <Phone className="w-6 h-6 text-white" />
+                  </div>
+                  <div className="flex-1">
+                    <h4 className="font-bold text-slate-900 mb-1">I have questions about coverage</h4>
+                    <p className="text-sm text-slate-600">Browse frequently asked questions and answers</p>
+                  </div>
+                </div>
+              </button>
+            </div>
+
+            <div className="mt-6 text-center">
+              <button
+                onClick={() => setShowQuiz(false)}
+                className="text-slate-500 hover:text-slate-700 font-medium text-sm"
+              >
+                Skip quiz and browse all content
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Tabbed Navigation Interface */}
+      <div className="sticky top-0 z-40 bg-white border-b-2 border-slate-200 shadow-lg">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Desktop Tab Navigation */}
+          <div className="hidden md:flex items-center justify-between py-4">
+            <div className="flex items-center gap-2" role="tablist" aria-label="Content sections">
+              <button
+                onClick={() => window.location.hash = 'networks'}
+                role="tab"
+                aria-selected={activeTab === 'networks'}
+                aria-controls="networks-panel"
+                className={`px-6 py-3 rounded-t-lg font-semibold text-sm transition-all duration-200 ${
+                  activeTab === 'networks'
+                    ? 'bg-gradient-to-r from-emerald-500 to-cyan-500 text-white shadow-lg'
+                    : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                }`}
+              >
+                <div className="flex items-center gap-2">
+                  <Search className="w-4 h-4" />
+                  Find Your Network
+                </div>
+              </button>
+
+              <button
+                onClick={() => window.location.hash = 'carriers'}
+                role="tab"
+                aria-selected={activeTab === 'carriers'}
+                aria-controls="carriers-panel"
+                className={`px-6 py-3 rounded-t-lg font-semibold text-sm transition-all duration-200 ${
+                  activeTab === 'carriers'
+                    ? 'bg-gradient-to-r from-emerald-500 to-cyan-500 text-white shadow-lg'
+                    : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                }`}
+              >
+                <div className="flex items-center gap-2">
+                  <BarChart3 className="w-4 h-4" />
+                  Compare Carriers
+                </div>
+              </button>
+
+              <button
+                onClick={() => window.location.hash = 'guidance'}
+                role="tab"
+                aria-selected={activeTab === 'guidance'}
+                aria-controls="guidance-panel"
+                className={`px-6 py-3 rounded-t-lg font-semibold text-sm transition-all duration-200 ${
+                  activeTab === 'guidance'
+                    ? 'bg-gradient-to-r from-emerald-500 to-cyan-500 text-white shadow-lg'
+                    : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                }`}
+              >
+                <div className="flex items-center gap-2">
+                  <Shield className="w-4 h-4" />
+                  Expert Guidance
+                </div>
+              </button>
+
+              <button
+                onClick={() => window.location.hash = 'faq'}
+                role="tab"
+                aria-selected={activeTab === 'faq'}
+                aria-controls="faq-panel"
+                className={`px-6 py-3 rounded-t-lg font-semibold text-sm transition-all duration-200 ${
+                  activeTab === 'faq'
+                    ? 'bg-gradient-to-r from-emerald-500 to-cyan-500 text-white shadow-lg'
+                    : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                }`}
+              >
+                <div className="flex items-center gap-2">
+                  <Phone className="w-4 h-4" />
+                  Common Questions
+                </div>
+              </button>
+            </div>
+
+            <button
+              onClick={() => setShowQuiz(true)}
+              className="px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg text-sm font-medium transition-colors flex items-center gap-2"
+            >
+              <Award className="w-4 h-4" />
+              Take Quiz
+            </button>
+          </div>
+
+          {/* Mobile Tab Navigation - Horizontal Scroll */}
+          <div className="md:hidden overflow-x-auto py-3 -mx-4 px-4">
+            <div className="flex items-center gap-2 min-w-max" role="tablist" aria-label="Content sections">
+              <button
+                onClick={() => window.location.hash = 'networks'}
+                role="tab"
+                aria-selected={activeTab === 'networks'}
+                className={`px-4 py-2 rounded-full font-semibold text-xs whitespace-nowrap transition-all ${
+                  activeTab === 'networks'
+                    ? 'bg-gradient-to-r from-emerald-500 to-cyan-500 text-white shadow-md'
+                    : 'bg-slate-100 text-slate-600'
+                }`}
+              >
+                Find Network
+              </button>
+              <button
+                onClick={() => window.location.hash = 'carriers'}
+                role="tab"
+                aria-selected={activeTab === 'carriers'}
+                className={`px-4 py-2 rounded-full font-semibold text-xs whitespace-nowrap transition-all ${
+                  activeTab === 'carriers'
+                    ? 'bg-gradient-to-r from-emerald-500 to-cyan-500 text-white shadow-md'
+                    : 'bg-slate-100 text-slate-600'
+                }`}
+              >
+                Compare Carriers
+              </button>
+              <button
+                onClick={() => window.location.hash = 'guidance'}
+                role="tab"
+                aria-selected={activeTab === 'guidance'}
+                className={`px-4 py-2 rounded-full font-semibold text-xs whitespace-nowrap transition-all ${
+                  activeTab === 'guidance'
+                    ? 'bg-gradient-to-r from-emerald-500 to-cyan-500 text-white shadow-md'
+                    : 'bg-slate-100 text-slate-600'
+                }`}
+              >
+                Guidance
+              </button>
+              <button
+                onClick={() => window.location.hash = 'faq'}
+                role="tab"
+                aria-selected={activeTab === 'faq'}
+                className={`px-4 py-2 rounded-full font-semibold text-xs whitespace-nowrap transition-all ${
+                  activeTab === 'faq'
+                    ? 'bg-gradient-to-r from-emerald-500 to-cyan-500 text-white shadow-md'
+                    : 'bg-slate-100 text-slate-600'
+                }`}
+              >
+                FAQ
+              </button>
+              <button
+                onClick={() => setShowQuiz(true)}
+                className="px-4 py-2 rounded-full bg-slate-100 text-slate-600 font-semibold text-xs whitespace-nowrap"
+              >
+                Quiz
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Tab Panel 1: Find Your Network */}
+      <div
+        id="networks-panel"
+        role="tabpanel"
+        aria-labelledby="networks-tab"
+        style={{ display: activeTab === 'networks' ? 'block' : 'none' }}
+      >
       <section id="ppo-networks" className="relative py-16 md:py-24 overflow-hidden" aria-labelledby="networks-heading">
 
         {/* Premium light background */}
@@ -932,49 +1177,17 @@ export default function CarriersPage() {
 
           <div className="text-center mb-16 relative">
 
-            {/* Decorative background glow */}
-
-            <div className="absolute inset-0 -z-10">
-
-              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[600px] bg-gradient-radial from-emerald-500/15 via-emerald-500/5 to-transparent rounded-full blur-3xl opacity-60" />
-
-              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-gradient-radial from-cyan-500/10 via-cyan-500/3 to-transparent rounded-full blur-2xl opacity-40" />
-
-            </div>
 
 
+            {/* Premium badge */}
 
-            {/* Floating decorative elements */}
+            <div className="inline-flex items-center gap-3 bg-gradient-to-r from-emerald-50 via-white to-cyan-50 rounded-full px-8 py-4 mb-12 border border-emerald-200/50 shadow-lg">
 
-            <div className="absolute -top-20 left-1/4 w-32 h-32 bg-gradient-to-br from-emerald-400/15 to-cyan-400/15 rounded-full blur-3xl opacity-50" />
+              <div className="w-2 h-2 bg-emerald-500 rounded-full" />
 
-            <div className="absolute -top-10 right-1/3 w-24 h-24 bg-gradient-to-br from-cyan-400/10 to-emerald-400/10 rounded-full blur-2xl opacity-30" />
+              <span className="text-emerald-800 font-bold text-sm tracking-wider">PREMIUM PPO NETWORKS</span>
 
-            
-
-            {/* Premium badge with enhanced design */}
-
-            <div className="inline-flex items-center gap-3 bg-gradient-to-r from-emerald-50 via-white to-cyan-50 rounded-full px-8 py-4 mb-12 border border-emerald-200/50 backdrop-blur-sm shadow-2xl relative overflow-hidden">
-
-              {/* Badge glow effect */}
-
-              <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/10 via-transparent to-cyan-500/10 rounded-full" />
-
-              
-
-              {/* Accent dots */}
-
-              <div className="w-3 h-3 bg-gradient-to-r from-emerald-500 to-emerald-400 rounded-full shadow-lg" />
-
-              <span className="text-emerald-800 font-bold text-sm tracking-wider relative z-10">PREMIUM PPO NETWORKS</span>
-
-              <div className="w-3 h-3 bg-gradient-to-r from-cyan-500 to-cyan-400 rounded-full shadow-lg" />
-
-              
-
-              {/* Shimmer effect */}
-
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -skew-x-12 animate-shimmer" />
+              <div className="w-2 h-2 bg-cyan-500 rounded-full" />
 
             </div>
 
@@ -982,36 +1195,13 @@ export default function CarriersPage() {
 
             {/* Enhanced main heading with multiple gradient layers */}
 
-            <h2 id="networks-heading" className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black mb-6 md:mb-8 text-slate-900 leading-tight relative">
+            <h2 id="networks-heading" className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black mb-6 md:mb-8 text-slate-900 leading-tight">
 
-              <span className="block relative">
+              <span className="block">Find Your Doctor in Our</span>
 
-                Find Your Doctor in Our
+              <span className="block mt-2 bg-gradient-to-r from-cyan-500 via-sky-400 to-teal-500 bg-clip-text text-transparent">
 
-                <div className="absolute -inset-2 bg-gradient-to-r from-emerald-500/10 via-transparent to-cyan-500/10 rounded-lg blur-xl opacity-60" />
-
-              </span>
-
-              <span className="block relative mt-2">
-
-                <span className="relative inline-block">
-
-                  <span className="bg-gradient-to-r from-cyan-500 via-sky-400 to-teal-500 bg-clip-text text-transparent font-black tracking-tight">
-
-                    Exclusive Network Partners
-
-                  </span>
-
-                  {/* Multiple gradient underlayers for depth */}
-
-                  <div className="absolute -bottom-4 left-0 right-0 h-2 bg-gradient-to-r from-emerald-500/80 via-emerald-400/60 to-cyan-500/80 rounded-full opacity-60 blur-sm" />
-
-                  <div className="absolute -bottom-3 left-4 right-4 h-1 bg-gradient-to-r from-emerald-400 to-cyan-400 rounded-full opacity-80" />
-
-                  
-
-
-                </span>
+                Exclusive Network Partners
 
               </span>
 
@@ -1019,81 +1209,91 @@ export default function CarriersPage() {
 
             
 
-            {/* Enhanced description with premium styling */}
+            {/* Simplified description with key stats */}
 
-            <div className="max-w-5xl mx-auto relative">
+            <div className="max-w-4xl mx-auto relative">
 
-              <p className="text-xl sm:text-2xl lg:text-3xl text-slate-700 leading-relaxed mb-4 font-medium">
+              <p className="text-lg sm:text-xl md:text-2xl text-slate-700 leading-relaxed mb-8 font-medium">
 
-                Access over <span className="text-emerald-600 font-bold bg-emerald-50 px-2 py-1 rounded-md">1.3 million</span> healthcare providers nationwide through our 
-
-                <span className="relative inline-block text-slate-900 font-bold mx-2">
-
-                  trusted PPO network partnerships
-
-                  <div className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-emerald-500 to-cyan-500 rounded-full opacity-70" />
-
-                </span>.
+                Access <span className="text-emerald-600 font-bold bg-emerald-50 px-2 py-1 rounded-md">1.3+ million</span> healthcare providers across 6 states through our trusted PPO network partnerships.
 
               </p>
 
-              <p className="text-base sm:text-lg lg:text-xl text-slate-600 leading-relaxed">
-
-                <span className="inline-flex items-center gap-2 bg-slate-100 px-3 py-1 rounded-full">
-
-                  <div className="w-2 h-2 bg-emerald-500 rounded-full" />
-
-                  <span className="font-semibold text-slate-800">Licensed and serving</span>
-
-                </span>
-
-                <span className="mx-2 font-bold text-slate-900">Florida, Michigan, North Carolina, Arizona, Texas, and Georgia</span>
-
-                with <span className="text-emerald-600 font-semibold">excellence</span>.
-
-              </p>
-
-            </div>
-
-
-
-            {/* Decorative bottom elements */}
-
-            <div className="flex justify-center items-center gap-8 mt-12">
-
-              <div className="hidden md:block w-32 h-0.5 bg-gradient-to-r from-transparent via-emerald-500/50 to-transparent" />
-
-              <div className="flex items-center gap-3">
-
-                <div className="w-4 h-4 bg-gradient-to-r from-emerald-500 to-emerald-400 rounded-full shadow-lg" />
-
-                <div className="w-3 h-3 bg-gradient-to-r from-cyan-500 to-cyan-400 rounded-full shadow-lg" />
-
-                <div className="w-4 h-4 bg-gradient-to-r from-emerald-500 to-emerald-400 rounded-full shadow-lg" />
-
+              {/* Quick Stats Grid */}
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
+                <div className="bg-white rounded-xl p-4 border-2 border-emerald-100 text-center">
+                  <div className="text-3xl font-bold text-emerald-600 mb-1">6</div>
+                  <div className="text-sm text-slate-600 font-medium">PPO Networks</div>
+                </div>
+                <div className="bg-white rounded-xl p-4 border-2 border-cyan-100 text-center">
+                  <div className="text-3xl font-bold text-cyan-600 mb-1">1.3M+</div>
+                  <div className="text-sm text-slate-600 font-medium">Providers</div>
+                </div>
+                <div className="bg-white rounded-xl p-4 border-2 border-emerald-100 text-center">
+                  <div className="text-3xl font-bold text-emerald-600 mb-1">6</div>
+                  <div className="text-sm text-slate-600 font-medium">States Covered</div>
+                </div>
               </div>
 
-              <div className="hidden md:block w-32 h-0.5 bg-gradient-to-r from-transparent via-emerald-500/50 to-transparent" />
+              {/* Quick Action CTAs */}
+              <div className="flex flex-wrap justify-center gap-4">
+                <a
+                  href="#networks-panel"
+                  className="inline-flex items-center gap-2 bg-gradient-to-r from-emerald-500 to-cyan-500 hover:from-emerald-600 hover:to-cyan-600 text-white font-bold px-6 py-3 rounded-xl shadow-lg hover:shadow-xl transition-all duration-200"
+                >
+                  <Search className="w-5 h-5" />
+                  Find My Doctor
+                </a>
+                <a
+                  href="/contact"
+                  className="inline-flex items-center gap-2 bg-white hover:bg-slate-50 text-slate-900 font-bold px-6 py-3 rounded-xl shadow-md hover:shadow-lg border-2 border-slate-200 transition-all duration-200"
+                >
+                  <Phone className="w-5 h-5" />
+                  Get Recommendations
+                </a>
+              </div>
 
             </div>
+
+
 
           </div>
 
           
 
-          <div className="max-w-3xl mx-auto text-center mb-12">
+          {/* Why Work With Me Section - Condensed */}
+          <div className="max-w-4xl mx-auto mb-12">
 
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900">
+            <h3 className="text-2xl md:text-3xl font-bold text-slate-900 text-center mb-8">
 
-              Access to the Nation's Top Carriers
+              Why Work With an Independent Broker?
 
-            </h2>
+            </h3>
 
-            <p className="mt-4 text-lg md:text-xl text-slate-600 leading-relaxed">
-
-              My Best Insurance Group partnership since 2020 gives you three critical advantages: (1) <strong>Savings for Qualified Applicants</strong> - if you're healthy and don't qualify for ACA subsidies, private health plans can save up to 50% compared to unsubsidized marketplace insurance, (2) <strong>Carrier Access</strong> - direct relationships with underwriting desks mean faster approvals and priority case reviews, and (3) <strong>Claims Advocacy</strong> - dedicated support team intervenes when carriers delay or deny legitimate claims. I compare all options across Florida, Michigan, North Carolina, Arizona, Texas, and Georgia to find your best fit.
-
-            </p>
+            {/* Key Benefits Grid */}
+            <div className="grid md:grid-cols-3 gap-6 mb-8">
+              <div className="bg-gradient-to-br from-emerald-50 to-cyan-50 rounded-xl p-6 border border-emerald-200">
+                <div className="w-12 h-12 bg-emerald-500 rounded-lg flex items-center justify-center mb-4">
+                  <DollarSign className="w-6 h-6 text-white" />
+                </div>
+                <h4 className="font-bold text-slate-900 mb-2">Save 30-50%</h4>
+                <p className="text-sm text-slate-600">Healthy applicants typically save significantly vs. unsubsidized marketplace plans</p>
+              </div>
+              <div className="bg-gradient-to-br from-cyan-50 to-blue-50 rounded-xl p-6 border border-cyan-200">
+                <div className="w-12 h-12 bg-cyan-500 rounded-lg flex items-center justify-center mb-4">
+                  <Shield className="w-6 h-6 text-white" />
+                </div>
+                <h4 className="font-bold text-slate-900 mb-2">Fast Approvals</h4>
+                <p className="text-sm text-slate-600">Direct underwriting relationships mean faster processing and priority reviews</p>
+              </div>
+              <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl p-6 border border-blue-200">
+                <div className="w-12 h-12 bg-blue-500 rounded-lg flex items-center justify-center mb-4">
+                  <Phone className="w-6 h-6 text-white" />
+                </div>
+                <h4 className="font-bold text-slate-900 mb-2">Claims Support</h4>
+                <p className="text-sm text-slate-600">Dedicated advocacy when carriers delay or deny legitimate claims</p>
+              </div>
+            </div>
 
             <div className="mt-8 p-6 bg-gradient-to-br from-blue-50 to-cyan-50 rounded-xl border-2 border-blue-200 shadow-sm">
               <h4 className="font-bold text-blue-900 mb-4 text-lg flex items-center gap-2">
@@ -1134,20 +1334,72 @@ export default function CarriersPage() {
               </div>
             </div>
 
-            <div className="mt-6 flex flex-wrap justify-center gap-3 text-sm text-slate-600">
+            {/* State Coverage Grid - Redesigned */}
+            <div className="mt-12">
+              <h4 className="text-xl font-bold text-slate-900 text-center mb-6">Licensed Coverage Areas</h4>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
 
-              <span className="inline-flex items-center gap-2 rounded-full bg-emerald-50 px-4 py-2 border border-emerald-100">Florida - ACA and PPO depth</span>
+                <div className="bg-white rounded-lg p-4 border-2 border-emerald-100 hover:border-emerald-300 hover:shadow-md transition-all">
+                  <div className="flex items-center gap-3 mb-2">
+                    <div className="w-10 h-10 bg-emerald-100 rounded-lg flex items-center justify-center">
+                      <MapPin className="w-5 h-5 text-emerald-600" />
+                    </div>
+                    <h5 className="font-bold text-slate-900">Florida</h5>
+                  </div>
+                  <p className="text-sm text-slate-600">ACA and PPO depth</p>
+                </div>
 
-              <span className="inline-flex items-center gap-2 rounded-full bg-emerald-50 px-4 py-2 border border-emerald-100">Michigan - Major medical and Medicare solutions</span>
+                <div className="bg-white rounded-lg p-4 border-2 border-cyan-100 hover:border-cyan-300 hover:shadow-md transition-all">
+                  <div className="flex items-center gap-3 mb-2">
+                    <div className="w-10 h-10 bg-cyan-100 rounded-lg flex items-center justify-center">
+                      <MapPin className="w-5 h-5 text-cyan-600" />
+                    </div>
+                    <h5 className="font-bold text-slate-900">Michigan</h5>
+                  </div>
+                  <p className="text-sm text-slate-600">Major medical and Medicare solutions</p>
+                </div>
 
-              <span className="inline-flex items-center gap-2 rounded-full bg-emerald-50 px-4 py-2 border border-emerald-100">North Carolina - BlueCross BlueShield and UHC strength</span>
+                <div className="bg-white rounded-lg p-4 border-2 border-emerald-100 hover:border-emerald-300 hover:shadow-md transition-all">
+                  <div className="flex items-center gap-3 mb-2">
+                    <div className="w-10 h-10 bg-emerald-100 rounded-lg flex items-center justify-center">
+                      <MapPin className="w-5 h-5 text-emerald-600" />
+                    </div>
+                    <h5 className="font-bold text-slate-900">North Carolina</h5>
+                  </div>
+                  <p className="text-sm text-slate-600">BlueCross BlueShield and UHC strength</p>
+                </div>
 
-              <span className="inline-flex items-center gap-2 rounded-full bg-emerald-50 px-4 py-2 border border-emerald-100">Arizona - Multi-carrier network diversity</span>
+                <div className="bg-white rounded-lg p-4 border-2 border-cyan-100 hover:border-cyan-300 hover:shadow-md transition-all">
+                  <div className="flex items-center gap-3 mb-2">
+                    <div className="w-10 h-10 bg-cyan-100 rounded-lg flex items-center justify-center">
+                      <MapPin className="w-5 h-5 text-cyan-600" />
+                    </div>
+                    <h5 className="font-bold text-slate-900">Arizona</h5>
+                  </div>
+                  <p className="text-sm text-slate-600">Multi-carrier network diversity</p>
+                </div>
 
-              <span className="inline-flex items-center gap-2 rounded-full bg-emerald-50 px-4 py-2 border border-emerald-100">Texas - Enterprise-level plans for growing families</span>
+                <div className="bg-white rounded-lg p-4 border-2 border-emerald-100 hover:border-emerald-300 hover:shadow-md transition-all">
+                  <div className="flex items-center gap-3 mb-2">
+                    <div className="w-10 h-10 bg-emerald-100 rounded-lg flex items-center justify-center">
+                      <MapPin className="w-5 h-5 text-emerald-600" />
+                    </div>
+                    <h5 className="font-bold text-slate-900">Texas</h5>
+                  </div>
+                  <p className="text-sm text-slate-600">Enterprise-level plans for growing families</p>
+                </div>
 
-              <span className="inline-flex items-center gap-2 rounded-full bg-emerald-50 px-4 py-2 border border-emerald-100">Georgia - Regional PPO and small group solutions</span>
+                <div className="bg-white rounded-lg p-4 border-2 border-cyan-100 hover:border-cyan-300 hover:shadow-md transition-all">
+                  <div className="flex items-center gap-3 mb-2">
+                    <div className="w-10 h-10 bg-cyan-100 rounded-lg flex items-center justify-center">
+                      <MapPin className="w-5 h-5 text-cyan-600" />
+                    </div>
+                    <h5 className="font-bold text-slate-900">Georgia</h5>
+                  </div>
+                  <p className="text-sm text-slate-600">Regional PPO and small group solutions</p>
+                </div>
 
+              </div>
             </div>
 
           </div>
@@ -1368,13 +1620,31 @@ export default function CarriersPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
 
-            {filteredNetworks.map((network, index) => (
+            {filteredNetworks.slice(0, showAllNetworks ? filteredNetworks.length : 3).map((network, index) => (
 
               <PremiumNetworkCard key={network.name} network={network} index={index} />
 
             ))}
 
           </div>
+
+          {/* Progressive Disclosure Button */}
+          {filteredNetworks.length > 3 && !showAllNetworks && (
+            <div className="mt-12 text-center">
+              <button
+                onClick={() => setShowAllNetworks(true)}
+                className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-emerald-500 to-cyan-500 hover:from-emerald-600 hover:to-cyan-600 text-white font-bold rounded-xl shadow-lg hover:shadow-xl transition-all duration-200 group"
+              >
+                <span>View All {filteredNetworks.length} Networks</span>
+                <svg className="w-5 h-5 group-hover:translate-y-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              <p className="mt-3 text-sm text-slate-600">
+                See {filteredNetworks.length - 3} more PPO networks including MultiPlan, UnitedHealthcare, and Blue Cross Blue Shield
+              </p>
+            </div>
+          )}
 
           {/* Interactive Network Comparison Table */}
           <div className="mt-20">
@@ -1550,7 +1820,16 @@ export default function CarriersPage() {
         </div>
 
       </section>
+      </div>
+      {/* End Tab Panel 1: Networks */}
 
+      {/* Tab Panel 3: Expert Guidance */}
+      <div
+        id="guidance-panel"
+        role="tabpanel"
+        aria-labelledby="guidance-tab"
+        style={{ display: activeTab === 'guidance' ? 'block' : 'none' }}
+      >
       {/* Educational Content Section - Information Gain Enhancement */}
       <section className="relative py-16 overflow-hidden bg-gradient-to-br from-slate-50 to-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -1565,137 +1844,136 @@ export default function CarriersPage() {
               How to Choose the Right PPO Network
             </h2>
             <p className="text-base sm:text-lg md:text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed px-4">
-              Not all PPO networks are created equal. Here's my professional guidance on selecting the network that works best for your specific needs across FL, MI, NC, AZ, TX, and GA.
+              Not all PPO networks are created equal. Here's my professional guidance on selecting the network that works best for your specific needs.
             </p>
           </div>
 
-          {/* Educational Content Grid */}
-          <div className="grid lg:grid-cols-2 gap-12 items-start">
-            {/* Network Selection Criteria */}
-            <div className="bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-slate-200">
-              <h3 className="text-xl md:text-2xl font-semibold text-slate-900 mb-4 md:mb-6 flex items-center gap-3">
-                <div className="w-8 h-8 bg-emerald-100 rounded-lg flex items-center justify-center">
-                  <CheckCircle className="w-5 h-5 text-emerald-600" />
-                </div>
-                Network Selection Criteria
-              </h3>
-              
-              <div className="space-y-6">
-                <div>
-                  <h4 className="font-semibold text-slate-900 mb-2">Provider Density & Geographic Coverage</h4>
-                  <p className="text-slate-600 text-sm leading-relaxed">
-                    I verify that your primary care physician, specialists, and preferred hospitals are included in each network. This is especially important when you live near state borders or travel frequently between our licensed states.
-                  </p>
-                </div>
-                
-                <div>
-                  <h4 className="font-semibold text-slate-900 mb-2">Referral Requirements</h4>
-                  <p className="text-slate-600 text-sm leading-relaxed">
-                    PPO networks don't require referrals, but some plans within networks have different specialist access rules. I explain exactly what each plan allows before you enroll.
-                  </p>
-                </div>
-                
-                <div>
-                  <h4 className="font-semibold text-slate-900 mb-2">Network Stability & Provider Relations</h4>
-                  <p className="text-slate-600 text-sm leading-relaxed">
-                    Through 8+ years of working with these networks across 6 states, I've learned which carriers maintain the strongest provider relationships in specific markets. I verify network stability by checking provider directories, consulting with carrier representatives, and monitoring network changes throughout the year. This experience reveals which networks have the most stable provider rosters and lowest out-of-network claim rates in your zip code.
-                  </p>
-                </div>
-              </div>
-            </div>
+          {/* Educational Content Accordions */}
+          <div className="space-y-6">
+            {/* Network Selection Criteria Accordion */}
+            <div className="bg-white rounded-2xl shadow-lg border-2 border-slate-200 overflow-hidden">
+              <button
+                onClick={() => setAccordionState(prev => ({ ...prev, criteria: !prev.criteria }))}
+                className="w-full p-6 md:p-8 flex items-center justify-between hover:bg-slate-50 transition-colors text-left"
+                aria-expanded={accordionState.criteria}
+              >
+                <h3 className="text-xl md:text-2xl font-bold text-slate-900 flex items-center gap-3">
+                  <div className="w-10 h-10 bg-emerald-100 rounded-lg flex items-center justify-center">
+                    <CheckCircle className="w-6 h-6 text-emerald-600" />
+                  </div>
+                  Network Selection Expertise
+                </h3>
+                <svg
+                  className={`w-6 h-6 text-slate-600 transition-transform duration-200 ${accordionState.criteria ? 'rotate-180' : ''}`}
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              <div style={{ display: accordionState.criteria ? 'block' : 'none' }} className="px-6 md:px-8 pb-6 md:pb-8">
 
-            {/* Decision Framework */}
-            <div className="bg-slate-900 rounded-2xl p-6 md:p-8 text-white">
-              <h3 className="text-xl md:text-2xl font-semibold mb-4 md:mb-6 flex items-center gap-3">
-                <div className="w-8 h-8 bg-emerald-500 rounded-lg flex items-center justify-center">
-                  <BarChart3 className="w-5 h-5 text-white" />
-                </div>
-                My Decision Framework
-              </h3>
-              
               <div className="space-y-4">
                 <div className="flex items-start gap-3">
-                  <div className="w-6 h-6 bg-emerald-500 rounded-full flex items-center justify-center text-sm font-bold mt-0.5">1</div>
+                  <CheckCircle className="w-5 h-5 text-emerald-600 mt-0.5 flex-shrink-0" />
                   <div>
-                    <p className="font-semibold text-emerald-300">Doctor Network Check</p>
-                    <p className="text-slate-300 text-sm">I verify your current doctors are covered and help you find new ones if needed.</p>
+                    <span className="font-semibold text-slate-900">Complete Provider Verification:</span>
+                    <span className="text-slate-600 text-sm"> I confirm your doctors, specialists, and hospitals are in-network before enrollment.</span>
                   </div>
                 </div>
-                
+
                 <div className="flex items-start gap-3">
-                  <div className="w-6 h-6 bg-emerald-500 rounded-full flex items-center justify-center text-sm font-bold mt-0.5">2</div>
+                  <CheckCircle className="w-5 h-5 text-emerald-600 mt-0.5 flex-shrink-0" />
                   <div>
-                    <p className="font-semibold text-emerald-300">Hospital Access Analysis</p>
-                    <p className="text-slate-300 text-sm">I ensure your preferred hospitals and emergency facilities are in-network.</p>
+                    <span className="font-semibold text-slate-900">Plan Rules Decoded:</span>
+                    <span className="text-slate-600 text-sm"> I explain specialist access rules and authorization requirements specific to your plan.</span>
                   </div>
                 </div>
-                
+
                 <div className="flex items-start gap-3">
-                  <div className="w-6 h-6 bg-emerald-500 rounded-full flex items-center justify-center text-sm font-bold mt-0.5">3</div>
+                  <CheckCircle className="w-5 h-5 text-emerald-600 mt-0.5 flex-shrink-0" />
                   <div>
-                    <p className="font-semibold text-emerald-300">Cost-Benefit Comparison</p>
-                    <p className="text-slate-300 text-sm">I compare network costs against your usage patterns to find the best value.</p>
-                  </div>
-                </div>
-                
-                <div className="flex items-start gap-3">
-                  <div className="w-6 h-6 bg-emerald-500 rounded-full flex items-center justify-center text-sm font-bold mt-0.5">4</div>
-                  <div>
-                    <p className="font-semibold text-emerald-300">Multi-State Consideration</p>
-                    <p className="text-slate-300 text-sm">If you travel or have family across our 6 licensed states, I ensure network continuity.</p>
+                    <span className="font-semibold text-slate-900">8+ Years Network Intelligence:</span>
+                    <span className="text-slate-600 text-sm"> I know which carriers maintain stable provider relationships and lowest out-of-network rates in your area.</span>
                   </div>
                 </div>
               </div>
+              </div>
+            </div>
+
+            {/* Decision Framework Accordion */}
+            <div className="bg-slate-900 rounded-2xl shadow-lg border-2 border-slate-700 overflow-hidden">
+              <button
+                onClick={() => setAccordionState(prev => ({ ...prev, framework: !prev.framework }))}
+                className="w-full p-6 md:p-8 flex items-center justify-between hover:bg-slate-800 transition-colors text-left"
+                aria-expanded={accordionState.framework}
+              >
+                <h3 className="text-xl md:text-2xl font-bold text-white flex items-center gap-3">
+                  <div className="w-10 h-10 bg-emerald-500 rounded-lg flex items-center justify-center">
+                    <BarChart3 className="w-6 h-6 text-white" />
+                  </div>
+                  My 3-Step Process
+                </h3>
+                <svg
+                  className={`w-6 h-6 text-white transition-transform duration-200 ${accordionState.framework ? 'rotate-180' : ''}`}
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              <div style={{ display: accordionState.framework ? 'block' : 'none' }} className="px-6 md:p-8 pb-6 md:pb-8 text-white">
+
+              <div className="space-y-4">
+                <div className="flex items-start gap-3">
+                  <div className="w-8 h-8 bg-emerald-500 rounded-full flex items-center justify-center text-sm font-bold mt-0.5 flex-shrink-0">1</div>
+                  <div>
+                    <p className="font-semibold text-emerald-300 mb-1">Provider Network Verification</p>
+                    <p className="text-slate-300 text-sm">Confirm your doctors and hospitals are in-network, or find quality alternatives.</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3">
+                  <div className="w-8 h-8 bg-emerald-500 rounded-full flex items-center justify-center text-sm font-bold mt-0.5 flex-shrink-0">2</div>
+                  <div>
+                    <p className="font-semibold text-emerald-300 mb-1">Cost-Benefit Analysis</p>
+                    <p className="text-slate-300 text-sm">Compare network costs and coverage options against your usage patterns.</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3">
+                  <div className="w-8 h-8 bg-emerald-500 rounded-full flex items-center justify-center text-sm font-bold mt-0.5 flex-shrink-0">3</div>
+                  <div>
+                    <p className="font-semibold text-emerald-300 mb-1">Multi-State Planning</p>
+                    <p className="text-slate-300 text-sm">Ensure network continuity if you travel or relocate across our licensed states.</p>
+                  </div>
+                </div>
+              </div>
+              </div>
+            </div>
+
+            {/* Provider Verification CTA */}
+            <div className="bg-gradient-to-r from-emerald-500 to-cyan-500 rounded-2xl shadow-lg border-2 border-emerald-400 p-8 text-center">
+              <h3 className="text-2xl font-bold text-white mb-3 flex items-center justify-center gap-2">
+                <Search className="w-6 h-6" />
+                Need Help Verifying Your Doctors?
+              </h3>
+              <p className="text-white/90 mb-6 max-w-2xl mx-auto">
+                I'll handle the network research and coverage confirmation—saving you hours of calls.
+              </p>
+              <a
+                href="/contact"
+                className="inline-flex items-center gap-2 bg-white hover:bg-slate-100 text-slate-900 font-bold px-8 py-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-200"
+              >
+                <Phone className="w-5 h-5" />
+                Get Free Provider Analysis
+              </a>
             </div>
           </div>
 
-          {/* Provider Search Tips */}
-          <div className="mt-12 bg-gradient-to-r from-emerald-500 to-cyan-500 rounded-2xl p-6 md:p-8 text-white">
-            <h3 className="text-xl md:text-2xl font-semibold mb-4 md:mb-6">Provider Search Strategies & Best Practices</h3>
-
-            <div className="grid md:grid-cols-3 gap-6">
-              <div>
-                <h4 className="font-semibold mb-3 flex items-center gap-2">
-                  <Search className="w-5 h-5" />
-                  Search Techniques
-                </h4>
-                <ul className="space-y-2 text-sm text-emerald-100">
-                  <li>• Use multiple search terms (doctor name, practice name, hospital affiliation)</li>
-                  <li>• Verify provider is accepting new patients</li>
-                  <li>• Check if provider has moved practices recently</li>
-                  <li>• Confirm office locations match your needs</li>
-                </ul>
-              </div>
-
-              <div>
-                <h4 className="font-semibold mb-3 flex items-center gap-2">
-                  <Shield className="w-5 h-5" />
-                  Verification Steps
-                </h4>
-                <ul className="space-y-2 text-sm text-emerald-100">
-                  <li>• Call provider office to confirm network participation</li>
-                  <li>• Ask about any restrictions or limitations</li>
-                  <li>• Verify effective dates of network participation</li>
-                  <li>• Get confirmation of coverage for your specific plan</li>
-                </ul>
-              </div>
-
-              <div>
-                <h4 className="font-semibold mb-3 flex items-center gap-2">
-                  <Phone className="w-5 h-5" />
-                  When I Help
-                </h4>
-                <ul className="space-y-2 text-sm text-emerald-100">
-                  <li>• Network directories show conflicting information</li>
-                  <li>• Provider office gives different coverage details</li>
-                  <li>• You need specialists in multiple states</li>
-                  <li>• Network adequacy concerns for your conditions</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          {/* Decision Support Checklist */}
+          {/* Decision Support Checklist - Always Visible */}
           <div className="mt-12 bg-gradient-to-br from-slate-50 to-white rounded-2xl p-6 md:p-8 shadow-lg border-2 border-slate-200">
             <h3 className="text-xl md:text-2xl font-bold text-slate-900 mb-6 flex items-center gap-3">
               <CheckCircle className="w-7 h-7 text-emerald-600" />
@@ -2805,7 +3083,16 @@ export default function CarriersPage() {
           </div>
         </div>
       </section>
+      </div>
+      {/* End Tab Panel 3: Guidance */}
 
+      {/* Tab Panel 2: Compare Carriers */}
+      <div
+        id="carriers-panel"
+        role="tabpanel"
+        aria-labelledby="carriers-tab"
+        style={{ display: activeTab === 'carriers' ? 'block' : 'none' }}
+      >
       {/* Insurance Carriers Section - Dark Theme */}
 
       <section id="insurance-carriers" className="relative py-16 md:py-24 overflow-hidden" aria-labelledby="carriers-heading">
@@ -2878,13 +3165,31 @@ export default function CarriersPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
 
-            {filteredCarriers.map((carrier, index) => (
+            {filteredCarriers.slice(0, showAllCarriers ? filteredCarriers.length : 4).map((carrier, index) => (
 
               <LuxuryCarrierCard key={carrier.name} carrier={carrier} index={index} />
 
             ))}
 
           </div>
+
+          {/* Progressive Disclosure Button */}
+          {filteredCarriers.length > 4 && !showAllCarriers && (
+            <div className="mt-12 text-center">
+              <button
+                onClick={() => setShowAllCarriers(true)}
+                className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-emerald-400 to-cyan-400 hover:from-emerald-500 hover:to-cyan-500 text-slate-900 font-bold rounded-xl shadow-lg hover:shadow-xl transition-all duration-200 group"
+              >
+                <span>See All {filteredCarriers.length} Carriers</span>
+                <svg className="w-5 h-5 group-hover:translate-y-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              <p className="mt-3 text-sm text-slate-400">
+                View {filteredCarriers.length - 4} more carriers including SGIC, Aflac, Philadelphia American Life, and Blue Cross Blue Shield
+              </p>
+            </div>
+          )}
 
           {/* Carrier Comparison Visual Tool */}
           <div className="mt-20">
@@ -3761,7 +4066,16 @@ export default function CarriersPage() {
           </div>
         </div>
       </section>
+      </div>
+      {/* End Tab Panel 2: Carriers */}
 
+      {/* Tab Panel 4: Common Questions */}
+      <div
+        id="faq-panel"
+        role="tabpanel"
+        aria-labelledby="faq-tab"
+        style={{ display: activeTab === 'faq' ? 'block' : 'none' }}
+      >
       {/* FAQ Section - Dark Theme (10%) - Lazy Loaded */}
 
       <Suspense fallback={
@@ -3780,8 +4094,8 @@ export default function CarriersPage() {
       }>
         <PremiumCarriersFAQ />
       </Suspense>
-
-
+      </div>
+      {/* End Tab Panel 4: FAQ */}
 
       {/* Footer CTA Section - Light Theme (40%) - Lazy Loaded */}
 
