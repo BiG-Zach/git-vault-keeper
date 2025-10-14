@@ -192,6 +192,23 @@ export default function HCaptcha({ siteKey, onVerify, onExpire, onError, classNa
   const containerRef = useRef<HTMLDivElement | null>(null);
   const widgetIdRef = useRef<string | number | null>(null);
   const [loadError, setLoadError] = useState<string | null>(null);
+  const onVerifyRef = useRef(onVerify);
+  const onExpireRef = useRef(onExpire);
+  const onErrorRef = useRef(onError);
+
+  // Keep the latest callbacks without forcing the widget to re-render. Previously the widget would
+  // be torn down and re-created on every parent render, which prevented the challenge from opening.
+  useEffect(() => {
+    onVerifyRef.current = onVerify;
+  }, [onVerify]);
+
+  useEffect(() => {
+    onExpireRef.current = onExpire;
+  }, [onExpire]);
+
+  useEffect(() => {
+    onErrorRef.current = onError;
+  }, [onError]);
 
   useEffect(() => {
     let cancelled = false;
@@ -213,13 +230,13 @@ export default function HCaptcha({ siteKey, onVerify, onExpire, onError, classNa
         widgetIdRef.current = window.hcaptcha.render(containerRef.current, {
           sitekey: siteKey,
           callback: (token: string) => {
-            onVerify(token);
+            onVerifyRef.current?.(token);
           },
           'expired-callback': () => {
-            onExpire?.();
+            onExpireRef.current?.();
           },
           'error-callback': () => {
-            onError?.();
+            onErrorRef.current?.();
           },
         });
       })
@@ -238,14 +255,16 @@ export default function HCaptcha({ siteKey, onVerify, onExpire, onError, classNa
         }
       }
     };
-  }, [siteKey, onVerify, onExpire, onError]);
+  }, [siteKey]);
 
   if (typeof window === 'undefined') {
     return null;
   }
 
+  const wrapperClassName = className ? `${className} pointer-events-auto` : 'pointer-events-auto';
+
   return (
-    <div className={className}>
+    <div className={wrapperClassName}>
       <div ref={containerRef} />
       {loadError && <p className="mt-2 text-sm text-red-600 text-center">{loadError}</p>}
     </div>

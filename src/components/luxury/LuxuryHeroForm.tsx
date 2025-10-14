@@ -67,6 +67,19 @@ const LuxuryHeroForm = () => {
   const [captchaToken, setCaptchaToken] = useState<string | null>(null);
   const [captchaError, setCaptchaError] = useState<string | null>(null);
   const [captchaRefresh, setCaptchaRefresh] = useState(0);
+  const handleCaptchaVerify = useCallback((token: string) => {
+    setCaptchaToken(token);
+    setCaptchaError(null);
+  }, []);
+
+  const handleCaptchaExpire = useCallback(() => {
+    setCaptchaToken(null);
+  }, []);
+
+  const handleCaptchaError = useCallback(() => {
+    setCaptchaToken(null);
+    setCaptchaError('Verification failed. Please refresh the widget and try again.');
+  }, []);
 
   useEffect(() => {
     let cancelled = false;
@@ -589,26 +602,19 @@ const LuxuryHeroForm = () => {
           </div>
 
           {currentStep === 3 && (
-            <div className="mt-6">
+            <div className="mt-6 flex justify-center relative z-20">
               {captchaEnabled && captchaLoaded ? (
-                <div className="flex justify-center">
-                  <div className="space-y-2">
-                    <HCaptcha
-                      key={`luxury-hcaptcha-${captchaRefresh}`}
-                      siteKey={siteKey}
-                      onVerify={(token: string) => {
-                        setCaptchaToken(token);
-                        setCaptchaError(null);
-                      }}
-                      onExpire={() => setCaptchaToken(null)}
-                      onError={() =>
-                        setCaptchaError('Verification failed. Please refresh the widget and try again.')
-                      }
-                    />
-                    {captchaError && (
-                      <p className="text-sm text-red-600 text-center">{captchaError}</p>
-                    )}
-                  </div>
+                <div className="space-y-2">
+                  <HCaptcha
+                    key={`luxury-hcaptcha-${captchaRefresh}`}
+                    siteKey={siteKey}
+                    onVerify={handleCaptchaVerify}
+                    onExpire={handleCaptchaExpire}
+                    onError={handleCaptchaError}
+                  />
+                  {captchaError && (
+                    <p className="text-sm text-red-600 text-center">{captchaError}</p>
+                  )}
                 </div>
               ) : captchaLoaded ? (
                 <p className="text-sm text-red-600 text-center">
