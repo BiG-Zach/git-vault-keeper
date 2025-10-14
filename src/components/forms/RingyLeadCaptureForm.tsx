@@ -10,6 +10,7 @@ type FormState = {
   lastName: string;
   email: string;
   phone: string;
+  hcaptchaToken: string | null;
 };
 
 const initialFormState: FormState = {
@@ -17,6 +18,7 @@ const initialFormState: FormState = {
   lastName: '',
   email: '',
   phone: '',
+  hcaptchaToken: null,
 };
 
 type RingyLeadCaptureFormProps = {
@@ -30,10 +32,9 @@ export default function RingyLeadCaptureForm({ className }: RingyLeadCaptureForm
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState<string>('');
   const [success, setSuccess] = useState(false);
-  const [hCaptchaToken, setHCaptchaToken] = useState<string | null>(null);
-  // Track whether the active hCaptcha challenge has been solved so we can surface visual feedback.
-  const [isCaptchaVerified, setIsCaptchaVerified] = useState(false);
   const [captchaRefresh, setCaptchaRefresh] = useState(0);
+  // Derive verification state from the token the backend requires so UI and validation stay aligned.
+  const isCaptchaVerified = Boolean(formData.hcaptchaToken);
 
   if (!siteKey) {
     return (
@@ -50,17 +51,16 @@ export default function RingyLeadCaptureForm({ className }: RingyLeadCaptureForm
     setError('');
   };
 
-  // When hCaptcha provides a token, persist it and mark the widget as verified.
+  // Root cause: UI relied on a boolean while validation checked `hcaptchaToken`, so the states diverged.
   const handleCaptchaVerify = (token: string) => {
-    setHCaptchaToken(token);
-    setIsCaptchaVerified(true);
+    // Persist the token on the same formData object so the validation guard and payload share a source of truth.
+    setFormData(prev => ({ ...prev, hcaptchaToken: token }));
     setError('');
   };
 
   // Reset verification when the widget expires or encounters an error.
   const handleCaptchaExpireOrError = () => {
-    setHCaptchaToken(null);
-    setIsCaptchaVerified(false);
+    setFormData(prev => ({ ...prev, hcaptchaToken: null }));
     setError('Verification failed. Please refresh the widget and try again.');
   };
 
@@ -80,15 +80,17 @@ export default function RingyLeadCaptureForm({ className }: RingyLeadCaptureForm
       return;
     }
 
-    // Ensure we validate against the same state the verifier updates so a solved challenge can submit.
-    if (!isCaptchaVerified || !hCaptchaToken) {
+    // Validation logic lives here and expects the exact field name `hcaptchaToken` that the API receives.
+    if (!formData.hcaptchaToken) {
       setError('Please verify you are not a robot.');
       return;
     }
 
     if (import.meta.env.DEV) {
-      console.log('Form submit - hCaptchaToken:', hCaptchaToken);
+      console.log('Form submit - hCaptchaToken:', formData.hcaptchaToken);
       console.log('Form submit - isCaptchaVerified:', isCaptchaVerified);
+      console.log('Form submit - formData:', formData);
+      console.log('Form submit - formData.hcaptchaToken:', formData.hcaptchaToken);
     }
 
     setIsSubmitting(true);
@@ -104,7 +106,7 @@ export default function RingyLeadCaptureForm({ className }: RingyLeadCaptureForm
           email: trimmedEmail,
           phone: trimmedPhone,
           // Pass the token using the same key the API expects so the verification succeeds.
-          hcaptchaToken: hCaptchaToken,
+          hcaptchaToken: formData.hcaptchaToken,
         }),
       });
 
@@ -114,8 +116,6 @@ export default function RingyLeadCaptureForm({ className }: RingyLeadCaptureForm
 
       setSuccess(true);
       setFormData(initialFormState);
-      setHCaptchaToken(null);
-      setIsCaptchaVerified(false);
       setCaptchaRefresh(value => value + 1);
     } catch (submitError) {
       console.error('Ringy lead capture submission error:', submitError);
@@ -177,6 +177,9 @@ export default function RingyLeadCaptureForm({ className }: RingyLeadCaptureForm
           Your privacy is important to us. The information you provide helps us prepare for our
           consultation. We will not share your data or subject you to high-pressure sales calls.
         </div>
+
+        {/* Hidden input keeps the token attached when a library serializes the form element. */}
+        <input type="hidden" name="hcaptchaToken" value={formData.hcaptchaToken ?? ''} />
 
         <div className="mt-4">
           {isCaptchaVerified ? (
