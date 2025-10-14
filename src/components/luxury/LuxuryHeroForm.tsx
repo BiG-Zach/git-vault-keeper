@@ -179,6 +179,7 @@ const LuxuryHeroForm = () => {
     setCurrentStep(1);
   }, []);
 
+  // Include captcha state in dependencies so the latest verified token is available when submitting.
   const submitForm = useCallback(async () => {
     if (!validateStep(3)) return;
 
@@ -249,7 +250,14 @@ const LuxuryHeroForm = () => {
     } finally {
       setIsSubmitting(false);
     }
-  }, [formData, resetForm, validateStep]);
+  }, [
+    captchaEnabled,
+    captchaLoaded,
+    captchaToken,
+    formData,
+    resetForm,
+    validateStep,
+  ]);
 
   const getProgressWidth = useMemo(() => {
     switch (currentStep) {
