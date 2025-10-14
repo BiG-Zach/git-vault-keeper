@@ -1,6 +1,21 @@
 // Multiple forms serialize the hCaptcha response under slightly different names. Centralize the list so API
 // routes can normalize the payload before validating the token.
-const CAPTCHA_KEYS = ['hcaptchaToken', 'hCaptchaToken', 'captchaToken', 'captcha', 'token'] as const;
+const CAPTCHA_KEYS = [
+  'hcaptchaToken',
+  'hCaptchaToken',
+  'hcaptcha_response',
+  'h-captcha-response',
+  'h_captcha_response',
+  'hcaptchaResponse',
+  'captchaToken',
+  'captcha_token',
+  'captchaResponse',
+  'captcha_response',
+  'captcha-response',
+  'captcha',
+  'token',
+  'response',
+] as const;
 
 function isRecord(value: unknown): value is Record<string, unknown> {
   return Boolean(value) && typeof value === 'object';
@@ -23,6 +38,14 @@ export function extractCaptchaToken(payload: unknown): string | null {
     const candidate = payload[key];
     if (typeof candidate === 'string' && candidate.trim()) {
       return candidate.trim();
+    }
+    if (isRecord(candidate)) {
+      const nested = extractCaptchaToken(candidate);
+      if (nested) return nested;
+    }
+    if (Array.isArray(candidate)) {
+      const nested = findInIterable(candidate);
+      if (nested) return nested;
     }
   }
 
@@ -55,7 +78,11 @@ export function stripCaptchaFields(payload: unknown): Record<string, unknown> {
     }
 
     if (Array.isArray(value)) {
-      result[key] = value.map(item => (isRecord(item) ? stripCaptchaFields(item) : item));
+      result[key] = value.map(item => {
+        if (isRecord(item)) return stripCaptchaFields(item);
+        if (Array.isArray(item)) return item.map(entry => (isRecord(entry) ? stripCaptchaFields(entry) : entry));
+        return item;
+      });
       return;
     }
 
