@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { CheckCircle2 } from 'lucide-react';
-import HCaptcha from '@/components/security/HCaptcha';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { cn } from '@/lib/utils';
+import HCaptcha from '../security/HCaptcha';
+import { Button } from '../ui/button';
+import { Input } from '../ui/input';
+import { cn } from '../../lib/utils';
 
 type FormState = {
   firstName: string;
