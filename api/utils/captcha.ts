@@ -18,7 +18,7 @@ const CAPTCHA_KEYS = [
 ] as const;
 
 function isRecord(value: unknown): value is Record<string, unknown> {
-  return Boolean(value) && typeof value === 'object';
+  return Boolean(value) && typeof value === 'object' && !Array.isArray(value);
 }
 
 function findInIterable(iterable: Iterable<unknown>): string | null {
