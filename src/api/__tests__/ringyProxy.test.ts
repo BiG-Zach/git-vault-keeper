@@ -58,9 +58,12 @@ describe('ringyProxy', () => {
 
   beforeEach(() => {
     vi.clearAllMocks();
+    mockedFetch.mockReset();
     process.env.RINGY_SID = 'test-sid';
     process.env.RINGY_AUTH_TOKEN = 'test-token';
     process.env.RINGY_ENDPOINT = 'https://example.com/lead';
+    delete process.env.HCAPTCHA_SECRET;
+    delete process.env.HCAPTCHA_VERIFY_ENDPOINT;
   });
 
   afterEach(() => {
@@ -114,6 +117,7 @@ describe('ringyProxy', () => {
           state: 'FL',
           consent_to_text: 'Yes',
         },
+        hcaptchaToken: 'test-token',
       },
     });
 
@@ -135,6 +139,7 @@ describe('ringyProxy', () => {
     expect(payload).toHaveProperty('custom_consent_to_text', 'Yes');
     expect(payload).toHaveProperty('metadata_summary');
     expect(typeof payload.notes).toBe('string');
+    expect(payload).not.toHaveProperty('hcaptchaToken');
 
     expect(res.status).toHaveBeenCalledWith(200);
     expect(res.json).toHaveBeenCalledWith({ ok: true });
@@ -160,5 +165,47 @@ describe('ringyProxy', () => {
 
     expect(res.status).toHaveBeenCalledWith(expect.any(Number));
     expect(res.json).toHaveBeenCalledWith({ error: 'Ringy error', detail: 'Bad Request' });
+  });
+
+  it('requires captcha verification when a secret is configured', async () => {
+    process.env.HCAPTCHA_SECRET = 'captcha-secret';
+
+    const reqMissingToken = createRequest({
+      body: {
+        email: 'example@example.com',
+        phone: '555-111-2222',
+      },
+    });
+    const resMissingToken = createResponse();
+
+    await ringyProxy(reqMissingToken, resMissingToken as unknown as VercelResponse);
+    expect(resMissingToken.status).toHaveBeenCalledWith(400);
+    expect(resMissingToken.json).toHaveBeenCalledWith({ error: 'Captcha verification required' });
+    expect(mockedFetch).not.toHaveBeenCalled();
+
+    mockedFetch
+      .mockResolvedValueOnce({
+        ok: true,
+        json: async () => ({ success: true }),
+        text: async () => '',
+      })
+      .mockResolvedValueOnce({
+        ok: true,
+        text: async () => '{"ok":true}',
+      });
+
+    const req = createRequest({
+      body: {
+        email: 'example@example.com',
+        phone: '555-111-2222',
+        hcaptchaToken: 'captcha-token',
+      },
+    });
+    const res = createResponse();
+
+    await ringyProxy(req, res as unknown as VercelResponse);
+
+    expect(mockedFetch).toHaveBeenCalledTimes(2);
+    expect(res.status).toHaveBeenCalledWith(200);
   });
 });

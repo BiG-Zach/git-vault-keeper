@@ -1,6 +1,7 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 import fetch from 'node-fetch';
 import crypto from 'node:crypto';
+import { extractCaptchaToken, stripCaptchaFields } from '../../api/utils/captcha';
 
 const DEFAULT_ENDPOINT = 'https://app.ringy.com/api/public/leads/new-lead';
 const DEFAULT_ALLOWED = [
@@ -119,6 +120,29 @@ const composeNotes = (base: string, metadata: Record<string, string>, custom: Re
   return segments.join('\n\n');
 };
 
+const getClientIp = (req: VercelRequest) => {
+  const header = String(req.headers['x-forwarded-for'] || '').split(',')[0]?.trim();
+  return header || req.socket?.remoteAddress || '';
+};
+
+const normalizeBoolean = (value: unknown): boolean | undefined => {
+  if (typeof value === 'boolean') {
+    return value;
+  }
+  if (typeof value === 'string') {
+    const normalized = value.trim().toLowerCase();
+    if (!normalized) return undefined;
+    if (normalized === 'true' || normalized === '1' || normalized === 'yes') return true;
+    if (normalized === 'false' || normalized === '0' || normalized === 'no') return false;
+    return undefined;
+  }
+  if (typeof value === 'number') {
+    if (Number.isNaN(value)) return undefined;
+    return value !== 0;
+  }
+  return undefined;
+};
+
 export default async function ringyProxy(req: VercelRequest, res: VercelResponse) {
   allowOrigin(req, res);
 
@@ -145,6 +169,9 @@ export default async function ringyProxy(req: VercelRequest, res: VercelResponse
     const sid = process.env.RINGY_SID;
     const authToken = process.env.RINGY_AUTH_TOKEN;
     const defaultLeadSource = process.env.LEAD_SOURCE || 'Website – Bradford Informed Guidance';
+    const HCAPTCHA_SECRET = process.env.HCAPTCHA_SECRET;
+    const HCAPTCHA_VERIFY_ENDPOINT =
+      process.env.HCAPTCHA_VERIFY_ENDPOINT || 'https://hcaptcha.com/siteverify';
 
     if (!sid || !authToken) {
       return res.status(500).json({ error: 'Ringy credentials missing' });
@@ -162,9 +189,18 @@ export default async function ringyProxy(req: VercelRequest, res: VercelResponse
       vendorReferenceId?: string;
       metadata?: Record<string, unknown>;
       custom?: Record<string, unknown>;
+      contactMethod?: string;
+      consentToText?: boolean | string | number;
     }
 
-    const body = (req.body || {}) as RingyProxyRequestBody;
+    const rawBody = (req.body || {}) as Record<string, unknown>;
+    // Normalize captcha regardless of contact preference before any campaign-specific logic runs.
+    const hcaptchaToken = extractCaptchaToken(rawBody);
+    const body = stripCaptchaFields(rawBody) as RingyProxyRequestBody;
+    const contactMethod =
+      typeof body.contactMethod === 'string' ? body.contactMethod.toLowerCase() : '';
+    const consentToText =
+      normalizeBoolean(body.consentToText) ?? (contactMethod === 'text' ? true : undefined);
     const {
       firstName = '',
       lastName = '',
@@ -179,6 +215,36 @@ export default async function ringyProxy(req: VercelRequest, res: VercelResponse
       custom: incomingCustom = {},
     } = body;
 
+    if (HCAPTCHA_SECRET) {
+      if (!hcaptchaToken || typeof hcaptchaToken !== 'string') {
+        return res.status(400).json({ error: 'Captcha verification required' });
+      }
+
+      const verifyResponse = await fetch(HCAPTCHA_VERIFY_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams({
+          secret: HCAPTCHA_SECRET,
+          response: hcaptchaToken,
+          remoteip: getClientIp(req),
+        }),
+      });
+
+      let verification: { success?: boolean; ['error-codes']?: unknown } = {};
+      try {
+        verification = (await verifyResponse.json()) as typeof verification;
+      } catch {
+        verification = {};
+      }
+
+      if (!verification.success) {
+        return res.status(400).json({
+          error: 'Captcha verification failed',
+          detail: verification['error-codes'] ?? null,
+        });
+      }
+    }
+
     const normalizedPhone = sanitizePhone(phone);
 
     if (!email || !normalizedPhone) {
@@ -186,7 +252,14 @@ export default async function ringyProxy(req: VercelRequest, res: VercelResponse
     }
 
     const metadataObject = toPlainObject(incomingMetadata);
+    if (contactMethod && metadataObject.preferredContactMethod === undefined) {
+      metadataObject.preferredContactMethod = contactMethod;
+    }
+
     const customObject = toPlainObject(incomingCustom);
+    if (typeof consentToText === 'boolean' && customObject.consentToText === undefined) {
+      customObject.consentToText = consentToText ? 'Yes' : 'No';
+    }
     const metadata = toStringRecord(metadataObject);
     const custom = toStringRecord(customObject);
     const prefixedCustom = prefixRecord(custom, 'custom_');

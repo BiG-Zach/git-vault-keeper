@@ -6,6 +6,16 @@ function isRecord(value: unknown): value is Record<string, unknown> {
   return Boolean(value) && typeof value === 'object';
 }
 
+function findInIterable(iterable: Iterable<unknown>): string | null {
+  for (const item of iterable) {
+    const candidate = extractCaptchaToken(item);
+    if (candidate) {
+      return candidate;
+    }
+  }
+  return null;
+}
+
 export function extractCaptchaToken(payload: unknown): string | null {
   if (!isRecord(payload)) return null;
 
@@ -21,6 +31,16 @@ export function extractCaptchaToken(payload: unknown): string | null {
     if (nested) return nested;
   }
 
+  for (const value of Object.values(payload)) {
+    if (Array.isArray(value)) {
+      const nested = findInIterable(value);
+      if (nested) return nested;
+    } else if (isRecord(value)) {
+      const nested = extractCaptchaToken(value);
+      if (nested) return nested;
+    }
+  }
+
   return null;
 }
 
@@ -33,10 +53,17 @@ export function stripCaptchaFields(payload: unknown): Record<string, unknown> {
     if ((CAPTCHA_KEYS as readonly string[]).includes(key)) {
       return;
     }
-    if (key === 'formData' && isRecord(value)) {
+
+    if (Array.isArray(value)) {
+      result[key] = value.map(item => (isRecord(item) ? stripCaptchaFields(item) : item));
+      return;
+    }
+
+    if (isRecord(value)) {
       result[key] = stripCaptchaFields(value);
       return;
     }
+
     result[key] = value;
   });
 
