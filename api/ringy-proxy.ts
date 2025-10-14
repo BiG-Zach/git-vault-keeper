@@ -1,3 +1,5 @@
+import { extractCaptchaToken, stripCaptchaFields } from './utils/captcha';
+
 // Vercel Edge Function to proxy lead submissions to Ringy CRM
 export const config = {
   runtime: 'edge',
@@ -6,6 +8,7 @@ export const config = {
 const DEFAULT_LEAD_SOURCE = process.env.LEAD_SOURCE ?? 'Website - Mobile Hero';
 const DEFAULT_TEXT_CAMPAIGN = 'Bradford Informed Guidance';
 const DEFAULT_EMAIL_PHONE_CAMPAIGN = 'Website - Manual Follow-Up';
+
 const DEFAULT_ALLOWED_ORIGINS = [
   'https://bradfordinformedguidance.com',
   'https://www.bradfordinformedguidance.com',
@@ -130,6 +133,24 @@ function ensureApiKey(config: Partial<ResolvedConfig>, missing: MissingField[]):
   }
 }
 
+function normalizeBoolean(value: unknown): boolean | undefined {
+  if (typeof value === 'boolean') {
+    return value;
+  }
+  if (typeof value === 'string') {
+    const normalized = value.trim().toLowerCase();
+    if (!normalized) return undefined;
+    if (normalized === 'true') return true;
+    if (normalized === 'false') return false;
+    return undefined;
+  }
+  if (typeof value === 'number') {
+    if (Number.isNaN(value)) return undefined;
+    return value !== 0;
+  }
+  return undefined;
+}
+
 export default async function handler(req: Request) {
   const method = (req.method || 'GET').toUpperCase();
   const corsHeaders = buildCorsHeaders(req);
@@ -172,8 +193,13 @@ export default async function handler(req: Request) {
   }
 
   try {
-    const leadData = (await req.json()) as LeadBody;
-    const { consentToText, hcaptchaToken, ...restOfLeadData } = leadData ?? {};
+    const rawLeadData = (await req.json()) as LeadBody | Record<string, unknown> | undefined;
+    // Root cause: submissions from different surfaces serialize the token under varying keys or inside a nested formData object.
+    // Normalizing here lets the Edge handler see a solved challenge instead of rejecting with “captcha verification required”.
+    const hcaptchaToken = extractCaptchaToken(rawLeadData);
+    const sanitizedLeadData = stripCaptchaFields(rawLeadData);
+    const { consentToText: consentCandidate, ...restOfLeadData } = sanitizedLeadData;
+    const consentToText = normalizeBoolean(consentCandidate);
 
     if (hcaptchaSecret) {
       if (!hcaptchaToken || typeof hcaptchaToken !== 'string') {

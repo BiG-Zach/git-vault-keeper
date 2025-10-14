@@ -1,6 +1,7 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 import jwt from 'jsonwebtoken';
 import crypto from 'node:crypto';
+import { extractCaptchaToken } from './utils/captcha';
 
 function getClientIP(req: VercelRequest) {
   const xf = String(req.headers['x-forwarded-for'] || '');
@@ -58,6 +59,9 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       hcaptchaToken?: string;
     }
 
+    const body = (req.body || {}) as Record<string, unknown>;
+    // Align with the edge proxy: token may arrive as hCaptchaToken, captchaToken, or nested under formData.
+    const hcaptchaToken = extractCaptchaToken(body);
     const {
       zipCode,
       ages,
@@ -69,8 +73,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       consentText,
       landingUrl,
       utm = {},
-      hcaptchaToken,
-    } = (req.body || {}) as LeadRequestBody;
+    } = body as LeadRequestBody;
 
     const ip = getClientIP(req);
 
