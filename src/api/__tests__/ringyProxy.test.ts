@@ -167,6 +167,32 @@ describe('ringyProxy', () => {
     expect(res.json).toHaveBeenCalledWith({ error: 'Ringy error', detail: 'Bad Request' });
   });
 
+  it('normalizes varied contact method values', async () => {
+    mockedFetch.mockResolvedValue({
+      ok: true,
+      text: async () => '{"ok":true}',
+    });
+
+    const req = createRequest({
+      body: {
+        email: 'phone@example.com',
+        phone: '555-999-0000',
+        contactMethod: 'Phone Call',
+      },
+    });
+
+    const res = createResponse();
+
+    await ringyProxy(req, res as unknown as VercelResponse);
+
+    expect(mockedFetch).toHaveBeenCalledTimes(1);
+    const [, init] = mockedFetch.mock.calls[0];
+    const payload = JSON.parse((init as RequestInit).body as string) as Record<string, unknown>;
+    expect(payload).toHaveProperty('metadata_summary');
+    const metadata = JSON.parse(String(payload.metadata_summary));
+    expect(metadata.preferredContactMethod).toBe('phone');
+  });
+
   it('requires captcha verification when a secret is configured', async () => {
     process.env.HCAPTCHA_SECRET = 'captcha-secret';
 

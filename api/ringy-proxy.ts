@@ -1,4 +1,5 @@
 import { extractCaptchaToken, stripCaptchaFields } from './utils/captcha';
+import { normalizeContactMethod } from './utils/contact';
 
 // Vercel Edge Function to proxy lead submissions to Ringy CRM
 export const config = {
@@ -198,8 +199,14 @@ export default async function handler(req: Request) {
     // Normalizing here lets the Edge handler see a solved challenge instead of rejecting with “captcha verification required”.
     const hcaptchaToken = extractCaptchaToken(rawLeadData);
     const sanitizedLeadData = stripCaptchaFields(rawLeadData);
-    const { consentToText: consentCandidate, ...restOfLeadData } = sanitizedLeadData;
-    const consentToText = normalizeBoolean(consentCandidate);
+    const {
+      consentToText: consentCandidate,
+      contactMethod: contactMethodCandidate,
+      ...restOfLeadData
+    } = sanitizedLeadData;
+    const contactMethod = normalizeContactMethod(contactMethodCandidate);
+    const consentToText =
+      normalizeBoolean(consentCandidate) ?? (contactMethod === 'text' ? true : undefined);
 
     if (hcaptchaSecret) {
       if (!hcaptchaToken || typeof hcaptchaToken !== 'string') {
@@ -250,7 +257,7 @@ export default async function handler(req: Request) {
     }
 
     const descriptor = consentToText ? TEXT_DESCRIPTOR : EMAIL_PHONE_DESCRIPTOR;
-    const pathLabel = consentToText ? 'text' : 'email_phone';
+    const pathLabel = contactMethod === 'text' ? 'text' : 'email_phone';
 
     const { config, missing } = resolveConfig(descriptor);
     ensureApiKey(config, missing);

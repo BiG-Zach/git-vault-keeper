@@ -2,6 +2,7 @@ import type { VercelRequest, VercelResponse } from '@vercel/node';
 import fetch from 'node-fetch';
 import crypto from 'node:crypto';
 import { extractCaptchaToken, stripCaptchaFields } from '../../api/utils/captcha';
+import { normalizeContactMethod } from '../../api/utils/contact';
 
 const DEFAULT_ENDPOINT = 'https://app.ringy.com/api/public/leads/new-lead';
 const DEFAULT_ALLOWED = [
@@ -197,8 +198,7 @@ export default async function ringyProxy(req: VercelRequest, res: VercelResponse
     // Normalize captcha regardless of contact preference before any campaign-specific logic runs.
     const hcaptchaToken = extractCaptchaToken(rawBody);
     const body = stripCaptchaFields(rawBody) as RingyProxyRequestBody;
-    const contactMethod =
-      typeof body.contactMethod === 'string' ? body.contactMethod.toLowerCase() : '';
+    const contactMethod = normalizeContactMethod(body.contactMethod);
     const consentToText =
       normalizeBoolean(body.consentToText) ?? (contactMethod === 'text' ? true : undefined);
     const {
@@ -252,8 +252,12 @@ export default async function ringyProxy(req: VercelRequest, res: VercelResponse
     }
 
     const metadataObject = toPlainObject(incomingMetadata);
-    if (contactMethod && metadataObject.preferredContactMethod === undefined) {
-      metadataObject.preferredContactMethod = contactMethod;
+    if (metadataObject.preferredContactMethod === undefined) {
+      if (contactMethod) {
+        metadataObject.preferredContactMethod = contactMethod;
+      } else if (typeof body.contactMethod === 'string' && body.contactMethod.trim()) {
+        metadataObject.preferredContactMethod = body.contactMethod.trim();
+      }
     }
 
     const customObject = toPlainObject(incomingCustom);
