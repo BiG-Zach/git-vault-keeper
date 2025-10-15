@@ -34,7 +34,7 @@ const NETWORKS: Network[] = [
 
     logoSrc: "/logos/carriers/aetna.webp",
 
-    description: "Extensive nationwide PPO network with comprehensive provider access and quality healthcare facilities. Serving families across Florida, Michigan, North Carolina, Arizona, Texas, and Georgia with over 1.2 million providers.",
+    description: "Extensive nationwide PPO network with comprehensive provider access and quality healthcare facilities. Serving families nationwide with over 1.3M+ providers.",
 
     rating: "A (Excellent) AM Best Rated",
 
@@ -50,7 +50,7 @@ const NETWORKS: Network[] = [
 
     logoSrc: "/logos/carriers/cigna.webp",
 
-    description: "Comprehensive PPO network focused on wellness programs and integrated healthcare solutions. Strong coverage across FL, MI, NC, AZ, TX, and GA metro areas.",
+    description: "Comprehensive PPO network focused on wellness programs and integrated healthcare solutions. Strong coverage across licensed metro areas.",
 
     rating: "A (Excellent) AM Best Rated",
 
@@ -98,7 +98,7 @@ const NETWORKS: Network[] = [
 
     logoSrc: "/logos/carriers/unitedhealthcare.webp",
 
-    description: "The nation's largest PPO network offering unmatched provider access and innovative healthcare solutions. Premier coverage across all six licensed states.",
+    description: "The nation's largest PPO network offering unmatched provider access and innovative healthcare solutions. Premier nationwide coverage.",
 
     rating: "A+ (Superior) AM Best Rated",
 
@@ -114,7 +114,7 @@ const NETWORKS: Network[] = [
 
     logoSrc: "/logos/carriers/bluecrossblueshield.png",
 
-    description: "Trusted community-focused PPO network with strong local provider relationships and comprehensive coverage throughout Florida, Michigan, North Carolina, Arizona, Texas, and Georgia.",
+    description: "Trusted community-focused PPO network with strong local provider relationships and comprehensive coverage throughout licensed markets.",
 
     rating: "A (Excellent) AM Best Rated",
 
@@ -308,7 +308,7 @@ export default function CarriersPage() {
 
           "@type": "Answer",
 
-          "text": "A PPO (Preferred Provider Organization) network gives you the flexibility to see any healthcare provider, but offers significant cost savings when you choose in-network providers. You do not need referrals to see specialists, and you have access to a vast network of doctors, hospitals, and healthcare facilities across Florida, Michigan, North Carolina, Arizona, Texas, and Georgia."
+          "text": "A PPO (Preferred Provider Organization) network gives you the flexibility to see any healthcare provider, but offers significant cost savings when you choose in-network providers. You do not need referrals to see specialists, and you have access to a vast network of doctors, hospitals, and healthcare facilities across our licensed markets."
 
         }
 
@@ -324,7 +324,7 @@ export default function CarriersPage() {
 
           "@type": "Answer",
 
-          "text": "Most likely, yes. Our PPO networks include over 1.3 million healthcare providers nationwide. Use the Find Your Doctor links on each network card to verify if your current physician is in-network."
+          "text": "Most likely, yes. Our PPO networks include over 1.3M+ healthcare providers nationwide. Use the Find Your Doctor links on each network card to verify if your current physician is in-network."
 
         }
 
@@ -340,7 +340,7 @@ export default function CarriersPage() {
 
           "@type": "Answer",
 
-          "text": "As a multi-carrier broker, I compare 15+ A-rated carriers across Florida, Michigan, North Carolina, Arizona, Texas, and Georgia. You see every competitive option in one consultation without pressure from a single insurer."
+          "text": "As a multi-carrier broker, I compare 15+ A-rated carriers across our licensed markets. You see every competitive option in one consultation without pressure from a single insurer."
 
         }
 
@@ -603,7 +603,7 @@ export default function CarriersPage() {
 
         title="Independent Insurance Broker | Compare 15+ A-Rated Carriers - 6 States"
 
-        description="Expert independent broker serving Florida, Michigan, North Carolina, Arizona, Texas & Georgia. I work for you—not insurance companies. Most families save 30-50% with personalized service you can trust."
+        description="Expert independent broker serving 6 licensed states. I work for you—not insurance companies. Most families save 30-50% with personalized service you can trust."
 
         path="/carriers"
 
@@ -617,7 +617,7 @@ export default function CarriersPage() {
 
           { property: 'og:title', content: 'Independent Insurance Broker | Compare 15+ A-Rated Carriers - 6 States | Bradford Informed Guidance' },
 
-          { property: 'og:description', content: 'Expert independent broker serving FL, MI, NC, AZ, TX & GA. I work for you—not insurance companies. Most families save 30-50% with personalized service.' },
+          { property: 'og:description', content: 'Expert independent broker serving 6 licensed states. I work for you—not insurance companies. Most families save 30-50% with personalized service.' },
 
           { name: 'twitter:title', content: 'Independent Insurance Broker | Compare 15+ A-Rated Carriers - 6 States' },
 
@@ -2916,11 +2916,11 @@ export default function CarriersPage() {
 
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
               Local Market Insights Across
-              <span className="block gradient-text-luxury">Our Six Licensed States</span>
+              <span className="block gradient-text-luxury">Our Licensed Markets</span>
             </h2>
 
             <p className="text-lg text-slate-300 max-w-3xl mx-auto">
-              Understanding state-specific carrier dynamics, hospital networks, and pricing trends helps you make informed decisions based on where you live.
+              Understanding regional carrier dynamics, hospital networks, and pricing trends helps you make informed decisions based on where you live.
             </p>
           </div>
 
@@ -3059,7 +3059,7 @@ export default function CarriersPage() {
           <div className="mt-12 bg-gradient-to-r from-emerald-500/20 to-cyan-500/20 border border-emerald-400/30 rounded-xl p-6 md:p-8">
             <h4 className="text-xl font-bold text-white mb-4">How I Use This Intelligence</h4>
             <p className="text-slate-200 leading-relaxed mb-6">
-              During your consultation, I leverage 8+ years of experience working with carriers across these 6 states, along with direct access to carrier network data and provider directories. I verify your specific doctors are in-network, assess local hospital system participation, and evaluate network depth in your county. This hands-on research—combined with my Best Insurance Group partnership for priority underwriting access—helps me identify which carriers offer the strongest networks in your area. I combine this market knowledge with your specific doctors, budget, and health needs to recommend the optimal carrier-network combination.
+              During your consultation, I leverage 8+ years of experience working with carriers across our licensed markets, along with direct access to carrier network data and provider directories. I verify your specific doctors are in-network, assess local hospital system participation, and evaluate network depth in your county. This hands-on research—combined with my Best Insurance Group partnership for priority underwriting access—helps me identify which carriers offer the strongest networks in your area. I combine this market knowledge with your specific doctors, budget, and health needs to recommend the optimal carrier-network combination.
             </p>
 
             {/* Inline CTA */}
@@ -3384,7 +3384,7 @@ export default function CarriersPage() {
               Not Ready to Schedule Yet?
             </h2>
             <p className="text-lg text-emerald-50 mb-8 max-w-2xl mx-auto">
-              Get my monthly insurance insights email with carrier updates, premium trends, and money-saving strategies for FL, MI, NC, AZ, TX & GA residents.
+              Get my monthly insurance insights email with carrier updates, premium trends, and money-saving strategies for residents in our licensed markets.
             </p>
 
             {/* Email Signup Form */}
