@@ -294,7 +294,7 @@ const LuxuryHeroForm = () => {
         phoneNumber: trimmedPhone,
         zipCode: formData.zipCode,
         coverageType: formData.coverageType,
-        coverageTypeLabel,
+        coverageTypeLabel: coverageLabel,
         yourAge: formData.yourAge,
         spouseAge: formData.spouseAge,
         numChildren: formData.numChildren,
