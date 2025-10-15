@@ -18,7 +18,7 @@ const stats = [
   },
   {
     icon: <Clock className="w-8 h-8" />,
-    number: "<4hrs",
+    number: "24hrs",
     label: "Response Time",
     description: "Personal reply guarantee"
   },
@@ -26,7 +26,7 @@ const stats = [
     icon: <Award className="w-8 h-8" />,
     number: "6",
     label: "States Licensed",
-    description: "FL, MI, NC, AZ, TX & GA coverage"
+    description: "FL, GA, SC, TN, AL, TX coverage"
   }
 ];
 

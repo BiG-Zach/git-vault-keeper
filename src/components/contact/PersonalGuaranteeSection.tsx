@@ -6,8 +6,8 @@ import Section from "../layout/Section";
 const guarantees = [
   {
     icon: <Clock className="w-6 h-6" />,
-    title: "4-Hour Response Guarantee",
-    description: "I personally respond to every message within 4 business hours - no exceptions."
+    title: "24-Hour Response Guarantee",
+    description: "I personally respond to every message within 24 hours - no exceptions."
   },
   {
     icon: <Shield className="w-6 h-6" />,
@@ -28,8 +28,11 @@ const guarantees = [
 
 const states = [
   { code: "FL", name: "Florida", description: "My home base - full state coverage from Tampa" },
-  { code: "MI", name: "Michigan", description: "Licensed and ready to serve Michigan residents" },
-  { code: "NC", name: "North Carolina", description: "Expanding coverage to serve North Carolina families" }
+  { code: "GA", name: "Georgia", description: "Comprehensive coverage across Georgia" },
+  { code: "SC", name: "South Carolina", description: "Licensed to serve South Carolina families" },
+  { code: "TN", name: "Tennessee", description: "Expanding coverage throughout Tennessee" },
+  { code: "AL", name: "Alabama", description: "Licensed and ready to serve Alabama residents" },
+  { code: "TX", name: "Texas", description: "Licensed to serve Texas families and businesses" }
 ];
 
 export default function PersonalGuaranteeSection() {

@@ -1,6 +1,6 @@
 import * as React from "react";
-import { motion, useReducedMotion } from "framer-motion";
-import { Send, Shield, Clock, Check, AlertCircle } from "lucide-react";
+import { motion, useReducedMotion, AnimatePresence } from "framer-motion";
+import { Send, Shield, Clock, Check, AlertCircle, CheckCircle2, ChevronDown, Calendar } from "lucide-react";
 import Section from "../layout/Section";
 import { useEffect, useState } from "react";
 import HCaptcha from "../security/HCaptcha";
@@ -25,6 +25,22 @@ export default function EnhancedMessageForm() {
   const [captchaToken, setCaptchaToken] = useState<string | null>(null);
   const [captchaError, setCaptchaError] = useState<string | null>(null);
   const [captchaRefresh, setCaptchaRefresh] = useState(0);
+  
+  // Progressive disclosure state
+  const [showAdvancedOptions, setShowAdvancedOptions] = useState(false);
+  
+  // Field validation state
+  const [validatedFields, setValidatedFields] = useState({
+    name: false,
+    email: false,
+    phone: false,
+    state: false,
+    message: false
+  });
+  
+  // Character count for message
+  const [messageLength, setMessageLength] = useState(0);
+  const MAX_MESSAGE_LENGTH = 500;
 
   useEffect(() => {
     let cancelled = false;
@@ -127,9 +143,48 @@ export default function EnhancedMessageForm() {
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    
     setFormData(prev => ({
       ...prev,
-      [e.target.name]: e.target.value
+      [name]: value
+    }));
+    
+    // Update character count for message field
+    if (name === 'message') {
+      setMessageLength(value.length);
+    }
+    
+    // Real-time validation
+    validateField(name, value);
+  };
+  
+  const validateField = (fieldName: string, value: string) => {
+    let isValid = false;
+    
+    switch (fieldName) {
+      case 'name':
+        isValid = value.trim().length >= 2;
+        break;
+      case 'email':
+        isValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+        break;
+      case 'phone':
+        isValid = value.replace(/\D/g, '').length >= 10;
+        break;
+      case 'state':
+        isValid = value !== '';
+        break;
+      case 'message':
+        isValid = value.trim().length >= 10;
+        break;
+      default:
+        break;
+    }
+    
+    setValidatedFields(prev => ({
+      ...prev,
+      [fieldName]: isValid
     }));
   };
 
@@ -255,7 +310,7 @@ export default function EnhancedMessageForm() {
               </div>
               <div className="flex items-center gap-2 text-sm text-slate-600">
                 <Clock className="w-4 h-4 text-brand-jade-500" />
-                <span>&lt;4 Hour Response</span>
+                <span>24-Hour Response</span>
               </div>
               <div className="flex items-center gap-2 text-sm text-slate-600">
                 <Send className="w-4 h-4 text-brand-jade-500" />
@@ -263,106 +318,247 @@ export default function EnhancedMessageForm() {
               </div>
             </div>
 
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid md:grid-cols-2 gap-6">
-                <div className="space-y-2">
-                  <label className="block text-sm font-semibold text-slate-900">
-                    Your Name <span className="text-brand-danger-500">*</span>
-                  </label>
-                  <input
-                    type="text"
-                    name="name"
-                    required
-                    value={formData.name}
-                    onChange={handleInputChange}
-                    className="w-full px-4 py-3 bg-white/80 border border-slate-200 rounded-xl focus:ring-2 focus:ring-brand-jade-500 focus:border-brand-jade-500 transition-all duration-300 hover:bg-white focus:bg-white"
-                    placeholder="Enter your full name"
-                  />
+            {submitStatus === 'success' ? (
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.4 }}
+                className="text-center py-12"
+              >
+                <div className="inline-flex items-center justify-center w-16 h-16 bg-emerald-100 rounded-full mb-6">
+                  <CheckCircle2 className="w-8 h-8 text-emerald-600" />
                 </div>
-                
-                <div className="space-y-2">
-                  <label className="block text-sm font-semibold text-slate-900">
-                    Phone Number <span className="text-brand-danger-500">*</span>
-                  </label>
-                  <input
-                    type="tel"
-                    name="phone"
-                    required
-                    value={formData.phone}
-                    onChange={handleInputChange}
-                    className="w-full px-4 py-3 bg-white/80 border border-slate-200 rounded-xl focus:ring-2 focus:ring-brand-jade-500 focus:border-brand-jade-500 transition-all duration-300 hover:bg-white focus:bg-white"
-                    placeholder="(123) 456-7890"
-                  />
+                <h3 className="text-2xl font-bold text-slate-900 mb-4">Message Received!</h3>
+                <p className="text-lg text-slate-600 mb-6">
+                  Thank you for reaching out. I'll personally review your message and respond within 24 hours.
+                </p>
+                <div className="bg-slate-50 rounded-xl p-6 mb-6 max-w-md mx-auto">
+                  <h4 className="font-semibold text-slate-900 mb-3">What Happens Next:</h4>
+                  <ul className="text-left space-y-2 text-slate-600">
+                    <li className="flex items-start gap-2">
+                      <CheckCircle2 className="w-5 h-5 text-emerald-600 flex-shrink-0 mt-0.5" />
+                      <span>Personal response within 24 hours</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <CheckCircle2 className="w-5 h-5 text-emerald-600 flex-shrink-0 mt-0.5" />
+                      <span>Initial assessment of your needs</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <CheckCircle2 className="w-5 h-5 text-emerald-600 flex-shrink-0 mt-0.5" />
+                      <span>Consultation scheduling options</span>
+                    </li>
+                  </ul>
                 </div>
-              </div>
-
-              <div className="grid md:grid-cols-2 gap-6">
-                <div className="space-y-2">
-                  <label className="block text-sm font-semibold text-slate-900">
-                    Email Address <span className="text-brand-danger-500">*</span>
-                  </label>
-                  <input
-                    type="email"
-                    name="email"
-                    required
-                    value={formData.email}
-                    onChange={handleInputChange}
-                    className="w-full px-4 py-3 bg-white/80 border border-slate-200 rounded-xl focus:ring-2 focus:ring-brand-jade-500 focus:border-brand-jade-500 transition-all duration-300 hover:bg-white focus:bg-white"
-                    placeholder="your@email.com"
-                  />
-                </div>
-                
-                <div className="space-y-2">
-                  <label className="block text-sm font-semibold text-slate-900">
-                    Your State <span className="text-brand-danger-500">*</span>
-                  </label>
-                  <select
-                    name="state"
-                    required
-                    value={formData.state}
-                    onChange={handleInputChange}
-                    className="w-full px-4 py-3 bg-white/80 border border-slate-200 rounded-xl focus:ring-2 focus:ring-brand-jade-500 focus:border-brand-jade-500 transition-all duration-300 hover:bg-white focus:bg-white"
+                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                  <a
+                    href="https://calendly.com/bradfordig"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r from-teal-600 to-blue-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
                   >
-                    <option value="">Select your state</option>
-                    <option value="Florida">Florida</option>
-                    <option value="Michigan">Michigan</option>
-                    <option value="North Carolina">North Carolina</option>
-                    <option value="Other">Other</option>
-                  </select>
+                    <Calendar className="w-5 h-5" />
+                    Schedule Consultation Now
+                  </a>
+                  <button
+                    onClick={() => {
+                      setSubmitStatus('idle');
+                      setFormData({
+                        name: '',
+                        phone: '',
+                        email: '',
+                        state: '',
+                        insuranceType: '',
+                        message: ''
+                      });
+                      setValidatedFields({
+                        name: false,
+                        email: false,
+                        phone: false,
+                        state: false,
+                        message: false
+                      });
+                      setMessageLength(0);
+                      setShowAdvancedOptions(false);
+                    }}
+                    className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-white text-slate-700 font-semibold rounded-xl border-2 border-slate-200 hover:border-slate-300 hover:bg-slate-50 transition-all duration-300"
+                  >
+                    Send Another Message
+                  </button>
                 </div>
-              </div>
+              </motion.div>
+            ) : (
+              <form onSubmit={handleSubmit} className="space-y-6">
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div className="space-y-2 relative">
+                    <label className="block text-sm font-semibold text-slate-900">
+                      Your Name <span className="text-brand-danger-500">*</span>
+                    </label>
+                    <div className="relative">
+                      <input
+                        type="text"
+                        name="name"
+                        required
+                        value={formData.name}
+                        onChange={handleInputChange}
+                        className={`w-full px-4 py-3 bg-white/80 border rounded-xl focus:ring-2 focus:ring-brand-jade-500 focus:border-brand-jade-500 transition-all duration-300 hover:bg-white focus:bg-white ${
+                          validatedFields.name ? 'border-emerald-300' : 'border-slate-200'
+                        }`}
+                        placeholder="Enter your full name"
+                      />
+                      {validatedFields.name && (
+                        <CheckCircle2 className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-emerald-600" />
+                      )}
+                    </div>
+                  </div>
+                  
+                  <div className="space-y-2 relative">
+                    <label className="block text-sm font-semibold text-slate-900">
+                      Phone Number <span className="text-brand-danger-500">*</span>
+                    </label>
+                    <div className="relative">
+                      <input
+                        type="tel"
+                        name="phone"
+                        required
+                        value={formData.phone}
+                        onChange={handleInputChange}
+                        className={`w-full px-4 py-3 bg-white/80 border rounded-xl focus:ring-2 focus:ring-brand-jade-500 focus:border-brand-jade-500 transition-all duration-300 hover:bg-white focus:bg-white ${
+                          validatedFields.phone ? 'border-emerald-300' : 'border-slate-200'
+                        }`}
+                        placeholder="(123) 456-7890"
+                      />
+                      {validatedFields.phone && (
+                        <CheckCircle2 className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-emerald-600" />
+                      )}
+                    </div>
+                  </div>
+                </div>
 
-              <div className="space-y-2">
-                <label className="block text-sm font-semibold text-slate-900">
-                  Insurance Type Needed
-                </label>
-                <select
-                  name="insuranceType"
-                  value={formData.insuranceType}
-                  onChange={handleInputChange}
-                  className="w-full px-4 py-3 bg-white/80 border border-slate-200 rounded-xl focus:ring-2 focus:ring-brand-jade-500 focus:border-brand-jade-500 transition-all duration-300 hover:bg-white focus:bg-white"
-                >
-                  <option value="">Select insurance type</option>
-                  <option value="Health Insurance">Health Insurance</option>
-                  <option value="Life Insurance">Life Insurance</option>
-                  <option value="Both">Both</option>
-                  <option value="Not Sure">Not Sure</option>
-                </select>
-              </div>
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div className="space-y-2 relative">
+                    <label className="block text-sm font-semibold text-slate-900">
+                      Email Address <span className="text-brand-danger-500">*</span>
+                    </label>
+                    <div className="relative">
+                      <input
+                        type="email"
+                        name="email"
+                        required
+                        value={formData.email}
+                        onChange={handleInputChange}
+                        className={`w-full px-4 py-3 bg-white/80 border rounded-xl focus:ring-2 focus:ring-brand-jade-500 focus:border-brand-jade-500 transition-all duration-300 hover:bg-white focus:bg-white ${
+                          validatedFields.email ? 'border-emerald-300' : 'border-slate-200'
+                        }`}
+                        placeholder="your@email.com"
+                      />
+                      {validatedFields.email && (
+                        <CheckCircle2 className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-emerald-600" />
+                      )}
+                    </div>
+                  </div>
+                  
+                  <div className="space-y-2 relative">
+                    <label className="block text-sm font-semibold text-slate-900">
+                      Your State <span className="text-brand-danger-500">*</span>
+                    </label>
+                    <div className="relative">
+                      <select
+                        name="state"
+                        required
+                        value={formData.state}
+                        onChange={handleInputChange}
+                        className={`w-full px-4 py-3 bg-white/80 border rounded-xl focus:ring-2 focus:ring-brand-jade-500 focus:border-brand-jade-500 transition-all duration-300 hover:bg-white focus:bg-white ${
+                          validatedFields.state ? 'border-emerald-300' : 'border-slate-200'
+                        }`}
+                      >
+                        <option value="">Select your state</option>
+                        <option value="Florida">Florida</option>
+                        <option value="Georgia">Georgia</option>
+                        <option value="South Carolina">South Carolina</option>
+                        <option value="Tennessee">Tennessee</option>
+                        <option value="Alabama">Alabama</option>
+                        <option value="Texas">Texas</option>
+                        <option value="Other">Other</option>
+                      </select>
+                      {validatedFields.state && (
+                        <CheckCircle2 className="absolute right-10 top-1/2 -translate-y-1/2 w-5 h-5 text-emerald-600" />
+                      )}
+                    </div>
+                  </div>
+                </div>
 
-              <div className="space-y-2">
-                <label className="block text-sm font-semibold text-slate-900">
-                  Message
-                </label>
-                <textarea
-                  name="message"
-                  rows={6}
-                  value={formData.message}
-                  onChange={handleInputChange}
-                  className="w-full px-4 py-3 bg-white/80 border border-slate-200 rounded-xl focus:ring-2 focus:ring-brand-jade-500 focus:border-brand-jade-500 transition-all duration-300 resize-none hover:bg-white focus:bg-white"
-                  placeholder="Tell me about your insurance needs, questions, or concerns..."
-                />
-              </div>
+                <div className="space-y-2 relative">
+                  <label className="block text-sm font-semibold text-slate-900">
+                    Message
+                  </label>
+                  <div className="relative">
+                    <textarea
+                      name="message"
+                      rows={6}
+                      maxLength={MAX_MESSAGE_LENGTH}
+                      value={formData.message}
+                      onChange={handleInputChange}
+                      className={`w-full px-4 py-3 bg-white/80 border rounded-xl focus:ring-2 focus:ring-brand-jade-500 focus:border-brand-jade-500 transition-all duration-300 resize-none hover:bg-white focus:bg-white ${
+                        validatedFields.message ? 'border-emerald-300' : 'border-slate-200'
+                      }`}
+                      placeholder="Tell me about your insurance needs, questions, or concerns..."
+                    />
+                    {validatedFields.message && (
+                      <CheckCircle2 className="absolute right-3 top-3 w-5 h-5 text-emerald-600" />
+                    )}
+                  </div>
+                  <div className="flex justify-between items-center text-xs text-slate-500">
+                    <span>Optional - helps me prepare for our conversation</span>
+                    <span className={messageLength > MAX_MESSAGE_LENGTH * 0.9 ? 'text-amber-600 font-medium' : ''}>
+                      {messageLength}/{MAX_MESSAGE_LENGTH} characters
+                    </span>
+                  </div>
+                </div>
+
+                {/* Progressive Disclosure Toggle */}
+                <div className="border-t border-slate-200 pt-4">
+                  <button
+                    type="button"
+                    onClick={() => setShowAdvancedOptions(!showAdvancedOptions)}
+                    className="flex items-center gap-2 text-sm font-medium text-slate-700 hover:text-brand-jade-600 transition-colors duration-200"
+                  >
+                    <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${showAdvancedOptions ? 'rotate-180' : ''}`} />
+                    {showAdvancedOptions ? 'Hide' : 'Show'} Advanced Options
+                  </button>
+                </div>
+
+                {/* Advanced Options with Animation */}
+                <AnimatePresence>
+                  {showAdvancedOptions && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: 'auto', opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.3 }}
+                      className="overflow-hidden"
+                    >
+                      <div className="space-y-6 pt-2">
+                        <div className="space-y-2">
+                          <label className="block text-sm font-semibold text-slate-900">
+                            Insurance Type Needed
+                          </label>
+                          <select
+                            name="insuranceType"
+                            value={formData.insuranceType}
+                            onChange={handleInputChange}
+                            className="w-full px-4 py-3 bg-white/80 border border-slate-200 rounded-xl focus:ring-2 focus:ring-brand-jade-500 focus:border-brand-jade-500 transition-all duration-300 hover:bg-white focus:bg-white"
+                          >
+                            <option value="">Select insurance type</option>
+                            <option value="Health Insurance">Health Insurance</option>
+                            <option value="Life Insurance">Life Insurance</option>
+                            <option value="Both">Both</option>
+                            <option value="Not Sure">Not Sure</option>
+                          </select>
+                        </div>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
 
               <p className="text-xs text-slate-500 text-center">
                 Your privacy is important to us. The information you provide helps us prepare for our consultation. We will not share your data or subject you to high-pressure sales calls.
@@ -423,39 +619,28 @@ export default function EnhancedMessageForm() {
                 </div>
               </button>
               
-              {submitStatus === 'success' && (
-                <motion.div 
-                  className="flex items-center justify-center gap-2 text-green-700 bg-green-50 px-4 py-3 rounded-xl border border-green-200"
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <Check className="w-4 h-4" />
-                  <span className="font-medium">Message sent successfully! I'll respond within 4 business hours.</span>
-                </motion.div>
-              )}
-              
-              {submitStatus === 'error' && (
-                <motion.div 
-                  className="flex items-center justify-center gap-2 text-red-700 bg-red-50 px-4 py-3 rounded-xl border border-red-200"
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <AlertCircle className="w-4 h-4" />
-                  <span className="font-medium">{errorMessage || 'Failed to send message. Please try again.'}</span>
-                </motion.div>
-              )}
+                {submitStatus === 'error' && (
+                  <motion.div
+                    className="flex items-center justify-center gap-2 text-red-700 bg-red-50 px-4 py-3 rounded-xl border border-red-200"
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <AlertCircle className="w-4 h-4" />
+                    <span className="font-medium">{errorMessage || 'Failed to send message. Please try again.'}</span>
+                  </motion.div>
+                )}
 
-              <div className="text-center space-y-2">
-                <p className="text-sm font-medium text-slate-700">
-                  I personally read and respond to every message within 4 business hours.
-                </p>
-                <p className="text-xs text-slate-500">
-                  Your information is secure and will never be shared with third parties.
-                </p>
-              </div>
-            </form>
+                <div className="text-center space-y-2">
+                  <p className="text-sm font-medium text-slate-700">
+                    I personally read and respond to every message within 24 hours.
+                  </p>
+                  <p className="text-xs text-slate-500">
+                    Your information is secure and will never be shared with third parties.
+                  </p>
+                </div>
+              </form>
+            )}
           </div>
         </motion.div>
       </div>

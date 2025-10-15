@@ -86,7 +86,7 @@ export default function OfficeLocationLuxury() {
                 </div>
                 <div>
                   <div className="font-semibold text-white text-lg mb-1">Licensed in Multiple States</div>
-                  <div className="text-slate-300 leading-relaxed">Serving Florida, Michigan, and North Carolina with plans for nationwide expansion.</div>
+                  <div className="text-slate-300 leading-relaxed">Serving Florida, Georgia, South Carolina, Tennessee, Alabama, and Texas.</div>
                 </div>
               </motion.div>
 

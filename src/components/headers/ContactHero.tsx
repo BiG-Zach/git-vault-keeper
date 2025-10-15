@@ -69,11 +69,11 @@ export default function ContactHero() {
           </div>
           <div className="flex items-center gap-2">
             <div className="w-3 h-3 bg-blue-400 rounded-full"></div>
-            <span className="text-sm font-medium">3 States Coverage</span>
+            <span className="text-sm font-medium">6 States Coverage</span>
           </div>
           <div className="flex items-center gap-2">
             <div className="w-3 h-3 bg-teal-400 rounded-full"></div>
-            <span className="text-sm font-medium">&lt;4hr Response</span>
+            <span className="text-sm font-medium">24hr Response Guarantee</span>
           </div>
         </div>
       </div>

@@ -115,7 +115,17 @@ export default function PremiumContactMethods() {
       {/* Content with enhanced backdrop */}
       <div className="relative z-10 backdrop-blur-[0.5px]">
       <div className="text-center mb-12">
-        <motion.h2 
+        <motion.div
+          className="inline-flex items-center gap-2 bg-emerald-100 rounded-full px-6 py-3 mb-6"
+          initial={prefersReducedMotion ? {} : { opacity: 0, y: 20 }}
+          whileInView={prefersReducedMotion ? {} : { opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <Phone className="w-4 h-4 text-emerald-600" />
+          <span className="text-emerald-700 font-bold text-sm">CHOOSE YOUR PREFERRED METHOD</span>
+        </motion.div>
+        <motion.h2
           className="text-3xl md:text-4xl lg:text-5xl font-luxury-serif font-bold text-slate-900 mb-6"
           initial={prefersReducedMotion ? {} : { opacity: 0, y: 20 }}
           whileInView={prefersReducedMotion ? {} : { opacity: 1, y: 0 }}
@@ -124,14 +134,14 @@ export default function PremiumContactMethods() {
         >
           Connect Directly
         </motion.h2>
-        <motion.p 
+        <motion.p
           className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed"
           initial={prefersReducedMotion ? {} : { opacity: 0, y: 20 }}
           whileInView={prefersReducedMotion ? {} : { opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.1 }}
         >
-          Multiple ways to reach me personally – no call centers, no middlemen
+          Three primary ways to reach me personally – choose what works best for your situation
         </motion.p>
       </div>
 
@@ -149,10 +159,15 @@ export default function PremiumContactMethods() {
             title="(689) 325-6570"
             subtitle="Call or Text Me Directly"
           >
+            <div className="mb-4 p-3 bg-emerald-50 rounded-lg border border-emerald-200">
+              <p className="text-sm font-semibold text-emerald-900">
+                <span className="text-emerald-600">Best for:</span> Immediate questions and quick guidance
+              </p>
+            </div>
             <div className="space-y-4 mb-6">
               <div className="flex items-center gap-3">
                 <CheckCircle className="w-5 h-5 text-teal-500 flex-shrink-0" />
-                <span className="text-slate-700">Immediate response during business hours - 24-hour callback guarantee</span>
+                <span className="text-slate-700">Immediate response during business hours</span>
               </div>
               <div className="flex items-center gap-3">
                 <CheckCircle className="w-5 h-5 text-teal-500 flex-shrink-0" />
@@ -160,11 +175,7 @@ export default function PremiumContactMethods() {
               </div>
               <div className="flex items-center gap-3">
                 <CheckCircle className="w-5 h-5 text-teal-500 flex-shrink-0" />
-                <span className="text-slate-700">Available by phone 9 AM - 6 PM EST, Monday-Friday</span>
-              </div>
-              <div className="flex items-center gap-3">
-                <CheckCircle className="w-5 h-5 text-teal-500 flex-shrink-0" />
-                <span className="text-slate-700">Text for after-hours questions - I'll respond quickly</span>
+                <span className="text-slate-700">Available 9 AM - 6 PM EST, Monday-Friday</span>
               </div>
             </div>
             <VerificationBadge className="mb-6" />
@@ -182,25 +193,26 @@ export default function PremiumContactMethods() {
         <motion.div variants={prefersReducedMotion ? {} : itemVariants}>
           <ContactCard
             icon={<Calendar className="w-6 h-6" />}
-            title="Schedule Time with Me"
-            subtitle="Personal Consultation"
+            title="Schedule Consultation"
+            subtitle="Personal Planning Session"
           >
+            <div className="mb-4 p-3 bg-blue-50 rounded-lg border border-blue-200">
+              <p className="text-sm font-semibold text-blue-900">
+                <span className="text-blue-600">Best for:</span> In-depth planning and personalized recommendations
+              </p>
+            </div>
             <div className="space-y-4 mb-6">
               <div className="flex items-center gap-3">
                 <CheckCircle className="w-5 h-5 text-teal-500 flex-shrink-0" />
-                <span className="text-slate-700">Same-day availability - evening and weekend slots available</span>
+                <span className="text-slate-700">Same-day availability with flexible scheduling</span>
               </div>
               <div className="flex items-center gap-3">
                 <CheckCircle className="w-5 h-5 text-teal-500 flex-shrink-0" />
-                <span className="text-slate-700">Phone or virtual consultations tailored to you</span>
+                <span className="text-slate-700">30-45 minute dedicated consultation</span>
               </div>
               <div className="flex items-center gap-3">
                 <CheckCircle className="w-5 h-5 text-teal-500 flex-shrink-0" />
-                <span className="text-slate-700">Follow-up within 24 hours to confirm details</span>
-              </div>
-              <div className="flex items-center gap-3">
-                <CheckCircle className="w-5 h-5 text-teal-500 flex-shrink-0" />
-                <span className="text-slate-700">Free 15-30 minute consultations</span>
+                <span className="text-slate-700">Phone or virtual - your choice</span>
               </div>
             </div>
             <a
@@ -215,37 +227,38 @@ export default function PremiumContactMethods() {
           </ContactCard>
         </motion.div>
 
-        {/* Email Contact */}
+        {/* Contact Form - Now Primary Method */}
         <motion.div variants={prefersReducedMotion ? {} : itemVariants}>
           <ContactCard
             icon={<Mail className="w-6 h-6" />}
-            title="Email Me Directly"
-            subtitle="zbradford@bradfordinformedguidance.com"
+            title="Send Detailed Message"
+            subtitle="Contact Form Below"
           >
+            <div className="mb-4 p-3 bg-slate-50 rounded-lg border border-slate-200">
+              <p className="text-sm font-semibold text-slate-900">
+                <span className="text-slate-600">Best for:</span> Detailed inquiries and document sharing
+              </p>
+            </div>
             <div className="space-y-4 mb-6">
               <div className="flex items-center gap-3">
                 <CheckCircle className="w-5 h-5 text-teal-500 flex-shrink-0" />
-                <span className="text-slate-700">Detailed questions welcome - I read every email</span>
+                <span className="text-slate-700">Share detailed information and questions</span>
               </div>
               <div className="flex items-center gap-3">
                 <CheckCircle className="w-5 h-5 text-teal-500 flex-shrink-0" />
-                <span className="text-slate-700">24-hour response guarantee - no obligation consultation</span>
+                <span className="text-slate-700">24-hour response guarantee</span>
               </div>
               <div className="flex items-center gap-3">
                 <CheckCircle className="w-5 h-5 text-teal-500 flex-shrink-0" />
-                <span className="text-slate-700">Secure document sharing available</span>
-              </div>
-              <div className="flex items-center gap-3">
-                <CheckCircle className="w-5 h-5 text-teal-500 flex-shrink-0" />
-                <span className="text-slate-700">Perfect for non-urgent questions</span>
+                <span className="text-slate-700">Perfect for complex situations</span>
               </div>
             </div>
             <a
-              href="mailto:zbradford@bradfordinformedguidance.com"
+              href="#contact-form"
               className="group/btn inline-flex items-center justify-center w-full px-6 py-4 bg-slate-600 text-white font-semibold rounded-xl shadow-lg hover:bg-slate-700 hover:shadow-xl transform hover:scale-105 transition-all duration-300"
             >
               <Mail className="w-5 h-5 mr-2 group-hover/btn:scale-110 transition-transform duration-300" />
-              Send Email
+              Go to Contact Form
             </a>
           </ContactCard>
         </motion.div>

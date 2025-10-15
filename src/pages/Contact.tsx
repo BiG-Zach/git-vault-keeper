@@ -1,15 +1,25 @@
 import { Phone, Calendar, MessageCircle, Mail, ShieldCheck, Lock, Clock } from 'lucide-react';
+import { useEffect } from 'react';
 import SEO from "../components/SEO";
 import ContactHero from "../components/headers/ContactHero";
 import ContactStatisticsSection from "../components/contact/ContactStatisticsSection";
 import PremiumContactMethods from "../components/contact/PremiumContactMethods";
 import ContactTrustSignals from "../components/contact/ContactTrustSignals";
+import ConsultationGuideSection from "../components/contact/ConsultationGuideSection";
 import EnhancedMessageForm from "../components/contact/EnhancedMessageForm";
 import OfficeLocationLuxury from "../components/contact/OfficeLocationLuxury";
 import PersonalGuaranteeSection from "../components/contact/PersonalGuaranteeSection";
 import { localBusinessSchema, serviceSchema, breadcrumbSchema } from "../utils/schema";
 
 export default function ContactPage() {
+  // Add smooth scroll behavior
+  useEffect(() => {
+    document.documentElement.style.scrollBehavior = 'smooth';
+    return () => {
+      document.documentElement.style.scrollBehavior = 'auto';
+    };
+  }, []);
+
   return (
     <>
       <SEO
@@ -48,7 +58,7 @@ export default function ContactPage() {
         {/* Contact Statistics Section (Dark) */}
         <ContactStatisticsSection />
 
-        <section className="py-16 bg-white border-t border-slate-200">
+        <section id="contact-methods" className="py-16 bg-white border-t border-slate-200 scroll-mt-20">
           <div className="container-default grid gap-10 lg:grid-cols-[1.1fr_0.9fr] items-start">
             <div className="space-y-4">
               <span className="inline-flex items-center gap-2 rounded-full bg-emerald-100 px-4 py-1.5 text-sm font-semibold text-emerald-700">
@@ -105,7 +115,10 @@ export default function ContactPage() {
         {/* Trust Signals Section (Light) - Reduces form friction */}
         <ContactTrustSignals />
 
-        <section className="py-16 bg-slate-50">
+        {/* Consultation Guide Section - Educational Authority */}
+        <ConsultationGuideSection />
+
+        <section id="licensed-states" className="py-16 bg-slate-50 scroll-mt-20">
           <div className="container-default grid gap-8 lg:grid-cols-[1.1fr_0.9fr] items-start">
             <div className="space-y-4">
               <span className="inline-flex items-center gap-2 rounded-full bg-emerald-100 px-4 py-1.5 text-sm font-semibold text-emerald-700">
@@ -128,7 +141,7 @@ export default function ContactPage() {
         {/* Enhanced Message Form (Light) */}
         <EnhancedMessageForm />
 
-        <section className="py-14 bg-slate-900 text-white">
+        <section id="privacy-security" className="py-14 bg-slate-900 text-white scroll-mt-20">
           <div className="container-default grid gap-8 lg:grid-cols-[1.1fr_0.9fr] items-start">
             <div className="space-y-4">
               <h2 className="text-3xl font-bold md:text-4xl">Your information stays secure</h2>
