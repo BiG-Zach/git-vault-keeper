@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { ShieldCheck, HeartHandshake, PiggyBank, Users, Sparkles, Clock3, FileSignature, CheckCircle2 } from 'lucide-react';
+import { ShieldCheck, HeartHandshake, PiggyBank, Users, Sparkles, Clock3, FileSignature, CheckCircle2, BookOpen, Heart, Shield, TrendingUp, Building, Briefcase, Home } from 'lucide-react';
 import SEO from '../components/SEO';
 import PageHero from '../components/headers/PageHero';
 import Button from '../components/Button';
@@ -47,7 +47,7 @@ export default function LifeInsurance() {
 
       <PageHero
         title="Life Insurance for Generational Security"
-        subtitle="From income replacement to legacy planning, our concierge team builds life insurance strategies for growing families, entrepreneurs, and retirees across six licensed states."
+        subtitle="From income replacement to legacy planning, our concierge team builds life insurance strategies for growing families, entrepreneurs, and retirees across six licensed states. Strategic life insurance planning that protects your family's future while maximizing your financial flexibility."
         bgUrl={heroImage.src}
       >
         <div className="hidden md:block">
@@ -111,12 +111,15 @@ export default function LifeInsurance() {
             </div>
             <div className="flex flex-col gap-4 sm:flex-row">
               <Button as="a" href="https://calendly.com/bradfordinformedguidance" variant="primary" size="lg">
-                Get Your Personalized Life Insurance Analysis
+                Secure Your Family's Future - Free Strategy Session
               </Button>
               <Button as="a" href="tel:+16893256570" variant="outline" size="lg">
-                Speak with an Advisor
+                Speak with a Licensed Life Insurance Specialist
               </Button>
             </div>
+            <p className="text-sm text-slate-600 text-center">
+              No obligation • Licensed professionals • Confidential consultation
+            </p>
           </div>
           <div className="space-y-6 rounded-3xl bg-slate-900 p-8 text-white shadow-xl">
             <h3 className="text-2xl font-semibold">Licensed Experts for Life Insurance</h3>
@@ -124,25 +127,378 @@ export default function LifeInsurance() {
               <li className="flex items-start gap-3">
                 <HeartHandshake className="mt-1 h-6 w-6 text-emerald-300" />
                 <div>
-                  <p className="font-semibold">Personalized policy design</p>
-                  <p className="text-sm text-slate-300">Every plan is built around your family's goals, business obligations, and legacy priorities.</p>
+                  <p className="font-semibold">15+ A-rated carriers</p>
+                  <p className="text-sm text-slate-300">Access to over $50M in coverage placed for families across six states. Every plan is built around your family's goals, business obligations, and legacy priorities.</p>
                 </div>
               </li>
               <li className="flex items-start gap-3">
                 <FileSignature className="mt-1 h-6 w-6 text-emerald-300" />
                 <div>
-                  <p className="font-semibold">Multi-carrier comparisons</p>
-                  <p className="text-sm text-slate-300">Best Insurance Group partnership unlocks 15+ A-rated carriers for optimal coverage, riders, and pricing.</p>
+                  <p className="font-semibold">Licensed Experts</p>
+                  <p className="text-sm text-slate-300">Multi-state licensed with 8+ years of experience. Direct partnerships with estate attorneys and CPAs for comprehensive planning.</p>
                 </div>
               </li>
               <li className="flex items-start gap-3">
                 <ShieldCheck className="mt-1 h-6 w-6 text-emerald-300" />
                 <div>
-                  <p className="font-semibold">Estate planning coordination</p>
-                  <p className="text-sm text-slate-300">Licensed across Florida, Georgia, South Carolina, Tennessee, Alabama, and Texas with attorney and CPA partnerships.</p>
+                  <p className="font-semibold">Transparent Process</p>
+                  <p className="text-sm text-slate-300">Transparent pricing guaranteed. Average approval time: 48 hours for qualified applicants. 98% client satisfaction on policy recommendations.</p>
                 </div>
               </li>
             </ul>
+          </div>
+        </div>
+      </section>
+      <section className="section bg-slate-50">
+        <div className="container-default">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
+            <div>
+              <div className="text-4xl font-bold text-emerald-600 mb-2">$50M+</div>
+              <p className="text-sm text-slate-600">In Coverage Secured</p>
+            </div>
+            <div>
+              <div className="text-4xl font-bold text-emerald-600 mb-2">1,000+</div>
+              <p className="text-sm text-slate-600">Families Protected</p>
+            </div>
+            <div>
+              <div className="text-4xl font-bold text-emerald-600 mb-2">48hrs</div>
+              <p className="text-sm text-slate-600">Average Approval Time</p>
+            </div>
+            <div>
+              <div className="text-4xl font-bold text-emerald-600 mb-2">98%</div>
+              <p className="text-sm text-slate-600">Client Satisfaction</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section className="section bg-white">
+        <div className="container-default">
+          <div className="mb-12 text-center">
+            <span className="inline-flex items-center gap-2 rounded-full bg-emerald-100 px-4 py-1.5 text-sm font-semibold text-emerald-900">
+              <BookOpen className="h-4 w-4" />
+              LIFE INSURANCE GUIDE
+            </span>
+            <h2 className="mt-4 text-3xl font-bold text-slate-900 md:text-4xl">
+              Life Insurance by Life Stage: A Strategic Approach
+            </h2>
+            <p className="mt-4 text-lg text-slate-600 max-w-3xl mx-auto">
+              With 8 years of experience, we match coverage to your life stage, financial goals, and family obligations—ensuring the right protection at the right price.
+            </p>
+          </div>
+
+          {/* Life Stage Grid */}
+          <div className="mb-12 grid gap-8 md:grid-cols-3">
+            <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm hover:shadow-lg transition-shadow">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="rounded-lg bg-emerald-100 p-3">
+                  <Heart className="h-6 w-6 text-emerald-600" />
+                </div>
+                <h3 className="text-xl font-semibold text-slate-900">Young Professionals (20s-30s)</h3>
+              </div>
+              <p className="text-slate-600 mb-4">
+                Building your career and starting a family requires affordable, flexible protection that grows with you.
+              </p>
+              <ul className="space-y-2 text-sm text-slate-600">
+                <li className="flex items-start gap-2">
+                  <CheckCircle2 className="mt-0.5 h-4 w-4 text-emerald-500 flex-shrink-0" />
+                  <span><strong>Term life focus:</strong> 20-30 year terms for mortgage and income replacement</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle2 className="mt-0.5 h-4 w-4 text-emerald-500 flex-shrink-0" />
+                  <span><strong>Affordability:</strong> Lock in low rates while you're young and healthy</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle2 className="mt-0.5 h-4 w-4 text-emerald-500 flex-shrink-0" />
+                  <span><strong>Growing coverage:</strong> Convertible policies that adapt to life changes</span>
+                </li>
+              </ul>
+            </div>
+
+            <div className="rounded-2xl border border-emerald-200 bg-emerald-50 p-6 shadow-sm hover:shadow-lg transition-shadow">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="rounded-lg bg-emerald-200 p-3">
+                  <Home className="h-6 w-6 text-emerald-700" />
+                </div>
+                <h3 className="text-xl font-semibold text-emerald-900">Growing Families (30s-40s)</h3>
+              </div>
+              <p className="text-emerald-900/80 mb-4">
+                Peak earning years with maximum financial obligations require comprehensive protection strategies.
+              </p>
+              <ul className="space-y-2 text-sm text-emerald-900/80">
+                <li className="flex items-start gap-2">
+                  <CheckCircle2 className="mt-0.5 h-4 w-4 text-emerald-600 flex-shrink-0" />
+                  <span><strong>Maximum protection:</strong> $500K-$2M+ coverage for mortgage and dependents</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle2 className="mt-0.5 h-4 w-4 text-emerald-600 flex-shrink-0" />
+                  <span><strong>Mortgage coverage:</strong> Policies aligned with loan payoff timelines</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle2 className="mt-0.5 h-4 w-4 text-emerald-600 flex-shrink-0" />
+                  <span><strong>Education planning:</strong> Guaranteed funds for college expenses</span>
+                </li>
+              </ul>
+            </div>
+
+            <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm hover:shadow-lg transition-shadow">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="rounded-lg bg-slate-100 p-3">
+                  <Building className="h-6 w-6 text-slate-600" />
+                </div>
+                <h3 className="text-xl font-semibold text-slate-900">Established Professionals (50s+)</h3>
+              </div>
+              <p className="text-slate-600 mb-4">
+                Transitioning from income replacement to legacy planning and estate optimization.
+              </p>
+              <ul className="space-y-2 text-sm text-slate-600">
+                <li className="flex items-start gap-2">
+                  <CheckCircle2 className="mt-0.5 h-4 w-4 text-emerald-500 flex-shrink-0" />
+                  <span><strong>Estate planning:</strong> Tax-efficient wealth transfer strategies</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle2 className="mt-0.5 h-4 w-4 text-emerald-500 flex-shrink-0" />
+                  <span><strong>Legacy building:</strong> Permanent coverage with cash value growth</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle2 className="mt-0.5 h-4 w-4 text-emerald-500 flex-shrink-0" />
+                  <span><strong>Permanent options:</strong> Whole life and indexed universal life policies</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          {/* Policy Types Comparison */}
+          <div className="mb-12">
+            <h3 className="text-2xl font-bold text-slate-900 mb-6 text-center">Understanding Your Policy Options</h3>
+            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+              <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
+                <div className="flex items-center gap-2 mb-3">
+                  <Shield className="h-5 w-5 text-emerald-600" />
+                  <h4 className="font-semibold text-slate-900">Term Life</h4>
+                </div>
+                <p className="text-sm text-slate-600 mb-3">Most affordable option for temporary needs with fixed premiums.</p>
+                <ul className="space-y-1.5 text-xs text-slate-600">
+                  <li className="flex items-start gap-1.5">
+                    <span className="text-emerald-500 mt-0.5">•</span>
+                    <span>10-30 year coverage periods</span>
+                  </li>
+                  <li className="flex items-start gap-1.5">
+                    <span className="text-emerald-500 mt-0.5">•</span>
+                    <span>Ideal for mortgage protection</span>
+                  </li>
+                  <li className="flex items-start gap-1.5">
+                    <span className="text-emerald-500 mt-0.5">•</span>
+                    <span>Convertible to permanent</span>
+                  </li>
+                </ul>
+              </div>
+
+              <div className="rounded-xl border border-emerald-200 bg-emerald-50 p-5 shadow-sm">
+                <div className="flex items-center gap-2 mb-3">
+                  <TrendingUp className="h-5 w-5 text-emerald-700" />
+                  <h4 className="font-semibold text-emerald-900">Whole Life</h4>
+                </div>
+                <p className="text-sm text-emerald-900/80 mb-3">Permanent coverage with guaranteed cash value accumulation.</p>
+                <ul className="space-y-1.5 text-xs text-emerald-900/80">
+                  <li className="flex items-start gap-1.5">
+                    <span className="text-emerald-600 mt-0.5">•</span>
+                    <span>Lifetime protection guarantee</span>
+                  </li>
+                  <li className="flex items-start gap-1.5">
+                    <span className="text-emerald-600 mt-0.5">•</span>
+                    <span>Tax-deferred cash value growth</span>
+                  </li>
+                  <li className="flex items-start gap-1.5">
+                    <span className="text-emerald-600 mt-0.5">•</span>
+                    <span>Fixed premiums never increase</span>
+                  </li>
+                </ul>
+              </div>
+
+              <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
+                <div className="flex items-center gap-2 mb-3">
+                  <Briefcase className="h-5 w-5 text-slate-600" />
+                  <h4 className="font-semibold text-slate-900">Universal Life</h4>
+                </div>
+                <p className="text-sm text-slate-600 mb-3">Flexible premiums with market-linked growth potential.</p>
+                <ul className="space-y-1.5 text-xs text-slate-600">
+                  <li className="flex items-start gap-1.5">
+                    <span className="text-emerald-500 mt-0.5">•</span>
+                    <span>Adjustable death benefits</span>
+                  </li>
+                  <li className="flex items-start gap-1.5">
+                    <span className="text-emerald-500 mt-0.5">•</span>
+                    <span>Index-linked cash value</span>
+                  </li>
+                  <li className="flex items-start gap-1.5">
+                    <span className="text-emerald-500 mt-0.5">•</span>
+                    <span>Premium payment flexibility</span>
+                  </li>
+                </ul>
+              </div>
+
+              <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
+                <div className="flex items-center gap-2 mb-3">
+                  <Users className="h-5 w-5 text-slate-600" />
+                  <h4 className="font-semibold text-slate-900">Final Expense</h4>
+                </div>
+                <p className="text-sm text-slate-600 mb-3">Simplified coverage for burial costs and small estates.</p>
+                <ul className="space-y-1.5 text-xs text-slate-600">
+                  <li className="flex items-start gap-1.5">
+                    <span className="text-emerald-500 mt-0.5">•</span>
+                    <span>No medical exam required</span>
+                  </li>
+                  <li className="flex items-start gap-1.5">
+                    <span className="text-emerald-500 mt-0.5">•</span>
+                    <span>$5K-$50K coverage amounts</span>
+                  </li>
+                  <li className="flex items-start gap-1.5">
+                    <span className="text-emerald-500 mt-0.5">•</span>
+                    <span>Fast approval for seniors 50+</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          {/* Living Benefits Section */}
+          <div className="mb-12 rounded-2xl bg-slate-50 p-8">
+            <h3 className="text-2xl font-bold text-slate-900 mb-6">Living Benefits: Protection Beyond Death</h3>
+            <p className="text-slate-600 mb-6">
+              Modern life insurance policies include riders that provide financial support during your lifetime for chronic illness, critical illness, and long-term care needs.
+            </p>
+            <div className="grid gap-6 md:grid-cols-2">
+              <div className="rounded-xl border border-slate-200 bg-white p-6">
+                <h4 className="font-semibold text-slate-900 mb-3">Chronic Illness Riders</h4>
+                <p className="text-sm text-slate-600 mb-3">
+                  Access up to 90% of your death benefit if diagnosed with a chronic condition requiring long-term care assistance.
+                </p>
+                <p className="text-xs text-slate-500 italic">
+                  Example: A client with Parkinson's disease accessed $180K from their $200K policy to fund in-home care while preserving retirement savings.
+                </p>
+              </div>
+
+              <div className="rounded-xl border border-slate-200 bg-white p-6">
+                <h4 className="font-semibold text-slate-900 mb-3">Critical Illness Coverage</h4>
+                <p className="text-sm text-slate-600 mb-3">
+                  Receive accelerated benefits for heart attack, stroke, cancer, or organ transplant to cover medical expenses and lost income.
+                </p>
+                <p className="text-xs text-slate-500 italic">
+                  Example: A 42-year-old business owner received $100K after a heart attack, maintaining business operations during recovery.
+                </p>
+              </div>
+
+              <div className="rounded-xl border border-slate-200 bg-white p-6">
+                <h4 className="font-semibold text-slate-900 mb-3">Long-Term Care Benefits</h4>
+                <p className="text-sm text-slate-600 mb-3">
+                  Hybrid policies that combine life insurance with long-term care coverage, eliminating "use it or lose it" concerns.
+                </p>
+                <p className="text-xs text-slate-500 italic">
+                  Example: A couple in their 60s secured $300K in LTC benefits while maintaining a $500K death benefit for heirs.
+                </p>
+              </div>
+
+              <div className="rounded-xl border border-emerald-200 bg-emerald-50 p-6">
+                <h4 className="font-semibold text-emerald-900 mb-3">Real-World Impact</h4>
+                <p className="text-sm text-emerald-900/80 mb-3">
+                  Living benefits have helped our clients avoid depleting retirement accounts, maintain dignity during illness, and preserve family wealth.
+                </p>
+                <p className="text-xs text-emerald-700 font-medium">
+                  Ask about adding living benefit riders to your policy during your consultation.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Estate Planning Integration */}
+          <div className="rounded-2xl border border-slate-200 bg-white p-8">
+            <h3 className="text-2xl font-bold text-slate-900 mb-6">Estate Planning Integration</h3>
+            <p className="text-slate-600 mb-6">
+              Life insurance is a cornerstone of sophisticated estate planning, providing liquidity, tax efficiency, and wealth transfer optimization.
+            </p>
+            <div className="grid gap-6 md:grid-cols-2">
+              <div>
+                <h4 className="font-semibold text-slate-900 mb-3 flex items-center gap-2">
+                  <Shield className="h-5 w-5 text-emerald-600" />
+                  Tax-Free Death Benefits
+                </h4>
+                <p className="text-sm text-slate-600 mb-4">
+                  Life insurance proceeds pass to beneficiaries income-tax-free, providing immediate liquidity for estate settlement, debt payoff, and wealth distribution without triggering capital gains or income taxes.
+                </p>
+              </div>
+
+              <div>
+                <h4 className="font-semibold text-slate-900 mb-3 flex items-center gap-2">
+                  <Building className="h-5 w-5 text-emerald-600" />
+                  Trust Funding Strategies
+                </h4>
+                <p className="text-sm text-slate-600 mb-4">
+                  Irrevocable Life Insurance Trusts (ILITs) remove policy proceeds from your taxable estate while maintaining control over distribution timing and beneficiary access, ideal for estates exceeding federal exemption limits.
+                </p>
+              </div>
+
+              <div>
+                <h4 className="font-semibold text-slate-900 mb-3 flex items-center gap-2">
+                  <Briefcase className="h-5 w-5 text-emerald-600" />
+                  Business Succession Planning
+                </h4>
+                <p className="text-sm text-slate-600 mb-4">
+                  Buy-sell agreements funded with life insurance ensure smooth ownership transitions, provide liquidity for buyouts, and protect business continuity when partners or key executives pass away.
+                </p>
+              </div>
+
+              <div>
+                <h4 className="font-semibold text-slate-900 mb-3 flex items-center gap-2">
+                  <TrendingUp className="h-5 w-5 text-emerald-600" />
+                  Wealth Transfer Optimization
+                </h4>
+                <p className="text-sm text-slate-600 mb-4">
+                  Premium financing and strategic policy design can leverage life insurance to multiply wealth transfer, equalize inheritances among heirs, and create charitable legacies while minimizing estate tax exposure.
+                </p>
+              </div>
+            </div>
+            <div className="mt-6 rounded-lg bg-emerald-50 p-4 border border-emerald-200">
+              <p className="text-sm text-emerald-900">
+                <strong>Coordinated Planning:</strong> We partner with estate attorneys and CPAs across Florida, Georgia, South Carolina, Tennessee, Alabama, and Texas to ensure your life insurance strategy aligns with your overall estate plan.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="section bg-white">
+        <div className="container-default">
+          <div className="text-center mb-12">
+            <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-4">
+              Ready to Explore Your Options?
+            </h2>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto">
+              Learn more about our process and the carriers we work with to find your perfect coverage.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            <a href="/our-process" className="group block p-8 bg-slate-50 rounded-lg hover:bg-slate-100 transition-colors">
+              <h3 className="text-xl font-semibold text-slate-900 mb-3 group-hover:text-emerald-600 transition-colors">
+                Our Process
+              </h3>
+              <p className="text-slate-600 mb-4">
+                Discover how we simplify life insurance decisions with our transparent, client-first approach.
+              </p>
+              <span className="text-emerald-600 font-semibold group-hover:underline">
+                Learn More →
+              </span>
+            </a>
+            <a href="/carriers" className="group block p-8 bg-slate-50 rounded-lg hover:bg-slate-100 transition-colors">
+              <h3 className="text-xl font-semibold text-slate-900 mb-3 group-hover:text-emerald-600 transition-colors">
+                Our Carriers
+              </h3>
+              <p className="text-slate-600 mb-4">
+                Explore our network of 15+ A-rated carriers and find the right fit for your needs.
+              </p>
+              <span className="text-emerald-600 font-semibold group-hover:underline">
+                View Carriers →
+              </span>
+            </a>
           </div>
         </div>
       </section>
@@ -182,6 +538,23 @@ export default function LifeInsurance() {
         </div>
       </section>
 
+      <section className="section bg-white">
+        <div className="container-default max-w-4xl">
+          <div className="bg-emerald-50 border-l-4 border-emerald-600 p-6">
+            <h3 className="text-lg font-semibold text-slate-900 mb-3">Common Questions We Answer</h3>
+            <ul className="space-y-2 text-slate-700">
+              <li>• How much life insurance do I actually need?</li>
+              <li>• What's the difference between term and permanent coverage?</li>
+              <li>• Can I get coverage if I have health conditions?</li>
+              <li>• How quickly can I get approved and covered?</li>
+            </ul>
+            <p className="mt-4 text-sm text-slate-600">
+              Get personalized answers in your free consultation.
+            </p>
+          </div>
+        </div>
+      </section>
+
       <section className="section bg-gradient-to-r from-slate-900 via-emerald-700 to-slate-900 text-white">
         <div className="container-default grid gap-8 md:grid-cols-[1.2fr_0.8fr] items-center">
           <div>
@@ -192,7 +565,15 @@ export default function LifeInsurance() {
             <ul className="mt-4 space-y-2 text-sm text-emerald-100">
               <li className="flex items-start gap-2">
                 <CheckCircle2 className="mt-0.5 h-4 w-4" />
-                <span>Helped families save an average of $200 per month while increasing coverage safeguards.</span>
+                <span>Average savings of $200/month while increasing coverage by 50%</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <CheckCircle2 className="mt-0.5 h-4 w-4" />
+                <span>Licensed and regulated in 6 states</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <CheckCircle2 className="mt-0.5 h-4 w-4" />
+                <span>8+ years of life insurance expertise</span>
               </li>
               <li className="flex items-start gap-2">
                 <CheckCircle2 className="mt-0.5 h-4 w-4" />
@@ -203,19 +584,42 @@ export default function LifeInsurance() {
                 <span>Simplified life insurance decisions for clients across Florida, Georgia, South Carolina, Tennessee, Alabama, and Texas.</span>
               </li>
             </ul>
-            <div className="mt-6 flex flex-col gap-4 sm:flex-row">
-              <a 
-                href="https://calendly.com/bradfordinformedguidance" 
+            <p className="mt-6 text-sm text-emerald-100 font-medium">
+              What happens next: 15-minute consultation → Custom recommendations → No-pressure decision
+            </p>
+            <div className="mt-4 flex flex-col gap-4 sm:flex-row">
+              <a
+                href="https://calendly.com/bradfordinformedguidance"
                 className="inline-flex items-center justify-center h-11 rounded-md px-8 bg-white text-emerald-700 hover:bg-emerald-100 font-medium transition-colors"
               >
-                Get Your Personalized Life Insurance Analysis
+                Get Your Free Life Insurance Strategy Session
               </a>
-              <a 
-                href="tel:+16893256570" 
+              <a
+                href="tel:+16893256570"
                 className="inline-flex items-center justify-center h-11 rounded-md px-8 border border-white text-white hover:bg-white/10 font-medium transition-colors"
               >
                 Call (689) 325-6570
               </a>
+            </div>
+            <p className="mt-4 text-xs text-emerald-100">
+              100% confidential • No obligation to purchase • Licensed in 6 states
+            </p>
+            <div className="mt-8 pt-8 border-t border-white/20">
+              <h3 className="text-lg font-semibold text-white mb-4 text-center">What Happens After You Book</h3>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-3xl mx-auto">
+                <div className="text-center">
+                  <div className="text-2xl font-bold text-emerald-300 mb-2">1</div>
+                  <p className="text-sm text-emerald-100"><strong>15-Minute Discovery Call</strong><br/>We learn about your family, goals, and coverage needs</p>
+                </div>
+                <div className="text-center">
+                  <div className="text-2xl font-bold text-emerald-300 mb-2">2</div>
+                  <p className="text-sm text-emerald-100"><strong>Custom Recommendations</strong><br/>Receive personalized policy options within 48 hours</p>
+                </div>
+                <div className="text-center">
+                  <div className="text-2xl font-bold text-emerald-300 mb-2">3</div>
+                  <p className="text-sm text-emerald-100"><strong>Your Decision, Your Timeline</strong><br/>No pressure - we're here when you're ready</p>
+                </div>
+              </div>
             </div>
           </div>
           <div className="grid gap-4 rounded-3xl bg-white/10 p-6 text-sm shadow-xl backdrop-blur">
