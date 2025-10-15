@@ -112,7 +112,7 @@ export default function PremiumProcessSteps() {
         "24-hour response guarantee for all consultations",
         "Duration: 15-30 minutes with me personally",
         "No cost, no obligation",
-        "Licensed broker in FL, GA, SC, TN, AL, TX",
+        "Licensed broker in licensed states",
         "Evening and weekend appointments available"
       ]
     },
@@ -137,7 +137,7 @@ export default function PremiumProcessSteps() {
       bulletPoints: [
         "Dual verification: TrustMyProducer + NIPR credentials",
         "Licensed & bonded broker since 2017 (8 years experience)",
-        "Multi-state expertise across FL, GA, SC, TN, AL, TX",
+        "Multi-state expertise across licensed markets",
         "No pressure approach - transparent recommendations only",
         "Plain English explanations of all options"
       ]

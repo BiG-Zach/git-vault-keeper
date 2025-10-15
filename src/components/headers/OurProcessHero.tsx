@@ -57,7 +57,7 @@ export default function OurProcessHero() {
              border: '1px solid rgba(255,255,255,0.15)',
              boxShadow: '0 8px 32px rgba(0,0,0,0.3)'
            }}>
-          As your dedicated licensed broker in <span className="font-semibold text-white">Florida, Michigan, and North Carolina</span>, I've perfected a streamlined process that eliminates confusion, saves you thousands, and delivers results in <span className="font-semibold text-white">24 hours or less</span>.
+          As your dedicated licensed broker in <span className="font-semibold text-white">Florida, Georgia, South Carolina, Tennessee, Alabama, and Texas</span>, I've perfected a streamlined process that eliminates confusion, saves you thousands, and delivers results in <span className="font-semibold text-white">24 hours or less</span>.
         </p>
         
         {/* Trust indicators with SEO keywords */}
