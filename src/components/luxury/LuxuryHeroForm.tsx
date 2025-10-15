@@ -2,6 +2,15 @@ import React, { useState, useCallback, useMemo, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Shield, Award, Clock, Users, Phone, MessageSquare, Mail } from 'lucide-react';
 import HCaptcha from '../security/HCaptcha';
+import {
+  getCoverageLabel,
+  getInsuranceStatusLabel,
+  getContactMethodLabel,
+  getContactTimeLabel,
+  formatChildAges,
+  summarizeDemographics,
+  compactStringRecord,
+} from '../../../shared/demographics';
 
 // Static constants - calculated once
 const FORM_BENEFITS = [
@@ -179,6 +188,13 @@ const LuxuryHeroForm = () => {
     setCurrentStep(1);
   }, []);
 
+  const formatChildrenCount = useCallback(() => {
+    if (!formData.numChildren) return '';
+    const parsed = Number.parseInt(formData.numChildren, 10);
+    if (Number.isNaN(parsed) || parsed <= 0) return '';
+    return parsed.toString();
+  }, [formData.numChildren]);
+
   // Include captcha state in dependencies so the latest verified token is available when submitting.
   const submitForm = useCallback(async () => {
     if (!validateStep(3)) return;
@@ -193,6 +209,18 @@ const LuxuryHeroForm = () => {
     setCaptchaError(null);
 
     try {
+      const trimmedFirstName = formData.firstName.trim();
+      const trimmedLastName = formData.lastName.trim();
+      const trimmedEmail = formData.email.trim();
+      const trimmedPhone = formData.phone.trim();
+
+      const coverageLabel = getCoverageLabel(formData.coverageType);
+      const insuranceLabel = getInsuranceStatusLabel(formData.currentInsurance);
+      const contactMethodLabel = getContactMethodLabel(formData.contactMethod);
+      const contactTimeLabel = getContactTimeLabel(formData.bestTime);
+      const childAgeSummary = formatChildAges(formData.childAges);
+      const childrenCount = formatChildrenCount();
+
       // Compile all ages for comprehensive notes
       let agesNote = `Primary: ${formData.yourAge}`;
       if (formData.coverageType === 'couple' || formData.coverageType === 'family') {
@@ -202,29 +230,104 @@ const LuxuryHeroForm = () => {
         agesNote += `, Children: ${formData.childAges.filter(age => age).join(', ')}`;
       }
 
+      const demographicSnapshot = summarizeDemographics({
+        coverageLabel,
+        primaryAge: formData.yourAge,
+        spouseAge: formData.spouseAge,
+        childrenCount,
+        childAges: childAgeSummary,
+        insuranceLabel,
+        preferredContactLabel: contactMethodLabel,
+        contactTimeLabel,
+      });
+
       // Compile comprehensive notes with all form data
-      const notes = `Coverage: ${formData.coverageType}, Ages: ${agesNote}, Current Insurance: ${formData.currentInsurance}, Contact Method: ${formData.contactMethod}, Best Time: ${formData.bestTime}`;
-      
+      const notes = `Coverage: ${coverageLabel || formData.coverageType}, Ages: ${agesNote}, Current Insurance: ${insuranceLabel || formData.currentInsurance}, Contact Method: ${contactMethodLabel || formData.contactMethod}, Best Time: ${contactTimeLabel || formData.bestTime}`;
+
       // Generate unique vendor reference ID
       const vendorRefId = crypto.randomUUID ? crypto.randomUUID() : 'ref_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+
+      const metadata = compactStringRecord({
+        coverage_type_label: coverageLabel,
+        coverage_type_value: formData.coverageType,
+        primary_age: formData.yourAge,
+        spouse_age: formData.spouseAge,
+        number_of_children: childrenCount,
+        child_ages: childAgeSummary,
+        current_insurance_status_label: insuranceLabel,
+        current_insurance_status_value: formData.currentInsurance,
+        preferred_contact_method_label: contactMethodLabel,
+        preferred_contact_method_value: formData.contactMethod,
+        best_time_to_contact_label: contactTimeLabel,
+        best_time_to_contact_value: formData.bestTime,
+        demographic_snapshot: demographicSnapshot,
+        full_name: `${formData.firstName} ${formData.lastName}`.trim(),
+        first_name: trimmedFirstName,
+        last_name: trimmedLastName,
+      });
+
+      const custom = compactStringRecord({
+        coverage_type_label: coverageLabel,
+        coverage_type_value: formData.coverageType,
+        primary_age: formData.yourAge,
+        spouse_age: formData.spouseAge,
+        number_of_children: childrenCount,
+        child_ages: childAgeSummary,
+        current_insurance_status_label: insuranceLabel,
+        current_insurance_status_value: formData.currentInsurance,
+        preferred_contact_method_label: contactMethodLabel,
+        preferred_contact_method_value: formData.contactMethod,
+        best_time_to_contact_label: contactTimeLabel,
+        best_time_to_contact_value: formData.bestTime,
+        demographic_snapshot: demographicSnapshot,
+        full_name: `${trimmedFirstName} ${trimmedLastName}`.trim(),
+        first_name: trimmedFirstName,
+        last_name: trimmedLastName,
+      });
+
+      const requestBody: Record<string, unknown> = {
+        firstName: trimmedFirstName,
+        lastName: trimmedLastName,
+        fullName: `${trimmedFirstName} ${trimmedLastName}`.trim(),
+        email: trimmedEmail,
+        phone: trimmedPhone,
+        phoneNumber: trimmedPhone,
+        zipCode: formData.zipCode,
+        coverageType: formData.coverageType,
+        coverageTypeLabel,
+        yourAge: formData.yourAge,
+        spouseAge: formData.spouseAge,
+        numChildren: formData.numChildren,
+        childAges: formData.childAges,
+        childAgesLabel: childAgeSummary,
+        currentInsurance: formData.currentInsurance,
+        currentInsuranceLabel: insuranceLabel,
+        contactMethod: formData.contactMethod,
+        contactMethodLabel,
+        bestTime: formData.bestTime,
+        bestTimeLabel: contactTimeLabel,
+        leadSource: 'Website – Luxury Hero',
+        notes,
+        demographicSnapshot,
+        proofOfSmsOptInLink: window.location.href,
+        vendorReferenceId: vendorRefId,
+        ...(captchaEnabled && captchaToken ? { hcaptchaToken: captchaToken } : {}),
+      };
+
+      if (Object.keys(metadata).length > 0) {
+        requestBody.metadata = metadata;
+      }
+
+      if (Object.keys(custom).length > 0) {
+        requestBody.custom = custom;
+      }
 
       const response = await fetch('/api/ringy-proxy', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({
-          firstName: formData.firstName,
-          lastName: formData.lastName,
-          email: formData.email,
-          phone: formData.phone,
-          zipCode: formData.zipCode,
-          leadSource: 'Website – Luxury Hero',
-          notes,
-          proofOfSmsOptInLink: window.location.href,
-          vendorReferenceId: vendorRefId,
-          ...(captchaEnabled && captchaToken ? { hcaptchaToken: captchaToken } : {}),
-        })
+        body: JSON.stringify(requestBody)
       });
 
       if (!response.ok) {
@@ -255,6 +358,7 @@ const LuxuryHeroForm = () => {
     captchaLoaded,
     captchaToken,
     formData,
+    formatChildrenCount,
     resetForm,
     validateStep,
   ]);

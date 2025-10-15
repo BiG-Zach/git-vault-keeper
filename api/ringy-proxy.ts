@@ -1,5 +1,13 @@
 import { extractCaptchaToken, stripCaptchaFields } from './utils/captcha';
 import { normalizeContactMethod } from './utils/contact';
+import {
+  getCoverageLabel,
+  getInsuranceStatusLabel,
+  getContactMethodLabel,
+  getContactTimeLabel,
+  formatChildAges,
+  summarizeDemographics,
+} from '../shared/demographics';
 
 // Vercel Edge Function to proxy lead submissions to Ringy CRM
 export const config = {
@@ -152,6 +160,99 @@ function normalizeBoolean(value: unknown): boolean | undefined {
   return undefined;
 }
 
+const sanitizePhone = (value: unknown) => {
+  if (typeof value !== 'string') return '';
+  return value.replace(/\D/g, '');
+};
+
+const toPlainObject = (value: unknown): Record<string, unknown> => {
+  if (!value || typeof value !== 'object' || Array.isArray(value)) return {};
+  return value as Record<string, unknown>;
+};
+
+const toStringRecord = (input: Record<string, unknown>) => {
+  const result: Record<string, string> = {};
+
+  Object.entries(input).forEach(([key, rawValue]) => {
+    if (rawValue === undefined || rawValue === null) return;
+
+    if (typeof rawValue === 'string') {
+      const trimmed = rawValue.trim();
+      if (trimmed) result[key] = trimmed;
+      return;
+    }
+
+    if (typeof rawValue === 'number' || typeof rawValue === 'boolean') {
+      result[key] = String(rawValue);
+      return;
+    }
+
+    if (Array.isArray(rawValue)) {
+      const flattened = rawValue
+        .map(item => (item === undefined || item === null ? '' : String(item)))
+        .filter(Boolean)
+        .join(', ');
+      if (flattened) result[key] = flattened;
+      return;
+    }
+
+    if (rawValue instanceof Date) {
+      result[key] = rawValue.toISOString();
+      return;
+    }
+
+    try {
+      const serialized = JSON.stringify(rawValue);
+      if (serialized && serialized !== '{}' && serialized !== '[]') {
+        result[key] = serialized;
+      }
+    } catch {
+      result[key] = String(rawValue);
+    }
+  });
+
+  return result;
+};
+
+const prefixRecord = (record: Record<string, string>, prefix: string) => {
+  const result: Record<string, string> = {};
+  Object.entries(record).forEach(([key, value]) => {
+    if (!value) return;
+    result[`${prefix}${key}`] = value;
+  });
+  return result;
+};
+
+const buildSupplementalNotes = (metadata: Record<string, string>, custom: Record<string, string>) => {
+  const sections: string[] = [];
+
+  const metadataLines = Object.entries(metadata).map(([key, value]) => `${key}: ${value}`);
+  if (metadataLines.length) {
+    sections.push(['Metadata', ...metadataLines].join('\n'));
+  }
+
+  const customLines = Object.entries(custom).map(([key, value]) => `${key}: ${value}`);
+  if (customLines.length) {
+    sections.push(['Custom', ...customLines].join('\n'));
+  }
+
+  return sections.join('\n\n');
+};
+
+const composeNotes = (base: string, metadata: Record<string, string>, custom: Record<string, string>) => {
+  const segments: string[] = [];
+  if (base && base.trim()) {
+    segments.push(base.trim());
+  }
+
+  const supplemental = buildSupplementalNotes(metadata, custom);
+  if (supplemental) {
+    segments.push(supplemental);
+  }
+
+  return segments.join('\n\n');
+};
+
 export default async function handler(req: Request) {
   const method = (req.method || 'GET').toUpperCase();
   const corsHeaders = buildCorsHeaders(req);
@@ -289,7 +390,245 @@ export default async function handler(req: Request) {
       );
     }
 
-    // At this point, config fields are validated to exist (lines 147-166)
+    const leadRecord = { ...restOfLeadData } as Record<string, unknown>;
+    const {
+      firstName: firstNameRaw,
+      lastName: lastNameRaw,
+      fullName: fullNameRaw,
+      email: emailRaw,
+      phone: phoneRaw,
+      phoneNumber: phoneNumberRaw,
+      zipCode: zipCodeRaw,
+      leadSource: leadSourceRaw,
+      notes: notesRaw,
+      proofOfSmsOptInLink,
+      vendorReferenceId: vendorReferenceIdRaw,
+      metadata: incomingMetadataRaw,
+      custom: incomingCustomRaw,
+      contactMethodLabel: contactMethodLabelRaw,
+      bestTimeLabel: bestTimeLabelRaw,
+      currentInsuranceLabel: currentInsuranceLabelRaw,
+      coverageTypeLabel: coverageTypeLabelRaw,
+      ...additionalFields
+    } = leadRecord;
+
+    const email = typeof emailRaw === 'string' ? emailRaw.trim() : '';
+    const phoneCandidate = typeof phoneNumberRaw === 'string' && phoneNumberRaw.trim()
+      ? phoneNumberRaw
+      : typeof phoneRaw === 'string'
+        ? phoneRaw
+        : '';
+    const normalizedPhone = sanitizePhone(phoneCandidate);
+
+    if (!email || !normalizedPhone) {
+      return new Response(
+        JSON.stringify({ message: 'Missing required email or phone' }),
+        {
+          status: 400,
+          headers: {
+            ...corsHeaders,
+            'Content-Type': 'application/json',
+          },
+        },
+      );
+    }
+
+    const firstName = typeof firstNameRaw === 'string' ? firstNameRaw.trim() : '';
+    const lastName = typeof lastNameRaw === 'string' ? lastNameRaw.trim() : '';
+    const fullName = typeof fullNameRaw === 'string' && fullNameRaw.trim()
+      ? fullNameRaw.trim()
+      : [firstName, lastName].filter(Boolean).join(' ');
+    const zipCode = typeof zipCodeRaw === 'string' ? zipCodeRaw.trim() : '';
+    const baseNotes = typeof notesRaw === 'string' ? notesRaw : '';
+
+    const leadSource = typeof leadSourceRaw === 'string' && leadSourceRaw.trim()
+      ? leadSourceRaw.trim()
+      : resolveLeadSource(restOfLeadData as Record<string, unknown>);
+
+    const metadataObject = toPlainObject(incomingMetadataRaw);
+    const customObject = toPlainObject(incomingCustomRaw);
+
+    const coverageTypeValue = typeof additionalFields.coverageType === 'string' ? additionalFields.coverageType : '';
+    if ('coverageType' in additionalFields) {
+      delete additionalFields.coverageType;
+    }
+    const coverageTypeLabel = typeof coverageTypeLabelRaw === 'string' && coverageTypeLabelRaw.trim()
+      ? coverageTypeLabelRaw.trim()
+      : getCoverageLabel(coverageTypeValue);
+
+    if (coverageTypeLabel && metadataObject.coverage_type_label === undefined) {
+      metadataObject.coverage_type_label = coverageTypeLabel;
+    }
+    if (coverageTypeValue && metadataObject.coverage_type_value === undefined) {
+      metadataObject.coverage_type_value = coverageTypeValue;
+    }
+    if (coverageTypeLabel && customObject.coverage_type_label === undefined) {
+      customObject.coverage_type_label = coverageTypeLabel;
+    }
+    if (coverageTypeValue && customObject.coverage_type_value === undefined) {
+      customObject.coverage_type_value = coverageTypeValue;
+    }
+
+    const primaryAgeValue = typeof additionalFields.yourAge === 'string' ? additionalFields.yourAge : '';
+    if ('yourAge' in additionalFields) {
+      delete additionalFields.yourAge;
+    }
+    if (primaryAgeValue) {
+      if (metadataObject.primary_age === undefined) metadataObject.primary_age = primaryAgeValue;
+      if (customObject.primary_age === undefined) customObject.primary_age = primaryAgeValue;
+    }
+
+    const spouseAgeValue = typeof additionalFields.spouseAge === 'string' ? additionalFields.spouseAge : '';
+    if ('spouseAge' in additionalFields) {
+      delete additionalFields.spouseAge;
+    }
+    if (spouseAgeValue) {
+      if (metadataObject.spouse_age === undefined) metadataObject.spouse_age = spouseAgeValue;
+      if (customObject.spouse_age === undefined) customObject.spouse_age = spouseAgeValue;
+    }
+
+    const numberOfChildrenValue = typeof additionalFields.numChildren === 'string' ? additionalFields.numChildren : '';
+    if ('numChildren' in additionalFields) {
+      delete additionalFields.numChildren;
+    }
+    if (numberOfChildrenValue) {
+      if (metadataObject.number_of_children === undefined) metadataObject.number_of_children = numberOfChildrenValue;
+      if (customObject.number_of_children === undefined) customObject.number_of_children = numberOfChildrenValue;
+    }
+
+    const childAgesLabel = typeof additionalFields.childAgesLabel === 'string'
+      ? additionalFields.childAgesLabel
+      : formatChildAges(additionalFields.childAges);
+    if ('childAges' in additionalFields) {
+      delete additionalFields.childAges;
+    }
+    if ('childAgesLabel' in additionalFields) {
+      delete additionalFields.childAgesLabel;
+    }
+    if (childAgesLabel) {
+      if (metadataObject.child_ages === undefined) metadataObject.child_ages = childAgesLabel;
+      if (customObject.child_ages === undefined) customObject.child_ages = childAgesLabel;
+    }
+
+    const currentInsuranceValue = typeof additionalFields.currentInsurance === 'string' ? additionalFields.currentInsurance : '';
+    if ('currentInsurance' in additionalFields) {
+      delete additionalFields.currentInsurance;
+    }
+    const insuranceLabel = typeof currentInsuranceLabelRaw === 'string' && currentInsuranceLabelRaw.trim()
+      ? currentInsuranceLabelRaw.trim()
+      : getInsuranceStatusLabel(currentInsuranceValue);
+    if (insuranceLabel && metadataObject.current_insurance_status_label === undefined) {
+      metadataObject.current_insurance_status_label = insuranceLabel;
+    }
+    if (currentInsuranceValue && metadataObject.current_insurance_status_value === undefined) {
+      metadataObject.current_insurance_status_value = currentInsuranceValue;
+    }
+    if (insuranceLabel && customObject.current_insurance_status_label === undefined) {
+      customObject.current_insurance_status_label = insuranceLabel;
+    }
+    if (currentInsuranceValue && customObject.current_insurance_status_value === undefined) {
+      customObject.current_insurance_status_value = currentInsuranceValue;
+    }
+
+    const contactMethodLabel = typeof contactMethodLabelRaw === 'string' && contactMethodLabelRaw.trim()
+      ? contactMethodLabelRaw.trim()
+      : getContactMethodLabel(contactMethod);
+    if ('contactMethodLabel' in additionalFields) {
+      delete additionalFields.contactMethodLabel;
+    }
+    if (contactMethodLabel && metadataObject.preferred_contact_method_label === undefined) {
+      metadataObject.preferred_contact_method_label = contactMethodLabel;
+    }
+    if (contactMethod && metadataObject.preferred_contact_method_value === undefined) {
+      metadataObject.preferred_contact_method_value = contactMethod;
+    }
+    if (contactMethodLabel && customObject.preferred_contact_method_label === undefined) {
+      customObject.preferred_contact_method_label = contactMethodLabel;
+    }
+    if (contactMethod && customObject.preferred_contact_method_value === undefined) {
+      customObject.preferred_contact_method_value = contactMethod;
+    }
+
+    const bestTimeValue = typeof additionalFields.bestTime === 'string' ? additionalFields.bestTime : '';
+    if ('bestTime' in additionalFields) {
+      delete additionalFields.bestTime;
+    }
+    const bestTimeLabel = typeof bestTimeLabelRaw === 'string' && bestTimeLabelRaw.trim()
+      ? bestTimeLabelRaw.trim()
+      : getContactTimeLabel(bestTimeValue);
+    if ('bestTimeLabel' in additionalFields) {
+      delete additionalFields.bestTimeLabel;
+    }
+    if (bestTimeLabel && metadataObject.best_time_to_contact_label === undefined) {
+      metadataObject.best_time_to_contact_label = bestTimeLabel;
+    }
+    if (bestTimeValue && metadataObject.best_time_to_contact_value === undefined) {
+      metadataObject.best_time_to_contact_value = bestTimeValue;
+    }
+    if (bestTimeLabel && customObject.best_time_to_contact_label === undefined) {
+      customObject.best_time_to_contact_label = bestTimeLabel;
+    }
+    if (bestTimeValue && customObject.best_time_to_contact_value === undefined) {
+      customObject.best_time_to_contact_value = bestTimeValue;
+    }
+
+    const demographicSnapshot = summarizeDemographics({
+      coverageLabel: metadataObject.coverage_type_label as string | undefined,
+      primaryAge: metadataObject.primary_age as string | undefined ?? primaryAgeValue,
+      spouseAge: metadataObject.spouse_age as string | undefined ?? spouseAgeValue,
+      childrenCount: metadataObject.number_of_children as string | undefined ?? numberOfChildrenValue,
+      childAges: metadataObject.child_ages as string | undefined ?? childAgesLabel,
+      insuranceLabel: metadataObject.current_insurance_status_label as string | undefined ?? insuranceLabel,
+      preferredContactLabel: contactMethodLabel,
+      contactTimeLabel: bestTimeLabel,
+    });
+
+    if (demographicSnapshot && metadataObject.demographic_snapshot === undefined) {
+      metadataObject.demographic_snapshot = demographicSnapshot;
+    }
+    if (demographicSnapshot && customObject.demographic_snapshot === undefined) {
+      customObject.demographic_snapshot = demographicSnapshot;
+    }
+
+    if (fullName && metadataObject.full_name === undefined) {
+      metadataObject.full_name = fullName;
+    }
+
+    const remainingStrings = toStringRecord(additionalFields);
+    Object.entries(remainingStrings).forEach(([key, value]) => {
+      if (!(key in metadataObject)) {
+        metadataObject[key] = value;
+      }
+    });
+
+    const metadata = toStringRecord(metadataObject);
+    const custom = toStringRecord(customObject);
+    const prefixedCustom = prefixRecord(custom, 'custom_');
+    const payloadNotes = composeNotes(baseNotes, metadata, custom);
+
+    const shouldLog = typeof process !== 'undefined' && process.env && process.env.NODE_ENV !== 'production';
+    if (shouldLog) {
+      console.log('[ringy-proxy] preparing payload', {
+        contactMethod,
+        metadataKeys: Object.keys(metadata),
+        customKeys: Object.keys(custom),
+      });
+    }
+
+    const vendorReferenceId = typeof vendorReferenceIdRaw === 'string' && vendorReferenceIdRaw.trim()
+      ? vendorReferenceIdRaw.trim()
+      : (typeof crypto !== 'undefined' && 'randomUUID' in crypto
+          ? crypto.randomUUID()
+          : `ref_${Date.now()}_${Math.random().toString(36).slice(2)}`);
+
+    const proofLink = typeof proofOfSmsOptInLink === 'string' && proofOfSmsOptInLink.trim()
+      ? proofOfSmsOptInLink.trim()
+      : (typeof metadataObject.proof_of_sms_opt_in_link === 'string'
+          ? metadataObject.proof_of_sms_opt_in_link
+          : typeof metadataObject.proofOfSmsOptInLink === 'string'
+            ? metadataObject.proofOfSmsOptInLink
+            : '');
+
     const headers = {
       'Content-Type': 'application/json',
       SID: config.sid,
@@ -297,17 +636,59 @@ export default async function handler(req: Request) {
       'X-API-KEY': config.apiKey,
     } as Record<string, string>;
 
-    const leadSource = resolveLeadSource(restOfLeadData as Record<string, unknown>);
-
     const ringyPayload: Record<string, unknown> = {
-      ...restOfLeadData,
-      leadSource,
-      lead_source: leadSource,
+      ...prefixedCustom,
       sid: config.sid,
       authToken: config.authToken,
       campaignId: config.campaignId,
       campaign_id: config.campaignId,
+      leadSource,
+      lead_source: leadSource,
+      phone_number: normalizedPhone,
+      email,
+      notes: payloadNotes,
+      vendor_reference_id: vendorReferenceId,
+      proof_of_sms_opt_in_link: proofLink,
     };
+
+    if (firstName) ringyPayload.first_name = firstName;
+    if (lastName) ringyPayload.last_name = lastName;
+    if (fullName) ringyPayload.full_name = fullName;
+    if (zipCode) ringyPayload.zip_code = zipCode;
+
+    const contactMethodLabelForPayload = metadata.preferred_contact_method_label || custom.preferred_contact_method_label || contactMethodLabel;
+    if (contactMethodLabelForPayload) {
+      ringyPayload.preferred_contact_method = contactMethodLabelForPayload;
+    }
+
+    const contactMethodValueForPayload = metadata.preferred_contact_method_value || custom.preferred_contact_method_value || contactMethod || '';
+    if (contactMethodValueForPayload) {
+      ringyPayload.preferred_contact_method_value = contactMethodValueForPayload;
+    }
+
+    const bestTimeLabelForPayload = metadata.best_time_to_contact_label || custom.best_time_to_contact_label || bestTimeLabel;
+    if (bestTimeLabelForPayload) {
+      ringyPayload.best_time_to_contact = bestTimeLabelForPayload;
+    }
+
+    const primaryAgeForPayload = metadata.primary_age || custom.primary_age || primaryAgeValue;
+    if (primaryAgeForPayload) {
+      ringyPayload.age = primaryAgeForPayload;
+    }
+
+    const insuranceLabelForPayload = metadata.current_insurance_status_label || custom.current_insurance_status_label || insuranceLabel;
+    if (insuranceLabelForPayload) {
+      ringyPayload.current_insurance_status = insuranceLabelForPayload;
+    }
+
+    const insuranceValueForPayload = metadata.current_insurance_status_value || custom.current_insurance_status_value || currentInsuranceValue;
+    if (insuranceValueForPayload) {
+      ringyPayload.current_insurance_status_value = insuranceValueForPayload;
+    }
+
+    if (Object.keys(metadata).length > 0) {
+      ringyPayload.metadata_summary = JSON.stringify(metadata);
+    }
 
     const ringyResponse = await fetch(config.apiUrl as string, {
       method: 'POST',

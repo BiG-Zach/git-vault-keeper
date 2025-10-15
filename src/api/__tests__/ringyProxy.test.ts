@@ -135,6 +135,8 @@ describe('ringyProxy', () => {
       lead_source: 'Website — Hero Form',
     });
 
+    expect(payload).toHaveProperty('full_name', 'Taylor Reed');
+
     expect(payload).toHaveProperty('custom_state', 'FL');
     expect(payload).toHaveProperty('custom_consent_to_text', 'Yes');
     expect(payload).toHaveProperty('metadata_summary');
@@ -190,7 +192,8 @@ describe('ringyProxy', () => {
     const payload = JSON.parse((init as RequestInit).body as string) as Record<string, unknown>;
     expect(payload).toHaveProperty('metadata_summary');
     const metadata = JSON.parse(String(payload.metadata_summary));
-    expect(metadata.preferredContactMethod).toBe('phone');
+    expect(metadata.preferred_contact_method_value).toBe('phone');
+    expect(payload).toHaveProperty('preferred_contact_method', 'Phone Call');
   });
 
   it('requires captcha verification when a secret is configured', async () => {
