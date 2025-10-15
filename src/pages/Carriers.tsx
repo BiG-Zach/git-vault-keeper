@@ -82,7 +82,7 @@ const NETWORKS: Network[] = [
 
     logoSrc: "/logos/carriers/multiplan.webp",
 
-    description: "One of America's oldest PPO networks with extensive provider relationships and competitive rates. Broad coverage across all licensed markets.", 
+    description: "One of America's oldest PPO networks with extensive provider relationships and competitive rates. Broad coverage nationwide.",
 
     rating: "America's Largest Independent Network",
 
@@ -881,7 +881,7 @@ export default function CarriersPage() {
             <div className="h-4 w-px bg-slate-300"></div>
             <div className="flex items-center gap-1.5">
               <Shield className="w-4 h-4 text-cyan-600" />
-              <span>Best Insurance Group Partner Since 2020</span>
+              <span>Industry Partner Since 2020</span>
             </div>
           </div>
         </div>
@@ -1678,7 +1678,7 @@ export default function CarriersPage() {
                 <tbody className="divide-y divide-slate-200">
                   <tr className="hover:bg-slate-50 transition-colors">
                     <td className="px-6 py-4 font-semibold text-slate-900 sticky left-0 bg-white z-10">Provider Count</td>
-                    <td className="px-4 py-4 text-center text-slate-700">1.2M+</td>
+                    <td className="px-4 py-4 text-center text-slate-700">1.3M+</td>
                     <td className="px-4 py-4 text-center text-slate-700">1.1M+</td>
                     <td className="px-4 py-4 text-center text-slate-700">950K+</td>
                     <td className="px-4 py-4 text-center text-slate-700">1M+</td>
@@ -1755,7 +1755,7 @@ export default function CarriersPage() {
             {/* Mobile Comparison Cards */}
             <div className="md:hidden space-y-4">
               {[
-                { name: 'Aetna PPO', providers: '1.2M+', hospitals: '50K+', rating: 'A', specialty: 'Comprehensive coverage' },
+                { name: 'Aetna PPO', providers: '1.3M+', hospitals: '50K+', rating: 'A', specialty: 'Comprehensive coverage' },
                 { name: 'Cigna PPO', providers: '1.1M+', hospitals: '48K+', rating: 'A', specialty: 'Mental health focus' },
                 { name: 'First Health', providers: '950K+', hospitals: '40K+', rating: 'Aetna Sub.', specialty: 'Nationwide reach' },
                 { name: 'MultiPlan', providers: '1M+', hospitals: '45K+', rating: 'Independent', specialty: 'Cost-effective' },
@@ -3059,7 +3059,7 @@ export default function CarriersPage() {
           <div className="mt-12 bg-gradient-to-r from-emerald-500/20 to-cyan-500/20 border border-emerald-400/30 rounded-xl p-6 md:p-8">
             <h4 className="text-xl font-bold text-white mb-4">How I Use This Intelligence</h4>
             <p className="text-slate-200 leading-relaxed mb-6">
-              During your consultation, I leverage 8+ years of experience working with carriers across our licensed markets, along with direct access to carrier network data and provider directories. I verify your specific doctors are in-network, assess local hospital system participation, and evaluate network depth in your county. This hands-on research—combined with my Best Insurance Group partnership for priority underwriting access—helps me identify which carriers offer the strongest networks in your area. I combine this market knowledge with your specific doctors, budget, and health needs to recommend the optimal carrier-network combination.
+              During your consultation, I leverage 8+ years of experience, along with direct access to carrier network data and provider directories. I verify your specific doctors are in-network, assess local hospital system participation, and evaluate network depth in your county. This hands-on research helps me identify which carriers offer the strongest networks in your area. I combine this market knowledge with your specific doctors, budget, and health needs to recommend the optimal carrier-network combination.
             </p>
 
             {/* Inline CTA */}
@@ -3584,9 +3584,9 @@ export default function CarriersPage() {
               <div className="w-16 h-16 bg-cyan-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Award className="w-8 h-8 text-cyan-600" />
               </div>
-              <h3 className="text-xl font-bold text-slate-900 text-center mb-2">Best Insurance Group Partner</h3>
+              <h3 className="text-xl font-bold text-slate-900 text-center mb-2">Industry Partnership</h3>
               <p className="text-slate-600 text-center text-sm mb-4">
-                Partnership since 2020 provides exclusive carrier access and priority underwriting
+                Professional partnership provides exclusive carrier access and priority underwriting
               </p>
               <ul className="space-y-2 text-sm text-slate-700">
                 <li className="flex items-start gap-2">
@@ -3603,7 +3603,7 @@ export default function CarriersPage() {
                 </li>
                 <li className="flex items-start gap-2">
                   <CheckCircle className="w-4 h-4 text-cyan-600 mt-0.5 flex-shrink-0" />
-                  <span>15+ A-rated carrier relationships across all 6 states</span>
+                  <span>15+ A-rated carrier relationships nationwide</span>
                 </li>
               </ul>
             </div>
