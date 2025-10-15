@@ -109,10 +109,9 @@ export default function ResourcesHero() {
 
         {/* Animated Visual Masterpiece Elements */}
         <div className="absolute inset-0 z-20 overflow-hidden pointer-events-none">
-          {/* Animated Gradient Orbs */}
+          {/* Animated Gradient Orbs - Reduced from 3 to 2 */}
           <div className="absolute top-20 left-10 w-96 h-96 bg-gradient-to-r from-blue-500/30 to-cyan-400/30 rounded-full blur-3xl animate-pulse" />
           <div className="absolute bottom-20 right-10 w-80 h-80 bg-gradient-to-r from-emerald-500/25 to-blue-500/25 rounded-full blur-3xl animate-pulse delay-1000" />
-          <div className="absolute top-1/2 left-1/3 w-64 h-64 bg-gradient-to-r from-yellow-400/20 to-orange-500/20 rounded-full blur-2xl animate-pulse delay-500" />
           
           {/* Premium Light Rays */}
           <div className="absolute inset-0 opacity-30">
@@ -121,18 +120,16 @@ export default function ResourcesHero() {
             <div className="absolute top-0 left-2/3 w-px h-full bg-gradient-to-b from-transparent via-emerald-300/40 to-transparent transform rotate-6 animate-pulse delay-1400" />
           </div>
           
-          {/* Floating Geometric Elements */}
+          {/* Floating Geometric Elements - Reduced from 4 to 2 */}
           <div className="absolute top-24 right-20 w-8 h-8 border border-white/30 rotate-45 animate-bounce" style={{ animationDelay: '0s', animationDuration: '3s' }} />
           <div className="absolute bottom-32 left-16 w-6 h-6 bg-white/20 rounded-full animate-bounce" style={{ animationDelay: '1s', animationDuration: '4s' }} />
-          <div className="absolute top-1/3 right-1/4 w-4 h-4 border-2 border-blue-300/40 rounded-full animate-bounce" style={{ animationDelay: '2s', animationDuration: '5s' }} />
-          <div className="absolute bottom-1/4 left-1/3 w-10 h-1 bg-gradient-to-r from-transparent via-white/30 to-transparent animate-pulse" />
           
-          {/* Network Connection Lines with Glow */}
+          {/* Network Connection Lines with Glow - Reduced from 3 to 2 */}
           <svg className="absolute inset-0 w-full h-full opacity-20" viewBox="0 0 800 600">
             <defs>
               <filter id="glow">
                 <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
-                <feMerge> 
+                <feMerge>
                   <feMergeNode in="coloredBlur"/>
                   <feMergeNode in="SourceGraphic"/>
                 </feMerge>
@@ -143,9 +140,6 @@ export default function ResourcesHero() {
             </path>
             <path d="M150,300 Q450,200 650,400" stroke="rgba(16,185,129,0.4)" strokeWidth="1" fill="none" filter="url(#glow)">
               <animate attributeName="opacity" values="0.6;0.2;0.6" dur="5s" repeatCount="indefinite" />
-            </path>
-            <path d="M50,450 Q350,350 600,500" stroke="rgba(236,72,153,0.4)" strokeWidth="1" fill="none" filter="url(#glow)">
-              <animate attributeName="opacity" values="0.3;0.7;0.3" dur="6s" repeatCount="indefinite" />
             </path>
           </svg>
           

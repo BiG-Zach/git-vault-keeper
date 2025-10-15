@@ -273,6 +273,29 @@ export default function Resources() {
           </div>
         </div>
       </section>
+      {/* Featured Article Spotlight */}
+      <section className="py-12 bg-gradient-to-br from-blue-50 to-white">
+        <div className="container mx-auto px-4 max-w-6xl">
+          <div className="text-center mb-8">
+            <h2 className="text-2xl font-bold text-slate-900 mb-2">Featured Guide</h2>
+            <p className="text-slate-600">Most comprehensive resource this month</p>
+          </div>
+          <div className="bg-white rounded-2xl p-8 shadow-lg border border-slate-200 max-w-2xl mx-auto">
+            <div className="text-sm text-blue-600 font-semibold mb-2">🏆 MOST COMPREHENSIVE</div>
+            <h3 className="text-xl font-bold text-slate-900 mb-3">Florida Health Insurance: Complete 2024 Market Guide</h3>
+            <p className="text-slate-600 mb-4">Everything Florida residents need to know about health insurance options, costs, and enrollment.</p>
+            <div className="flex items-center justify-between">
+              <div className="flex gap-4 text-sm text-slate-500">
+                <span>3,000 words</span>
+                <span>15 min read</span>
+                <span>Updated Jan 2024</span>
+              </div>
+              <button className="text-blue-600 font-semibold hover:text-blue-700">Read Guide →</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
 
       {/* Enhanced Category Navigation (Light) */}
       <section className="py-8 bg-white border-b border-slate-200">

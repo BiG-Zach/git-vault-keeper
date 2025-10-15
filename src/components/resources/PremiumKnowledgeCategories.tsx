@@ -37,7 +37,7 @@ const categories = [
   {
     id: 'local-market',
     title: 'Local Market Intelligence',
-    description: 'State-specific guides for Florida, Michigan, and North Carolina markets.',
+    description: 'State-specific guides for Florida, Georgia, South Carolina, Tennessee, Alabama, and Texas markets.',
     icon: <MapPin className="w-8 h-8" />,
     gradient: 'from-purple-500 to-purple-600',
     hoverColor: 'purple-600'
