@@ -17,7 +17,7 @@ export default function EnhancedMessageForm() {
   });
   
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
   const [errorMessage, setErrorMessage] = useState('');
   const [siteKey, setSiteKey] = useState<string>("");
   const [captchaLoaded, setCaptchaLoaded] = useState(false);
@@ -73,7 +73,6 @@ export default function EnhancedMessageForm() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitStatus('idle');
     setErrorMessage('');
     
     if (captchaEnabled && captchaLoaded && !captchaToken) {
@@ -592,10 +591,8 @@ export default function EnhancedMessageForm() {
                 type="submit"
                 disabled={isSubmitting}
                 className={`group w-full px-8 py-4 font-semibold rounded-xl shadow-luxury hover:shadow-xl transform transition-all duration-300 ${
-                  isSubmitting 
-                    ? 'bg-slate-400 cursor-not-allowed' 
-                    : submitStatus === 'success'
-                    ? 'bg-green-600 hover:bg-green-700'
+                  isSubmitting
+                    ? 'bg-slate-400 cursor-not-allowed'
                     : 'bg-gradient-to-r from-teal-600 to-blue-600 hover:scale-105'
                 } text-white`}
               >
@@ -604,11 +601,6 @@ export default function EnhancedMessageForm() {
                     <>
                       <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
                       <span>Sending...</span>
-                    </>
-                  ) : submitStatus === 'success' ? (
-                    <>
-                      <Check className="w-5 h-5" />
-                      <span>Message Sent!</span>
                     </>
                   ) : (
                     <>
