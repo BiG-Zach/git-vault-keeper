@@ -1,7 +1,6 @@
 import * as React from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { useParallax } from "../../lib/useParallax";
-import { Star, Shield, Award } from "lucide-react";
 
 const HAS_MULTI = true; // set to true when you add @1x/@2x webp/jpg
 const SINGLE_FALLBACK = "/images/hero/about-hero-desktop.webp"; // drop one image here for now
@@ -19,61 +18,35 @@ export default function AboutHero() {
   const [imgError, setImgError] = React.useState(false);
 
   const Content = (
-    <div className="relative mx-auto max-w-6xl px-4 md:px-6">
-      {/* Floating Trust Badges */}
-      <div className="absolute -top-20 right-4 md:right-8 z-10">
-        <div className="flex flex-col gap-3 opacity-90">
-          <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-4 py-2 flex items-center gap-2">
-            <Star className="w-4 h-4 text-yellow-400 fill-current" />
-            <span className="text-white text-sm font-medium">Licensed Professional</span>
-          </div>
-          <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-4 py-2 flex items-center gap-2 ml-4">
-            <Shield className="w-4 h-4 text-blue-400" />
-            <span className="text-white text-sm font-medium">Multi-State Authority</span>
-          </div>
-        </div>
-      </div>
-
+    <div className="relative z-10 max-w-4xl mx-auto px-6 lg:px-8 text-center">
       {/* Main Content */}
       <div className="relative">
-        {/* Premium Badge */}
-        <div className="mb-6 flex justify-center md:justify-start">
-          <div className="bg-gradient-to-r from-white/20 to-white/10 backdrop-blur-sm border border-white/30 rounded-full px-6 py-2 flex items-center gap-2">
-            <Award className="w-5 h-5 text-amber-400" />
-            <span className="text-white/90 text-sm font-medium tracking-wide">PREMIUM INSURANCE BROKER</span>
-          </div>
-        </div>
-
         {/* Headlines with Playfair Display */}
         <h1
-          className="font-serif text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.1] text-white mb-6"
+          className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight"
           style={{
-            background: 'linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-            backgroundClip: 'text',
             textShadow: '0 2px 8px rgba(0,0,0,0.3), 0 0 40px rgba(255,255,255,0.1)'
           }}
         >
           Your Trusted Guide<br />
-          <span className="text-white/95 font-serif italic font-semibold">in a Complex Industry</span>
+          <span className="font-serif italic font-semibold">in a Complex Industry</span>
         </h1>
 
         <h2
-          className="font-sans text-lg md:text-xl lg:text-2xl font-normal text-white/90 mb-8 leading-relaxed"
+          className="text-lg sm:text-xl lg:text-2xl text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed"
           style={{ textShadow: '0 2px 6px rgba(0,0,0,0.4)' }}
         >
           8+ years of experience dedicated to helping families navigate their health insurance options with clarity and confidence.
         </h2>
 
         {/* Enhanced Body Text */}
-        <div className="max-w-2xl">
-          <p className="text-base md:text-lg font-normal text-white/95 leading-relaxed mb-8"
+        <div className="max-w-3xl mx-auto">
+          <p className="text-base sm:text-lg text-white/95 leading-relaxed mb-8 max-w-3xl mx-auto"
              style={{ textShadow: '0 1px 4px rgba(0,0,0,0.3)' }}>
             I'm your dedicated insurance broker, specializing in <em className="font-semibold text-white">health and life coverage</em> for self-employed professionals, families, and those planning retirement.
           </p>
           
-          <div className="flex flex-wrap gap-6 text-white/90 text-sm">
+          <div className="flex flex-wrap justify-center gap-6 lg:gap-8 text-white/80 text-sm sm:text-base">
             <div className="flex items-center gap-2">
               <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
               <span>Licensed Across Multiple States</span>
@@ -84,13 +57,13 @@ export default function AboutHero() {
             </div>
             <div className="flex items-center gap-2">
               <div className="w-2 h-2 bg-purple-400 rounded-full animate-pulse"></div>
-              <span>Best Rates Guaranteed</span>
+              <span>A+ Rated Carrier Access</span>
             </div>
           </div>
         </div>
 
         {/* Call-to-Action */}
-        <div className="mt-10 flex flex-col sm:flex-row gap-4">
+        <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
           <button className="group bg-white text-gray-900 px-8 py-4 rounded-full font-semibold text-lg hover:bg-white/90 transition-all duration-300 hover:scale-105 hover:shadow-2xl">
             Start Your Consultation
             <span className="ml-2 group-hover:translate-x-1 transition-transform duration-300">&gt;</span>
@@ -106,7 +79,7 @@ export default function AboutHero() {
 
   return (
     <header className="relative isolate w-full" role="banner" aria-label="About page hero section">
-      <div ref={ref} className="relative w-full min-h-[50vh] sm:min-h-[52vh] md:min-h-[58vh] overflow-hidden">
+      <div ref={ref} className="relative w-full min-h-[70vh] lg:min-h-[75vh] flex items-center justify-center py-16 lg:py-20">
         {/* Parallax layer */}
         <div
           className="absolute inset-0 z-0 will-change-transform"
@@ -145,12 +118,12 @@ export default function AboutHero() {
           )}
         </div>
 
-        {/* Enhanced Radial Gradient Overlay */}
-        <div className="absolute inset-0 z-20 bg-gradient-radial from-black/10 via-black/30 to-black/50" />
+        {/* Enhanced Background Overlay for Text Readability */}
+        <div className="absolute inset-0 z-20 bg-gradient-to-r from-slate-900/70 via-slate-800/50 to-slate-900/70" />
 
         {/* Content */}
-        <div className="absolute inset-0 z-30 grid place-items-end">
-          <div className="w-full pb-10 md:pb-14">
+        <div className="absolute inset-0 z-30 flex items-center justify-center">
+          <div className="w-full px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-24">
             {prefersReducedMotion ? (
               Content
             ) : (

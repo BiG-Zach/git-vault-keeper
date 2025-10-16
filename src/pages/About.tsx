@@ -124,8 +124,7 @@ export default function AboutPage() {
                 
                 {/* Professional Description */}
                 <p className="text-base md:text-lg text-slate-700 leading-relaxed">
-                  Specializing in PPO health plans, life insurance layering strategies, and Medicare planning—backed by Best Insurance Group's A-rated carrier network and
-                  <span className="text-slate-900 font-semibold"> 8 years of personalized, no-pressure guidance.</span>
+                  With 8 years of experience providing personalized, no-pressure guidance, I specialize in PPO health plans and life insurance layering strategies. Through my partnership with Best Insurance Group, I represent multiple A-rated insurance carriers to help you find the best coverage.
                 </p>
                 
                 {/* Professional CTA Buttons */}
