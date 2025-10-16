@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom';
 import { ShieldCheck, HeartHandshake, PiggyBank, Users, Sparkles, Clock3, FileSignature, CheckCircle2, BookOpen, Heart, Shield, TrendingUp, Building, Briefcase, Home } from 'lucide-react';
 import SEO from '../components/SEO';
-import PageHero from '../components/headers/PageHero';
 import Button from '../components/Button';
 import { blogPosts, type BlogPost } from './Resources';
 import { organizationSchema, serviceSchema } from '../utils/schema';
@@ -45,31 +44,64 @@ export default function LifeInsurance() {
         scripts={structuredData.map(innerHTML => ({ innerHTML }))}
       />
 
-      <PageHero
-        title="Life Insurance for Generational Security"
-        subtitle="From income replacement to legacy planning, our concierge team builds life insurance strategies for growing families, entrepreneurs, and retirees across six licensed states. Strategic life insurance planning that protects your family's future while maximizing your financial flexibility."
-        bgUrl={heroImage.src}
-      >
-        <div className="hidden md:block">
-          <div className="rounded-2xl bg-white/90 p-6 shadow-lg ring-1 ring-black/5">
-            <h2 className="text-xl font-semibold text-slate-900 mb-3">Coverage priorities we solve</h2>
-            <ul className="space-y-3 text-sm text-slate-700">
-              <li className="flex items-start gap-2">
-                <CheckCircle2 className="mt-0.5 h-4 w-4 text-emerald-500" />
-                Mortgage protection and income replacement
-              </li>
-              <li className="flex items-start gap-2">
-                <CheckCircle2 className="mt-0.5 h-4 w-4 text-emerald-500" />
-                Business succession &amp; key person policies
-              </li>
-              <li className="flex items-start gap-2">
-                <CheckCircle2 className="mt-0.5 h-4 w-4 text-emerald-500" />
-                Final expense coverage with living benefits
-              </li>
-            </ul>
+      <section className="relative min-h-[70vh] lg:min-h-[75vh] overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0">
+          <picture>
+            <source
+              srcSet="
+                /assets/backgrounds/life-insurance-hero-400w.webp 400w,
+                /assets/backgrounds/life-insurance-hero-800w.webp 800w,
+                /assets/backgrounds/life-insurance-hero-1200w.webp 1200w,
+                /assets/backgrounds/life-insurance-hero-1600w.webp 1600w,
+                /assets/backgrounds/life-insurance-hero-2000w.webp 2000w
+              "
+              sizes="100vw"
+              type="image/webp"
+            />
+            <img
+              src="/assets/backgrounds/life-insurance-hero.webp"
+              alt="Professional insurance advisor protecting family - life insurance coverage concept"
+              className="w-full h-full object-cover"
+              loading="eager"
+              decoding="async"
+              width={1600}
+              height={900}
+            />
+          </picture>
+          
+          {/* Overlay for text readability */}
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-900/80 via-slate-800/60 to-slate-900/80" />
+        </div>
+
+        {/* Hero Content */}
+        <div className="relative z-10 flex items-center justify-center min-h-[70vh] lg:min-h-[75vh]">
+          <div className="container mx-auto px-6 lg:px-8 text-center text-white">
+            <h1 className="text-4xl lg:text-6xl font-bold mb-6 leading-tight">
+              Protect Your Family's Future
+            </h1>
+            <p className="text-lg lg:text-xl text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed">
+              Comprehensive life insurance solutions tailored to your family's needs and financial goals.
+            </p>
+            
+            {/* CTA Buttons */}
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <a
+                href="/quote"
+                className="bg-gradient-to-r from-emerald-600 to-emerald-700 text-white px-8 py-4 rounded-lg font-semibold hover:from-emerald-700 hover:to-emerald-800 transition-all duration-200 shadow-lg hover:shadow-emerald-500/25"
+              >
+                Get Life Insurance Quote
+              </a>
+              <a
+                href="/contact"
+                className="border-2 border-white/30 text-white px-8 py-4 rounded-lg font-semibold hover:bg-white/10 transition-all duration-200 backdrop-blur-sm"
+              >
+                Speak with an Expert
+              </a>
+            </div>
           </div>
         </div>
-      </PageHero>
+      </section>
 
       <section className="section bg-white">
         <div className="container-default grid gap-10 lg:grid-cols-[1.2fr_0.8fr]">
