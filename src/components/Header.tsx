@@ -28,7 +28,7 @@ export default function Header() {
         </div>
 
         {/* MAIN HEADER CONTENT - RESPONSIVE DESIGN */}
-        <div className="container mx-auto max-w-7xl flex h-14 md:h-16 lg:h-20 items-center justify-between px-4 lg:px-6">
+        <div className="container mx-auto max-w-7xl flex h-20 md:h-24 lg:h-28 items-center justify-between px-4 lg:px-6">
           
           {/* CLEAN BIG MONOGRAM HOMEPAGE BUTTON */}
           <div className="flex items-center">
