@@ -1,7 +1,6 @@
 ﻿import { Link } from 'react-router-dom';
 import { HeartPulse, ShieldCheck, Users, Clock3, Stethoscope, CheckCircle2, BookOpen, Shield, DollarSign, Heart, Zap, TrendingUp, Clock, ArrowRight } from 'lucide-react';
 import SEO from '../components/SEO';
-import PageHero from '../components/headers/PageHero';
 import Button from '../components/Button';
 import { blogPosts, type BlogPost } from './Resources';
 import { organizationSchema, serviceSchema } from '../utils/schema';
@@ -23,6 +22,12 @@ export default function HealthInsurance() {
 
   return (
     <main id="content" className="has-sticky-cta">
+      <link
+        rel="preload"
+        as="image"
+        href="/assets/backgrounds/health-insurance-hero.webp"
+        type="image/webp"
+      />
       <SEO
         title="Affordable Health Insurance Broker - 6 States Licensed | No Enrollment Fees"
         description="Compare affordable health insurance plans with licensed broker. 15+ A-rated carriers, no enrollment fees, 24-hour response guarantee."
@@ -45,31 +50,72 @@ export default function HealthInsurance() {
         scripts={structuredData.map(innerHTML => ({ innerHTML }))}
       />
 
-      <PageHero
-        title="Affordable Health Insurance Guidance"
-        subtitle="Licensed experts helping families, entrepreneurs, and early retirees secure comprehensive health coverage in Florida, Georgia, South Carolina, Tennessee, Alabama, and Texas."
-        bgUrl={heroImage.src}
-      >
-        <div className="hidden md:block">
-          <div className="rounded-2xl bg-white/90 p-6 shadow-lg ring-1 ring-black/5">
-            <h2 className="text-xl font-semibold text-slate-900 mb-3">What we deliver</h2>
-            <ul className="space-y-3 text-sm text-slate-700">
-              <li className="flex items-start gap-2">
-                <CheckCircle2 className="mt-0.5 h-4 w-4 text-emerald-500" />
-                PPO networks with next-day effective dates
-              </li>
-              <li className="flex items-start gap-2">
-                <CheckCircle2 className="mt-0.5 h-4 w-4 text-emerald-500" />
-                Concierge support for claims and renewals
-              </li>
-              <li className="flex items-start gap-2">
-                <CheckCircle2 className="mt-0.5 h-4 w-4 text-emerald-500" />
-                Cost control strategies for self-employed households
-              </li>
-            </ul>
+      <section className="relative min-h-[70vh] lg:min-h-[75vh] overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0">
+          <picture>
+            <source
+              srcSet="
+                /assets/backgrounds/health-insurance-hero-400w.webp 400w,
+                /assets/backgrounds/health-insurance-hero-800w.webp 800w,
+                /assets/backgrounds/health-insurance-hero-1200w.webp 1200w,
+                /assets/backgrounds/health-insurance-hero-1600w.webp 1600w,
+                /assets/backgrounds/health-insurance-hero-2000w.webp 2000w
+              "
+              sizes="100vw"
+              type="image/webp"
+            />
+            <img
+              src="/assets/backgrounds/health-insurance-hero.webp"
+              alt="Healthcare professional using digital technology - modern health insurance solutions"
+              className="w-full h-full object-cover"
+              loading="eager"
+              decoding="async"
+              width={1600}
+              height={900}
+            />
+          </picture>
+          
+          {/* Overlay for text readability */}
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-900/40 via-slate-800/20 to-slate-900/40" />
+        </div>
+
+        {/* Hero Content */}
+        <div className="relative z-10 flex items-center justify-center min-h-[70vh] lg:min-h-[75vh]">
+          <div className="container mx-auto px-6 lg:px-8 text-center text-white">
+            <div className="bg-black/10 backdrop-blur-sm rounded-3xl p-8 lg:p-12 border border-white/20">
+              <h1
+                className="text-4xl lg:text-6xl font-bold mb-6 leading-tight drop-shadow-2xl"
+                style={{ textShadow: '2px 4px 8px rgba(0,0,0,0.8), 0 0 16px rgba(0,0,0,0.4)' }}
+              >
+                Affordable Health Insurance Guidance
+              </h1>
+              <p
+                className="text-lg lg:text-xl text-white mb-8 max-w-4xl mx-auto leading-relaxed drop-shadow-lg font-medium"
+                style={{ textShadow: '1px 2px 4px rgba(0,0,0,0.7)' }}
+              >
+                Licensed experts helping families, entrepreneurs, and early retirees secure comprehensive health coverage in Florida, Georgia, South Carolina, Tennessee, Alabama, and Texas.
+              </p>
+              
+              {/* CTA Buttons */}
+              <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
+                <a
+                  href="https://calendly.com/bradfordinformedguidance"
+                  className="bg-gradient-to-r from-emerald-600 to-emerald-700 text-white px-8 py-4 rounded-xl font-bold text-lg shadow-2xl hover:shadow-emerald-500/50 transition-all duration-300 hover:scale-105 border-2 border-emerald-500"
+                >
+                  Get Your Free Health Plan Analysis
+                </a>
+                <a
+                  href="tel:(689) 325-6570"
+                  className="bg-white/20 backdrop-blur-md border-2 border-white/50 text-white px-8 py-4 rounded-xl font-semibold hover:bg-white/30 transition-all duration-300 shadow-xl"
+                >
+                  Call (689) 325-6570
+                </a>
+              </div>
+            </div>
           </div>
         </div>
-      </PageHero>
+      </section>
 
       <section className="section bg-white">
         <div className="container-default grid gap-10 lg:grid-cols-[1.2fr_0.8fr]">
