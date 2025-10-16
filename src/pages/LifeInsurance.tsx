@@ -71,33 +71,41 @@ export default function LifeInsurance() {
           </picture>
           
           {/* Overlay for text readability */}
-          <div className="absolute inset-0 bg-gradient-to-r from-slate-900/80 via-slate-800/60 to-slate-900/80" />
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-900/40 via-slate-800/20 to-slate-900/40" />
         </div>
 
         {/* Hero Content */}
         <div className="relative z-10 flex items-center justify-center min-h-[70vh] lg:min-h-[75vh]">
           <div className="container mx-auto px-6 lg:px-8 text-center text-white">
-            <h1 className="text-4xl lg:text-6xl font-bold mb-6 leading-tight">
-              Protect Your Family's Future
-            </h1>
-            <p className="text-lg lg:text-xl text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed">
-              Comprehensive life insurance solutions tailored to your family's needs and financial goals.
-            </p>
-            
-            {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a
-                href="/quote"
-                className="bg-gradient-to-r from-emerald-600 to-emerald-700 text-white px-8 py-4 rounded-lg font-semibold hover:from-emerald-700 hover:to-emerald-800 transition-all duration-200 shadow-lg hover:shadow-emerald-500/25"
+            <div className="bg-black/10 backdrop-blur-sm rounded-3xl p-8 lg:p-12 border border-white/20">
+              <h1
+                className="text-4xl lg:text-6xl font-bold mb-6 leading-tight drop-shadow-2xl"
+                style={{ textShadow: '2px 4px 8px rgba(0,0,0,0.8), 0 0 16px rgba(0,0,0,0.4)' }}
               >
-                Get Life Insurance Quote
-              </a>
-              <a
-                href="/contact"
-                className="border-2 border-white/30 text-white px-8 py-4 rounded-lg font-semibold hover:bg-white/10 transition-all duration-200 backdrop-blur-sm"
+                Protect Your Family's Future
+              </h1>
+              <p
+                className="text-lg lg:text-xl text-white mb-8 max-w-4xl mx-auto leading-relaxed drop-shadow-lg font-medium"
+                style={{ textShadow: '1px 2px 4px rgba(0,0,0,0.7)' }}
               >
-                Speak with an Expert
-              </a>
+                Comprehensive life insurance solutions tailored to your family's needs and financial goals.
+              </p>
+              
+              {/* CTA Buttons */}
+              <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
+                <a
+                  href="/quote"
+                  className="bg-gradient-to-r from-emerald-600 to-emerald-700 text-white px-8 py-4 rounded-xl font-bold text-lg shadow-2xl hover:shadow-emerald-500/50 transition-all duration-300 hover:scale-105 border-2 border-emerald-500"
+                >
+                  Get Life Insurance Quote
+                </a>
+                <a
+                  href="/contact"
+                  className="bg-white/20 backdrop-blur-md border-2 border-white/50 text-white px-8 py-4 rounded-xl font-semibold hover:bg-white/30 transition-all duration-300 shadow-xl"
+                >
+                  Speak with an Expert
+                </a>
+              </div>
             </div>
           </div>
         </div>
