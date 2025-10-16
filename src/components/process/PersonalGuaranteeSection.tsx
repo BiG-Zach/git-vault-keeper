@@ -11,7 +11,7 @@ const guarantees = [
   {
     icon: <Shield className="w-8 h-8" />,
     title: "Six-State Compliance Expertise",
-    guarantee: "Licensed in licensed states with Best Insurance Group resources to navigate state-specific regulations and underwriting."
+    guarantee: "Licensed in FL, GA, SC, TN, AL, and TX with Best Insurance Group resources to navigate state-specific regulations and underwriting."
   },
   {
     icon: <Clock className="w-8 h-8" />,
