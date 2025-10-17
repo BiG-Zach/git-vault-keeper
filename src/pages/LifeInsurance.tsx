@@ -5,6 +5,7 @@ import Button from '../components/Button';
 import { blogPosts, type BlogPost } from './Resources';
 import { organizationSchema, serviceSchema } from '../utils/schema';
 import { SEO_IMAGES } from '../utils/seoAssets';
+import RelatedPosts from '../components/blog/RelatedPosts';
 
 const lifeInsuranceArticles: BlogPost[] = Object.values(blogPosts)
   .flat()
@@ -678,6 +679,17 @@ export default function LifeInsurance() {
           </div>
         </div>
       </section>
+
+      {/* Related Content Section */}
+      <RelatedPosts
+        slugs={[
+          '/blog/term-vs-whole-life-insurance-2024',
+          '/blog/life-insurance-young-adults-guide',
+          '/blog/how-much-life-insurance-calculator',
+          '/quote'
+        ]}
+        heading="Continue Learning About Life Insurance"
+      />
     </main>
   );
 }

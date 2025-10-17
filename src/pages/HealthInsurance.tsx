@@ -5,6 +5,7 @@ import Button from '../components/Button';
 import { blogPosts, type BlogPost } from './Resources';
 import { organizationSchema, serviceSchema } from '../utils/schema';
 import { SEO_IMAGES } from '../utils/seoAssets';
+import RelatedPosts from '../components/blog/RelatedPosts';
 
 const healthArticles: BlogPost[] = Object.values(blogPosts)
   .flat()
@@ -450,6 +451,17 @@ export default function HealthInsurance() {
           </div>
         </div>
       </section>
+
+      {/* Related Content Section */}
+      <RelatedPosts
+        slugs={[
+          '/blog/ppo-hmo-epo-plan-comparison',
+          '/blog/health-insurance-deductibles-guide',
+          '/blog/health-insurance-open-enrollment-checklist',
+          '/quote'
+        ]}
+        heading="Continue Learning About Health Insurance"
+      />
     </main>
   );
 }

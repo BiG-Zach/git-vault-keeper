@@ -6,6 +6,7 @@ import Magnetic from "../components/ui/Magnetic";
 import VerificationBadge from "../components/trust/VerificationBadge";
 import SEO from "../components/SEO";
 import { organizationSchema, serviceSchema, personSchema, breadcrumbSchema } from "../utils/schema";
+import RelatedPosts from "../components/blog/RelatedPosts";
 
 export default function AboutPage() {
   const structuredData = [
@@ -907,6 +908,17 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
+
+      {/* Related Content Section */}
+      <RelatedPosts
+        slugs={[
+          '/health-insurance',
+          '/life-insurance',
+          '/our-process',
+          '/contact'
+        ]}
+        heading="Learn More About Our Services"
+      />
 
     </main>
   );

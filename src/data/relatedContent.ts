@@ -120,6 +120,68 @@ export const RELATED_CONTENT: Record<string, RelatedContentItem> = {
     href: '/quote',
     category: 'Get Started',
   },
+  // Core Service Pages
+  '/carriers': {
+    title: 'Insurance Carriers We Partner With',
+    description: 'Explore our relationships with A+ rated national and regional carriers across all states.',
+    href: '/carriers',
+    category: 'Services',
+  },
+  '/our-process': {
+    title: 'Our Insurance Advisory Process',
+    description: 'See how we guide clients through discovery, comparison, and enrollment in 4 clear steps.',
+    href: '/our-process',
+    category: 'Services',
+  },
+  '/about': {
+    title: 'About Bradford Informed Guidance',
+    description: 'Meet your licensed advisor and learn about our independent brokerage approach.',
+    href: '/about',
+    category: 'About Us',
+  },
+  '/contact': {
+    title: 'Contact Our Advisory Team',
+    description: 'Reach out for immediate questions or schedule a detailed consultation call.',
+    href: '/contact',
+    category: 'Get Started',
+  },
+  // State-Specific Pages
+  '/states/fl': {
+    title: 'Florida Health & Life Insurance Services',
+    description: 'Licensed Florida insurance broker with specialized expertise in state regulations and carriers.',
+    href: '/states/fl',
+    category: 'State Services',
+  },
+  '/states/mi': {
+    title: 'Michigan Health & Life Insurance Services',
+    description: 'Comprehensive insurance guidance for Michigan residents with local carrier knowledge.',
+    href: '/states/mi',
+    category: 'State Services',
+  },
+  '/states/nc': {
+    title: 'North Carolina Health & Life Insurance Services',
+    description: 'Professional insurance advisory services tailored to North Carolina regulations.',
+    href: '/states/nc',
+    category: 'State Services',
+  },
+  '/states/az': {
+    title: 'Arizona Health & Life Insurance Services',
+    description: 'Expert insurance guidance for Arizona families with desert-state expertise.',
+    href: '/states/az',
+    category: 'State Services',
+  },
+  '/states/tx': {
+    title: 'Texas Health & Life Insurance Services',
+    description: 'Large-state insurance solutions with Texas-specific carrier relationships.',
+    href: '/states/tx',
+    category: 'State Services',
+  },
+  '/states/ga': {
+    title: 'Georgia Health & Life Insurance Services',
+    description: 'Georgia-focused insurance advisory with deep knowledge of regional options.',
+    href: '/states/ga',
+    category: 'State Services',
+  },
 };
 
 export function getRelatedItems(slugs: string[]) {
