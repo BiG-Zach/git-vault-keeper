@@ -84,35 +84,51 @@ export default function EnhancedMessageForm() {
     setCaptchaError(null);
     
     try {
-      // Split name into first and last name
-      const nameParts = formData.name.trim().split(' ');
-      const firstName = nameParts[0] || '';
-      const lastName = nameParts.slice(1).join(' ') || '';
+      // Create FormData for Formspree submission
+      const formDataToSubmit = new FormData();
       
-      // Create payload matching the lead API format
-      const payload = {
-        firstName,
-        lastName,
-        email: formData.email,
-        phone: formData.phone,
-        zipCode: '00000', // Default as it's required by API
-        ages: 'Contact Form',
-        consentChecked: true,
-        consentText: `I consent to be contacted about insurance services. Message: ${formData.message}. State: ${formData.state}. Insurance Type: ${formData.insuranceType}.`,
-        landingUrl: window.location.href,
-        utm: {}
-      };
+      // Map form fields to Formspree format
+      formDataToSubmit.append('name', formData.name);
+      formDataToSubmit.append('email', formData.email);
+      formDataToSubmit.append('_replyto', formData.email);
+      formDataToSubmit.append('phone', formData.phone);
+      formDataToSubmit.append('state', formData.state);
+      formDataToSubmit.append('message', formData.message || '');
       
-      const response = await fetch('/api/lead', {
+      // Add insurance type if provided
+      if (formData.insuranceType) {
+        formDataToSubmit.append('insurance_type', formData.insuranceType);
+      }
+      
+      // Add Formspree hidden fields
+      formDataToSubmit.append('_subject', 'New Contact Form Submission - Bradford Informed Guidance');
+      formDataToSubmit.append('_captcha', 'false');
+      
+      // Add hCaptcha token if enabled
+      if (captchaEnabled && captchaToken) {
+        formDataToSubmit.append('h-captcha-response', captchaToken);
+      }
+      
+      // Debug: Log FormData contents
+      console.log('=== FORMSPREE DEBUG ===');
+      console.log('Submitting to: https://formspree.io/f/meoljrpp');
+      console.log('FormData contents:');
+      for (const [key, value] of formDataToSubmit.entries()) {
+        console.log(`  ${key}: ${value}`);
+      }
+      
+      const response = await fetch('https://formspree.io/f/meoljrpp', {
         method: 'POST',
+        body: formDataToSubmit,
         headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          ...payload,
-          ...(captchaEnabled ? { hcaptchaToken: captchaToken } : {}),
-        }),
+          'Accept': 'application/json'
+        }
       });
+      
+      // Debug: Log response details
+      console.log('Response status:', response.status);
+      console.log('Response statusText:', response.statusText);
+      console.log('Response headers:', Object.fromEntries(response.headers.entries()));
       
       if (response.ok) {
         setSubmitStatus('success');
@@ -129,11 +145,25 @@ export default function EnhancedMessageForm() {
           setCaptchaRefresh((value) => value + 1);
         }
       } else {
-        const errorData = await response.json();
-        throw new Error(errorData.error || 'Failed to send message');
+        // Debug: Log error response details
+        console.log('Error response - attempting to parse JSON...');
+        let errorData;
+        try {
+          const responseText = await response.text();
+          console.log('Raw error response:', responseText);
+          errorData = JSON.parse(responseText);
+          console.log('Parsed error data:', errorData);
+        } catch (parseError) {
+          console.error('Failed to parse error response:', parseError);
+          errorData = { error: `HTTP ${response.status}: ${response.statusText}` };
+        }
+        throw new Error(errorData.error || errorData.message || `Failed to send message (${response.status})`);
       }
     } catch (error) {
-      console.error('Form submission error:', error);
+      console.error('=== FORM SUBMISSION ERROR ===');
+      console.error('Error type:', error instanceof Error ? error.constructor.name : typeof error);
+      console.error('Error message:', error instanceof Error ? error.message : String(error));
+      console.error('Full error:', error);
       setSubmitStatus('error');
       setErrorMessage(error instanceof Error ? error.message : 'Failed to send message');
     } finally {
