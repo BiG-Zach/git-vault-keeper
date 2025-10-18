@@ -302,13 +302,13 @@ export default function CarriersPage() {
 
         "@type": "Question",
 
-        "name": "What is a PPO network and how does it benefit me?",
+        "name": "How do I compare insurance carriers and PPO networks?",
 
         "acceptedAnswer": {
 
           "@type": "Answer",
 
-          "text": "A PPO (Preferred Provider Organization) network gives you the flexibility to see any healthcare provider, but offers significant cost savings when you choose in-network providers. You do not need referrals to see specialists, and you have access to a vast network of doctors, hospitals, and healthcare facilities across our licensed markets."
+          "text": "As an independent broker, I analyze your specific doctors, budget, and coverage needs to compare 15+ A-rated carriers and 6 major PPO networks. I verify your providers are in-network, compare rates, and recommend the optimal carrier-network combination for your situation across FL, MI, NC, AZ, TX, and GA."
 
         }
 
@@ -318,13 +318,13 @@ export default function CarriersPage() {
 
         "@type": "Question",
 
-        "name": "Can I keep my current doctor with these PPO networks?",
+        "name": "What makes working with an independent broker different?",
 
         "acceptedAnswer": {
 
           "@type": "Answer",
 
-          "text": "Most likely, yes. Our PPO networks include over 1.3M+ healthcare providers nationwide. Use the Find Your Doctor links on each network card to verify if your current physician is in-network."
+          "text": "I work for you, not the insurance companies. You get unbiased recommendations from multiple A-rated carriers, ongoing claims support, and access to exclusive broker programs. My compensation comes from carriers, so my services are free to you with no additional fees."
 
         }
 
@@ -334,13 +334,13 @@ export default function CarriersPage() {
 
         "@type": "Question",
 
-        "name": "Why work with a multi-carrier broker instead of a single carrier agent?",
+        "name": "Do you provide coverage in multiple states?",
 
         "acceptedAnswer": {
 
           "@type": "Answer",
 
-          "text": "As a multi-carrier broker, I compare 15+ A-rated carriers across our licensed markets. You see every competitive option in one consultation without pressure from a single insurer."
+          "text": "Yes, I'm licensed in Florida, Michigan, North Carolina, Arizona, Texas, and Georgia. I provide state-specific carrier guidance and can help coordinate coverage if you relocate between these states."
 
         }
 
