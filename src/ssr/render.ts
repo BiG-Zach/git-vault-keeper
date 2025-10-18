@@ -6,6 +6,16 @@ import type { SeoCollector } from '../components/SeoProvider';
 import type { ResolvedSEO } from '../utils/seo';
 import { canonicalFor, resolveSEO } from '../utils/seo';
 
+// Hash function for deduplication (matches client-side implementation)
+function hash(str: string) {
+  let h = 0;
+  for (let i = 0; i < str.length; i++) {
+    h = (h << 5) - h + str.charCodeAt(i);
+    h |= 0;
+  }
+  return h;
+}
+
 class Collector implements SeoCollector {
   public latest: ResolvedSEO | null = null;
 
@@ -78,7 +88,8 @@ function renderHead(seo: ResolvedSEO) {
       parts.push(`<script ${attrs}></script>`);
     } else if (script.innerHTML) {
       const typeAttr = script.type ? ` type="${escapeAttr(script.type)}"` : ' type="application/ld+json"';
-      parts.push(`<script${typeAttr}>${escapeScript(script.innerHTML)}</script>`);
+      const dataHash = hash(script.innerHTML);
+      parts.push(`<script${typeAttr} data-managed="true" data-hash="${dataHash}">${escapeScript(script.innerHTML)}</script>`);
     }
   }
 
