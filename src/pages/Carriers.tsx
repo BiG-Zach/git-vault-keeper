@@ -291,63 +291,106 @@ export default function CarriersPage() {
 
 
   const faqPageSchema = JSON.stringify({
-
     "@context": "https://schema.org",
-
     "@type": "FAQPage",
-
     "mainEntity": [
-
       {
-
         "@type": "Question",
-
-        "name": "How do I compare insurance carriers and PPO networks?",
-
+        "name": "What is a PPO network and how does it benefit me?",
         "acceptedAnswer": {
-
           "@type": "Answer",
-
-          "text": "As an independent broker, I analyze your specific doctors, budget, and coverage needs to compare 15+ A-rated carriers and 6 major PPO networks. I verify your providers are in-network, compare rates, and recommend the optimal carrier-network combination for your situation across FL, MI, NC, AZ, TX, and GA."
-
+          "text": "A PPO (Preferred Provider Organization) network gives you the flexibility to see any healthcare provider, but offers significant cost savings when you choose in-network providers. You do not need referrals to see specialists, and you have access to a vast network of doctors, hospitals, and healthcare facilities across Florida, Michigan, North Carolina, Arizona, Texas, and Georgia."
         }
-
       },
-
       {
-
         "@type": "Question",
-
-        "name": "What makes working with an independent broker different?",
-
+        "name": "Can I keep my current doctor with these PPO networks?",
         "acceptedAnswer": {
-
           "@type": "Answer",
-
-          "text": "I work for you, not the insurance companies. You get unbiased recommendations from multiple A-rated carriers, ongoing claims support, and access to exclusive broker programs. My compensation comes from carriers, so my services are free to you with no additional fees."
-
+          "text": "Most likely, yes. Our PPO networks include over 1.3 million healthcare providers nationwide. Use the Find Your Doctor links on each network card above to verify if your current physician is in-network. We also verify your doctor's network status during your consultation so you feel confident before you enroll."
         }
-
       },
-
       {
-
         "@type": "Question",
-
-        "name": "Do you provide coverage in multiple states?",
-
+        "name": "Why work with a multi-carrier broker instead of a single carrier agent?",
         "acceptedAnswer": {
-
           "@type": "Answer",
-
-          "text": "Yes, I'm licensed in Florida, Michigan, North Carolina, Arizona, Texas, and Georgia. I provide state-specific carrier guidance and can help coordinate coverage if you relocate between these states."
-
+          "text": "As a multi-carrier broker, I compare 15+ A-rated carriers across Florida, Michigan, North Carolina, Arizona, Texas, and Georgia. You see every competitive option in one consultation without pressure from a single insurer, and you receive unbiased guidance tailored to your household's priorities."
         }
-
+      },
+      {
+        "@type": "Question",
+        "name": "Do I pay extra fees for broker services?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No, my services are completely free to you. I'm compensated directly by the insurance carriers when you enroll, so there are no broker fees, enrollment fees, or service charges. You pay the same premium whether you buy direct from the carrier or work with me - but with me, you get ongoing support, multiple carrier access, and advocacy at no additional cost."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What's the difference between working with a broker vs. buying direct from insurance companies?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "When you work with me as your broker, you get access to multiple carriers and can compare options side-by-side without bias. Insurance companies only show you their products. I provide ongoing support for claims, renewals, and changes at no extra cost - my compensation comes from the carriers, not your pocket. Plus, with my Best Insurance Group partnership, I often have access to exclusive plans and faster underwriting that aren't available to the public."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you ensure I get the best rate available?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "I have access to 15+ A-rated carriers through my Best Insurance Group partnership, which means I can compare rates across the entire market, not just one company. I also verify subsidy eligibility for ACA plans and check for any available discounts or wellness program benefits. My 8 years of experience helps me identify the best value - sometimes the lowest premium isn't actually the best deal when you factor in deductibles, networks, and coverage."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "I'm in Florida - which PPO networks have the best hospital coverage in my area?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Florida has excellent PPO network depth. In South Florida (Miami/Ft. Lauderdale), UnitedHealthcare and Aetna dominate with comprehensive hospital networks including Baptist Health, Memorial Healthcare, and Cleveland Clinic Florida. In Central Florida (Tampa/Orlando), Blue Cross Blue Shield has strong relationships with AdventHealth, BayCare, and Orlando Health systems. North Florida (Jacksonville/Tallahassee) sees strong coverage from Cigna and First Health with Mayo Clinic and UF Health access. I analyze your specific zip code and preferred hospitals to recommend the optimal network."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "I'm in Texas - which carriers offer the best rates for self-employed individuals?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Texas has a competitive health insurance market with several strong options for self-employed professionals. Allstate Health typically offers the most aggressive pricing in Dallas/Fort Worth and Houston for healthy applicants under 50. SGIC provides budget-friendly major medical with solid networks in San Antonio and Austin. UnitedHealthcare dominates the premium segment with the largest provider network. For those not qualifying for ACA subsidies, I'll compare private health plans that often save 40-50% versus marketplace rates. Each consultation includes a side-by-side rate comparison specific to your county and age."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How does Michigan's health insurance market differ from other states?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Michigan has unique market dynamics. Blue Cross Blue Shield of Michigan holds the strongest provider relationships, especially with major systems like Henry Ford, Beaumont, and U of M Health. Priority Health (not available in all our states) dominates West Michigan. For Metro Detroit residents, I typically recommend UnitedHealthcare or Aetna PPO for maximum flexibility. Michigan also has strong ACA marketplace competition, so I always compare both private plans and subsidized marketplace options. Retirees under 65 should know Michigan allows COBRA continuation longer than federal requirements - I help navigate these options during our consultation."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "I live in North Carolina - what should I know about Blue Cross Blue Shield's dominance here?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "North Carolina has unique market dynamics where Blue Cross Blue Shield of North Carolina (BCBSNC) historically held near-monopoly status. While competition has increased, BCBSNC still maintains the strongest relationships with major systems like Duke Health, UNC Health, Atrium Health (formerly Carolinas HealthCare), and Wake Forest Baptist. However, UnitedHealthcare and Aetna have expanded aggressively in Charlotte, Raleigh-Durham, and Greensboro with competitive pricing. For Western NC (Asheville/mountain regions), I often recommend BCBSNC for provider depth. Triangle and Charlotte residents have more carrier flexibility - I compare all options to ensure you're not overpaying for the Blue Cross name when equally strong networks exist."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How does coverage work when I travel to other states?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Most PPO networks I recommend provide nationwide coverage, which is perfect for travel. Emergency care is always covered regardless of location. For routine care while traveling, I ensure your plan includes out-of-network benefits or has reciprocal agreements with providers in other states. Since I'm licensed in FL, MI, NC, AZ, TX, and GA, I can help coordinate coverage if you're moving between these states."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What if I need to file a claim - how does that work with a broker?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "This is where working with a broker really pays off. I act as your advocate throughout the claims process. While you'll still file claims directly with your insurance carrier, I help resolve any issues that arise, understand claim denials, and ensure you're getting the benefits you're entitled to. I've helped clients navigate everything from routine claim questions to complex appeals across all 6 states I serve."
+        }
       }
-
     ]
-
   });
 
 
