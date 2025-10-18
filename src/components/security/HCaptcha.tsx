@@ -90,6 +90,8 @@ function installTestHCaptcha() {
 }
 
 let hcaptchaScriptPromise: Promise<void> | null = null;
+let scriptLoadAttempts = 0;
+const MAX_SCRIPT_LOAD_ATTEMPTS = 3;
 
 function waitForHCaptchaReady(resolve: () => void, reject: (reason?: unknown) => void, attempt = 0) {
   if (typeof window === 'undefined') {
@@ -103,7 +105,7 @@ function waitForHCaptchaReady(resolve: () => void, reject: (reason?: unknown) =>
   }
 
   if (attempt >= 200) {
-    reject(new Error('Timed out waiting for hCaptcha to load'));
+    reject(new Error('Timed out waiting for hCaptcha to load. Please check your internet connection and refresh the page.'));
     return;
   }
 
@@ -133,6 +135,7 @@ function ensureHCaptchaScript(): Promise<void> {
   }
 
   if (window.hcaptcha) {
+    scriptLoadAttempts = 0; // Reset on success
     return Promise.resolve();
   }
 
@@ -146,14 +149,28 @@ function ensureHCaptchaScript(): Promise<void> {
         } else {
           const handleLoad = () => {
             existing.dataset.hcaptchaLoader = 'loaded';
+            scriptLoadAttempts = 0; // Reset on success
+            console.log('[hCaptcha] Script loaded successfully');
             waitForHCaptchaReady(resolve, reject);
           };
           existing.addEventListener('load', handleLoad, { once: true });
           existing.addEventListener(
             'error',
             (event) => {
+              console.error('[hCaptcha] Script load error:', event);
               hcaptchaScriptPromise = null;
-              reject(event);
+              scriptLoadAttempts++;
+              
+              if (scriptLoadAttempts < MAX_SCRIPT_LOAD_ATTEMPTS) {
+                console.warn(`[hCaptcha] Retrying script load (attempt ${scriptLoadAttempts + 1}/${MAX_SCRIPT_LOAD_ATTEMPTS})...`);
+                // Retry after a delay
+                setTimeout(() => {
+                  existing.remove();
+                  ensureHCaptchaScript().then(resolve).catch(reject);
+                }, 2000);
+              } else {
+                reject(new Error('Failed to load hCaptcha script after multiple attempts. Please check your internet connection and refresh the page.'));
+              }
             },
             { once: true },
           );
@@ -161,17 +178,32 @@ function ensureHCaptchaScript(): Promise<void> {
         return;
       }
 
+      console.log('[hCaptcha] Loading script...');
       const script = document.createElement('script');
       script.src = `${SCRIPT_SRC}&onload=${CALLBACK_NAME}`;
       script.async = true;
       script.defer = true;
       window[CALLBACK_NAME] = () => {
         script.dataset.hcaptchaLoader = 'loaded';
+        scriptLoadAttempts = 0; // Reset on success
+        console.log('[hCaptcha] Script loaded and callback executed');
         waitForHCaptchaReady(resolve, reject);
       };
       script.onerror = (event) => {
+        console.error('[hCaptcha] Script load error:', event);
         hcaptchaScriptPromise = null;
-        reject(event);
+        scriptLoadAttempts++;
+        
+        if (scriptLoadAttempts < MAX_SCRIPT_LOAD_ATTEMPTS) {
+          console.warn(`[hCaptcha] Retrying script load (attempt ${scriptLoadAttempts + 1}/${MAX_SCRIPT_LOAD_ATTEMPTS})...`);
+          // Retry after a delay
+          setTimeout(() => {
+            script.remove();
+            ensureHCaptchaScript().then(resolve).catch(reject);
+          }, 2000);
+        } else {
+          reject(new Error('Failed to load hCaptcha script after multiple attempts. Please check your internet connection and refresh the page.'));
+        }
       };
       document.head.appendChild(script);
     });
@@ -217,41 +249,68 @@ export default function HCaptcha({ siteKey, onVerify, onExpire, onError, classNa
       return () => undefined;
     }
 
+    // Validate site key
+    if (!siteKey || siteKey.trim() === '') {
+      console.error('[hCaptcha] No site key provided');
+      setLoadError('Verification service is not configured. Please contact support.');
+      return () => undefined;
+    }
+
+    console.log('[hCaptcha] Initializing widget with site key:', siteKey.substring(0, 8) + '...');
+
     ensureHCaptchaScript()
       .then(() => {
         if (cancelled) return;
-        if (!containerRef.current) return;
+        if (!containerRef.current) {
+          console.warn('[hCaptcha] Container ref is null');
+          return;
+        }
 
         if (!window.hcaptcha) {
+          console.error('[hCaptcha] window.hcaptcha is not available after script load');
           setLoadError('Unable to load verification service. Please refresh and try again.');
           return;
         }
 
-        widgetIdRef.current = window.hcaptcha.render(containerRef.current, {
-          sitekey: siteKey,
-          callback: (token: string) => {
-            onVerifyRef.current?.(token);
-          },
-          'expired-callback': () => {
-            onExpireRef.current?.();
-          },
-          'error-callback': () => {
-            onErrorRef.current?.();
-          },
-        });
+        console.log('[hCaptcha] Rendering widget...');
+        try {
+          widgetIdRef.current = window.hcaptcha.render(containerRef.current, {
+            sitekey: siteKey,
+            callback: (token: string) => {
+              console.log('[hCaptcha] Verification successful');
+              onVerifyRef.current?.(token);
+            },
+            'expired-callback': () => {
+              console.warn('[hCaptcha] Token expired');
+              onExpireRef.current?.();
+            },
+            'error-callback': () => {
+              console.error('[hCaptcha] Verification error');
+              onErrorRef.current?.();
+            },
+          });
+          console.log('[hCaptcha] Widget rendered successfully with ID:', widgetIdRef.current);
+          setLoadError(null); // Clear any previous errors
+        } catch (error) {
+          console.error('[hCaptcha] Error rendering widget:', error);
+          setLoadError('Failed to initialize verification widget. Please refresh and try again.');
+        }
       })
-      .catch(() => {
+      .catch((error) => {
         if (cancelled) return;
-        setLoadError('Unable to load verification service. Please refresh and try again.');
+        console.error('[hCaptcha] Script loading failed:', error);
+        const errorMessage = error instanceof Error ? error.message : 'Unable to load verification service. Please refresh and try again.';
+        setLoadError(errorMessage);
       });
 
     return () => {
       cancelled = true;
       if (widgetIdRef.current !== null && window.hcaptcha) {
         try {
+          console.log('[hCaptcha] Cleaning up widget:', widgetIdRef.current);
           window.hcaptcha.remove(widgetIdRef.current);
-        } catch {
-          // noop
+        } catch (error) {
+          console.warn('[hCaptcha] Error during cleanup:', error);
         }
       }
     };

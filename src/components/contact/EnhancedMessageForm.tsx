@@ -21,6 +21,7 @@ export default function EnhancedMessageForm() {
   const [errorMessage, setErrorMessage] = useState('');
   const [siteKey, setSiteKey] = useState<string>("");
   const [captchaLoaded, setCaptchaLoaded] = useState(false);
+  const [captchaLoading, setCaptchaLoading] = useState(true);
   const captchaEnabled = Boolean(siteKey);
   const [captchaToken, setCaptchaToken] = useState<string | null>(null);
   const [captchaError, setCaptchaError] = useState<string | null>(null);
@@ -46,20 +47,58 @@ export default function EnhancedMessageForm() {
     let cancelled = false;
 
     async function loadSiteKey() {
+      setCaptchaLoading(true);
       try {
-        const response = await fetch('/api/hcaptcha-sitekey');
-        const data: { siteKey: string | null } = await response.json();
+        // In development, Vite doesn't execute serverless functions, so we read directly from env vars
+        // In production (Vercel), we use the API endpoint for better security
+        let loadedSiteKey: string | null = null;
+        
+        if (import.meta.env.DEV) {
+          // Development: Read directly from environment variable
+          console.log('[Contact Form] Loading hCaptcha site key from environment (dev mode)...');
+          loadedSiteKey = import.meta.env.VITE_HCAPTCHA_SITEKEY || null;
+          if (loadedSiteKey) {
+            console.log('[Contact Form] Site key loaded from env:', loadedSiteKey.substring(0, 8) + '...');
+          } else {
+            console.warn('[Contact Form] No site key found in environment variables');
+          }
+        } else {
+          // Production: Fetch from API endpoint
+          console.log('[Contact Form] Fetching hCaptcha site key from API...');
+          const response = await fetch('/api/hcaptcha-sitekey');
+          
+          if (!response.ok) {
+            throw new Error(`Failed to fetch site key: ${response.status} ${response.statusText}`);
+          }
+          
+          const data: { siteKey: string | null } = await response.json();
+          loadedSiteKey = data.siteKey;
+          
+          if (loadedSiteKey) {
+            console.log('[Contact Form] Site key loaded successfully:', loadedSiteKey.substring(0, 8) + '...');
+          } else {
+            console.warn('[Contact Form] No site key returned from API');
+          }
+        }
+        
         if (!cancelled) {
-          setSiteKey(data.siteKey ?? '');
+          if (loadedSiteKey) {
+            setSiteKey(loadedSiteKey);
+          } else {
+            setSiteKey('');
+            setCaptchaError('Verification service is not configured. You can still submit the form.');
+          }
         }
       } catch (error) {
-        console.error('Failed to load hCaptcha site key:', error);
+        console.error('[Contact Form] Failed to load hCaptcha site key:', error);
         if (!cancelled) {
           setSiteKey('');
+          setCaptchaError('Unable to load verification service. You can still submit the form.');
         }
       } finally {
         if (!cancelled) {
           setCaptchaLoaded(true);
+          setCaptchaLoading(false);
         }
       }
     }
@@ -75,10 +114,18 @@ export default function EnhancedMessageForm() {
     e.preventDefault();
     setErrorMessage('');
     
+    // Only require captcha if it's enabled and loaded successfully
     if (captchaEnabled && captchaLoaded && !captchaToken) {
-      setCaptchaError('Please verify you are not a robot.');
+      setCaptchaError('Please complete the verification challenge before submitting.');
+      console.warn('[Contact Form] Submission blocked: captcha not completed');
       return;
     }
+
+    console.log('[Contact Form] Submitting form...', {
+      captchaEnabled,
+      captchaLoaded,
+      hasCaptchaToken: Boolean(captchaToken)
+    });
 
     setIsSubmitting(true);
     setCaptchaError(null);
@@ -593,35 +640,59 @@ export default function EnhancedMessageForm() {
                 Your privacy is important to us. The information you provide helps us prepare for our consultation. We will not share your data or subject you to high-pressure sales calls.
               </p>
 
-              {captchaEnabled && captchaLoaded && (
+              {/* hCaptcha Widget Section */}
+              {captchaLoading && (
+                <div className="flex flex-col items-center gap-2 py-4">
+                  <div className="w-8 h-8 border-3 border-brand-jade-500/30 border-t-brand-jade-500 rounded-full animate-spin" />
+                  <p className="text-sm text-slate-600">Loading verification...</p>
+                </div>
+              )}
+              
+              {!captchaLoading && captchaEnabled && captchaLoaded && (
                 <div className="flex flex-col items-center gap-2">
                   <HCaptcha
                     key={`contact-hcaptcha-${captchaRefresh}`}
                     siteKey={siteKey}
                     onVerify={(token: string) => {
+                      console.log('[Contact Form] Captcha verified successfully');
                       setCaptchaToken(token);
                       setCaptchaError(null);
                     }}
-                    onExpire={() => setCaptchaToken(null)}
-                    onError={() =>
-                      setCaptchaError('Verification failed. Please refresh the widget and try again.')
-                    }
+                    onExpire={() => {
+                      console.warn('[Contact Form] Captcha token expired');
+                      setCaptchaToken(null);
+                      setCaptchaError('Verification expired. Please complete the challenge again.');
+                    }}
+                    onError={() => {
+                      console.error('[Contact Form] Captcha verification error');
+                      setCaptchaError('Verification failed. Please try again or refresh the page.');
+                    }}
                     className="flex justify-center"
                   />
-                  {captchaError && <p className="text-sm text-red-600">{captchaError}</p>}
+                  {captchaError && (
+                    <div className="flex items-center gap-2 text-sm text-red-600 bg-red-50 px-4 py-2 rounded-lg border border-red-200">
+                      <AlertCircle className="w-4 h-4 flex-shrink-0" />
+                      <span>{captchaError}</span>
+                    </div>
+                  )}
                 </div>
               )}
-              {!captchaEnabled && captchaLoaded && (
-                <p className="text-sm text-red-600 text-center">
-                  Verification service is unavailable. Please try again later.
-                </p>
+              
+              {!captchaLoading && !captchaEnabled && captchaLoaded && (
+                <div className="flex items-center gap-2 text-sm text-amber-700 bg-amber-50 px-4 py-3 rounded-lg border border-amber-200">
+                  <AlertCircle className="w-4 h-4 flex-shrink-0" />
+                  <div className="flex-1">
+                    <p className="font-medium">Verification service unavailable</p>
+                    <p className="text-xs text-amber-600 mt-1">You can still submit the form. We'll review your message manually.</p>
+                  </div>
+                </div>
               )}
 
               <button
                 type="submit"
-                disabled={isSubmitting}
+                disabled={isSubmitting || captchaLoading}
                 className={`group w-full px-8 py-4 font-semibold rounded-xl shadow-luxury hover:shadow-xl transform transition-all duration-300 ${
-                  isSubmitting
+                  isSubmitting || captchaLoading
                     ? 'bg-slate-400 cursor-not-allowed'
                     : 'bg-gradient-to-r from-teal-600 to-blue-600 hover:scale-105'
                 } text-white`}
