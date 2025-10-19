@@ -569,13 +569,16 @@ export default function CarriersPage() {
 
   const buildPhoneTrackingURL = (source: string) => {
     // Log to dataLayer for Google Analytics/Tag Manager
-    if (typeof window !== 'undefined' && (window as Record<string, unknown>).dataLayer) {
-      ((window as Record<string, unknown>).dataLayer as Array<Record<string, unknown>>).push({
-        event: 'phone_click',
-        event_category: 'engagement',
-        event_label: source,
-        page_location: window.location.href
-      });
+    if (typeof window !== 'undefined' && 'dataLayer' in window) {
+      const dataLayer = (window as any).dataLayer as Array<Record<string, unknown>>;
+      if (Array.isArray(dataLayer)) {
+        dataLayer.push({
+          event: 'phone_click',
+          event_category: 'engagement',
+          event_label: source,
+          page_location: window.location.href
+        });
+      }
     }
     return `tel:${BRAND.phoneTel}`;
   };
