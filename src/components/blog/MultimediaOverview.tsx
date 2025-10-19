@@ -1,5 +1,5 @@
 import React from 'react';
-import { ExternalLink } from 'lucide-react';
+import { ExternalLink, Play, Headphones } from 'lucide-react';
 
 interface MultimediaOverviewProps {
   audioUrl: string;
@@ -33,6 +33,10 @@ export default function MultimediaOverview({
   const audioId = extractDriveId(audioUrl);
   const videoId = extractDriveId(videoUrl);
 
+  // Create proper Google Drive links
+  const audioLink = audioId ? `https://drive.google.com/file/d/${audioId}/view` : audioUrl;
+  const videoLink = videoId ? `https://drive.google.com/file/d/${videoId}/view` : videoUrl;
+
   return (
     <div 
       className="multimedia-overview rounded-xl p-6 md:p-8 my-8 shadow-lg"
@@ -50,87 +54,81 @@ export default function MultimediaOverview({
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* Audio Card */}
-        <div className="bg-white rounded-lg p-5 shadow-sm hover:shadow-md transition-shadow">
-          <div className="flex items-center justify-between mb-4">
-            <div className="flex items-center">
-              <span className="text-3xl mr-3">🎧</span>
-              <div>
-                <h4 className="text-lg font-semibold text-slate-900 mb-1">Audio Overview</h4>
-                <p className="text-sm text-slate-600">8 minutes • AI-generated summary</p>
-              </div>
+        <div className="bg-white rounded-lg p-5 shadow-sm hover:shadow-md transition-shadow border border-slate-200">
+          <div className="flex items-center mb-4">
+            <div className="bg-blue-100 rounded-full p-3 mr-3">
+              <Headphones className="w-6 h-6 text-blue-600" />
+            </div>
+            <div>
+              <h4 className="text-lg font-semibold text-slate-900 mb-1">Audio Overview</h4>
+              <p className="text-sm text-slate-600">8 minutes • AI-generated summary</p>
             </div>
           </div>
           
-          <div className="bg-slate-50 border-2 border-slate-200 rounded-lg mt-3 overflow-hidden">
-            {audioId ? (
-              <iframe 
-                src={`https://drive.google.com/file/d/${audioId}/preview`}
-                className="w-full"
-                style={{ height: '80px', border: 'none' }}
-                allow="autoplay"
-                title="Audio Overview"
-              />
-            ) : (
-              <div className="p-4 text-center">
-                <p className="text-sm text-slate-600 mb-3">Listen to the audio overview:</p>
-                <a 
-                  href={audioUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors text-sm font-medium"
-                >
-                  <ExternalLink className="w-4 h-4" />
-                  Open Audio
-                </a>
+          <div className="bg-gradient-to-br from-blue-50 to-blue-100 border-2 border-blue-200 rounded-lg p-8 text-center">
+            <div className="mb-4">
+              <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-600 rounded-full mb-4">
+                <Play className="w-8 h-8 text-white ml-1" />
               </div>
-            )}
+              <p className="text-sm text-slate-700 mb-4">
+                Click below to open and play the audio overview in a new window
+              </p>
+            </div>
+            <a 
+              href={audioLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-all shadow-md hover:shadow-lg text-sm font-semibold"
+            >
+              <ExternalLink className="w-4 h-4" />
+              Open Audio Player
+            </a>
           </div>
           
-          <p className="text-sm text-slate-500 mt-3 leading-relaxed">
-            <strong>Covers:</strong> {audioDescription}
-          </p>
+          <div className="mt-4 pt-4 border-t border-slate-200">
+            <p className="text-sm text-slate-600 leading-relaxed">
+              <strong className="text-slate-900">Covers:</strong> {audioDescription}
+            </p>
+          </div>
         </div>
 
         {/* Video Card */}
-        <div className="bg-white rounded-lg p-5 shadow-sm hover:shadow-md transition-shadow">
-          <div className="flex items-center justify-between mb-4">
-            <div className="flex items-center">
-              <span className="text-3xl mr-3">🎬</span>
-              <div>
-                <h4 className="text-lg font-semibold text-slate-900 mb-1">Video Breakdown</h4>
-                <p className="text-sm text-slate-600">8 minutes • Visual guide</p>
-              </div>
+        <div className="bg-white rounded-lg p-5 shadow-sm hover:shadow-md transition-shadow border border-slate-200">
+          <div className="flex items-center mb-4">
+            <div className="bg-purple-100 rounded-full p-3 mr-3">
+              <Play className="w-6 h-6 text-purple-600" />
+            </div>
+            <div>
+              <h4 className="text-lg font-semibold text-slate-900 mb-1">Video Breakdown</h4>
+              <p className="text-sm text-slate-600">8 minutes • Visual guide</p>
             </div>
           </div>
           
-          <div className="bg-slate-900 border-2 border-slate-700 rounded-lg mt-3 overflow-hidden">
-            {videoId ? (
-              <iframe 
-                src={`https://drive.google.com/file/d/${videoId}/preview`}
-                className="w-full"
-                style={{ aspectRatio: '16/9', minHeight: '200px', border: 'none' }}
-                allow="autoplay"
-                title="Video Breakdown"
-              />
-            ) : (
-              <div className="p-4 text-center" style={{ aspectRatio: '16/9' }}>
-                <p className="text-sm text-white mb-3">Watch the video breakdown:</p>
-                <a 
-                  href={videoUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors text-sm font-medium"
-                >
-                  <ExternalLink className="w-4 h-4" />
-                  Open Video
-                </a>
+          <div className="bg-gradient-to-br from-purple-50 to-purple-100 border-2 border-purple-200 rounded-lg p-8 text-center">
+            <div className="mb-4">
+              <div className="inline-flex items-center justify-center w-16 h-16 bg-purple-600 rounded-full mb-4">
+                <Play className="w-8 h-8 text-white ml-1" />
               </div>
-            )}
+              <p className="text-sm text-slate-700 mb-4">
+                Click below to open and watch the video breakdown in a new window
+              </p>
+            </div>
+            <a 
+              href={videoLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-all shadow-md hover:shadow-lg text-sm font-semibold"
+            >
+              <ExternalLink className="w-4 h-4" />
+              Open Video Player
+            </a>
           </div>
           
-          <p className="text-sm text-slate-500 mt-3 leading-relaxed">
-            <strong>Features:</strong> {videoDescription}
-          </p>
+          <div className="mt-4 pt-4 border-t border-slate-200">
+            <p className="text-sm text-slate-600 leading-relaxed">
+              <strong className="text-slate-900">Features:</strong> {videoDescription}
+            </p>
+          </div>
         </div>
       </div>
 
