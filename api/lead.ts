@@ -1,6 +1,6 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-import jwt from 'jsonwebtoken';
-import crypto from 'node:crypto';
+import * as jwt from 'jsonwebtoken';
+import * as crypto from 'node:crypto';
 import { extractCaptchaToken } from './utils/captcha';
 
 function getClientIP(req: VercelRequest) {
