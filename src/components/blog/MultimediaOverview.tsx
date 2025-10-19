@@ -1,5 +1,5 @@
-import React from 'react';
-import { ExternalLink, Play, Headphones } from 'lucide-react';
+import React, { useState } from 'react';
+import { AlertCircle, Volume2, Video } from 'lucide-react';
 
 interface MultimediaOverviewProps {
   audioUrl: string;
@@ -29,13 +29,20 @@ export default function MultimediaOverview({
   audioDescription = "The $140K cost gap, 72% cost misconception crisis, 2025 market trends (IUL +11%, VUL +41%), and when whole life makes sense.",
   videoDescription = "Animated cost comparisons, data visualizations, and key statistics from LIMRA/Bankrate 2025 research."
 }: MultimediaOverviewProps) {
+  const [audioError, setAudioError] = useState(false);
+  const [videoError, setVideoError] = useState(false);
+
   // Extract Google Drive IDs
   const audioId = extractDriveId(audioUrl);
   const videoId = extractDriveId(videoUrl);
 
-  // Create proper Google Drive links
-  const audioLink = audioId ? `https://drive.google.com/file/d/${audioId}/view` : audioUrl;
-  const videoLink = videoId ? `https://drive.google.com/file/d/${videoId}/view` : videoUrl;
+  // Convert Google Drive URLs to direct streaming format
+  const audioStreamUrl = audioId 
+    ? `https://drive.google.com/uc?export=download&id=${audioId}`
+    : audioUrl;
+  const videoStreamUrl = videoId 
+    ? `https://drive.google.com/uc?export=download&id=${videoId}`
+    : videoUrl;
 
   return (
     <div 
@@ -57,7 +64,7 @@ export default function MultimediaOverview({
         <div className="bg-white rounded-lg p-5 shadow-sm hover:shadow-md transition-shadow border border-slate-200">
           <div className="flex items-center mb-4">
             <div className="bg-blue-100 rounded-full p-3 mr-3">
-              <Headphones className="w-6 h-6 text-blue-600" />
+              <Volume2 className="w-6 h-6 text-blue-600" />
             </div>
             <div>
               <h4 className="text-lg font-semibold text-slate-900 mb-1">Audio Overview</h4>
@@ -65,25 +72,43 @@ export default function MultimediaOverview({
             </div>
           </div>
           
-          <div className="bg-gradient-to-br from-blue-50 to-blue-100 border-2 border-blue-200 rounded-lg p-8 text-center">
-            <div className="mb-4">
-              <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-600 rounded-full mb-4">
-                <Play className="w-8 h-8 text-white ml-1" />
+          {audioError ? (
+            <div className="bg-amber-50 border border-amber-200 rounded-lg p-4">
+              <div className="flex items-start gap-2">
+                <AlertCircle className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
+                <div>
+                  <p className="text-sm text-amber-800 font-medium mb-1">Audio temporarily unavailable</p>
+                  <p className="text-xs text-amber-700 mb-2">The audio file may need to be re-uploaded or have different sharing settings.</p>
+                  <a 
+                    href={audioId ? `https://drive.google.com/file/d/${audioId}/view` : audioUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-xs text-blue-600 hover:text-blue-700 underline"
+                  >
+                    Open in Google Drive
+                  </a>
+                </div>
               </div>
-              <p className="text-sm text-slate-700 mb-4">
-                Click below to open and play the audio overview in a new window
-              </p>
             </div>
-            <a 
-              href={audioLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-all shadow-md hover:shadow-lg text-sm font-semibold"
-            >
-              <ExternalLink className="w-4 h-4" />
-              Open Audio Player
-            </a>
-          </div>
+          ) : (
+            <div className="bg-slate-50 rounded-lg p-4 border border-slate-200">
+              <audio 
+                controls 
+                className="w-full"
+                preload="metadata"
+                onError={() => setAudioError(true)}
+                style={{
+                  outline: 'none',
+                  height: '54px'
+                }}
+              >
+                <source src={audioStreamUrl} type="audio/mpeg" />
+                <source src={audioStreamUrl} type="audio/mp4" />
+                <source src={audioStreamUrl} type="audio/ogg" />
+                Your browser does not support the audio element.
+              </audio>
+            </div>
+          )}
           
           <div className="mt-4 pt-4 border-t border-slate-200">
             <p className="text-sm text-slate-600 leading-relaxed">
@@ -96,7 +121,7 @@ export default function MultimediaOverview({
         <div className="bg-white rounded-lg p-5 shadow-sm hover:shadow-md transition-shadow border border-slate-200">
           <div className="flex items-center mb-4">
             <div className="bg-purple-100 rounded-full p-3 mr-3">
-              <Play className="w-6 h-6 text-purple-600" />
+              <Video className="w-6 h-6 text-purple-600" />
             </div>
             <div>
               <h4 className="text-lg font-semibold text-slate-900 mb-1">Video Breakdown</h4>
@@ -104,25 +129,43 @@ export default function MultimediaOverview({
             </div>
           </div>
           
-          <div className="bg-gradient-to-br from-purple-50 to-purple-100 border-2 border-purple-200 rounded-lg p-8 text-center">
-            <div className="mb-4">
-              <div className="inline-flex items-center justify-center w-16 h-16 bg-purple-600 rounded-full mb-4">
-                <Play className="w-8 h-8 text-white ml-1" />
+          {videoError ? (
+            <div className="bg-amber-50 border border-amber-200 rounded-lg p-4">
+              <div className="flex items-start gap-2">
+                <AlertCircle className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
+                <div>
+                  <p className="text-sm text-amber-800 font-medium mb-1">Video temporarily unavailable</p>
+                  <p className="text-xs text-amber-700 mb-2">The video file may need to be re-uploaded or have different sharing settings.</p>
+                  <a 
+                    href={videoId ? `https://drive.google.com/file/d/${videoId}/view` : videoUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-xs text-blue-600 hover:text-blue-700 underline"
+                  >
+                    Open in Google Drive
+                  </a>
+                </div>
               </div>
-              <p className="text-sm text-slate-700 mb-4">
-                Click below to open and watch the video breakdown in a new window
-              </p>
             </div>
-            <a 
-              href={videoLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-all shadow-md hover:shadow-lg text-sm font-semibold"
-            >
-              <ExternalLink className="w-4 h-4" />
-              Open Video Player
-            </a>
-          </div>
+          ) : (
+            <div className="bg-slate-900 rounded-lg overflow-hidden">
+              <video 
+                controls 
+                className="w-full"
+                preload="metadata"
+                onError={() => setVideoError(true)}
+                style={{
+                  aspectRatio: '16/9',
+                  outline: 'none'
+                }}
+              >
+                <source src={videoStreamUrl} type="video/mp4" />
+                <source src={videoStreamUrl} type="video/webm" />
+                <source src={videoStreamUrl} type="video/ogg" />
+                Your browser does not support the video element.
+              </video>
+            </div>
+          )}
           
           <div className="mt-4 pt-4 border-t border-slate-200">
             <p className="text-sm text-slate-600 leading-relaxed">
