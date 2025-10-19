@@ -127,8 +127,8 @@ export default function TermVsWholeLifeInsurance2024() {
               </button>
           {/* Multimedia Overview Section */}
           <MultimediaOverview
-            audioUrl="https://drive.google.com/uc?export=download&id=1sDVCLmLoLIrRjuZx6VtHz_yVBt9lOqma"
-            videoUrl="https://drive.google.com/uc?export=download&id=1HwO4BO_MwoK-GpwvOnaIYWYp0LrFbOCk"
+            audioUrl="https://drive.google.com/file/d/1sDVCLmLoLIrRjuZx6VtHz_yVBt9lOqma/view"
+            videoUrl="https://drive.google.com/file/d/1HwO4BO_MwoK-GpwvOnaIYWYp0LrFbOCk/view"
           />
 
             </div>
