@@ -189,7 +189,6 @@ export function getRelatedItems(slugs: string[]) {
     .map((slug) => {
       const item = RELATED_CONTENT[slug];
       if (!item && process.env.NODE_ENV !== 'production') {
-        // eslint-disable-next-line no-console
         console.warn(`[RelatedContent] Missing related content entry for slug: ${slug}`);
       }
       return item ? { slug, ...item } : null;

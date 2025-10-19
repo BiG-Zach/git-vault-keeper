@@ -54,10 +54,6 @@ export default function SEO({
     return base;
   }, [scripts]);
 
-  const metaKey = useMemo(() => JSON.stringify(meta ?? []), [meta]);
-  const linksKey = useMemo(() => JSON.stringify(links ?? []), [links]);
-  const scriptsKey = useMemo(() => JSON.stringify(augmentedScripts), [augmentedScripts]);
-
   const resolved: ResolvedSEO = useMemo(
     () =>
       resolveSEO({
@@ -82,9 +78,9 @@ export default function SEO({
       image,
       noindex,
       themeColor,
-      metaKey,
-      linksKey,
-      scriptsKey,
+      meta,
+      links,
+      augmentedScripts,
     ],
   );
 

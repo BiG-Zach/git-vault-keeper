@@ -252,7 +252,10 @@ export default function HCaptcha({ siteKey, onVerify, onExpire, onError, classNa
     // Validate site key
     if (!siteKey || siteKey.trim() === '') {
       console.error('[hCaptcha] No site key provided');
-      setLoadError('Verification service is not configured. Please contact support.');
+      // Use queueMicrotask to avoid setState during render
+      queueMicrotask(() => {
+        setLoadError('Verification service is not configured. Please contact support.');
+      });
       return () => undefined;
     }
 
