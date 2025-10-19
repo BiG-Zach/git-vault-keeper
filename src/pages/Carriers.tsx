@@ -729,8 +729,6 @@ export default function CarriersPage() {
 
             loading="eager"
 
-            fetchpriority="high"
-
             decoding="async"
 
             width="1200"
