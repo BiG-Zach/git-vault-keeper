@@ -54,7 +54,41 @@ export default function TermVsWholeLifeInsurance2024() {
   ];
 
   return (
-    <main className="min-h-screen bg-white">
+    <>
+      <style>{`
+        .source-citation {
+          font-size: 0.9em;
+          color: #666;
+          font-style: italic;
+          margin-top: 15px;
+          padding-left: 20px;
+          border-left: 3px solid #e0e0e0;
+        }
+
+        .source-citation a {
+          color: #2563eb;
+          text-decoration: none;
+          border-bottom: 1px dotted #2563eb;
+          transition: all 0.2s ease;
+        }
+
+        .source-citation a:hover {
+          color: #1e40af;
+          border-bottom: 1px solid #1e40af;
+        }
+
+        .sources-list {
+          background: #fafafa;
+          padding: 25px;
+          border-radius: 8px;
+          margin: 20px 0;
+        }
+
+        .sources-list ul {
+          line-height: 1.8;
+        }
+      `}</style>
+      <main className="min-h-screen bg-white">
       <SEO
         title={title}
         description={description}
@@ -213,16 +247,40 @@ export default function TermVsWholeLifeInsurance2024() {
               </ul>
             </div>
 
+            <p className="source-citation">
+              <em>Sources:
+                <a href="https://www.limra.com/en/newsroom/news-releases/2025/limra-u.s.-individual-life-insurance-premium-sets-new-sales-record-in-2024/" target="_blank" rel="noopener">LIMRA 2024 Full Year Report</a>,
+                <a href="https://beinsure.com/us-life-insurance-annuity-growth-trends/" target="_blank" rel="noopener">BeInsure Growth Analysis</a>
+              </em>
+            </p>
+
             <p className="text-lg text-slate-700 leading-relaxed mb-4">
               These numbers tell a clear story: while whole life maintains premium volume leadership, 
               consumers increasingly demand affordable, flexible protection—and the industry is responding 
               with hybrid products offering both death benefit protection and accumulation features.
             </p>
 
-            <p className="text-sm text-slate-500 italic">
-              Source: LIMRA Q1 2025 Market Report, Insurance Business Magazine, Bankrate 2025 Analysis
+            <p className="source-citation">
+              <em>Sources:
+                <a href="https://www.limra.com/en/newsroom/news-releases/2025/limra-u.s.-life-insurance-new-premium-exceeds-3.9-billion-in-the-first-quarter-2025/" target="_blank" rel="noopener">LIMRA Q1 2025 Market Report</a>,
+                <a href="https://www.insurancebusinessmag.com/us/news/life-insurance/us-life-insurance-premiums-surge-as-indexed-products-lead-growth--limra-538127.aspx" target="_blank" rel="noopener">Insurance Business Magazine</a>,
+                <a href="https://www.bankrate.com/insurance/life-insurance/life-insurance-statistics/" target="_blank" rel="noopener">Bankrate Life Insurance Statistics 2025</a>
+              </em>
             </p>
           </section>
+
+          {/* Research Methodology Callout Box */}
+          <div style={{background: '#f0f9ff', borderLeft: '4px solid #0284c7', padding: '20px', margin: '30px 0', borderRadius: '4px'}}>
+            <h4 style={{marginTop: 0, color: '#0284c7'}}>📊 Research Methodology & Data Sources</h4>
+            <p style={{marginBottom: 0, lineHeight: 1.6}}>
+              This analysis draws from authoritative 2025 industry research including:
+              <strong> LIMRA</strong> (Life Insurance Marketing and Research Association),
+              <strong> Bankrate</strong> consumer studies,
+              <strong> Insurance Barometer Study</strong> (LIMRA + Life Happens),
+              <strong> NAIC</strong> (National Association of Insurance Commissioners) market share data, and
+              <strong> The Zebra</strong> rate analysis. All statistics are cited with direct links to source materials.
+            </p>
+          </div>
 
           {/* Cost Comparison 2025 Section */}
           <section className="mb-12">
@@ -326,8 +384,11 @@ export default function TermVsWholeLifeInsurance2024() {
               question: is the forced savings component worth the dramatically higher cost?
             </p>
 
-            <p className="text-sm text-slate-500 italic">
-              Source: The Zebra Life Insurance Statistics 2025, PolicyAdvisor Rate Analysis
+            <p className="source-citation">
+              <em>Sources:
+                <a href="https://www.thezebra.com/resources/research/life-insurance-statistics/" target="_blank" rel="noopener">The Zebra Life Insurance Statistics 2025</a>,
+                <a href="https://www.policyadvisor.com/life-insurance/term-life-versus-whole-life-insurance/" target="_blank" rel="noopener">PolicyAdvisor Rate Analysis</a>
+              </em>
             </p>
           </section>
 
@@ -373,8 +434,11 @@ export default function TermVsWholeLifeInsurance2024() {
               </div>
             </div>
 
-            <p className="text-sm text-slate-500 italic mb-6">
-              Source: Bankrate Life Insurance Statistics 2025, LIMRA Cost Perception Study
+            <p className="source-citation">
+              <em>Sources:
+                <a href="https://www.bankrate.com/insurance/life-insurance/life-insurance-statistics/" target="_blank" rel="noopener">Bankrate Life Insurance Statistics 2025</a>,
+                <a href="https://www.limra.com/en/newsroom/news-releases/2025/adults-age-30-and-younger-overestimate-life-insurance-cost-by-1012-times/" target="_blank" rel="noopener">LIMRA Cost Perception Study</a>
+              </em>
             </p>
 
             <h3 className="text-2xl font-semibold text-slate-900 mb-4">
@@ -404,8 +468,11 @@ export default function TermVsWholeLifeInsurance2024() {
               </li>
             </ul>
 
-            <p className="text-sm text-slate-500 italic mb-6">
-              Source: Insurance Barometer Study 2025, Life Happens Foundation Research
+            <p className="source-citation">
+              <em>Sources:
+                <a href="https://www.limra.com/siteassets/newsroom/liam/2025/2025_facts_about_life_insurance.pdf" target="_blank" rel="noopener">Insurance Barometer Study 2025</a>,
+                <a href="https://lifehappens.org/research/they-dont-understand-life-insurance-and-overestimate-its-cost/" target="_blank" rel="noopener">Life Happens Foundation Research</a>
+              </em>
             </p>
 
             <div className="bg-blue-50 border-l-4 border-blue-600 p-6 mb-6">
@@ -528,8 +595,11 @@ export default function TermVsWholeLifeInsurance2024() {
                 </div>
               </div>
 
-              <p className="text-sm text-slate-500 italic mb-6">
-                Source: 2025 Employee Benefits Research, LIMRA Workplace Coverage Analysis
+              <p className="source-citation">
+                <em>Sources:
+                  <a href="https://www.limra.com/en/newsroom/news-releases/2025/" target="_blank" rel="noopener">LIMRA Workplace Coverage Analysis 2025</a>,
+                  <a href="https://www.shrm.org/topics-tools/research/employee-benefits-survey" target="_blank" rel="noopener">SHRM Employee Benefits Research</a>
+                </em>
               </p>
 
               <div className="bg-green-50 border-l-4 border-green-600 p-6">
@@ -850,6 +920,12 @@ export default function TermVsWholeLifeInsurance2024() {
                   </ul>
                 </div>
               </div>
+
+              <p className="source-citation">
+                <em>Investment return assumptions based on historical S&P 500 average annual returns (1957-2024). Source:
+                  <a href="https://www.officialdata.org/us/stocks/s-p-500/1957" target="_blank" rel="noopener">S&P 500 Historical Data</a>
+                </em>
+              </p>
 
               <h3 className="text-2xl font-bold text-slate-900 mb-4">The Case For "Buy Term and Invest the Difference"</h3>
               <div className="space-y-3 mb-6">
@@ -1228,6 +1304,49 @@ export default function TermVsWholeLifeInsurance2024() {
             </div>
           </section>
 
+          {/* Sources & References Section */}
+          <section id="sources-references" className="mb-12">
+            <h2 className="text-3xl font-bold text-slate-900 mb-6">📚 Sources & References</h2>
+
+            <p className="text-slate-700 leading-relaxed mb-6">This comprehensive guide is built on authoritative 2025 insurance industry research. All claims are supported by data from the following sources:</p>
+
+            <div className="sources-list">
+              
+              <h3 style={{fontSize: '1.1em', marginTop: 0}}>Industry Research & Market Data</h3>
+              <ul>
+                <li><a href="https://www.limra.com/en/newsroom/news-releases/2025/limra-u.s.-life-insurance-new-premium-exceeds-3.9-billion-in-the-first-quarter-2025/" target="_blank" rel="noopener">LIMRA Q1 2025 U.S. Life Insurance Market Report</a></li>
+                <li><a href="https://www.limra.com/en/newsroom/news-releases/2025/limra-u.s.-individual-life-insurance-premium-sets-new-sales-record-in-2024/" target="_blank" rel="noopener">LIMRA 2024 Full Year Premium Report</a></li>
+                <li><a href="https://www.limra.com/en/newsroom/news-releases/2025/adults-age-30-and-younger-overestimate-life-insurance-cost-by-1012-times/" target="_blank" rel="noopener">LIMRA Cost Perception Study 2025</a></li>
+                <li><a href="https://www.insurancebusinessmag.com/us/news/life-insurance/us-life-insurance-premiums-surge-as-indexed-products-lead-growth--limra-538127.aspx" target="_blank" rel="noopener">Insurance Business Magazine: IUL/VUL Growth Analysis</a></li>
+              </ul>
+
+              <h3 style={{fontSize: '1.1em'}}>Consumer Research & Surveys</h3>
+              <ul>
+                <li><a href="https://www.bankrate.com/insurance/life-insurance/life-insurance-statistics/" target="_blank" rel="noopener">Bankrate Life Insurance Statistics 2025</a></li>
+                <li><a href="https://www.limra.com/siteassets/newsroom/liam/2025/2025_facts_about_life_insurance.pdf" target="_blank" rel="noopener">Insurance Barometer Study 2025 (LIMRA + Life Happens)</a></li>
+                <li><a href="https://lifehappens.org/research/they-dont-understand-life-insurance-and-overestimate-its-cost/" target="_blank" rel="noopener">Life Happens: Cost Misconception Research</a></li>
+              </ul>
+
+              <h3 style={{fontSize: '1.1em'}}>Cost & Rate Analysis</h3>
+              <ul>
+                <li><a href="https://www.thezebra.com/resources/research/life-insurance-statistics/" target="_blank" rel="noopener">The Zebra: Life Insurance Cost Analysis 2025</a></li>
+                <li><a href="https://www.policyadvisor.com/life-insurance/term-life-versus-whole-life-insurance/" target="_blank" rel="noopener">PolicyAdvisor: Term vs Whole Life Rate Comparison</a></li>
+                <li><a href="https://www.nerdwallet.com/article/insurance/average-life-insurance-rates" target="_blank" rel="noopener">NerdWallet: Average Life Insurance Rates by Age</a></li>
+              </ul>
+
+              <h3 style={{fontSize: '1.1em'}}>Regulatory & Market Share Data</h3>
+              <ul>
+                <li><a href="https://content.naic.org/sites/default/files/research-actuarial-life-fraternal-market-share.pdf" target="_blank" rel="noopener">NAIC: Life Insurance Market Share Report</a></li>
+                <li><a href="https://www.iii.org/publications/triple-i-insurance-facts/life-annuity-financial-data" target="_blank" rel="noopener">Insurance Information Institute: Industry Financial Data</a></li>
+              </ul>
+
+              <p style={{marginTop: '20px', fontSize: '0.9em', color: '#666'}}>
+                <strong>Methodology Note:</strong> All premium quotes and cost comparisons reflect national averages for healthy, non-smoking individuals. Individual rates vary based on age, health status, state of residence, and carrier underwriting. Statistics current as of October 2025.
+              </p>
+
+            </div>
+          </section>
+
           {/* Author Bio */}
           <div className="mt-12 bg-slate-50 rounded-xl p-8">
             <div className="flex items-start space-x-4">
@@ -1255,6 +1374,7 @@ export default function TermVsWholeLifeInsurance2024() {
           />
         </div>
       </article>
-    </main>
+      </main>
+    </>
   );
 }
