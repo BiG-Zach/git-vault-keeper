@@ -153,6 +153,7 @@ export default function MultimediaOverview({
                 controls 
                 className="w-full"
                 preload="metadata"
+                poster="/term-vs-whole-life-thumbnail.jpg"
                 onError={() => setVideoError(true)}
                 style={{
                   aspectRatio: '16/9',
