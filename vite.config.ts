@@ -14,8 +14,7 @@ export default defineConfig(({ mode }) => ({
       'localhost',
       '.novita.ai',
       '.sandbox.novita.ai',
-      /^\d+-[a-z0-9]+\.sandbox\.novita\.ai$/,
-    ],
+    ] as string[],
   },
   plugins: [
     react(),
