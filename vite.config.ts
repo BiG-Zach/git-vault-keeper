@@ -10,6 +10,12 @@ export default defineConfig(({ mode }) => ({
     hmr: {
       clientPort: 8080,
     },
+    allowedHosts: [
+      'localhost',
+      '.novita.ai',
+      '.sandbox.novita.ai',
+      /^\d+-[a-z0-9]+\.sandbox\.novita\.ai$/,
+    ],
   },
   plugins: [
     react(),
