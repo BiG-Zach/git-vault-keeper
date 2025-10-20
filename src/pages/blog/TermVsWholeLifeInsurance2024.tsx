@@ -161,8 +161,8 @@ export default function TermVsWholeLifeInsurance2024() {
               </button>
           {/* Multimedia Overview Section */}
           <MultimediaOverview
-            audioUrl="https://drive.google.com/uc?export=download&id=1sDVCLmLoLIrRjuZx6VtHz_yVBt9lOqma"
-            videoUrl="https://drive.google.com/uc?export=download&id=1HwO4BO_MwoK-GpwvOnaIYWYp0LrFbOCk"
+            audioUrl="/The_Financial_Protection_Paradox__Record_Premiums,_100_Million_.m4a"
+            videoUrl="/Demystifying_Life_Insurance.mp4"
           />
 
             </div>

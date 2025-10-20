@@ -24,12 +24,12 @@ export const blogPosts: { [key: string]: BlogPost[] } = {
   'life-insurance': [
     {
       slug: 'term-vs-whole-life-insurance-2025',
-      title: 'Term vs Whole Life Insurance: The $50,000 Decision',
-      preview: 'Discover which life insurance type could save your family thousands while providing better protection.',
-      wordCount: '2,200 words',
+      title: 'Term vs. Whole Life Insurance: 2025 Cost Comparison Guide',
+      preview: 'See why 80% choose term life. Compare the $140,000 cost difference and new 2025 market trends (IUL +11%, VUL +41%).',
+      wordCount: '3,500 words',
       category: 'Life Insurance',
-      readTime: '11 min read',
-      updated: 'Jan 2024',
+      readTime: '15 min read',
+      updated: 'Oct 2025',
       states: ['All']
     },
     {

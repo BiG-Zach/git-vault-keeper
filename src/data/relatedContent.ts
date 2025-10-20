@@ -7,8 +7,8 @@ export type RelatedContentItem = {
 
 export const RELATED_CONTENT: Record<string, RelatedContentItem> = {
   '/blog/term-vs-whole-life-insurance-2025': {
-    title: 'Term vs Whole Life Insurance: The $50,000 Decision',
-    description: 'Compare permanent and temporary coverage with real cost scenarios to choose the right policy.',
+    title: 'Term vs. Whole Life Insurance: 2025 Cost Comparison Guide',
+    description: 'See why 80% choose term life. Compare the $140,000 cost difference and new 2025 market trends (IUL +11%, VUL +41%).',
     href: '/blog/term-vs-whole-life-insurance-2025',
     category: 'Life Insurance',
   },
