@@ -110,8 +110,8 @@ export default function LifeInsurancePreExistingConditions() {
             <section id="overview" className="mb-12">
               <h2 className="text-3xl font-bold text-slate-900 mb-6">Pre-Existing Conditions Overview</h2>
               <p className="text-slate-700 leading-relaxed mb-6">
-                Having a pre-existing medical condition doesn't automatically disqualify you from life insurance. 
-                However, it does require a strategic approach to get approved at the best possible rates. Understanding 
+                Having a pre-existing medical condition doesn't automatically disqualify you from <Link to="/life-insurance" className="text-primary hover:underline">life insurance</Link>.
+                However, it does require a strategic approach to get approved at the best possible rates. Understanding
                 your options can mean the difference between getting affordable coverage and paying triple the standard rates.
               </p>
               
@@ -238,7 +238,7 @@ export default function LifeInsurancePreExistingConditions() {
                     <h3 className="text-xl font-bold text-green-800">DO These Things</h3>
                   </div>
                   <ul className="space-y-2 text-green-700">
-                    <li>• Work with an experienced broker who knows carrier appetites</li>
+                    <li>• Work with an experienced broker who knows <Link to="/carriers" className="text-green-800 hover:underline font-medium">carrier appetites</Link></li>
                     <li>• Be completely honest about all health conditions</li>
                     <li>• Gather all medical records before applying</li>
                     <li>• Target carriers that are favorable to your condition</li>
@@ -484,8 +484,7 @@ export default function LifeInsurancePreExistingConditions() {
                 <div className="border-b border-slate-200 pb-6">
                   <h3 className="text-xl font-bold text-slate-900 mb-3">What happens if I'm declined by one company?</h3>
                   <p className="text-slate-700">
-                    A declination from one carrier doesn't mean you can't get coverage elsewhere. Different companies 
-                    have different underwriting guidelines. An experienced broker can help you find carriers that are 
+                    A declination from one carrier doesn't mean you can't get coverage elsewhere. Different <Link to="/blog/life-insurance-companies-financial-strength" className="text-primary hover:underline">insurance companies</Link> have different underwriting guidelines. An experienced broker can help you find carriers that are
                     more favorable to your specific condition.
                   </p>
                 </div>
@@ -518,8 +517,8 @@ export default function LifeInsurancePreExistingConditions() {
               <h3 className="text-2xl font-bold text-blue-900">Get Expert Help with Your Application</h3>
             </div>
             <p className="text-blue-700 mb-6 max-w-2xl mx-auto">
-              Don't let health conditions prevent you from protecting your family. I specialize in helping people 
-              with pre-existing conditions get approved for life insurance at the best possible rates.
+              Don't let health conditions prevent you from protecting your family. I specialize in helping people
+              with pre-existing conditions get approved for life insurance at the best possible rates. Learn more about <Link to="/our-process" className="text-blue-800 hover:underline font-medium">our advisory process</Link>.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a

@@ -113,7 +113,11 @@ export default function PPOHMOEPOPlanComparison() {
               <p className="text-slate-700 leading-relaxed mb-6">
                 Understanding the differences between HMO, PPO, and EPO plans is crucial for choosing health insurance 
                 that fits your needs and budget. The wrong choice could cost you thousands in unnecessary premiums 
-                or out-of-network charges.
+                or out-of-network charges. Understanding these plan types is essential whether you're shopping on the{' '}
+                <Link to="/health-insurance" className="text-blue-600 hover:text-blue-700 underline font-medium">
+                  individual health insurance market
+                </Link>
+                {' '}or evaluating employer coverage options.
               </p>
               
               <div className="bg-blue-50 border-l-4 border-blue-500 p-6 mb-6">
@@ -192,6 +196,14 @@ export default function PPOHMOEPOPlanComparison() {
                   </ul>
                 </div>
               </div>
+
+              <p className="text-slate-700 mb-6">
+                For state-specific HMO options and carrier availability, visit our{' '}
+                <Link to="/states" className="text-blue-600 hover:text-blue-700 underline font-medium">
+                  state insurance directory
+                </Link>
+                {' '}to find licensed advisors in your area.
+              </p>
 
               <div className="bg-slate-50 rounded-lg p-6">
                 <h3 className="text-lg font-bold text-slate-900 mb-3">Typical HMO Costs (Florida Family of 4)</h3>
@@ -563,7 +575,23 @@ export default function PPOHMOEPOPlanComparison() {
                   <p className="text-slate-700">
                     Check the insurance company's provider directory online or call the customer service number on your 
                     insurance card. You can also call your doctor's office - they can verify coverage and help you 
-                    understand your benefits before your appointment.
+                    understand your benefits before your appointment. Our{' '}
+                    <Link to="/carriers" className="text-blue-600 hover:text-blue-700 underline font-medium">
+                      carrier partners
+                    </Link>
+                    {' '}maintain comprehensive provider directories to help you verify network status.
+                  </p>
+                </div>
+
+                <div className="border-b border-slate-200 pb-6">
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">How do deductibles work with different plan types?</h3>
+                  <p className="text-slate-700">
+                    Deductibles vary significantly by plan type. HMOs often have lower or no deductibles for in-network care,
+                    while PPOs typically have higher deductibles but offer more flexibility. Learn more in our{' '}
+                    <Link to="/blog/health-insurance-deductibles-guide" className="text-blue-600 hover:text-blue-700 underline font-medium">
+                      comprehensive deductibles guide
+                    </Link>
+                    .
                   </p>
                 </div>
               </div>
@@ -596,6 +624,13 @@ export default function PPOHMOEPOPlanComparison() {
                 Call (689) 325-6570
               </a>
             </div>
+            <p className="text-blue-700 text-sm mt-4">
+              Explore our{' '}
+              <Link to="/our-process" className="text-blue-600 hover:text-blue-700 underline font-medium">
+                4-step advisory process
+              </Link>
+              {' '}to see how we help families choose the right plan type and carrier.
+            </p>
           </div>
 
           {/* Author Bio */}

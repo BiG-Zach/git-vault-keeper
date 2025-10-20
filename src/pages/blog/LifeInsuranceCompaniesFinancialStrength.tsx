@@ -66,7 +66,7 @@ export default function LifeInsuranceCompaniesFinancialStrength() {
             </div>
             
             <p className="text-xl text-slate-700 leading-relaxed">
-              Protect your family's future by choosing financially stable insurers. Our complete rankings based on AM Best ratings, assets under management, and claims-paying ability.
+              Protect your family's future by choosing financially stable insurers. Our complete rankings based on AM Best ratings, assets under management, and claims-paying ability. Compare with our <Link to="/carriers" className="text-primary hover:underline">carrier partners</Link>.
             </p>
           </header>
 
@@ -115,7 +115,7 @@ export default function LifeInsuranceCompaniesFinancialStrength() {
                 <div>
                   <h3 className="font-semibold text-blue-900 mb-2">Comprehensive Analysis</h3>
                   <p className="text-blue-800">
-                    Our rankings consider AM Best ratings, financial reserves, claims payment history, and regulatory compliance across 150+ life insurers.
+                    Our rankings consider AM Best ratings, financial reserves, claims payment history, and regulatory compliance across 150+ <Link to="/life-insurance" className="text-blue-900 hover:underline font-medium">life insurers</Link>.
                   </p>
                 </div>
               </div>
@@ -204,7 +204,7 @@ export default function LifeInsuranceCompaniesFinancialStrength() {
                   </div>
                 </div>
                 <p className="text-slate-700">
-                  The gold standard in life insurance with 165+ years of paying dividends. Best for whole life and permanent coverage with exceptional customer loyalty.
+                  The gold standard in life insurance with 165+ years of paying dividends. Best for whole life and permanent coverage with exceptional customer loyalty. Learn more in our <Link to="/blog/term-vs-whole-life-insurance-2024" className="text-primary hover:underline">term vs whole life guide</Link>.
                 </p>
               </div>
 
@@ -531,7 +531,7 @@ export default function LifeInsuranceCompaniesFinancialStrength() {
             <div className="bg-amber-50 border border-amber-200 rounded-lg p-6 mb-8">
               <h3 className="font-semibold text-amber-900 mb-4">Our Recommendation:</h3>
               <p className="text-amber-800 mb-4">
-                Don't sacrifice financial strength for small premium savings. The cost difference between A+ and B+ rated companies is typically only 5-15%, but the risk difference is substantial.
+                Don't sacrifice financial strength for small premium savings. The cost difference between A+ and B+ rated companies is typically only 5-15%, but the risk difference is substantial. Understand ratings better in our <Link to="/blog/am-best-insurance-ratings-explained" className="text-amber-900 hover:underline font-medium">AM Best ratings guide</Link>.
               </p>
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
@@ -590,8 +590,8 @@ export default function LifeInsuranceCompaniesFinancialStrength() {
                 <h3 className="text-xl font-bold text-slate-900 mb-2">Zach Bradford</h3>
                 <div className="text-slate-600 mb-3">Licensed Insurance Broker | FL License W347851</div>
                 <p className="text-slate-700">
-                  Zach has analyzed financial strength ratings for over 150 life insurance companies and has helped families secure over $50 million 
-                  in life insurance coverage with top-rated insurers since 2016.
+                  Zach has analyzed financial strength ratings for over 150 life insurance companies and has helped families secure over $50 million
+                  in life insurance coverage with top-rated insurers since 2016. Contact us through our <Link to="/contact" className="text-primary hover:underline">consultation page</Link>.
                 </p>
               </div>
             </div>

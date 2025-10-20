@@ -66,7 +66,7 @@ export default function FloridaSmallBusinessHealthInsurance() {
             </div>
             
             <p className="text-xl text-slate-700 leading-relaxed">
-              Attract and retain top talent with competitive health benefits. This comprehensive guide covers the best small business health insurance options in Florida with real cost comparisons.
+              Attract and retain top talent with competitive health benefits. This comprehensive guide covers the best <Link to="/health-insurance" className="text-primary hover:underline">small business health insurance</Link> options in Florida with real cost comparisons.
             </p>
           </header>
 
@@ -118,7 +118,7 @@ export default function FloridaSmallBusinessHealthInsurance() {
                 <div>
                   <h3 className="font-semibold text-blue-900 mb-2">Key Requirements</h3>
                   <p className="text-blue-800">
-                    Florida businesses with 2-50 full-time equivalent employees qualify for small group health insurance plans.
+                    <Link to="/states/fl" className="text-blue-900 hover:underline font-medium">Florida businesses</Link> with 2-50 full-time equivalent employees qualify for small group health insurance plans.
                   </p>
                 </div>
               </div>
@@ -203,7 +203,7 @@ export default function FloridaSmallBusinessHealthInsurance() {
                   </div>
                 </div>
                 <p className="text-slate-700">
-                  Florida's largest health insurer with the most comprehensive provider network. Best choice for businesses wanting maximum flexibility and provider access.
+                  Florida's largest health insurer with the most comprehensive provider network. Best choice for businesses wanting maximum flexibility and provider access. Compare with other <Link to="/carriers" className="text-primary hover:underline">insurance carriers</Link> to find the best fit.
                 </p>
               </div>
 
@@ -405,7 +405,7 @@ export default function FloridaSmallBusinessHealthInsurance() {
             <div className="bg-green-50 border border-green-200 rounded-lg p-6">
               <h3 className="font-semibold text-green-900 mb-2">Cost Savings Tip</h3>
               <p className="text-green-800">
-                Consider High Deductible Health Plans (HDHPs) with Health Savings Accounts (HSAs) to reduce premiums by 15-30% while providing tax advantages to employees.
+                Consider High Deductible Health Plans (HDHPs) with Health Savings Accounts (HSAs) to reduce premiums by 15-30% while providing tax advantages to employees. Learn more in our <Link to="/blog/health-insurance-deductibles-guide" className="text-green-900 hover:underline font-medium">deductibles guide</Link>.
               </p>
             </div>
           </section>
@@ -472,8 +472,8 @@ export default function FloridaSmallBusinessHealthInsurance() {
                 <h3 className="text-xl font-bold text-slate-900 mb-2">Zach Bradford</h3>
                 <div className="text-slate-600 mb-3">Licensed Insurance Broker | FL License W347851</div>
                 <p className="text-slate-700">
-                  Zach has helped over 200 Florida small businesses implement health insurance programs, securing over $1.2M 
-                  in tax credits and savings. He specializes in finding the perfect balance between coverage and cost.
+                  Zach has helped over 200 Florida small businesses implement health insurance programs, securing over $1.2M
+                  in tax credits and savings. He specializes in finding the perfect balance between coverage and cost. Contact us through our <Link to="/contact" className="text-primary hover:underline">consultation page</Link> for personalized business insurance guidance.
                 </p>
               </div>
             </div>

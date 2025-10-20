@@ -74,7 +74,9 @@ export const ROUTE_COMPONENT_MAP: Record<string, string> = {
 export const STATE_COMPONENT_PATH = 'src/pages/states/[code].tsx';
 
 export function buildStateRoutes() {
-  return Object.keys(stateMetadata).map((slug) => `/states/${slug}`);
+  return Object.entries(stateMetadata)
+    .filter(([_, meta]) => meta.available === true)
+    .map(([slug]) => `/states/${slug}`);
 }
 
 export function getSeoRoutePaths() {

@@ -17,7 +17,12 @@ export default function HealthInsurance() {
     organizationSchema(),
     serviceSchema(
       ['Affordable Health Insurance', 'PPO Health Coverage', 'Health Insurance Broker Services'],
-      heroImage.src
+      heroImage.src,
+      {
+        name: 'Health Insurance Brokerage Services',
+        description: 'Expert health insurance guidance and carrier comparison across 6 states with 15+ A-rated carriers',
+        url: 'https://www.bradfordinformedguidance.com/health-insurance',
+      }
     )
   ];
 

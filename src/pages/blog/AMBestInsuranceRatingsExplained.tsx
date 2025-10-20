@@ -100,7 +100,7 @@ export default function AMBestInsuranceRatingsExplained() {
             </div>
 
             <p className="text-slate-700 mb-6">
-              Insurance company ratings are independent assessments of an insurer's financial strength and ability to meet its obligations to policyholders. These ratings help consumers evaluate the stability and reliability of insurance companies before purchasing coverage.
+              Insurance company ratings are independent assessments of an insurer's financial strength and ability to meet its obligations to policyholders. These ratings help consumers evaluate the stability and reliability of <Link to="/carriers" className="text-primary hover:underline">insurance companies</Link> before purchasing coverage.
             </p>
 
             <div className="grid md:grid-cols-3 gap-6 mb-8">
@@ -181,7 +181,7 @@ export default function AMBestInsuranceRatingsExplained() {
                 <div>
                   <h3 className="font-semibold text-red-900 mb-2">Real Risk</h3>
                   <p className="text-red-800">
-                    Since 2008, over 500 insurance companies have failed, leaving policyholders with unpaid claims and cancelled coverage.
+                    Since 2008, over 500 insurance companies have failed, leaving policyholders with unpaid claims and cancelled coverage. Learn how to choose stable insurers in our <Link to="/blog/life-insurance-companies-financial-strength" className="text-red-900 hover:underline font-medium">financial strength rankings</Link>.
                   </p>
                 </div>
               </div>
@@ -307,7 +307,7 @@ export default function AMBestInsuranceRatingsExplained() {
             </div>
 
             <p className="text-slate-700 mb-6">
-              While ratings are crucial, they're not the only factor. Consider coverage options, customer service, premium costs, and claims handling reputation alongside financial strength ratings.
+              While ratings are crucial, they're not the only factor. Consider coverage options, customer service, premium costs, and claims handling reputation alongside financial strength ratings. Our <Link to="/our-process" className="text-primary hover:underline">advisory process</Link> helps you evaluate all these factors.
             </p>
           </section>
 
@@ -316,7 +316,7 @@ export default function AMBestInsuranceRatingsExplained() {
             <div className="text-center">
               <h2 className="text-2xl font-bold mb-4">Need Help Choosing a Stable Insurer?</h2>
               <p className="text-lg mb-6 text-blue-100">
-                Get personalized recommendations from our licensed insurance broker
+                Get personalized recommendations from our <Link to="/contact" className="text-white hover:underline font-medium">licensed insurance broker</Link>
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link 
@@ -345,8 +345,8 @@ export default function AMBestInsuranceRatingsExplained() {
                 <h3 className="text-xl font-bold text-slate-900 mb-2">Zach Bradford</h3>
                 <div className="text-slate-600 mb-3">Licensed Insurance Broker | FL License W347851</div>
                 <p className="text-slate-700">
-                  With over 8 years in insurance and financial services, Zach specializes in helping families choose stable, 
-                  highly-rated insurance carriers. He's personally reviewed financial strength ratings for over 100 insurance companies.
+                  With over 8 years in insurance and financial services, Zach specializes in helping families choose stable,
+                  highly-rated insurance carriers. He's personally reviewed financial strength ratings for over 100 insurance companies. Explore our <Link to="/life-insurance" className="text-primary hover:underline">life insurance services</Link>.
                 </p>
               </div>
             </div>

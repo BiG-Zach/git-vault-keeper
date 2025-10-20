@@ -18,7 +18,7 @@ const CarriersFooterCTA = lazy(() => import("../components/carriers/CarriersFoot
 
 import SEO from "../components/SEO";
 
-import { organizationSchema, localBusinessSchema, serviceSchema, websiteSchema } from "../utils/schema";
+import { organizationSchema, localBusinessSchema, serviceSchema, websiteSchema, itemListSchema } from "../utils/schema";
 
 import { BRAND } from "../lib/brand";
 
@@ -395,32 +395,51 @@ export default function CarriersPage() {
 
 
 
+  // Build ItemList for carriers
+  const carrierItems = CARRIERS.map(carrier => ({
+    name: carrier.name,
+    url: '/carriers',
+    description: carrier.description,
+  }));
+
+  // Build ItemList for networks
+  const networkItems = NETWORKS.map(network => ({
+    name: network.name,
+    url: network.lookupUrl,
+    description: network.description,
+  }));
+
   const structuredData = [
-
     organizationSchema(),
-
     localBusinessSchema('FL', {
-
       streetAddress: '4200 W Cypress St',
-
       addressLocality: 'Tampa',
-
       addressRegion: 'FL',
-
       postalCode: '33607',
-
       addressCountry: 'US'
-
     }, BRAND.phoneHuman),
-
-    serviceSchema(['PPO Insurance Networks', 'Health Insurance', 'Life Insurance', 'Insurance Broker Services']),
-
+    serviceSchema(
+      ['PPO Insurance Networks', 'Health Insurance', 'Life Insurance', 'Insurance Broker Services'],
+      undefined,
+      {
+        name: 'Insurance Carrier Comparison & PPO Network Services',
+        description: 'Expert health and life insurance guidance with access to 15+ A-rated carriers and comprehensive PPO networks across 6 states',
+        url: 'https://www.bradfordinformedguidance.com/carriers',
+      }
+    ),
+    itemListSchema({
+      name: 'A-Rated Insurance Carriers',
+      description: '15+ top-rated insurance carriers for health, life, and supplemental coverage',
+      items: carrierItems,
+    }),
+    itemListSchema({
+      name: 'PPO Network Partners',
+      description: 'Comprehensive PPO networks with 1.3M+ healthcare providers nationwide',
+      items: networkItems,
+    }),
     websiteSchema(),
-
     breadcrumbSchema,
-
     faqPageSchema
-
   ];
 
   // Tabbed Interface State Management

@@ -127,8 +127,12 @@ export default function FloridaHealthInsuranceGuide2024() {
             <section id="florida-overview" className="mb-12">
               <h2 className="text-3xl font-bold text-slate-900 mb-6">Florida Health Insurance Landscape</h2>
               <p className="text-slate-700 leading-relaxed mb-6">
-                Florida's health insurance market is one of the most complex in the nation, with significant regional variations, 
-                unique carrier availability, and specific state regulations that impact coverage options and costs.
+                Florida's health insurance market is one of the most complex in the nation, with significant regional variations,
+                unique carrier availability, and specific state regulations that impact coverage options and costs. For comprehensive information about{' '}
+                <Link to="/states/fl" className="text-blue-600 hover:text-blue-700 underline font-medium">
+                  Florida insurance services
+                </Link>
+                , explore our state-specific resources and licensed broker support.
               </p>
               
               <h3 className="text-2xl font-bold text-slate-900 mb-4">Key Florida Market Facts for 2024</h3>
@@ -208,6 +212,13 @@ export default function FloridaHealthInsuranceGuide2024() {
                   <li><strong>Limited Options:</strong> Rural Panhandle and North Florida counties</li>
                   <li><strong>Single Carrier:</strong> Some rural counties may have only one option</li>
                 </ul>
+                <p className="text-yellow-700 mt-4">
+                  To understand the differences between plan types, read our detailed{' '}
+                  <Link to="/blog/ppo-hmo-epo-plan-comparison" className="text-blue-600 hover:text-blue-700 underline font-medium">
+                    PPO vs HMO vs EPO comparison guide
+                  </Link>
+                  .
+                </p>
               </div>
             </section>
 
@@ -359,7 +370,11 @@ export default function FloridaHealthInsuranceGuide2024() {
 
               <h3 className="text-2xl font-bold text-slate-900 mb-4">Cost-Sharing Reductions (CSR)</h3>
               <p className="text-slate-700 mb-6">
-                Available only with Silver plans for incomes up to 250% FPL, CSRs reduce deductibles, copays, and out-of-pocket maximums.
+                Available only with Silver plans for incomes up to 250% FPL, CSRs reduce deductibles, copays, and out-of-pocket maximums. For personalized assistance navigating these options, contact our{' '}
+                <Link to="/contact" className="text-blue-600 hover:text-blue-700 underline font-medium">
+                  licensed Florida advisors
+                </Link>
+                {' '}who can help you maximize your subsidies.
               </p>
             </section>
 
@@ -404,6 +419,15 @@ export default function FloridaHealthInsuranceGuide2024() {
                     <li>• Hospital network quality</li>
                     <li>• Telehealth benefits</li>
                   </ul>
+                </div>
+                <div>
+                  <p className="text-slate-700 mt-4">
+                    Learn more about our comprehensive{' '}
+                    <Link to="/health-insurance" className="text-blue-600 hover:text-blue-700 underline font-medium">
+                      health insurance advisory services
+                    </Link>
+                    {' '}and how we help Florida families find the right coverage.
+                  </p>
                 </div>
               </div>
             </section>

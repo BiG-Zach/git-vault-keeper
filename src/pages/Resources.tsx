@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { Search } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { Search, MapPin, Shield, Users } from 'lucide-react';
 import SEO from '../components/SEO';
 import ResourcesHero from '../components/headers/ResourcesHero';
 import ResourcesStatisticsSection from '../components/resources/ResourcesStatisticsSection';
@@ -7,6 +8,7 @@ import PremiumKnowledgeCategories from '../components/resources/PremiumKnowledge
 import ExpertAuthoritySection from '../components/resources/ExpertAuthoritySection';
 import PremiumBlogGrid from '../components/resources/PremiumBlogGrid';
 import ResourcesAuthorCTA from '../components/resources/ResourcesAuthorCTA';
+import { organizationSchema, itemListSchema } from '../utils/schema';
 
 export interface BlogPost {
   slug: string;
@@ -232,10 +234,26 @@ export default function Resources() {
   };
   const filteredPosts = getAllPosts().filter(post => matchesSearch(post) && matchesState(post));
 
+  // Build ItemList schema for all blog posts
+  const allPosts = Object.values(blogPosts).flat();
+  const blogItemList = allPosts.map(post => ({
+    name: post.title,
+    url: `/blog/${post.slug}`,
+    description: post.preview,
+  }));
+
+  const structuredData = [
+    organizationSchema(),
+    itemListSchema({
+      name: 'Insurance Knowledge Base Articles',
+      description: 'Comprehensive insurance guides covering health insurance, life insurance, and carrier comparisons',
+      items: blogItemList,
+    }),
+  ];
 
   return (
     <main id="content" className="has-sticky-cta">
-      <SEO 
+      <SEO
         title="Your Complete Insurance Knowledge Center | Bradford Informed Guidance"
         description="Expert insurance guidance from Zach Bradford, licensed across FL, GA, SC, TN, AL, and TX. Life, health, and carrier insights for 1,000+ families since 2016."
         path="/resources"
@@ -250,6 +268,10 @@ export default function Resources() {
             content: 'Open laptop and insurance resources curated by Bradford Informed Guidance'
           }
         ]}
+        scripts={structuredData.map(data => ({
+          type: 'application/ld+json',
+          innerHTML: data
+        }))}
       />
       
       {/* Enhanced Hero Section (Light) */}
@@ -290,12 +312,72 @@ export default function Resources() {
                 <span>15 min read</span>
                 <span>Updated Jan 2024</span>
               </div>
-              <button className="text-blue-600 font-semibold hover:text-blue-700">Read Guide →</button>
+              <Link
+                to="/blog/florida-health-insurance-guide-2024"
+                className="text-blue-600 font-semibold hover:text-blue-700"
+              >
+                Read Guide →
+              </Link>
             </div>
           </div>
         </div>
       </section>
 
+      {/* Quick Links Section */}
+      <section className="py-12 bg-slate-50">
+        <div className="container mx-auto px-4 max-w-6xl">
+          <div className="text-center mb-8">
+            <h2 className="text-2xl font-bold text-slate-900 mb-2">Explore More Resources</h2>
+            <p className="text-slate-600">Additional tools and information to help you make informed decisions</p>
+          </div>
+          <div className="grid md:grid-cols-3 gap-6">
+            <Link
+              to="/states"
+              className="group bg-white rounded-xl p-6 shadow-sm border border-slate-200 hover:shadow-lg hover:border-emerald-300 transition-all duration-300"
+            >
+              <div className="flex items-center gap-3 mb-3">
+                <div className="w-12 h-12 bg-emerald-100 rounded-lg flex items-center justify-center group-hover:bg-emerald-200 transition-colors">
+                  <MapPin className="w-6 h-6 text-emerald-600" />
+                </div>
+                <h3 className="text-lg font-bold text-slate-900">State Directory</h3>
+              </div>
+              <p className="text-slate-600 text-sm">
+                Find licensed advisors and coverage options in all 50 states
+              </p>
+            </Link>
+
+            <Link
+              to="/carriers"
+              className="group bg-white rounded-xl p-6 shadow-sm border border-slate-200 hover:shadow-lg hover:border-blue-300 transition-all duration-300"
+            >
+              <div className="flex items-center gap-3 mb-3">
+                <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center group-hover:bg-blue-200 transition-colors">
+                  <Shield className="w-6 h-6 text-blue-600" />
+                </div>
+                <h3 className="text-lg font-bold text-slate-900">Our Carriers</h3>
+              </div>
+              <p className="text-slate-600 text-sm">
+                Explore our partnerships with A+ rated insurance carriers
+              </p>
+            </Link>
+
+            <Link
+              to="/our-process"
+              className="group bg-white rounded-xl p-6 shadow-sm border border-slate-200 hover:shadow-lg hover:border-purple-300 transition-all duration-300"
+            >
+              <div className="flex items-center gap-3 mb-3">
+                <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center group-hover:bg-purple-200 transition-colors">
+                  <Users className="w-6 h-6 text-purple-600" />
+                </div>
+                <h3 className="text-lg font-bold text-slate-900">Our Process</h3>
+              </div>
+              <p className="text-slate-600 text-sm">
+                See how we guide clients through discovery and enrollment
+              </p>
+            </Link>
+          </div>
+        </div>
+      </section>
 
       {/* Enhanced Category Navigation (Light) */}
       <section className="py-8 bg-white border-b border-slate-200">

@@ -17,7 +17,12 @@ export default function LifeInsurance() {
     organizationSchema(),
     serviceSchema(
       ['Life Insurance Planning', 'Whole Life & Term Insurance', 'Life Insurance Broker'],
-      heroImage.src
+      heroImage.src,
+      {
+        name: 'Life Insurance Brokerage Services',
+        description: 'Comprehensive life insurance solutions including term, whole life, and universal life policies with living benefits',
+        url: 'https://www.bradfordinformedguidance.com/life-insurance',
+      }
     )
   ];
 

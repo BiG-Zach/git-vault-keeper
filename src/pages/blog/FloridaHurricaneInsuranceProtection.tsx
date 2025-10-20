@@ -125,7 +125,7 @@ export default function FloridaHurricaneInsuranceProtection() {
           <section id="hurricane-risk-zones" className="mb-12">
             <h2 className="text-2xl font-bold text-slate-900 mb-4">Florida Hurricane Risk Zones</h2>
             <p className="text-slate-700 mb-4">
-              Florida's unique geography creates varying levels of hurricane risk. Understanding your specific risk zone is crucial for determining appropriate coverage levels and costs.
+              <Link to="/states/fl" className="text-primary hover:underline">Florida's</Link> unique geography creates varying levels of hurricane risk. Understanding your specific risk zone is crucial for determining appropriate coverage levels and costs.
             </p>
             
             <div className="grid md:grid-cols-3 gap-6 mb-6">
@@ -188,7 +188,7 @@ export default function FloridaHurricaneInsuranceProtection() {
           <section id="essential-coverage" className="mb-12">
             <h2 className="text-2xl font-bold text-slate-900 mb-4">Essential Hurricane Coverage Types</h2>
             <p className="text-slate-700 mb-4">
-              Standard homeowner's insurance policies don't cover hurricane damage. Florida residents need specialized coverage for complete protection.
+              Standard homeowner's insurance policies don't cover hurricane damage. Florida residents need specialized coverage for complete protection. Work with experienced <Link to="/carriers" className="text-primary hover:underline">insurance carriers</Link> who understand Florida's unique risks.
             </p>
             
             <div className="space-y-6">
@@ -354,7 +354,7 @@ export default function FloridaHurricaneInsuranceProtection() {
                 <p><strong>Roof damage + ground flooding:</strong> May involve both wind and flood policies</p>
                 <p><strong>Storm surge + wind damage:</strong> Requires careful documentation of each damage type</p>
                 <p><strong>Concurrent causation:</strong> When wind and flood happen simultaneously</p>
-                <p><strong>Why you need both policies:</strong> Hurricane Ian caused $70B in flood damage and $42B in wind damage</p>
+                <p><strong>Why you need both policies:</strong> Hurricane Ian caused $70B in flood damage and $42B in wind damage. For comprehensive Florida coverage guidance, visit our <Link to="/blog/florida-health-insurance-guide-2024" className="text-orange-800 hover:underline font-medium">Florida insurance guide</Link>.</p>
               </div>
             </div>
           </section>
@@ -689,7 +689,7 @@ export default function FloridaHurricaneInsuranceProtection() {
         <section className="bg-gradient-to-r from-orange-600 to-red-600 rounded-lg p-8 text-white text-center mb-12">
           <h2 className="text-2xl font-bold mb-4">Protect Your Florida Property Today</h2>
           <p className="text-lg mb-6 opacity-90">
-            Don't wait for the next hurricane to discover coverage gaps. Get a comprehensive protection analysis from a Florida insurance expert.
+            Don't wait for the next hurricane to discover coverage gaps. Get a comprehensive protection analysis from a Florida insurance expert through our <Link to="/contact" className="text-white hover:underline font-medium">consultation service</Link>.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
@@ -721,7 +721,7 @@ export default function FloridaHurricaneInsuranceProtection() {
               <h3 className="text-lg font-semibold text-slate-900 mb-2">Zach Bradford</h3>
               <p className="text-slate-600 text-sm mb-2">Licensed Florida Insurance Broker (W347851) | Hurricane Insurance Specialist</p>
               <p className="text-slate-700">
-                With over 8 years of experience in Florida's insurance market, Zach has helped hundreds of families navigate hurricane claims totaling over $50 million. He's personally handled claims from Hurricanes Michael, Dorian, Ian, and Nicole, giving him deep expertise in hurricane coverage and claims advocacy.
+                With over 8 years of experience in Florida's insurance market, Zach has helped hundreds of families navigate hurricane claims totaling over $50 million. He's personally handled claims from Hurricanes Michael, Dorian, Ian, and Nicole, giving him deep expertise in hurricane coverage and claims advocacy. Learn about <Link to="/our-process" className="text-primary hover:underline">our advisory process</Link>.
               </p>
             </div>
           </div>

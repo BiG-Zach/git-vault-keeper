@@ -123,7 +123,7 @@ export default function TampaBayInsuranceBrokerGuide() {
           <section id="local-market-overview" className="mb-12">
             <h2 className="text-2xl font-bold text-slate-900 mb-4">Tampa Bay Insurance Market Overview</h2>
             <p className="text-slate-700 mb-4">
-              Tampa Bay's unique geographic location creates distinct insurance challenges that generic online quotes simply can't address. As a local broker serving this market for over 8 years, I've seen firsthand how local expertise saves families thousands while providing superior protection.
+              Tampa Bay's unique geographic location creates distinct insurance challenges that generic online quotes simply can't address. As a <Link to="/states/fl" className="text-primary hover:underline">local Florida broker</Link> serving this market for over 8 years, I've seen firsthand how local expertise saves families thousands while providing superior protection.
             </p>
             
             <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-6">
@@ -166,7 +166,7 @@ export default function TampaBayInsuranceBrokerGuide() {
             
             <div className="bg-orange-50 border-l-4 border-orange-400 p-4 mb-6">
               <p className="text-orange-800">
-                <strong>Critical Insight:</strong> Tampa Bay hasn't experienced a direct Category 3+ hurricane hit since 1921, but experts predict the area is overdue. When it happens, proper insurance preparation will mean the difference between financial survival and devastation.
+                <strong>Critical Insight:</strong> Tampa Bay hasn't experienced a direct Category 3+ hurricane hit since 1921, but experts predict the area is overdue. When it happens, proper insurance preparation will mean the difference between financial survival and devastation. Learn more in our <Link to="/blog/florida-hurricane-insurance-protection" className="text-orange-900 hover:underline font-medium">hurricane protection guide</Link>.
               </p>
             </div>
 
@@ -355,7 +355,7 @@ export default function TampaBayInsuranceBrokerGuide() {
             <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-6">
               <h4 className="font-semibold text-blue-800 mb-3">🌊 Waterfront Properties</h4>
               <p className="text-blue-700 mb-3">
-                Any property within 1,000 feet of Tampa Bay, Hillsborough Bay, or the Gulf requires specialized hurricane and flood coverage. I work with surplus lines carriers for the most challenging properties.
+                Any property within 1,000 feet of Tampa Bay, Hillsborough Bay, or the Gulf requires specialized hurricane and flood coverage. I work with surplus lines <Link to="/carriers" className="text-blue-800 hover:underline font-medium">carriers</Link> for the most challenging properties.
               </p>
               <ul className="text-blue-700 space-y-1">
                 <li>• Minimum $500,000 flood coverage recommended</li>
@@ -470,7 +470,7 @@ export default function TampaBayInsuranceBrokerGuide() {
         <section className="bg-gradient-to-r from-blue-600 to-blue-700 rounded-lg p-8 text-white text-center mb-12">
           <h2 className="text-2xl font-bold mb-4">Protect Your Tampa Bay Property Today</h2>
           <p className="text-lg mb-6 opacity-90">
-            Don't rely on generic online quotes for Tampa Bay's unique risks. Get a personalized analysis from a local broker who understands our market.
+            Don't rely on generic online quotes for Tampa Bay's unique risks. Get a personalized analysis from a local broker who understands our market. Schedule a consultation through our <Link to="/contact" className="text-white hover:underline font-medium">contact page</Link>.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
@@ -502,7 +502,7 @@ export default function TampaBayInsuranceBrokerGuide() {
               <h3 className="text-lg font-semibold text-slate-900 mb-2">Zach Bradford</h3>
               <p className="text-slate-600 text-sm mb-2">Licensed Florida Insurance Broker (W347851) | Tampa Bay Specialist</p>
               <p className="text-slate-700">
-                Born and raised in Tampa Bay, Zach has specialized in local insurance markets for over 8 years. He's personally handled 150+ hurricane claims and helped 1,000+ Tampa Bay families protect their properties. His local expertise has saved clients over $2.3 million in premiums while improving their coverage.
+                Born and raised in Tampa Bay, Zach has specialized in local insurance markets for over 8 years. He's personally handled 150+ hurricane claims and helped 1,000+ Tampa Bay families protect their properties. His local expertise has saved clients over $2.3 million in premiums while improving their coverage. Learn more about <Link to="/our-process" className="text-primary hover:underline">our process</Link>.
               </p>
             </div>
           </div>

@@ -10,6 +10,15 @@ export const ORG = {
   url: 'https://www.bradfordinformedguidance.com',
   logo: 'https://www.bradfordinformedguidance.com/logos/brand-mark.svg',
   image: 'https://www.bradfordinformedguidance.com/assets/backgrounds/happy-family-beach-hero.webp',
+  telephone: '+16893256570',
+  email: 'zbradford@bradfordinformedguidance.com',
+  address: {
+    streetAddress: '4200 W Cypress St',
+    addressLocality: 'Tampa',
+    addressRegion: 'FL',
+    postalCode: '33607',
+    addressCountry: 'US',
+  },
   sameAs: [
     'https://bradfordinformedguidance.trustmyproducer.com',
     // Add real profiles when available
@@ -17,6 +26,8 @@ export const ORG = {
     'https://www.linkedin.com/',
     'https://g.page/',
   ],
+  serviceArea: ['Florida', 'Michigan', 'North Carolina', 'Arizona', 'Texas', 'Georgia'],
+  npn: '18181266',
 };
 
 export const SITE = {
@@ -35,12 +46,39 @@ type Address = {
 export function organizationSchema() {
   const data = {
     '@context': 'https://schema.org',
-    '@type': 'Organization',
+    '@type': 'InsuranceAgency',
     name: ORG.name,
     url: ORG.url,
-    logo: ORG.logo,
+    logo: {
+      '@type': 'ImageObject',
+      url: ORG.logo,
+    },
     image: ORG.image,
+    telephone: ORG.telephone,
+    email: ORG.email,
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: ORG.address.streetAddress,
+      addressLocality: ORG.address.addressLocality,
+      addressRegion: ORG.address.addressRegion,
+      postalCode: ORG.address.postalCode,
+      addressCountry: ORG.address.addressCountry,
+    },
+    areaServed: ORG.serviceArea.map(state => ({
+      '@type': 'State',
+      name: state,
+    })),
     sameAs: ORG.sameAs,
+    description: 'Licensed insurance brokerage serving multiple states with expertise in health and life insurance',
+    priceRange: '$$',
+    knowsAbout: [
+      'Health Insurance',
+      'Life Insurance',
+      'PPO Networks',
+      'Insurance Brokerage',
+      'Medicare',
+      'Supplemental Insurance',
+    ],
   };
   return JSON.stringify(data);
 }
@@ -95,20 +133,46 @@ export function localBusinessSchema(state: SupportedStateCode, address?: Address
   return JSON.stringify(data);
 }
 
-export function serviceSchema(services: string[] = ['Health Insurance', 'Life Insurance'], image?: string) {
+export function serviceSchema(
+  services: string[] = ['Health Insurance', 'Life Insurance'],
+  image?: string,
+  options?: {
+    name?: string;
+    description?: string;
+    url?: string;
+  }
+) {
   const imageUrl = absoluteUrl(image ?? ORG.image);
   const data = {
     '@context': 'https://schema.org',
     '@type': 'Service',
+    name: options?.name || 'Insurance Brokerage Services',
+    description: options?.description || 'Expert insurance guidance and carrier comparison',
     image: imageUrl,
+    url: options?.url || ORG.url,
     provider: {
-      '@type': 'Organization',
+      '@type': 'InsuranceAgency',
       name: ORG.name,
       url: ORG.url,
       logo: ORG.logo,
-      image: imageUrl,
+      telephone: ORG.telephone,
+      email: ORG.email,
     },
     serviceType: services,
+    areaServed: ORG.serviceArea.map(state => ({
+      '@type': 'State',
+      name: state,
+    })),
+    offers: {
+      '@type': 'Offer',
+      availability: 'https://schema.org/InStock',
+      priceSpecification: {
+        '@type': 'PriceSpecification',
+        priceCurrency: 'USD',
+        price: '0',
+        description: 'Free consultation and comparison services',
+      },
+    },
   };
   return JSON.stringify(data);
 }
@@ -230,6 +294,38 @@ export function articleSchema(params: {
 
   return JSON.stringify(data);
 }
+export function itemListSchema(params: {
+  name: string;
+  description: string;
+  items: Array<{
+    name: string;
+    url: string;
+    description?: string;
+  }>;
+}) {
+  const { name, description, items } = params;
+  
+  const data = {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name,
+    description,
+    numberOfItems: items.length,
+    itemListElement: items.map((item, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      item: {
+        '@type': 'WebPage',
+        name: item.name,
+        url: absoluteUrl(item.url),
+        description: item.description,
+      },
+    })),
+  };
+  
+  return JSON.stringify(data);
+}
+
 
 function absoluteUrl(path: string) {
   if (!path) return ORG.image;

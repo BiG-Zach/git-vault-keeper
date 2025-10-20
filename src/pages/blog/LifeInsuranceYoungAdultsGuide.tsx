@@ -110,8 +110,8 @@ export default function LifeInsuranceYoungAdultsGuide() {
             <section id="why-young-adults" className="mb-12">
               <h2 className="text-3xl font-bold text-slate-900 mb-6">Why Young Adults Need Life Insurance</h2>
               <p className="text-slate-700 leading-relaxed mb-6">
-                Most 25-year-olds think life insurance is for older people with families. This misconception costs them 
-                thousands of dollars and potentially leaves their future families unprotected. Here's the truth: the best 
+                Most 25-year-olds think <Link to="/life-insurance" className="text-primary hover:underline">life insurance</Link> is for older people with families. This misconception costs them
+                thousands of dollars and potentially leaves their future families unprotected. Here's the truth: the best
                 time to buy life insurance is when you're young and healthy.
               </p>
               <div className="bg-red-50 border-l-4 border-red-500 p-6 mb-6">
@@ -149,8 +149,8 @@ export default function LifeInsuranceYoungAdultsGuide() {
             <section id="cost-advantage" className="mb-12">
               <h2 className="text-3xl font-bold text-slate-900 mb-6">The Cost Advantage of Starting Early</h2>
               <p className="text-slate-700 leading-relaxed mb-6">
-                Life insurance premiums are based on age and health at the time of application. The younger and healthier 
-                you are, the lower your premiums for life. This creates a significant advantage for young adults who act now.
+                Life insurance premiums are based on age and health at the time of application. The younger and healthier
+                you are, the lower your premiums for life. This creates a significant advantage for young adults who act now. Use our <Link to="/blog/how-much-life-insurance-calculator" className="text-primary hover:underline">free calculator</Link> to determine your coverage needs.
               </p>
               
               <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-6">
@@ -181,8 +181,8 @@ export default function LifeInsuranceYoungAdultsGuide() {
             <section id="coverage-amounts" className="mb-12">
               <h2 className="text-3xl font-bold text-slate-900 mb-6">How Much Coverage Do You Need?</h2>
               <p className="text-slate-700 leading-relaxed mb-6">
-                Young adults often underestimate their coverage needs. While you might not have dependents now, 
-                your future earning potential is valuable and worth protecting.
+                Young adults often underestimate their coverage needs. While you might not have dependents now,
+                your future earning potential is valuable and worth protecting. Learn more about choosing between <Link to="/blog/term-vs-whole-life-insurance-2024" className="text-primary hover:underline">term and whole life insurance</Link>.
               </p>
               
               <h3 className="text-2xl font-bold text-slate-900 mb-4">Coverage Guidelines for Young Adults</h3>
@@ -340,8 +340,8 @@ export default function LifeInsuranceYoungAdultsGuide() {
               <h3 className="text-2xl font-bold text-blue-900">Ready to Secure Your Future?</h3>
             </div>
             <p className="text-blue-700 mb-6 max-w-2xl mx-auto">
-              Don't let another month pass and cost you money. Get personalized quotes and recommendations 
-              from a licensed professional who understands young adults' unique needs.
+              Don't let another month pass and cost you money. Get personalized quotes and recommendations
+              from a <Link to="/carriers" className="text-blue-800 hover:underline font-medium">licensed professional</Link> who understands young adults' unique needs.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
@@ -370,8 +370,8 @@ export default function LifeInsuranceYoungAdultsGuide() {
               <div>
                 <h3 className="text-xl font-bold text-slate-900 mb-2">Zach Bradford</h3>
                 <p className="text-slate-600 mb-3">
-                  Licensed Florida Insurance Broker (W347851) specializing in life and health insurance. 
-                  Helping families protect their financial future since 2016.
+                  Licensed Florida Insurance Broker (W347851) specializing in life and health insurance.
+                  Helping families protect their financial future since 2016. Learn about <Link to="/our-process" className="text-primary hover:underline">our advisory process</Link>.
                 </p>
                 <div className="text-sm text-slate-500">
                   Licensed in FL, MI, NC, AZ, TX & GA • 1,000+ families served • A+ BBB Rating

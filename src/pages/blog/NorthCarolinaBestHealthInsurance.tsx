@@ -123,7 +123,7 @@ export default function NorthCarolinaBestHealthInsurance() {
           <section id="overall-rankings" className="mb-12">
             <h2 className="text-2xl font-bold text-slate-900 mb-4">2024 Overall Plan Rankings</h2>
             <p className="text-slate-700 mb-4">
-              Based on comprehensive analysis of over 200 North Carolina health plans, including customer satisfaction scores, network adequacy, financial stability, and value metrics, here are the top-performing plans for 2024.
+              Based on comprehensive analysis of over 200 <Link to="/states/nc" className="text-primary hover:underline">North Carolina health plans</Link>, including customer satisfaction scores, network adequacy, financial stability, and value metrics, here are the top-performing plans for 2024.
             </p>
             
             <div className="space-y-6">
@@ -484,7 +484,7 @@ export default function NorthCarolinaBestHealthInsurance() {
             <h3 className="text-xl font-semibold text-slate-900 mb-3">Total Cost of Care Analysis</h3>
             <div className="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-6">
               <p className="text-yellow-800">
-                <strong>Remember:</strong> Monthly premiums are just part of your total healthcare costs. Consider deductibles, copays, and out-of-pocket maximums when comparing plans.
+                <strong>Remember:</strong> Monthly premiums are just part of your total healthcare costs. Consider deductibles, copays, and out-of-pocket maximums when comparing plans. Learn more in our <Link to="/blog/health-insurance-deductibles-guide" className="text-yellow-900 hover:underline font-medium">deductibles optimization guide</Link>.
               </p>
             </div>
 
@@ -661,7 +661,7 @@ export default function NorthCarolinaBestHealthInsurance() {
               <div className="bg-white border border-slate-200 rounded-lg p-6">
                 <h3 className="text-lg font-semibold text-slate-900 mb-2">Which carrier has the best network in rural North Carolina?</h3>
                 <p className="text-slate-700">
-                  Blue Cross Blue Shield of North Carolina has by far the best rural coverage, with providers in all 100 counties. They're the only carrier available in many rural areas and have the strongest relationships with rural hospitals and clinics. For rural residents, BCBS NC is often the only viable option.
+                  Blue Cross Blue Shield of North Carolina has by far the best rural coverage, with providers in all 100 counties. They're the only <Link to="/carriers" className="text-primary hover:underline">carrier</Link> available in many rural areas and have the strongest relationships with rural hospitals and clinics. For rural residents, BCBS NC is often the only viable option.
                 </p>
               </div>
               
@@ -686,7 +686,7 @@ export default function NorthCarolinaBestHealthInsurance() {
         <section className="bg-gradient-to-r from-blue-600 to-blue-700 rounded-lg p-8 text-white text-center mb-12">
           <h2 className="text-2xl font-bold mb-4">Find Your Best North Carolina Health Plan</h2>
           <p className="text-lg mb-6 opacity-90">
-            Don't choose based on price alone. Get expert analysis of North Carolina plans and find the best coverage for your needs and budget.
+            Don't choose based on price alone. Get expert analysis of North Carolina plans and find the best coverage for your needs and budget. Explore our comprehensive <Link to="/health-insurance" className="text-white hover:underline font-medium">health insurance services</Link>.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
@@ -718,7 +718,7 @@ export default function NorthCarolinaBestHealthInsurance() {
               <h3 className="text-lg font-semibold text-slate-900 mb-2">Zach Bradford</h3>
               <p className="text-slate-600 text-sm mb-2">Licensed Florida Insurance Broker (W347851) | Multi-State Health Insurance Expert</p>
               <p className="text-slate-700">
-                Zach has analyzed health insurance markets across multiple states, including North Carolina, helping families navigate complex carrier options and find optimal coverage. His independent analysis is based on comprehensive data including customer satisfaction, network adequacy, and value metrics.
+                Zach has analyzed health insurance markets across multiple states, including North Carolina, helping families navigate complex carrier options and find optimal coverage. His independent analysis is based on comprehensive data including customer satisfaction, network adequacy, and value metrics. Learn about <Link to="/our-process" className="text-primary hover:underline">our advisory approach</Link>.
               </p>
             </div>
           </div>

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import type { SeoCollector } from '../components/SeoProvider';
+import StateDirectory from '../pages/StateDirectory';
 import AppShell from '../layout/AppShell';
 
 // Primary pages
@@ -60,6 +61,7 @@ export default function StaticRoutes({ seoCollector }: StaticRoutesProps) {
         <Route path="/health-insurance" element={<HealthInsurance />} />
         <Route path="/life-insurance" element={<LifeInsurance />} />
         <Route path="/how-it-works" element={<Navigate to="/our-process" replace />} />
+        <Route path="/states" element={<StateDirectory />} />
         <Route path="/states/:code" element={<StateDynamic />} />
         <Route path="/referral" element={<Referral />} />
         <Route path="/checklist" element={<Checklist />} />

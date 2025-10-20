@@ -110,9 +110,9 @@ export default function HowMuchLifeInsuranceCalculator() {
             <section id="why-10x-fails" className="mb-12">
               <h2 className="text-3xl font-bold text-slate-900 mb-6">Why the 10x Income Rule Fails</h2>
               <p className="text-slate-700 leading-relaxed mb-6">
-                The "10 times your annual income" rule is simple, but it ignores crucial factors that determine your 
-                family's actual needs. This one-size-fits-all approach can leave families drastically under-insured 
-                or paying for unnecessary coverage.
+                The "10 times your annual income" rule is simple, but it ignores crucial factors that determine your
+                family's actual needs. This one-size-fits-all approach can leave families drastically under-insured
+                or paying for unnecessary coverage. Understanding proper coverage amounts is essential when shopping for <Link to="/life-insurance" className="text-primary hover:underline">life insurance</Link>.
               </p>
               
               <div className="bg-red-50 border-l-4 border-red-500 p-6 mb-6">
@@ -155,7 +155,7 @@ export default function HowMuchLifeInsuranceCalculator() {
             <section id="needs-analysis" className="mb-12">
               <h2 className="text-3xl font-bold text-slate-900 mb-6">The Professional Needs Analysis Method</h2>
               <p className="text-slate-700 leading-relaxed mb-6">
-                Professional insurance agents use the "needs analysis" method, which calculates exactly how much 
+                Professional <Link to="/carriers" className="text-primary hover:underline">insurance agents</Link> use the "needs analysis" method, which calculates exactly how much
                 money your family would need to maintain their lifestyle and meet their goals if you weren't there to provide.
               </p>
               
@@ -406,8 +406,8 @@ export default function HowMuchLifeInsuranceCalculator() {
                 <div className="border-b border-slate-200 pb-6">
                   <h3 className="text-xl font-bold text-slate-900 mb-3">What if I can't afford the "recommended" amount?</h3>
                   <p className="text-slate-700">
-                    Some coverage is always better than none. Start with what you can afford now and increase coverage 
-                    as your income grows. Many policies offer riders that guarantee your right to purchase additional coverage later.
+                    Some coverage is always better than none. Start with what you can afford now and increase coverage
+                    as your income grows. Many policies offer riders that guarantee your right to purchase additional coverage later. Learn more about policy options in our <Link to="/blog/term-vs-whole-life-insurance-2024" className="text-primary hover:underline">term vs whole life comparison</Link>.
                   </p>
                 </div>
               </div>
@@ -421,8 +421,8 @@ export default function HowMuchLifeInsuranceCalculator() {
               <h3 className="text-2xl font-bold text-blue-900">Get Your Personalized Analysis</h3>
             </div>
             <p className="text-blue-700 mb-6 max-w-2xl mx-auto">
-              Skip the guesswork and get a professional needs analysis customized for your family's unique situation. 
-              I'll help you determine the right amount of coverage at the best price.
+              Skip the guesswork and get a professional needs analysis customized for your family's unique situation.
+              I'll help you determine the right amount of coverage at the best price through our <Link to="/our-process" className="text-blue-800 hover:underline font-medium">4-step advisory process</Link>.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
@@ -451,7 +451,7 @@ export default function HowMuchLifeInsuranceCalculator() {
               <div>
                 <h3 className="text-xl font-bold text-slate-900 mb-2">Zach Bradford</h3>
                 <p className="text-slate-600 mb-3">
-                  Licensed Florida Insurance Broker (W347851) specializing in life and health insurance. 
+                  Licensed Florida Insurance Broker (W347851) specializing in <Link to="/life-insurance" className="text-primary hover:underline">life insurance</Link> and health insurance.
                   Helping families calculate their exact coverage needs since 2016.
                 </p>
                 <div className="text-sm text-slate-500">

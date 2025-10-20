@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react';
-import { useParams, Navigate } from 'react-router-dom';
+import { useParams, Navigate, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { CheckCircle, Clock, Users, Shield, Star, TrendingUp } from 'lucide-react';
 import SEO from '../../components/SEO';
@@ -216,6 +216,72 @@ function ActiveStateTemplate({ entry, codeUC, slug: _slug }: { entry: StateEntry
                 </div>
               </div>
             </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Related Resources Section */}
+      <section className="section bg-white">
+        <div className="container-default">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl font-bold text-slate-900 mb-4">
+              Helpful Resources for {entry.name} Residents
+            </h2>
+            <p className="text-xl text-slate-600">
+              Explore guides and tools to help you make informed insurance decisions
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <Link
+              to="/resources"
+              className="group bg-slate-50 rounded-xl p-6 hover:bg-slate-100 transition-all duration-300 border border-slate-200 hover:border-emerald-300"
+            >
+              <h3 className="text-lg font-semibold text-slate-900 mb-2 group-hover:text-emerald-600 transition-colors">
+                Insurance Knowledge Center
+              </h3>
+              <p className="text-slate-600 text-sm">
+                Browse our comprehensive library of insurance guides and articles
+              </p>
+            </Link>
+
+            <Link
+              to="/carriers"
+              className="group bg-slate-50 rounded-xl p-6 hover:bg-slate-100 transition-all duration-300 border border-slate-200 hover:border-emerald-300"
+            >
+              <h3 className="text-lg font-semibold text-slate-900 mb-2 group-hover:text-emerald-600 transition-colors">
+                Licensed Carriers
+              </h3>
+              <p className="text-slate-600 text-sm">
+                View our partnerships with A+ rated insurance carriers
+              </p>
+            </Link>
+
+            <Link
+              to="/our-process"
+              className="group bg-slate-50 rounded-xl p-6 hover:bg-slate-100 transition-all duration-300 border border-slate-200 hover:border-emerald-300"
+            >
+              <h3 className="text-lg font-semibold text-slate-900 mb-2 group-hover:text-emerald-600 transition-colors">
+                Our 4-Step Process
+              </h3>
+              <p className="text-slate-600 text-sm">
+                See how we guide clients through discovery and enrollment
+              </p>
+            </Link>
+          </div>
+
+          <div className="mt-8 text-center">
+            <Link
+              to="/states"
+              className="inline-flex items-center text-emerald-600 hover:text-emerald-700 font-semibold"
+            >
+              ← Browse All States
+            </Link>
           </div>
         </div>
       </section>
@@ -640,7 +706,7 @@ export default function StateDynamicPage() {
           { property: 'og:title', content: seo.title },
           { property: 'og:description', content: seo.description },
           { property: 'og:type', content: 'website' },
-          { name: 'robots', content: 'index, follow' },
+          { name: 'robots', content: isActive ? 'index, follow' : 'noindex, follow' },
           { property: 'og:image:alt', content: stateImage.alt },
           { name: 'twitter:image:alt', content: stateImage.alt },
         ]}
@@ -670,9 +736,9 @@ export default function StateDynamicPage() {
       <section className="section bg-slate-50 py-4">
         <div className="container-default">
           <nav aria-label="Breadcrumb" className="flex items-center space-x-2 text-sm text-slate-600">
-            <a href="/" className="hover:text-slate-900">Home</a>
+            <Link to="/" className="hover:text-slate-900">Home</Link>
             <span>/</span>
-            <a href="/#map" className="hover:text-slate-900">Coverage Map</a>
+            <Link to="/states" className="hover:text-slate-900">States</Link>
             <span>/</span>
             <span className="text-slate-900 font-medium">{entry.name}</span>
           </nav>

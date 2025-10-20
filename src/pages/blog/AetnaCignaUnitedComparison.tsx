@@ -55,7 +55,7 @@ export default function AetnaCignaUnitedComparison() {
           </h1>
           
           <p className="text-xl text-slate-600 mb-6 leading-relaxed">
-            Which major insurer offers the best value? Our comprehensive comparison reveals the winner based on coverage, cost, and customer satisfaction.
+            Which major insurer offers the best value? Our comprehensive comparison reveals the winner based on coverage, cost, and customer satisfaction. Compare these with other <Link to="/carriers" className="text-primary hover:underline">insurance carriers</Link> we work with.
           </p>
           
           <div className="flex flex-wrap items-center gap-6 text-sm text-slate-500">
@@ -104,7 +104,7 @@ export default function AetnaCignaUnitedComparison() {
                     <ul className="text-slate-700 text-sm space-y-1">
                       <li>• Families wanting broad network access</li>
                       <li>• People who travel frequently</li>
-                      <li>• Tech-savvy healthcare consumers</li>
+                      <li>• Tech-savvy <Link to="/health-insurance" className="text-primary hover:underline">healthcare</Link> consumers</li>
                       <li>• Employer-sponsored coverage</li>
                     </ul>
                   </div>
@@ -205,7 +205,7 @@ export default function AetnaCignaUnitedComparison() {
         <section className="bg-gradient-to-r from-blue-600 to-blue-700 rounded-lg p-8 text-white text-center mb-12">
           <h2 className="text-2xl font-bold mb-4">Find Your Best Health Insurance Carrier</h2>
           <p className="text-lg mb-6 opacity-90">
-            Don't choose based on name recognition alone. Get personalized carrier analysis based on your specific needs and location.
+            Don't choose based on name recognition alone. Get personalized carrier analysis based on your specific needs and location. Learn about our <Link to="/our-process" className="text-white hover:underline font-medium">advisory process</Link> for comparing plans.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
@@ -229,9 +229,9 @@ export default function AetnaCignaUnitedComparison() {
 
         <RelatedPosts
           slugs={[
-            '/blog/health-insurance-deductibles-guide',
             '/blog/ppo-hmo-epo-plan-comparison',
-            '/health-insurance',
+            '/blog/health-insurance-deductibles-guide',
+            '/blog/health-insurance-open-enrollment-checklist',
           ]}
         />
       </article>

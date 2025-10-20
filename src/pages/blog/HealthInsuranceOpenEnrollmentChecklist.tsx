@@ -92,7 +92,7 @@ export default function HealthInsuranceOpenEnrollmentChecklist() {
                 <p>
                   Open Enrollment Period: <strong>November 1 - January 15, 2025</strong>
                   <br />
-                  Missing this deadline means waiting until next year unless you have a qualifying life event.
+                  Missing this deadline means waiting until next year unless you have a qualifying life event. For state-specific enrollment information, visit our <Link to="/states" className="text-red-800 hover:underline font-medium">state insurance directory</Link>.
                 </p>
               </div>
             </div>
@@ -228,7 +228,7 @@ export default function HealthInsuranceOpenEnrollmentChecklist() {
             
             <div className="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-6">
               <p className="text-yellow-800">
-                <strong>Pro Tip:</strong> Don't just compare monthly premiums. A $50 higher premium could save you $2,000+ annually in out-of-pocket costs.
+                <strong>Pro Tip:</strong> Don't just compare monthly premiums. A $50 higher premium could save you $2,000+ annually in out-of-pocket costs. Learn more about managing these costs in our <Link to="/blog/health-insurance-deductibles-guide" className="text-yellow-900 hover:underline font-medium">deductibles optimization guide</Link>.
               </p>
             </div>
 
@@ -331,7 +331,7 @@ export default function HealthInsuranceOpenEnrollmentChecklist() {
                 <div className="w-8 h-8 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center font-semibold text-sm">3</div>
                 <div>
                   <h4 className="font-semibold text-slate-900">Review Subsidy Eligibility</h4>
-                  <p className="text-slate-700 text-sm">Check for premium tax credits and cost-sharing reductions you qualify for.</p>
+                  <p className="text-slate-700 text-sm">Check for premium tax credits and cost-sharing reductions you qualify for. Our <Link to="/our-process" className="text-primary hover:underline">advisory process</Link> includes subsidy optimization analysis.</p>
                 </div>
               </div>
               
@@ -437,7 +437,7 @@ export default function HealthInsuranceOpenEnrollmentChecklist() {
         <section className="bg-gradient-to-r from-blue-600 to-blue-700 rounded-lg p-8 text-white text-center mb-12">
           <h2 className="text-2xl font-bold mb-4">Need Expert Help with Open Enrollment?</h2>
           <p className="text-lg mb-6 opacity-90">
-            Don't navigate this alone. Our licensed brokers will guide you through every step and ensure you get the best coverage at the lowest cost.
+            Don't navigate this alone. Our <Link to="/carriers" className="text-white hover:underline font-medium">licensed insurance carriers</Link> will guide you through every step and ensure you get the best coverage at the lowest cost.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
@@ -469,7 +469,7 @@ export default function HealthInsuranceOpenEnrollmentChecklist() {
               <h3 className="text-lg font-semibold text-slate-900 mb-2">Zach Bradford</h3>
               <p className="text-slate-600 text-sm mb-2">Licensed Florida Insurance Broker (W347851)</p>
               <p className="text-slate-700">
-                Zach has helped over 1,200 families navigate open enrollment successfully, saving them an average of $2,400 annually through strategic plan selection and subsidy optimization. His systematic approach ensures no critical details are missed.
+                Zach has helped over 1,200 families navigate open enrollment successfully, saving them an average of $2,400 annually through strategic plan selection and subsidy optimization. His systematic approach ensures no critical details are missed. Learn more about <Link to="/health-insurance" className="text-primary hover:underline">our health insurance services</Link>.
               </p>
             </div>
           </div>

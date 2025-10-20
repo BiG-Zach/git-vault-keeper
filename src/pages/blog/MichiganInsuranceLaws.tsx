@@ -123,7 +123,7 @@ export default function MichiganInsuranceLaws() {
           <section id="no-fault-auto" className="mb-12">
             <h2 className="text-2xl font-bold text-slate-900 mb-4">No-Fault Auto Insurance Requirements</h2>
             <p className="text-slate-700 mb-4">
-              Michigan operates under a no-fault auto insurance system, which means your insurance pays for your medical expenses and lost wages regardless of who caused the accident. Understanding these requirements is crucial for legal compliance.
+              Michigan operates under a no-fault auto insurance system, which means your insurance pays for your medical expenses and lost wages regardless of who caused the accident. Understanding these requirements is crucial for legal compliance. For comprehensive insurance guidance, explore our <Link to="/states/mi" className="text-primary hover:underline">Michigan insurance services</Link>.
             </p>
             
             <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-6">
@@ -202,7 +202,7 @@ export default function MichiganInsuranceLaws() {
             <div className="bg-green-50 border border-green-200 rounded-lg p-6 mb-6">
               <h3 className="text-lg font-semibold text-green-800 mb-3">Michigan Health Insurance Status</h3>
               <p className="text-green-700 mb-3">
-                Michigan does NOT have a state health insurance mandate. However, understanding federal requirements and state-specific programs is important for residents.
+                Michigan does NOT have a state <Link to="/health-insurance" className="text-green-800 hover:underline font-medium">health insurance</Link> mandate. However, understanding federal requirements and state-specific programs is important for residents.
               </p>
               <ul className="text-green-700 space-y-1">
                 <li>• No state penalty for being uninsured</li>
@@ -308,7 +308,7 @@ export default function MichiganInsuranceLaws() {
             <div className="bg-red-50 border border-red-200 rounded-lg p-6 mb-6">
               <h3 className="text-lg font-semibold text-red-800 mb-3">⚠️ Mandatory Coverage Requirements</h3>
               <p className="text-red-700 mb-3">
-                Michigan requires most employers to carry workers' compensation insurance. Failure to comply can result in fines up to $1,000 per day plus criminal charges.
+                Michigan requires most employers to carry workers' compensation insurance. Failure to comply can result in fines up to $1,000 per day plus criminal charges. For business insurance needs, contact our <Link to="/contact" className="text-red-800 hover:underline font-medium">licensed advisors</Link>.
               </p>
             </div>
 
@@ -453,7 +453,7 @@ export default function MichiganInsuranceLaws() {
         <section className="bg-gradient-to-r from-blue-600 to-blue-700 rounded-lg p-8 text-white text-center mb-12">
           <h2 className="text-2xl font-bold mb-4">Ensure Michigan Law Compliance</h2>
           <p className="text-lg mb-6 opacity-90">
-            Don't risk penalties or legal issues. Get expert guidance on Michigan insurance requirements and find compliant coverage at the best rates.
+            Don't risk penalties or legal issues. Get expert guidance on Michigan insurance requirements and find compliant coverage at the best rates through our <Link to="/our-process" className="text-white hover:underline font-medium">4-step advisory process</Link>.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
@@ -485,7 +485,7 @@ export default function MichiganInsuranceLaws() {
               <h3 className="text-lg font-semibold text-slate-900 mb-2">Zach Bradford</h3>
               <p className="text-slate-600 text-sm mb-2">Licensed Florida Insurance Broker (W347851) | Multi-State Insurance Expert</p>
               <p className="text-slate-700">
-                While licensed in Florida, Zach has extensive experience helping families understand insurance requirements across multiple states, including Michigan. His expertise in insurance law and regulations has helped hundreds of families achieve compliance while optimizing their coverage costs.
+                While licensed in Florida, Zach has extensive experience helping families understand insurance requirements across <Link to="/states" className="text-primary hover:underline">multiple states</Link>, including Michigan. His expertise in insurance law and regulations has helped hundreds of families achieve compliance while optimizing their coverage costs.
               </p>
             </div>
           </div>
