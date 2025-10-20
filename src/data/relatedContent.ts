@@ -6,10 +6,10 @@ export type RelatedContentItem = {
 };
 
 export const RELATED_CONTENT: Record<string, RelatedContentItem> = {
-  '/blog/term-vs-whole-life-insurance-2024': {
+  '/blog/term-vs-whole-life-insurance-2025': {
     title: 'Term vs Whole Life Insurance: The $50,000 Decision',
     description: 'Compare permanent and temporary coverage with real cost scenarios to choose the right policy.',
-    href: '/blog/term-vs-whole-life-insurance-2024',
+    href: '/blog/term-vs-whole-life-insurance-2025',
     category: 'Life Insurance',
   },
   '/blog/florida-health-insurance-guide-2024': {

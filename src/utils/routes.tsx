@@ -1,5 +1,5 @@
 import { lazy } from 'react';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider, Navigate } from 'react-router-dom';
 import App from '../App';
 
 // Lazy page stubs (extensionless imports for TS)
@@ -64,7 +64,8 @@ export const routes = [
       { path: 'privacy-policy', element: <PrivacyPolicy /> },
       { path: 'terms', element: <Terms /> },
       // Blog routes
-      { path: 'blog/term-vs-whole-life-insurance-2024', element: <TermVsWholeLifeInsurance2024 /> },
+      { path: 'blog/term-vs-whole-life-insurance-2025', element: <TermVsWholeLifeInsurance2024 /> },
+      { path: 'blog/term-vs-whole-life-insurance-2024', element: <Navigate to="/blog/term-vs-whole-life-insurance-2025" replace /> },
       { path: 'blog/florida-health-insurance-guide-2024', element: <FloridaHealthInsuranceGuide2024 /> },
       { path: 'blog/life-insurance-young-adults-guide', element: <LifeInsuranceYoungAdultsGuide /> },
       { path: 'blog/how-much-life-insurance-calculator', element: <HowMuchLifeInsuranceCalculator /> },

@@ -683,7 +683,7 @@ export default function LifeInsurance() {
       {/* Related Content Section */}
       <RelatedPosts
         slugs={[
-          '/blog/term-vs-whole-life-insurance-2024',
+          '/blog/term-vs-whole-life-insurance-2025',
           '/blog/life-insurance-young-adults-guide',
           '/blog/how-much-life-insurance-calculator',
           '/quote'

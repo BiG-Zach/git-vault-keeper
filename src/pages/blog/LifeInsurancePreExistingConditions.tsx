@@ -560,7 +560,7 @@ export default function LifeInsurancePreExistingConditions() {
 
           <RelatedPosts
             slugs={[
-              '/blog/term-vs-whole-life-insurance-2024',
+              '/blog/term-vs-whole-life-insurance-2025',
               '/blog/how-much-life-insurance-calculator',
               '/blog/life-insurance-companies-financial-strength',
             ]}

@@ -9,7 +9,7 @@ import { generateFAQSchema } from '../../utils/faqSchema';
 export default function TermVsWholeLifeInsurance2024() {
   const title = 'Term vs. Whole Life Insurance: 2025 Cost Comparison Guide | Bradford Informed Guidance';
   const description = 'Term vs Whole Life Insurance 2025: See why 80% choose term life. Compare the $140,000 cost difference and new 2025 market trends (IUL/VUL surge).';
-  const path = '/blog/term-vs-whole-life-insurance-2024';
+  const path = '/blog/term-vs-whole-life-insurance-2025';
   const datePublished = '2024-01-10';
   const dateModified = '2025-10-19';
   const articleSEO = buildArticleSEO({

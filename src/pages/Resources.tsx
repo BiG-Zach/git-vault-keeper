@@ -23,7 +23,7 @@ export interface BlogPost {
 export const blogPosts: { [key: string]: BlogPost[] } = {
   'life-insurance': [
     {
-      slug: 'term-vs-whole-life-insurance-2024',
+      slug: 'term-vs-whole-life-insurance-2025',
       title: 'Term vs Whole Life Insurance: The $50,000 Decision',
       preview: 'Discover which life insurance type could save your family thousands while providing better protection.',
       wordCount: '2,200 words',

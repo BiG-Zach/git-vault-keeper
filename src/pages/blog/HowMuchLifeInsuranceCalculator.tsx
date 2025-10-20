@@ -463,7 +463,7 @@ export default function HowMuchLifeInsuranceCalculator() {
 
           <RelatedPosts
             slugs={[
-              '/blog/term-vs-whole-life-insurance-2024',
+              '/blog/term-vs-whole-life-insurance-2025',
               '/blog/life-insurance-companies-financial-strength',
               '/blog/life-insurance-pre-existing-conditions',
             ]}

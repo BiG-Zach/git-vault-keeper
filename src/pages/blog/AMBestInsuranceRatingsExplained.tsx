@@ -355,7 +355,7 @@ export default function AMBestInsuranceRatingsExplained() {
           <RelatedPosts
             slugs={[
               '/blog/life-insurance-companies-financial-strength',
-              '/blog/term-vs-whole-life-insurance-2024',
+              '/blog/term-vs-whole-life-insurance-2025',
               '/blog/how-much-life-insurance-calculator',
             ]}
           />

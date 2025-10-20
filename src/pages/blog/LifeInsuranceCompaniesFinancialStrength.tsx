@@ -600,7 +600,7 @@ export default function LifeInsuranceCompaniesFinancialStrength() {
           <RelatedPosts
             slugs={[
               '/blog/am-best-insurance-ratings-explained',
-              '/blog/term-vs-whole-life-insurance-2024',
+              '/blog/term-vs-whole-life-insurance-2025',
               '/blog/life-insurance-pre-existing-conditions',
             ]}
           />

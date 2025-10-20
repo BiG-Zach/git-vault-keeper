@@ -67,7 +67,7 @@ export default function StaticRoutes({ seoCollector }: StaticRoutesProps) {
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         <Route path="/terms" element={<Terms />} />
 
-        <Route path="/blog/term-vs-whole-life-insurance-2024" element={<TermVsWholeLifeInsurance2024 />} />
+        <Route path="/blog/term-vs-whole-life-insurance-2025" element={<TermVsWholeLifeInsurance2024 />} />
         <Route path="/blog/florida-health-insurance-guide-2024" element={<FloridaHealthInsuranceGuide2024 />} />
         <Route path="/blog/life-insurance-young-adults-guide" element={<LifeInsuranceYoungAdultsGuide />} />
         <Route path="/blog/how-much-life-insurance-calculator" element={<HowMuchLifeInsuranceCalculator />} />
