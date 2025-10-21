@@ -202,8 +202,8 @@ export default function OpenEnrollment2026Guide() {
               Before diving into the details, listen to our comprehensive overview of the 2026 Open Enrollment landscape and the four critical traps to avoid:
             </p>
             <MultimediaOverview
-              audioUrl="/$30,000_Mistake__How_to_Avoid_the_ACA_Subsidy_Cliff,_18.m4a"
-              videoUrl="/Open_Enrollment_2026__Avoiding_Health_Insurance_Traps.mp4"
+              audioUrl="/30000_Dollar_Mistake_How_to_Avoid_the_ACA_Subsidy_Cliff.m4a"
+              videoUrl="/Open_Enrollment_2026_Avoiding_Health_Insurance_Traps.mp4"
               audioDescription="AI podcast overview of Open Enrollment 2026 traps and how to avoid the subsidy cliff"
               videoDescription="Video overview with visual emphasis on key Open Enrollment 2026 statistics and deadlines"
             />
