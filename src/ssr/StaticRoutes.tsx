@@ -37,6 +37,7 @@ import AetnaCignaUnitedComparison from '../pages/blog/AetnaCignaUnitedComparison
 import AMBestInsuranceRatingsExplained from '../pages/blog/AMBestInsuranceRatingsExplained';
 import FloridaSmallBusinessHealthInsurance from '../pages/blog/FloridaSmallBusinessHealthInsurance';
 import LifeInsuranceCompaniesFinancialStrength from '../pages/blog/LifeInsuranceCompaniesFinancialStrength';
+import OpenEnrollment2026Guide from '../pages/blog/OpenEnrollment2026Guide';
 
 // Dynamic routes
 import StateDynamic from '../pages/states/[code]';
@@ -103,6 +104,7 @@ export default function StaticRoutes({ seoCollector }: StaticRoutesProps) {
           path="/blog/life-insurance-companies-financial-strength"
           element={<LifeInsuranceCompaniesFinancialStrength />}
         />
+        <Route path="/blog/open-enrollment-2026-guide" element={<OpenEnrollment2026Guide />} />
 
         <Route path="*" element={<NotFound />} />
       </Routes>

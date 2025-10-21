@@ -13,6 +13,11 @@
   ],
   "redirects": [
     {
+      "source": "/blog/florida-health-insurance-guide-2024",
+      "destination": "/blog/open-enrollment-2026-guide",
+      "permanent": true
+    },
+    {
       "source": "/:path*",
       "has": [
         {

@@ -67,14 +67,14 @@ export const blogPosts: { [key: string]: BlogPost[] } = {
   ],
   'health-insurance': [
     {
-      slug: 'florida-health-insurance-guide-2024',
-      title: 'Florida Health Insurance: Complete 2024 Market Guide',
-      preview: 'Everything Florida residents need to know about health insurance options, costs, and enrollment.',
-      wordCount: '3,000 words',
+      slug: 'open-enrollment-2026-guide',
+      title: 'Open Enrollment 2026: The Complete Guide to Avoiding Costly ACA Marketplace Mistakes',
+      preview: 'Avoid the $30,000 auto-renewal mistake. Open Enrollment 2026 runs Nov 1-Jan 15. Learn about subsidy cliff, premium increases, and deadline strategies.',
+      wordCount: '3,800 words',
       category: 'Health Insurance',
-      readTime: '15 min read',
-      updated: 'Jan 2024',
-      states: ['Florida']
+      readTime: '18 min read',
+      updated: 'Oct 2025',
+      states: ['All']
     },
     {
       slug: 'ppo-hmo-epo-plan-comparison',
@@ -196,7 +196,6 @@ export const blogPosts: { [key: string]: BlogPost[] } = {
 export default function Resources() {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
-  const [selectedState, setSelectedState] = useState('all');
 
   const categories = [
     { id: 'all', name: 'All Articles', count: 16 },
@@ -204,16 +203,6 @@ export default function Resources() {
     { id: 'health-insurance', name: 'Health Insurance', count: 4 },
     { id: 'local-market', name: 'Local Market', count: 4 },
     { id: 'carrier-comparisons', name: 'Carrier Analysis', count: 4 }
-  ];
-
-  const stateFilters = [
-    { id: 'all', name: 'All States' },
-    { id: 'Florida', name: 'Florida' },
-    { id: 'Georgia', name: 'Georgia' },
-    { id: 'South Carolina', name: 'South Carolina' },
-    { id: 'Tennessee', name: 'Tennessee' },
-    { id: 'Alabama', name: 'Alabama' },
-    { id: 'Texas', name: 'Texas' }
   ];
 
   const getAllPosts = () => {
@@ -227,12 +216,7 @@ export default function Resources() {
     post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
     post.preview.toLowerCase().includes(searchTerm.toLowerCase());
 
-  const matchesState = (post: BlogPost) => {
-    if (selectedState === 'all') return true;
-    if (!post.states || post.states.includes('All')) return true;
-    return post.states.includes(selectedState);
-  };
-  const filteredPosts = getAllPosts().filter(post => matchesSearch(post) && matchesState(post));
+  const filteredPosts = getAllPosts().filter(post => matchesSearch(post));
 
   // Build ItemList schema for all blog posts
   const allPosts = Object.values(blogPosts).flat();
@@ -304,16 +288,16 @@ export default function Resources() {
           </div>
           <div className="bg-white rounded-2xl p-8 shadow-lg border border-slate-200 max-w-2xl mx-auto">
             <div className="text-sm text-blue-600 font-semibold mb-2">🏆 MOST COMPREHENSIVE</div>
-            <h3 className="text-xl font-bold text-slate-900 mb-3">Florida Health Insurance: Complete 2024 Market Guide</h3>
-            <p className="text-slate-600 mb-4">Everything Florida residents need to know about health insurance options, costs, and enrollment.</p>
+            <h3 className="text-xl font-bold text-slate-900 mb-3">Open Enrollment 2026: The Complete Guide to Avoiding Costly ACA Marketplace Mistakes</h3>
+            <p className="text-slate-600 mb-4">Avoid the $30,000 auto-renewal mistake. Open Enrollment 2026 runs Nov 1-Jan 15. Learn about subsidy cliff, premium increases, and deadline strategies.</p>
             <div className="flex items-center justify-between">
               <div className="flex gap-4 text-sm text-slate-500">
-                <span>3,000 words</span>
-                <span>15 min read</span>
-                <span>Updated Jan 2024</span>
+                <span>3,800 words</span>
+                <span>18 min read</span>
+                <span>Updated Oct 2025</span>
               </div>
               <Link
-                to="/blog/florida-health-insurance-guide-2024"
+                to="/blog/open-enrollment-2026-guide"
                 className="text-blue-600 font-semibold hover:text-blue-700"
               >
                 Read Guide →
@@ -386,10 +370,7 @@ export default function Resources() {
             {categories.map((category) => (
               <button
                 key={category.id}
-                onClick={() => {
-                  setSelectedCategory(category.id);
-                  setSelectedState('all');
-                }}
+                onClick={() => setSelectedCategory(category.id)}
                 className={`px-6 py-3 rounded-full font-medium transition-all duration-300 ${
                   selectedCategory === category.id
                     ? 'bg-gradient-to-r from-blue-600 to-blue-700 text-white shadow-lg transform scale-105'
@@ -403,25 +384,6 @@ export default function Resources() {
         </div>
       </section>
 
-      <section className="py-6 bg-white border-b border-slate-200">
-        <div className="container mx-auto px-4">
-          <div className="flex flex-wrap gap-3 justify-center">
-            {stateFilters.map((state) => (
-              <button
-                key={state.id}
-                onClick={() => setSelectedState(state.id)}
-                className={`px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 ${
-                  selectedState === state.id
-                    ? 'bg-gradient-to-r from-emerald-500 to-emerald-600 text-white shadow-lg transform scale-105'
-                    : 'bg-emerald-50 text-emerald-800 hover:bg-emerald-100 hover:shadow-md'
-                }`}
-              >
-                {state.name}
-              </button>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* Premium Knowledge Categories Section (Light) */}
       <PremiumKnowledgeCategories blogPosts={blogPosts} />

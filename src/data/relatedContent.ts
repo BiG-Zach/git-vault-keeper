@@ -12,6 +12,12 @@ export const RELATED_CONTENT: Record<string, RelatedContentItem> = {
     href: '/blog/term-vs-whole-life-insurance-2025',
     category: 'Life Insurance',
   },
+  '/blog/open-enrollment-2026-guide': {
+    title: 'Open Enrollment 2026: The Complete Guide to Avoiding Costly ACA Marketplace Mistakes',
+    description: 'Avoid the $30,000 auto-renewal mistake. Open Enrollment 2026 runs Nov 1-Jan 15. Learn about subsidy cliff, premium increases, and deadline strategies.',
+    href: '/blog/open-enrollment-2026-guide',
+    category: 'Health Insurance',
+  },
   '/blog/florida-health-insurance-guide-2024': {
     title: 'Florida Health Insurance Guide 2024',
     description: 'Understand Florida marketplace rules, private plan options, and cost benchmarks for 2024.',

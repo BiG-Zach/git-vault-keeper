@@ -40,6 +40,7 @@ const AetnaCignaUnitedComparison = lazy(() => import('../pages/blog/AetnaCignaUn
 const AMBestInsuranceRatingsExplained = lazy(() => import('../pages/blog/AMBestInsuranceRatingsExplained'));
 const FloridaSmallBusinessHealthInsurance = lazy(() => import('../pages/blog/FloridaSmallBusinessHealthInsurance'));
 const LifeInsuranceCompaniesFinancialStrength = lazy(() => import('../pages/blog/LifeInsuranceCompaniesFinancialStrength'));
+const OpenEnrollment2026Guide = lazy(() => import('../pages/blog/OpenEnrollment2026Guide'));
 
 // eslint-disable-next-line react-refresh/only-export-components
 export const routes = [
@@ -83,6 +84,8 @@ export const routes = [
       { path: 'blog/am-best-insurance-ratings-explained', element: <AMBestInsuranceRatingsExplained /> },
       { path: 'blog/florida-small-business-health-insurance', element: <FloridaSmallBusinessHealthInsurance /> },
       { path: 'blog/life-insurance-companies-financial-strength', element: <LifeInsuranceCompaniesFinancialStrength /> },
+      { path: 'blog/open-enrollment-2026-guide', element: <OpenEnrollment2026Guide /> },
+      { path: 'blog/florida-health-insurance-guide-2024', element: <Navigate to="/blog/open-enrollment-2026-guide" replace /> },
       { path: '*', element: <NotFound /> },
     ],
   },
