@@ -6,6 +6,8 @@ interface MultimediaOverviewProps {
   videoUrl: string;
   audioDescription?: string;
   videoDescription?: string;
+  audioDuration?: string;
+  videoDuration?: string;
 }
 
 // Extract Google Drive file ID from URL
@@ -27,7 +29,9 @@ export default function MultimediaOverview({
   audioUrl,
   videoUrl,
   audioDescription = "The $140K cost gap, 72% cost misconception crisis, 2025 market trends (IUL +11%, VUL +41%), and when whole life makes sense.",
-  videoDescription = "Animated cost comparisons, data visualizations, and key statistics from LIMRA/Bankrate 2025 research."
+  videoDescription = "Animated cost comparisons, data visualizations, and key statistics from LIMRA/Bankrate 2025 research.",
+  audioDuration = "8 minutes",
+  videoDuration = "8 minutes"
 }: MultimediaOverviewProps) {
   const [audioError, setAudioError] = useState(false);
   const [videoError, setVideoError] = useState(false);
@@ -55,8 +59,8 @@ export default function MultimediaOverview({
         📚 Experience This Guide Your Way
       </h3>
       <p className="text-slate-700 mb-6 leading-relaxed">
-        Choose your preferred format: read the full article below, listen to our 8-minute 
-        AI-powered overview, or watch the visual breakdown covering 2025 market trends.
+        Choose your preferred format: read the full article below, listen to our {audioDuration}
+        AI-powered overview, or watch the {videoDuration} visual breakdown covering 2025 market trends.
       </p>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -68,7 +72,7 @@ export default function MultimediaOverview({
             </div>
             <div>
               <h4 className="text-lg font-semibold text-slate-900 mb-1">Audio Overview</h4>
-              <p className="text-sm text-slate-600">8 minutes • AI-generated summary</p>
+              <p className="text-sm text-slate-600">{audioDuration} • AI-generated summary</p>
             </div>
           </div>
           
@@ -125,7 +129,7 @@ export default function MultimediaOverview({
             </div>
             <div>
               <h4 className="text-lg font-semibold text-slate-900 mb-1">Video Breakdown</h4>
-              <p className="text-sm text-slate-600">8 minutes • Visual guide</p>
+              <p className="text-sm text-slate-600">{videoDuration} • Visual guide</p>
             </div>
           </div>
           
