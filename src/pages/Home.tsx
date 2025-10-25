@@ -9,7 +9,6 @@ import EnhancedMap from "../components/luxury/EnhancedMap";
 import LuxuryTestimonialsCarousel from "../components/luxury/TestimonialsCarousel";
 import RiskReversalSection from "../components/luxury/RiskReversalSection";
 import AuthoritySection from "../components/luxury/AuthoritySection";
-import SocialProofTicker from "../components/luxury/SocialProofTicker";
 
 const licensedStates = BRAND.licensed.split(",").map((state) => state.trim());
 const licensedStatesDisplay = licensedStates.join(" • ");
@@ -84,8 +83,6 @@ export default function Home() {
           <AuthoritySection />
           <RiskReversalSection />
         </div>
-
-        <SocialProofTicker />
       </main>
     </>
   );
