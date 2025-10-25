@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { motion, useReducedMotion } from 'framer-motion';
 import { ShieldCheck, HeartHandshake, PiggyBank, Users, Sparkles, Clock3, FileSignature, CheckCircle2, BookOpen, Heart, Shield, TrendingUp, Building, Briefcase, Home } from 'lucide-react';
 import SEO from '../components/SEO';
 import Button from '../components/Button';
@@ -12,6 +13,7 @@ const lifeInsuranceArticles: BlogPost[] = Object.values(blogPosts)
   .filter(post => post.category === 'Life Insurance');
 
 export default function LifeInsurance() {
+  const prefersReducedMotion = useReducedMotion();
   const heroImage = SEO_IMAGES.lifeService;
   const structuredData = [
     organizationSchema(),
@@ -76,75 +78,119 @@ export default function LifeInsurance() {
             />
           </picture>
           
-          {/* Overlay for text readability */}
-          <div className="absolute inset-0 bg-gradient-to-r from-slate-900/40 via-slate-800/20 to-slate-900/40" />
+          {/* Enhanced Triple Scrim Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-br from-slate-900/60 via-slate-800/40 to-slate-900/70" />
+          <div className="absolute inset-0 bg-gradient-radial from-transparent via-slate-900/20 to-slate-900/50" />
         </div>
 
         {/* Hero Content */}
         <div className="relative z-10 flex items-center justify-center min-h-[70vh] lg:min-h-[75vh]">
           <div className="container mx-auto px-6 lg:px-8 text-center text-white">
-            <div className="bg-black/10 backdrop-blur-sm rounded-3xl p-8 lg:p-12 border border-white/20">
-              <h1
-                className="text-4xl lg:text-6xl font-bold mb-6 leading-tight drop-shadow-2xl"
-                style={{ textShadow: '2px 4px 8px rgba(0,0,0,0.8), 0 0 16px rgba(0,0,0,0.4)' }}
+            <motion.div
+              initial={{ opacity: 0, y: prefersReducedMotion ? 0 : 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              className="relative rounded-3xl p-8 lg:p-12 border border-white/30 backdrop-blur-md bg-white/5 shadow-2xl"
+            >
+              <motion.h1
+                initial={{ opacity: 0, y: prefersReducedMotion ? 0 : 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+                className="text-4xl lg:text-6xl xl:text-7xl font-luxury-serif font-bold mb-6 leading-tight drop-shadow-2xl"
               >
                 Protect Your Family's Future
-              </h1>
-              <p
-                className="text-lg lg:text-xl text-white mb-8 max-w-4xl mx-auto leading-relaxed drop-shadow-lg font-medium"
-                style={{ textShadow: '1px 2px 4px rgba(0,0,0,0.7)' }}
+              </motion.h1>
+              <motion.p
+                initial={{ opacity: 0, y: prefersReducedMotion ? 0 : 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+                className="text-lg lg:text-xl text-white mb-8 max-w-4xl mx-auto leading-relaxed font-medium drop-shadow-lg"
               >
                 Comprehensive life insurance solutions tailored to your family's needs and financial goals.
-              </p>
+              </motion.p>
               
               {/* CTA Buttons */}
-              <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
+              <motion.div
+                initial={{ opacity: 0, y: prefersReducedMotion ? 0 : 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
+                className="flex flex-col sm:flex-row gap-4 justify-center mt-8"
+              >
                 <a
                   href="/quote"
-                  className="bg-gradient-to-r from-emerald-600 to-emerald-700 text-white px-8 py-4 rounded-xl font-bold text-lg shadow-2xl hover:shadow-emerald-500/50 transition-all duration-300 hover:scale-105 border-2 border-emerald-500"
+                  className="group relative overflow-hidden bg-gradient-to-r from-emerald-500 via-emerald-600 to-emerald-700 text-white px-8 py-4 rounded-xl font-bold text-lg transition-all duration-500 hover:scale-105 border border-emerald-400/50 shadow-2xl hover:shadow-emerald-500/50"
                 >
-                  Get Life Insurance Quote
+                  <span className="relative z-10">Get Life Insurance Quote</span>
+                  <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
                 </a>
                 <a
                   href="/contact"
-                  className="bg-white/20 backdrop-blur-md border-2 border-white/50 text-white px-8 py-4 rounded-xl font-semibold hover:bg-white/30 transition-all duration-300 shadow-xl"
+                  className="relative overflow-hidden backdrop-blur-md border-2 border-white/50 text-white px-8 py-4 rounded-xl font-semibold hover:bg-white/20 hover:border-white/70 transition-all duration-300 shadow-xl"
                 >
                   Speak with an Expert
                 </a>
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
           </div>
         </div>
       </section>
 
       <section className="section bg-white">
         <div className="container-default grid gap-10 lg:grid-cols-[1.2fr_0.8fr]">
-          <div className="space-y-6">
-            <span className="inline-flex items-center gap-2 rounded-full bg-slate-900/10 px-4 py-1.5 text-sm font-semibold text-slate-900">
+          <motion.div
+            initial={{ opacity: 0, x: prefersReducedMotion ? 0 : -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="space-y-6"
+          >
+            <span className="inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-sm font-semibold text-slate-900 bg-gradient-to-r from-slate-50 to-slate-100 border border-slate-200">
               <Sparkles className="h-4 w-4" />
               Tailored for Each Life Stage
             </span>
-            <h2 className="text-3xl font-bold text-slate-900 md:text-4xl">
+            <h2 className="text-3xl font-bold text-slate-900 md:text-4xl lg:text-5xl font-luxury-serif">
               Custom Life Insurance Plans with Living Benefits
             </h2>
             <p className="text-lg text-slate-600">
               Whether you are safeguarding a young family or planning a wealth transfer, Bradford Informed Guidance designs layered strategies using term, whole life, indexed universal, and supplemental riders. We negotiate underwriting, accelerate approvals, and monitor policies for long-term performance.
             </p>
             <div className="grid gap-6 sm:grid-cols-2">
-              <div className="rounded-2xl border border-emerald-100 bg-emerald-50 p-6 shadow-sm">
-                <HeartHandshake className="h-10 w-10 text-emerald-500" aria-hidden="true" />
+              <motion.div
+                initial={{ opacity: 0, y: prefersReducedMotion ? 0 : 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.1 }}
+                whileHover={{ y: -4, transition: { duration: 0.2 } }}
+                className="rounded-2xl border border-emerald-200 bg-gradient-to-br from-emerald-50 to-emerald-100/50 p-8 shadow-lg hover:shadow-xl transition-shadow duration-300"
+              >
+                <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-emerald-500 to-emerald-600 flex items-center justify-center mb-4 shadow-lg">
+                  <HeartHandshake className="h-7 w-7 text-white" aria-hidden="true" />
+                </div>
                 <h3 className="mt-4 text-xl font-semibold text-emerald-900">Human-Centered Planning</h3>
-                <p className="mt-2 text-sm text-emerald-900/80">
+                <p className="mt-2 text-sm text-emerald-900/80 leading-relaxed">
                   Personalized coverage reviews every renewal cycle with action plans for changing income, family size, and business ownership.
                 </p>
-              </div>
-              <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-                <PiggyBank className="h-10 w-10 text-slate-600" aria-hidden="true" />
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0, y: prefersReducedMotion ? 0 : 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+                whileHover={{ y: -4, transition: { duration: 0.2 } }}
+                className="rounded-2xl border border-slate-200 bg-white p-8 shadow-lg hover:shadow-xl transition-shadow duration-300"
+              >
+                <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-slate-600 to-slate-700 flex items-center justify-center mb-4 shadow-lg">
+                  <PiggyBank className="h-7 w-7 text-white" aria-hidden="true" />
+                </div>
                 <h3 className="mt-4 text-xl font-semibold text-slate-900">Build Cash Value Efficiently</h3>
-                <p className="mt-2 text-sm text-slate-600">
+                <p className="mt-2 text-sm text-slate-600 leading-relaxed">
                   Access indexed growth strategies, tax-advantaged accumulation, and living benefits that can offset medical costs or supplement retirement income.
                 </p>
-              </div>
+              </motion.div>
             </div>
             <div className="rounded-2xl border border-slate-200 bg-slate-50 p-6">
               <h3 className="text-lg font-semibold text-slate-900">When to choose each policy type</h3>
@@ -166,54 +212,87 @@ export default function LifeInsurance() {
             <p className="text-sm text-slate-600 text-center">
               No obligation • Licensed professionals • Confidential consultation
             </p>
-          </div>
-          <div className="space-y-6 rounded-3xl bg-slate-900 p-8 text-white shadow-xl">
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, x: prefersReducedMotion ? 0 : 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="space-y-6 rounded-3xl bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 p-8 text-white shadow-2xl border border-slate-700"
+          >
             <h3 className="text-2xl font-semibold">Licensed Experts for Life Insurance</h3>
             <ul className="space-y-4 text-slate-200">
-              <li className="flex items-start gap-3">
-                <HeartHandshake className="mt-1 h-6 w-6 text-emerald-300" />
+              <li className="flex items-start gap-3 group">
+                <motion.div whileHover={{ scale: 1.1, rotate: 5 }} transition={{ duration: 0.2 }}>
+                  <HeartHandshake className="mt-1 h-6 w-6 text-emerald-400" />
+                </motion.div>
                 <div>
                   <p className="font-semibold">15+ A-rated carriers</p>
                   <p className="text-sm text-slate-300">Access to over $50M in coverage placed for families across six states. Every plan is built around your family's goals, business obligations, and legacy priorities.</p>
                 </div>
               </li>
-              <li className="flex items-start gap-3">
-                <FileSignature className="mt-1 h-6 w-6 text-emerald-300" />
+              <li className="flex items-start gap-3 group">
+                <motion.div whileHover={{ scale: 1.1, rotate: 5 }} transition={{ duration: 0.2 }}>
+                  <FileSignature className="mt-1 h-6 w-6 text-emerald-400" />
+                </motion.div>
                 <div>
                   <p className="font-semibold">Licensed Experts</p>
                   <p className="text-sm text-slate-300">Multi-state licensed with 8+ years of experience. Direct partnerships with estate attorneys and CPAs for comprehensive planning.</p>
                 </div>
               </li>
-              <li className="flex items-start gap-3">
-                <ShieldCheck className="mt-1 h-6 w-6 text-emerald-300" />
+              <li className="flex items-start gap-3 group">
+                <motion.div whileHover={{ scale: 1.1, rotate: 5 }} transition={{ duration: 0.2 }}>
+                  <ShieldCheck className="mt-1 h-6 w-6 text-emerald-400" />
+                </motion.div>
                 <div>
                   <p className="font-semibold">Transparent Process</p>
                   <p className="text-sm text-slate-300">Transparent pricing guaranteed. Average approval time: 48 hours for qualified applicants. 98% client satisfaction on policy recommendations.</p>
                 </div>
               </li>
             </ul>
-          </div>
+          </motion.div>
         </div>
       </section>
-      <section className="section bg-slate-50">
+      
+      <section className="section bg-gradient-to-b from-slate-50 to-white">
         <div className="container-default">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
-            <div>
-              <div className="text-4xl font-bold text-emerald-600 mb-2">$50M+</div>
-              <p className="text-sm text-slate-600">In Coverage Secured</p>
-            </div>
-            <div>
-              <div className="text-4xl font-bold text-emerald-600 mb-2">1,000+</div>
-              <p className="text-sm text-slate-600">Families Protected</p>
-            </div>
-            <div>
-              <div className="text-4xl font-bold text-emerald-600 mb-2">48hrs</div>
-              <p className="text-sm text-slate-600">Average Approval Time</p>
-            </div>
-            <div>
-              <div className="text-4xl font-bold text-emerald-600 mb-2">98%</div>
-              <p className="text-sm text-slate-600">Client Satisfaction</p>
-            </div>
+            <motion.div
+              initial={{ opacity: 0, y: prefersReducedMotion ? 0 : 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+            >
+              <div className="text-4xl lg:text-5xl font-bold gradient-text-luxury mb-2">$50M+</div>
+              <p className="text-sm text-slate-600 font-medium">In Coverage Secured</p>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: prefersReducedMotion ? 0 : 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+            >
+              <div className="text-4xl lg:text-5xl font-bold gradient-text-luxury mb-2">1,000+</div>
+              <p className="text-sm text-slate-600 font-medium">Families Protected</p>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: prefersReducedMotion ? 0 : 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+            >
+              <div className="text-4xl lg:text-5xl font-bold gradient-text-luxury mb-2">48hrs</div>
+              <p className="text-sm text-slate-600 font-medium">Average Approval Time</p>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: prefersReducedMotion ? 0 : 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+            >
+              <div className="text-4xl lg:text-5xl font-bold gradient-text-luxury mb-2">98%</div>
+              <p className="text-sm text-slate-600 font-medium">Client Satisfaction</p>
+            </motion.div>
           </div>
         </div>
       </section>
@@ -633,16 +712,17 @@ export default function LifeInsurance() {
             <p className="mt-6 text-sm text-emerald-100 font-medium">
               What happens next: 15-minute consultation → Custom recommendations → No-pressure decision
             </p>
-            <div className="mt-4 flex flex-col gap-4 sm:flex-row">
+            <div className="mt-8 flex flex-col gap-4 sm:flex-row">
               <a
                 href="https://calendly.com/bradfordinformedguidance"
-                className="inline-flex items-center justify-center h-11 rounded-md px-8 bg-white text-emerald-700 hover:bg-emerald-100 font-medium transition-colors"
+                className="group relative overflow-hidden inline-flex items-center justify-center h-12 rounded-xl px-8 bg-white text-emerald-700 hover:bg-emerald-50 font-bold transition-all duration-300 shadow-xl hover:shadow-2xl hover:scale-105"
               >
-                Get Your Free Life Insurance Strategy Session
+                <span className="relative z-10">Get Your Free Life Insurance Strategy Session</span>
+                <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-emerald-100/50 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
               </a>
               <a
                 href="tel:+16893256570"
-                className="inline-flex items-center justify-center h-11 rounded-md px-8 border border-white text-white hover:bg-white/10 font-medium transition-colors"
+                className="inline-flex items-center justify-center h-12 rounded-xl px-8 border-2 border-white text-white hover:bg-white/10 font-semibold transition-all duration-300 shadow-lg"
               >
                 Call (689) 325-6570
               </a>
@@ -668,20 +748,32 @@ export default function LifeInsurance() {
               </div>
             </div>
           </div>
-          <div className="grid gap-4 rounded-3xl bg-white/10 p-6 text-sm shadow-xl backdrop-blur">
-            <div className="flex items-start gap-3">
-              <Clock3 className="mt-1 h-6 w-6 text-white" />
-              <p>Underwriting decisions often delivered within 48 hours for qualified clients.</p>
+          <motion.div
+            initial={{ opacity: 0, x: prefersReducedMotion ? 0 : 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="grid gap-6 rounded-3xl bg-white/10 p-8 text-sm shadow-2xl backdrop-blur-md border border-white/20"
+          >
+            <div className="flex items-start gap-4">
+              <motion.div whileHover={{ scale: 1.1, rotate: 5 }} transition={{ duration: 0.2 }}>
+                <Clock3 className="mt-1 h-7 w-7 text-emerald-300" />
+              </motion.div>
+              <p className="text-base">Underwriting decisions often delivered within 48 hours for qualified clients.</p>
             </div>
-            <div className="flex items-start gap-3">
-              <ShieldCheck className="mt-1 h-6 w-6 text-white" />
-              <p>Access to A+ rated carriers with accelerated death benefit and chronic illness riders.</p>
+            <div className="flex items-start gap-4">
+              <motion.div whileHover={{ scale: 1.1, rotate: 5 }} transition={{ duration: 0.2 }}>
+                <ShieldCheck className="mt-1 h-7 w-7 text-emerald-300" />
+              </motion.div>
+              <p className="text-base">Access to A+ rated carriers with accelerated death benefit and chronic illness riders.</p>
             </div>
-            <div className="flex items-start gap-3">
-              <Users className="mt-1 h-6 w-6 text-white" />
-              <p>Dedicated concierge for annual policy reviews, beneficiary updates, and claims support.</p>
+            <div className="flex items-start gap-4">
+              <motion.div whileHover={{ scale: 1.1, rotate: 5 }} transition={{ duration: 0.2 }}>
+                <Users className="mt-1 h-7 w-7 text-emerald-300" />
+              </motion.div>
+              <p className="text-base">Dedicated concierge for annual policy reviews, beneficiary updates, and claims support.</p>
             </div>
-          </div>
+          </motion.div>
         </div>
       </section>
 
