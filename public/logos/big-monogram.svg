@@ -1,23 +1,132 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="160" height="160" viewBox="0 0 160 160" role="img" aria-labelledby="title desc">
   <title id="title">Bradford Informed Guidance Monogram</title>
-  <desc id="desc">Circular monogram with the letters B I G set on a teal gradient background.</desc>
+  <desc id="desc">Premium circular monogram with the letters B I G set on a sophisticated teal gradient background with metallic finish.</desc>
   <defs>
+    <!-- Enhanced gradient with richer depth -->
     <linearGradient id="mark-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#0f766e"/>
+      <stop offset="0%" stop-color="#0d5f58"/>
+      <stop offset="35%" stop-color="#0f766e"/>
+      <stop offset="65%" stop-color="#14b8a6"/>
       <stop offset="100%" stop-color="#0ea5e9"/>
     </linearGradient>
-    <linearGradient id="gloss" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="rgba(255,255,255,0.65)"/>
+    
+    <!-- Premium metallic gloss effect -->
+    <radialGradient id="metallic-gloss" cx="50%" cy="30%">
+      <stop offset="0%" stop-color="rgba(255,255,255,0.9)"/>
+      <stop offset="40%" stop-color="rgba(255,255,255,0.5)"/>
+      <stop offset="70%" stop-color="rgba(255,255,255,0.15)"/>
       <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
-    </linearGradient>
+    </radialGradient>
+    
+    <!-- Subtle inner shadow for depth -->
+    <radialGradient id="inner-shadow" cx="50%" cy="50%">
+      <stop offset="70%" stop-color="rgba(0,0,0,0)"/>
+      <stop offset="100%" stop-color="rgba(0,0,0,0.25)"/>
+    </radialGradient>
+    
+    <!-- Text shadow filter -->
+    <filter id="text-shadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="2"/>
+      <feOffset dx="0" dy="2" result="offsetblur"/>
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.4"/>
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    
+    <!-- Subtle text glow -->
+    <filter id="text-glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="1.5"/>
+      <feOffset dx="0" dy="0" result="offsetblur"/>
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.6"/>
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    
+    <!-- Outer glow for premium feel -->
+    <filter id="outer-glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="3"/>
+      <feOffset dx="0" dy="0" result="offsetblur"/>
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.3"/>
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
   </defs>
+  
+  <!-- Outer glow base -->
+  <circle cx="80" cy="80" r="78" fill="url(#mark-gradient)" opacity="0.3" filter="url(#outer-glow)"/>
+  
+  <!-- Main circle with enhanced gradient -->
   <circle cx="80" cy="80" r="76" fill="url(#mark-gradient)"/>
-  <circle cx="80" cy="68" r="64" fill="url(#gloss)" opacity="0.35"/>
-  <circle cx="80" cy="80" r="70" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="4"/>
-  <text x="80" y="102" text-anchor="middle" font-size="64" font-weight="700" font-family="'Playfair Display','Times New Roman',serif" fill="#ffffff" letter-spacing="4">
+  
+  <!-- Inner shadow for depth -->
+  <circle cx="80" cy="80" r="76" fill="url(#inner-shadow)"/>
+  
+  <!-- Premium metallic gloss -->
+  <ellipse cx="80" cy="55" rx="68" ry="50" fill="url(#metallic-gloss)" opacity="0.6"/>
+  
+  <!-- Refined border with gradient -->
+  <circle cx="80" cy="80" r="72" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="1.5"/>
+  <circle cx="80" cy="80" r="76" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
+  
+  <!-- Subtle inner ring for sophistication -->
+  <circle cx="80" cy="80" r="68" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="0.5"/>
+  
+  <!-- Main "BIG" text with enhanced effects -->
+  <text 
+    x="80" 
+    y="102" 
+    text-anchor="middle" 
+    font-size="64" 
+    font-weight="700" 
+    font-family="'Playfair Display','Georgia','Times New Roman',serif" 
+    fill="#ffffff" 
+    letter-spacing="6"
+    filter="url(#text-shadow)">
     BIG
   </text>
-  <text x="80" y="124" text-anchor="middle" font-size="12" font-family="'Inter','Helvetica Neue',Arial,sans-serif" fill="rgba(255,255,255,0.85)" letter-spacing="2">
+  
+  <!-- Subtle highlight on text for dimension -->
+  <text 
+    x="80" 
+    y="100" 
+    text-anchor="middle" 
+    font-size="64" 
+    font-weight="700" 
+    font-family="'Playfair Display','Georgia','Times New Roman',serif" 
+    fill="rgba(255,255,255,0.3)" 
+    letter-spacing="6">
+    BIG
+  </text>
+  
+  <!-- Tagline with refined styling -->
+  <text 
+    x="80" 
+    y="124" 
+    text-anchor="middle" 
+    font-size="11.5" 
+    font-weight="500"
+    font-family="'Inter','Helvetica Neue',Arial,sans-serif" 
+    fill="rgba(255,255,255,0.95)" 
+    letter-spacing="2.5"
+    filter="url(#text-glow)">
     INFORMED GUIDANCE
   </text>
+  
+  <!-- Subtle shine accent at top -->
+  <path 
+    d="M 80 4 Q 120 20, 140 50 Q 145 60, 140 70 Q 120 50, 80 40 Q 40 50, 20 70 Q 15 60, 20 50 Q 40 20, 80 4 Z" 
+    fill="rgba(255,255,255,0.15)" 
+    opacity="0.6"/>
 </svg>
