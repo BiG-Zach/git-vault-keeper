@@ -122,7 +122,8 @@ export default function OfficeLocationLuxury() {
                 loading="lazy"
                 className="w-full h-80 md:h-96 lg:h-[28rem]"
                 referrerPolicy="no-referrer-when-downgrade"
-                src="https://www.google.com/maps?q=4200%20W%20Cypress%20St,%20Tampa,%20FL%2033607&output=embed"
+                src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&q=4200+W+Cypress+St,+Tampa,+FL+33607"
+                allowFullScreen
               />
             </div>
             
