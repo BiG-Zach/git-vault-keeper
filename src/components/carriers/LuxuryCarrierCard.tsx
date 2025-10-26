@@ -9,6 +9,8 @@ export type Carrier = {
   description: string;
   rating?: string;
   specialties: string[];
+  citation?: string;
+  badge?: string;
 };
 
 interface LuxuryCarrierCardProps {
