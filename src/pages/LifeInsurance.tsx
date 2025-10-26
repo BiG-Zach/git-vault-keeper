@@ -7,6 +7,7 @@ import { blogPosts, type BlogPost } from './Resources';
 import { organizationSchema, serviceSchema } from '../utils/schema';
 import { SEO_IMAGES } from '../utils/seoAssets';
 import RelatedPosts from '../components/blog/RelatedPosts';
+import CitationLinks from '../components/CitationLinks';
 
 const lifeInsuranceArticles: BlogPost[] = Object.values(blogPosts)
   .flat()
@@ -227,8 +228,8 @@ export default function LifeInsurance() {
                   <HeartHandshake className="mt-1 h-6 w-6 text-emerald-400" />
                 </motion.div>
                 <div>
-                  <p className="font-semibold">10 A to A+ rated carriers<sup>[1][5][8][16][21][29][35]</sup></p>
-                  <p className="text-sm text-slate-300">Access to over $50M in coverage placed for families across six states. Includes #1 ranked carrier in J.D. Power 2025 Individual Life Insurance Study<sup>[20]</sup>. Every plan is built around your family's goals, business obligations, and legacy priorities.</p>
+                  <p className="font-semibold">10 A to A+ rated carriers<CitationLinks citations="[1][5][8][16][21][29][35]" /></p>
+                  <p className="text-sm text-slate-300">Access to over $50M in coverage placed for families across six states. Includes #1 ranked carrier in J.D. Power 2025 Individual Life Insurance Study<CitationLinks citations="[20]" />. Every plan is built around your family's goals, business obligations, and legacy priorities.</p>
                 </div>
               </li>
               <li className="flex items-start gap-3 group">
@@ -618,7 +619,7 @@ export default function LifeInsurance() {
                 Our Carriers
               </h3>
               <p className="text-slate-600 mb-4">
-                Explore our network of 10 A to A+ rated carriers<sup>[1][5][8][16][21][29][35]</sup> and 6 PPO networks<sup>[44][47]</sup> to find the right fit for your needs.
+                Explore our network of 10 A to A+ rated carriers<CitationLinks citations="[1][5][8][16][21][29][35]" /> and 6 PPO networks<CitationLinks citations="[44][47]" /> to find the right fit for your needs.
               </p>
               <span className="text-emerald-600 font-semibold group-hover:underline">
                 View Carriers →
@@ -765,7 +766,7 @@ export default function LifeInsurance() {
               <motion.div whileHover={{ scale: 1.1, rotate: 5 }} transition={{ duration: 0.2 }}>
                 <ShieldCheck className="mt-1 h-7 w-7 text-emerald-300" />
               </motion.div>
-              <p className="text-base">Access to A to A+ rated carriers<sup>[1][5][8][16][21]</sup> with accelerated death benefit and chronic illness riders.</p>
+              <p className="text-base">Access to A to A+ rated carriers<CitationLinks citations="[1][5][8][16][21]" /> with accelerated death benefit and chronic illness riders.</p>
             </div>
             <div className="flex items-start gap-4">
               <motion.div whileHover={{ scale: 1.1, rotate: 5 }} transition={{ duration: 0.2 }}>

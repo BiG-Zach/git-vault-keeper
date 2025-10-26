@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 import { Star, TrendingUp, Shield } from 'lucide-react';
+import CitationLinks from '../CitationLinks';
 
 const PremiumCarriers = () => {
   const prefersReducedMotion = useReducedMotion();
@@ -108,7 +109,7 @@ const PremiumCarriers = () => {
           </h2>
           
           <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
-            I partner with top-rated insurance carriers rated A- to A+ by AM Best<sup>[1][5][8][16][21][29][35]</sup> and access to 6 major PPO networks<sup>[44][47]</sup>. Your coverage is backed by billions in reserves and guaranteed claim-paying ability.
+            I partner with top-rated insurance carriers rated A- to A+ by AM Best<CitationLinks citations="[1][5][8][16][21][29][35]" /> and access to 6 major PPO networks<CitationLinks citations="[44][47]" />. Your coverage is backed by billions in reserves and guaranteed claim-paying ability.
           </p>
         </motion.div>
 
@@ -131,8 +132,8 @@ const PremiumCarriers = () => {
                 </div>
                 <div className="text-slate-600 font-medium">{stat.label}</div>
                 {stat.citation && (
-                  <div className="mt-2 text-xs text-blue-600">
-                    <sup>{stat.citation}</sup>
+                  <div className="mt-2 text-xs">
+                    <CitationLinks citations={stat.citation} />
                   </div>
                 )}
               </div>
@@ -197,10 +198,10 @@ const PremiumCarriers = () => {
                 <div className="absolute inset-x-0 bottom-0 bg-slate-900 text-white p-3 rounded-b-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform translate-y-full group-hover:translate-y-0 hidden lg:block">
                   <p className="text-xs font-medium text-center">{carrier.partnership}</p>
                   {carrier.citation && (
-                    <p className="text-xs text-center mt-1">
-                      <sup className="text-blue-300">{carrier.citation}</sup>
-                    </p>
-                  )}
+                   <p className="text-xs text-center mt-1">
+                     <CitationLinks citations={carrier.citation} className="text-blue-300" />
+                   </p>
+                 )}
                 </div>
               </div>
             </motion.div>
@@ -216,10 +217,10 @@ const PremiumCarriers = () => {
           className="text-center mt-8"
         >
           <p className="text-sm text-slate-500 font-medium">
-            Partner with 10 insurance carriers rated A- to A+ by AM Best<sup>[1][5][8][16][21][29][35]</sup> and access to 6 major PPO networks<sup>[44][47]</sup>
+            Partner with 10 insurance carriers rated A- to A+ by AM Best<CitationLinks citations="[1][5][8][16][21][29][35]" /> and access to 6 major PPO networks<CitationLinks citations="[44][47]" />
           </p>
           <p className="text-xs text-slate-400 mt-2">
-            Combined assets exceeding $500 billion<sup>[3][6][10][14][22]</sup> • Includes #1 ranked carrier in J.D. Power 2025 study<sup>[20]</sup>
+            Combined assets exceeding $500 billion<CitationLinks citations="[3][6][10][14][22]" /> • Includes #1 ranked carrier in J.D. Power 2025 study<CitationLinks citations="[20]" />
           </p>
         </motion.div>
 

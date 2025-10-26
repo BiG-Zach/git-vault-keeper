@@ -8,6 +8,19 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Citation link styling */
+.citation-link {
+  display: inline;
+  margin: 0 1px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.citation-link:hover {
+  text-decoration: underline;
+}
+
 /* Base layer: tokens + typography */
 @layer base {
   :root {

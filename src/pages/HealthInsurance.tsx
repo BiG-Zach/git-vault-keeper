@@ -7,6 +7,7 @@ import { blogPosts, type BlogPost } from './Resources';
 import { organizationSchema, serviceSchema } from '../utils/schema';
 import { SEO_IMAGES } from '../utils/seoAssets';
 import RelatedPosts from '../components/blog/RelatedPosts';
+import CitationLinks from '../components/CitationLinks';
 
 const healthArticles: BlogPost[] = Object.values(blogPosts)
   .flat()
@@ -249,8 +250,8 @@ export default function HealthInsurance() {
                   <Stethoscope className="mt-1 h-6 w-6 text-emerald-400" />
                 </motion.div>
                 <div>
-                  <p className="font-semibold">10 A to A+ rated carriers and 6 PPO networks<sup>[1][5][8][16][21][29][35]</sup></p>
-                  <p className="text-sm text-slate-300">Best Insurance Group partnership unlocks multi-state PPO networks and exclusive programs with combined assets exceeding $500 billion<sup>[3][6][10][14][22]</sup>.</p>
+                  <p className="font-semibold">10 A to A+ rated carriers and 6 PPO networks<CitationLinks citations="[1][5][8][16][21][29][35]" /></p>
+                  <p className="text-sm text-slate-300">Best Insurance Group partnership unlocks multi-state PPO networks and exclusive programs with combined assets exceeding $500 billion<CitationLinks citations="[3][6][10][14][22]" />.</p>
                 </div>
               </li>
               <li className="flex items-start gap-3 group">
