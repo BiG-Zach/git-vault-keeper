@@ -25,7 +25,7 @@ const exclusiveContent: ContentItem[] = [
   {
     id: '2',
     title: 'Carrier Rate Sheets: Q1 2024 Comparison',
-    description: 'Internal rate sheets from 15+ carriers with exclusive broker pricing insights.',
+    description: 'Internal rate sheets from 10 carriers and 6 PPO networks with exclusive broker pricing insights.',
     type: 'analysis',
     isPremium: true,
     downloadCount: 892,

@@ -150,7 +150,7 @@ const ConversionHero = React.memo(function ConversionHero() {
               </h2>
               <p className="text-lg text-slate-700 leading-relaxed">
                 You work directly with licensed insurance advisors—not call centers or algorithms.
-                We compare <strong className="text-slate-900">15+ top-tier carriers</strong> simultaneously
+                We compare <strong className="text-slate-900">10 carriers and 6 PPO networks</strong> simultaneously
                 to find plans with the coverage you actually need at prices that make sense.
               </p>
             </div>

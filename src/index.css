@@ -61,6 +61,23 @@
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
+  /* Citation superscripts */
+  sup {
+    font-size: 0.7em;
+    vertical-align: super;
+    line-height: 0;
+    color: #0066cc;
+    font-weight: 600;
+  }
+
+  sup a {
+    text-decoration: none;
+    color: #0066cc;
+  }
+
+  sup a:hover {
+    text-decoration: underline;
+  }
 }
 
 /* Components layer */
@@ -68,6 +85,53 @@
   /* Utility container used in header */
   .container-default {
     @apply mx-auto max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+  
+  /* Rating badges */
+  .rating-badge {
+    @apply inline-block px-3 py-1 rounded-md font-semibold text-xs mr-2;
+  }
+
+  .rating-badge.a-plus {
+    @apply bg-gradient-to-r from-yellow-400 to-yellow-500 text-slate-900;
+  }
+
+  .rating-badge.a {
+    @apply bg-gradient-to-r from-green-500 to-green-600 text-white;
+  }
+
+  .rating-badge.a-minus {
+    @apply bg-gradient-to-r from-blue-500 to-blue-600 text-white;
+  }
+
+  .rating-badge.b-plus {
+    @apply bg-gradient-to-r from-orange-500 to-orange-600 text-white;
+  }
+
+  /* New carrier badge */
+  .new-badge {
+    @apply inline-block bg-red-500 text-white px-2 py-1 rounded text-xs font-bold ml-2 align-middle;
+  }
+  
+  /* Sources & References section */
+  .sources-references {
+    @apply mt-16 pt-8 border-t-2 border-slate-200 text-sm text-slate-600;
+  }
+
+  .sources-references h2 {
+    @apply text-2xl mb-4 text-slate-900;
+  }
+
+  .sources-references h3 {
+    @apply text-lg mt-6 mb-2 text-slate-800;
+  }
+
+  .sources-references ol {
+    @apply leading-relaxed pl-6;
+  }
+
+  .sources-references li {
+    @apply mb-2;
   }
 }
 

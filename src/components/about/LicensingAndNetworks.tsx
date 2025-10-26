@@ -51,16 +51,16 @@ export default function LicensingAndNetworks() {
 
         <Wrap delay={0.1} prefersReducedMotion={prefersReducedMotion}>
           <Item
-            title="Carriers"
-            desc="Allstate Health Solutions, UnitedHealthcare, PAL, Southern Guaranty (SGIC), Mutual of Omaha, Americo"
+            title="Insurance Carriers (10 Total)"
+            desc="UnitedHealthcare, Mutual of Omaha, Aflac, BCBS, Allstate, Aetna, Cigna, Medical Mutual, Americo, Illinois Mutual, PAL, SGIC - Rated A- to A+ by AM Best"
             icon={<span className="text-sm font-bold">🏢</span>}
           />
         </Wrap>
 
         <Wrap delay={0.2} prefersReducedMotion={prefersReducedMotion}>
           <Item
-            title="PPO Networks"
-            desc="Aetna • Cigna • First Health • Multiplan • United"
+            title="PPO Networks (6 Total)"
+            desc="Aetna PPO • Cigna PPO • First Health • MultiPlan • UnitedHealthcare PPO • Blue Cross PPO - 2.4M+ combined providers"
             icon={<span className="text-sm font-bold">🌐</span>}
           />
         </Wrap>

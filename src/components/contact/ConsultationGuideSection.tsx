@@ -246,7 +246,7 @@ export default function ConsultationGuideSection() {
                 I work for <span className="font-semibold text-slate-900">you</span>, not insurance companies. I'm not tied to any single carrier, which means I can shop multiple options to find the best fit for your situation.
               </p>
               <p className="text-sm text-slate-500 italic">
-                I represent 15+ carriers and have no quotas or sales targets to meet.
+                I represent 10 carriers and 6 PPO networks and have no quotas or sales targets to meet.
               </p>
             </div>
 

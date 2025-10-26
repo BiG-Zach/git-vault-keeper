@@ -22,7 +22,7 @@ export default function HealthInsurance() {
       heroImage.src,
       {
         name: 'Health Insurance Brokerage Services',
-        description: 'Expert health insurance guidance and carrier comparison across 6 states with 15+ A-rated carriers',
+        description: 'Expert health insurance guidance and carrier comparison across 6 states with 10 carriers and 6 PPO networks',
         url: 'https://www.bradfordinformedguidance.com/health-insurance',
       }
     )
@@ -38,7 +38,7 @@ export default function HealthInsurance() {
       />
       <SEO
         title="Affordable Health Insurance Broker - 6 States Licensed | No Enrollment Fees"
-        description="Compare affordable health insurance plans with licensed broker. 15+ A-rated carriers, no enrollment fees, 24-hour response guarantee."
+        description="Compare affordable health insurance plans with licensed broker. 10 carriers and 6 PPO networks, no enrollment fees, 24-hour response guarantee."
         path="/health-insurance"
         image={heroImage.src}
         meta={[
@@ -249,8 +249,8 @@ export default function HealthInsurance() {
                   <Stethoscope className="mt-1 h-6 w-6 text-emerald-400" />
                 </motion.div>
                 <div>
-                  <p className="font-semibold">15+ A-rated carriers</p>
-                  <p className="text-sm text-slate-300">Best Insurance Group partnership unlocks multi-state PPO networks and exclusive programs.</p>
+                  <p className="font-semibold">10 A to A+ rated carriers and 6 PPO networks<sup>[1][5][8][16][21][29][35]</sup></p>
+                  <p className="text-sm text-slate-300">Best Insurance Group partnership unlocks multi-state PPO networks and exclusive programs with combined assets exceeding $500 billion<sup>[3][6][10][14][22]</sup>.</p>
                 </div>
               </li>
               <li className="flex items-start gap-3 group">

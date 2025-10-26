@@ -8,6 +8,8 @@ import PremiumNetworkCard, { type Network } from "../components/carriers/Premium
 
 import LuxuryCarrierCard, { type Carrier } from "../components/carriers/LuxuryCarrierCard";
 
+import SourcesReferences from "../components/carriers/SourcesReferences";
+
 
 // Lazy load heavy components for better initial bundle size
 
@@ -134,29 +136,17 @@ const CARRIERS: Carrier[] = [
 
   {
 
-    name: "Allstate Health",
-
-    logoSrc: "/logos/carriers/allstate.webp",
-
-    description: "Known for rapid underwriting and same-week approvals. Ideal for families needing immediate coverage with competitive PPO rates and no waiting periods for pre-existing conditions after 12 months.",
-
-    rating: "A+ (Superior) AM Best Rated",
-
-    specialties: ["Health", "PPO", "Fast issue"]
-
-  },
-
-  {
-
     name: "UnitedHealthcare",
 
     logoSrc: "/logos/carriers/unitedhealthcare.webp",
 
-    description: "America's largest PPO network with 1.3+ million providers. Features Rally Health app for wellness tracking, virtual visits included, and exceptional out-of-state coverage for snowbirds and frequent travelers.",
+    description: "UnitedHealthcare carries an A+ (Superior) rating from AM Best, though the outlook was revised to Negative in September 2025. As the largest U.S. health insurer with approximately 47 million members, UnitedHealth Group reported total assets of $298.3 billion at year-end 2024.",
 
     rating: "A+ (Superior) AM Best Rated",
 
-    specialties: ["Health", "PPO", "Largest network"]
+    specialties: ["Health", "PPO", "Largest network"],
+
+    citation: "[8][9][10][11]"
 
   },
 
@@ -166,39 +156,15 @@ const CARRIERS: Carrier[] = [
 
     logoSrc: "/logos/carriers/mutualofomaha.webp",
 
-    description: "Industry leader in living benefits riders, allowing early access to death benefit for chronic, critical, or terminal illness. Perfect for layering life insurance with long-term care protection without separate policies.",
+    description: "Mutual of Omaha holds an A+ (Superior) rating from AM Best with $11.86 billion in admitted assets and was ranked #1 in the J.D. Power 2025 U.S. Individual Life Insurance Study with a score of 707 versus the industry average of 650.",
 
     rating: "A+ (Superior) AM Best Rated",
 
-    specialties: ["Life", "Supplemental", "Living benefits"]
+    specialties: ["Life", "Supplemental", "Living benefits"],
 
-  },
+    citation: "[16][17][19][20]",
 
-  {
-
-    name: "Americo",
-
-    logoSrc: "/logos/carriers/americo.webp",
-
-    description: "Simplified issue whole life insurance with no medical exams for applicants aged 50-85. Guaranteed acceptance final expense plans provide dignified funeral coverage regardless of health history.",
-
-    rating: "A- (Excellent) AM Best Rated",
-
-    specialties: ["Life", "Annuities"]
-
-  },
-
-  {
-
-    name: "SGIC",
-
-    logoSrc: "/logos/carriers/sgic.webp",
-
-    description: "Budget-conscious major medical with lower premiums than national carriers. Strong regional presence in Southern states with excellent hospital networks in FL, GA, and TX metro areas.",
-
-    rating: "B++ (Good) AM Best Rated",
-
-    specialties: ["Health", "Regional focus"]
+    badge: "#1 J.D. Power 2025"
 
   },
 
@@ -208,25 +174,13 @@ const CARRIERS: Carrier[] = [
 
     logoSrc: "/logos/carriers/aflac.webp",
 
-    description: "Cash indemnity plans paying directly to you—not the hospital. Covers gaps in major medical like deductibles, copays, and lost income during hospitalization. No network restrictions.",
+    description: "Aflac maintains an A+ (Superior) rating from AM Best (affirmed September 2025, Stable outlook) with total assets of $117.6 billion. As the largest supplemental insurance provider in the U.S., Aflac serves over 50 million people worldwide.",
 
     rating: "A+ (Superior) AM Best Rated",
 
-    specialties: ["Supplemental", "Cash payouts"]
+    specialties: ["Supplemental", "Cash payouts"],
 
-  },
-
-  {
-
-    name: "Philadelphia American Life",
-
-    logoSrc: "/logos/carriers/pal.webp",
-
-    description: "Underwriting flexibility for applicants with pre-existing conditions or complex medical histories. Offers modified plans when other carriers decline, ensuring coverage accessibility for high-risk individuals.",
-
-    rating: "A- (Excellent) AM Best Rated",
-
-    specialties: ["Health", "Cost-effective"]
+    citation: "[21][22][23][24]"
 
   },
 
@@ -236,11 +190,145 @@ const CARRIERS: Carrier[] = [
 
     logoSrc: "/logos/carriers/bluecrossblueshield.png",
 
-    description: "State-specific plans with deep local provider relationships in each licensed market. Known for transparent pricing, strong hospital negotiations, and community-focused member advocacy programs.",
+    description: "HCSC Blue Cross Blue Shield entities maintain an A+ (Superior) rating from AM Best with Stable outlook. The BCBS system, founded in 1929, operates through 33 independent companies nationwide.",
+
+    rating: "A+ (Superior) AM Best Rated",
+
+    specialties: ["Health", "PPO", "Nationwide coverage"],
+
+    citation: "[13][14][15]"
+
+  },
+
+  {
+
+    name: "Allstate Health Solutions",
+
+    logoSrc: "/logos/carriers/allstate.webp",
+
+    description: "Allstate Health Solutions operates through National General, which received an A (Excellent) rating in November 2024. The parent Allstate Insurance Group holds an A+ (Superior) rating, affirmed August 2025.",
+
+    rating: "A+ (Superior) AM Best Rated",
+
+    specialties: ["Health", "PPO", "Fast issue"],
+
+    citation: "[41][42][43]"
+
+  },
+
+  {
+
+    name: "Aetna",
+
+    logoSrc: "/logos/carriers/aetna.webp",
+
+    description: "Aetna maintains an A (Excellent) rating from AM Best (affirmed May 2025, Stable outlook). Founded in 1853, CVS Health's consolidated assets totaled $253.2 billion at year-end 2024, with 22.1 million medical members and 88% of Medicare Advantage members in 4+ star plans for 2025.",
 
     rating: "A (Excellent) AM Best Rated",
 
-    specialties: ["Health", "PPO", "Nationwide coverage"]
+    specialties: ["Health", "PPO", "Medicare Stars"],
+
+    citation: "[1][3][4]"
+
+  },
+
+  {
+
+    name: "Cigna",
+
+    logoSrc: "/logos/carriers/cigna.webp",
+
+    description: "Cigna holds an A (Excellent) rating from AM Best (affirmed April 2025, Stable outlook) with total assets of $155.9 billion and revenues of $247.1 billion in 2024. The company maintains strongest risk-adjusted capitalization per AM Best's BCAR.",
+
+    rating: "A (Excellent) AM Best Rated",
+
+    specialties: ["Health", "PPO", "Financial strength"],
+
+    citation: "[5][6][7]"
+
+  },
+
+  {
+
+    name: "Medical Mutual",
+
+    logoSrc: "/logos/carriers/medical-mutual.webp",
+
+    description: "Medical Mutual maintains an A (Excellent) rating from AM Best with approximately $2.7 billion in assets and earned 4.5 Stars for its 2024 Medicare Advantage plans.",
+
+    rating: "A (Excellent) AM Best Rated",
+
+    specialties: ["Health", "Medicare", "Regional"],
+
+    citation: "[35][36][37]",
+
+    badge: "NEW - 4.5 Star Medicare"
+
+  },
+
+  {
+
+    name: "Americo",
+
+    logoSrc: "/logos/carriers/americo.webp",
+
+    description: "Americo Financial Life and Annuity holds an A (Excellent) rating from AM Best with $9.1 billion in assets, 780,000 policies, and $39.7 billion insurance in-force.",
+
+    rating: "A (Excellent) AM Best Rated",
+
+    specialties: ["Life", "Annuities"],
+
+    citation: "[25][26][27][28]"
+
+  },
+
+  {
+
+    name: "Illinois Mutual",
+
+    logoSrc: "/logos/carriers/illinois-mutual.webp",
+
+    description: "Illinois Mutual holds an A- (Excellent) rating from AM Best, upgraded in October 2025, with $1.55 billion in assets. Founded in 1910, this 5th-generation family-operated company reported $310.3 million in surplus as of year-end 2024.",
+
+    rating: "A- (Excellent) AM Best Rated",
+
+    specialties: ["Life", "Traditional products"],
+
+    citation: "[29][30][31][32]",
+
+    badge: "NEW - Upgraded 2025"
+
+  },
+
+  {
+
+    name: "Philadelphia American Life",
+
+    logoSrc: "/logos/carriers/pal.webp",
+
+    description: "Philadelphia American Life Insurance Company (part of New Era Life Insurance Company) holds an A- (Excellent) rating from AM Best and specializes in Medicare Supplement insurance.",
+
+    rating: "A- (Excellent) AM Best Rated",
+
+    specialties: ["Health", "Medicare Supplement"],
+
+    citation: "[33][34]"
+
+  },
+
+  {
+
+    name: "SGIC",
+
+    logoSrc: "/logos/carriers/sgic.webp",
+
+    description: "SGIC carries a B++ (Good) rating from AM Best, assigned in May 2018. Originally founded in 1952, the company refocused on health insurance around 2018 and reported $35.2 million in total assets in 2023.",
+
+    rating: "B++ (Good) AM Best Rated",
+
+    specialties: ["Health", "Regional focus"],
+
+    citation: "[38][39][40]"
 
   }
 
@@ -315,7 +403,7 @@ export default function CarriersPage() {
         "name": "Why work with a multi-carrier broker instead of a single carrier agent?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "As a multi-carrier broker, I compare 15+ A-rated carriers across Florida, Michigan, North Carolina, Arizona, Texas, and Georgia. You see every competitive option in one consultation without pressure from a single insurer, and you receive unbiased guidance tailored to your household's priorities."
+          "text": "As a multi-carrier broker, I compare 10 carriers and 6 PPO networks across Florida, Michigan, North Carolina, Arizona, Texas, and Georgia. You see every competitive option in one consultation without pressure from a single insurer, and you receive unbiased guidance tailored to your household's priorities."
         }
       },
       {
@@ -339,7 +427,7 @@ export default function CarriersPage() {
         "name": "How do you ensure I get the best rate available?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "I have access to 15+ A-rated carriers through my Best Insurance Group partnership, which means I can compare rates across the entire market, not just one company. I also verify subsidy eligibility for ACA plans and check for any available discounts or wellness program benefits. My 8 years of experience helps me identify the best value - sometimes the lowest premium isn't actually the best deal when you factor in deductibles, networks, and coverage."
+          "text": "I have access to 10 carriers and 6 PPO networks through my Best Insurance Group partnership, which means I can compare rates across the entire market, not just one company. I also verify subsidy eligibility for ACA plans and check for any available discounts or wellness program benefits. My 8 years of experience helps me identify the best value - sometimes the lowest premium isn't actually the best deal when you factor in deductibles, networks, and coverage."
         }
       },
       {
@@ -423,7 +511,7 @@ export default function CarriersPage() {
       undefined,
       {
         name: 'Insurance Carrier Comparison & PPO Network Services',
-        description: 'Expert health and life insurance guidance with access to 15+ A-rated carriers and comprehensive PPO networks across 6 states',
+        description: 'Expert health and life insurance guidance with access to 10 carriers and 6 PPO networks and comprehensive PPO networks across 6 states',
         url: 'https://www.bradfordinformedguidance.com/carriers',
       }
     ),
@@ -662,7 +750,7 @@ export default function CarriersPage() {
 
       <SEO
 
-        title="Independent Insurance Broker | Compare 15+ A-Rated Carriers - 6 States"
+        title="Independent Insurance Broker | Compare 10 A to A+ Rated Carriers & 6 PPO Networks - 6 States"
 
         description="Expert independent broker serving 6 licensed states. I work for you—not insurance companies. Most families save 30-50% with personalized service you can trust."
 
@@ -676,11 +764,11 @@ export default function CarriersPage() {
 
           { property: 'og:type', content: 'website' },
 
-          { property: 'og:title', content: 'Independent Insurance Broker | Compare 15+ A-Rated Carriers - 6 States | Bradford Informed Guidance' },
+          { property: 'og:title', content: 'Independent Insurance Broker | Compare 10 A to A+ Rated Carriers & 6 PPO Networks - 6 States | Bradford Informed Guidance' },
 
           { property: 'og:description', content: 'Expert independent broker serving 6 licensed states. I work for you—not insurance companies. Most families save 30-50% with personalized service.' },
 
-          { name: 'twitter:title', content: 'Independent Insurance Broker | Compare 15+ A-Rated Carriers - 6 States' },
+          { name: 'twitter:title', content: 'Independent Insurance Broker | Compare 10 A to A+ Rated Carriers & 6 PPO Networks - 6 States' },
 
           { name: 'twitter:description', content: 'Expert independent broker. I work for you—not insurance companies. Most families save 30-50% compared to going direct.' }
 
@@ -838,7 +926,7 @@ export default function CarriersPage() {
 
                    }}>
 
-                  As an independent broker, I work for you—not the insurance companies. I compare 15+ A-rated carriers to find better coverage at lower costs, with personalized service you can trust. Most families save 30-50% compared to going direct.
+                  As an independent broker, I work for you—not the insurance companies. I compare 10 carriers and 6 PPO networks to find better coverage at lower costs, with personalized service you can trust. Most families save 30-50% compared to going direct.
 
                 </p>
 
@@ -866,7 +954,7 @@ export default function CarriersPage() {
 
                   <div className="w-2 h-2 bg-cyan-400 rounded-full"></div>
 
-                  <span>15+ A-Rated Carriers</span>
+                  <span>10 A to A+ Rated Carriers & 6 PPO Networks</span>
 
                 </div>
 
@@ -2947,7 +3035,7 @@ export default function CarriersPage() {
                 </div>
                 <h4 className="font-bold text-white mb-2">Carrier Pricing</h4>
                 <p className="text-sm text-slate-300 leading-relaxed">
-                  Each carrier has different pricing strategies and risk models. That's why I compare 15+ carriers to find your best rate.
+                  Each carrier has different pricing strategies and risk models. That's why I compare 10 carriers and 6 PPO networks to find your best rate.
                 </p>
               </div>
             </div>
@@ -4156,6 +4244,9 @@ export default function CarriersPage() {
       </div>
       {/* End Tab Panel 4: FAQ */}
 
+
+      {/* Sources & References Section */}
+      <SourcesReferences />
       {/* Footer CTA Section - Light Theme (40%) - Lazy Loaded */}
 
       <Suspense fallback={

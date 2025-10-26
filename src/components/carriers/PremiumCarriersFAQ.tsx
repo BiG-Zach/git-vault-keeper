@@ -24,7 +24,7 @@ const faqs = [
   },
   {
     question: "Why work with a multi-carrier broker instead of a single carrier agent?",
-    answer: "As a multi-carrier broker, I compare 15+ A-rated carriers across Florida, Michigan, North Carolina, Arizona, Texas, and Georgia. You see every competitive option in one consultation without pressure from a single insurer, and you receive unbiased guidance tailored to your household's priorities."
+    answer: "As a multi-carrier broker, I compare 10 carriers and 6 PPO networks across Florida, Michigan, North Carolina, Arizona, Texas, and Georgia. You see every competitive option in one consultation without pressure from a single insurer, and you receive unbiased guidance tailored to your household's priorities."
   },
   {
     question: "How do you secure the best rate across all these carriers?",
@@ -56,7 +56,7 @@ const faqs = [
   },
   {
     question: "How do you ensure I get the best rate available?",
-    answer: "I have access to 15+ A-rated carriers through my Best Insurance Group partnership, which means I can compare rates across the entire market, not just one company. I also verify subsidy eligibility for ACA plans and check for any available discounts or wellness program benefits. My 8 years of experience helps me identify the best value - sometimes the lowest premium isn't actually the best deal when you factor in deductibles, networks, and coverage."
+    answer: "I have access to 10 carriers and 6 PPO networks through my Best Insurance Group partnership, which means I can compare rates across the entire market, not just one company. I also verify subsidy eligibility for ACA plans and check for any available discounts or wellness program benefits. My 8 years of experience helps me identify the best value - sometimes the lowest premium isn't actually the best deal when you factor in deductibles, networks, and coverage."
   },
   {
     question: "What if I need to file a claim - how does that work with a broker?",

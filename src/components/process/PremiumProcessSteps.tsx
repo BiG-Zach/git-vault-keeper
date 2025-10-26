@@ -120,9 +120,9 @@ export default function PremiumProcessSteps() {
       number: 2,
       icon: <BarChart3 className="w-10 h-10" />,
       title: "I Compare All Your Options Personally",
-      content: "Using my Best Insurance Group partnership and relationships with 15+ A-rated carriers, I create your personalized comparison within 48 hours showing costs, benefits, and network coverage across all 6 licensed states.",
+      content: "Using my Best Insurance Group partnership and relationships with 10 carriers and 6 PPO networks, I create your personalized comparison within 48 hours showing costs, benefits, and network coverage across all 6 licensed states.",
       bulletPoints: [
-        "Access to 15+ A-rated carriers through Best Insurance Group partnership",
+        "Access to 10 carriers and 6 PPO networks through Best Insurance Group partnership",
         "Multi-carrier comparison within 48 hours",
         "Transparent pricing - no hidden fees or enrollment costs",
         "State-specific carrier availability across all 6 licensed states",

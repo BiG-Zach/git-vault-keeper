@@ -4,18 +4,20 @@ import styles from './MobileCarriersLuxury.module.css';
 import './tokens.module.css';
 
 const logos = [
-  { src: "/logos/carriers/aetna.webp", alt: "Aetna" },
-  { src: "/logos/carriers/cigna.webp", alt: "Cigna" },
-  { src: "/logos/carriers/americo.webp", alt: "Americo" },
-  { src: "/logos/carriers/multiplan.webp", alt: "MultiPlan" },
-  { src: "/logos/carriers/allstate.webp", alt: "Allstate" },
-  { src: "/logos/carriers/unitedhealthcare.webp", alt: "UnitedHealthcare" },
-  { src: "/logos/carriers/firsthealth.webp", alt: "First Health" },
-  { src: "/logos/carriers/bluecrossblueshield.png", alt: "Blue Cross Blue Shield" },
-  { src: "/logos/carriers/sgic.webp", alt: "SGIC" },
-  { src: "/logos/carriers/mutualofomaha.webp", alt: "Mutual of Omaha" },
-  { src: "/logos/carriers/pal.webp", alt: "Philadelphia American" },
-  { src: "/logos/carriers/aflac.webp", alt: "Aflac" }
+  { src: "/logos/carriers/unitedhealthcare.webp", alt: "UnitedHealthcare", rating: "A+" },
+  { src: "/logos/carriers/mutualofomaha.webp", alt: "Mutual of Omaha", rating: "A+", badge: "TOP" },
+  { src: "/logos/carriers/aflac.webp", alt: "Aflac", rating: "A+" },
+  { src: "/logos/carriers/bluecrossblueshield.png", alt: "Blue Cross Blue Shield", rating: "A+" },
+  { src: "/logos/carriers/allstate.webp", alt: "Allstate Health", rating: "A+" },
+  { src: "/logos/carriers/aetna.webp", alt: "Aetna", rating: "A" },
+  { src: "/logos/carriers/cigna.webp", alt: "Cigna", rating: "A" },
+  { src: "/logos/carriers/medical-mutual.webp", alt: "Medical Mutual", rating: "A", badge: "NEW" },
+  { src: "/logos/carriers/americo.webp", alt: "Americo", rating: "A" },
+  { src: "/logos/carriers/illinois-mutual.webp", alt: "Illinois Mutual", rating: "A-", badge: "NEW" },
+  { src: "/logos/carriers/pal.webp", alt: "Philadelphia American", rating: "A-" },
+  { src: "/logos/carriers/sgic.webp", alt: "SGIC", rating: "B++" },
+  { src: "/logos/carriers/multiplan.webp", alt: "MultiPlan PPO", isNetwork: true },
+  { src: "/logos/carriers/firsthealth.webp", alt: "First Health PPO", isNetwork: true }
 ];
 
 export default function MobileCarriers() {
@@ -33,11 +35,11 @@ export default function MobileCarriers() {
             Nationwide Providers
           </h2>
           <p className={styles.carriersSubtitle}>
-            Connected to America's most trusted health and life insurance carriers for comprehensive coverage that goes where you go.
+            Connected to 10 A to A+ rated carriers and 6 PPO networks for comprehensive coverage that goes where you go.
           </p>
           <div className={styles.trustCounter}>
             ✅
-            Access to 1.8M+ providers through top-rated networks
+            Access to 2.4M+ providers through top-rated networks<sup className="text-blue-600">[44][47]</sup>
           </div>
         </motion.div>
         

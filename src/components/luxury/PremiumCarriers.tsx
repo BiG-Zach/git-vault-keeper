@@ -6,22 +6,24 @@ const PremiumCarriers = () => {
   const prefersReducedMotion = useReducedMotion();
 
   const carriers = [
-    { src: "/logos/carriers/aetna.webp", alt: "Aetna", rating: "A+", partnership: "Premier Partner since 2019" },
-    { src: "/logos/carriers/cigna.webp", alt: "Cigna", rating: "A+", partnership: "Strategic Alliance" },
-    { src: "/logos/carriers/americo.webp", alt: "Americo", rating: "A", partnership: "Preferred Partner" },
-    { src: "/logos/carriers/multiplan.webp", alt: "MultiPlan", rating: "A+", partnership: "Network Provider" },
-    { src: "/logos/carriers/allstate.webp", alt: "Allstate", rating: "A+", partnership: "Elite Partner" },
-    { src: "/logos/carriers/unitedhealthcare.webp", alt: "UnitedHealthcare", rating: "A+", partnership: "Premier Network" },
-    { src: "/logos/carriers/firsthealth.webp", alt: "First Health", rating: "A", partnership: "PPO Alliance" },
-    { src: "/logos/carriers/bluecrossblueshield.png", alt: "Blue Cross Blue Shield", rating: "A+", partnership: "National Partner" },
-    { src: "/logos/carriers/sgic.webp", alt: "SGIC", rating: "A", partnership: "Regional Partner" },
-    { src: "/logos/carriers/mutualofomaha.webp", alt: "Mutual of Omaha", rating: "A+", partnership: "Life Insurance Partner" },
-    { src: "/logos/carriers/pal.webp", alt: "Philadelphia American Life", rating: "A", partnership: "Specialty Provider" },
-    { src: "/logos/carriers/aflac.webp", alt: "Aflac", rating: "A+", partnership: "Supplemental Partner" }
+    { src: "/logos/carriers/unitedhealthcare.webp", alt: "UnitedHealthcare", rating: "A+ (Superior)", partnership: "Premier Network", citation: "[8][9][10][11]" },
+    { src: "/logos/carriers/mutualofomaha.webp", alt: "Mutual of Omaha", rating: "A+ (Superior)", partnership: "#1 J.D. Power 2025", citation: "[16][17][19][20]", badge: "TOP RATED" },
+    { src: "/logos/carriers/aflac.webp", alt: "Aflac", rating: "A+ (Superior)", partnership: "Supplemental Leader", citation: "[21][22][23][24]" },
+    { src: "/logos/carriers/bluecrossblueshield.png", alt: "Blue Cross Blue Shield", rating: "A+ (Superior)", partnership: "National Partner", citation: "[13][14][15]" },
+    { src: "/logos/carriers/allstate.webp", alt: "Allstate Health", rating: "A+ (Superior)", partnership: "Elite Partner", citation: "[41][42][43]" },
+    { src: "/logos/carriers/aetna.webp", alt: "Aetna", rating: "A (Excellent)", partnership: "Premier Partner", citation: "[1][3][4]" },
+    { src: "/logos/carriers/cigna.webp", alt: "Cigna", rating: "A (Excellent)", partnership: "Strategic Alliance", citation: "[5][6][7]" },
+    { src: "/logos/carriers/medical-mutual.webp", alt: "Medical Mutual", rating: "A (Excellent)", partnership: "4.5 Star Medicare", citation: "[35][36][37]", badge: "NEW" },
+    { src: "/logos/carriers/americo.webp", alt: "Americo", rating: "A (Excellent)", partnership: "Preferred Partner", citation: "[25][26][27][28]" },
+    { src: "/logos/carriers/illinois-mutual.webp", alt: "Illinois Mutual", rating: "A- (Excellent)", partnership: "Upgraded Oct 2025", citation: "[29][30][31][32]", badge: "NEW" },
+    { src: "/logos/carriers/pal.webp", alt: "Philadelphia American Life", rating: "A- (Excellent)", partnership: "Specialty Provider", citation: "[33][34]" },
+    { src: "/logos/carriers/sgic.webp", alt: "SGIC", rating: "B++ (Good)", partnership: "Regional Partner", citation: "[38][39][40]" },
+    { src: "/logos/carriers/multiplan.webp", alt: "MultiPlan PPO", rating: "PPO Network", partnership: "1.4M+ Providers", citation: "[46][47][48]", isNetwork: true },
+    { src: "/logos/carriers/firsthealth.webp", alt: "First Health PPO", rating: "PPO Network", partnership: "1M+ Providers", citation: "[44][45]", isNetwork: true }
   ];
 
   const stats = [
-    { number: "12", label: "A+ Superior-Rated Carriers", icon: Star },
+    { number: "10", label: "A to A+ Rated Carriers & 6 PPO Networks", icon: Star, citation: "[1][5][8][16][21][29][35]" },
     { number: "98%", label: "Client Satisfaction Rate", icon: TrendingUp },
     { number: "$2.5B", label: "Coverage Written", icon: Shield }
   ];
@@ -102,11 +104,11 @@ const PremiumCarriers = () => {
           </div>
           
           <h2 className="text-3xl lg:text-5xl font-bold text-slate-900 mb-4 font-luxury-serif">
-            Trusted by <span className="gradient-text-luxury">A+ Superior-Rated Insurance Giants</span>
+            Trusted by <span className="gradient-text-luxury">A to A+ Rated Insurance Giants</span>
           </h2>
           
           <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
-            I partner exclusively with A+ and A-rated insurance carriers - the industry's most financially stable companies. Your coverage is backed by billions in reserves and guaranteed claim-paying ability.
+            I partner with top-rated insurance carriers rated A- to A+ by AM Best<sup>[1][5][8][16][21][29][35]</sup> and access to 6 major PPO networks<sup>[44][47]</sup>. Your coverage is backed by billions in reserves and guaranteed claim-paying ability.
           </p>
         </motion.div>
 
@@ -128,6 +130,11 @@ const PremiumCarriers = () => {
                   {stat.number}
                 </div>
                 <div className="text-slate-600 font-medium">{stat.label}</div>
+                {stat.citation && (
+                  <div className="mt-2 text-xs text-blue-600">
+                    <sup>{stat.citation}</sup>
+                  </div>
+                )}
               </div>
             </div>
           ))}
@@ -152,6 +159,15 @@ const PremiumCarriers = () => {
             >
               <div className="bg-white rounded-2xl p-6 lg:p-8 border border-slate-200 hover:border-emerald-300 hover:shadow-premium transition-all duration-300 h-full flex flex-col items-center justify-center group-hover:scale-105">
                 
+                {/* Badge for new carriers */}
+                {carrier.badge && (
+                  <div className="absolute -top-2 -right-2 z-10">
+                    <span className={carrier.badge === 'NEW' ? 'new-badge' : 'inline-block bg-yellow-500 text-slate-900 px-2 py-1 rounded text-xs font-bold'}>
+                      {carrier.badge}
+                    </span>
+                  </div>
+                )}
+                
                 {/* Logo */}
                 <div className="w-full max-w-[120px] h-12 lg:h-16 flex items-center justify-center mb-4">
                   <img
@@ -162,16 +178,36 @@ const PremiumCarriers = () => {
                   />
                 </div>
                 
+                {/* Rating Badge */}
+                {carrier.rating && (
+                  <div className="mb-2">
+                    <span className={`rating-badge ${
+                      carrier.rating.includes('A+') ? 'a-plus' :
+                      carrier.rating.includes('A (') ? 'a' :
+                      carrier.rating.includes('A-') ? 'a-minus' :
+                      carrier.rating.includes('B++') ? 'b-plus' :
+                      'bg-slate-200 text-slate-700'
+                    }`}>
+                      {carrier.rating}
+                    </span>
+                  </div>
+                )}
+                
                 {/* Partnership info - shows on hover on desktop */}
                 <div className="absolute inset-x-0 bottom-0 bg-slate-900 text-white p-3 rounded-b-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform translate-y-full group-hover:translate-y-0 hidden lg:block">
                   <p className="text-xs font-medium text-center">{carrier.partnership}</p>
+                  {carrier.citation && (
+                    <p className="text-xs text-center mt-1">
+                      <sup className="text-blue-300">{carrier.citation}</sup>
+                    </p>
+                  )}
                 </div>
               </div>
             </motion.div>
           ))}
         </motion.div>
 
-        {/* AM Best Rating Disclaimer */}
+        {/* Updated Disclaimer with Citations */}
         <motion.div
           initial={{ opacity: 0, y: prefersReducedMotion ? 0 : 10 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -180,7 +216,10 @@ const PremiumCarriers = () => {
           className="text-center mt-8"
         >
           <p className="text-sm text-slate-500 font-medium">
-            All carriers maintain A or A+ financial strength ratings from AM Best
+            Partner with 10 insurance carriers rated A- to A+ by AM Best<sup>[1][5][8][16][21][29][35]</sup> and access to 6 major PPO networks<sup>[44][47]</sup>
+          </p>
+          <p className="text-xs text-slate-400 mt-2">
+            Combined assets exceeding $500 billion<sup>[3][6][10][14][22]</sup> • Includes #1 ranked carrier in J.D. Power 2025 study<sup>[20]</sup>
           </p>
         </motion.div>
 
