@@ -22,7 +22,7 @@ import Terms from '../pages/Terms';
 
 // Blog
 import TermVsWholeLifeInsurance2024 from '../pages/blog/TermVsWholeLifeInsurance2024';
-import FloridaHealthInsuranceGuide2024 from '../pages/blog/FloridaHealthInsuranceGuide2024';
+
 import LifeInsuranceYoungAdultsGuide from '../pages/blog/LifeInsuranceYoungAdultsGuide';
 import HowMuchLifeInsuranceCalculator from '../pages/blog/HowMuchLifeInsuranceCalculator';
 import LifeInsurancePreExistingConditions from '../pages/blog/LifeInsurancePreExistingConditions';
@@ -71,7 +71,7 @@ export default function StaticRoutes({ seoCollector }: StaticRoutesProps) {
         <Route path="/terms" element={<Terms />} />
 
         <Route path="/blog/term-vs-whole-life-insurance-2025" element={<TermVsWholeLifeInsurance2024 />} />
-        <Route path="/blog/florida-health-insurance-guide-2024" element={<FloridaHealthInsuranceGuide2024 />} />
+
         <Route path="/blog/life-insurance-young-adults-guide" element={<LifeInsuranceYoungAdultsGuide />} />
         <Route path="/blog/how-much-life-insurance-calculator" element={<HowMuchLifeInsuranceCalculator />} />
         <Route

@@ -21,13 +21,71 @@ export default function Referral() {
 
       <Section bg="gradient">
         <Reveal>
-          <h1 className="h1 mb-4">Referral</h1>
+          <h1 className="h1 mb-4">Refer a Friend or Family Member</h1>
         </Reveal>
         <Reveal delay={0.08}>
           <p className="lead max-w-3xl">
-            Use the form below to refer someone who could benefit from our guidance. We’ll follow up promptly.
+            Do you know someone who needs help navigating their health or life insurance options?
+            Connect them with trusted, licensed guidance. We promise to treat them with the same care and professionalism we show you.
           </p>
         </Reveal>
+      </Section>
+
+      <Section className="py-12 bg-slate-50">
+        <div className="grid md:grid-cols-2 gap-12 items-center">
+          <Reveal>
+            <h2 className="text-3xl font-bold text-slate-900 mb-6">Why Refer to Bradford Informed Guidance?</h2>
+            <div className="prose prose-lg text-slate-600">
+              <p className="mb-4">
+                Insurance is personal, and finding a trustworthy advisor can be difficult. When you refer someone to us,
+                you're giving them access to:
+              </p>
+              <ul className="space-y-4 mb-6">
+                <li className="flex items-start gap-3">
+                  <div className="w-6 h-6 rounded-full bg-sky-100 flex items-center justify-center flex-shrink-0 mt-1">
+                    <span className="text-sky-600 font-bold">✓</span>
+                  </div>
+                  <span><strong>Unbiased Comparisons:</strong> We check 10+ carriers to find the best value, not just one company's products.</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <div className="w-6 h-6 rounded-full bg-sky-100 flex items-center justify-center flex-shrink-0 mt-1">
+                    <span className="text-sky-600 font-bold">✓</span>
+                  </div>
+                  <span><strong>No Pressure:</strong> Our goal is education and guidance, never high-pressure sales tactics.</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <div className="w-6 h-6 rounded-full bg-sky-100 flex items-center justify-center flex-shrink-0 mt-1">
+                    <span className="text-sky-600 font-bold">✓</span>
+                  </div>
+                  <span><strong>Ongoing Support:</strong> We don't just enroll and disappear; we're here for claims, renewals, and questions all year long.</span>
+                </li>
+              </ul>
+            </div>
+          </Reveal>
+
+          <Reveal delay={0.1}>
+            <div className="bg-white p-8 rounded-2xl shadow-sm border border-slate-200">
+              <h3 className="text-2xl font-bold text-slate-900 mb-4">Our Referral Promise</h3>
+              <p className="text-slate-600 mb-6">
+                We understand that referring a friend is an act of trust. Here is our commitment to you and your referral:
+              </p>
+              <div className="space-y-4">
+                <div className="flex items-center gap-3 p-3 bg-emerald-50 rounded-lg border border-emerald-100">
+                  <span className="text-2xl">🛡️</span>
+                  <span className="text-emerald-900 font-medium">We will never spam them</span>
+                </div>
+                <div className="flex items-center gap-3 p-3 bg-emerald-50 rounded-lg border border-emerald-100">
+                  <span className="text-2xl">🔒</span>
+                  <span className="text-emerald-900 font-medium">Their data is secure & private</span>
+                </div>
+                <div className="flex items-center gap-3 p-3 bg-emerald-50 rounded-lg border border-emerald-100">
+                  <span className="text-2xl">🤝</span>
+                  <span className="text-emerald-900 font-medium">Honest advice, always</span>
+                </div>
+              </div>
+            </div>
+          </Reveal>
+        </div>
       </Section>
 
       <Section>

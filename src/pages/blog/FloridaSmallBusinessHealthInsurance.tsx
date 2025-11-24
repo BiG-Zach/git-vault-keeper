@@ -24,7 +24,7 @@ export default function FloridaSmallBusinessHealthInsurance() {
 
   return (
     <main>
-      <SEO 
+      <SEO
         title={title}
         description={description}
         path={path}
@@ -32,7 +32,7 @@ export default function FloridaSmallBusinessHealthInsurance() {
         meta={articleSEO.meta}
         scripts={articleSEO.scripts}
       />
-      
+
       <article className="py-12">
         <div className="container mx-auto px-4 max-w-4xl">
           {/* Breadcrumb */}
@@ -52,11 +52,11 @@ export default function FloridaSmallBusinessHealthInsurance() {
                 <span className="font-semibold">Small Business Guide</span>
               </div>
             </div>
-            
+
             <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
               Small Business Health Insurance Florida: Top 10 Best Options
             </h1>
-            
+
             <div className="flex items-center gap-6 text-slate-600 mb-6">
               <span>Updated Jan 2024</span>
               <span>•</span>
@@ -64,7 +64,7 @@ export default function FloridaSmallBusinessHealthInsurance() {
               <span>•</span>
               <span>2,500 words</span>
             </div>
-            
+
             <p className="text-xl text-slate-700 leading-relaxed">
               Attract and retain top talent with competitive health benefits. This comprehensive guide covers the best <Link to="/health-insurance" className="text-primary hover:underline">small business health insurance</Link> options in Florida with real cost comparisons.
             </p>
@@ -79,8 +79,8 @@ export default function FloridaSmallBusinessHealthInsurance() {
                 <p className="text-red-800 mb-3">
                   Small business health insurance enrollment runs year-round, but employees can only join during open enrollment or qualifying life events.
                 </p>
-                <Link 
-                  to="/quote" 
+                <Link
+                  to="/quote"
                   className="inline-block bg-red-600 text-white px-4 py-2 rounded font-semibold hover:bg-red-700 transition-colors"
                 >
                   Get Free Business Quote
@@ -111,7 +111,7 @@ export default function FloridaSmallBusinessHealthInsurance() {
           {/* Florida Requirements */}
           <section id="florida-requirements" className="mb-12">
             <h2 className="text-2xl font-bold text-slate-900 mb-6">Florida Small Business Health Insurance Requirements</h2>
-            
+
             <div className="bg-blue-50 border-l-4 border-blue-600 p-6 mb-8">
               <div className="flex items-start gap-3">
                 <Shield className="w-6 h-6 text-blue-600 mt-1" />
@@ -173,7 +173,7 @@ export default function FloridaSmallBusinessHealthInsurance() {
           {/* Top 10 Carriers */}
           <section id="top-carriers" className="mb-12">
             <h2 className="text-2xl font-bold text-slate-900 mb-6">Top 10 Small Business Health Insurance Carriers in Florida</h2>
-            
+
             <div className="space-y-6 mb-8">
               {/* Florida Blue */}
               <div className="bg-white border border-slate-200 rounded-lg p-6">
@@ -362,7 +362,7 @@ export default function FloridaSmallBusinessHealthInsurance() {
           {/* Cost Analysis */}
           <section id="cost-analysis" className="mb-12">
             <h2 className="text-2xl font-bold text-slate-900 mb-6">Cost Analysis by Employee Count</h2>
-            
+
             <div className="overflow-x-auto mb-8">
               <table className="w-full border border-slate-200 rounded-lg">
                 <thead className="bg-slate-50">
@@ -413,7 +413,7 @@ export default function FloridaSmallBusinessHealthInsurance() {
           {/* Tax Benefits */}
           <section id="tax-benefits" className="mb-12">
             <h2 className="text-2xl font-bold text-slate-900 mb-6">Tax Benefits & Credits</h2>
-            
+
             <div className="grid md:grid-cols-2 gap-8 mb-8">
               <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
                 <DollarSign className="w-8 h-8 text-blue-600 mb-4" />
@@ -421,8 +421,8 @@ export default function FloridaSmallBusinessHealthInsurance() {
                 <ul className="space-y-2 text-blue-800">
                   <li>• Up to 50% of premiums for businesses</li>
                   <li>• Up to 35% for tax-exempt organizations</li>
-                   <li>• Must have &lt;25 FTE employees</li>
-                   <li>• Average wages &lt;$56,000 (2024)</li>
+                  <li>• Must have &lt;25 FTE employees</li>
+                  <li>• Average wages &lt;$56,000 (2024)</li>
                 </ul>
               </div>
               <div className="bg-green-50 border border-green-200 rounded-lg p-6">
@@ -446,14 +446,14 @@ export default function FloridaSmallBusinessHealthInsurance() {
                 Get personalized quotes from top Florida carriers in under 48 hours
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link 
-                  to="/quote" 
+                <Link
+                  to="/quote"
                   className="bg-white text-green-600 px-8 py-3 rounded-lg font-semibold hover:bg-green-50 transition-colors"
                 >
                   Get Business Quote
                 </Link>
-                <a 
-                  href="tel:+16893256570" 
+                <a
+                  href="tel:+16893256570"
                   className="border border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white/10 transition-colors"
                 >
                   Speak with Broker
@@ -481,7 +481,7 @@ export default function FloridaSmallBusinessHealthInsurance() {
 
           <RelatedPosts
             slugs={[
-              '/blog/florida-health-insurance-guide-2024',
+              '/blog/open-enrollment-2026-guide',
               '/blog/tampa-bay-insurance-broker-guide',
               '/health-insurance',
             ]}

@@ -12,7 +12,7 @@ const HowItWorks = lazy(() => import('../pages/HowItWorks'));
 const Resources = lazy(() => import('../pages/Resources'));
 const HealthInsurance = lazy(() => import('../pages/HealthInsurance'));
 const LifeInsurance = lazy(() => import('../pages/LifeInsurance'));
-const HowItWorksRedirect = () => { window.location.replace('/our-process'); return null; };
+
 // Dynamic state page
 const StateDynamic = lazy(() => import('../pages/states/[code]'));
 const StateDirectory = lazy(() => import('../pages/StateDirectory'));
@@ -25,7 +25,7 @@ const NotFound = lazy(() => import('../pages/NotFound'));
 
 // Blog posts
 const TermVsWholeLifeInsurance2024 = lazy(() => import('../pages/blog/TermVsWholeLifeInsurance2024'));
-const FloridaHealthInsuranceGuide2024 = lazy(() => import('../pages/blog/FloridaHealthInsuranceGuide2024'));
+
 const LifeInsuranceYoungAdultsGuide = lazy(() => import('../pages/blog/LifeInsuranceYoungAdultsGuide'));
 const HowMuchLifeInsuranceCalculator = lazy(() => import('../pages/blog/HowMuchLifeInsuranceCalculator'));
 const LifeInsurancePreExistingConditions = lazy(() => import('../pages/blog/LifeInsurancePreExistingConditions'));
@@ -57,7 +57,7 @@ export const routes = [
       { path: 'resources', element: <Resources /> },
       { path: 'health-insurance', element: <HealthInsurance /> },
       { path: 'life-insurance', element: <LifeInsurance /> },
-      { path: 'how-it-works', element: <HowItWorksRedirect /> },
+      { path: 'how-it-works', element: <Navigate to="/our-process" replace /> },
       // State directory and dynamic state routes
       { path: 'states', element: <StateDirectory /> },
       { path: 'states/:code', element: <StateDynamic /> },
@@ -69,7 +69,7 @@ export const routes = [
       // Blog routes
       { path: 'blog/term-vs-whole-life-insurance-2025', element: <TermVsWholeLifeInsurance2024 /> },
       { path: 'blog/term-vs-whole-life-insurance-2024', element: <Navigate to="/blog/term-vs-whole-life-insurance-2025" replace /> },
-      { path: 'blog/florida-health-insurance-guide-2024', element: <FloridaHealthInsuranceGuide2024 /> },
+
       { path: 'blog/life-insurance-young-adults-guide', element: <LifeInsuranceYoungAdultsGuide /> },
       { path: 'blog/how-much-life-insurance-calculator', element: <HowMuchLifeInsuranceCalculator /> },
       { path: 'blog/life-insurance-pre-existing-conditions', element: <LifeInsurancePreExistingConditions /> },

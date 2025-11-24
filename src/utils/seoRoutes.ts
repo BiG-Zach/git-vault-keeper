@@ -23,7 +23,7 @@ export const THANK_YOU_ROUTE = '/thank-you';
 export const BLOG_ROUTES = [
   '/blog/term-vs-whole-life-insurance-2025',
   '/blog/open-enrollment-2026-guide',
-  '/blog/florida-health-insurance-guide-2024',
+
   '/blog/life-insurance-young-adults-guide',
   '/blog/how-much-life-insurance-calculator',
   '/blog/life-insurance-pre-existing-conditions',
@@ -56,7 +56,7 @@ export const ROUTE_COMPONENT_MAP: Record<string, string> = {
   '/terms': 'src/pages/Terms.tsx',
   '/blog/term-vs-whole-life-insurance-2025': 'src/pages/blog/TermVsWholeLifeInsurance2024.tsx',
   '/blog/open-enrollment-2026-guide': 'src/pages/blog/OpenEnrollment2026Guide.tsx',
-  '/blog/florida-health-insurance-guide-2024': 'src/pages/blog/FloridaHealthInsuranceGuide2024.tsx',
+
   '/blog/life-insurance-young-adults-guide': 'src/pages/blog/LifeInsuranceYoungAdultsGuide.tsx',
   '/blog/how-much-life-insurance-calculator': 'src/pages/blog/HowMuchLifeInsuranceCalculator.tsx',
   '/blog/life-insurance-pre-existing-conditions': 'src/pages/blog/LifeInsurancePreExistingConditions.tsx',

@@ -24,7 +24,7 @@ export default function MichiganInsuranceLaws() {
 
   return (
     <main className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
-      <SEO 
+      <SEO
         title={title}
         description={description}
         path={path}
@@ -32,7 +32,7 @@ export default function MichiganInsuranceLaws() {
         meta={articleSEO.meta}
         scripts={articleSEO.scripts}
       />
-      
+
       <article className="max-w-4xl mx-auto px-4 py-8">
         {/* Breadcrumb Navigation */}
         <nav className="mb-8">
@@ -47,27 +47,27 @@ export default function MichiganInsuranceLaws() {
 
         {/* Article Header */}
         <header className="mb-12">
-          <Link 
-            to="/resources" 
+          <Link
+            to="/resources"
             className="inline-flex items-center text-blue-600 hover:text-blue-700 mb-6 transition-colors"
           >
             <ArrowLeft className="w-4 h-4 mr-2" />
             Back to Resources
           </Link>
-          
+
           <div className="flex items-center gap-2 mb-4">
             <Scale className="w-5 h-5 text-blue-600" />
             <span className="text-blue-600 font-medium">Michigan State Law Guide</span>
           </div>
-          
+
           <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4 leading-tight">
             Michigan Insurance Laws: What Every Resident Must Know
           </h1>
-          
+
           <p className="text-xl text-slate-600 mb-6 leading-relaxed">
             Stay compliant and protected. Michigan's latest insurance requirements explained simply by a licensed broker with 8+ years experience.
           </p>
-          
+
           <div className="flex flex-wrap items-center gap-6 text-sm text-slate-500">
             <div className="flex items-center gap-2">
               <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
@@ -119,13 +119,13 @@ export default function MichiganInsuranceLaws() {
 
         {/* Article Content */}
         <div className="prose prose-lg max-w-none">
-          
+
           <section id="no-fault-auto" className="mb-12">
             <h2 className="text-2xl font-bold text-slate-900 mb-4">No-Fault Auto Insurance Requirements</h2>
             <p className="text-slate-700 mb-4">
               Michigan operates under a no-fault auto insurance system, which means your insurance pays for your medical expenses and lost wages regardless of who caused the accident. Understanding these requirements is crucial for legal compliance. For comprehensive insurance guidance, explore our <Link to="/states/mi" className="text-primary hover:underline">Michigan insurance services</Link>.
             </p>
-            
+
             <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-6">
               <h3 className="text-lg font-semibold text-blue-800 mb-3">Required Minimum Coverage (2024)</h3>
               <div className="grid md:grid-cols-2 gap-4">
@@ -198,7 +198,7 @@ export default function MichiganInsuranceLaws() {
 
           <section id="health-insurance-mandate" className="mb-12">
             <h2 className="text-2xl font-bold text-slate-900 mb-4">Health Insurance Mandate & Penalties</h2>
-            
+
             <div className="bg-green-50 border border-green-200 rounded-lg p-6 mb-6">
               <h3 className="text-lg font-semibold text-green-800 mb-3">Michigan Health Insurance Status</h3>
               <p className="text-green-700 mb-3">
@@ -223,7 +223,7 @@ export default function MichiganInsuranceLaws() {
                   <li>• Family of 4: Up to $43,056/year</li>
                 </ul>
               </div>
-              
+
               <div className="bg-purple-50 border border-purple-200 rounded-lg p-4">
                 <h4 className="font-semibold text-purple-800 mb-2">Eligibility Criteria</h4>
                 <ul className="text-purple-700 text-sm space-y-1">
@@ -241,7 +241,7 @@ export default function MichiganInsuranceLaws() {
             <p className="text-slate-700 mb-4">
               While Michigan doesn't legally require homeowners insurance for property owners, mortgage lenders do require it. Understanding Michigan-specific coverage needs is crucial for adequate protection.
             </p>
-            
+
             <div className="bg-orange-50 border border-orange-200 rounded-lg p-6 mb-6">
               <h3 className="text-lg font-semibold text-orange-800 mb-3">Michigan Weather-Related Risks</h3>
               <div className="grid md:grid-cols-2 gap-4">
@@ -304,7 +304,7 @@ export default function MichiganInsuranceLaws() {
 
           <section id="workers-compensation" className="mb-12">
             <h2 className="text-2xl font-bold text-slate-900 mb-4">Workers' Compensation Laws</h2>
-            
+
             <div className="bg-red-50 border border-red-200 rounded-lg p-6 mb-6">
               <h3 className="text-lg font-semibold text-red-800 mb-3">⚠️ Mandatory Coverage Requirements</h3>
               <p className="text-red-700 mb-3">
@@ -323,7 +323,7 @@ export default function MichiganInsuranceLaws() {
                   <li>• LLCs with employee-members</li>
                 </ul>
               </div>
-              
+
               <div className="bg-green-50 border border-green-200 rounded-lg p-4">
                 <h4 className="font-semibold text-green-800 mb-2">❌ Exemptions</h4>
                 <ul className="text-green-700 text-sm space-y-1">
@@ -351,7 +351,7 @@ export default function MichiganInsuranceLaws() {
             <p className="text-slate-700 mb-4">
               Certain professions in Michigan have mandatory liability insurance requirements. Understanding these requirements is crucial for professional license compliance.
             </p>
-            
+
             <div className="space-y-4 mb-6">
               <div className="bg-white border border-slate-200 rounded-lg p-4">
                 <h4 className="font-semibold text-slate-900 mb-2">Healthcare Professionals</h4>
@@ -362,7 +362,7 @@ export default function MichiganInsuranceLaws() {
                   <li>• Dentists: Minimum $1M per claim</li>
                 </ul>
               </div>
-              
+
               <div className="bg-white border border-slate-200 rounded-lg p-4">
                 <h4 className="font-semibold text-slate-900 mb-2">Legal Professionals</h4>
                 <p className="text-slate-700 text-sm mb-2">Attorneys must carry professional liability insurance</p>
@@ -372,7 +372,7 @@ export default function MichiganInsuranceLaws() {
                   <li>• Large firms: Often $5M+ per claim</li>
                 </ul>
               </div>
-              
+
               <div className="bg-white border border-slate-200 rounded-lg p-4">
                 <h4 className="font-semibold text-slate-900 mb-2">Financial Professionals</h4>
                 <p className="text-slate-700 text-sm mb-2">Insurance agents, CPAs, and financial advisors</p>
@@ -387,7 +387,7 @@ export default function MichiganInsuranceLaws() {
 
           <section id="penalties-consequences" className="mb-12">
             <h2 className="text-2xl font-bold text-slate-900 mb-4">Penalties for Non-Compliance</h2>
-            
+
             <div className="bg-red-50 border border-red-200 rounded-lg p-6 mb-6">
               <h3 className="text-lg font-semibold text-red-800 mb-3">Auto Insurance Violations</h3>
               <div className="space-y-2 text-red-700">
@@ -409,7 +409,7 @@ export default function MichiganInsuranceLaws() {
 
           <section id="recent-changes" className="mb-12">
             <h2 className="text-2xl font-bold text-slate-900 mb-4">Recent Law Changes (2024)</h2>
-            
+
             <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-6">
               <h3 className="text-lg font-semibold text-blue-800 mb-3">2024 Legislative Updates</h3>
               <ul className="space-y-2 text-blue-700">
@@ -423,7 +423,7 @@ export default function MichiganInsuranceLaws() {
 
           <section id="faq" className="mb-12">
             <h2 className="text-2xl font-bold text-slate-900 mb-6">Frequently Asked Questions</h2>
-            
+
             <div className="space-y-6">
               <div className="bg-white border border-slate-200 rounded-lg p-6">
                 <h3 className="text-lg font-semibold text-slate-900 mb-2">Can I drive without auto insurance in Michigan?</h3>
@@ -431,14 +431,14 @@ export default function MichiganInsuranceLaws() {
                   No. Michigan requires all drivers to carry minimum auto insurance coverage. Driving without insurance results in immediate license suspension, fines, and potential criminal charges. Even if you don't own a car, you need coverage to legally drive any vehicle.
                 </p>
               </div>
-              
+
               <div className="bg-white border border-slate-200 rounded-lg p-6">
                 <h3 className="text-lg font-semibold text-slate-900 mb-2">What happens if I get hurt in an auto accident without health insurance?</h3>
                 <p className="text-slate-700">
                   Your auto insurance PIP coverage will pay for medical expenses regardless of your health insurance status. However, if you chose PIP exclusion, you may be responsible for medical costs that your health insurance doesn't cover.
                 </p>
               </div>
-              
+
               <div className="bg-white border border-slate-200 rounded-lg p-6">
                 <h3 className="text-lg font-semibold text-slate-900 mb-2">Do I need workers' compensation if I'm a sole proprietor?</h3>
                 <p className="text-slate-700">
@@ -494,7 +494,7 @@ export default function MichiganInsuranceLaws() {
         <RelatedPosts
           slugs={[
             '/blog/north-carolina-best-health-insurance',
-            '/blog/florida-health-insurance-guide-2024',
+            '/blog/open-enrollment-2026-guide',
             '/quote',
           ]}
         />

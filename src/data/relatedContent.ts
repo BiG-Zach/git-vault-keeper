@@ -18,12 +18,7 @@ export const RELATED_CONTENT: Record<string, RelatedContentItem> = {
     href: '/blog/open-enrollment-2026-guide',
     category: 'Health Insurance',
   },
-  '/blog/florida-health-insurance-guide-2024': {
-    title: 'Florida Health Insurance Guide 2024',
-    description: 'Understand Florida marketplace rules, private plan options, and cost benchmarks for 2024.',
-    href: '/blog/florida-health-insurance-guide-2024',
-    category: 'Florida Coverage',
-  },
+
   '/blog/life-insurance-young-adults-guide': {
     title: 'Life Insurance Guide for Young Adults',
     description: 'See why early coverage creates lifetime savings and protects future goals.',

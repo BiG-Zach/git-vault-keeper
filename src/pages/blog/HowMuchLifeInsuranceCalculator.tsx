@@ -24,7 +24,7 @@ export default function HowMuchLifeInsuranceCalculator() {
 
   return (
     <main className="min-h-screen bg-white">
-      <SEO 
+      <SEO
         title={title}
         description={description}
         path={path}
@@ -50,14 +50,14 @@ export default function HowMuchLifeInsuranceCalculator() {
       <article className="py-12">
         <div className="container-default max-w-4xl">
           <div className="mb-8">
-            <Link 
-              to="/resources" 
+            <Link
+              to="/resources"
               className="inline-flex items-center text-blue-600 hover:text-blue-700 mb-6"
             >
               <ArrowLeft className="w-4 h-4 mr-2" />
               Back to Resources
             </Link>
-            
+
             <div className="mb-6">
               <span className="inline-block bg-emerald-100 text-emerald-700 px-3 py-1 rounded-full text-sm font-medium mb-4">
                 LIFE INSURANCE
@@ -114,7 +114,7 @@ export default function HowMuchLifeInsuranceCalculator() {
                 family's actual needs. This one-size-fits-all approach can leave families drastically under-insured
                 or paying for unnecessary coverage. Understanding proper coverage amounts is essential when shopping for <Link to="/life-insurance" className="text-primary hover:underline">life insurance</Link>.
               </p>
-              
+
               <div className="bg-red-50 border-l-4 border-red-500 p-6 mb-6">
                 <h3 className="text-lg font-bold text-red-800 mb-3">Real Example: The Johnson Family</h3>
                 <p className="text-red-700 mb-2">
@@ -158,7 +158,7 @@ export default function HowMuchLifeInsuranceCalculator() {
                 Professional <Link to="/carriers" className="text-primary hover:underline">insurance agents</Link> use the "needs analysis" method, which calculates exactly how much
                 money your family would need to maintain their lifestyle and meet their goals if you weren't there to provide.
               </p>
-              
+
               <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-6">
                 <h3 className="text-xl font-bold text-blue-800 mb-4">The Needs Analysis Formula</h3>
                 <div className="space-y-3 text-blue-700">
@@ -201,10 +201,10 @@ export default function HowMuchLifeInsuranceCalculator() {
             <section id="calculator" className="mb-12">
               <h2 className="text-3xl font-bold text-slate-900 mb-6">Free Life Insurance Calculator</h2>
               <p className="text-slate-700 leading-relaxed mb-6">
-                Use this professional calculator to determine your exact life insurance needs. This calculator 
+                Use this professional calculator to determine your exact life insurance needs. This calculator
                 uses the same method insurance professionals use with their clients.
               </p>
-              
+
               <div className="bg-gray-50 border-2 border-dashed border-gray-300 rounded-lg p-8 text-center mb-6">
                 <Calculator className="w-16 h-16 text-gray-400 mx-auto mb-4" />
                 <h3 className="text-xl font-bold text-gray-600 mb-2">Interactive Calculator</h3>
@@ -237,7 +237,7 @@ export default function HowMuchLifeInsuranceCalculator() {
 
             <section id="real-examples" className="mb-12">
               <h2 className="text-3xl font-bold text-slate-900 mb-6">Real Family Examples</h2>
-              
+
               <div className="space-y-8">
                 <div className="bg-slate-50 rounded-lg p-6">
                   <h3 className="text-xl font-bold text-slate-900 mb-3">The Martinez Family - Two Young Children</h3>
@@ -264,7 +264,7 @@ export default function HowMuchLifeInsuranceCalculator() {
                   </div>
                   <div className="mt-4 p-4 bg-blue-100 rounded">
                     <p className="text-blue-800">
-                      <strong>10x Rule:</strong> $1.2M (short by $465,000) | 
+                      <strong>10x Rule:</strong> $1.2M (short by $465,000) |
                       <strong>Professional Analysis:</strong> $1.665M
                     </p>
                   </div>
@@ -295,7 +295,7 @@ export default function HowMuchLifeInsuranceCalculator() {
                   </div>
                   <div className="mt-4 p-4 bg-green-100 rounded">
                     <p className="text-green-800">
-                      <strong>10x Rule:</strong> $2.5M (excess of $795,000) | 
+                      <strong>10x Rule:</strong> $2.5M (excess of $795,000) |
                       <strong>Professional Analysis:</strong> $1.705M (saved $800/year in premiums)
                     </p>
                   </div>
@@ -305,7 +305,7 @@ export default function HowMuchLifeInsuranceCalculator() {
 
             <section id="special-considerations" className="mb-12">
               <h2 className="text-3xl font-bold text-slate-900 mb-6">Special Considerations</h2>
-              
+
               <div className="grid md:grid-cols-2 gap-8">
                 <div>
                   <h3 className="text-xl font-bold text-slate-900 mb-4">Factors That Increase Needs</h3>
@@ -318,7 +318,7 @@ export default function HowMuchLifeInsuranceCalculator() {
                     <li>• Single income household</li>
                   </ul>
                 </div>
-                
+
                 <div>
                   <h3 className="text-xl font-bold text-slate-900 mb-4">Factors That Decrease Needs</h3>
                   <ul className="space-y-2 text-slate-700">
@@ -336,10 +336,10 @@ export default function HowMuchLifeInsuranceCalculator() {
             <section id="review-schedule" className="mb-12">
               <h2 className="text-3xl font-bold text-slate-900 mb-6">When to Review Your Coverage</h2>
               <p className="text-slate-700 leading-relaxed mb-6">
-                Your life insurance needs change over time. Regular reviews ensure you maintain appropriate coverage 
+                Your life insurance needs change over time. Regular reviews ensure you maintain appropriate coverage
                 without overpaying for protection you no longer need.
               </p>
-              
+
               <div className="bg-amber-50 border border-amber-200 rounded-lg p-6">
                 <h3 className="text-lg font-bold text-amber-800 mb-4">Review Your Coverage When:</h3>
                 <div className="grid md:grid-cols-2 gap-4">
@@ -385,12 +385,12 @@ export default function HowMuchLifeInsuranceCalculator() {
 
             <section id="faq" className="mb-12">
               <h2 className="text-3xl font-bold text-slate-900 mb-6">Frequently Asked Questions</h2>
-              
+
               <div className="space-y-6">
                 <div className="border-b border-slate-200 pb-6">
                   <h3 className="text-xl font-bold text-slate-900 mb-3">Should I count my spouse's income in the calculation?</h3>
                   <p className="text-slate-700">
-                    Yes, if your spouse earns income, you should calculate coverage for both of you. The surviving spouse 
+                    Yes, if your spouse earns income, you should calculate coverage for both of you. The surviving spouse
                     will lose that income stream and may need to work less to care for children, making replacement income critical.
                   </p>
                 </div>
@@ -398,7 +398,7 @@ export default function HowMuchLifeInsuranceCalculator() {
                 <div className="border-b border-slate-200 pb-6">
                   <h3 className="text-xl font-bold text-slate-900 mb-3">How much does college really cost to factor in?</h3>
                   <p className="text-slate-700">
-                    Current average costs are $28,000/year for in-state public schools and $50,000+/year for private colleges. 
+                    Current average costs are $28,000/year for in-state public schools and $50,000+/year for private colleges.
                     For planning purposes, budget $120,000-$200,000 per child for a four-year degree, adjusted for inflation.
                   </p>
                 </div>
@@ -407,7 +407,7 @@ export default function HowMuchLifeInsuranceCalculator() {
                   <h3 className="text-xl font-bold text-slate-900 mb-3">What if I can't afford the "recommended" amount?</h3>
                   <p className="text-slate-700">
                     Some coverage is always better than none. Start with what you can afford now and increase coverage
-                    as your income grows. Many policies offer riders that guarantee your right to purchase additional coverage later. Learn more about policy options in our <Link to="/blog/term-vs-whole-life-insurance-2024" className="text-primary hover:underline">term vs whole life comparison</Link>.
+                    as your income grows. Many policies offer riders that guarantee your right to purchase additional coverage later. Learn more about policy options in our <Link to="/blog/term-vs-whole-life-insurance-2025" className="text-primary hover:underline">term vs whole life comparison</Link>.
                   </p>
                 </div>
               </div>

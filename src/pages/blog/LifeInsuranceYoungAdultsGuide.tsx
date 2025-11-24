@@ -24,7 +24,7 @@ export default function LifeInsuranceYoungAdultsGuide() {
 
   return (
     <main className="min-h-screen bg-white">
-      <SEO 
+      <SEO
         title={title}
         description={description}
         path={path}
@@ -50,14 +50,14 @@ export default function LifeInsuranceYoungAdultsGuide() {
       <article className="py-12">
         <div className="container-default max-w-4xl">
           <div className="mb-8">
-            <Link 
-              to="/resources" 
+            <Link
+              to="/resources"
               className="inline-flex items-center text-blue-600 hover:text-blue-700 mb-6"
             >
               <ArrowLeft className="w-4 h-4 mr-2" />
               Back to Resources
             </Link>
-            
+
             <div className="mb-6">
               <span className="inline-block bg-emerald-100 text-emerald-700 px-3 py-1 rounded-full text-sm font-medium mb-4">
                 LIFE INSURANCE
@@ -120,11 +120,11 @@ export default function LifeInsuranceYoungAdultsGuide() {
                   <p className="text-red-800 font-medium">The Waiting Game Costs Real Money</p>
                 </div>
                 <p className="text-red-700">
-                  A healthy 25-year-old pays $25/month for $500k coverage. Wait until 35? That same coverage costs $45/month. 
+                  A healthy 25-year-old pays $25/month for $500k coverage. Wait until 35? That same coverage costs $45/month.
                   Over 30 years, waiting 10 years costs an extra $7,200.
                 </p>
               </div>
-              
+
               <h3 className="text-2xl font-bold text-slate-900 mb-4">Common Scenarios Where Young Adults Need Coverage</h3>
               <div className="grid md:grid-cols-2 gap-4 mb-6">
                 <div className="flex items-start">
@@ -152,7 +152,7 @@ export default function LifeInsuranceYoungAdultsGuide() {
                 Life insurance premiums are based on age and health at the time of application. The younger and healthier
                 you are, the lower your premiums for life. This creates a significant advantage for young adults who act now. Use our <Link to="/blog/how-much-life-insurance-calculator" className="text-primary hover:underline">free calculator</Link> to determine your coverage needs.
               </p>
-              
+
               <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-6">
                 <h3 className="text-xl font-bold text-blue-800 mb-4">Cost Comparison: $500,000 Term Life Insurance</h3>
                 <div className="grid md:grid-cols-3 gap-6">
@@ -182,9 +182,9 @@ export default function LifeInsuranceYoungAdultsGuide() {
               <h2 className="text-3xl font-bold text-slate-900 mb-6">How Much Coverage Do You Need?</h2>
               <p className="text-slate-700 leading-relaxed mb-6">
                 Young adults often underestimate their coverage needs. While you might not have dependents now,
-                your future earning potential is valuable and worth protecting. Learn more about choosing between <Link to="/blog/term-vs-whole-life-insurance-2024" className="text-primary hover:underline">term and whole life insurance</Link>.
+                your future earning potential is valuable and worth protecting. Learn more about choosing between <Link to="/blog/term-vs-whole-life-insurance-2025" className="text-primary hover:underline">term and whole life insurance</Link>.
               </p>
-              
+
               <h3 className="text-2xl font-bold text-slate-900 mb-4">Coverage Guidelines for Young Adults</h3>
               <div className="space-y-4 mb-6">
                 <div className="border-l-4 border-green-500 pl-4">
@@ -204,7 +204,7 @@ export default function LifeInsuranceYoungAdultsGuide() {
 
             <section id="term-vs-permanent" className="mb-12">
               <h2 className="text-3xl font-bold text-slate-900 mb-6">Term vs Permanent for Young Adults</h2>
-              
+
               <div className="grid md:grid-cols-2 gap-8 mb-8">
                 <div className="bg-green-50 border border-green-200 rounded-lg p-6">
                   <div className="flex items-center mb-4">
@@ -242,7 +242,7 @@ export default function LifeInsuranceYoungAdultsGuide() {
 
             <section id="real-examples" className="mb-12">
               <h2 className="text-3xl font-bold text-slate-900 mb-6">Real Client Success Stories</h2>
-              
+
               <div className="space-y-8">
                 <div className="bg-slate-50 rounded-lg p-6">
                   <h3 className="text-xl font-bold text-slate-900 mb-3">Sarah, Age 26 - Marketing Professional</h3>
@@ -253,7 +253,7 @@ export default function LifeInsuranceYoungAdultsGuide() {
                     <strong>Solution:</strong> $500,000 30-year term policy at $28/month
                   </p>
                   <p className="text-slate-700">
-                    <strong>Result:</strong> Protected her fiancé from student loan debt and secured coverage 
+                    <strong>Result:</strong> Protected her fiancé from student loan debt and secured coverage
                     before health issues developed. Same coverage today would cost $45/month.
                   </p>
                 </div>
@@ -267,7 +267,7 @@ export default function LifeInsuranceYoungAdultsGuide() {
                     <strong>Solution:</strong> $1M whole life policy at $680/month
                   </p>
                   <p className="text-slate-700">
-                    <strong>Result:</strong> Building $50,000+ in cash value after 5 years while maintaining 
+                    <strong>Result:</strong> Building $50,000+ in cash value after 5 years while maintaining
                     permanent coverage. Would cost 40% more if he waited until 30.
                   </p>
                 </div>
@@ -276,7 +276,7 @@ export default function LifeInsuranceYoungAdultsGuide() {
 
             <section id="getting-started" className="mb-12">
               <h2 className="text-3xl font-bold text-slate-900 mb-6">How to Get Started</h2>
-              
+
               <div className="grid md:grid-cols-3 gap-6 mb-8">
                 <div className="text-center">
                   <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -304,12 +304,12 @@ export default function LifeInsuranceYoungAdultsGuide() {
 
             <section id="faq" className="mb-12">
               <h2 className="text-3xl font-bold text-slate-900 mb-6">Frequently Asked Questions</h2>
-              
+
               <div className="space-y-6">
                 <div className="border-b border-slate-200 pb-6">
                   <h3 className="text-xl font-bold text-slate-900 mb-3">I'm healthy now, but what if I develop health issues later?</h3>
                   <p className="text-slate-700">
-                    This is exactly why you should buy now. Your current health qualifies you for the best rates. 
+                    This is exactly why you should buy now. Your current health qualifies you for the best rates.
                     If you develop diabetes, heart disease, or other conditions later, you'll either pay much more or be denied coverage.
                   </p>
                 </div>
@@ -317,7 +317,7 @@ export default function LifeInsuranceYoungAdultsGuide() {
                 <div className="border-b border-slate-200 pb-6">
                   <h3 className="text-xl font-bold text-slate-900 mb-3">Can I change my coverage amount later?</h3>
                   <p className="text-slate-700">
-                    Most policies allow you to increase coverage within the first few years without medical underwriting. 
+                    Most policies allow you to increase coverage within the first few years without medical underwriting.
                     You can also add riders for future insurability, guaranteeing your right to buy more coverage later.
                   </p>
                 </div>
@@ -325,7 +325,7 @@ export default function LifeInsuranceYoungAdultsGuide() {
                 <div className="border-b border-slate-200 pb-6">
                   <h3 className="text-xl font-bold text-slate-900 mb-3">What if I can't afford the premiums?</h3>
                   <p className="text-slate-700">
-                    Young adults often qualify for the lowest rates available. A $500,000 term policy typically costs 
+                    Young adults often qualify for the lowest rates available. A $500,000 term policy typically costs
                     less than your monthly streaming subscriptions. Start with what you can afford - even $100,000 is better than nothing.
                   </p>
                 </div>

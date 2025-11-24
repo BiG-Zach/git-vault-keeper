@@ -24,7 +24,7 @@ export default function FloridaHurricaneInsuranceProtection() {
 
   return (
     <main className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
-      <SEO 
+      <SEO
         title={title}
         description={description}
         path={path}
@@ -32,7 +32,7 @@ export default function FloridaHurricaneInsuranceProtection() {
         meta={articleSEO.meta}
         scripts={articleSEO.scripts}
       />
-      
+
       <article className="max-w-4xl mx-auto px-4 py-8">
         {/* Breadcrumb Navigation */}
         <nav className="mb-8">
@@ -47,27 +47,27 @@ export default function FloridaHurricaneInsuranceProtection() {
 
         {/* Article Header */}
         <header className="mb-12">
-          <Link 
-            to="/resources" 
+          <Link
+            to="/resources"
             className="inline-flex items-center text-blue-600 hover:text-blue-700 mb-6 transition-colors"
           >
             <ArrowLeft className="w-4 h-4 mr-2" />
             Back to Resources
           </Link>
-          
+
           <div className="flex items-center gap-2 mb-4">
             <Shield className="w-5 h-5 text-orange-600" />
             <span className="text-orange-600 font-medium">Hurricane Season Protection</span>
           </div>
-          
+
           <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4 leading-tight">
             Florida Hurricane Insurance: Complete Protection Strategy
           </h1>
-          
+
           <p className="text-xl text-slate-600 mb-6 leading-relaxed">
             Protect your property and family during hurricane season. Essential coverage guide for Florida residents from a licensed broker with 8+ years experience.
           </p>
-          
+
           <div className="flex flex-wrap items-center gap-6 text-sm text-slate-500">
             <div className="flex items-center gap-2">
               <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
@@ -121,13 +121,13 @@ export default function FloridaHurricaneInsuranceProtection() {
 
         {/* Article Content */}
         <div className="prose prose-lg max-w-none">
-          
+
           <section id="hurricane-risk-zones" className="mb-12">
             <h2 className="text-2xl font-bold text-slate-900 mb-4">Florida Hurricane Risk Zones</h2>
             <p className="text-slate-700 mb-4">
               <Link to="/states/fl" className="text-primary hover:underline">Florida's</Link> unique geography creates varying levels of hurricane risk. Understanding your specific risk zone is crucial for determining appropriate coverage levels and costs.
             </p>
-            
+
             <div className="grid md:grid-cols-3 gap-6 mb-6">
               <div className="bg-red-50 border border-red-200 rounded-lg p-6">
                 <h3 className="text-lg font-semibold text-red-800 mb-3">🔴 Extreme Risk (Coastal)</h3>
@@ -138,7 +138,7 @@ export default function FloridaHurricaneInsuranceProtection() {
                   <p><strong>Insurance Cost:</strong> $3,000-8,000+/year</p>
                 </div>
               </div>
-              
+
               <div className="bg-orange-50 border border-orange-200 rounded-lg p-6">
                 <h3 className="text-lg font-semibold text-orange-800 mb-3">🟡 High Risk (Near Coast)</h3>
                 <div className="space-y-2 text-orange-700">
@@ -148,7 +148,7 @@ export default function FloridaHurricaneInsuranceProtection() {
                   <p><strong>Insurance Cost:</strong> $1,500-3,500/year</p>
                 </div>
               </div>
-              
+
               <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-6">
                 <h3 className="text-lg font-semibold text-yellow-800 mb-3">🟢 Moderate Risk (Inland)</h3>
                 <div className="space-y-2 text-yellow-700">
@@ -190,7 +190,7 @@ export default function FloridaHurricaneInsuranceProtection() {
             <p className="text-slate-700 mb-4">
               Standard homeowner's insurance policies don't cover hurricane damage. Florida residents need specialized coverage for complete protection. Work with experienced <Link to="/carriers" className="text-primary hover:underline">insurance carriers</Link> who understand Florida's unique risks.
             </p>
-            
+
             <div className="space-y-6">
               <div className="bg-white border border-slate-200 rounded-lg p-6">
                 <div className="flex items-center gap-3 mb-3">
@@ -292,7 +292,7 @@ export default function FloridaHurricaneInsuranceProtection() {
 
           <section id="flood-vs-wind" className="mb-12">
             <h2 className="text-2xl font-bold text-slate-900 mb-4">Flood vs Wind Damage: Understanding the Difference</h2>
-            
+
             <div className="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-6">
               <p className="text-yellow-800">
                 <strong>Critical Distinction:</strong> The difference between flood and wind damage determines which policy pays your claim. Incorrect categorization can mean zero coverage for catastrophic damage.
@@ -322,7 +322,7 @@ export default function FloridaHurricaneInsuranceProtection() {
                   </div>
                 </div>
               </div>
-              
+
               <div className="bg-green-50 border border-green-200 rounded-lg p-6">
                 <h3 className="text-lg font-semibold text-green-800 mb-3">🌊 Flood Damage (Flood Policy)</h3>
                 <div className="space-y-3">
@@ -354,14 +354,14 @@ export default function FloridaHurricaneInsuranceProtection() {
                 <p><strong>Roof damage + ground flooding:</strong> May involve both wind and flood policies</p>
                 <p><strong>Storm surge + wind damage:</strong> Requires careful documentation of each damage type</p>
                 <p><strong>Concurrent causation:</strong> When wind and flood happen simultaneously</p>
-                <p><strong>Why you need both policies:</strong> Hurricane Ian caused $70B in flood damage and $42B in wind damage. For comprehensive Florida coverage guidance, visit our <Link to="/blog/florida-health-insurance-guide-2024" className="text-orange-800 hover:underline font-medium">Florida insurance guide</Link>.</p>
+                <p><strong>Why you need both policies:</strong> Hurricane Ian caused $70B in flood damage and $42B in wind damage. For comprehensive Florida coverage guidance, visit our <Link to="/blog/open-enrollment-2026-guide" className="text-orange-800 hover:underline font-medium">Florida insurance guide</Link>.</p>
               </div>
             </div>
           </section>
 
           <section id="coverage-gaps" className="mb-12">
             <h2 className="text-2xl font-bold text-slate-900 mb-4">Common Coverage Gaps That Cost Thousands</h2>
-            
+
             <div className="space-y-6">
               <div className="bg-red-50 border border-red-200 rounded-lg p-6">
                 <h3 className="text-lg font-semibold text-red-800 mb-3">❌ Dangerous Coverage Gap: Flood Exclusion</h3>
@@ -439,7 +439,7 @@ export default function FloridaHurricaneInsuranceProtection() {
 
           <section id="cost-analysis" className="mb-12">
             <h2 className="text-2xl font-bold text-slate-900 mb-4">Hurricane Insurance Cost Analysis</h2>
-            
+
             <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-6">
               <h3 className="text-lg font-semibold text-blue-800 mb-3">Complete Hurricane Protection Costs by Region</h3>
               <div className="text-blue-700 mb-3">
@@ -519,7 +519,7 @@ export default function FloridaHurricaneInsuranceProtection() {
 
           <section id="claims-process" className="mb-12">
             <h2 className="text-2xl font-bold text-slate-900 mb-4">Hurricane Claims Process & Timeline</h2>
-            
+
             <div className="bg-orange-50 border-l-4 border-orange-400 p-4 mb-6">
               <p className="text-orange-800">
                 <strong>Post-Hurricane Reality:</strong> Insurance companies receive 50,000-200,000 claims after major hurricanes. The claims process can take 6-24 months. Proper preparation and documentation are crucial for fair settlement.
@@ -536,7 +536,7 @@ export default function FloridaHurricaneInsuranceProtection() {
                   <p className="text-slate-500 text-xs mt-1">Timeline: Day 1-2 after storm</p>
                 </div>
               </div>
-              
+
               <div className="flex items-start gap-3 p-4 bg-white border border-slate-200 rounded-lg">
                 <div className="w-8 h-8 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center font-semibold text-sm">2</div>
                 <div>
@@ -545,7 +545,7 @@ export default function FloridaHurricaneInsuranceProtection() {
                   <p className="text-slate-500 text-xs mt-1">Timeline: Days 1-7 after storm</p>
                 </div>
               </div>
-              
+
               <div className="flex items-start gap-3 p-4 bg-white border border-slate-200 rounded-lg">
                 <div className="w-8 h-8 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center font-semibold text-sm">3</div>
                 <div>
@@ -554,7 +554,7 @@ export default function FloridaHurricaneInsuranceProtection() {
                   <p className="text-slate-500 text-xs mt-1">Timeline: 1-4 weeks after claim filing</p>
                 </div>
               </div>
-              
+
               <div className="flex items-start gap-3 p-4 bg-white border border-slate-200 rounded-lg">
                 <div className="w-8 h-8 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center font-semibold text-sm">4</div>
                 <div>
@@ -563,7 +563,7 @@ export default function FloridaHurricaneInsuranceProtection() {
                   <p className="text-slate-500 text-xs mt-1">Timeline: 2-8 weeks after inspection</p>
                 </div>
               </div>
-              
+
               <div className="flex items-start gap-3 p-4 bg-white border border-slate-200 rounded-lg">
                 <div className="w-8 h-8 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center font-semibold text-sm">5</div>
                 <div>
@@ -577,7 +577,7 @@ export default function FloridaHurricaneInsuranceProtection() {
 
           <section id="case-studies" className="mb-12">
             <h2 className="text-2xl font-bold text-slate-900 mb-4">Real Hurricane Claim Case Studies</h2>
-            
+
             <div className="space-y-6">
               <div className="bg-white border border-slate-200 rounded-lg p-6">
                 <div className="flex items-start gap-4">
@@ -652,7 +652,7 @@ export default function FloridaHurricaneInsuranceProtection() {
 
           <section id="faq" className="mb-12">
             <h2 className="text-2xl font-bold text-slate-900 mb-6">Frequently Asked Questions</h2>
-            
+
             <div className="space-y-6">
               <div className="bg-white border border-slate-200 rounded-lg p-6">
                 <h3 className="text-lg font-semibold text-slate-900 mb-2">Do I really need flood insurance if I'm not in a flood zone?</h3>
@@ -660,21 +660,21 @@ export default function FloridaHurricaneInsuranceProtection() {
                   Absolutely yes. 25% of flood claims occur outside designated high-risk flood zones. Hurricane Ian proved that storm surge can travel miles inland, and even "minor" hurricanes can cause significant flooding. The average flood claim is $52,000 - far more than most families can afford out-of-pocket.
                 </p>
               </div>
-              
+
               <div className="bg-white border border-slate-200 rounded-lg p-6">
                 <h3 className="text-lg font-semibold text-slate-900 mb-2">Why are hurricane deductibles so high?</h3>
                 <p className="text-slate-700">
                   Hurricane deductibles are percentage-based (2-10% of dwelling coverage) rather than flat dollar amounts because hurricane damage tends to be catastrophic. Insurance companies use higher deductibles to keep premiums manageable while encouraging property owners to invest in wind-resistant improvements.
                 </p>
               </div>
-              
+
               <div className="bg-white border border-slate-200 rounded-lg p-6">
                 <h3 className="text-lg font-semibold text-slate-900 mb-2">Can I buy hurricane insurance right before a storm?</h3>
                 <p className="text-slate-700">
                   No. Most hurricane policies have waiting periods, and companies stop selling new policies when storms enter the Gulf of Mexico or approach Florida. Flood insurance has a 30-day waiting period. You must have coverage in place before hurricane season begins.
                 </p>
               </div>
-              
+
               <div className="bg-white border border-slate-200 rounded-lg p-6">
                 <h3 className="text-lg font-semibold text-slate-900 mb-2">What if I can't afford full hurricane coverage?</h3>
                 <p className="text-slate-700">
@@ -731,7 +731,7 @@ export default function FloridaHurricaneInsuranceProtection() {
           slugs={[
             '/blog/tampa-bay-insurance-broker-guide',
             '/blog/florida-small-business-health-insurance',
-            '/blog/florida-health-insurance-guide-2024',
+            '/blog/open-enrollment-2026-guide',
           ]}
         />
       </article>
