@@ -183,11 +183,11 @@ const HeroForm = () => {
 
     const metadata = hasWindow
       ? {
-          landingUrl,
-          submittedAt: new Date().toISOString(),
-          utm,
-          form: 'Hero',
-        }
+        landingUrl,
+        submittedAt: new Date().toISOString(),
+        utm,
+        form: 'Hero',
+      }
       : undefined;
 
     const custom = buildCustomFields(formData.state, formData.consentToText, landingUrl, utm);
@@ -244,79 +244,168 @@ const HeroForm = () => {
   };
 
   return (
-    <div className="bg-white p-8 rounded-lg shadow-lg max-w-md w-full">
-      <h2 className="text-2xl font-bold mb-6 text-center text-gray-800">Let's Start the Conversation</h2>
-      <form onSubmit={handleSubmit} noValidate>
-        <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="firstName">First Name</label>
-          <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="firstName" name="firstName" type="text" placeholder="John" value={formData.firstName} onChange={handleChange} required />
+    <div className="glass-panel p-8 rounded-2xl w-full max-w-md mx-auto animate-fadeIn relative overflow-hidden group">
+      <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
+
+      <h2 className="text-2xl font-luxury-serif font-bold mb-6 text-center text-white drop-shadow-md">
+        Let's Start the Conversation
+      </h2>
+
+      <form onSubmit={handleSubmit} noValidate className="space-y-4 relative z-10">
+        <div className="grid grid-cols-2 gap-4">
+          <div>
+            <label className="block text-emerald-100 text-xs font-bold mb-1 uppercase tracking-wider" htmlFor="firstName">First Name</label>
+            <input
+              className="w-full bg-white/10 border border-white/20 rounded-lg py-2.5 px-3 text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-brand-jade-500 focus:border-transparent transition-all duration-300 backdrop-blur-sm"
+              id="firstName"
+              name="firstName"
+              type="text"
+              placeholder="John"
+              value={formData.firstName}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div>
+            <label className="block text-emerald-100 text-xs font-bold mb-1 uppercase tracking-wider" htmlFor="lastName">Last Name</label>
+            <input
+              className="w-full bg-white/10 border border-white/20 rounded-lg py-2.5 px-3 text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-brand-jade-500 focus:border-transparent transition-all duration-300 backdrop-blur-sm"
+              id="lastName"
+              name="lastName"
+              type="text"
+              placeholder="Doe"
+              value={formData.lastName}
+              onChange={handleChange}
+              required
+            />
+          </div>
         </div>
-        <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="lastName">Last Name</label>
-          <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="lastName" name="lastName" type="text" placeholder="Doe" value={formData.lastName} onChange={handleChange} required />
+
+        <div>
+          <label className="block text-emerald-100 text-xs font-bold mb-1 uppercase tracking-wider" htmlFor="email">Email Address</label>
+          <input
+            className="w-full bg-white/10 border border-white/20 rounded-lg py-2.5 px-3 text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-brand-jade-500 focus:border-transparent transition-all duration-300 backdrop-blur-sm"
+            id="email"
+            name="email"
+            type="email"
+            placeholder="john@example.com"
+            value={formData.email}
+            onChange={handleChange}
+            required
+          />
         </div>
-        <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">Email</label>
-          <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" name="email" type="email" placeholder="you@example.com" value={formData.email} onChange={handleChange} required />
+
+        <div>
+          <label className="block text-emerald-100 text-xs font-bold mb-1 uppercase tracking-wider" htmlFor="phone">Phone Number</label>
+          <input
+            className="w-full bg-white/10 border border-white/20 rounded-lg py-2.5 px-3 text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-brand-jade-500 focus:border-transparent transition-all duration-300 backdrop-blur-sm"
+            id="phone"
+            name="phone"
+            type="tel"
+            placeholder="(555) 555-5555"
+            value={formData.phone}
+            onChange={handleChange}
+            required
+            aria-describedby="phone-help"
+          />
+          <p id="phone-help" className="mt-1 text-[10px] text-emerald-200/70">Numbers only; we'll format it for the submission.</p>
         </div>
-        <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="phone">Phone</label>
-          <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="phone" name="phone" type="tel" placeholder="(555) 555-5555" value={formData.phone} onChange={handleChange} required aria-describedby="phone-help" />
-          <p id="phone-help" className="mt-1 text-xs text-gray-500">Numbers only; we'll format it for the submission.</p>
+
+        <div>
+          <label className="block text-emerald-100 text-xs font-bold mb-1 uppercase tracking-wider" htmlFor="state">State</label>
+          <div className="relative">
+            <select
+              id="state"
+              name="state"
+              className="w-full bg-white/10 border border-white/20 rounded-lg py-2.5 px-3 text-white focus:outline-none focus:ring-2 focus:ring-brand-jade-500 focus:border-transparent transition-all duration-300 backdrop-blur-sm appearance-none cursor-pointer"
+              value={formData.state}
+              onChange={handleChange}
+              required
+            >
+              <option value="" className="text-slate-900">Select Your State</option>
+              <option value="AZ" className="text-slate-900">Arizona</option>
+              <option value="FL" className="text-slate-900">Florida</option>
+              <option value="GA" className="text-slate-900">Georgia</option>
+              <option value="MI" className="text-slate-900">Michigan</option>
+              <option value="NC" className="text-slate-900">North Carolina</option>
+              <option value="TX" className="text-slate-900">Texas</option>
+            </select>
+            <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-emerald-200">
+              <svg className="h-4 w-4 fill-current" viewBox="0 0 20 20"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" fillRule="evenodd"></path></svg>
+            </div>
+          </div>
         </div>
-        <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="state">State</label>
-          <select id="state" name="state" className="shadow border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" value={formData.state} onChange={handleChange} required>
-            <option value="">Select a State</option>
-            <option value="AZ">Arizona</option>
-            <option value="FL">Florida</option>
-            <option value="GA">Georgia</option>
-            <option value="MI">Michigan</option>
-            <option value="NC">North Carolina</option>
-            <option value="TX">Texas</option>
-          </select>
-        </div>
-        <div className="mb-6">
-          <label className="flex items-center">
-            <input type="checkbox" name="consentToText" className="form-checkbox" checked={formData.consentToText} onChange={handleChange} />
-            <span className="ml-2 text-sm text-gray-600">I agree to receive text messages that support our consultation.</span>
+
+        <div className="pt-2">
+          <label className="flex items-start gap-3 cursor-pointer group">
+            <div className="relative flex items-center">
+              <input
+                type="checkbox"
+                name="consentToText"
+                className="peer h-5 w-5 cursor-pointer appearance-none rounded border border-white/30 bg-white/10 transition-all checked:border-brand-jade-500 checked:bg-brand-jade-500 hover:border-brand-jade-400"
+                checked={formData.consentToText}
+                onChange={handleChange}
+              />
+              <svg className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-white opacity-0 peer-checked:opacity-100 transition-opacity duration-200" width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M10 3L4.5 8.5L2 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </div>
+            <span className="text-xs text-emerald-100/80 leading-relaxed group-hover:text-white transition-colors">
+              I agree to receive text messages that support our consultation.
+            </span>
           </label>
         </div>
-      {captchaEnabled && captchaLoaded && (
-        <div className="mb-6 flex flex-col items-center gap-2">
-          <HCaptcha
-            key={`hero-hcaptcha-${captchaRefresh}`}
-            siteKey={siteKey}
-            onVerify={(token: string) => {
-              setCaptchaToken(token);
-              setCaptchaError(null);
-              }}
-              onExpire={() => setCaptchaToken(null)}
-              onError={() =>
-                setCaptchaError('Verification failed. Please refresh the widget and try again.')
-              }
-              className="flex justify-center"
-            />
-            {captchaError && <p className="text-sm text-red-600 text-center">{captchaError}</p>}
-        </div>
-      )}
-      {!captchaEnabled && captchaLoaded && (
-        <p className="mb-6 text-sm text-center text-red-600">
-          Verification service is unavailable. Please try again later.
-        </p>
-      )}
-      <p className="text-xs text-gray-500 text-center mb-4">
+
+        {captchaEnabled && captchaLoaded && (
+          <div className="flex justify-center py-2">
+            <div className="rounded overflow-hidden">
+              <HCaptcha
+                key={`hero-hcaptcha-${captchaRefresh}`}
+                siteKey={siteKey}
+                onVerify={(token: string) => {
+                  setCaptchaToken(token);
+                  setCaptchaError(null);
+                }}
+                onExpire={() => setCaptchaToken(null)}
+                onError={() =>
+                  setCaptchaError('Verification failed. Please refresh.')
+                }
+              />
+            </div>
+            {captchaError && <p className="text-xs text-red-300 text-center mt-1">{captchaError}</p>}
+          </div>
+        )}
+
+        {!captchaEnabled && captchaLoaded && (
+          <p className="mb-4 text-xs text-center text-red-300 bg-red-500/10 p-2 rounded border border-red-500/20">
+            Verification service is unavailable. Please try again later.
+          </p>
+        )}
+
+        <button
+          className="w-full bg-gradient-to-r from-brand-jade-600 to-brand-jade-500 hover:from-brand-jade-500 hover:to-brand-jade-400 text-white font-bold py-3.5 px-4 rounded-xl shadow-lg shadow-brand-jade-500/20 transform transition-all duration-300 hover:scale-[1.02] hover:shadow-brand-jade-500/40 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-jade-500 disabled:opacity-60 disabled:cursor-not-allowed disabled:transform-none mt-2"
+          type="submit"
+          disabled={isSubmitting}
+        >
+          {isSubmitting ? (
+            <span className="flex items-center justify-center gap-2">
+              <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+              </svg>
+              Processing...
+            </span>
+          ) : 'Start My Consultation'}
+        </button>
+
+        <p className="text-[10px] text-emerald-200/60 text-center mt-3 leading-tight">
           Your privacy is important to us. The information you provide helps us prepare for our consultation. We will not share your data or subject you to high-pressure sales calls.
         </p>
-        <div className="flex items-center justify-center">
-          <button className="bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline disabled:opacity-60 disabled:cursor-not-allowed" type="submit" disabled={isSubmitting}>
-            {isSubmitting ? 'Submitting...' : 'Start My Consultation'}
-          </button>
-        </div>
+
         {submitStatus.message && (
-          <p className={`text-center mt-4 text-sm ${submitStatus.type === 'error' ? 'text-red-500' : 'text-green-500'}`}>
+          <div className={`text-center p-3 rounded-lg text-sm font-medium animate-fadeIn ${submitStatus.type === 'error' ? 'bg-red-500/20 text-red-100 border border-red-500/30' : 'bg-emerald-500/20 text-emerald-100 border border-emerald-500/30'}`}>
             {submitStatus.message}
-          </p>
+          </div>
         )}
       </form>
     </div>

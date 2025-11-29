@@ -59,7 +59,7 @@ export default function Home() {
         scripts={structuredData.map((innerHTML) => ({ innerHTML }))}
       />
 
-      <main className="relative">
+      <main className="relative bg-surface-luxury">
         <h1 className="sr-only">Independent Insurance Broker with Enterprise Resources</h1>
         <section className="relative">
           <div className="hidden lg:block">
@@ -75,7 +75,7 @@ export default function Home() {
           </div>
         </section>
 
-        <div className="hidden md:block">
+        <div className="hidden md:block relative z-10 bg-surface-luxury">
           <PremiumCarriers />
           <IndustryRecognitionSection />
           <EnhancedMap />
@@ -90,8 +90,66 @@ export default function Home() {
 
 function DesktopHeroExperience({ licensedStatesDisplay }: { licensedStatesDisplay: string }) {
   return (
-    <div className="relative">
-      <LuxuryHero />
+    <div className="relative min-h-screen flex flex-col">
+      <div className="absolute inset-0 z-0">
+        <img
+          src="/assets/backgrounds/happy-family-beach-hero.webp"
+          alt="Family relaxing outdoors"
+          className="h-full w-full object-cover"
+          style={{ objectPosition: "center 20%" }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-slate-900/90 via-slate-900/70 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-b from-slate-900/50 via-transparent to-surface-luxury" />
+      </div>
+
+      <div className="relative z-10 container mx-auto px-6 pt-32 pb-20 flex-grow flex items-center">
+        <div className="grid grid-cols-12 gap-12 w-full items-center">
+          <div className="col-span-7 text-white space-y-8">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-sm font-medium text-emerald-300 animate-fadeIn">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+              </span>
+              Accepting New Clients for 2025
+            </div>
+
+            <h2 className="text-6xl font-luxury-serif font-bold leading-tight tracking-tight drop-shadow-lg animate-slideUp">
+              Independent Broker. <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-300">Enterprise Resources.</span>
+            </h2>
+
+            <p className="text-xl text-slate-200 max-w-2xl leading-relaxed font-light animate-slideUp" style={{ animationDelay: "0.1s" }}>
+              Partnering with Best Insurance Group since 2020 to deliver exclusive carrier access and personalized advocacy across {licensedStatesDisplay}.
+            </p>
+
+            <div className="flex flex-wrap gap-4 pt-4 animate-slideUp" style={{ animationDelay: "0.2s" }}>
+              <div className="flex items-center gap-3 px-5 py-3 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10">
+                <svg className="h-6 w-6 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <span className="text-sm font-medium text-slate-200">Licensed & Bonded</span>
+              </div>
+              <div className="flex items-center gap-3 px-5 py-3 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10">
+                <svg className="h-6 w-6 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                </svg>
+                <span className="text-sm font-medium text-slate-200">Bank-Grade Security</span>
+              </div>
+              <div className="flex items-center gap-3 px-5 py-3 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10">
+                <svg className="h-6 w-6 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <span className="text-sm font-medium text-slate-200">24h Response Time</span>
+              </div>
+            </div>
+          </div>
+
+          <div className="col-span-5 animate-slideUp" style={{ animationDelay: "0.3s" }}>
+            <HeroForm />
+          </div>
+        </div>
+      </div>
+
       <DesktopVerificationBand licensedStatesDisplay={licensedStatesDisplay} />
     </div>
   );
@@ -99,40 +157,38 @@ function DesktopHeroExperience({ licensedStatesDisplay }: { licensedStatesDispla
 
 function DesktopVerificationBand({ licensedStatesDisplay }: { licensedStatesDisplay: string }) {
   return (
-    <div className="relative bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900 py-8 text-white/80">
+    <div className="relative z-20 bg-slate-900/80 backdrop-blur-md border-t border-white/10 py-6">
       <div className="container mx-auto px-6">
-        <div className="mx-auto flex max-w-4xl flex-col items-center justify-center gap-6 text-center sm:flex-row sm:text-left">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-6 text-sm text-slate-300">
           <div className="flex items-center gap-3">
-            <svg className="h-6 w-6 text-emerald-400" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
-              <path
-                fillRule="evenodd"
-                d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                clipRule="evenodd"
-              />
-            </svg>
-            <span className="text-sm font-medium">Independent Broker — Best Insurance Group Partner • {licensedStatesDisplay}</span>
+            <div className="h-2 w-2 rounded-full bg-emerald-500 shadow-[0_0_10px_rgba(16,185,129,0.5)]"></div>
+            <span className="font-medium tracking-wide uppercase text-xs text-slate-400">Official Partner Status Active</span>
           </div>
 
-          <div className="flex flex-wrap items-center justify-center gap-3">
+          <div className="flex items-center gap-6">
             <a
               href={BRAND.verification.trustMyProducer}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs font-medium transition-all duration-300 hover:border-emerald-400/40 hover:bg-white/10"
-              data-gtm="home-verify-trustmyproducer"
+              className="group flex items-center gap-2 transition-colors hover:text-white"
             >
-              TrustMyProducer Verification
+              <svg className="h-4 w-4 text-emerald-500 group-hover:text-emerald-400 transition-colors" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              TrustMyProducer Verified
             </a>
+            <div className="h-4 w-px bg-white/10"></div>
             <a
               href={BRAND.verification.nipr}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs font-medium transition-all duration-300 hover:border-blue-400/40 hover:bg-white/10"
-              data-gtm="home-verify-nipr"
+              className="group flex items-center gap-2 transition-colors hover:text-white"
             >
-              NIPR Registry Lookup
+              <svg className="h-4 w-4 text-blue-500 group-hover:text-blue-400 transition-colors" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V5a2 2 0 114 0v1m-4 0c0 .884-.956 2.99-3 3.5M13 6c0 .884.956 2.99 3 3.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+              </svg>
+              NIPR Registry: {BRAND.npn}
             </a>
-            <span className="text-xs text-white/70">NPN {BRAND.npn}</span>
           </div>
         </div>
       </div>
@@ -142,161 +198,118 @@ function DesktopVerificationBand({ licensedStatesDisplay }: { licensedStatesDisp
 
 function TabletHeroExperience({ licensedStatesDisplay }: { licensedStatesDisplay: string }) {
   return (
-    <main className="relative">
+    <main className="relative bg-surface-luxury">
       <section
-        className="hero-bg-force relative w-full overflow-hidden pt-[calc(var(--header-h,56px)+env(safe-area-inset-top))] md:min-h-[84vh]"
+        className="relative w-full overflow-hidden pt-[calc(var(--header-h,56px)+env(safe-area-inset-top))] min-h-[90vh] flex items-center"
         aria-label="Hero"
       >
-        <img
-          src="/assets/backgrounds/happy-family-beach-hero.webp"
-          alt="Family relaxing outdoors together representing personalized insurance guidance"
-          loading="lazy"
-          decoding="async"
-          className="absolute inset-0 -z-10 h-full w-full object-cover"
-          style={{ objectPosition: "center center" }}
-          width={2400}
-          height={1600}
-        />
+        <div className="absolute inset-0 z-0">
+          <img
+            src="/assets/backgrounds/happy-family-beach-hero.webp"
+            alt="Family relaxing outdoors"
+            className="h-full w-full object-cover"
+            style={{ objectPosition: "center center" }}
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-900/95 via-slate-900/80 to-slate-900/40" />
+        </div>
 
-        <div className="relative z-10 flex h-full items-center">
-          <div className="container mx-auto grid items-center gap-6 px-4 md:grid-cols-[1.1fr_0.9fr]">
-            <div className="max-w-2xl text-white">
-              <h2 className="mb-3 text-[clamp(26px,5vw,34px)] leading-[1.15] tracking-[-0.01em] md:text-5xl lg:text-6xl">
-                Independent Insurance Broker with Enterprise Resources
-              </h2>
-              <p className="text-lg text-white/90">
-                Partnering with Best Insurance Group since 2020 • Licensed in {licensedStatesDisplay} • NPN {BRAND.npn}
-              </p>
-              <div className="mt-5 flex gap-3">
-                <a href="/lead" className="btn-primary" data-gtm={`${BRAND.gtm.quote}_home_tablet`}>
-                  Start Your Consultation
-                </a>
-                <a href={BRAND.phoneTel} className="btn-secondary" data-gtm={`${BRAND.gtm.call}_home_tablet`}>
-                  Call {BRAND.phoneHuman}
-                </a>
+        <div className="relative z-10 container mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+          <div className="text-white">
+            <div className="inline-block px-3 py-1 mb-6 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-bold uppercase tracking-wider">
+              Trusted Since 2020
+            </div>
+            <h2 className="text-4xl md:text-5xl font-luxury-serif font-bold leading-tight mb-6">
+              Independent Broker. <br />
+              <span className="text-emerald-400">Enterprise Power.</span>
+            </h2>
+            <p className="text-lg text-slate-300 mb-8 leading-relaxed">
+              Partnering with Best Insurance Group to deliver exclusive carrier access and personal advocacy across {licensedStatesDisplay}.
+            </p>
+            <div className="flex flex-col gap-4">
+              <div className="flex items-center gap-3 text-sm text-slate-300">
+                <div className="flex h-8 w-8 items-center justify-center rounded-full bg-white/10">
+                  <svg className="h-4 w-4 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
+                </div>
+                <span>Licensed & Bonded Professional</span>
               </div>
-              <p className="mt-5 text-sm text-white/85">Independent broker team • {BRAND.hours}</p>
+              <div className="flex items-center gap-3 text-sm text-slate-300">
+                <div className="flex h-8 w-8 items-center justify-center rounded-full bg-white/10">
+                  <svg className="h-4 w-4 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                </div>
+                <span>Concierge Response &lt; 24 Hours</span>
+              </div>
             </div>
+          </div>
 
-            <div className="hidden md:block">
-              <HeroForm />
-            </div>
+          <div className="w-full max-w-md mx-auto">
+            <HeroForm />
           </div>
         </div>
       </section>
-      <div data-hero-sentinel style={{ height: 1 }} />
     </main>
   );
 }
 
 function MobileHeroExperience({ licensedStatesDisplay }: { licensedStatesDisplay: string }) {
   return (
-    <main className="relative min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
-      <section className="relative min-h-screen overflow-hidden">
-        <div className="absolute inset-0">
+    <main className="relative min-h-screen bg-surface-luxury">
+      <section className="relative min-h-screen overflow-hidden pb-12">
+        <div className="absolute inset-0 h-[60vh]">
           <img
             src="/assets/backgrounds/happy-family-beach-hero.webp"
-            alt="Family relaxing outdoors together representing personalized insurance guidance"
-            loading="eager"
+            alt="Family relaxing outdoors"
             className="absolute inset-0 h-full w-full object-cover"
             style={{ objectPosition: "center center" }}
-            decoding="async"
-            width={2400}
-            height={1600}
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-slate-900/70 via-slate-800/60 to-slate-900/80" />
-          <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-transparent to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-b from-slate-900/60 via-slate-900/80 to-surface-luxury" />
+          <div className="absolute inset-0 bg-gradient-to-t from-surface-luxury via-transparent to-transparent" />
         </div>
 
-        <div className="relative z-10 flex min-h-screen flex-col justify-center px-6 py-20">
-          <div className="mx-auto max-w-sm text-center text-white">
-            <h2 className="mb-4 text-4xl font-bold leading-tight">
-              Independent Insurance Broker with
-              <span className="block text-emerald-400">Enterprise Resources</span>
+        <div className="relative z-10 flex flex-col px-6 pt-24">
+          <div className="mx-auto max-w-sm text-center text-white mb-8">
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/10 text-[10px] font-bold uppercase tracking-widest text-emerald-300 mb-6 mx-auto">
+              <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+              Official Partner
+            </div>
+
+            <h2 className="text-4xl font-luxury-serif font-bold leading-tight mb-4 drop-shadow-xl">
+              Independent Broker
+              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-200 mt-1">Enterprise Resources</span>
             </h2>
 
-            <div className="space-y-3">
-              <div className="flex items-center justify-center gap-2 text-emerald-300">
-                <svg className="h-5 w-5" viewBox="0 0 20 20" aria-hidden="true" fill="currentColor">
-                  <path
-                    fillRule="evenodd"
-                    d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-                <span className="font-semibold">Licensed in {licensedStatesDisplay}</span>
-              </div>
-
-              <p className="text-lg text-white/90">
-                Best Insurance Group partner since 2020 • NPN {BRAND.npn}
-              </p>
-
-              <div className="flex items-center justify-center gap-2 text-sm font-medium text-emerald-200">
-                <svg className="h-4 w-4" viewBox="0 0 20 20" aria-hidden="true" fill="currentColor">
-                  <path
-                    fillRule="evenodd"
-                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-                <span>Concierge response within 24 hours</span>
-              </div>
-            </div>
+            <p className="text-slate-300 text-sm leading-relaxed mb-6">
+              Exclusive carrier access & personalized guidance. <br />
+              <span className="text-emerald-400/80 font-medium mt-2 block">Licensed in {licensedStatesDisplay}</span>
+            </p>
           </div>
 
-          <div className="mt-12 space-y-4">
-            <a
-              href="/lead"
-              className="group relative block w-full overflow-hidden rounded-2xl bg-gradient-to-r from-emerald-600 to-emerald-700 px-8 py-5 text-center font-bold text-white shadow-2xl transition-transform duration-300 hover:scale-[1.01]"
-              data-gtm="premium_mobile_quote"
-            >
-              <div className="relative z-10">
-                <div className="text-lg font-bold">Start Your Free Consultation</div>
-                <div className="text-sm opacity-90">Expert guidance within one business day</div>
-              </div>
-              <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent to-white/20 transition-transform duration-700 group-hover:translate-x-full" />
-            </a>
-
-            <a
-              href={BRAND.phoneTel}
-              className="group flex w-full items-center justify-center gap-3 rounded-2xl border-2 border-white/30 bg-white/10 px-8 py-5 font-semibold text-white backdrop-blur-md transition-all duration-300 hover:border-emerald-400/50 hover:bg-emerald-500/20"
-              data-gtm="premium_mobile_call"
-            >
-              <svg className="h-6 w-6 text-emerald-300" viewBox="0 0 20 20" aria-hidden="true" fill="currentColor">
-                <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2c-6.075 0-11-4.925-11-11V4a1 1 0 011-1z" />
-              </svg>
-              {BRAND.phoneHuman}
-            </a>
-          </div>
-
-          <div className="mt-14 rounded-3xl bg-white p-8 shadow-2xl ring-1 ring-slate-200">
+          <div className="w-full max-w-sm mx-auto -mt-2">
             <HeroForm />
           </div>
 
-          <div className="mt-6 flex items-center justify-center gap-6 text-xs text-slate-200">
-            <div className="flex items-center gap-1">
+          <div className="mt-12 grid grid-cols-3 gap-2 text-center">
+            <div className="flex flex-col items-center gap-2 p-3 rounded-xl bg-white/5 border border-white/5">
               <ShieldIcon />
-              <span>Secure & Private</span>
+              <span className="text-[10px] font-medium text-slate-300 uppercase tracking-wide">Secure</span>
             </div>
-            <div className="flex items-center gap-1">
+            <div className="flex flex-col items-center gap-2 p-3 rounded-xl bg-white/5 border border-white/5">
               <CheckIcon />
-              <span>No Obligation</span>
+              <span className="text-[10px] font-medium text-slate-300 uppercase tracking-wide">No Spam</span>
             </div>
-            <div className="flex items-center gap-1">
+            <div className="flex flex-col items-center gap-2 p-3 rounded-xl bg-white/5 border border-white/5">
               <ClockIcon />
-              <span>24-Hour Response</span>
+              <span className="text-[10px] font-medium text-slate-300 uppercase tracking-wide">Fast</span>
             </div>
           </div>
         </div>
       </section>
-
     </main>
   );
 }
 
 function ShieldIcon() {
   return (
-    <svg className="h-4 w-4 text-emerald-500" viewBox="0 0 20 20" aria-hidden="true" fill="currentColor">
+    <svg className="h-5 w-5 text-emerald-500" viewBox="0 0 20 20" aria-hidden="true" fill="currentColor">
       <path
         fillRule="evenodd"
         d="M9.998 2.003a.75.75 0 01.473.165l6.5 5.25A.75.75 0 0117 8v4.75a6.75 6.75 0 01-5.904 6.693l-.097.007h-.998A6.75 6.75 0 014 12.75V8a.75.75 0 01.029-.2l.037-.099a.75.75 0 01.183-.234l6.5-5.25a.75.75 0 01.249-.164z"
@@ -308,7 +321,7 @@ function ShieldIcon() {
 
 function CheckIcon() {
   return (
-    <svg className="h-4 w-4 text-emerald-500" viewBox="0 0 20 20" aria-hidden="true" fill="currentColor">
+    <svg className="h-5 w-5 text-emerald-500" viewBox="0 0 20 20" aria-hidden="true" fill="currentColor">
       <path
         fillRule="evenodd"
         d="M16.704 5.296a1 1 0 010 1.414l-7.25 7.25a1 1 0 01-1.414 0l-3.25-3.25a1 1 0 111.414-1.414L8.75 11.836l6.543-6.54a1 1 0 011.411 0z"
@@ -320,7 +333,7 @@ function CheckIcon() {
 
 function ClockIcon() {
   return (
-    <svg className="h-4 w-4 text-emerald-500" viewBox="0 0 20 20" aria-hidden="true" fill="currentColor">
+    <svg className="h-5 w-5 text-emerald-500" viewBox="0 0 20 20" aria-hidden="true" fill="currentColor">
       <path
         fillRule="evenodd"
         d="M10 2a8 8 0 100 16 8 8 0 000-16zM9 5a1 1 0 112 0v4.586l2.293 2.293a1 1 0 01-1.414 1.414L9.293 11.12a1 1 0 01-.293-.707V5z"
