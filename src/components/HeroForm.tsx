@@ -244,10 +244,12 @@ const HeroForm = () => {
   };
 
   return (
-    <div className="glass-panel p-8 rounded-2xl w-full max-w-md mx-auto animate-fadeIn relative overflow-hidden group">
-      <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
+    <div className="glass-panel p-8 rounded-2xl w-full max-w-md mx-auto animate-fadeIn relative overflow-hidden group md:shadow-none shadow-2xl shadow-slate-900/50">
+      {/* Mobile-only stronger background for visibility */}
+      <div className="absolute inset-0 md:hidden bg-slate-900/30 backdrop-blur-xl" />
+      <div className="absolute inset-0 bg-gradient-to-br from-white/10 md:from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
 
-      <h2 className="text-2xl font-luxury-serif font-bold mb-6 text-center text-white drop-shadow-md">
+      <h2 className="text-2xl font-luxury-serif font-bold mb-6 text-center text-white drop-shadow-md relative z-10">
         Let's Start the Conversation
       </h2>
 
@@ -256,7 +258,7 @@ const HeroForm = () => {
           <div>
             <label className="block text-emerald-100 text-xs font-bold mb-1 uppercase tracking-wider" htmlFor="firstName">First Name</label>
             <input
-              className="w-full bg-white/10 border border-white/20 rounded-lg py-2.5 px-3 text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-brand-jade-500 focus:border-transparent transition-all duration-300 backdrop-blur-sm"
+              className="w-full bg-white/20 md:bg-white/10 border border-white/30 md:border-white/20 rounded-lg py-2.5 px-3 text-white placeholder-white/60 md:placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-brand-jade-500 focus:border-transparent transition-all duration-300 backdrop-blur-sm shadow-inner md:shadow-none"
               id="firstName"
               name="firstName"
               type="text"
@@ -267,9 +269,9 @@ const HeroForm = () => {
             />
           </div>
           <div>
-            <label className="block text-emerald-100 text-xs font-bold mb-1 uppercase tracking-wider" htmlFor="lastName">Last Name</label>
+            <label className="block text-emerald-100 text-xs font-bold mb-1.5 uppercase tracking-wider" htmlFor="lastName">Last Name</label>
             <input
-              className="w-full bg-white/10 border border-white/20 rounded-lg py-2.5 px-3 text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-brand-jade-500 focus:border-transparent transition-all duration-300 backdrop-blur-sm"
+              className="w-full bg-white/20 md:bg-white/10 border border-white/30 md:border-white/20 rounded-lg py-2.5 px-3 text-white placeholder-white/60 md:placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-brand-jade-500 focus:border-transparent transition-all duration-300 backdrop-blur-sm shadow-inner md:shadow-none"
               id="lastName"
               name="lastName"
               type="text"
@@ -282,9 +284,9 @@ const HeroForm = () => {
         </div>
 
         <div>
-          <label className="block text-emerald-100 text-xs font-bold mb-1 uppercase tracking-wider" htmlFor="email">Email Address</label>
+          <label className="block text-emerald-100 text-xs font-bold mb-1.5 uppercase tracking-wider" htmlFor="email">Email Address</label>
           <input
-            className="w-full bg-white/10 border border-white/20 rounded-lg py-2.5 px-3 text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-brand-jade-500 focus:border-transparent transition-all duration-300 backdrop-blur-sm"
+            className="w-full bg-white/20 md:bg-white/10 border border-white/30 md:border-white/20 rounded-lg py-2.5 px-3 text-white placeholder-white/60 md:placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-brand-jade-500 focus:border-transparent transition-all duration-300 backdrop-blur-sm shadow-inner md:shadow-none"
             id="email"
             name="email"
             type="email"
@@ -296,9 +298,9 @@ const HeroForm = () => {
         </div>
 
         <div>
-          <label className="block text-emerald-100 text-xs font-bold mb-1 uppercase tracking-wider" htmlFor="phone">Phone Number</label>
+          <label className="block text-emerald-100 text-xs font-bold mb-1.5 uppercase tracking-wider" htmlFor="phone">Phone Number</label>
           <input
-            className="w-full bg-white/10 border border-white/20 rounded-lg py-2.5 px-3 text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-brand-jade-500 focus:border-transparent transition-all duration-300 backdrop-blur-sm"
+            className="w-full bg-white/20 md:bg-white/10 border border-white/30 md:border-white/20 rounded-lg py-2.5 px-3 text-white placeholder-white/60 md:placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-brand-jade-500 focus:border-transparent transition-all duration-300 backdrop-blur-sm shadow-inner md:shadow-none"
             id="phone"
             name="phone"
             type="tel"
@@ -312,12 +314,12 @@ const HeroForm = () => {
         </div>
 
         <div>
-          <label className="block text-emerald-100 text-xs font-bold mb-1 uppercase tracking-wider" htmlFor="state">State</label>
+          <label className="block text-emerald-100 text-xs font-bold mb-1.5 uppercase tracking-wider" htmlFor="state">State</label>
           <div className="relative">
             <select
               id="state"
               name="state"
-              className="w-full bg-white/10 border border-white/20 rounded-lg py-2.5 px-3 text-white focus:outline-none focus:ring-2 focus:ring-brand-jade-500 focus:border-transparent transition-all duration-300 backdrop-blur-sm appearance-none cursor-pointer"
+              className="w-full bg-white/20 md:bg-white/10 border border-white/30 md:border-white/20 rounded-lg py-2.5 px-3 text-white focus:outline-none focus:ring-2 focus:ring-brand-jade-500 focus:border-transparent transition-all duration-300 backdrop-blur-sm appearance-none cursor-pointer shadow-inner md:shadow-none"
               value={formData.state}
               onChange={handleChange}
               required

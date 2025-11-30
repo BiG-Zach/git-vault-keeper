@@ -12,29 +12,16 @@ export default function Header() {
     <>
       {/* UNIFIED RESPONSIVE HEADER - SEO COMPLIANT */}
       <header className="sticky top-0 z-50 bg-white/98 supports-[backdrop-filter]:bg-white/95 backdrop-blur-2xl border-b border-slate-200/60 shadow-[0_8px_30px_rgb(0,0,0,0.12)] lg:shadow-[0_12px_40px_rgb(0,0,0,0.15)] transition-all duration-300">
-        
-        {/* MOBILE TRUST SIGNAL BAR - SIMPLIFIED */}
-        <div className="md:hidden bg-gradient-to-r from-emerald-50 via-teal-50 to-emerald-100 border-b border-emerald-200/40 shadow-sm">
-          <div className="container mx-auto max-w-7xl py-2.5 px-4">
-            <div className="flex items-center justify-center text-xs font-semibold text-emerald-900">
-              <span className="inline-flex items-center gap-2 bg-white/60 backdrop-blur-sm px-3 py-1 rounded-full shadow-sm">
-                <svg className="w-3.5 h-3.5 text-emerald-600 flex-shrink-0 drop-shadow-sm" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                </svg>
-                <span className="text-center bg-gradient-to-r from-emerald-700 to-teal-700 bg-clip-text text-transparent">Independent Broker • Best Insurance Group Partner</span>
-              </span>
-            </div>
-          </div>
-        </div>
+
 
         {/* MAIN HEADER CONTENT - RESPONSIVE DESIGN */}
         <div className="container mx-auto max-w-7xl flex h-20 md:h-24 lg:h-28 items-center justify-between px-4 lg:px-6">
-          
+
           {/* CLEAN BIG MONOGRAM HOMEPAGE BUTTON */}
           <div className="flex items-center">
-            
+
             {/* BIG MONOGRAM - ENLARGED TRANSPARENT BUTTON */}
-            <Link 
+            <Link
               to="/"
               className="group relative focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-emerald-500 rounded-lg"
               aria-label="Bradford Informed Guidance - Home"
@@ -47,15 +34,15 @@ export default function Header() {
                 loading="lazy"
                 decoding="async"
               />
-              
+
               {/* ENHANCED PREMIUM GLOW EFFECT */}
               <div className="absolute inset-0 bg-gradient-to-r from-emerald-400/20 via-teal-400/20 to-emerald-600/20 rounded-2xl blur-2xl opacity-0 group-hover:opacity-100 transition-all duration-500 -z-10 scale-150"></div>
               <div className="absolute inset-0 bg-gradient-to-br from-emerald-300/10 to-transparent rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             </Link>
-            
+
             {/* COMPANY NAME - DESKTOP ONLY */}
             <div className="hidden lg:block ml-4">
-              <Link 
+              <Link
                 to="/"
                 className="group focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-emerald-500 rounded-md"
               >
@@ -118,7 +105,7 @@ export default function Header() {
             >
               <span className="relative z-10">Contact</span>
             </Link>
-            
+
             {/* DESKTOP CTA - CONVERSION OPTIMIZED */}
             <a
               href="https://calendly.com/bradfordinformedguidance"
@@ -139,7 +126,7 @@ export default function Header() {
 
           {/* MOBILE ACTION BUTTONS - THUMB FRIENDLY DESIGN */}
           <div className="md:hidden flex items-center gap-2">
-            
+
             {/* HAMBURGER MENU TOGGLE - ACCESSIBILITY OPTIMIZED */}
             <button
               onClick={toggleMobileMenu}
@@ -232,7 +219,7 @@ export default function Header() {
                   Contact Us
                 </span>
               </Link>
-              
+
               {/* MOBILE MENU CTA */}
               <div className="pt-4 border-t border-slate-200/60">
                 <a

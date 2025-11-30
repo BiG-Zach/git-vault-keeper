@@ -254,51 +254,68 @@ function MobileHeroExperience({ licensedStatesDisplay }: { licensedStatesDisplay
   return (
     <main className="relative min-h-screen bg-surface-luxury">
       <section className="relative min-h-screen overflow-hidden pb-12">
-        <div className="absolute inset-0 h-[60vh]">
+        {/* Enhanced Background with Full Coverage */}
+        <div className="absolute inset-0 h-[70vh]">
           <img
             src="/assets/backgrounds/happy-family-beach-hero.webp"
             alt="Family relaxing outdoors"
             className="absolute inset-0 h-full w-full object-cover"
             style={{ objectPosition: "center center" }}
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-slate-900/60 via-slate-900/80 to-surface-luxury" />
-          <div className="absolute inset-0 bg-gradient-to-t from-surface-luxury via-transparent to-transparent" />
+          {/* Multi-layer gradients for better text readability */}
+          <div className="absolute inset-0 bg-gradient-to-b from-slate-900/70 via-slate-900/85 to-surface-luxury" />
+          <div className="absolute inset-0 bg-gradient-to-t from-surface-luxury via-surface-luxury/50 to-transparent" />
         </div>
 
         <div className="relative z-10 flex flex-col px-6 pt-24">
-          <div className="mx-auto max-w-sm text-center text-white mb-8">
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/10 text-[10px] font-bold uppercase tracking-widest text-emerald-300 mb-6 mx-auto">
-              <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+          {/* Enhanced Hero Content */}
+          <div className="mx-auto max-w-sm text-center text-white mb-8 animate-fadeIn">
+            {/* Premium Partner Badge */}
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/15 backdrop-blur-md border border-white/20 text-xs font-bold uppercase tracking-widest text-emerald-300 mb-6 mx-auto shadow-lg">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400"></span>
+              </span>
               Official Partner
             </div>
 
-            <h2 className="text-4xl font-luxury-serif font-bold leading-tight mb-4 drop-shadow-xl">
+            {/* Luxury Headline */}
+            <h2 className="text-4xl font-luxury-serif font-bold leading-tight mb-4 drop-shadow-2xl animate-slideUp">
               Independent Broker
-              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-200 mt-1">Enterprise Resources</span>
+              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-emerald-300 to-teal-200 mt-2">Enterprise Resources</span>
             </h2>
 
-            <p className="text-slate-300 text-sm leading-relaxed mb-6">
-              Exclusive carrier access & personalized guidance. <br />
-              <span className="text-emerald-400/80 font-medium mt-2 block">Licensed in {licensedStatesDisplay}</span>
+            {/* Enhanced Description */}
+            <p className="text-slate-200 text-sm leading-relaxed mb-6 animate-slideUp" style={{ animationDelay: "0.1s" }}>
+              Exclusive carrier access & personalized guidance.
+              <span className="block text-emerald-400/90 font-semibold mt-2">Licensed in {licensedStatesDisplay}</span>
             </p>
           </div>
 
-          <div className="w-full max-w-sm mx-auto -mt-2">
+          {/* Hero Form with Enhanced Visibility */}
+          <div className="w-full max-w-sm mx-auto mb-8 animate-slideUp" style={{ animationDelay: "0.2s" }}>
             <HeroForm />
           </div>
 
-          <div className="mt-12 grid grid-cols-3 gap-2 text-center">
-            <div className="flex flex-col items-center gap-2 p-3 rounded-xl bg-white/5 border border-white/5">
-              <ShieldIcon />
-              <span className="text-[10px] font-medium text-slate-300 uppercase tracking-wide">Secure</span>
+          {/* Premium Verification Band */}
+          <div className="mt-8 grid grid-cols-3 gap-3 text-center max-w-sm mx-auto animate-fadeIn" style={{ animationDelay: "0.3s" }}>
+            <div className="flex flex-col items-center gap-2.5 p-4 rounded-xl bg-white/8 backdrop-blur-sm border border-white/10 shadow-lg">
+              <div className="flex h-8 w-8 items-center justify-center rounded-full bg-emerald-500/20">
+                <ShieldIcon />
+              </div>
+              <span className="text-xs font-bold text-emerald-300 uppercase tracking-wide">Secure</span>
             </div>
-            <div className="flex flex-col items-center gap-2 p-3 rounded-xl bg-white/5 border border-white/5">
-              <CheckIcon />
-              <span className="text-[10px] font-medium text-slate-300 uppercase tracking-wide">No Spam</span>
+            <div className="flex flex-col items-center gap-2.5 p-4 rounded-xl bg-white/8 backdrop-blur-sm border border-white/10 shadow-lg">
+              <div className="flex h-8 w-8 items-center justify-center rounded-full bg-emerald-500/20">
+                <CheckIcon />
+              </div>
+              <span className="text-xs font-bold text-emerald-300 uppercase tracking-wide">No Spam</span>
             </div>
-            <div className="flex flex-col items-center gap-2 p-3 rounded-xl bg-white/5 border border-white/5">
-              <ClockIcon />
-              <span className="text-[10px] font-medium text-slate-300 uppercase tracking-wide">Fast</span>
+            <div className="flex flex-col items-center gap-2.5 p-4 rounded-xl bg-white/8 backdrop-blur-sm border border-white/10 shadow-lg">
+              <div className="flex h-8 w-8 items-center justify-center rounded-full bg-emerald-500/20">
+                <ClockIcon />
+              </div>
+              <span className="text-xs font-bold text-emerald-300 uppercase tracking-wide">Fast</span>
             </div>
           </div>
         </div>
