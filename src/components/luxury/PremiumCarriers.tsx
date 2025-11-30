@@ -16,7 +16,7 @@ const PremiumCarriers = () => {
     { src: "/logos/carriers/cigna.webp", alt: "Cigna", rating: "A (Excellent)", partnership: "Strategic Alliance", citation: "[5][6][7]" },
     { src: "/logos/carriers/medical-mutual.webp", alt: "Medical Mutual", rating: "A (Excellent)", partnership: "4.5 Star Medicare", citation: "[35][36][37]", badge: "NEW" },
     { src: "/logos/carriers/americo.webp", alt: "Americo", rating: "A (Excellent)", partnership: "Preferred Partner", citation: "[25][26][27][28]" },
-    { src: "/logos/carriers/illinois-mutual.webp", alt: "Illinois Mutual", rating: "A- (Excellent)", partnership: "Upgraded Oct 2025", citation: "[29][30][31][32]", badge: "NEW" },
+    { src: "/logos/carriers/illinois-mutual.webp", alt: "Illinois Mutual", rating: "A- (Excellent)", partnership: "Upgraded Oct 2025", citation: "[29][30][31][32]", badge: "NEW", scale: 1.4 },
     { src: "/logos/carriers/pal.webp", alt: "Philadelphia American Life", rating: "A- (Excellent)", partnership: "Specialty Provider", citation: "[33][34]" },
     { src: "/logos/carriers/sgic.webp", alt: "SGIC", rating: "B++ (Good)", partnership: "Regional Partner", citation: "[38][39][40]" },
     { src: "/logos/carriers/multiplan.webp", alt: "MultiPlan PPO", rating: "PPO Network", partnership: "1.4M+ Providers", citation: "[46][47][48]", isNetwork: true },
@@ -29,10 +29,13 @@ const PremiumCarriers = () => {
     { number: "$2.5B", label: "Coverage Written", icon: Shield }
   ];
 
+  // Duplicate carriers for infinite scroll
+  const marqueeCarriers = [...carriers, ...carriers];
+
   return (
-    <section className="py-16 lg:py-20 bg-gradient-to-b from-slate-50 to-white relative overflow-hidden">
+    <section className="py-16 lg:py-24 bg-gradient-to-b from-slate-50 to-white relative overflow-hidden">
       {/* Visual Masterpiece Background */}
-      <div className="absolute inset-0 overflow-hidden">
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {/* Animated Gradient Orbs */}
         <div className="absolute inset-0">
           <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-br from-emerald-400/20 via-sky-300/15 to-transparent rounded-full blur-3xl animate-pulse" />
@@ -99,17 +102,17 @@ const PremiumCarriers = () => {
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="text-center mb-12 lg:mb-16"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-100 text-emerald-800 text-sm font-medium mb-4">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-100/80 backdrop-blur-sm text-emerald-800 text-sm font-medium mb-4 border border-emerald-200/50 shadow-sm">
             <Shield className="w-4 h-4" />
             <span>Premium Partner Network</span>
           </div>
-          
+
           <h2 className="text-3xl lg:text-5xl font-bold text-slate-900 mb-4 font-luxury-serif">
             Trusted by <span className="gradient-text-luxury">A to A+ Rated Insurance Giants</span>
           </h2>
-          
+
           <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
-            I partner with top-rated insurance carriers rated A- to A+ by AM Best<CitationLinks citations="[1][5][8][16][21][29][35]" /> and access to 6 major PPO networks<CitationLinks citations="[44][47]" />. Your coverage is backed by billions in reserves and guaranteed claim-paying ability.
+            I partner with top-rated insurance carriers rated A- to A+ by AM Best<CitationLinks citations="[1][5][8][16][21][29][35]" /> and access to 6 major PPO networks<CitationLinks citations="[44][47]" />. Your coverage is backed by billions in reserves.
           </p>
         </motion.div>
 
@@ -119,12 +122,12 @@ const PremiumCarriers = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-          className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12 lg:mb-16"
+          className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16 lg:mb-20"
         >
           {stats.map((stat, index) => (
-            <div key={index} className="text-center">
-              <div className="bg-white rounded-2xl p-6 shadow-premium border border-slate-200 hover:shadow-luxury transition-shadow duration-300">
-                <div className="inline-flex items-center justify-center w-12 h-12 bg-emerald-100 rounded-xl mb-4">
+            <div key={index} className="text-center group">
+              <div className="bg-white/60 backdrop-blur-md rounded-2xl p-6 shadow-premium border border-white/40 hover:border-emerald-200/50 hover:shadow-luxury transition-all duration-300 hover:-translate-y-1">
+                <div className="inline-flex items-center justify-center w-12 h-12 bg-emerald-100 rounded-xl mb-4 group-hover:scale-110 transition-transform duration-300">
                   <stat.icon className="w-6 h-6 text-emerald-600" />
                 </div>
                 <div className="text-3xl lg:text-4xl font-bold text-slate-900 gradient-text-luxury mb-2">
@@ -141,71 +144,59 @@ const PremiumCarriers = () => {
           ))}
         </motion.div>
 
-        {/* Carriers Grid */}
+        {/* Marquee Container */}
         <motion.div
-          initial={{ opacity: 0, y: prefersReducedMotion ? 0 : 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
-          className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-6"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1, delay: 0.4 }}
+          className="relative w-full"
         >
-          {carriers.map((carrier, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.05 }}
-              className="group relative"
-            >
-              <div className="bg-white rounded-2xl p-6 lg:p-8 border border-slate-200 hover:border-emerald-300 hover:shadow-premium transition-all duration-300 h-full flex flex-col items-center justify-center group-hover:scale-105">
-                
-                {/* Badge for new carriers */}
-                {carrier.badge && (
-                  <div className="absolute -top-2 -right-2 z-10">
-                    <span className={carrier.badge === 'NEW' ? 'new-badge' : 'inline-block bg-yellow-500 text-slate-900 px-2 py-1 rounded text-xs font-bold'}>
-                      {carrier.badge}
-                    </span>
+          {/* Glassmorphism Background Track */}
+          <div className="absolute inset-y-0 -left-4 -right-4 lg:-left-8 lg:-right-8 bg-white/30 backdrop-blur-sm border-y border-white/20 shadow-sm" />
+
+          {/* Gradient Masks */}
+          <div className="absolute inset-y-0 left-0 w-24 lg:w-40 bg-gradient-to-r from-slate-50 to-transparent z-20 pointer-events-none" />
+          <div className="absolute inset-y-0 right-0 w-24 lg:w-40 bg-gradient-to-l from-slate-50 to-transparent z-20 pointer-events-none" />
+
+          {/* Infinite Scroll Track */}
+          <div className="flex overflow-hidden relative z-10 py-8 group/marquee">
+            <div className="flex animate-marquee whitespace-nowrap hover:[animation-play-state:paused]">
+              {marqueeCarriers.map((carrier, index) => (
+                <div
+                  key={`${index}-${carrier.alt}`}
+                  className="mx-4 lg:mx-8 w-[200px] lg:w-[240px] flex-shrink-0 transition-all duration-300 group-hover/marquee:opacity-60 hover:!opacity-100 hover:!scale-105"
+                >
+                  <div className="bg-white rounded-xl p-6 border border-slate-100 shadow-sm hover:shadow-lg hover:border-emerald-200 transition-all duration-300 h-32 flex items-center justify-center relative group/item">
+                    {/* Badge */}
+                    {carrier.badge && (
+                      <div className="absolute -top-2 -right-2 z-10">
+                        <span className={carrier.badge === 'NEW' ? 'new-badge shadow-sm' : 'inline-block bg-yellow-400 text-slate-900 px-2 py-0.5 rounded text-[10px] font-bold shadow-sm uppercase tracking-wider'}>
+                          {carrier.badge}
+                        </span>
+                      </div>
+                    )}
+
+                    <img
+                      src={carrier.src}
+                      alt={carrier.alt}
+                      className="max-w-full max-h-full object-contain opacity-80 group-hover/item:opacity-100 transition-opacity duration-300"
+                      style={{ transform: carrier.scale ? `scale(${carrier.scale})` : undefined }}
+                      loading="lazy"
+                    />
+
+                    {/* Tooltip-like Info on Hover */}
+                    <div className="absolute inset-x-0 bottom-0 translate-y-full opacity-0 group-hover/item:opacity-100 group-hover/item:translate-y-2 transition-all duration-300 pointer-events-none z-30">
+                      <div className="bg-slate-900 text-white text-xs rounded-lg py-2 px-3 text-center shadow-xl mx-2">
+                        <p className="font-semibold text-emerald-300">{carrier.rating}</p>
+                        <p className="opacity-90">{carrier.partnership}</p>
+                      </div>
+                    </div>
                   </div>
-                )}
-                
-                {/* Logo */}
-                <div className="w-full max-w-[120px] h-12 lg:h-16 flex items-center justify-center mb-4">
-                  <img
-                    src={carrier.src}
-                    alt={carrier.alt}
-                    className="max-w-full max-h-full object-contain opacity-80 group-hover:opacity-100 transition-opacity duration-300"
-                    loading="lazy"
-                  />
                 </div>
-                
-                {/* Rating Badge */}
-                {carrier.rating && (
-                  <div className="mb-2">
-                    <span className={`rating-badge ${
-                      carrier.rating.includes('A+') ? 'a-plus' :
-                      carrier.rating.includes('A (') ? 'a' :
-                      carrier.rating.includes('A-') ? 'a-minus' :
-                      carrier.rating.includes('B++') ? 'b-plus' :
-                      'bg-slate-200 text-slate-700'
-                    }`}>
-                      {carrier.rating}
-                    </span>
-                  </div>
-                )}
-                
-                {/* Partnership info - shows on hover on desktop */}
-                <div className="absolute inset-x-0 bottom-0 bg-slate-900 text-white p-3 rounded-b-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform translate-y-full group-hover:translate-y-0 hidden lg:block">
-                  <p className="text-xs font-medium text-center">{carrier.partnership}</p>
-                  {carrier.citation && (
-                   <p className="text-xs text-center mt-1">
-                     <CitationLinks citations={carrier.citation} className="text-blue-300" />
-                   </p>
-                 )}
-                </div>
-              </div>
-            </motion.div>
-          ))}
+              ))}
+            </div>
+          </div>
         </motion.div>
 
         {/* Updated Disclaimer with Citations */}
@@ -214,7 +205,7 @@ const PremiumCarriers = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.6, delay: 0.6, ease: "easeOut" }}
-          className="text-center mt-8"
+          className="text-center mt-12 lg:mt-16"
         >
           <p className="text-sm text-slate-500 font-medium">
             Partner with 10 insurance carriers rated A- to A+ by AM Best<CitationLinks citations="[1][5][8][16][21][29][35]" /> and access to 6 major PPO networks<CitationLinks citations="[44][47]" />
