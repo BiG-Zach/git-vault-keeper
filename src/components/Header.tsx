@@ -11,7 +11,7 @@ export default function Header() {
   return (
     <>
       {/* UNIFIED RESPONSIVE HEADER - SEO COMPLIANT */}
-      <header className="sticky top-0 z-50 bg-white/[0.98] supports-[backdrop-filter]:bg-white/95 backdrop-blur-3xl border-b border-slate-200/70 shadow-[0_8px_40px_rgba(0,0,0,0.08),0_2px_12px_rgba(0,0,0,0.04)] lg:shadow-[0_12px_50px_rgba(0,0,0,0.12),0_4px_20px_rgba(0,0,0,0.06)] transition-all duration-300 before:absolute before:inset-0 before:bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1IiBoZWlnaHQ9IjUiPgo8cmVjdCB3aWR0aD0iNSIgaGVpZ2h0PSI1IiBmaWxsPSIjZmZmIj48L3JlY3Q+CjxwYXRoIGQ9Ik0wIDVMNSAwWk02IDRMNCA2Wk0tMSAxTDEgLTFaIiBzdHJva2U9IiNlNWU3ZWIiIHN0cm9rZS13aWR0aD0iMSI+PC9wYXRoPgo8L3N2Zz4=')] before:opacity-[0.015] before:pointer-events-none">
+      <header className="sticky top-0 z-50 shadow-[0_8px_40px_rgba(0,0,0,0.08),0_2px_12px_rgba(0,0,0,0.04)] lg:shadow-[0_12px_50px_rgba(0,0,0,0.12),0_4px_20px_rgba(0,0,0,0.06)] transition-all duration-300 relative border-b border-white/20 before:absolute before:inset-0 before:bg-[url('/textures/wood-grain.jpg')] before:bg-cover before:bg-center before:pointer-events-none">
 
 
         {/* MAIN HEADER CONTENT - RESPONSIVE DESIGN */}
@@ -55,7 +55,11 @@ export default function Header() {
                 to="/"
                 className="group focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-emerald-500 rounded-md"
               >
-                <div className="font-serif text-2xl xl:text-3xl font-bold bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 bg-clip-text text-transparent group-hover:from-emerald-600 group-hover:via-emerald-700 group-hover:to-emerald-600 transition-all duration-700 tracking-normal [text-shadow:0_1px_3px_rgba(0,0,0,0.06)] group-hover:[text-shadow:0_2px_10px_rgba(16,185,129,0.2)]">
+                <div className="font-serif text-2xl xl:text-3xl font-bold text-white group-hover:text-emerald-200 transition-all duration-700 tracking-normal" style={{
+                  textShadow: '0 0 50px rgba(255,255,255,0.75), 0 0 35px rgba(255,255,255,0.65), 0 0 18px rgba(255,255,255,0.5), 0 2px 10px rgba(0,0,0,1), 0 4px 20px rgba(0,0,0,0.9), 0 6px 30px rgba(0,0,0,0.8)',
+                  WebkitTextStroke: '0.9px rgba(255,255,255,0.25)',
+                  filter: 'drop-shadow(0 0 8px rgba(255,255,255,0.4))'
+                }}>
                   Bradford Informed Guidance
                 </div>
               </Link>
@@ -66,43 +70,43 @@ export default function Header() {
           <nav className="hidden md:flex items-center gap-6 lg:gap-8 text-sm">
             <Link
               to="/about"
-              className="font-semibold text-slate-700 hover:text-emerald-600 transition-all duration-400 relative px-2 py-2 group after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-[3px] after:bottom-0 after:left-0 after:bg-gradient-to-r after:from-emerald-500 after:via-teal-500 after:to-emerald-500 after:origin-bottom-right after:transition-all after:duration-500 after:ease-out hover:after:scale-x-100 hover:after:origin-bottom-left after:rounded-full after:shadow-[0_2px_8px_rgba(16,185,129,0.4)] before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-br before:from-emerald-50 before:to-teal-50 before:rounded-xl before:opacity-0 before:transition-all before:duration-400 hover:before:opacity-100 before:-z-10 before:backdrop-blur-sm"
+              className="font-semibold text-white text-shadow-strong hover:text-emerald-200 transition-all duration-400 relative px-2 py-2 group after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-[3px] after:bottom-0 after:left-0 after:bg-gradient-to-r after:from-emerald-300 after:via-teal-300 after:to-emerald-300 after:origin-bottom-right after:transition-all after:duration-500 after:ease-out hover:after:scale-x-100 hover:after:origin-bottom-left after:rounded-full after:shadow-[0_2px_8px_rgba(16,185,129,0.8)] before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-br before:from-white/5 before:to-white/0 before:rounded-xl before:opacity-0 before:transition-all before:duration-400 hover:before:opacity-100 before:-z-10 font-medium"
             >
               <span className="relative z-10 tracking-wide">About</span>
             </Link>
             <Link
               to="/carriers"
-              className="font-semibold text-slate-700 hover:text-emerald-600 transition-all duration-400 relative px-2 py-2 group after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-[3px] after:bottom-0 after:left-0 after:bg-gradient-to-r after:from-emerald-500 after:via-teal-500 after:to-emerald-500 after:origin-bottom-right after:transition-all after:duration-500 after:ease-out hover:after:scale-x-100 hover:after:origin-bottom-left after:rounded-full after:shadow-[0_2px_8px_rgba(16,185,129,0.4)] before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-br before:from-emerald-50 before:to-teal-50 before:rounded-xl before:opacity-0 before:transition-all before:duration-400 hover:before:opacity-100 before:-z-10 before:backdrop-blur-sm"
+              className="font-semibold text-white text-shadow-strong hover:text-emerald-200 transition-all duration-400 relative px-2 py-2 group after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-[3px] after:bottom-0 after:left-0 after:bg-gradient-to-r after:from-emerald-300 after:via-teal-300 after:to-emerald-300 after:origin-bottom-right after:transition-all after:duration-500 after:ease-out hover:after:scale-x-100 hover:after:origin-bottom-left after:rounded-full after:shadow-[0_2px_8px_rgba(16,185,129,0.8)] before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-br before:from-white/5 before:to-white/0 before:rounded-xl before:opacity-0 before:transition-all before:duration-400 hover:before:opacity-100 before:-z-10 font-medium"
             >
               <span className="relative z-10 tracking-wide">Carriers</span>
             </Link>
             <Link
               to="/our-process"
-              className="font-semibold text-slate-700 hover:text-emerald-600 transition-all duration-400 relative px-2 py-2 group after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-[3px] after:bottom-0 after:left-0 after:bg-gradient-to-r after:from-emerald-500 after:via-teal-500 after:to-emerald-500 after:origin-bottom-right after:transition-all after:duration-500 after:ease-out hover:after:scale-x-100 hover:after:origin-bottom-left after:rounded-full after:shadow-[0_2px_8px_rgba(16,185,129,0.4)] before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-br before:from-emerald-50 before:to-teal-50 before:rounded-xl before:opacity-0 before:transition-all before:duration-400 hover:before:opacity-100 before:-z-10 before:backdrop-blur-sm"
+              className="font-semibold text-white text-shadow-strong hover:text-emerald-200 transition-all duration-400 relative px-2 py-2 group after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-[3px] after:bottom-0 after:left-0 after:bg-gradient-to-r after:from-emerald-300 after:via-teal-300 after:to-emerald-300 after:origin-bottom-right after:transition-all after:duration-500 after:ease-out hover:after:scale-x-100 hover:after:origin-bottom-left after:rounded-full after:shadow-[0_2px_8px_rgba(16,185,129,0.8)] before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-br before:from-white/5 before:to-white/0 before:rounded-xl before:opacity-0 before:transition-all before:duration-400 hover:before:opacity-100 before:-z-10 font-medium"
             >
               <span className="relative z-10 tracking-wide">Our Process</span>
             </Link>
             <Link
               to="/resources"
-              className="font-semibold text-slate-700 hover:text-emerald-600 transition-all duration-400 relative px-2 py-2 group after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-[3px] after:bottom-0 after:left-0 after:bg-gradient-to-r after:from-emerald-500 after:via-teal-500 after:to-emerald-500 after:origin-bottom-right after:transition-all after:duration-500 after:ease-out hover:after:scale-x-100 hover:after:origin-bottom-left after:rounded-full after:shadow-[0_2px_8px_rgba(16,185,129,0.4)] before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-br before:from-emerald-50 before:to-teal-50 before:rounded-xl before:opacity-0 before:transition-all before:duration-400 hover:before:opacity-100 before:-z-10 before:backdrop-blur-sm"
+              className="font-semibold text-white text-shadow-strong hover:text-emerald-200 transition-all duration-400 relative px-2 py-2 group after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-[3px] after:bottom-0 after:left-0 after:bg-gradient-to-r after:from-emerald-300 after:via-teal-300 after:to-emerald-300 after:origin-bottom-right after:transition-all after:duration-500 after:ease-out hover:after:scale-x-100 hover:after:origin-bottom-left after:rounded-full after:shadow-[0_2px_8px_rgba(16,185,129,0.8)] before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-br before:from-white/5 before:to-white/0 before:rounded-xl before:opacity-0 before:transition-all before:duration-400 hover:before:opacity-100 before:-z-10 font-medium"
             >
               <span className="relative z-10 tracking-wide">Resources</span>
             </Link>
             <Link
               to="/health-insurance"
-              className="font-semibold text-slate-700 hover:text-emerald-600 transition-all duration-400 relative px-2 py-2 group after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-[3px] after:bottom-0 after:left-0 after:bg-gradient-to-r after:from-emerald-500 after:via-teal-500 after:to-emerald-500 after:origin-bottom-right after:transition-all after:duration-500 after:ease-out hover:after:scale-x-100 hover:after:origin-bottom-left after:rounded-full after:shadow-[0_2px_8px_rgba(16,185,129,0.4)] before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-br before:from-emerald-50 before:to-teal-50 before:rounded-xl before:opacity-0 before:transition-all before:duration-400 hover:before:opacity-100 before:-z-10 before:backdrop-blur-sm"
+              className="font-semibold text-white text-shadow-strong hover:text-emerald-200 transition-all duration-400 relative px-2 py-2 group after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-[3px] after:bottom-0 after:left-0 after:bg-gradient-to-r after:from-emerald-300 after:via-teal-300 after:to-emerald-300 after:origin-bottom-right after:transition-all after:duration-500 after:ease-out hover:after:scale-x-100 hover:after:origin-bottom-left after:rounded-full after:shadow-[0_2px_8px_rgba(16,185,129,0.8)] before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-br before:from-white/5 before:to-white/0 before:rounded-xl before:opacity-0 before:transition-all before:duration-400 hover:before:opacity-100 before:-z-10 font-medium"
             >
               <span className="relative z-10 tracking-wide">Health Insurance</span>
             </Link>
             <Link
               to="/life-insurance"
-              className="font-semibold text-slate-700 hover:text-emerald-600 transition-all duration-400 relative px-2 py-2 group after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-[3px] after:bottom-0 after:left-0 after:bg-gradient-to-r after:from-emerald-500 after:via-teal-500 after:to-emerald-500 after:origin-bottom-right after:transition-all after:duration-500 after:ease-out hover:after:scale-x-100 hover:after:origin-bottom-left after:rounded-full after:shadow-[0_2px_8px_rgba(16,185,129,0.4)] before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-br before:from-emerald-50 before:to-teal-50 before:rounded-xl before:opacity-0 before:transition-all before:duration-400 hover:before:opacity-100 before:-z-10 before:backdrop-blur-sm"
+              className="font-semibold text-white text-shadow-strong hover:text-emerald-200 transition-all duration-400 relative px-2 py-2 group after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-[3px] after:bottom-0 after:left-0 after:bg-gradient-to-r after:from-emerald-300 after:via-teal-300 after:to-emerald-300 after:origin-bottom-right after:transition-all after:duration-500 after:ease-out hover:after:scale-x-100 hover:after:origin-bottom-left after:rounded-full after:shadow-[0_2px_8px_rgba(16,185,129,0.8)] before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-br before:from-white/5 before:to-white/0 before:rounded-xl before:opacity-0 before:transition-all before:duration-400 hover:before:opacity-100 before:-z-10 font-medium"
             >
               <span className="relative z-10 tracking-wide">Life Insurance</span>
             </Link>
             <Link
               to="/contact"
-              className="font-semibold text-slate-700 hover:text-emerald-600 transition-all duration-400 relative px-2 py-2 group after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-[3px] after:bottom-0 after:left-0 after:bg-gradient-to-r after:from-emerald-500 after:via-teal-500 after:to-emerald-500 after:origin-bottom-right after:transition-all after:duration-500 after:ease-out hover:after:scale-x-100 hover:after:origin-bottom-left after:rounded-full after:shadow-[0_2px_8px_rgba(16,185,129,0.4)] before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-br before:from-emerald-50 before:to-teal-50 before:rounded-xl before:opacity-0 before:transition-all before:duration-400 hover:before:opacity-100 before:-z-10 before:backdrop-blur-sm"
+              className="font-semibold text-white text-shadow-strong hover:text-emerald-200 transition-all duration-400 relative px-2 py-2 group after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-[3px] after:bottom-0 after:left-0 after:bg-gradient-to-r after:from-emerald-300 after:via-teal-300 after:to-emerald-300 after:origin-bottom-right after:transition-all after:duration-500 after:ease-out hover:after:scale-x-100 hover:after:origin-bottom-left after:rounded-full after:shadow-[0_2px_8px_rgba(16,185,129,0.8)] before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-br before:from-white/5 before:to-white/0 before:rounded-xl before:opacity-0 before:transition-all before:duration-400 hover:before:opacity-100 before:-z-10 font-medium"
             >
               <span className="relative z-10 tracking-wide">Contact</span>
             </Link>
@@ -132,7 +136,7 @@ export default function Header() {
             {/* HAMBURGER MENU TOGGLE - ACCESSIBILITY OPTIMIZED */}
             <button
               onClick={toggleMobileMenu}
-              className="inline-flex items-center justify-center rounded-xl p-3 text-slate-700 bg-slate-50 hover:bg-gradient-to-br hover:from-emerald-50 hover:to-teal-50 hover:text-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 transition-all duration-300 min-h-[44px] min-w-[44px] shadow-sm hover:shadow-md active:scale-95"
+              className="inline-flex items-center justify-center rounded-xl p-3 text-white text-shadow-strong bg-white/10 backdrop-blur-sm hover:bg-white/20 hover:text-emerald-200 focus:outline-none focus:ring-2 focus:ring-white/40 focus:ring-offset-2 transition-all duration-300 min-h-[44px] min-w-[44px] shadow-sm hover:shadow-md active:scale-95 border border-white/30"
               aria-label="Toggle mobile menu"
               aria-expanded={isMobileMenuOpen}
             >
