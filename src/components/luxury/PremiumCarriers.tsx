@@ -2,6 +2,7 @@ import React from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 import { Star, TrendingUp, Shield } from 'lucide-react';
 import CitationLinks from '../CitationLinks';
+import TrustInfrastructure from '../trust/TrustInfrastructure';
 
 const PremiumCarriers = () => {
   const prefersReducedMotion = useReducedMotion();
@@ -23,11 +24,7 @@ const PremiumCarriers = () => {
     { src: "/logos/carriers/firsthealth.webp", alt: "First Health PPO", rating: "PPO Network", partnership: "1M+ Providers", citation: "[44][45]", isNetwork: true }
   ];
 
-  const stats = [
-    { number: "10", label: "A to A+ Rated Carriers & 6 PPO Networks", icon: Star, citation: "[1][5][8][16][21][29][35]" },
-    { number: "98%", label: "Client Satisfaction Rate", icon: TrendingUp },
-    { number: "$2.5B", label: "Coverage Written", icon: Shield }
-  ];
+
 
   // Duplicate carriers for infinite scroll
   const marqueeCarriers = [...carriers, ...carriers];
@@ -117,31 +114,15 @@ const PremiumCarriers = () => {
         </motion.div>
 
         {/* Statistics */}
+        {/* Trust Infrastructure Grid */}
         <motion.div
           initial={{ opacity: 0, y: prefersReducedMotion ? 0 : 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-          className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16 lg:mb-20"
+          className="mb-16 lg:mb-20"
         >
-          {stats.map((stat, index) => (
-            <div key={index} className="text-center group">
-              <div className="bg-white/60 backdrop-blur-md rounded-2xl p-6 shadow-premium border border-white/40 hover:border-emerald-200/50 hover:shadow-luxury transition-all duration-300 hover:-translate-y-1">
-                <div className="inline-flex items-center justify-center w-12 h-12 bg-emerald-100 rounded-xl mb-4 group-hover:scale-110 transition-transform duration-300">
-                  <stat.icon className="w-6 h-6 text-emerald-600" />
-                </div>
-                <div className="text-3xl lg:text-4xl font-bold text-slate-900 gradient-text-luxury mb-2">
-                  {stat.number}
-                </div>
-                <div className="text-slate-600 font-medium">{stat.label}</div>
-                {stat.citation && (
-                  <div className="mt-2 text-xs">
-                    <CitationLinks citations={stat.citation} />
-                  </div>
-                )}
-              </div>
-            </div>
-          ))}
+          <TrustInfrastructure />
         </motion.div>
 
         {/* Marquee Container */}
