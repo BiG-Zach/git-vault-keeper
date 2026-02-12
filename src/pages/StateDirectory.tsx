@@ -38,13 +38,13 @@ export default function StateDirectory() {
           "@type": "ListItem",
           "position": 1,
           "name": "Home",
-          "item": "https://www.bradfordinformedguidance.com"
+          "item": "https://bradfordinformedguidance.com"
         },
         {
           "@type": "ListItem",
           "position": 2,
           "name": "State Directory",
-          "item": "https://www.bradfordinformedguidance.com/states"
+          "item": "https://bradfordinformedguidance.com/states"
         }
       ]
     })

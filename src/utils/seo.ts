@@ -43,8 +43,8 @@ export interface ResolvedSEO {
 
 export const SITE = {
   name: 'Bradford Informed Guidance',
-  url: 'https://www.bradfordinformedguidance.com',
-  image: 'https://www.bradfordinformedguidance.com/hero-family.webp',
+  url: 'https://bradfordinformedguidance.com',
+  image: 'https://bradfordinformedguidance.com/hero-family.webp',
   defaultDescription:
     'Independent insurance broker partnered with Best Insurance Group delivering enterprise-level carrier access across FL, MI, NC, AZ, TX, and GA.',
   themeColor: '#0ea5e9',

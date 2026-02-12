@@ -46,8 +46,8 @@ export default function ContactPage() {
           }, '(689) 325-6570') },
           { innerHTML: serviceSchema(['Health Insurance', 'Life Insurance', 'Insurance Consultation'], '/images/hero/contact-hero-retina.webp') },
           { innerHTML: breadcrumbSchema([
-            { name: 'Home', item: 'https://www.bradfordinformedguidance.com/' },
-            { name: 'Contact', item: 'https://www.bradfordinformedguidance.com/contact' }
+            { name: 'Home', item: 'https://bradfordinformedguidance.com/' },
+            { name: 'Contact', item: 'https://bradfordinformedguidance.com/contact' }
           ]) }
         ]}
       />

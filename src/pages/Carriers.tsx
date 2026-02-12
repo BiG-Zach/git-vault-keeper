@@ -512,7 +512,7 @@ export default function CarriersPage() {
       {
         name: 'Insurance Carrier Comparison & PPO Network Services',
         description: 'Expert health and life insurance guidance with access to 10 carriers and 6 PPO networks and comprehensive PPO networks across 6 states',
-        url: 'https://www.bradfordinformedguidance.com/carriers',
+        url: 'https://bradfordinformedguidance.com/carriers',
       }
     ),
     itemListSchema({

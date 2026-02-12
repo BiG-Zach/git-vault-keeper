@@ -24,7 +24,7 @@ export default function LifeInsurance() {
       {
         name: 'Life Insurance Brokerage Services',
         description: 'Comprehensive life insurance solutions including term, whole life, and universal life policies with living benefits',
-        url: 'https://www.bradfordinformedguidance.com/life-insurance',
+        url: 'https://bradfordinformedguidance.com/life-insurance',
       }
     )
   ];

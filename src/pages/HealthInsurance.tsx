@@ -24,7 +24,7 @@ export default function HealthInsurance() {
       {
         name: 'Health Insurance Brokerage Services',
         description: 'Expert health insurance guidance and carrier comparison across 6 states with 10 carriers and 6 PPO networks',
-        url: 'https://www.bradfordinformedguidance.com/health-insurance',
+        url: 'https://bradfordinformedguidance.com/health-insurance',
       }
     )
   ];

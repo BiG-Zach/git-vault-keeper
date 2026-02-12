@@ -37,8 +37,8 @@ export default function HowItWorksPage() {
           }, '(689) 325-6570') },
           { innerHTML: serviceSchema(['Health Insurance', 'Life Insurance', 'Insurance Consultation'], '/images/hero/our-process-hero-retina.webp') },
           { innerHTML: breadcrumbSchema([
-            { name: 'Home', item: 'https://www.bradfordinformedguidance.com/' },
-            { name: 'Our Process', item: 'https://www.bradfordinformedguidance.com/our-process' }
+            { name: 'Home', item: 'https://bradfordinformedguidance.com/' },
+            { name: 'Our Process', item: 'https://bradfordinformedguidance.com/our-process' }
           ]) }
         ]}
       />

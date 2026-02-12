@@ -3,4 +3,4 @@ Disallow: /api/
 Disallow: /404
 Allow: /
 
-Sitemap: https://www.bradfordinformedguidance.com/sitemap.xml
+Sitemap: https://bradfordinformedguidance.com/sitemap.xml

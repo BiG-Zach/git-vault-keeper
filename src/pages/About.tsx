@@ -20,11 +20,11 @@ export default function AboutPage() {
       'Zachary Bradford',
       'Licensed Insurance Broker',
       'Licensed health and life insurance broker with 8+ years of experience helping 1,000+ families across FL, MI, NC, AZ, TX, and GA find PPO health plans, life insurance layering strategies, and Medicare planning solutions.',
-      'https://www.bradfordinformedguidance.com/about/portrait.jpg'
+      'https://bradfordinformedguidance.com/about/portrait.jpg'
     ),
     breadcrumbSchema([
-      { name: 'Home', item: 'https://www.bradfordinformedguidance.com/' },
-      { name: 'About', item: 'https://www.bradfordinformedguidance.com/about' }
+      { name: 'Home', item: 'https://bradfordinformedguidance.com/' },
+      { name: 'About', item: 'https://bradfordinformedguidance.com/about' }
     ])
   ];
 

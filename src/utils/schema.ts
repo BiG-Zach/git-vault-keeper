@@ -7,9 +7,9 @@ import { stateMetadata, type StateCodeSlug } from './stateMetadata';
 
 export const ORG = {
   name: 'Bradford Informed Guidance',
-  url: 'https://www.bradfordinformedguidance.com',
-  logo: 'https://www.bradfordinformedguidance.com/logos/brand-mark.svg',
-  image: 'https://www.bradfordinformedguidance.com/assets/backgrounds/happy-family-beach-hero.webp',
+  url: 'https://bradfordinformedguidance.com',
+  logo: 'https://bradfordinformedguidance.com/logos/brand-mark.svg',
+  image: 'https://bradfordinformedguidance.com/assets/backgrounds/happy-family-beach-hero.webp',
   telephone: '+16893256570',
   email: 'zbradford@bradfordinformedguidance.com',
   address: {

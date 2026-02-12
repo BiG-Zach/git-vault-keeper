@@ -15,7 +15,7 @@ import {
 const DEFAULT_ENDPOINT = 'https://app.ringy.com/api/public/leads/new-lead';
 const DEFAULT_ALLOWED = [
   'https://bradfordinformedguidance.com',
-  'https://www.bradfordinformedguidance.com',
+  'https://bradfordinformedguidance.com',
   'http://localhost:8080',
   'http://localhost:5173',
 ];
