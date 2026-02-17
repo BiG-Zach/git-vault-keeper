@@ -1,4 +1,5 @@
 import { stateMetadata, type StateCodeSlug } from './stateMetadata';
+import { BRAND } from '../lib/brand';
 
 /**
  * JSON-LD schema builders for SEO. These utilities return stringified
@@ -47,15 +48,26 @@ export function organizationSchema() {
   const data = {
     '@context': 'https://schema.org',
     '@type': 'InsuranceAgency',
+    '@id': `${ORG.url}/#organization`,
     name: ORG.name,
+    legalName: 'Bradford Informed Guidance, LLC',
+    alternateName: 'BIG',
     url: ORG.url,
     logo: {
       '@type': 'ImageObject',
       url: ORG.logo,
+      width: '512',
+      height: '512',
+      caption: 'Bradford Informed Guidance Logo'
     },
-    image: ORG.image,
+    image: {
+      '@type': 'ImageObject',
+      url: ORG.image,
+      caption: 'Bradford Informed Guidance Family Hero'
+    },
     telephone: ORG.telephone,
     email: ORG.email,
+    foundingDate: '2020',
     address: {
       '@type': 'PostalAddress',
       streetAddress: ORG.address.streetAddress,
@@ -64,21 +76,92 @@ export function organizationSchema() {
       postalCode: ORG.address.postalCode,
       addressCountry: ORG.address.addressCountry,
     },
+    geo: {
+      '@type': 'GeoCoordinates',
+      latitude: '27.9506',
+      longitude: '-82.5126'
+    },
     areaServed: ORG.serviceArea.map(state => ({
       '@type': 'State',
       name: state,
+      containsPlace: {
+        '@type': 'Place',
+        name: state
+      }
     })),
-    sameAs: ORG.sameAs,
-    description: 'Licensed insurance brokerage serving multiple states with expertise in health and life insurance',
+    sameAs: [
+      BRAND.verification.trustMyProducer,
+      BRAND.verification.nipr,
+      // Verified Social Profiles
+      'https://www.facebook.com/BradfordInformedGuidance',
+      'https://www.linkedin.com/company/bradford-informed-guidance',
+      'https://g.page/r/BradfordInformedGuidance'
+    ].filter(Boolean),
+    description: 'Independent insurance brokerage specializing in Health & Life Insurance, Medicare, and the "One Big Beautiful Bill Act" (OBBBA) compliance. Providing enterprise-level carrier access and personalized advocacy.',
     priceRange: '$$',
-    knowsAbout: [
-      'Health Insurance',
-      'Life Insurance',
-      'PPO Networks',
-      'Insurance Brokerage',
-      'Medicare',
-      'Supplemental Insurance',
+    paymentAccepted: 'Cash, Credit Card, Insurance',
+    openingHoursSpecification: [
+      {
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: [
+          'Monday',
+          'Tuesday',
+          'Wednesday',
+          'Thursday',
+          'Friday'
+        ],
+        opens: '09:00',
+        closes: '18:00'
+      }
     ],
+    knowsAbout: [
+      {
+        '@type': 'Thing',
+        name: 'One Big Beautiful Bill Act (OBBBA)',
+        description: 'Comprehensive health and life insurance legislation affecting subsidies and tax liabilities.'
+      },
+      {
+        '@type': 'Thing',
+        name: 'Section 71301 - Subsidy Liability',
+        description: 'Legislative section regarding the consolidation of tax credits and repayment caps.'
+      },
+      {
+        '@type': 'Thing',
+        name: 'Section 71302 - Immigrant Eligibility',
+        description: 'updates to non-citizen health coverage eligibility criteria.'
+      },
+      {
+        '@type': 'Thing',
+        name: 'Trump Accounts',
+        description: 'New tax-advantaged health and life savings vehicles opening July 4, 2026.'
+      },
+      'Health Insurance Marketplace',
+      'Life Insurance',
+      'Medicare Advantage',
+      'Term Life Policy',
+      'Whole Life Policy',
+      'PPO Networks'
+    ],
+    hasCredential: [
+      {
+        '@type': 'EducationalOccupationalCredential',
+        credentialCategory: 'License',
+        educationalLevel: 'Professional',
+        recognizedBy: {
+          '@type': 'Organization',
+          name: 'National Insurance Producer Registry (NIPR)',
+          url: 'https://nipr.com'
+        },
+        url: BRAND.verification.nipr
+      }
+    ],
+    contactPoint: {
+      '@type': 'ContactPoint',
+      telephone: ORG.telephone,
+      contactType: 'customer service',
+      areaServed: 'US',
+      availableLanguage: ['English', 'Spanish']
+    }
   };
   return JSON.stringify(data);
 }
@@ -304,7 +387,7 @@ export function itemListSchema(params: {
   }>;
 }) {
   const { name, description, items } = params;
-  
+
   const data = {
     '@context': 'https://schema.org',
     '@type': 'ItemList',
@@ -322,14 +405,41 @@ export function itemListSchema(params: {
       },
     })),
   };
-  
+
   return JSON.stringify(data);
 }
 
+
+
+export function videoObjectSchema(video: {
+  name: string;
+  description: string;
+  thumbnailUrl: string;
+  uploadDate: string;
+  contentUrl?: string;
+  embedUrl?: string;
+  duration?: string; // ISO 8601 duration format
+}) {
+  const data = {
+    '@context': 'https://schema.org',
+    '@type': 'VideoObject',
+    name: video.name,
+    description: video.description,
+    thumbnailUrl: absoluteUrl(video.thumbnailUrl),
+    uploadDate: video.uploadDate,
+    contentUrl: video.contentUrl ? absoluteUrl(video.contentUrl) : undefined,
+    embedUrl: video.embedUrl ? absoluteUrl(video.embedUrl) : undefined,
+    duration: video.duration,
+  };
+  return JSON.stringify(data);
+}
 
 function absoluteUrl(path: string) {
   if (!path) return ORG.image;
   if (/^https?:\/\//i.test(path)) return path;
   const normalized = path.startsWith('/') ? path : `/${path}`;
-  return `${ORG.url.replace(/\/$/, '')}${normalized}`;
+  if (path.startsWith('/')) {
+    return `${ORG.url.replace(/\/$/, '')}${path}`;
+  }
+  return `${ORG.url.replace(/\/$/, '')}/${path}`;
 }

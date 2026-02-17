@@ -1,5 +1,5 @@
 import type { MetaTag } from './seo';
-import { articleSchema, SITE } from './schema';
+import { articleSchema, videoObjectSchema, SITE } from './schema';
 import { SEO_IMAGES } from './seoAssets';
 
 interface ArticleSEOParams {
@@ -13,6 +13,15 @@ interface ArticleSEOParams {
   imageAlt?: string;
   articleSection?: string;
   keywords?: string[];
+  video?: {
+    name: string;
+    description: string;
+    thumbnailUrl: string;
+    uploadDate: string;
+    contentUrl?: string;
+    embedUrl?: string;
+    duration?: string;
+  };
 }
 
 export function buildArticleSEO({
@@ -26,6 +35,7 @@ export function buildArticleSEO({
   imageAlt,
   articleSection,
   keywords,
+  video,
 }: ArticleSEOParams) {
   const image = {
     src: imageSrc ?? SEO_IMAGES.blog.src,
@@ -57,6 +67,9 @@ export function buildArticleSEO({
         keywords,
       }),
     },
+    ...(video ? [{
+      innerHTML: videoObjectSchema(video),
+    }] : []),
   ];
 
   return { image: image.src, meta, scripts };
