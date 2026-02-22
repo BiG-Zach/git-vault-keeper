@@ -1,10 +1,11 @@
 import React from 'react';
-import { motion, useReducedMotion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
-const bg = '/assets/backgrounds/happy-family-beach-hero.webp';
 import { trackEvent, GTM_EVENTS } from '../utils/gtm';
 import styles from '../mobile/MobileHero.module.css';
 import heroMobile from './Hero.mobile.module.css';
+
+// Using consistent image path
+const bg = '/assets/backgrounds/happy-family-beach-hero.webp';
 
 type HeroProps = {
   title?: string;
@@ -12,16 +13,16 @@ type HeroProps = {
 };
 
 const Hero = ({
-  title = 'Independent Broker. Enterprise Resources.',
-  subtitle = "Personal guidance with Best Insurance Group's exclusive carrier access. Licensed in FL, MI, NC, AZ, TX, and GA."
+  title = "Health Insurance That Actually Pays.",
+  subtitle = "Private PPO plans for self-employed professionals & families. Access the same nationwide networks as big corporations—without the bureaucracy."
 }: HeroProps) => {
-  const prefersReducedMotion = useReducedMotion();
   const navigate = useNavigate();
 
   const handleScheduleClick = () => {
     trackEvent(GTM_EVENTS.HERO_SCHEDULE_CLICK);
     navigate('/contact');
   };
+
   const handleSeeOptionsClick = () => {
     trackEvent(GTM_EVENTS.HERO_SEE_OPTIONS_CLICK);
     navigate('/quote');
@@ -29,91 +30,112 @@ const Hero = ({
 
   return (
     <header
-      className={`relative isolate overflow-hidden ${styles.hero} ${heroMobile.mobileRoot}`}
+      className={`relative isolate overflow-hidden min-h-[85vh] flex items-center justify-center ${styles.hero} ${heroMobile.mobileRoot}`}
       style={{
         paddingTop: 'calc(var(--header-h, 56px) + env(safe-area-inset-top))'
       }}
     >
-      {/* Background image */}
-      <div className="relative min-h-[60vh] sm:min-h-[70vh] md:min-h-[78vh]">
+      {/* Background Image */}
+      <div className="absolute inset-0 z-0">
         <img
           src={bg}
-          alt=""
-          className={`absolute inset-0 z-0 w-full h-full object-cover ${heroMobile.mobileHeroImage}`}
+          alt="Happy family on beach representing financial peace of mind"
+          className={`w-full h-full object-cover object-center ${heroMobile.mobileHeroImage}`}
           loading="eager"
           width={2400}
           height={1600}
         />
+        
+        {/* Luxury Scrim Overlay - Using standard dark gradient for high contrast */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/80 z-10" />
+      </div>
 
-        {/* Luxury scrims (ensure readability on any image) */}
-        <div className="pointer-events-none absolute inset-0 z-10">
-          {/* side vignettes */}
-          <div className="absolute inset-0 bg-[radial-gradient(120%_60%_at_0%_50%,rgba(0,0,0,.28),transparent_60%),radial-gradient(120%_60%_at_100%_50%,rgba(0,0,0,.28),transparent_60%)]" />
-          {/* bottom fade */}
-          <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/60 via-black/35 to-transparent" />
-          {/* center focus vignette */}
-          <div className="absolute inset-0 bg-[radial-gradient(closest-side_at_50%_58%,rgba(0,0,0,.36),rgba(0,0,0,.22)_35%,transparent_70%)]" />
-        </div>
-
-        {/* Content */}
-        <div className={`absolute inset-0 z-30 grid place-items-center px-4 md:px-6 ${heroMobile.mobileStack}`}>
-          <div className="mx-auto max-w-3xl rounded-2xl bg-black/45 backdrop-blur-md ring-1 ring-white/15 shadow-[0_10px_40px_rgba(0,0,0,.55)] px-4 py-4 sm:px-6 sm:py-6 md:px-8 md:py-8 text-center">
-            <motion.h1
-              className={`font-semibold tracking-tight text-white [text-shadow:_0_0_3px_rgba(0,0,0,0.9),0_0_8px_rgba(0,0,0,0.7),0_0_12px_rgba(0,0,0,0.6),0_1px_0_rgba(255,255,255,0.2)] ${styles.headline} ${heroMobile.mobileHeadline}`}
-              style={{
-                fontSize: 'clamp(26px, 5vw, 34px)',
-                lineHeight: '1.15',
-                letterSpacing: '-0.01em',
-                marginBottom: '8px'
-              }}
-              initial={{ opacity: 0, y: prefersReducedMotion ? 0 : 14 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.45, ease: 'easeOut' }}
-            >
-              {title}
-            </motion.h1>
-
-            <motion.p
-              className={`text-white/95 leading-relaxed max-w-2xl mx-auto [text-shadow:_0_0_2px_rgba(0,0,0,0.85),0_0_6px_rgba(0,0,0,0.7)] ${styles.subheadline} ${heroMobile.mobileSubheadline}`}
-              style={{
-                fontSize: 'clamp(14px, 3.5vw, 18px)',
-                marginTop: '8px',
-                marginBottom: '16px'
-              }}
-              initial={{ opacity: 0, y: prefersReducedMotion ? 0 : 14 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.45, ease: 'easeOut', delay: 0.08 }}
-            >
-              {subtitle}
-            </motion.p>
-
-            <motion.div
-              className="flex flex-wrap items-center justify-center gap-2 sm:gap-3"
-              initial={{ opacity: 0, y: prefersReducedMotion ? 0 : 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.45, ease: 'easeOut', delay: 0.15 }}
-            >
-              <button
-                onClick={handleScheduleClick}
-                className="rounded-xl bg-emerald-600 px-4 py-3 text-white font-medium shadow-lg shadow-emerald-900/25 hover:bg-emerald-500 active:scale-[.99] transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70"
-                style={{ minHeight: '48px', fontSize: '14px' }}
-                aria-label="Start your consultation"
-                data-gtm="hero-cta-schedule"
-              >
-                Start Your Consultation
-              </button>
-
-              <button
-                onClick={handleSeeOptionsClick}
-                className="rounded-xl px-4 py-3 font-medium text-white/95 ring-1 ring-white/35 hover:bg-white/10 active:scale-[.99] transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70"
-                style={{ minHeight: '48px', fontSize: '14px' }}
-                aria-label="View available coverage options"
-                data-gtm="hero-cta-options"
-              >
-                View Coverage Options
-              </button>
-            </motion.div>
+      {/* Content Container - Ensure z-index puts this ON TOP */}
+      <div className="relative z-30 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-20">
+        
+        {/* Floating Glass Card */}
+        <div className="mx-auto max-w-4xl">
+          
+          {/* Badge: Value Proposition */}
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white/90 mb-6 shadow-lg">
+            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+            <span className="text-sm font-medium tracking-wide uppercase">
+              Open Enrollment: FL • TX • MI • NC • AZ • GA • IN
+            </span>
           </div>
+
+          {/* Main Headline - Removed Framer Motion */}
+          <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl font-bold text-white tracking-tight mb-6 drop-shadow-lg" style={{ textShadow: "0 2px 10px rgba(0,0,0,0.5)" }}>
+            Health Insurance That <br className="hidden md:block" />
+            <span className="text-emerald-400">
+              Actually Pays.
+            </span>
+          </h1>
+
+          {/* Subheadline */}
+          <p className="text-lg md:text-xl text-white/90 max-w-2xl mx-auto mb-10 leading-relaxed font-light drop-shadow-md">
+            {subtitle}
+          </p>
+
+          {/* CTA Buttons */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
+            <button
+              onClick={handleScheduleClick}
+              className="w-full sm:w-auto px-8 py-4 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-lg shadow-lg hover:-translate-y-0.5 transition-all duration-300 transform border border-emerald-400/30"
+              aria-label="Book your free strategy call"
+            >
+              Book Strategy Call
+            </button>
+            
+            <button
+              onClick={handleSeeOptionsClick}
+              className="w-full sm:w-auto px-8 py-4 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/30 text-white font-medium text-lg transition-all duration-300 hover:-translate-y-0.5"
+              aria-label="View coverage options"
+            >
+              View Options
+            </button>
+          </div>
+
+          {/* Trust Strip - Phantom Logo Effect */}
+          <div className="border-t border-white/10 pt-10 mt-12">
+            <p className="text-white/50 text-xs font-bold uppercase tracking-[0.2em] mb-6">
+              Trusted Access To Premium Networks
+            </p>
+            <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-90">
+              {/* Aetna */}
+              <span className="group relative cursor-default">
+                <span className="text-2xl md:text-3xl font-serif font-bold text-white/40 transition-all duration-500 group-hover:text-[#D20962] group-hover:scale-105">
+                  aetna
+                </span>
+                <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-[#D20962] transition-all duration-500 group-hover:w-full opacity-0 group-hover:opacity-100" />
+              </span>
+
+              {/* Cigna */}
+              <span className="group relative cursor-default">
+                <span className="text-2xl md:text-3xl font-sans font-extrabold tracking-tight text-white/40 transition-all duration-500 group-hover:text-[#094D8F] group-hover:scale-105">
+                  Cigna
+                </span>
+                <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-[#094D8F] transition-all duration-500 group-hover:w-full opacity-0 group-hover:opacity-100" />
+              </span>
+
+              {/* UHC */}
+              <span className="group relative cursor-default">
+                <span className="text-2xl md:text-3xl font-sans font-bold tracking-tighter text-white/40 transition-all duration-500 group-hover:text-[#002677] group-hover:scale-105">
+                  United<span className="font-light">Healthcare</span>
+                </span>
+                <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-[#002677] transition-all duration-500 group-hover:w-full opacity-0 group-hover:opacity-100" />
+              </span>
+
+              {/* BCBS */}
+              <span className="group relative cursor-default">
+                <span className="text-2xl md:text-3xl font-serif font-bold italic text-white/40 transition-all duration-500 group-hover:text-[#005596] group-hover:scale-105">
+                  BlueCross
+                </span>
+                <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-[#005596] transition-all duration-500 group-hover:w-full opacity-0 group-hover:opacity-100" />
+              </span>
+            </div>
+          </div>
+
         </div>
       </div>
     </header>
@@ -121,4 +143,3 @@ const Hero = ({
 };
 
 export default Hero;
-

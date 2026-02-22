@@ -8,23 +8,21 @@ const PremiumCarriers = () => {
   const prefersReducedMotion = useReducedMotion();
 
   const carriers = [
-    { src: "/logos/carriers/unitedhealthcare.webp", alt: "UnitedHealthcare", rating: "A+ (Superior)", partnership: "Premier Network", citation: "[8][9][10][11]" },
-    { src: "/logos/carriers/mutualofomaha.webp", alt: "Mutual of Omaha", rating: "A+ (Superior)", partnership: "#1 J.D. Power 2025", citation: "[16][17][19][20]", badge: "TOP RATED" },
-    { src: "/logos/carriers/aflac.webp", alt: "Aflac", rating: "A+ (Superior)", partnership: "Supplemental Leader", citation: "[21][22][23][24]" },
-    { src: "/logos/carriers/bluecrossblueshield.png", alt: "Blue Cross Blue Shield", rating: "A+ (Superior)", partnership: "National Partner", citation: "[13][14][15]" },
-    { src: "/logos/carriers/allstate.webp", alt: "Allstate Health", rating: "A+ (Superior)", partnership: "Elite Partner", citation: "[41][42][43]" },
-    { src: "/logos/carriers/aetna.webp", alt: "Aetna", rating: "A (Excellent)", partnership: "Premier Partner", citation: "[1][3][4]" },
-    { src: "/logos/carriers/cigna.webp", alt: "Cigna", rating: "A (Excellent)", partnership: "Strategic Alliance", citation: "[5][6][7]" },
-    { src: "/logos/carriers/medical-mutual.webp", alt: "Medical Mutual", rating: "A (Excellent)", partnership: "4.5 Star Medicare", citation: "[35][36][37]", badge: "NEW" },
-    { src: "/logos/carriers/americo.webp", alt: "Americo", rating: "A (Excellent)", partnership: "Preferred Partner", citation: "[25][26][27][28]" },
-    { src: "/logos/carriers/illinois-mutual.webp", alt: "Illinois Mutual", rating: "A- (Excellent)", partnership: "Upgraded Oct 2025", citation: "[29][30][31][32]", badge: "NEW", scale: 1.4 },
-    { src: "/logos/carriers/pal.webp", alt: "Philadelphia American Life", rating: "A- (Excellent)", partnership: "Specialty Provider", citation: "[33][34]" },
-    { src: "/logos/carriers/sgic.webp", alt: "SGIC", rating: "B++ (Good)", partnership: "Regional Partner", citation: "[38][39][40]" },
-    { src: "/logos/carriers/multiplan.webp", alt: "MultiPlan PPO", rating: "PPO Network", partnership: "1.4M+ Providers", citation: "[46][47][48]", isNetwork: true },
-    { src: "/logos/carriers/firsthealth.webp", alt: "First Health PPO", rating: "PPO Network", partnership: "1M+ Providers", citation: "[44][45]", isNetwork: true }
+    { src: "/logos/carriers/unitedhealthcare.webp", alt: "UnitedHealthcare", rating: "A+ (Superior)", partnership: "Premier Network", citation: "[8][9][10][11]", color: "#002677" },
+    { src: "/logos/carriers/mutualofomaha.webp", alt: "Mutual of Omaha", rating: "A+ (Superior)", partnership: "#1 J.D. Power 2025", citation: "[16][17][19][20]", badge: "TOP RATED", color: "#FDB913" },
+    { src: "/logos/carriers/aflac.webp", alt: "Aflac", rating: "A+ (Superior)", partnership: "Supplemental Leader", citation: "[21][22][23][24]", color: "#00A7E1" },
+    { src: "/logos/carriers/bluecrossblueshield.png", alt: "Blue Cross Blue Shield", rating: "A+ (Superior)", partnership: "National Partner", citation: "[13][14][15]", color: "#005596" },
+    { src: "/logos/carriers/allstate.webp", alt: "Allstate Health", rating: "A+ (Superior)", partnership: "Elite Partner", citation: "[41][42][43]", color: "#0072CE" },
+    { src: "/logos/carriers/aetna.webp", alt: "Aetna", rating: "A (Excellent)", partnership: "Premier Partner", citation: "[1][3][4]", color: "#D20962" },
+    { src: "/logos/carriers/cigna.webp", alt: "Cigna", rating: "A (Excellent)", partnership: "Strategic Alliance", citation: "[5][6][7]", color: "#094D8F" },
+    { src: "/logos/carriers/medical-mutual.webp", alt: "Medical Mutual", rating: "A (Excellent)", partnership: "4.5 Star Medicare", citation: "[35][36][37]", badge: "NEW", color: "#004B8D" },
+    { src: "/logos/carriers/americo.webp", alt: "Americo", rating: "A (Excellent)", partnership: "Preferred Partner", citation: "[25][26][27][28]", color: "#C41230" },
+    { src: "/logos/carriers/illinois-mutual.webp", alt: "Illinois Mutual", rating: "A- (Excellent)", partnership: "Upgraded Oct 2025", citation: "[29][30][31][32]", badge: "NEW", scale: 1.4, color: "#D42129" },
+    { src: "/logos/carriers/pal.webp", alt: "Philadelphia American Life", rating: "A- (Excellent)", partnership: "Specialty Provider", citation: "[33][34]", color: "#003366" },
+    { src: "/logos/carriers/sgic.webp", alt: "SGIC", rating: "B++ (Good)", partnership: "Regional Partner", citation: "[38][39][40]", color: "#005696" },
+    { src: "/logos/carriers/multiplan.webp", alt: "MultiPlan PPO", rating: "PPO Network", partnership: "1.4M+ Providers", citation: "[46][47][48]", isNetwork: true, color: "#00833E" },
+    { src: "/logos/carriers/firsthealth.webp", alt: "First Health PPO", rating: "PPO Network", partnership: "1M+ Providers", citation: "[44][45]", isNetwork: true, color: "#005494" }
   ];
-
-
 
   // Duplicate carriers for infinite scroll
   const marqueeCarriers = [...carriers, ...carriers];
@@ -113,25 +111,13 @@ const PremiumCarriers = () => {
           </p>
         </motion.div>
 
-        {/* Statistics */}
-        {/* Trust Infrastructure Grid */}
-        <motion.div
-          initial={{ opacity: 0, y: prefersReducedMotion ? 0 : 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-          className="mb-16 lg:mb-20"
-        >
-          <TrustInfrastructure />
-        </motion.div>
-
         {/* Marquee Container */}
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 1, delay: 0.4 }}
-          className="relative w-full"
+          className="relative w-full mb-24"
         >
           {/* Glassmorphism Background Track */}
           <div className="absolute inset-y-0 -left-4 -right-4 lg:-left-8 lg:-right-8 bg-white/30 backdrop-blur-sm border-y border-white/20 shadow-sm" />
@@ -146,31 +132,44 @@ const PremiumCarriers = () => {
               {marqueeCarriers.map((carrier, index) => (
                 <div
                   key={`${index}-${carrier.alt}`}
-                  className="mx-4 lg:mx-8 w-[200px] lg:w-[240px] flex-shrink-0 transition-all duration-300 group-hover/marquee:opacity-60 hover:!opacity-100 hover:!scale-105"
+                  className="mx-4 lg:mx-8 w-[200px] lg:w-[240px] flex-shrink-0 transition-all duration-500 group-hover/marquee:opacity-40 hover:!opacity-100 hover:!scale-110 z-10 hover:z-20"
                 >
-                  <div className="bg-white rounded-xl p-6 border border-slate-100 shadow-sm hover:shadow-lg hover:border-emerald-200 transition-all duration-300 h-32 flex items-center justify-center relative group/item">
+                  <div 
+                    className="bg-white/80 backdrop-blur-xl rounded-2xl p-6 border border-white/40 shadow-[0_4px_20px_-10px_rgba(0,0,0,0.1)] transition-all duration-500 h-36 flex items-center justify-center relative group/item overflow-hidden hover:bg-white hover:border-transparent"
+                    style={{ 
+                      '--brand-color': carrier.color,
+                      '--brand-shadow': `${carrier.color}40`
+                    } as React.CSSProperties}
+                  >
+                    {/* Hover Glow Background */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-[var(--brand-color)]/5 to-transparent opacity-0 group-hover/item:opacity-100 transition-opacity duration-500" />
+                    
+                    {/* Hover Glow Border & Shadow */}
+                    <div className="absolute inset-0 rounded-2xl border border-transparent group-hover/item:border-[var(--brand-color)]/30 group-hover/item:shadow-[0_0_30px_-5px_var(--brand-shadow)] transition-all duration-500" />
+
                     {/* Badge */}
                     {carrier.badge && (
-                      <div className="absolute -top-2 -right-2 z-10">
-                        <span className={carrier.badge === 'NEW' ? 'new-badge shadow-sm' : 'inline-block bg-yellow-400 text-slate-900 px-2 py-0.5 rounded text-[10px] font-bold shadow-sm uppercase tracking-wider'}>
+                      <div className="absolute -top-1 -right-1 z-20">
+                        <span className={carrier.badge === 'NEW' ? 'new-badge shadow-sm' : 'inline-block bg-yellow-400 text-slate-900 px-2 py-0.5 rounded-bl-lg text-[10px] font-bold shadow-sm uppercase tracking-wider'}>
                           {carrier.badge}
                         </span>
                       </div>
                     )}
 
+                    {/* Logo Image - Full Color to Super Pop */}
                     <img
                       src={carrier.src}
                       alt={carrier.alt}
-                      className="max-w-full max-h-full object-contain opacity-80 group-hover/item:opacity-100 transition-opacity duration-300"
+                      className="max-w-[85%] max-h-[65%] object-contain opacity-90 group-hover/item:opacity-100 group-hover/item:scale-110 transition-all duration-500 relative z-10"
                       style={{ transform: carrier.scale ? `scale(${carrier.scale})` : undefined }}
                       loading="lazy"
                     />
 
-                    {/* Tooltip-like Info on Hover */}
-                    <div className="absolute inset-x-0 bottom-0 translate-y-full opacity-0 group-hover/item:opacity-100 group-hover/item:translate-y-2 transition-all duration-300 pointer-events-none z-30">
-                      <div className="bg-slate-900 text-white text-xs rounded-lg py-2 px-3 text-center shadow-xl mx-2">
-                        <p className="font-semibold text-emerald-300">{carrier.rating}</p>
-                        <p className="opacity-90">{carrier.partnership}</p>
+                    {/* Tooltip-like Info on Hover - Floating Up */}
+                    <div className="absolute inset-x-0 bottom-0 translate-y-full opacity-0 group-hover/item:opacity-100 group-hover/item:translate-y-0 transition-all duration-500 ease-out z-30">
+                      <div className="bg-white/95 backdrop-blur-md border-t border-[var(--brand-color)]/20 py-2 px-3 text-center shadow-[0_-5px_15px_-5px_rgba(0,0,0,0.1)]">
+                        <p className="font-bold text-xs uppercase tracking-wider text-[var(--brand-color)]">{carrier.rating}</p>
+                        <p className="text-[10px] text-slate-500 font-medium truncate">{carrier.partnership}</p>
                       </div>
                     </div>
                   </div>
@@ -179,6 +178,9 @@ const PremiumCarriers = () => {
             </div>
           </div>
         </motion.div>
+        
+        {/* Trust Infrastructure Grid */}
+        <TrustInfrastructure />
 
         {/* Updated Disclaimer with Citations */}
         <motion.div

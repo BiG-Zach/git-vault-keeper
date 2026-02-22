@@ -7,7 +7,7 @@ export const COMPANY = {
   hours: "Mon - Sun, 8:00 AM - 8:00 PM EST",
   npnLabel: "NPN",
   npn: "18181266",
-  licensed: "FL, MI, NC, AZ, TX, GA",
+  licensed: "FL, MI, NC, AZ, TX, GA, IN",
   verification: {
     url: "https://bradfordinformedguidance.trustmyproducer.com",
     nipr: "https://nipr.com/licensing-center/look-up-a-national-producer-number",

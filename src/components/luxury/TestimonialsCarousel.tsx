@@ -1,88 +1,187 @@
-import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React, { useRef } from 'react';
+import { motion } from 'framer-motion';
+import { Star, Quote, MapPin, ChevronLeft, ChevronRight, ShieldCheck } from 'lucide-react';
 
-// --- DATA (Matches the final version from our plan) ---
 const testimonials = [
-  { name: "Sarah P.", title: "Freelance Designer", location: "Austin, TX", testimonial: "As a freelancer, finding good health insurance felt impossible. They cut through the noise, explained my PPO options clearly, and found a plan that was actually affordable. A total lifesaver.", avatar: "/avatars/sarah-p.png", savings: 125, verified: "Verified TX Customer" },
-  { name: "The Garcia Family", title: "Family of Four", location: "Tampa, FL", testimonial: "We were so overwhelmed trying to find the right plan for our kids. They took the time to understand our family's needs and budget. We finally feel confident in our coverage. Can't recommend them enough.", avatar: "/avatars/garcia-family.png", savings: 210, verified: "Verified FL Customer" },
-  { name: "Mark S.", title: "Early Retiree", location: "Phoenix, AZ", testimonial: "Taking early retirement was exciting, but figuring out health coverage before I was 65 was stressful. They found me a fantastic private plan to bridge the gap. The peace of mind is priceless.", avatar: "/avatars/mark-s.png", savings: 180, verified: "Verified AZ Customer" },
-  { name: "Emily and Tom", title: "Small Business Owners", location: "Raleigh, NC", testimonial: "We needed a solid plan for ourselves and our two employees. They handled everything, making the small business enrollment process incredibly simple and finding a great PPO network for our team.", avatar: "/avatars/emily-and-tom.png", savings: 250, verified: "Verified NC Customer" },
-  { name: "Michael B.", title: "Recent Graduate", location: "Atlanta, GA", testimonial: "Coming off my parents' insurance was daunting. I didn't know where to start. They were patient and found me a simple, catastrophic plan that fit my budget perfectly. So grateful for the clear guidance.", avatar: "/avatars/michael-b.png", savings: 80, verified: "Verified GA Customer" },
-  { name: "Jennifer R.", title: "Realtor", location: "Grand Rapids, MI", testimonial: "My income fluctuates, so finding a flexible plan was key. They understood the challenges of being self-employed and found a policy that gives me great coverage without breaking the bank during slower months.", avatar: "/avatars/jennifer-r.png", savings: 155, verified: "Verified MI Customer" }
+  {
+    name: "Sarah Jenkins",
+    location: "Austin, TX",
+    role: "Freelance Designer",
+    quote: "I honestly thought I was stuck with that expensive Marketplace plan forever. Zach looked at my situation and said 'No, we can do better.' He got me into a UnitedHealthcare PPO that actually covers my chiropractor. My premium dropped by $400 a month.",
+    impact: "Saved $4,800/yr",
+    carrier: "UnitedHealthcare",
+    rating: 5,
+    initials: "SJ",
+    gradient: "from-pink-500 to-rose-500"
+  },
+  {
+    name: "The Garcia Family",
+    location: "Tampa, FL",
+    role: "Business Owners",
+    quote: "Our old plan had a $14,000 deductible. It was basically useless unless we had a catastrophe. Bradford switched us to a Cigna plan where we actually have $0 deductible for accidents. Finally feel like we can let the kids play sports without worrying.",
+    impact: "Better Coverage",
+    carrier: "Cigna PPO",
+    rating: 5,
+    initials: "TG",
+    gradient: "from-blue-500 to-cyan-500"
+  },
+  {
+    name: "James D.",
+    location: "Phoenix, AZ",
+    role: "Retired (58)",
+    quote: "I retired early and lost my corporate benefits. I was terrified of being uninsured before 65. Every other broker just tried to sell me junk indemnity plans. Zach explained the difference and set me up with a real PPO network. The peace of mind is worth every penny.",
+    impact: "Kept His Doctors",
+    carrier: "Aetna",
+    rating: 5,
+    initials: "JD",
+    gradient: "from-emerald-500 to-green-500"
+  },
+  {
+    name: "Emily Roberts",
+    location: "Charlotte, NC",
+    role: "Consultant",
+    quote: "I didn't even know medically underwritten plans existed. I'm healthy, so why was I paying for everyone else's sick care? The application was easy, and now my coverage travels with me when I visit clients in other states.",
+    impact: "Nationwide Access",
+    carrier: "Blue Cross Blue Shield",
+    rating: 5,
+    initials: "ER",
+    gradient: "from-purple-500 to-indigo-500"
+  }
 ];
 
-// --- HELPER FUNCTION to group testimonials into threes ---
-const chunkArray = <T,>(array: T[], size: number): T[][] => {
-  const chunkedArr: T[][] = [];
-  for (let i = 0; i < array.length; i += size) {
-    chunkedArr.push(array.slice(i, i + size));
-  }
-  return chunkedArr;
-};
+export default function LuxuryTestimonialsCarousel() {
+  const scrollRef = useRef<HTMLDivElement>(null);
 
-// --- THE NEW CAROUSEL COMPONENT ---
-const TestimonialsCarousel = () => {
-  const [page, setPage] = useState(0);
-  const testimonialChunks = chunkArray(testimonials, 3);
-  const numPages = testimonialChunks.length;
-
-  // Effect to handle the slow, automatic rotation
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setPage((prevPage) => (prevPage + 1) % numPages);
-    }, 8000); // Set to a comfortable 8 seconds
-
-    return () => clearInterval(timer);
-  }, [numPages]);
-
-  const paginate = (newPage: number) => {
-    setPage(newPage);
+  const scroll = (direction: 'left' | 'right') => {
+    if (scrollRef.current) {
+      const scrollAmount = 400;
+      scrollRef.current.scrollBy({
+        left: direction === 'left' ? -scrollAmount : scrollAmount,
+        behavior: 'smooth'
+      });
+    }
   };
 
   return (
-    <div className="relative w-full max-w-6xl mx-auto overflow-hidden">
-      <AnimatePresence initial={false} mode="wait">
-        <motion.div
-          key={page}
-          className="grid grid-cols-1 md:grid-cols-3 gap-6"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.8 }}
-        >
-          {testimonialChunks[page]?.map((testimonial: typeof testimonials[0], index: number) => (
-            <div key={index} className="bg-slate-800/50 rounded-xl p-6 flex flex-col h-full">
-              <div className="flex items-center mb-4">
-                <img src={testimonial.avatar} alt={`Avatar of ${testimonial.name}`} className="w-16 h-16 rounded-full mr-4 border-2 border-slate-600" />
-                <div>
-                  <p className="font-bold text-white text-lg">{testimonial.name}</p>
-                  <p className="text-sm text-slate-400">{testimonial.title} • {testimonial.location}</p>
-                </div>
-              </div>
-              
-              <p className="text-slate-300 text-base italic flex-grow">"{testimonial.testimonial}"</p>
-              
-              <div className="mt-4 flex justify-between items-center">
-                <span className="text-xs font-medium px-2.5 py-1 rounded-full bg-green-500/10 text-green-400">{testimonial.verified}</span>
-                {testimonial.savings && <p className="text-green-400 font-semibold">Saved ${testimonial.savings}/month</p>}
-              </div>
-            </div>
-          ))}
-        </motion.div>
-      </AnimatePresence>
+    <section className="py-24 bg-slate-50 relative overflow-hidden">
       
-      <div className="flex justify-center mt-8">
-        {Array.from({ length: numPages }).map((_, i) => (
-          <button
-            key={i}
-            onClick={() => paginate(i)}
-            className={`w-2.5 h-2.5 rounded-full mx-1.5 transition-colors duration-300 ${i === page ? 'bg-white' : 'bg-slate-600 hover:bg-slate-500'}`}
-            aria-label={`Go to slide ${i + 1}`}
-          />
-        ))}
+      {/* Editorial Background */}
+      <div className="absolute inset-0 pointer-events-none opacity-30">
+        <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-emerald-50 to-transparent" />
+        <div className="absolute bottom-0 left-0 w-1/3 h-1/2 bg-gradient-to-tr from-blue-50 to-transparent rounded-full blur-3xl" />
       </div>
-    </div>
-  );
-};
 
-export default TestimonialsCarousel;
+      <div className="container mx-auto px-6 relative z-10">
+        
+        {/* Header */}
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-slate-200 text-emerald-700 text-xs font-bold uppercase tracking-widest mb-6 shadow-sm">
+            <Star className="w-4 h-4 fill-emerald-500 text-emerald-500" />
+            Client Success Stories
+          </div>
+          <h2 className="text-4xl md:text-5xl font-serif font-bold text-slate-900 mb-6">
+            Real Families. <br className="md:hidden" />
+            <span className="text-emerald-600">Real Impact.</span>
+          </h2>
+          <p className="text-lg text-slate-600 leading-relaxed max-w-2xl mx-auto">
+            We don't just sell policies. We change financial futures. 
+            Hear from the families we've protected across the country.
+          </p>
+        </div>
+
+        {/* The Carousel */}
+        <div className="relative max-w-7xl mx-auto">
+          
+          {/* Navigation Buttons */}
+          <div className="absolute top-1/2 -left-4 -translate-y-1/2 z-20 hidden md:block">
+            <button 
+              onClick={() => scroll('left')}
+              className="p-3 rounded-full bg-white border border-slate-200 shadow-lg hover:bg-emerald-50 hover:text-emerald-600 transition-all duration-300 hover:scale-110"
+              aria-label="Previous testimonial"
+            >
+              <ChevronLeft className="w-6 h-6" />
+            </button>
+          </div>
+          <div className="absolute top-1/2 -right-4 -translate-y-1/2 z-20 hidden md:block">
+            <button 
+              onClick={() => scroll('right')}
+              className="p-3 rounded-full bg-white border border-slate-200 shadow-lg hover:bg-emerald-50 hover:text-emerald-600 transition-all duration-300 hover:scale-110"
+              aria-label="Next testimonial"
+            >
+              <ChevronRight className="w-6 h-6" />
+            </button>
+          </div>
+
+          {/* Scroll Container */}
+          <div 
+            ref={scrollRef}
+            className="flex overflow-x-auto gap-6 pb-12 snap-x snap-mandatory hide-scrollbar px-4"
+            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+          >
+            {testimonials.map((item, index) => (
+              <div 
+                key={index} 
+                className="flex-shrink-0 w-[85vw] md:w-[450px] snap-center"
+              >
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                  className="h-full bg-white rounded-3xl p-8 border border-slate-100 shadow-lg hover:shadow-xl transition-all duration-300 flex flex-col relative group"
+                >
+                  
+                  {/* Quote Icon */}
+                  <div className="absolute top-8 right-8 text-slate-100 group-hover:text-emerald-50 transition-colors duration-300">
+                    <Quote className="w-12 h-12 rotate-180 fill-current" />
+                  </div>
+
+                  {/* Plan / Carrier Badge (Replaces Generic Verified) */}
+                  <div className="inline-flex items-center gap-1.5 mb-6 text-[10px] font-bold text-slate-500 uppercase tracking-wider bg-slate-50 px-3 py-1 rounded-full w-fit border border-slate-100">
+                    <ShieldCheck className="w-3 h-3 text-emerald-500" />
+                    Plan: <span className="text-slate-900">{item.carrier}</span>
+                  </div>
+
+                  {/* The Story */}
+                  <blockquote className="text-slate-700 text-lg leading-relaxed mb-8 flex-grow relative z-10 font-medium font-sans">
+                    "{item.quote}"
+                  </blockquote>
+
+                  {/* The Impact Highlight */}
+                  <div className="mb-8 p-4 bg-slate-50 rounded-xl border border-slate-100 group-hover:bg-emerald-50/50 group-hover:border-emerald-100 transition-colors duration-300">
+                    <p className="text-[10px] text-slate-400 uppercase font-bold tracking-wider mb-1">The Result</p>
+                    <p className="text-emerald-700 font-bold text-lg">{item.impact}</p>
+                  </div>
+
+                  {/* Author Info */}
+                  <div className="flex items-center gap-4 mt-auto pt-6 border-t border-slate-50">
+                    {/* Dynamic Avatar Initials with Gradients */}
+                    <div className={`w-12 h-12 rounded-full bg-gradient-to-br ${item.gradient} flex items-center justify-center text-white font-serif font-bold text-lg shadow-md`}>
+                      {item.initials}
+                    </div>
+                    <div>
+                      <div className="font-bold text-slate-900 text-sm">{item.name}</div>
+                      <div className="text-xs text-slate-500 flex items-center gap-1 mt-0.5">
+                        <MapPin className="w-3 h-3" />
+                        {item.location}
+                      </div>
+                    </div>
+                    
+                    {/* Star Rating */}
+                    <div className="ml-auto flex gap-0.5">
+                      {[...Array(5)].map((_, i) => (
+                        <Star key={i} className="w-4 h-4 fill-amber-400 text-amber-400" />
+                      ))}
+                    </div>
+                  </div>
+
+                </motion.div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+      </div>
+    </section>
+  );
+}

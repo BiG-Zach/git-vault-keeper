@@ -1,159 +1,122 @@
 import React from 'react';
-import { motion, useReducedMotion } from 'framer-motion';
-import { Shield, Clock, CheckCircle, Star, Phone } from 'lucide-react';
-import { BRAND } from '../../lib/brand';
+import { motion } from 'framer-motion';
+import { PhoneOff, Clock, CreditCard, ShieldCheck } from 'lucide-react';
 
-const RiskReversalSection = () => {
-  const prefersReducedMotion = useReducedMotion();
-
-  const guarantees = [
-    {
-      icon: Shield,
-      title: "Service Commitment",
-      description: "Licensed professionals provide ongoing policy support and carrier advocacy throughout coverage duration.",
-      badge: "Year-Round Support"
-    },
-    {
-      icon: Clock,
-      title: "No-Cost Consultation",
-      description: "Broker services provided at no charge to clients. Compensation received through carrier partnerships.",
-      badge: "No Client Fees"
-    },
-    {
-      icon: CheckCircle,
-      title: "Professional Guidance",
-      description: "Licensed insurance professionals represent client interests in carrier negotiations and policy servicing.",
-      badge: "Licensed Advisors"
-    }
-  ];
-
-  const trustSignals = [
-    { icon: Star, text: "A+ BBB Rating" },
-    { icon: Shield, text: "Licensed & Bonded" },
-    { icon: CheckCircle, text: "1,000+ Families Served" },
-    { icon: Phone, text: `${BRAND.hours} Support` }
-  ];
-
+export default function RiskReversalSection() {
   return (
-    <section className="py-16 lg:py-24 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 relative overflow-hidden">
-      {/* Luxury background effects */}
-      <div className="absolute inset-0">
-        <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_top_left,rgba(34,197,94,0.1)_0%,transparent_50%)]" />
-        <div className="absolute bottom-0 right-0 w-full h-full bg-[radial-gradient(ellipse_at_bottom_right,rgba(59,130,246,0.1)_0%,transparent_50%)]" />
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle_at_center,_rgba(16,185,129,0.1)_1px,_transparent_1px)] bg-[length:40px_40px]" />
-      </div>
+    <section className="py-24 bg-slate-50 relative overflow-hidden">
+      
+      {/* Background Pattern */}
+      <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(#64748b 1px, transparent 1px)', backgroundSize: '32px 32px' }}></div>
 
-      <div className="container mx-auto px-4 lg:px-6 relative z-10">
+      <div className="container mx-auto px-6 relative z-10">
+        
         {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: prefersReducedMotion ? 0 : 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="text-center mb-12 lg:mb-16"
-        >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/20 border border-emerald-500/30 text-emerald-300 text-sm font-medium mb-6">
-            <Shield className="w-4 h-4" />
-            <span>Service Standards</span>
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-900 text-white text-xs font-bold uppercase tracking-widest mb-6 shadow-lg">
+            <ShieldCheck className="w-4 h-4 text-emerald-400" />
+            The Concierge Protocol
           </div>
-          
-          <h2 className="text-3xl lg:text-5xl font-bold text-white mb-6 font-luxury-serif">
-            Professional Service
-            <span className="block gradient-text-luxury">Standards</span>
+          <h2 className="text-4xl md:text-5xl font-serif font-bold text-slate-900 mb-6">
+            We Set The Standard. <br />
+            <span className="text-emerald-600">Others Just Follow.</span>
           </h2>
-          
-          <p className="text-lg text-slate-300 max-w-3xl mx-auto leading-relaxed">
-            Independent brokerage committed to comprehensive carrier comparison, transparent pricing disclosure, and ongoing policy support.
+          <p className="text-lg text-slate-600 leading-relaxed">
+            Most brokers hand you off to a call center. We handle you with care.
+            Here is our promise to every family we serve.
           </p>
-        </motion.div>
-
-        {/* Guarantees Grid */}
-        <div className="grid lg:grid-cols-3 gap-8 lg:gap-12 mb-16">
-          {guarantees.map((guarantee, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: prefersReducedMotion ? 0 : 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.8, delay: index * 0.1, ease: "easeOut" }}
-              className="group"
-            >
-              <div className="bg-white/5 backdrop-blur-md rounded-2xl p-8 border border-white/10 hover:border-emerald-500/30 transition-all duration-500 group-hover:bg-white/10 h-full">
-                {/* Badge */}
-                <div className="inline-flex items-center px-3 py-1 bg-emerald-500/20 border border-emerald-500/30 rounded-full text-emerald-300 text-xs font-semibold mb-6">
-                  {guarantee.badge}
-                </div>
-                
-                {/* Icon */}
-                <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-emerald-500/20 to-emerald-600/20 rounded-2xl mb-6 group-hover:scale-110 transition-transform duration-300">
-                  <guarantee.icon className="w-8 h-8 text-emerald-400" />
-                </div>
-                
-                {/* Content */}
-                <h3 className="text-xl lg:text-2xl font-bold text-white mb-4 font-luxury-serif">
-                  {guarantee.title}
-                </h3>
-                
-                <p className="text-slate-300 leading-relaxed">
-                  {guarantee.description}
-                </p>
-              </div>
-            </motion.div>
-          ))}
         </div>
 
-        {/* Call to Action */}
-        <motion.div
-          initial={{ opacity: 0, y: prefersReducedMotion ? 0 : 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
-          className="text-center"
-        >
-          <div className="bg-gradient-to-r from-white/10 to-white/5 backdrop-blur-md rounded-2xl p-8 lg:p-12 border border-white/20 max-w-3xl mx-auto">
-            <h3 className="text-2xl lg:text-3xl font-bold text-white mb-6 font-luxury-serif">
-              Request Coverage Analysis
-            </h3>
+        {/* Bento Grid Layout */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 h-auto lg:h-[500px]">
+          
+          {/* Card 1: No Call Centers (Hero) */}
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="lg:col-span-1 bg-white rounded-3xl p-8 border border-slate-200 shadow-xl flex flex-col justify-between overflow-hidden relative group hover:shadow-2xl transition-all duration-500"
+          >
+            <div className="absolute top-0 right-0 p-32 bg-rose-50 rounded-full blur-3xl opacity-50 -translate-y-1/2 translate-x-1/2 group-hover:bg-rose-100 transition-colors duration-500" />
             
-            <p className="text-slate-300 mb-8 leading-relaxed">
-              Licensed professionals serving clients across six states with A-rated carrier partnerships and year-round enrollment options.
-            </p>
+            <div className="relative z-10">
+              <div className="w-12 h-12 bg-rose-100 rounded-2xl flex items-center justify-center mb-6 text-rose-600">
+                <PhoneOff className="w-6 h-6" />
+              </div>
+              <h3 className="text-3xl font-bold text-slate-900 mb-4">Zero <br />Call Centers.</h3>
+              <p className="text-slate-500 leading-relaxed">
+                You will never speak to a robot or a scripted agent. You get direct access to a licensed professional who knows your name, your family, and your policy.
+              </p>
+            </div>
+            
+            <div className="mt-8 pt-8 border-t border-slate-100">
+              <div className="flex items-center gap-3">
+                <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                <span className="text-xs font-bold uppercase tracking-wider text-slate-400">Direct Line Access</span>
+              </div>
+            </div>
+          </motion.div>
 
-            {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-              <a
-                href="/lead"
-                className="inline-flex items-center justify-center px-8 py-4 bg-emerald-600 hover:bg-emerald-500 text-white font-semibold rounded-xl transition-all duration-300 transform hover:scale-105 hover:shadow-glow"
-                data-gtm={`${BRAND.gtm.quote}_risk_reversal`}
-              >
-                Request Quote
-              </a>
+          {/* Right Column Stack */}
+          <div className="lg:col-span-2 flex flex-col gap-6">
+            
+            {/* Card 2: Speed (Horizontal) */}
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              className="flex-1 bg-slate-900 rounded-3xl p-8 shadow-xl relative overflow-hidden group flex flex-col md:flex-row items-center gap-8"
+            >
+              <div className="absolute inset-0 bg-gradient-to-r from-emerald-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               
-              <a
-                href={BRAND.phoneTel}
-                className="inline-flex items-center justify-center px-8 py-4 bg-white/10 hover:bg-white/20 text-white font-semibold rounded-xl border border-white/30 backdrop-blur-md transition-all duration-300"
-                data-gtm={`${BRAND.gtm.call}_risk_reversal`}
-              >
-                <Phone className="w-4 h-4 mr-2" />
-                {BRAND.phoneHuman}
-              </a>
-            </div>
-
-            {/* Trust Signals */}
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-              {trustSignals.map((signal, index) => (
-                <div key={index} className="flex items-center justify-center gap-2 text-slate-300 text-sm">
-                  <signal.icon className="w-4 h-4 text-emerald-400" />
-                  <span>{signal.text}</span>
+              <div className="flex-1 relative z-10">
+                <div className="flex items-center gap-3 mb-4">
+                  <Clock className="w-6 h-6 text-emerald-400" />
+                  <span className="text-emerald-400 font-bold uppercase tracking-wider text-xs">Speed Guarantee</span>
                 </div>
-              ))}
-            </div>
+                <h3 className="text-3xl font-bold text-white mb-2">45-Minute Quotes.</h3>
+                <p className="text-slate-400">
+                  We don't make you wait. Get a full market analysis in under an hour.
+                </p>
+              </div>
+
+              {/* Visual Timeline Animation */}
+              <div className="w-full md:w-1/3 bg-white/10 rounded-xl h-2 relative overflow-hidden">
+                <div className="absolute inset-y-0 left-0 bg-emerald-500 w-3/4 animate-pulse rounded-full" />
+              </div>
+            </motion.div>
+
+            {/* Card 3: Cost (Horizontal) */}
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+              className="flex-1 bg-white rounded-3xl p-8 border border-slate-200 shadow-xl relative overflow-hidden group flex flex-col md:flex-row items-center gap-8"
+            >
+              <div className="absolute top-0 left-0 p-32 bg-blue-50 rounded-full blur-3xl opacity-50 -translate-x-1/2 -translate-y-1/2 group-hover:bg-blue-100 transition-colors duration-500" />
+              
+              <div className="flex-1 relative z-10">
+                <div className="flex items-center gap-3 mb-4">
+                  <CreditCard className="w-6 h-6 text-blue-600" />
+                  <span className="text-blue-600 font-bold uppercase tracking-wider text-xs">Zero Client Fees</span>
+                </div>
+                <h3 className="text-3xl font-bold text-slate-900 mb-2">100% Free Service.</h3>
+                <p className="text-slate-500">
+                  We are compensated directly by the carriers. You pay exactly the same rate as going direct—but you get us in your corner for free.
+                </p>
+              </div>
+              
+              <div className="text-5xl font-bold text-slate-200 group-hover:text-blue-100 transition-colors duration-500">
+                $0
+              </div>
+            </motion.div>
+
           </div>
-        </motion.div>
+        </div>
+
       </div>
     </section>
   );
-};
-
-export default RiskReversalSection;
-
+}

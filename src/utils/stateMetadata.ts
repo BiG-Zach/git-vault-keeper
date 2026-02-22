@@ -141,10 +141,11 @@ export const stateMetadata: Record<StateCodeSlug, StateMetaEntry> = {
   },
   in: {
     name: 'Indiana',
+    available: true,
     seo: {
-      title: 'Private Health Insurance in Indiana',
-      description: 'Compare Indiana private health insurance. Get expert help reviewing medically underwritten coverage, eligibility, and monthly cost options.',
-      keywords: kw(['Indiana private health insurance', 'IN health plans', 'PPO networks', 'underwritten coverage', 'budget-friendly plans', 'family healthcare']),
+      title: 'Indiana Health & Life Insurance Broker | Bradford Informed Guidance',
+      description: 'Licensed Indiana health & life insurance broker. Expert guidance on health plans, life insurance options, and personalized coverage recommendations.',
+      keywords: kw(['Indiana health insurance broker', 'IN insurance agent', 'licensed insurance advisor', 'health insurance guidance', 'life insurance quotes', 'Indianapolis insurance']),
     },
   },
   ia: {

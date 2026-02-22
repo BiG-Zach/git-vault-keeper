@@ -101,8 +101,11 @@ export default function Footer() {
               <Link to="/states/georgia" className="block text-slate-300 hover:text-white transition-colors duration-200 text-sm">
                 Georgia
               </Link>
+              <Link to="/states/indiana" className="block text-slate-300 hover:text-white transition-colors duration-200 text-sm">
+                Indiana
+              </Link>
               <span className="block text-slate-400 text-sm">
-                Now serving six licensed states
+                Now serving seven licensed states
               </span>
             </nav>
           </motion.div>

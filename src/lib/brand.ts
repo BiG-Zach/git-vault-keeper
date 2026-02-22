@@ -5,7 +5,7 @@ export const BRAND = {
   phoneTel: "tel:+16893256570",
   email: "zbradford@bradfordinformedguidance.com",
   hours: "Mon-Sun, 8:00 AM - 8:00 PM EST",
-  licensed: "FL, MI, NC, AZ, TX, GA",
+  licensed: "FL, MI, NC, AZ, TX, GA, IN",
   verification: {
     trustMyProducer: "https://bradfordinformedguidance.trustmyproducer.com",
     nipr: "https://nipr.com/licensing-center/look-up-a-national-producer-number",

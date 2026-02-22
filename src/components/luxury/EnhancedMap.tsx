@@ -17,6 +17,7 @@ const STATE_INFO_MAP = {
   AZ: { name: 'Arizona', status: 'Available' as Status, benefit: 'Active state - request a quote today.' },
   TX: { name: 'Texas', status: 'Available' as Status, benefit: 'Active state - request a quote today.' },
   GA: { name: 'Georgia', status: 'Available' as Status, benefit: 'Active state - request a quote today.' },
+  IN: { name: 'Indiana', status: 'Available' as Status, benefit: 'Active state - request a quote today.' },
   CA: { name: 'California', status: 'Coming Soon' as Status, benefit: 'Launching soon - join the waitlist.' },
   NY: { name: 'New York', status: 'Coming Soon' as Status, benefit: 'Launching soon - join the waitlist.' },
   OH: { name: 'Ohio', status: 'Coming Soon' as Status, benefit: 'Launching soon - join the waitlist.' },
@@ -25,8 +26,8 @@ const STATE_INFO_MAP = {
 } as const;
 
 const MAP_STATS = [
-  { icon: MapPin, number: "6", label: "Active States", sublabel: "FL, MI, NC, AZ, TX, & GA" },
-  { icon: TrendingUp, number: "25+", label: "Expanding To", sublabel: "by 2025" },
+  { icon: MapPin, number: "7", label: "Active States", sublabel: "FL, MI, NC, AZ, TX, GA, & IN" },
+  { icon: TrendingUp, number: "25+", label: "Expanding To", sublabel: "by 2026" },
   { icon: Users, number: "1,000+", label: "Families Served", sublabel: "and growing" },
   { icon: Clock, number: "45min", label: "Avg Quote Time", sublabel: "industry leading" }
 ] as const;
@@ -195,7 +196,7 @@ export default function EnhancedMap() {
           <div className="flex items-center gap-3 bg-white rounded-xl px-4 py-3 shadow-sm border border-slate-200">
             <span className="h-4 w-4 rounded-full bg-emerald-500 animate-pulse" />
             <span className="text-sm font-semibold text-slate-700">Active Now</span>
-            <span className="text-xs text-slate-500 bg-emerald-100 px-2 py-1 rounded-full">6 states</span>
+            <span className="text-xs text-slate-500 bg-emerald-100 px-2 py-1 rounded-full">7 states</span>
           </div>
           <div className="flex items-center gap-3 bg-white rounded-xl px-4 py-3 shadow-sm border border-slate-200">
             <span className="h-4 w-4 rounded-full bg-blue-500" />
@@ -319,35 +320,6 @@ export default function EnhancedMap() {
             {/* Mobile status indicator */}
             <div className="mt-6 text-center text-sm text-slate-500 lg:hidden" role="status" aria-live="polite">
               {hover ? `${hover.name} — ${hover.status}` : 'Tap a state for details'}
-            </div>
-          </div>
-        </motion.div>
-
-        {/* Enhanced call to action */}
-        <motion.div
-          initial={{ opacity: 0, y: prefersReducedMotion ? 0 : 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
-          className="text-center mt-12 lg:mt-16"
-        >
-          <div className="bg-gradient-to-r from-emerald-50 via-white to-blue-50 rounded-2xl p-8 lg:p-12 border border-slate-200 max-w-3xl mx-auto">
-            <h3 className="text-xl lg:text-2xl font-bold text-slate-900 mb-4">
-              Don't See Your State?
-            </h3>
-            <p className="text-slate-600 mb-6 leading-relaxed">
-              Licensed professionals providing coverage solutions across six states.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a 
-                href="/contact" 
-                className="inline-flex items-center justify-center px-6 py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold rounded-xl transition-all duration-300 transform hover:scale-105"
-              >
-                Join Priority Waitlist
-              </a>
-              <button className="inline-flex items-center justify-center px-6 py-3 border-2 border-emerald-600 text-emerald-600 hover:bg-emerald-600 hover:text-white font-semibold rounded-xl transition-all duration-300">
-                View Expansion Timeline
-              </button>
             </div>
           </div>
         </motion.div>
