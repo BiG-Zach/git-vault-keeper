@@ -4,7 +4,7 @@ import { Star, Zap, TrendingUp, ShieldCheck, MapPin } from 'lucide-react';
 import { BRAND } from '../../lib/brand';
 
 // Simple CountUp Component
-const CountUp = ({ end, duration = 2, prefix = "", suffix = "" }) => {
+const CountUp = ({ end, duration = 2, prefix = "", suffix = "" }: { end: number; duration?: number; prefix?: string; suffix?: string }) => {
   const [count, setCount] = useState(0);
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-20%" });
@@ -12,10 +12,10 @@ const CountUp = ({ end, duration = 2, prefix = "", suffix = "" }) => {
   useEffect(() => {
     if (!isInView) return;
     
-    let startTime;
-    let animationFrame;
+    let startTime: number | null = null;
+    let animationFrame: number;
 
-    const animate = (timestamp) => {
+    const animate = (timestamp: number) => {
       if (!startTime) startTime = timestamp;
       const progress = timestamp - startTime;
       const percentage = Math.min(progress / (duration * 1000), 1);
@@ -140,7 +140,7 @@ export default function IndustryRecognitionSection() {
                   {item.staticValue ? (
                     <span>{item.staticValue}</span>
                   ) : (
-                    <CountUp end={item.value} prefix={item.prefix} suffix={item.suffix} />
+                    <CountUp end={item.value || 0} prefix={item.prefix} suffix={item.suffix} />
                   )}
                 </div>
                 
