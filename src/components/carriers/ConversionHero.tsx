@@ -114,7 +114,7 @@ const ConversionHero = React.memo(function ConversionHero() {
             >
               <Shield className="w-5 h-5 text-emerald-600 flex-shrink-0" aria-hidden="true" />
               <span className="text-slate-700 font-medium whitespace-nowrap">
-                Licensed in 6 States
+                Licensed in 7 States
               </span>
             </div>
 
@@ -182,7 +182,7 @@ const ConversionHero = React.memo(function ConversionHero() {
                 <li className="flex items-start gap-3">
                   <Check className="w-6 h-6 text-emerald-600 flex-shrink-0 mt-0.5" aria-hidden="true" />
                   <span className="text-lg text-slate-700">
-                    Coverage in FL, GA, SC, TN, AL, and TX
+                    Coverage in FL, MI, NC, AZ, TX, GA, and IN
                   </span>
                 </li>
               </ul>

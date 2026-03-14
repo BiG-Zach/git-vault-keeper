@@ -551,7 +551,7 @@ export default function LifeInsurancePreExistingConditions() {
                   Helping families secure coverage despite medical challenges since 2016.
                 </p>
                 <div className="text-sm text-slate-500">
-                  Licensed in FL, MI, NC, AZ, TX & GA • 1,000+ families served • A+ BBB Rating
+                  Licensed in FL, MI, NC, AZ, TX, GA, IN • 1,000+ families served • A+ BBB Rating
                 </div>
               </div>
             </div>

@@ -5,13 +5,13 @@ import { Award, Shield, Users, Clock, Star, CheckCircle } from 'lucide-react';
 const authorityPoints = [
   {
     icon: <Shield className="w-6 h-6" />,
-    title: "Licensed Across FL, GA, SC, TN, AL & TX",
+    title: "Licensed Across FL, MI, NC, AZ, TX, GA, IN",
     description: "Regional regulation expertise with local carrier relationships in every market we serve"
   },
   {
     icon: <Clock className="w-6 h-6" />,
     title: "8 Years Experience Since 2017",
-    description: "Guiding 1,000+ families with personalized coverage strategies across six states"
+    description: "Guiding 1,000+ families with personalized coverage strategies across seven states"
   },
   {
     icon: <Users className="w-6 h-6" />,
@@ -30,7 +30,7 @@ const credentials = [
     icon: <Award className="w-8 h-8" />,
     label: "TrustMyProducer",
     value: "Dual Verification",
-    description: "TrustMyProducer + NIPR credentials active across all 6 states"
+    description: "TrustMyProducer + NIPR credentials active across all 7 states"
   },
   {
     icon: <Star className="w-8 h-8" />,
@@ -74,7 +74,7 @@ export default function ExpertAuthoritySection() {
             Insurance Expertise You Can Trust Across Six States
           </h2>
           <p className="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
-            Zach Bradford brings 8 years of licensed expertise since 2017, helping families secure coverage across six states
+            Zach Bradford brings 8 years of licensed expertise since 2017, helping families secure coverage across seven states
           </p>
         </motion.div>
 

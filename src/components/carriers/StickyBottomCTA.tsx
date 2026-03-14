@@ -20,7 +20,7 @@ export default function StickyBottomCTA() {
     <div className="fixed bottom-0 left-0 right-0 z-40 border-t border-surface-glassLine/20 bg-surface-glass/95 backdrop-blur-md p-4 shadow-luxury">
       <div className="container mx-auto flex items-center justify-between gap-4">
         <div className="hidden sm:block">
-          <p className="text-sm font-medium text-ink-900">Ready to compare carriers across six states?</p>
+          <p className="text-sm font-medium text-ink-900">Ready to compare carriers across seven states?</p>
           <p className="text-xs text-ink-900/70">See your personalized carrier recommendations</p>
         </div>
         

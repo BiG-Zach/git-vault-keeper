@@ -30,7 +30,7 @@ export default function ResourcesAuthorCTA() {
             Stay Ahead with State-Specific Guidance
           </h2>
           <p className="text-xl text-slate-300 max-w-2xl mx-auto leading-relaxed">
-            Receive multi-state insurance insights from Zach Bradford, your trusted broker licensed across FL, GA, SC, TN, AL, and TX
+            Receive multi-state insurance insights from Zach Bradford, your trusted broker licensed across FL, MI, NC, AZ, TX, GA, and IN
           </p>
         </motion.div>
 
@@ -154,7 +154,7 @@ export default function ResourcesAuthorCTA() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6 text-slate-400 text-sm">
             <div className="flex items-center gap-2">
               <Shield className="w-4 h-4" />
-              <span>Licensed in FL, GA, SC, TN, AL, TX</span>
+              <span>Licensed in FL, MI, NC, AZ, TX, GA, IN</span>
             </div>
             <div className="hidden sm:block w-1 h-1 bg-slate-400 rounded-full" />
             <div className="flex items-center gap-2">

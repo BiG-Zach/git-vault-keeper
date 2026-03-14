@@ -137,7 +137,7 @@ export default function PremiumProcessFAQ() {
               Ready to Get Started?
             </h3>
             <p className="text-emerald-100 mb-8 text-lg leading-relaxed max-w-2xl mx-auto">
-              Most clients get their perfect plan within 48 hours across the six states we serve. Let's find yours with a free, no-pressure consultation.
+              Most clients get their perfect plan within 48 hours across the seven states we serve. Let's find yours with a free, no-pressure consultation.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center">

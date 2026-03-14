@@ -15,7 +15,7 @@ export default function CoverageMap() {
       <div className="container-default">
         <h2 className="h2 mb-4">Coverage Areas</h2>
         <p className="lead mb-2">Currently licensed in Florida, Michigan, North Carolina, Arizona, Texas, and Georgia.</p>
-        <p className="text-sm text-slate-500 mb-6">Active Now (6 states) • Additional markets launching soon.</p>
+        <p className="text-sm text-slate-500 mb-6">Active Now (7 states) • Additional markets launching soon.</p>
 
         <div className="rounded-lg border border-slate-200 p-4 overflow-x-auto">
           <svg

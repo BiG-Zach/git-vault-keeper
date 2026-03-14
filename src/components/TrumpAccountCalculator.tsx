@@ -33,9 +33,9 @@ export default function TrumpAccountCalculator() {
             // Assuming Family contributes selected amount
             // Assuming Employer matches up to $2500 if Family contributes
 
-            let annualGovt = GOVT_CONTRIBUTION;
-            let annualFamily = Math.min(familyContribution, FAMILY_LIMIT);
-            let annualEmployer = Math.min(annualFamily, EMPLOYER_MATCH_LIMIT);
+            const annualGovt = GOVT_CONTRIBUTION;
+            const annualFamily = Math.min(familyContribution, FAMILY_LIMIT);
+            const annualEmployer = Math.min(annualFamily, EMPLOYER_MATCH_LIMIT);
 
             if (i > 0) {
                 balance = balance * (1 + GROWTH_RATE) + annualGovt + annualFamily + annualEmployer;

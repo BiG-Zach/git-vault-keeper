@@ -46,7 +46,7 @@ export const SITE = {
   url: 'https://bradfordinformedguidance.com',
   image: 'https://bradfordinformedguidance.com/hero-family.webp',
   defaultDescription:
-    'Independent insurance broker partnered with Best Insurance Group delivering enterprise-level carrier access across FL, MI, NC, AZ, TX, and GA.',
+    'Independent insurance broker partnered with Best Insurance Group delivering enterprise-level carrier access across FL, MI, NC, AZ, TX, GA, and IN.',
   themeColor: '#0ea5e9',
   twitter: '@', // update when available
 };

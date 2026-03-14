@@ -14,7 +14,7 @@ interface BlogPost {
 }
 
 interface PremiumKnowledgeCategoriesProps {
-  blogPosts: { [key: string]: BlogPost[] };
+  blogPosts?: { [key: string]: BlogPost[] };
 }
 
 const categories = [
@@ -52,7 +52,7 @@ const categories = [
   }
 ];
 
-export default function PremiumKnowledgeCategories({ blogPosts }: PremiumKnowledgeCategoriesProps) {
+export default function PremiumKnowledgeCategories({ blogPosts = {} }: PremiumKnowledgeCategoriesProps) {
   const prefersReducedMotion = useReducedMotion();
 
   return (

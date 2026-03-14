@@ -6,7 +6,7 @@ const trustPoints = [
   {
     icon: <Shield className="w-6 h-6" />,
     title: "Licensed in Six States",
-    description: "Fully licensed across FL, GA, SC, TN, AL, and TX with local regulatory insight"
+    description: "Fully licensed across FL, MI, NC, AZ, TX, GA, and IN with local regulatory insight"
   },
   {
     icon: <Award className="w-6 h-6" />,

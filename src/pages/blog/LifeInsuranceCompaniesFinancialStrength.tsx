@@ -1449,7 +1449,7 @@ export default function LifeInsuranceCompaniesFinancialStrength() {
                       </li>
                       <li className="flex items-start">
                         <CheckCircle className="w-5 h-5 text-green-500 mr-3 mt-1 flex-shrink-0" />
-                        <span><strong>Licensed in 6 states:</strong> Florida, Arizona, Georgia, Texas, North Carolina, and Michigan (FL License W347851)</span>
+                        <span><strong>Licensed in 7 states:</strong> Florida, Arizona, Georgia, Texas, North Carolina, and Michigan (FL License W347851)</span>
                       </li>
                       <li className="flex items-start">
                         <CheckCircle className="w-5 h-5 text-green-500 mr-3 mt-1 flex-shrink-0" />

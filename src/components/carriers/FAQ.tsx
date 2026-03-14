@@ -9,7 +9,7 @@ export default function NetworkFAQ() {
     },
     {
       question: "Which PPO network is best in Florida, Michigan, or North Carolina?",
-      answer: "The best network depends on your specific needs and preferred doctors. UnitedHealthcare offers the largest network with 1.3+ million providers, while Aetna provides excellent comprehensive coverage. Our licensed brokers help you compare options based on your location in FL, MI, or NC and healthcare needs."
+      answer: "The best network depends on your specific needs and preferred doctors. UnitedHealthcare offers the largest network with 1.3+ million providers, while Aetna provides excellent comprehensive coverage. Our licensed brokers help you compare options based on your location in FL, MI, NC, AZ, TX, GA, or IN and healthcare needs."
     },
     {
       question: "How do I check if my doctor is in-network?",
@@ -17,7 +17,7 @@ export default function NetworkFAQ() {
     },
     {
       question: "Can I get next-day approval for PPO insurance?",
-      answer: "Yes, we offer next-day approval for qualified applicants through our trusted carrier relationships. Our streamlined process and strong partnerships with A+ rated carriers enable fast coverage decisions for health and life insurance plans in FL, MI, and NC."
+      answer: "Yes, we offer next-day approval for qualified applicants through our trusted carrier relationships. Our streamlined process and strong partnerships with A+ rated carriers enable fast coverage decisions for health and life insurance plans in FL, MI, NC, AZ, TX, GA, and IN."
     },
     {
       question: "What states is Bradford Informed Guidance licensed in?",

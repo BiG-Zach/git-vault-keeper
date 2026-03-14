@@ -150,7 +150,7 @@ export default function PremiumProcessSteps() {
       bulletPoints: [
         "Same-day enrollment assistance when requested",
         "24-hour approval turnaround through Best Insurance Group partnership",
-        "I handle all your paperwork across all 6 states",
+        "I handle all your paperwork across all 7 states",
         "Direct carrier relationships streamline your enrollment",
         "Year-round advocacy and ongoing personal support"
       ]

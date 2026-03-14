@@ -26,7 +26,7 @@ const stats = [
     icon: <Award className="w-8 h-8" />,
     number: "6",
     label: "States Licensed",
-    description: "FL, GA, SC, TN, AL, TX coverage"
+    description: "FL, MI, NC, AZ, TX, GA, IN coverage"
   }
 ];
 

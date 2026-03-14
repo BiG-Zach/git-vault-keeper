@@ -1,13 +1,9 @@
 import { useState } from 'react';
+import { BookOpen } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { Search, MapPin, Shield, Users } from 'lucide-react';
 import SEO from '../components/SEO';
-import ResourcesHero from '../components/headers/ResourcesHero';
-import ResourcesStatisticsSection from '../components/resources/ResourcesStatisticsSection';
 import PremiumKnowledgeCategories from '../components/resources/PremiumKnowledgeCategories';
-import ExpertAuthoritySection from '../components/resources/ExpertAuthoritySection';
 import PremiumBlogGrid from '../components/resources/PremiumBlogGrid';
-import ResourcesAuthorCTA from '../components/resources/ResourcesAuthorCTA';
 import { organizationSchema, itemListSchema } from '../utils/schema';
 
 export interface BlogPost {
@@ -21,7 +17,6 @@ export interface BlogPost {
   states?: string[];
 }
 
-// eslint-disable-next-line react-refresh/only-export-components
 export const blogPosts: { [key: string]: BlogPost[] } = {
   'life-insurance': [
     {
@@ -193,8 +188,7 @@ export const blogPosts: { [key: string]: BlogPost[] } = {
   ]
 };
 
-export default function Resources() {
-  const [searchTerm, setSearchTerm] = useState('');
+export default function ResourcesPage() {
   const [selectedCategory, setSelectedCategory] = useState('all');
 
   const categories = [
@@ -212,13 +206,8 @@ export default function Resources() {
     return blogPosts[selectedCategory] || [];
   };
 
-  const matchesSearch = (post: BlogPost) =>
-    post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    post.preview.toLowerCase().includes(searchTerm.toLowerCase());
+  const filteredPosts = getAllPosts();
 
-  const filteredPosts = getAllPosts().filter(post => matchesSearch(post));
-
-  // Build ItemList schema for all blog posts
   const allPosts = Object.values(blogPosts).flat();
   const blogItemList = allPosts.map(post => ({
     name: post.title,
@@ -229,179 +218,100 @@ export default function Resources() {
   const structuredData = [
     organizationSchema(),
     itemListSchema({
-      name: 'Insurance Knowledge Base Articles',
-      description: 'Comprehensive insurance guides covering health insurance, life insurance, and carrier comparisons',
-      items: blogItemList,
-    }),
+      name: 'Insurance Knowledge Center',
+      description: 'Expert guides on health and life insurance',
+      items: blogItemList
+    })
   ];
 
   return (
-    <main id="content" className="has-sticky-cta">
+    <main className="bg-slate-950 selection:bg-emerald-500/30 min-h-screen">
       <SEO
-        title="Your Complete Insurance Knowledge Center | Bradford Informed Guidance"
-        description="Expert insurance guidance from Zach Bradford, licensed across FL, GA, SC, TN, AL, and TX. Life, health, and carrier insights for 1,000+ families since 2016."
+        title="Insurance Knowledge Center | Expert Guides & Insights"
+        description="Expert insurance guidance from Zach Bradford, licensed across 7 states. Life, health, and carrier insights for 1,000+ families."
         path="/resources"
-        image="/images/hero/resources-hero-retina.webp"
-        meta={[
-          {
-            property: 'og:image:alt',
-            content: 'Open laptop and insurance resources curated by Bradford Informed Guidance'
-          },
-          {
-            name: 'twitter:image:alt',
-            content: 'Open laptop and insurance resources curated by Bradford Informed Guidance'
-          }
-        ]}
-        scripts={structuredData.map(data => ({
-          type: 'application/ld+json',
-          innerHTML: data
-        }))}
+        scripts={structuredData.map(data => ({ type: 'application/ld+json', innerHTML: data }))}
       />
-      
-      {/* Enhanced Hero Section (Light) */}
-      <ResourcesHero />
 
-      {/* NEW: Knowledge Statistics Section (Dark) */}
-      <ResourcesStatisticsSection />
-
-      {/* Enhanced Search Section (Light) */}
-      <section className="py-12 bg-white border-b border-slate-200">
-        <div className="container mx-auto px-4 max-w-4xl">
-          <div className="relative">
-            <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-slate-400 w-5 h-5" />
-            <input
-              type="text"
-              placeholder="Search insurance topics..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full pl-12 pr-4 py-4 rounded-xl border border-slate-200 bg-white/80 backdrop-blur-sm text-slate-900 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent shadow-sm"
-            />
-          </div>
+      {/* LUXURY SPLIT HERO */}
+      <section className="relative min-h-[70vh] flex items-center pt-32 pb-20 overflow-hidden bg-slate-950">
+        <div className="absolute inset-0 z-0">
+          <img
+            src="/images/hero/resources-hero-desktop.webp"
+            alt="Financial intelligence and insurance strategy"
+            className="w-full h-full object-cover object-center opacity-20 mix-blend-luminosity"
+            onError={(e) => { e.currentTarget.src = '/assets/backgrounds/happy-family-beach-hero.webp'; }}
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/90 to-slate-950/40 z-10" />
+          <div className="absolute top-1/4 -left-32 w-[800px] h-[800px] bg-emerald-500/5 rounded-full blur-[150px] pointer-events-none" />
         </div>
-      </section>
-      {/* Featured Article Spotlight */}
-      <section className="py-12 bg-gradient-to-br from-blue-50 to-white">
-        <div className="container mx-auto px-4 max-w-6xl">
-          <div className="text-center mb-8">
-            <h2 className="text-2xl font-bold text-slate-900 mb-2">Featured Guide</h2>
-            <p className="text-slate-600">Most comprehensive resource this month</p>
-          </div>
-          <div className="bg-white rounded-2xl p-8 shadow-lg border border-slate-200 max-w-2xl mx-auto">
-            <div className="text-sm text-blue-600 font-semibold mb-2">🏆 MOST COMPREHENSIVE</div>
-            <h3 className="text-xl font-bold text-slate-900 mb-3">Open Enrollment 2026: The Complete Guide to Avoiding Costly ACA Marketplace Mistakes</h3>
-            <p className="text-slate-600 mb-4">Avoid the $30,000 auto-renewal mistake. Open Enrollment 2026 runs Nov 1-Jan 15. Learn about subsidy cliff, premium increases, and deadline strategies.</p>
-            <div className="flex items-center justify-between">
-              <div className="flex gap-4 text-sm text-slate-500">
-                <span>3,800 words</span>
-                <span>18 min read</span>
-                <span>Updated Oct 2025</span>
-              </div>
-              <Link
-                to="/blog/open-enrollment-2026-guide"
-                className="text-blue-600 font-semibold hover:text-blue-700"
-              >
-                Read Guide →
-              </Link>
+
+        <div className="container relative z-20 mx-auto px-6">
+          <div className="max-w-4xl space-y-8">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 backdrop-blur-sm">
+              <BookOpen className="w-4 h-4 text-emerald-400" />
+              <span className="text-xs font-bold uppercase tracking-wider text-emerald-400">
+                The Knowledge Center
+              </span>
             </div>
+
+            <h1 className="text-5xl lg:text-7xl font-serif font-bold leading-tight drop-shadow-lg text-white">
+              Financial Intelligence. <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-300">
+                Actionable Strategy.
+              </span>
+            </h1>
+            
+            <p className="text-xl text-slate-300 leading-relaxed font-light max-w-2xl">
+              Decode the complexities of the healthcare market and life insurance vehicles. Authored directly by Zach Bradford for families across 7 states.
+            </p>
           </div>
         </div>
       </section>
 
-      {/* Quick Links Section */}
-      <section className="py-12 bg-slate-50">
-        <div className="container mx-auto px-4 max-w-6xl">
-          <div className="text-center mb-8">
-            <h2 className="text-2xl font-bold text-slate-900 mb-2">Explore More Resources</h2>
-            <p className="text-slate-600">Additional tools and information to help you make informed decisions</p>
-          </div>
-          <div className="grid md:grid-cols-3 gap-6">
-            <Link
-              to="/states"
-              className="group bg-white rounded-xl p-6 shadow-sm border border-slate-200 hover:shadow-lg hover:border-emerald-300 transition-all duration-300"
-            >
-              <div className="flex items-center gap-3 mb-3">
-                <div className="w-12 h-12 bg-emerald-100 rounded-lg flex items-center justify-center group-hover:bg-emerald-200 transition-colors">
-                  <MapPin className="w-6 h-6 text-emerald-600" />
-                </div>
-                <h3 className="text-lg font-bold text-slate-900">State Directory</h3>
-              </div>
-              <p className="text-slate-600 text-sm">
-                Find licensed advisors and coverage options in all 50 states
-              </p>
-            </Link>
-
-            <Link
-              to="/carriers"
-              className="group bg-white rounded-xl p-6 shadow-sm border border-slate-200 hover:shadow-lg hover:border-blue-300 transition-all duration-300"
-            >
-              <div className="flex items-center gap-3 mb-3">
-                <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center group-hover:bg-blue-200 transition-colors">
-                  <Shield className="w-6 h-6 text-blue-600" />
-                </div>
-                <h3 className="text-lg font-bold text-slate-900">Our Carriers</h3>
-              </div>
-              <p className="text-slate-600 text-sm">
-                Explore our partnerships with A+ rated insurance carriers
-              </p>
-            </Link>
-
-            <Link
-              to="/our-process"
-              className="group bg-white rounded-xl p-6 shadow-sm border border-slate-200 hover:shadow-lg hover:border-purple-300 transition-all duration-300"
-            >
-              <div className="flex items-center gap-3 mb-3">
-                <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center group-hover:bg-purple-200 transition-colors">
-                  <Users className="w-6 h-6 text-purple-600" />
-                </div>
-                <h3 className="text-lg font-bold text-slate-900">Our Process</h3>
-              </div>
-              <p className="text-slate-600 text-sm">
-                See how we guide clients through discovery and enrollment
-              </p>
-            </Link>
-          </div>
+      {/* CATEGORIES OVERVIEW */}
+      <section className="py-12 bg-slate-900 border-t border-white/5 relative">
+        <div className="container mx-auto px-6 max-w-7xl">
+           <PremiumKnowledgeCategories blogPosts={blogPosts} />
         </div>
       </section>
 
-      {/* Enhanced Category Navigation (Light) */}
-      <section className="py-8 bg-white border-b border-slate-200">
-        <div className="container mx-auto px-4">
+      {/* LUXURY CATEGORY FILTER */}
+      <section className="py-12 bg-slate-950 relative border-t border-white/5">
+        <div className="container mx-auto px-6 max-w-7xl">
           <div className="flex flex-wrap gap-4 justify-center">
             {categories.map((category) => (
               <button
                 key={category.id}
                 onClick={() => setSelectedCategory(category.id)}
-                className={`px-6 py-3 rounded-full font-medium transition-all duration-300 ${
+                className={`px-6 py-3 rounded-xl font-medium transition-all duration-500 flex items-center gap-2 ${
                   selectedCategory === category.id
-                    ? 'bg-gradient-to-r from-blue-600 to-blue-700 text-white shadow-lg transform scale-105'
-                    : 'bg-slate-100 text-slate-700 hover:bg-slate-200 hover:shadow-md'
+                    ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 shadow-[0_0_30px_rgba(16,185,129,0.15)] scale-105'
+                    : 'bg-white/5 text-slate-400 border border-white/10 hover:bg-white/10 hover:text-slate-200'
                 }`}
               >
-                {category.name} ({category.count})
+                {category.name}
+                <span className={`text-xs px-2 py-0.5 rounded-full ${
+                  selectedCategory === category.id ? 'bg-emerald-500/20 text-emerald-300' : 'bg-white/10 text-slate-500'
+                }`}>
+                  {category.count}
+                </span>
               </button>
             ))}
           </div>
         </div>
       </section>
 
-
-      {/* Premium Knowledge Categories Section (Light) */}
-      <PremiumKnowledgeCategories blogPosts={blogPosts} />
-
-      {/* NEW: Expert Authority Section (Dark) */}
-      <ExpertAuthoritySection />
-
-      {/* Enhanced Blog Grid Section (Light) */}
-      <PremiumBlogGrid 
-        posts={filteredPosts} 
-        selectedCategory={selectedCategory}
-        categories={categories}
-      />
-
-      {/* NEW: Author CTA Section (Dark) */}
-      <ResourcesAuthorCTA />
+      {/* BLOG GRID */}
+      <section className="pb-24 bg-slate-950 relative">
+        <div className="container mx-auto px-6 max-w-7xl">
+           <PremiumBlogGrid 
+             posts={filteredPosts}
+             selectedCategory={selectedCategory}
+             categories={categories}
+           />
+        </div>
+      </section>
     </main>
   );
 }
-
-

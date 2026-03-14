@@ -10,6 +10,10 @@ import { stateMetadata, type StateCodeSlug } from '../../utils/stateMetadata';
 import Button from '../../components/Button';
 import { getStateVisual } from '../../utils/stateVisuals';
 
+import PremiumCarriers from '../../components/luxury/PremiumCarriers';
+import RiskReversalSection from '../../components/luxury/RiskReversalSection';
+import AuthoritySection from '../../components/luxury/AuthoritySection';
+
 // Normalize incoming code param to lowercase slug
 function normalizeSlug(param?: string): StateCodeSlug | null {
   if (!param) return null;
@@ -92,37 +96,23 @@ function ActiveStateTemplate({ entry, codeUC, slug: _slug }: { entry: StateEntry
   return (
     <>
       {/* Hero Section */}
-      <section className="section bg-gradient-to-b from-emerald-50 to-white">
-        <div className="container-default">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-center max-w-4xl mx-auto"
-          >
-            <div className="mb-6">
-              <span className="inline-flex items-center gap-2 bg-emerald-100 text-emerald-800 px-4 py-2 rounded-full text-sm font-semibold">
-                <Shield className="w-4 h-4" />
-                Licensed Insurance Broker
-              </span>
-            </div>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 mb-6">
-              {entry.name} Health & Life Insurance
-              <span className="block text-emerald-600">Expert Guidance</span>
+      <section className="relative min-h-[80vh] flex items-center pt-24 pb-20 overflow-hidden bg-surface-luxury">
+        <div className="absolute inset-0 z-0 bg-slate-900/90" />
+        <div className="container relative z-20 mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+          <div className="text-white space-y-8">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold leading-tight">
+              {entry.name} Health & Life Insurance <br/>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-200">Expert Guidance</span>
             </h2>
-            <p className="text-xl text-slate-600 mb-8 max-w-3xl mx-auto">
-              Navigate health and life insurance options with confidence. Get personalized recommendations, 
-              compare top carriers, and secure the right coverage for your family.
+            <p className="text-xl text-slate-300 max-w-2xl">
+              Navigate health and life insurance options with confidence. Get personalized recommendations, compare top carriers, and secure the right coverage for your family in {entry.name}.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button as="a" href="/" variant="primary" size="lg">
+            <div className="flex flex-col sm:flex-row gap-4">
+              <Button as="a" href="/" variant="primary" size="lg" className="bg-emerald-500 hover:bg-emerald-400 text-slate-900">
                 Schedule Consultation
               </Button>
-              <Button as="a" href={`tel:+16893256570`} variant="outline" size="lg">
-                Call (689) 325-6570
-              </Button>
             </div>
-          </motion.div>
+          </div>
         </div>
       </section>
 
@@ -287,6 +277,10 @@ function ActiveStateTemplate({ entry, codeUC, slug: _slug }: { entry: StateEntry
       </section>
 
       {/* Final CTA */}
+      
+      <PremiumCarriers />
+      <RiskReversalSection />
+      <AuthoritySection />
       <section className="section bg-emerald-600">
         <div className="container-default">
           <motion.div
@@ -322,36 +316,23 @@ function ComingSoonTemplate({ entry, codeUC: _codeUC, slug: _slug }: { entry: St
   return (
     <>
       {/* Hero Section */}
-      <section className="section bg-gradient-to-b from-sky-50 to-white">
-        <div className="container-default">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-center max-w-4xl mx-auto"
-          >
-            <div className="mb-6">
-              <span className="inline-flex items-center gap-2 bg-sky-100 text-sky-800 px-4 py-2 rounded-full text-sm font-semibold animate-pulse">
-                <Clock className="w-4 h-4" />
-                Coming to {entry.name} Soon
-              </span>
-            </div>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 mb-6">
-              Coming to {entry.name} Soon
-              <span className="block text-sky-600">Join the Waitlist!</span>
+      <section className="relative min-h-[80vh] flex items-center pt-24 pb-20 overflow-hidden bg-surface-luxury">
+        <div className="absolute inset-0 z-0 bg-slate-900/90" />
+        <div className="container relative z-20 mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+          <div className="text-white space-y-8">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold leading-tight">
+              Coming to {entry.name} Soon <br/>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-blue-200">Join the Waitlist!</span>
             </h2>
-            <p className="text-xl text-slate-600 mb-8 max-w-3xl mx-auto">
+            <p className="text-xl text-slate-300 max-w-2xl">
               Be the first to access exclusive rates and personalized health insurance guidance when we launch in {entry.name}.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button as="a" href="#waitlist" variant="primary" size="lg">
+            <div className="flex flex-col sm:flex-row gap-4">
+              <Button as="a" href="#waitlist" variant="primary" size="lg" className="bg-sky-500 hover:bg-sky-400 text-slate-900">
                 Join the Waitlist
               </Button>
-              <Button as="a" href="#timeline" variant="outline" size="lg">
-                View Launch Timeline
-              </Button>
             </div>
-          </motion.div>
+          </div>
         </div>
       </section>
 

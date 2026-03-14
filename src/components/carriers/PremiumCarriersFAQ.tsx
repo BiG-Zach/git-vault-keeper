@@ -43,7 +43,7 @@ const faqs = [
     answer: "It unlocks enterprise-level resources normally reserved for large agencies - priority underwriters, exclusive carrier programs, and escalation paths that keep approvals and claims moving quickly in every state we serve."
   },
   {
-    question: "Do you serve all six states you are licensed in?",
+    question: "Do you serve all seven states you are licensed in?",
     answer: "Absolutely. I am licensed and bonded to support clients in Florida, Michigan, North Carolina, Arizona, Texas, and Georgia. Each consultation includes state-specific carrier guidance, compliance updates, and virtual support tailored to where you live."
   },
   {
@@ -60,7 +60,7 @@ const faqs = [
   },
   {
     question: "What if I need to file a claim - how does that work with a broker?",
-    answer: "This is where working with a broker really pays off. I act as your advocate throughout the claims process. While you'll still file claims directly with your insurance carrier, I help resolve any issues that arise, understand claim denials, and ensure you're getting the benefits you're entitled to. I've helped clients navigate everything from routine claim questions to complex appeals across all 6 states I serve."
+    answer: "This is where working with a broker really pays off. I act as your advocate throughout the claims process. While you'll still file claims directly with your insurance carrier, I help resolve any issues that arise, understand claim denials, and ensure you're getting the benefits you're entitled to. I've helped clients navigate everything from routine claim questions to complex appeals across all 7 states I serve."
   },
   {
     question: "I live in North Carolina - what should I know about Blue Cross Blue Shield's dominance here?",
@@ -72,7 +72,7 @@ const faqs = [
   },
   {
     question: "How does coverage work when I travel to other states?",
-    answer: "Most PPO networks I recommend provide nationwide coverage, which is perfect for travel. Emergency care is always covered regardless of location. For routine care while traveling, I ensure your plan includes out-of-network benefits or has reciprocal agreements with providers in other states. Since I'm licensed in FL, MI, NC, AZ, TX, and GA, I can help coordinate coverage if you're moving between these states."
+    answer: "Most PPO networks I recommend provide nationwide coverage, which is perfect for travel. Emergency care is always covered regardless of location. For routine care while traveling, I ensure your plan includes out-of-network benefits or has reciprocal agreements with providers in other states. Since I'm licensed in FL, MI, NC, AZ, TX, GA, and IN, I can help coordinate coverage if you're moving between these states."
   },
   {
     question: "What happens if I need to make changes to my plan?",
@@ -168,7 +168,7 @@ export default function PremiumCarriersFAQ() {
           </h2>
           
           <p className="text-xl text-slate-300 max-w-2xl mx-auto">
-            Get answers to common questions about PPO networks, insurance carriers, and state-specific guidance across FL, MI, NC, AZ, TX, and GA.
+            Get answers to common questions about PPO networks, insurance carriers, and state-specific guidance across FL, MI, NC, AZ, TX, GA, and IN.
           </p>
         </motion.div>
 
