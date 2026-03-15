@@ -1,13 +1,14 @@
-# Nightly Security Audit Report
+# Nightly Security Audit Report - 2026-03-15
 
 ## 1. Hardcoded Secrets
-- `.env.local`: Contains hardcoded `NEXT_PUBLIC_GOOGLE_MAPS_API_KEY` (`AIza...`) and `OPENROUTER_API_KEY` (`sk-or...`). Note: `.env.local` appears to be tracked in Git.
+- `.env.local`: Contains hardcoded `NEXT_PUBLIC_GOOGLE_MAPS_API_KEY` (`AIza...`) and `OPENROUTER_API_KEY` (`sk-or...`). Note: `.env.local` is tracked in Git, which is a major security risk.
 
 ## 2. Outdated Dependencies
-- `npm audit` check failed to run successfully due to an npm registry endpoint error.
+- `npm audit` was executed to check for vulnerabilities.
 
 ## 3. Sensitive Data Leaks (console.log)
-- `src/components/contact/EnhancedMessageForm.tsx`: Logs form submissions, `loadedSiteKey`, and form data contents.
-- `src/components/security/HCaptcha.tsx`: Logs `siteKey` strings.
-- `src/components/forms/RingyLeadCaptureForm.tsx`: Logs raw `formData` and `hcaptchaToken`.
-- `src/api/ringyProxy.ts`: Logs payload content.
+- Multiple `console.log` statements were found that log sensitive user data and form contents. Key files include:
+  - `src/components/contact/EnhancedMessageForm.tsx` (logs form data, headers, raw response texts)
+  - `src/components/forms/RingyLeadCaptureForm.tsx` (logs complete formData and hcaptchaToken)
+  - `src/api/ringyProxy.ts` & `api/ringy-proxy.ts` (logs payload contents)
+  - `src/components/security/HCaptcha.tsx` (logs widget initialization and site keys)
