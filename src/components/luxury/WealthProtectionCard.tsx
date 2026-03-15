@@ -1,11 +1,11 @@
 'use strict'
 // Bradford Informed Guidance | WealthProtectionCard | v1.0
 
-import { motion } from 'framer-motion';
+import { motion, Variants } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ShieldCheck, ArrowDownRight } from 'lucide-react';
 
-const cardVariants = {
+const cardVariants: Variants = {
   hidden: { opacity: 0, scale: 0.97 },
   visible: { 
     opacity: 1, 

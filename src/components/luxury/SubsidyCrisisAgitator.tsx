@@ -1,10 +1,10 @@
 'use strict'
 // Bradford Informed Guidance | SubsidyCrisisAgitator | v1.0
 
-import { motion } from 'framer-motion';
+import { motion, Variants } from 'framer-motion';
 import { Link } from 'react-router-dom';
 
-const containerVariants = {
+const containerVariants: Variants = {
   hidden: {},
   visible: {
     transition: {
@@ -13,7 +13,7 @@ const containerVariants = {
   },
 };
 
-const cardVariants = {
+const cardVariants: Variants = {
   hidden: { opacity: 0, y: 24 },
   visible: { 
     opacity: 1, 
