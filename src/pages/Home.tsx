@@ -8,6 +8,8 @@ import EnhancedMap from "../components/luxury/EnhancedMap";
 import LuxuryTestimonialsCarousel from "../components/luxury/TestimonialsCarousel";
 import RiskReversalSection from "../components/luxury/RiskReversalSection";
 import AuthoritySection from "../components/luxury/AuthoritySection";
+import SubsidyCrisisAgitator from "../components/luxury/SubsidyCrisisAgitator";
+import WealthProtectionCard from "../components/luxury/WealthProtectionCard";
 
 const licensedStates = ["FL", "MI", "NC", "AZ", "TX", "GA", "IN"];
 const licensedStatesDisplay = licensedStates.join(" • ");
@@ -162,6 +164,9 @@ export default function Home() {
           </div>
         </div>
 
+        {/* NEW: 2026 ACA Subsidy Crisis Agitator */}
+        <SubsidyCrisisAgitator />
+
         {/* Luxury Sections Below Fold */}
         <div className="relative z-10 bg-surface-luxury">
           <PremiumCarriers />
@@ -169,6 +174,10 @@ export default function Home() {
           <EnhancedMap />
           <LuxuryTestimonialsCarousel />
           <AuthoritySection />
+
+          {/* NEW: Wealth Protection / Life Insurance Trojan Horse */}
+          <WealthProtectionCard />
+
           <RiskReversalSection />
         </div>
       </main>
