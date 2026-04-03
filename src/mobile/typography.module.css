@@ -1,0 +1,80 @@
+/* Mobile typography scale and spacing rhythm */
+@media (max-width: 768px) {
+  .mobileTypography {
+    /* Base typography */
+    font-size: 16px;
+    line-height: 1.5;
+    color: hsl(215 25% 25%);
+  }
+
+  .mobileH1 {
+    font-size: clamp(28px, 6vw, 36px);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    font-weight: 800;
+    color: hsl(215 25% 15%);
+    margin: 0 0 12px 0;
+  }
+
+  .mobileH2 {
+    font-size: 24px;
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+    font-weight: 700;
+    color: hsl(215 25% 15%);
+    margin: 0 0 16px 0;
+  }
+
+  .mobileH3 {
+    font-size: 20px;
+    line-height: 1.3;
+    font-weight: 600;
+    color: hsl(215 25% 20%);
+    margin: 0 0 12px 0;
+  }
+
+  .mobileBody {
+    font-size: 16px;
+    line-height: 1.5;
+    color: hsl(215 15% 40%);
+    margin: 0 0 16px 0;
+  }
+
+  .mobileBodyLarge {
+    font-size: 17px;
+    line-height: 1.5;
+    color: hsl(215 15% 40%);
+    margin: 0 0 16px 0;
+  }
+
+  .mobileCaption {
+    font-size: 14px;
+    line-height: 1.4;
+    color: hsl(215 15% 50%);
+    margin: 0 0 8px 0;
+  }
+
+  .mobileSmall {
+    font-size: 13px;
+    line-height: 1.4;
+    color: hsl(215 15% 55%);
+    margin: 0 0 8px 0;
+  }
+
+  /* Spacing rhythm - 4px/8px grid */
+  .mobileSpacing4 { margin: 4px 0; }
+  .mobileSpacing8 { margin: 8px 0; }
+  .mobileSpacing12 { margin: 12px 0; }
+  .mobileSpacing16 { margin: 16px 0; }
+  .mobileSpacing20 { margin: 20px 0; }
+  .mobileSpacing24 { margin: 24px 0; }
+  .mobileSpacing32 { margin: 32px 0; }
+
+  .mobilePadding4 { padding: 4px; }
+  .mobilePadding8 { padding: 8px; }
+  .mobilePadding12 { padding: 12px; }
+  .mobilePadding16 { padding: 16px; }
+  .mobilePadding20 { padding: 20px; }
+  .mobilePadding24 { padding: 24px; }
+  .mobilePadding32 { padding: 32px; }
+}

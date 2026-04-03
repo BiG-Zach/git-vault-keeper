@@ -1,0 +1,108 @@
+name: CI
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+
+jobs:
+  test:
+    name: Test & Lint
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [20.x]
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run type check
+        run: npm run type-check
+
+      - name: Run linter
+        run: npm run lint || true
+        continue-on-error: true
+
+      - name: Run tests
+        run: npm run test:run
+
+      - name: Build project
+        run: npm run build
+
+      - name: Bot Content Verification
+        run: |
+          PAGES=(
+            "dist/index.html"
+            "dist/states/fl/index.html"
+            "dist/blog/am-best-insurance-ratings-explained/index.html"
+          )
+          FAILED=0
+          for PAGE in "${PAGES[@]}"; do
+            if [ ! -f "$PAGE" ]; then
+              echo "FAIL (missing file): $PAGE"
+              FAILED=1
+            elif grep -q "Bradford Informed Guidance" "$PAGE"; then
+              echo "PASS: $PAGE"
+            else
+              echo "FAIL (content not found): $PAGE"
+              FAILED=1
+            fi
+          done
+          if [ "$FAILED" -ne 0 ]; then
+            echo "Bot Content Verification failed."
+            exit 1
+          fi
+          echo "All pages passed bot content verification."
+
+      - name: Schema Validation
+        run: node scripts/validate-schemas.js
+
+      - name: Upload build artifacts
+        if: matrix.node-version == '20.x'
+        uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          path: dist/
+          retention-days: 7
+
+  # Temporarily disabled until coverage tooling is fully configured
+  # test-coverage:
+  #   name: Test Coverage
+  #   runs-on: ubuntu-latest
+  #
+  #   steps:
+  #     - name: Checkout code
+  #       uses: actions/checkout@v4
+  #
+  #     - name: Setup Node.js
+  #       uses: actions/setup-node@v4
+  #       with:
+  #         node-version: '20.x'
+  #         cache: 'npm'
+  #
+  #     - name: Install dependencies
+  #       run: npm ci
+  #
+  #     - name: Run tests with coverage
+  #       run: npm run test:coverage
+  #
+  #     - name: Upload coverage reports
+  #       uses: codecov/codecov-action@v4
+  #       if: always()
+  #       with:
+  #         file: ./coverage/coverage-final.json
+  #         flags: unittests
+  #         name: codecov-umbrella
+  #         fail_ci_if_error: false

@@ -1,0 +1,218 @@
+﻿/* Google Fonts - Optimized loading with proper weights and fallbacks */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,700&display=swap');
+@import "./styles/accents.css";
+
+
+
+/* Tailwind layers (must come before any custom imports/styles for correct layering) */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .text-shadow-strong {
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.95), 0 1px 3px rgba(0, 0, 0, 1), 0 0 20px rgba(255, 255, 255, 0.15);
+  }
+
+  .text-shadow-title {
+    text-shadow:
+      0 0 40px rgba(255, 255, 255, 0.4),
+      0 0 20px rgba(255, 255, 255, 0.3),
+      0 2px 8px rgba(0, 0, 0, 1),
+      0 4px 16px rgba(0, 0, 0, 0.95),
+      0 6px 24px rgba(0, 0, 0, 0.9),
+      0 1px 3px rgba(0, 0, 0, 1);
+    -webkit-text-stroke: 0.5px rgba(255, 255, 255, 0.2);
+  }
+}
+
+/* Citation link styling */
+.citation-link {
+  display: inline;
+  margin: 0 1px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.citation-link:hover {
+  text-decoration: underline;
+}
+
+/* Base layer: tokens + typography */
+@layer base {
+  :root {
+    /* Luxury Brand Colors */
+    --color-primary: hsl(224, 100%, 32%);
+    /* premium navy */
+    --color-primary-hover: hsl(215, 88%, 39%);
+    --color-accent: hsl(157, 72%, 43%);
+    /* luxury teal/green */
+    --color-gold: hsl(43, 74%, 66%);
+    /* luxury gold */
+    --color-platinum: hsl(210, 20%, 85%);
+    /* premium gray */
+
+    /* Surface Colors */
+    --surface-luxury: hsl(220, 26%, 14%);
+    /* deep luxury background */
+    --surface-glass: hsla(0, 0%, 100%, 0.08);
+    /* glass morphism */
+    --surface-elevation: hsl(0, 0%, 100%);
+    /* elevated cards */
+
+    /* Typography */
+    --font-luxury-serif: "Playfair Display", serif;
+    --font-luxury-sans: "Inter", system-ui, sans-serif;
+
+    /* Luxury Gradients */
+    --gradient-luxury: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
+    --gradient-gold: linear-gradient(135deg, hsl(43, 74%, 66%) 0%, hsl(43, 84%, 56%) 100%);
+    --gradient-glass: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+
+    /* Shadows */
+    --shadow-luxury: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    --shadow-premium: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    --shadow-glow: 0 0 20px rgba(18, 191, 174, 0.5);
+
+    /* Button & Accent Colors */
+    --aurora-jade-500-hex: #12bfae;
+    --aurora-jade-600-hex: #0ea99d;
+    --ion-blue-600-hex: #1989ee;
+    --ink-900: #0a1420;
+  }
+
+  html {
+    font-family: var(--font-luxury-sans);
+    scroll-behavior: smooth;
+    @apply antialiased text-slate-900;
+  }
+
+  ::selection {
+    background-color: #12bfae;
+    color: white;
+  }
+
+  /* Luxury typography classes */
+  .font-luxury-serif {
+    font-family: var(--font-luxury-serif);
+  }
+
+  .gradient-text-luxury {
+    background: var(--gradient-luxury);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .gradient-text-gold {
+    background: var(--gradient-gold);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Citation superscripts */
+  sup {
+    font-size: 0.7em;
+    vertical-align: super;
+    line-height: 0;
+    color: #0066cc;
+    font-weight: 600;
+  }
+
+  sup a {
+    text-decoration: none;
+    color: #0066cc;
+  }
+
+  sup a:hover {
+    text-decoration: underline;
+  }
+
+  /* Premium Animations */
+  @keyframes shimmer {
+    0% {
+      transform: translateX(-100%);
+    }
+
+    100% {
+      transform: translateX(100%);
+    }
+  }
+
+  @keyframes marquee {
+    0% {
+      transform: translateX(0);
+    }
+
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  .animate-marquee {
+    animation: marquee 40s linear infinite;
+  }
+
+  .animate-marquee:hover {
+    animation-play-state: paused;
+  }
+}
+
+/* Components layer */
+@layer components {
+
+  /* Utility container used in header */
+  .container-default {
+    @apply mx-auto max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Rating badges */
+  .rating-badge {
+    @apply inline-block px-3 py-1 rounded-md font-semibold text-xs mr-2;
+  }
+
+  .rating-badge.a-plus {
+    @apply bg-gradient-to-r from-yellow-400 to-yellow-500 text-slate-900;
+  }
+
+  .rating-badge.a {
+    @apply bg-gradient-to-r from-green-500 to-green-600 text-white;
+  }
+
+  .rating-badge.a-minus {
+    @apply bg-gradient-to-r from-blue-500 to-blue-600 text-white;
+  }
+
+  .rating-badge.b-plus {
+    @apply bg-gradient-to-r from-orange-500 to-orange-600 text-white;
+  }
+
+  /* New carrier badge */
+  .new-badge {
+    @apply inline-block bg-red-500 text-white px-2 py-1 rounded text-xs font-bold ml-2 align-middle;
+  }
+
+  /* Sources & References section */
+  .sources-references {
+    @apply mt-16 pt-8 border-t-2 border-slate-200 text-sm text-slate-600;
+  }
+
+  .sources-references h2 {
+    @apply text-2xl mb-4 text-slate-900;
+  }
+
+  .sources-references h3 {
+    @apply text-lg mt-6 mb-2 text-slate-800;
+  }
+
+  .sources-references ol {
+    @apply leading-relaxed pl-6;
+  }
+
+  .sources-references li {
+    @apply mb-2;
+  }
+}
+

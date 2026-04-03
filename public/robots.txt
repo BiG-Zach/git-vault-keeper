@@ -1,0 +1,47 @@
+# ============================================================
+# Bradford Informed Guidance — robots.txt
+# Three-tier crawler strategy: explicit allow, default allow, block scrapers
+# ============================================================
+
+# TIER 1 — Explicitly welcome: search engines + AI assistants we want citing us
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: GoogleOther
+Allow: /
+
+# TIER 2 — Default: allow all crawlers not listed above or below
+User-agent: *
+Disallow: /api/
+Disallow: /404
+
+# TIER 3 — Block: SEO scrapers and content harvesters (no value, high load)
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+# ============================================================
+Sitemap: https://bradfordinformedguidance.com/sitemap.xml

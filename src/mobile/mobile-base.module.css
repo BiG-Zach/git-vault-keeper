@@ -1,0 +1,56 @@
+/* Mobile-only base styles - @media (max-width: 767.98px) */
+@media (max-width: 767.98px) {
+  .mobileOnly {
+    display: block;
+  }
+  
+  .desktopHidden {
+    display: none !important;
+  }
+  
+  .mobilePadding {
+    padding: 16px 14px;
+  }
+  
+  .mobileStack {
+    display: grid;
+    gap: 12px;
+  }
+  
+  .mobileRounded {
+    border-radius: 12px;
+  }
+  
+  /* Typography scale */
+  .mobileHeadline {
+    font-size: clamp(26px, 6vw, 34px);
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    font-weight: 800;
+  }
+  
+  .mobileSubheadline {
+    font-size: 16px;
+    line-height: 1.4;
+  }
+  
+  .mobileBody {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+  
+  /* Touch targets */
+  .mobileTouchTarget {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Safe areas */
+  .mobileSafeTop {
+    padding-top: calc(var(--safe-top, 16px) + env(safe-area-inset-top));
+  }
+  
+  .mobileSafeBottom {
+    padding-bottom: calc(env(safe-area-inset-bottom));
+  }
+}

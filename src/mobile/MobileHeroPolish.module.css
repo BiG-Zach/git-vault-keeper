@@ -1,0 +1,273 @@
+/* Mobile hero with background image - full visual impact */
+@media (max-width: 767.98px) {
+  .hero {
+    position: relative;
+    padding: 20px 16px calc(env(safe-area-inset-bottom, 0px) + 90px);
+    overflow: hidden;
+    min-height: 85vh;
+    background: url("/images/hero/mobile-hero.webp") center 38% / cover no-repeat;
+  }
+
+  .bg {
+    display: none;
+  }
+
+  .inner {
+    position: relative;
+    z-index: 1;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-top: 20px;
+  }
+
+  .heroText {
+    text-align: left;
+    margin-bottom: 8px;
+    position: relative;
+  }
+
+  .heroText::before {
+    content: "";
+    position: absolute;
+    top: -10px;
+    left: -20px;
+    right: -20px;
+    bottom: -10px;
+    background: radial-gradient(ellipse at center top, rgba(0,0,0,.25) 0%, rgba(0,0,0,.10) 50%, transparent 80%);
+    z-index: -1;
+    border-radius: 20px;
+  }
+
+  .heroHeadline {
+    font-size: clamp(32px, 8vw, 42px);
+    line-height: 1.3;
+    letter-spacing: -0.02em;
+    font-weight: 800;
+    color: white;
+    margin: 0 0 35px 0;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.30);
+  }
+
+  .headlineLine {
+    display: block;
+    margin: 0;
+  }
+
+  .tomorrowLine {
+    margin-bottom: 25px;
+  }
+
+  .heroSubheadline {
+    font-size: 18px;
+    line-height: 1.4;
+    color: rgba(255, 255, 255, 0.95);
+    margin: 0 0 12px 0;
+    font-weight: 500;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
+  }
+
+  /* Modal overlay */
+  .modalOverlay {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    background: rgba(0, 0, 0, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+
+  /* Modal card with luxury glassmorphism */
+  .modalCard {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px) saturate(1.8);
+    -webkit-backdrop-filter: blur(20px) saturate(1.8);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    box-shadow: 
+      0 20px 60px rgba(0, 0, 0, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.3),
+      inset 0 -1px 0 rgba(255, 255, 255, 0.1);
+    width: 90%;
+    max-width: 420px;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+  }
+
+  /* Modal close button */
+  .modalClose {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    z-index: 10;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    color: #374151;
+  }
+
+  .modalClose:hover {
+    background: rgba(255, 255, 255, 1);
+    transform: scale(1.05);
+  }
+
+  /* Modal content */
+  .modalContent {
+    padding: 0;
+  }
+
+  /* Remove background from HeroForm when in modal */
+  .modalContent > div {
+    background: transparent !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    border: none !important;
+    box-shadow: none !important;
+    margin: 0 !important;
+  }
+
+  /* Accessibility for users who prefer reduced transparency */
+  @media (prefers-reduced-transparency: reduce) {
+    .modalCard {
+      background: #fff;
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+    }
+  }
+
+  .heroSentinel {
+    position: absolute;
+    bottom: 0;
+    height: 1px;
+    width: 100%;
+    pointer-events: none;
+  }
+
+  /* Premium trust chip - top right */
+  .trustChip {
+    position: absolute;
+    top: 20px;
+    right: 16px;
+    background: var(--glass-bg-strong);
+    backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-sat));
+    border: 1px solid var(--glass-bd);
+    border-radius: 16px;
+    padding: 8px 12px;
+    font-size: 12px;
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text-primary);
+    text-shadow: var(--text-shadow-subtle);
+    box-shadow: var(--shadow-lg);
+    animation: slideInFromTop 0.8s var(--ease-premium) 1s both;
+  }
+
+  /* Industry dominance stat - bottom left */
+  .statOverlay {
+    position: absolute;
+    bottom: 80px;
+    left: 16px;
+    background: var(--glass-bg-strong);
+    backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-sat));
+    border: 1px solid var(--glass-bd);
+    border-radius: var(--glass-radius);
+    padding: 16px;
+    max-width: 280px;
+    box-shadow: var(--shadow-xl);
+    animation: slideInFromBottom 0.8s var(--ease-premium) 1.2s both;
+  }
+
+  .statNumber {
+    font-size: 24px;
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-primary);
+    text-shadow: var(--text-shadow-premium);
+    margin: 0;
+  }
+
+  .statText {
+    font-size: 13px;
+    color: var(--color-text-secondary);
+    text-shadow: var(--text-shadow-subtle);
+    margin: 4px 0 0 0;
+    line-height: 1.3;
+  }
+
+  @keyframes slideInFromTop {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes slideInFromBottom {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Premium horizontal scrolling ticker carousel */
+  .urgencyCarousel {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .carouselContainer {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .carouselText {
+    font-size: 0.85rem;
+    font-weight: 500;
+    font-style: italic;
+    letter-spacing: 0.5px;
+    line-height: 1.4;
+    color: rgba(255, 255, 255, 0.95);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    margin: 0;
+    padding: 0 16px;
+    white-space: nowrap;
+    position: absolute;
+    width: max-content;
+    min-width: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}

@@ -1,0 +1,70 @@
+import * as React from "react";
+import { motion, useReducedMotion } from "framer-motion";
+import Section from "../layout/Section";
+
+const Item: React.FC<{ title: string; desc: string; icon?: React.ReactNode }> = ({ title, desc, icon }) => (
+  <div className="group rounded-2xl ring-1 ring-slate-200/70 bg-white hover:shadow-lg/20 transition p-5 md:p-6">
+    <div className="flex items-start gap-3">
+      <div className="size-9 md:size-10 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center">
+        {icon ?? <span className="font-bold">✓</span>}
+      </div>
+      <div>
+        <h3 className="text-lg font-semibold">{title}</h3>
+        <p className="mt-1 text-slate-600">{desc}</p>
+      </div>
+    </div>
+  </div>
+);
+
+const Wrap: React.FC<{ children: React.ReactNode; delay?: number; prefersReducedMotion: boolean | null }> = ({ children, delay = 0, prefersReducedMotion }) =>
+  prefersReducedMotion ? (
+    <div>{children}</div>
+  ) : (
+    <motion.div
+      initial={{ opacity: 0, y: 14 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ duration: 0.45, ease: "easeOut", delay }}
+    >
+      {children}
+    </motion.div>
+  );
+
+export default function LicensingAndNetworks() {
+  const prefersReducedMotion = useReducedMotion();
+
+  return (
+    <Section className="bg-slate-50/50">
+      <div className="text-center mb-8">
+        <h2 className="text-3xl md:text-4xl font-semibold tracking-tight">Licensed & Connected</h2>
+        <p className="mt-2 text-slate-600">Comprehensive coverage across multiple states and networks</p>
+      </div>
+      
+      <div className="grid md:grid-cols-3 gap-6">
+        <Wrap prefersReducedMotion={prefersReducedMotion}>
+          <Item
+            title="Licensing"
+            desc="Florida • Michigan • North Carolina"
+            icon={<span className="text-sm font-bold">📍</span>}
+          />
+        </Wrap>
+
+        <Wrap delay={0.1} prefersReducedMotion={prefersReducedMotion}>
+          <Item
+            title="Insurance Carriers (10 Total)"
+            desc="UnitedHealthcare, Mutual of Omaha, Aflac, BCBS, Allstate, Aetna, Cigna, Medical Mutual, Americo, Illinois Mutual, PAL, SGIC - Rated A- to A+ by AM Best"
+            icon={<span className="text-sm font-bold">🏢</span>}
+          />
+        </Wrap>
+
+        <Wrap delay={0.2} prefersReducedMotion={prefersReducedMotion}>
+          <Item
+            title="PPO Networks (6 Total)"
+            desc="Aetna PPO • Cigna PPO • First Health • MultiPlan • UnitedHealthcare PPO • Blue Cross PPO - 2.4M+ combined providers"
+            icon={<span className="text-sm font-bold">🌐</span>}
+          />
+        </Wrap>
+      </div>
+    </Section>
+  );
+}

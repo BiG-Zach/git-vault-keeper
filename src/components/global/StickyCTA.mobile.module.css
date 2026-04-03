@@ -1,0 +1,5 @@
+@media (max-width: 767.98px) {
+  .mobileSticky { position: sticky; bottom: 0; padding: 10px 12px; border-top-left-radius: 12px; border-top-right-radius: 12px; box-shadow: 0 -6px 18px rgba(0,0,0,0.08); }
+  .mobileCTAButton { width: 100%; }
+  .mobileCompact { padding-top: 6px; padding-bottom: 6px; }
+}
