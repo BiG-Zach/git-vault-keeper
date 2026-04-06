@@ -1,0 +1,43 @@
+# SANITY API MUTATION: PIPELINE-RUN-001
+## COMMAND: `hermes config set SANITY_API_TOKEN [YOUR_TOKEN]`
+## RUN: `node sanity-deploy-001.js`
+
+{
+  "mutations": [
+    {
+      "createOrReplace": {
+        "_id": "blog-2026-florida-aca-subsidy-cliff",
+        "_type": "post",
+        "title": "The 2026 Florida ACA Subsidy Cliff: Reclaiming Control After the Enhanced PTC Expiration",
+        "slug": {
+          "_type": "slug",
+          "current": "2026-florida-aca-subsidy-cliff"
+        },
+        "publishedAt": "2026-04-05T16:24:00Z",
+        "status": "draft",
+        "contentTrack": "Health-Wealth-Nexus",
+        "bridgeType": "B",
+        "targetQuery": "2026 ACA subsidy cliff Florida",
+        "gapDefeated": "Moves the conversation from 'saving on health insurance' to 'building tax-advantaged wealth.'",
+        "excerpt": "Floridians face a massive health insurance price jump in 2026. Learn how to use 'Recaptured Capital' and Premium Reallocation to build wealth instead of paying double.",
+        "seo": {
+          "metaTitle": "2026 Florida ACA Subsidy Cliff | Fiduciary Strategy",
+          "metaDescription": "Don't just pay more. Use the 2026 Florida ACA subsidy expiration as a moment for a 'Structural Decision' to build tax-advantaged wealth (IUL).",
+          "focusKeyword": "2026 ACA subsidy cliff Florida"
+        },
+        "body": [
+          {
+            "_type": "block",
+            "children": [
+              {
+                "_type": "span",
+                "text": "If you or your family are enrolled in a Florida health insurance marketplace plan, your current monthly premium is likely a calculated illusion..."
+              }
+            ]
+          }
+          // [FULL PORTABLE TEXT BLOCK MANIFEST GENERATED IN PIPELINE-RUN-001/article_001.md]
+        ]
+      }
+    }
+  ]
+}
