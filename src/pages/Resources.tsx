@@ -1,8 +1,9 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { BookOpen } from 'lucide-react';
 import SEO from '../components/SEO';
 import PremiumKnowledgeCategories from '../components/resources/PremiumKnowledgeCategories';
 import PremiumBlogGrid from '../components/resources/PremiumBlogGrid';
+import { getAllPublishedPosts } from '../lib/sanity';
 import { organizationSchema, itemListSchema, breadcrumbSchema } from '../utils/schema';
 
 export interface BlogPost {
