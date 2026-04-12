@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { BookOpen } from 'lucide-react';
 import SEO from '../components/SEO';
-import PremiumKnowledgeCategories from '../components/resources/PremiumKnowledgeCategories';
 import PremiumBlogGrid from '../components/resources/PremiumBlogGrid';
 import { getAllPublishedPosts } from '../lib/sanity';
 import { organizationSchema, itemListSchema, breadcrumbSchema } from '../utils/schema';
@@ -296,10 +295,10 @@ export default function ResourcesPage() {
           <img
             src="/images/hero/resources-hero-desktop.webp"
             alt="Financial intelligence and insurance strategy"
-            className="w-full h-full object-cover object-center opacity-20 mix-blend-luminosity"
+            className="w-full h-full object-cover object-center opacity-40 mix-blend-luminosity"
             onError={(e) => { e.currentTarget.src = '/assets/backgrounds/happy-family-beach-hero.webp'; }}
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/90 to-slate-950/40 z-10" />
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/70 to-slate-950/30 z-10" />
           <div className="absolute top-1/4 -left-32 w-[800px] h-[800px] bg-emerald-500/5 rounded-full blur-[150px] pointer-events-none" />
         </div>
 
@@ -326,12 +325,6 @@ export default function ResourcesPage() {
         </div>
       </section>
 
-      {/* CATEGORIES OVERVIEW */}
-      <section className="py-12 bg-slate-900 border-t border-white/5 relative">
-        <div className="container mx-auto px-6 max-w-7xl">
-           <PremiumKnowledgeCategories blogPosts={blogPosts} />
-        </div>
-      </section>
 
       {/* LUXURY CATEGORY FILTER */}
       <section className="py-12 bg-slate-950 relative border-t border-white/5">
@@ -344,7 +337,7 @@ export default function ResourcesPage() {
                 className={`px-6 py-3 rounded-xl font-medium transition-all duration-500 flex items-center gap-2 ${
                   selectedCategory === category.id
                     ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 shadow-[0_0_30px_rgba(16,185,129,0.15)] scale-105'
-                    : 'bg-white/5 text-slate-400 border border-white/10 hover:bg-white/10 hover:text-slate-200'
+                    : 'bg-white/5 backdrop-blur-md text-slate-400 border border-white/10 hover:bg-white/10 hover:text-slate-200'
                 }`}
               >
                 {category.name}
