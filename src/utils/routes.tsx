@@ -1,6 +1,11 @@
 import { lazy } from 'react';
-import { createBrowserRouter, RouterProvider, Navigate } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider, Navigate, useParams } from 'react-router-dom';
 import App from '../App';
+
+function ResourcesSlugRedirect() {
+  const { slug } = useParams();
+  return <Navigate to={`/blog/${slug}`} replace />;
+}
 
 // Lazy page stubs (extensionless imports for TS)
 const Home = lazy(() => import('../pages/Home'));
@@ -90,6 +95,7 @@ export const routes = [
       { path: 'blog/open-enrollment-2026-guide', element: <OpenEnrollment2026Guide /> },
       { path: 'blog/florida-health-insurance-guide-2024', element: <Navigate to="/blog/open-enrollment-2026-guide" replace /> },
       { path: 'blog/:slug', element: <SanityPost /> },
+      { path: 'resources/:slug', element: <ResourcesSlugRedirect /> },
       { path: '*', element: <NotFound /> },
     ],
   },

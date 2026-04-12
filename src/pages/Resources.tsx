@@ -189,27 +189,79 @@ export const blogPosts: { [key: string]: BlogPost[] } = {
   ]
 };
 
+function mapContentTrack(track?: string): string {
+  const map: Record<string, string> = {
+    bofu: 'Health Insurance',
+    tofu: 'Health Insurance',
+    mofu: 'Health Insurance',
+    bridge: 'Life Insurance',
+    'social-proof': 'Local Market',
+  };
+  return (track && map[track]) || 'Health Insurance';
+}
+
 export default function ResourcesPage() {
   const [selectedCategory, setSelectedCategory] = useState('all');
+  const [sanityPosts, setSanityPosts] = useState<BlogPost[]>([]);
+
+  useEffect(() => {
+    getAllPublishedPosts()
+      .then((posts) => {
+        const mapped: BlogPost[] = (posts || []).map((p: { slug: string; title: string; excerpt?: string; contentTrack?: string; publishedAt?: string; targetState?: string }) => ({
+          slug: p.slug,
+          title: p.title,
+          preview: p.excerpt || '',
+          wordCount: '',
+          category: mapContentTrack(p.contentTrack),
+          readTime: '',
+          updated: p.publishedAt ? new Date(p.publishedAt).toLocaleDateString('en-US', { month: 'short', year: 'numeric' }) : '',
+          states: p.targetState ? [p.targetState] : ['All'],
+        }));
+        setSanityPosts(mapped);
+      })
+      .catch((err) => console.error('Sanity fetch error:', err));
+  }, []);
+
+  const hardcodedSlugs = new Set(Object.values(blogPosts).flat().map(p => p.slug));
+  const uniqueSanityPosts = sanityPosts.filter(p => !hardcodedSlugs.has(p.slug));
+  const mergedAllPosts = [...uniqueSanityPosts, ...Object.values(blogPosts).flat()];
+
+  const categoryKey = (track: string) => {
+    const map: Record<string, string> = {
+      'Life Insurance': 'life-insurance',
+      'Health Insurance': 'health-insurance',
+      'Local Market': 'local-market',
+      'Carrier Analysis': 'carrier-comparisons',
+    };
+    return map[track] || 'health-insurance';
+  };
+
+  const categoryCounts: Record<string, number> = { all: mergedAllPosts.length };
+  mergedAllPosts.forEach(p => {
+    const key = categoryKey(p.category);
+    categoryCounts[key] = (categoryCounts[key] || 0) + 1;
+  });
 
   const categories = [
-    { id: 'all', name: 'All Articles', count: 16 },
-    { id: 'life-insurance', name: 'Life Insurance', count: 4 },
-    { id: 'health-insurance', name: 'Health Insurance', count: 4 },
-    { id: 'local-market', name: 'Local Market', count: 4 },
-    { id: 'carrier-comparisons', name: 'Carrier Analysis', count: 4 }
+    { id: 'all', name: 'All Articles', count: categoryCounts['all'] || 0 },
+    { id: 'life-insurance', name: 'Life Insurance', count: categoryCounts['life-insurance'] || 0 },
+    { id: 'health-insurance', name: 'Health Insurance', count: categoryCounts['health-insurance'] || 0 },
+    { id: 'local-market', name: 'Local Market', count: categoryCounts['local-market'] || 0 },
+    { id: 'carrier-comparisons', name: 'Carrier Analysis', count: categoryCounts['carrier-comparisons'] || 0 }
   ];
 
   const getAllPosts = () => {
     if (selectedCategory === 'all') {
-      return Object.values(blogPosts).flat();
+      return mergedAllPosts;
     }
-    return blogPosts[selectedCategory] || [];
+    const hardcoded = blogPosts[selectedCategory] || [];
+    const fromSanity = uniqueSanityPosts.filter(p => categoryKey(p.category) === selectedCategory);
+    return [...fromSanity, ...hardcoded];
   };
 
   const filteredPosts = getAllPosts();
 
-  const allPosts = Object.values(blogPosts).flat();
+  const allPosts = mergedAllPosts;
   const blogItemList = allPosts.map(post => ({
     name: post.title,
     url: `/blog/${post.slug}`,
