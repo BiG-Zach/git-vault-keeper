@@ -1,9 +1,11 @@
-// Bradford Informed Guidance | SanityPost | v1.0
+
+// Bradford Informed Guidance | SanityPost | v1.1
 import { useParams, Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { getPostBySlug } from '../../lib/sanity';
 import SEO from '../../components/SEO';
 import { PortableText } from '@portabletext/react';
+import ReactMarkdown from 'react-markdown';
 import { buildArticleSEO } from '../../utils/seoHelpers';
 import { breadcrumbSchema, faqPageSchema } from '../../utils/schema';
 import { SITE } from '../../utils/schema';
@@ -28,7 +30,7 @@ interface SanityPostData {
 
 export default function SanityPost() {
   const { slug } = useParams<{ slug: string }>();
-  const [post, setPost] = useState<SanityPostData | null>(null);
+  const [post, setPost] = useState<<SanSanityPostData | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -49,18 +51,18 @@ export default function SanityPost() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-slate-950 flex items-center justify-center">
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-brand-jade-500" />
+      <<divdiv className="min-h-screen bg-slate-950 flex items-center justify-center">
+        <<divdiv className="animate-spin rounded-full h-8 w-8 border-b-2 border-brand-jade-500" />
       </div>
     );
   }
 
   if (!post) {
     return (
-      <div className="min-h-screen bg-slate-950 flex items-center justify-center">
-        <div className="text-center">
-          <h1 className="text-2xl font-serif text-white mb-4">Article Not Found</h1>
-          <p className="text-slate-400">This article may have been moved or is no longer available.</p>
+      <<divdiv className="min-h-screen bg-slate-950 flex items-center justify-center">
+        <<divdiv className="text-center">
+          <<hh1 className="text-2xl font-serif text-white mb-4">Article Not Found</h1>
+          <<pp className="text-slate-400">This article may have been moved or is no longer available.</p>
         </div>
       </div>
     );
@@ -68,14 +70,27 @@ export default function SanityPost() {
 
   const portableTextComponents = {
     block: {
-      normal: ({children}: {children?: React.ReactNode}) => <p className="text-slate-300 text-lg leading-relaxed mb-6 font-light">{children}</p>,
-      h2: ({children}: {children?: React.ReactNode}) => <h2 className="text-2xl font-serif font-bold text-white mt-12 mb-6">{children}</h2>,
-      h3: ({children}: {children?: React.ReactNode}) => <h3 className="text-xl font-serif font-semibold text-white mt-8 mb-4">{children}</h3>,
-      blockquote: ({children}: {children?: React.ReactNode}) => <blockquote className="border-l-4 border-brand-jade-500 pl-6 my-8 text-slate-300 italic text-lg">{children}</blockquote>,
+      normal: ({children}: {children?: React.ReactNode}) => {
+        // Check if children contain markdown-like syntax to prevent raw rendering
+        const content = children as any;
+        const isMarkdown = typeof content === 'string' && (content.includes('**') || content.includes('[') || content.includes('|'));
+        
+        if (isMarkdown) {
+          return (
+            <<divdiv className="text-slate-300 text-lg leading-relaxed mb-6 font-light prose-invert prose-slate max-w-none">
+              <<ReactReactMarkdown>{content}</ReactMarkdown>
+            </div>
+          );
+        }
+        return <<pp className="text-slate-300 text-lg leading-relaxed mb-6 font-light">{children}</p>;
+      },
+      h2: ({children}: {children?: React.ReactNode}) => <<hh2 className="text-2xl font-serif font-bold text-white mt-12 mb-6">{children}</h2>,
+      h3: ({children}: {children?: React.ReactNode}) => <<hh3 className="text-xl font-serif font-semibold text-white mt-8 mb-4">{children}</h3>,
+      blockquote: ({children}: {children?: React.ReactNode}) => <<blockquoteblockquote className="border-l-4 border-brand-jade-500 pl-6 my-8 text-slate-300 italic text-lg">{children}</blockquote>,
     },
     marks: {
-      strong: ({children}: {children?: React.ReactNode}) => <strong className="text-white font-semibold">{children}</strong>,
-      em: ({children}: {children?: React.ReactNode}) => <em className="text-slate-200 italic">{children}</em>,
+      strong: ({children}: {children?: React.ReactNode}) => <<strongstrong className="text-white font-semibold">{children}</strong>,
+      em: ({children}: {children?: React.ReactNode}) => <<emem className="text-slate-200 italic">{children}</em>,
     }
   };
 
@@ -104,7 +119,6 @@ export default function SanityPost() {
 
   const scripts = articleSEO.scripts.map((s: { innerHTML: string }) => s);
 
-  // BreadcrumbList schema
   scripts.push({
     innerHTML: breadcrumbSchema([
       { name: 'Home', item: SITE.url },
@@ -113,7 +127,6 @@ export default function SanityPost() {
     ]),
   });
 
-  // FAQPage schema - inject if post has targetQuery (indicates FAQ content from Publisher)
   if (post.targetQuery && post.gapDefeated) {
     scripts.push({
       innerHTML: faqPageSchema([
@@ -126,9 +139,9 @@ export default function SanityPost() {
   }
 
   return (
-    <div className="min-h-screen bg-slate-950 text-white">
+    <<divdiv className="min-h-screen bg-slate-950 text-white">
       {post.seo && (
-        <SEO
+        <<SEOSEO
           title={post.seo.metaTitle}
           description={post.seo.metaDescription}
           path={`/blog/${post.slug?.current || slug}`}
@@ -137,42 +150,42 @@ export default function SanityPost() {
         />
       )}
       
-      <section className="py-24 bg-slate-900 border-b border-white/10">
-        <div className="max-w-4xl mx-auto px-6">
+      <<sectionsection className="py-24 bg-slate-900 border-b border-white/10">
+        <<divdiv className="max-w-4xl mx-auto px-6">
           {post.targetState && (
-            <div className="inline-flex items-center px-3 py-1 rounded-full bg-brand-jade-500/10 border border-brand-jade-500/20 text-brand-jade-400 text-xs font-bold uppercase tracking-wider mb-6">
+            <<divdiv className="inline-flex items-center px-3 py-1 rounded-full bg-brand-jade-500/10 border border-brand-jade-500/20 text-brand-jade-400 text-xs font-bold uppercase tracking-wider mb-6">
               {post.targetState}
             </div>
           )}
           
-          <h1 className="font-serif text-4xl md:text-5xl font-bold text-white leading-tight mb-6">
+          <<hh1 className="font-serif text-4xl md:text-5xl font-bold text-white leading-tight mb-6">
             {post.title}
           </h1>
           
-          <p className="text-xl text-slate-300 font-light leading-relaxed mb-8">
+          <<pp className="text-xl text-slate-300 font-light leading-relaxed mb-8">
             {post.excerpt}
           </p>
           
-          <div className="flex items-center gap-4 text-sm text-slate-400 border-t border-white/10 pt-6">
+          <<divdiv className="flex items-center gap-4 text-sm text-slate-400 border-t border-white/10 pt-6">
             <span>By Zach Bradford | NPN: 18181266 | Licensed in FL, MI, NC, AZ, TX, GA, IN, SC</span>
             <span>•</span>
-            <time dateTime={post.publishedAt}>
+            <<timetime dateTime={post.publishedAt}>
               {new Date(post.publishedAt).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
             </time>
           </div>
         </div>
       </section>
 
-      <section className="py-16">
-        <div className="max-w-4xl mx-auto px-6">
-          <PortableText value={post.body as import("@portabletext/types").TypedObject[]} components={portableTextComponents} />
+      <<sectionsection className="py-16">
+        <<divdiv className="max-w-4xl mx-auto px-6">
+          <<PortablePortableText value={post.body as import("@portabletext/types").TypedObject[]} components={portableTextComponents} />
 
           {bridgeContent && (
-            <div className="my-12 p-8 rounded-2xl bg-amber-500/5 border border-amber-500/20">
-              <p className="text-slate-300 text-lg leading-relaxed mb-6 font-light">
+            <<divdiv className="my-12 p-8 rounded-2xl bg-amber-500/5 border border-amber-500/20">
+              <<pp className="text-slate-300 text-lg leading-relaxed mb-6 font-light">
                 {bridgeContent}
               </p>
-              <Link to="/life-insurance" className="font-semibold tracking-wide uppercase text-sm text-amber-500 hover:text-amber-400 transition-colors">
+              <<LinkLink to="/life-insurance" className="font-semibold tracking-wide uppercase text-sm text-amber-500 hover:text-amber-400 transition-colors">
                 Learn about Wealth Protection options →
               </Link>
             </div>

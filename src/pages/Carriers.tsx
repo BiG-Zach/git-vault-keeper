@@ -147,10 +147,10 @@ export default function CarriersPage() {
         <div className="container mx-auto px-6 max-w-7xl">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-5xl font-serif font-bold text-white mb-4">
-              A-Rated <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-300">Partners</span>
+              Carrier <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-300">Network.</span>
             </h2>
             <p className="text-slate-400 max-w-2xl mx-auto text-lg">
-              We only place our clients with carriers that have proven financial strength and flawless claims history.
+              Every carrier is independently rated by AM Best. We match you to the right fit, not the highest commission.
             </p>
           </div>
 
