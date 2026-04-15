@@ -18,41 +18,41 @@ const faqs = [
 ];
 
 export default function PremiumCarriersFAQ() {
-  const [openIndex, setOpenIndex] = useState<<numbernumber | null>(null);
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
   const shouldReduceMotion = useReducedMotion();
   return (
-    <<sectionsection className="relative py-20 overflow-hidden">
-      <<divdiv className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
-        <<divdiv className="absolute inset-0 opacity-20" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, rgba(255,255,255,0.1) 1px, transparent 0)', backgroundSize: '24px 24px' }} />
-        <<divdiv className="absolute inset-0 bg-gradient-to-r from-emerald-500/5 via-transparent to-cyan-500/5" />
+    <section className="relative py-20 overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
+        <div className="absolute inset-0 opacity-20" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, rgba(255,255,255,0.1) 1px, transparent 0)', backgroundSize: '24px 24px' }} />
+        <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/5 via-transparent to-cyan-500/5" />
       </div>
-      <<divdiv className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <<motionmotion.div className="text-center mb-16" initial={shouldReduceMotion ? undefined : { opacity: 0, y: 30 }} whileInView={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }} transition={{ duration: 0.6 }} viewport={{ once: true }}>
-          <<divdiv className="inline-flex items-center gap-3 bg-emerald-500/20 rounded-full px-6 py-3 mb-8">
-            <<HelpHelpCircle className="h-6 w-6 text-emerald-400" />
-            <<spanspan className="text-emerald-300 font-semibold">Frequently Asked Questions</span>
+      <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <motion.div className="text-center mb-16" initial={shouldReduceMotion ? undefined : { opacity: 0, y: 30 }} whileInView={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }} transition={{ duration: 0.6 }} viewport={{ once: true }}>
+          <div className="inline-flex items-center gap-3 bg-emerald-500/20 rounded-full px-6 py-3 mb-8">
+            <HelpCircle className="h-6 w-6 text-emerald-400" />
+            <span className="text-emerald-300 font-semibold">Frequently Asked Questions</span>
           </div>
-          <<hh2 className="text-4xl md:text-5xl font-bold text-white mb-6">Everything You Need to Know About<<spanspan className="block gradient-text-luxury">Our Networks and Carriers</span></h2>
-          <<pp className="text-xl text-slate-300 max-w-2xl mx-auto">Common questions about PPO networks, carriers, and coverage across all 8 licensed states.</p>
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">Everything You Need to Know About<span className="block gradient-text-luxury">Our Networks and Carriers</span></h2>
+          <p className="text-xl text-slate-300 max-w-2xl mx-auto">Common questions about PPO networks, carriers, and coverage across all 8 licensed states.</p>
         </motion.div>
-        <<divdiv className="space-y-4">
+        <div className="space-y-4">
           {faqs.map((faq, index) => (
-            <<divdiv key={index} className="group">
-              <<divdiv className="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl overflow-hidden group-hover:border-emerald-400/30 transition-colors duration-300">
-                <<buttonbutton className="w-full px-8 py-6 text-left focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-inset" onClick={() => setOpenIndex(openIndex === index ? null : index)} aria-expanded={openIndex === index} type="button">
-                  <<divdiv className="flex items-center justify-between">
-                    <<hh3 className="text-lg md:text-xl font-semibold text-white group-hover:text-emerald-300 transition-colors duration-300 pr-4">{faq.question}</h3>
-                    <<motionmotion.div animate={{ rotate: openIndex === index ? 180 : 0 }} transition={{ duration: 0.2 }} className="flex-shrink-0">
-                      <<ChevronChevronDown className="h-6 w-6 text-slate-400 group-hover:text-emerald-400 transition-colors duration-300" />
+            <div key={index} className="group">
+              <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl overflow-hidden group-hover:border-emerald-400/30 transition-colors duration-300">
+                <button className="w-full px-8 py-6 text-left focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-inset" onClick={() => setOpenIndex(openIndex === index ? null : index)} aria-expanded={openIndex === index} type="button">
+                  <div className="flex items-center justify-between">
+                    <h3 className="text-lg md:text-xl font-semibold text-white group-hover:text-emerald-300 transition-colors duration-300 pr-4">{faq.question}</h3>
+                    <motion.div animate={{ rotate: openIndex === index ? 180 : 0 }} transition={{ duration: 0.2 }} className="flex-shrink-0">
+                      <ChevronDown className="h-6 w-6 text-slate-400 group-hover:text-emerald-400 transition-colors duration-300" />
                     </motion.div>
                   </div>
                 </button>
-                <<AnAnimatePresence initial={false}>
+                <AnimatePresence initial={false}>
                   {openIndex === index && (
-                    <<motionmotion.div key={index} initial={shouldReduceMotion ? undefined : { height: 0, opacity: 0 }} animate={shouldReduceMotion ? undefined : { height: 'auto', opacity: 1 }} exit={shouldReduceMotion ? undefined : { height: 0, opacity: 0 }} transition={{ duration: 0.25 }} className="overflow-hidden">
-                      <<divdiv className="px-8 pb-6">
-                        <<divdiv className="h-px bg-gradient-to-r from-transparent via-white/20 to-transparent mb-6" />
-<<pp className="text-slate-300 leading-relaxed text-base">{faq.answer}</p>
+                    <motion.div key={index} initial={shouldReduceMotion ? undefined : { height: 0, opacity: 0 }} animate={shouldReduceMotion ? undefined : { height: 'auto', opacity: 1 }} exit={shouldReduceMotion ? undefined : { height: 0, opacity: 0 }} transition={{ duration: 0.25 }} className="overflow-hidden">
+                      <div className="px-8 pb-6">
+                        <div className="h-px bg-gradient-to-r from-transparent via-white/20 to-transparent mb-6" />
+<p className="text-slate-300 leading-relaxed text-base">{faq.answer}</p>
                       </div>
                     </motion.div>
                   )}
@@ -61,11 +61,11 @@ export default function PremiumCarriersFAQ() {
             </div>
           ))}
         </div>
-        <<motionmotion.div className="text-center mt-16 p-8 bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl" initial={shouldReduceMotion ? undefined : { opacity: 0, y: 30 }} whileInView={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.3 }} viewport={{ once: true }}>
-          <<hh3 className="text-2xl font-bold text-white mb-4">Still Have Questions?</h3>
-          <<pp className="text-slate-300 mb-8 max-w-2xl mx-auto">Our licensed brokers are here to help you navigate your options and find the perfect coverage for your needs.</p>
-          <<ButtonButton asChild size="lg" className="bg-gradient-to-r from-emerald-500 to-emerald-600 text-white hover:from-emerald-600 hover:to-emerald-700 font-bold px-8 py-4 rounded-2xl transition-all duration-300 hover:scale-105 shadow-lg border-0">
-            <<aa href={BRAND.phoneTel}><<PhonePhone className="h-5 w-5 mr-3" />Call {BRAND.phoneHuman}</a>
+        <motion.div className="text-center mt-16 p-8 bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl" initial={shouldReduceMotion ? undefined : { opacity: 0, y: 30 }} whileInView={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.3 }} viewport={{ once: true }}>
+          <h3 className="text-2xl font-bold text-white mb-4">Still Have Questions?</h3>
+          <p className="text-slate-300 mb-8 max-w-2xl mx-auto">Our licensed brokers are here to help you navigate your options and find the perfect coverage for your needs.</p>
+          <Button asChild size="lg" className="bg-gradient-to-r from-emerald-500 to-emerald-600 text-white hover:from-emerald-600 hover:to-emerald-700 font-bold px-8 py-4 rounded-2xl transition-all duration-300 hover:scale-105 shadow-lg border-0">
+            <a href={BRAND.phoneTel}><Phone className="h-5 w-5 mr-3" />Call {BRAND.phoneHuman}</a>
           </Button>
         </motion.div>
       </div>
