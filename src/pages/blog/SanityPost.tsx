@@ -1,7 +1,7 @@
 
-// Bradford Informed Guidance | SanityPost | v1.1
+// Bradford Informed Guidance | SanityPost | v1.2
 import { useParams, Link } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { createContext, useContext, useEffect, useState } from 'react';
 import { getPostBySlug } from '../../lib/sanity';
 import SEO from '../../components/SEO';
 import { PortableText } from '@portabletext/react';
@@ -28,17 +28,50 @@ interface SanityPostData {
   gapDefeated: string;
 }
 
+// Preloaded post payloads bypass the client useEffect fetch so crawlers (and
+// fast first paint) see real article HTML instead of a loading spinner. SSR
+// reads from PreloadedPostContext (populated by scripts/prerender.js per-route
+// via src/ssr/render.ts). Client hydration reads from window.__PRELOADED_POST__,
+// a global injected into the prerendered HTML *before* the JS bundle loads —
+// that ordering is the whole reason this works, so do not move the read into
+// an effect or a lazy accessor.
+type PreloadedPostMap = Record<string, SanityPostData | undefined>;
+
+export const PreloadedPostContext = createContext<PreloadedPostMap>({});
+
+declare global {
+  interface Window {
+    __PRELOADED_POST__?: PreloadedPostMap;
+  }
+}
+
+function readInitialPost(
+  slug: string | undefined,
+  ctx: PreloadedPostMap,
+): SanityPostData | null {
+  if (!slug) return null;
+  if (typeof window !== 'undefined') {
+    return window.__PRELOADED_POST__?.[slug] ?? null;
+  }
+  return ctx[slug] ?? null;
+}
+
 export default function SanityPost() {
   const { slug } = useParams<{ slug: string }>();
-  const [post, setPost] = useState<SanityPostData | null>(null);
-  const [loading, setLoading] = useState(true);
+  const preloadedMap = useContext(PreloadedPostContext);
+  const [post, setPost] = useState<SanityPostData | null>(() =>
+    readInitialPost(slug, preloadedMap),
+  );
+  const [loading, setLoading] = useState<boolean>(() => !readInitialPost(slug, preloadedMap));
 
   useEffect(() => {
+    if (!slug) return;
+    if (post?.slug?.current === slug) return;
+    const activeSlug = slug;
     async function fetchPost() {
-      if (!slug) return;
       try {
         setLoading(true);
-        const fetchedPost = await getPostBySlug(slug);
+        const fetchedPost = await getPostBySlug(activeSlug);
         setPost(fetchedPost);
       } catch (error) {
         console.error("Error fetching Sanity post:", error);
@@ -47,7 +80,7 @@ export default function SanityPost() {
       }
     }
     fetchPost();
-  }, [slug]);
+  }, [slug, post]);
 
   if (loading) {
     return (
