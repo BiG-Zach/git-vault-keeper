@@ -38,6 +38,7 @@ import AMBestInsuranceRatingsExplained from '../pages/blog/AMBestInsuranceRating
 import FloridaSmallBusinessHealthInsurance from '../pages/blog/FloridaSmallBusinessHealthInsurance';
 import LifeInsuranceCompaniesFinancialStrength from '../pages/blog/LifeInsuranceCompaniesFinancialStrength';
 import OpenEnrollment2026Guide from '../pages/blog/OpenEnrollment2026Guide';
+import SanityPost from '../pages/blog/SanityPost';
 
 // Dynamic routes
 import StateDynamic from '../pages/states/[code]';
@@ -105,6 +106,8 @@ export default function StaticRoutes({ seoCollector }: StaticRoutesProps) {
           element={<LifeInsuranceCompaniesFinancialStrength />}
         />
         <Route path="/blog/open-enrollment-2026-guide" element={<OpenEnrollment2026Guide />} />
+
+        <Route path="/blog/:slug" element={<SanityPost />} />
 
         <Route path="*" element={<NotFound />} />
       </Routes>
