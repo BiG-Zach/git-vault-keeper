@@ -2,6 +2,7 @@ import React from 'react';
 import { renderToString } from 'react-dom/server';
 import { StaticRouter } from 'react-router-dom/server';
 import StaticRoutes from './StaticRoutes';
+import { PreloadedPostContext } from '../pages/blog/SanityPost';
 import type { SeoCollector } from '../components/SeoProvider';
 import type { ResolvedSEO } from '../utils/seo';
 import { canonicalFor, resolveSEO } from '../utils/seo';
@@ -30,24 +31,44 @@ export interface RenderResult {
   seo: ResolvedSEO;
 }
 
-export function renderUrl(url: string): RenderResult {
+export interface PreloadedPost {
+  slug: string;
+  data: unknown;
+}
+
+export function renderUrl(url: string, preloaded?: PreloadedPost): RenderResult {
   const collector = new Collector();
+  const preloadedMap = preloaded ? { [preloaded.slug]: preloaded.data } : {};
   const element = React.createElement(
     StaticRouter,
     { location: url },
-    React.createElement(StaticRoutes, { seoCollector: collector }),
+    React.createElement(
+      PreloadedPostContext.Provider,
+      { value: preloadedMap as never },
+      React.createElement(StaticRoutes, { seoCollector: collector }),
+    ),
   );
 
   const html = renderToString(element);
   const seo = collector.latest ?? resolveSEO({ canonical: canonicalFor(url) });
-  const head = renderHead(seo);
+  const head = renderHead(seo, preloaded);
 
   return { html, head, seo };
 }
 
-function renderHead(seo: ResolvedSEO) {
+function renderHead(seo: ResolvedSEO, preloaded?: PreloadedPost) {
   const parts: string[] = [];
   parts.push(`<title>${escapeHtml(seo.title)}</title>`);
+  if (preloaded) {
+    // Inline script runs before the JS bundle, so SanityPost's useState
+    // initializer sees the payload on first client render (no spinner,
+    // no hydration mismatch with the SSR-rendered article).
+    const payload = JSON.stringify({ [preloaded.slug]: preloaded.data })
+      .replace(/</g, '\\u003c')
+      .replace(/\u2028/g, '\\u2028')
+      .replace(/\u2029/g, '\\u2029');
+    parts.push(`<script>window.__PRELOADED_POST__=${payload};</script>`);
+  }
   parts.push(`<meta name="theme-color" content="${escapeAttr(seo.themeColor)}">`);
   if (seo.robots) {
     parts.push(`<meta name="robots" content="${escapeAttr(seo.robots)}">`);
