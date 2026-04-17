@@ -2,11 +2,28 @@ import { mkdir, writeFile, stat } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { createServer as createViteServer } from 'vite';
+import { createClient } from '@sanity/client';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const projectRoot = path.resolve(__dirname, '..');
 const publicDir = path.resolve(projectRoot, 'public');
 const outputPath = path.resolve(publicDir, 'sitemap.xml');
+
+const SANITY_PROJECT_ID = process.env.VITE_SANITY_PROJECT_ID || 'k8oe8f17';
+const SANITY_DATASET = process.env.VITE_SANITY_DATASET || 'production';
+const SANITY_API_VERSION = '2024-01-01';
+
+async function fetchSanitySlugs() {
+  const client = createClient({
+    projectId: SANITY_PROJECT_ID,
+    dataset: SANITY_DATASET,
+    apiVersion: SANITY_API_VERSION,
+    useCdn: false,
+  });
+  return client.fetch(
+    `*[_type == "post" && status == "published"]{"slug": slug.current, publishedAt}`,
+  );
+}
 
 async function main() {
   const vite = await createViteServer({
@@ -34,11 +51,42 @@ async function main() {
       (route) => !REDIRECT_ROUTES.includes(route) && route !== THANK_YOU_ROUTE,
     );
 
+    // Fetch Sanity-sourced posts. Dedupe against hardcoded routes the same
+    // way prerender.js does, so the sitemap and the file tree stay in sync.
+    let sanityPosts = [];
+    try {
+      sanityPosts = await fetchSanitySlugs();
+    } catch (error) {
+      const apiUrl = `https://${SANITY_PROJECT_ID}.api.sanity.io/v${SANITY_API_VERSION}/data/query/${SANITY_DATASET}`;
+      console.error('');
+      console.error('✗ Sanity fetch failed during sitemap generation.');
+      console.error(`  projectId: ${SANITY_PROJECT_ID}`);
+      console.error(`  dataset:   ${SANITY_DATASET}`);
+      console.error(`  endpoint:  ${apiUrl}`);
+      console.error(
+        `  verify:    curl https://${SANITY_PROJECT_ID}.api.sanity.io/v${SANITY_API_VERSION}/ping`,
+      );
+      console.error('');
+      throw error;
+    }
+
+    const hardcoded = new Set(Object.keys(ROUTE_COMPONENT_MAP));
+    const sanityEntries = [];
+    for (const post of sanityPosts || []) {
+      if (!post?.slug) continue;
+      const route = `/blog/${post.slug}`;
+      if (hardcoded.has(route)) continue;
+      sanityEntries.push({ route, publishedAt: post.publishedAt });
+    }
+
     await mkdir(publicDir, { recursive: true });
 
     const entries = [];
     for (const route of routes) {
       entries.push(await buildEntry(route));
+    }
+    for (const { route, publishedAt } of sanityEntries) {
+      entries.push(await buildSanityEntry(route, publishedAt));
     }
 
     const sitemap = [
@@ -65,6 +113,21 @@ async function main() {
         lastmod ? `    <lastmod>${lastmod}</lastmod>` : null,
         changefreq ? `    <changefreq>${changefreq}</changefreq>` : null,
         priority ? `    <priority>${priority.toFixed(1)}</priority>` : null,
+        '  </url>',
+      ]
+        .filter(Boolean)
+        .join('\n');
+    }
+
+    function buildSanityEntry(route, publishedAt) {
+      const loc = canonicalFor(route);
+      const lastmod = publishedAt ? new Date(publishedAt).toISOString() : undefined;
+      return [
+        '  <url>',
+        `    <loc>${loc}</loc>`,
+        lastmod ? `    <lastmod>${lastmod}</lastmod>` : null,
+        '    <changefreq>monthly</changefreq>',
+        '    <priority>0.6</priority>',
         '  </url>',
       ]
         .filter(Boolean)
