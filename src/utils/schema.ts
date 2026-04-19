@@ -44,17 +44,20 @@ type Address = {
   addressCountry?: string;
 };
 
+export const ORG_ID = `${ORG.url}/#organization`;
+
 export function organizationSchema() {
   const data = {
     '@context': 'https://schema.org',
     '@type': 'InsuranceAgency',
-    '@id': `${ORG.url}/#organization`,
+    '@id': ORG_ID,
     name: ORG.name,
     legalName: 'Bradford Informed Guidance, LLC',
     alternateName: 'BIG',
     url: ORG.url,
     logo: {
       '@type': 'ImageObject',
+      '@id': `${ORG.url}/#logo`,
       url: ORG.logo,
       width: '512',
       height: '512',
@@ -62,6 +65,7 @@ export function organizationSchema() {
     },
     image: {
       '@type': 'ImageObject',
+      '@id': `${ORG.url}/#image`,
       url: ORG.image,
       caption: 'Bradford Informed Guidance Family Hero'
     },
@@ -84,15 +88,10 @@ export function organizationSchema() {
     areaServed: ORG.serviceArea.map(state => ({
       '@type': 'State',
       name: state,
-      containsPlace: {
-        '@type': 'Place',
-        name: state
-      }
     })),
     sameAs: [
       BRAND.verification.trustMyProducer,
       BRAND.verification.nipr,
-      // Verified Social Profiles
       'https://www.facebook.com/BradfordInformedGuidance',
       'https://www.linkedin.com/company/bradford-informed-guidance',
       'https://g.page/r/BradfordInformedGuidance'
@@ -118,22 +117,18 @@ export function organizationSchema() {
       {
         '@type': 'Thing',
         name: 'One Big Beautiful Bill Act (OBBBA)',
-        description: 'Comprehensive health and life insurance legislation affecting subsidies and tax liabilities.'
       },
       {
         '@type': 'Thing',
         name: 'Section 71301 - Subsidy Liability',
-        description: 'Legislative section regarding the consolidation of tax credits and repayment caps.'
       },
       {
         '@type': 'Thing',
         name: 'Section 71302 - Immigrant Eligibility',
-        description: 'updates to non-citizen health coverage eligibility criteria.'
       },
       {
         '@type': 'Thing',
         name: 'Trump Accounts',
-        description: 'New tax-advantaged health and life savings vehicles opening July 4, 2026.'
       },
       'Health Insurance Marketplace',
       'Life Insurance',
@@ -301,6 +296,7 @@ export function personSchema(name: string, jobTitle: string, description: string
       '@type': 'Organization',
       name: ORG.name,
       url: ORG.url,
+      '@id': ORG_ID
     },
     url: `${ORG.url}/about`,
     knowsAbout: [
@@ -309,7 +305,22 @@ export function personSchema(name: string, jobTitle: string, description: string
       'Medicare',
       'PPO Plans',
       'Insurance Brokerage',
+      'Systemic Subsidy Fragility'
     ],
+    sameAs: [
+      'https://www.linkedin.com/in/zachary-bradford',
+      'https://nipr.com/producer-lookup'
+    ],
+    hasCredential: {
+      '@type': 'EducationalOccupationalCredential',
+      credentialCategory: 'Insurance License',
+      identifier: 'W347851',
+      recognizedBy: {
+        '@type': 'Organization',
+        name: 'Florida Department of Financial Services',
+        url: 'https://www.myfloridacfo.com'
+      }
+    }
   };
   return JSON.stringify(data);
 }
@@ -325,6 +336,9 @@ export function articleSchema(params: {
   articleSection?: string;
   keywords?: string[];
   type?: 'Article' | 'BlogPosting';
+  wordCount?: number;
+  articleBody?: string;
+  about?: string[];
 }) {
   const {
     title,
@@ -337,9 +351,12 @@ export function articleSchema(params: {
     articleSection,
     keywords,
     type = 'BlogPosting',
+    wordCount,
+    articleBody,
+    about,
   } = params;
 
-  const data = {
+  const data: Record<string, unknown> = {
     '@context': 'https://schema.org',
     '@type': type,
     headline: title,
@@ -356,6 +373,13 @@ export function articleSchema(params: {
       '@type': 'Person',
       name: author,
       url: `${ORG.url}/about`,
+      jobTitle: 'Licensed Independent Insurance Broker',
+      identifier: ORG.npn,
+      worksFor: {
+        '@type': 'InsuranceAgency',
+        name: ORG.name,
+        url: ORG.url,
+      },
     },
     publisher: {
       '@type': 'Organization',
@@ -367,12 +391,12 @@ export function articleSchema(params: {
     },
   };
 
-  if (articleSection) {
-    (data as Record<string, unknown>).articleSection = articleSection;
-  }
-
-  if (keywords?.length) {
-    (data as Record<string, unknown>).keywords = keywords;
+  if (articleSection) data.articleSection = articleSection;
+  if (keywords?.length) data.keywords = keywords;
+  if (typeof wordCount === 'number' && wordCount > 0) data.wordCount = wordCount;
+  if (articleBody) data.articleBody = articleBody;
+  if (about?.length) {
+    data.about = about.map((name) => ({ '@type': 'Thing', name }));
   }
 
   return JSON.stringify(data);
@@ -457,4 +481,66 @@ function absoluteUrl(path: string) {
     return `${ORG.url.replace(/\/$/, '')}${path}`;
   }
   return `${ORG.url.replace(/\/$/, '')}/${path}`;
+}
+
+// Generic Dataset schema for any tabular data anchor in a post body. Emits a
+// schema.org/Dataset with one PropertyValue per row (keyed on the first column
+// header, valued on the remaining columns joined). Pair with GFM-table
+// extraction in sanityContent.ts so every post body table becomes a Data-Anchor
+// that AI citation engines can ingest.
+export function datasetSchema(params: {
+  name: string;
+  description: string;
+  variableMeasured?: string;
+  url?: string;
+  headers: string[];
+  rows: string[][];
+}) {
+  const [keyHeader, ...valueHeaders] = params.headers;
+  return JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'Dataset',
+    name: params.name,
+    description: params.description,
+    variableMeasured: params.variableMeasured ?? valueHeaders.join(', '),
+    ...(params.url ? { url: params.url } : {}),
+    creator: {
+      '@type': 'Organization',
+      name: ORG.name,
+      url: ORG.url,
+      '@id': ORG_ID,
+    },
+    data: params.rows.map((row) => ({
+      '@type': 'PropertyValue',
+      name: `${keyHeader}: ${row[0] ?? ''}`,
+      value: row.slice(1).map((cell, i) => `${valueHeaders[i] ?? ''}: ${cell}`).join(' | '),
+    })),
+  });
+}
+
+export function trustSealSchema(params: {
+  npn: string;
+  licenseNumber: string;
+  associations: string[];
+}) {
+  return JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'ProfessionalService',
+    name: ORG.name,
+    identifier: params.npn,
+    hasCredential: {
+      '@type': 'EducationalOccupationalCredential',
+      credentialCategory: 'Insurance License',
+      identifier: params.licenseNumber,
+      recognizedBy: {
+        '@type': 'Organization',
+        name: 'National Insurance Producer Registry (NIPR)',
+        url: 'https://nipr.com'
+      }
+    },
+    memberOf: params.associations.map(a => ({
+      '@type': 'Organization',
+      name: a
+    }))
+  });
 }
